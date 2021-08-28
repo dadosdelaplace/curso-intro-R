@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>6.1 Importación de datos | Aprendiendo R sin morir en el intento</title>
+  <meta name="description" content="Manual básico de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM, curso académico 2021-2022), elaborado por Javier Álvarez Liébana" />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="6.1 Importación de datos | Aprendiendo R sin morir en el intento" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:image" content="/img/logo_R.png" />
+  <meta property="og:description" content="Manual básico de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM, curso académico 2021-2022), elaborado por Javier Álvarez Liébana" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="6.1 Importación de datos | Aprendiendo R sin morir en el intento" />
+  
+  <meta name="twitter:description" content="Manual básico de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM, curso académico 2021-2022), elaborado por Javier Álvarez Liébana" />
+  <meta name="twitter:image" content="/img/logo_R.png" />
+
+<meta name="author" content="Javier Álvarez Liébana" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="importar_exportar.html"/>
+<link rel="next" href="exportación-de-datos.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.18/datatables.js"></script>
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Aprendiendo R sin morir en el intento</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefacio</a><ul>
+<li class="chapter" data-level="" data-path="propósito.html"><a href="propósito.html"><i class="fa fa-check"></i>Propósito</a></li>
+<li class="chapter" data-level="" data-path="requisitos.html"><a href="requisitos.html"><i class="fa fa-check"></i>Requisitos</a></li>
+<li class="chapter" data-level="" data-path="sobre-el-autor.html"><a href="sobre-el-autor.html"><i class="fa fa-check"></i>Sobre el autor</a></li>
+<li class="chapter" data-level="" data-path="créditos.html"><a href="créditos.html"><i class="fa fa-check"></i>Créditos</a></li>
+</ul></li>
+<li class="part"><span><b>I Toma de contacto</b></span></li>
+<li class="chapter" data-level="1" data-path="instalacionR.html"><a href="instalacionR.html"><i class="fa fa-check"></i><b>1</b> Instalación</a><ul>
+<li class="chapter" data-level="1.1" data-path="instalacionRStudio.html"><a href="instalacionRStudio.html"><i class="fa fa-check"></i><b>1.1</b> Instalación de RStudio</a></li>
+<li class="chapter" data-level="1.2" data-path="instalacionpaquetes.html"><a href="instalacionpaquetes.html"><i class="fa fa-check"></i><b>1.2</b> Instalación de paquetes</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="primeros-pasos.html"><a href="primeros-pasos.html"><i class="fa fa-check"></i><b>2</b> Primeros pasos</a><ul>
+<li class="chapter" data-level="2.1" data-path="excel-no-es-tu-amigo.html"><a href="excel-no-es-tu-amigo.html"><i class="fa fa-check"></i><b>2.1</b> Excel no es tu amigo</a></li>
+<li class="chapter" data-level="2.2" data-path="primeros-pasos-calculadora.html"><a href="primeros-pasos-calculadora.html"><i class="fa fa-check"></i><b>2.2</b> Primeros pasos: calculadora</a></li>
+</ul></li>
+<li class="part"><span><b>II Conceptos básicos</b></span></li>
+<li class="chapter" data-level="3" data-path="tipos-de-datos-i-vectores.html"><a href="tipos-de-datos-i-vectores.html"><i class="fa fa-check"></i><b>3</b> Tipos de datos I: vectores</a><ul>
+<li class="chapter" data-level="3.1" data-path="vectores-numéricos.html"><a href="vectores-numéricos.html"><i class="fa fa-check"></i><b>3.1</b> Vectores numéricos</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="vectores-numéricos.html"><a href="vectores-numéricos.html#secuencias-de-números-con-un-patrón"><i class="fa fa-check"></i><b>3.1.1</b> Secuencias de números con un patrón</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="operaciones-aritméticas-con-vectores-numéricos.html"><a href="operaciones-aritméticas-con-vectores-numéricos.html"><i class="fa fa-check"></i><b>3.2</b> Operaciones aritméticas con vectores numéricos</a></li>
+<li class="chapter" data-level="3.3" data-path="operaciones-estadísticas-con-vectores-numéricos.html"><a href="operaciones-estadísticas-con-vectores-numéricos.html"><i class="fa fa-check"></i><b>3.3</b> Operaciones estadísticas con vectores numéricos</a></li>
+<li class="chapter" data-level="3.4" data-path="vectores-de-caracteres-texto.html"><a href="vectores-de-caracteres-texto.html"><i class="fa fa-check"></i><b>3.4</b> Vectores de caracteres (texto)</a></li>
+<li class="chapter" data-level="3.5" data-path="vectores-lógicos-truefalse.html"><a href="vectores-lógicos-truefalse.html"><i class="fa fa-check"></i><b>3.5</b> Vectores lógicos (TRUE/FALSE)</a></li>
+<li class="chapter" data-level="3.6" data-path="datos-ausentes-na-y-nan.html"><a href="datos-ausentes-na-y-nan.html"><i class="fa fa-check"></i><b>3.6</b> Datos ausentes: NA y NaN</a></li>
+<li class="chapter" data-level="3.7" data-path="seleccionar-elementos-de-un-vector.html"><a href="seleccionar-elementos-de-un-vector.html"><i class="fa fa-check"></i><b>3.7</b> Seleccionar elementos de un vector</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="seleccionar-elementos-de-un-vector.html"><a href="seleccionar-elementos-de-un-vector.html#which"><i class="fa fa-check"></i><b>3.7.1</b> which</a></li>
+<li class="chapter" data-level="3.7.2" data-path="seleccionar-elementos-de-un-vector.html"><a href="seleccionar-elementos-de-un-vector.html#null"><i class="fa fa-check"></i><b>3.7.2</b> NULL</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="ordenar-vectores.html"><a href="ordenar-vectores.html"><i class="fa fa-check"></i><b>3.8</b> Ordenar vectores</a></li>
+<li class="chapter" data-level="3.9" data-path="fechas.html"><a href="fechas.html"><i class="fa fa-check"></i><b>3.9</b> Fechas</a></li>
+<li class="chapter" data-level="3.10" data-path="ejercicios.html"><a href="ejercicios.html"><i class="fa fa-check"></i><b>3.10</b> 📝 Ejercicios</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="primer-projecto-con-r.html"><a href="primer-projecto-con-r.html"><i class="fa fa-check"></i><b>4</b> Primer projecto con R</a><ul>
+<li class="chapter" data-level="4.1" data-path="crear-proyecto.html"><a href="crear-proyecto.html"><i class="fa fa-check"></i><b>4.1</b> Crear proyecto</a></li>
+<li class="chapter" data-level="4.2" data-path="directorios-de-trabajo-y-cabecera.html"><a href="directorios-de-trabajo-y-cabecera.html"><i class="fa fa-check"></i><b>4.2</b> Directorios de trabajo y cabecera</a></li>
+<li class="chapter" data-level="4.3" data-path="ejecución.html"><a href="ejecución.html"><i class="fa fa-check"></i><b>4.3</b> Ejecución</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="datos.html"><a href="datos.html"><i class="fa fa-check"></i><b>5</b> Tipos de datos II: bases de datos</a><ul>
+<li class="chapter" data-level="5.1" data-path="matrices.html"><a href="matrices.html"><i class="fa fa-check"></i><b>5.1</b> Matrices</a></li>
+<li class="chapter" data-level="5.2" data-path="apply-vs-bucles.html"><a href="apply-vs-bucles.html"><i class="fa fa-check"></i><b>5.2</b> Apply vs bucles</a></li>
+<li class="chapter" data-level="5.3" data-path="tablas-data.html"><a href="tablas-data.html"><i class="fa fa-check"></i><b>5.3</b> Tablas: data.frames</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="tablas-data.html"><a href="tablas-data.html#data.frames-selección-manual-de-columnas-y-filas"><i class="fa fa-check"></i><b>5.3.1</b> Data.frames: selección manual de columnas y filas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="importar_exportar.html"><a href="importar_exportar.html"><i class="fa fa-check"></i><b>6</b> Importando/exportando</a><ul>
+<li class="chapter" data-level="6.1" data-path="importación-de-datos.html"><a href="importación-de-datos.html"><i class="fa fa-check"></i><b>6.1</b> Importación de datos</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="importación-de-datos.html"><a href="importación-de-datos.html#archivo-.rdata"><i class="fa fa-check"></i><b>6.1.1</b> Archivo .RData</a></li>
+<li class="chapter" data-level="6.1.2" data-path="importación-de-datos.html"><a href="importación-de-datos.html#archivo-.csv"><i class="fa fa-check"></i><b>6.1.2</b> Archivo .csv</a></li>
+<li class="chapter" data-level="6.1.3" data-path="importación-de-datos.html"><a href="importación-de-datos.html#archivo-.xlsx"><i class="fa fa-check"></i><b>6.1.3</b> Archivo .xlsx</a></li>
+<li class="chapter" data-level="6.1.4" data-path="importación-de-datos.html"><a href="importación-de-datos.html#desde-web"><i class="fa fa-check"></i><b>6.1.4</b> Desde web</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="exportación-de-datos.html"><a href="exportación-de-datos.html"><i class="fa fa-check"></i><b>6.2</b> Exportación de datos</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="exportación-de-datos.html"><a href="exportación-de-datos.html#guardar-en-.rdata"><i class="fa fa-check"></i><b>6.2.1</b> Guardar en .RData</a></li>
+<li class="chapter" data-level="6.2.2" data-path="exportación-de-datos.html"><a href="exportación-de-datos.html#guardar-en-.csv"><i class="fa fa-check"></i><b>6.2.2</b> Guardar en .csv</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="control.html"><a href="control.html"><i class="fa fa-check"></i><b>7</b> Estructuras de control</a><ul>
+<li class="chapter" data-level="7.1" data-path="ifelse.html"><a href="ifelse.html"><i class="fa fa-check"></i><b>7.1</b> if…else</a></li>
+<li class="chapter" data-level="7.2" data-path="forwhile.html"><a href="forwhile.html"><i class="fa fa-check"></i><b>7.2</b> for/while</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="forwhile.html"><a href="forwhile.html#breaknext"><i class="fa fa-check"></i><b>7.2.1</b> BREAK/NEXT</a></li>
+<li class="chapter" data-level="7.2.2" data-path="forwhile.html"><a href="forwhile.html#repeat"><i class="fa fa-check"></i><b>7.2.2</b> REPEAT</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>III Listas y funciones</b></span></li>
+<li class="chapter" data-level="8" data-path="otros_datos.html"><a href="otros_datos.html"><i class="fa fa-check"></i><b>8</b> Tipos de datos III: listas/factores</a><ul>
+<li class="chapter" data-level="8.1" data-path="listas.html"><a href="listas.html"><i class="fa fa-check"></i><b>8.1</b> Listas</a></li>
+<li class="chapter" data-level="8.2" data-path="factores.html"><a href="factores.html"><i class="fa fa-check"></i><b>8.2</b> Factores</a></li>
+<li class="chapter" data-level="8.3" data-path="fechas-y-horas.html"><a href="fechas-y-horas.html"><i class="fa fa-check"></i><b>8.3</b> Fechas y horas</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="FUNCIONES.html"><a href="FUNCIONES.html"><i class="fa fa-check"></i><b>9</b> Creación de funciones</a><ul>
+<li class="chapter" data-level="9.1" data-path="primera-función.html"><a href="primera-función.html"><i class="fa fa-check"></i><b>9.1</b> Primera función</a></li>
+<li class="chapter" data-level="9.2" data-path="segunda-función.html"><a href="segunda-función.html"><i class="fa fa-check"></i><b>9.2</b> Segunda función</a></li>
+<li class="chapter" data-level="9.3" data-path="variables-localesglobales.html"><a href="variables-localesglobales.html"><i class="fa fa-check"></i><b>9.3</b> Variables locales/globales</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="qué-sabemos-hacer.html"><a href="qué-sabemos-hacer.html"><i class="fa fa-check"></i><b>10</b> ¿Qué sabemos hacer?</a><ul>
+<li class="chapter" data-level="10.1" data-path="recursos.html"><a href="recursos.html"><i class="fa fa-check"></i><b>10.1</b> Recursos</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bibliografía.html"><a href="bibliografía.html"><i class="fa fa-check"></i>Bibliografía</a></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org/yihui/rmarkdown/" target="blank">Elaborado con bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Aprendiendo R sin morir en el intento</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="importación-de-datos" class="section level2">
+<h2><span class="header-section-number">6.1</span> Importación de datos</h2>
+<p>Las <strong>4 formas más comunes de importar (cargar) datos</strong> son:</p>
+<ul>
+<li>desde un archivo propio de <code>R</code> (extensión <code>.RData</code>).</li>
+<li>desde un archivo separado por comas (un archivo <code>.csv</code>).</li>
+<li>desde un excel (archivo <code>.xlsx</code>).</li>
+<li>desde un enlace de internet.</li>
+</ul>
+<div id="archivo-.rdata" class="section level3">
+<h3><span class="header-section-number">6.1.1</span> Archivo .RData</h3>
+<p>La forma más sencilla de guardar datos y variables en <code>R</code>, y que además ocupa menos espacio en nuestro disco duro, es guardarlo en archivos propios que tiene <code>R</code> como son los archivos con extensiones <code>.rda</code> y <code>.RData</code>.</p>
+<p>Es <strong>recomendable</strong> tener los datos en la misma carpeta del proyecto pero una carpeta separada, ya que podemos tener muchos archivos y así no mezclamos dichos ficheros con los códigos que escirbamos. En la carpeta <code>DATOS</code> del proyecto tenemos 4 archivos <code>.RData</code>: <code>coches.RData</code>, <code>panel_vacunas_ccaa.RData</code>, <code>panel_vacunas_fecha.RData</code> y <code>panel_variables.RData</code>. <strong>¿Cómo cargar archivos <code>.RData</code>?</strong></p>
+<p>Muy sencillo: como son ficheros nativos de <code>R</code>, basta con usar la función de carga <code>load()</code>, y dentro la ruta de los archivos.</p>
+<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb357-1" data-line-number="1"><span class="co"># Al fijar directorio de trabajo, no necesitamos toda la ruta, solo &quot;./&quot; y la ruta dentro de la carpeta del proyecto</span></a>
+<a class="sourceLine" id="cb357-2" data-line-number="2"><span class="kw">load</span>(<span class="st">&quot;./DATOS/coches.RData&quot;</span>) </a>
+<a class="sourceLine" id="cb357-3" data-line-number="3"><span class="kw">load</span>(<span class="st">&quot;./DATOS/panel_vacunas_ccaa.RData&quot;</span>)</a>
+<a class="sourceLine" id="cb357-4" data-line-number="4"><span class="kw">load</span>(<span class="st">&quot;./DATOS/panel_vacunas_fecha.RData&quot;</span>)</a>
+<a class="sourceLine" id="cb357-5" data-line-number="5"><span class="kw">load</span>(<span class="st">&quot;./DATOS/panel_variables.RData&quot;</span>)</a></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:carga-RDATA"></span>
+<img src="img/carga_RDATA.jpg" alt="Importación de ficheros de extensión .RData." width="50%" />
+<p class="caption">
+Imagen/gráfica 6.1: Importación de ficheros de extensión .RData.
+</p>
+</div>
+<p>Como ves en la imagen <a href="importación-de-datos.html#fig:carga-RDATA">6.1</a>, en el panel de entorno de la parte superior derecha ahora tendremos 4 <code>data.frames</code> que antes no teníamos. Un función muy útil es <code>head()</code>, con argumento el nombre de un <code>data.frame</code>, que nos permite visualizar las primeras columnas.</p>
+<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb358-1" data-line-number="1"><span class="co"># Ver las primeras filas de la tabla que guarda distintos modelos de coche y características</span></a>
+<a class="sourceLine" id="cb358-2" data-line-number="2"><span class="kw">head</span>(coches)</a></code></pre></div>
+<pre><code>##                    consumo cilindrada     peso  potencia   tiempo
+## Mazda RX4         11.20069   2621.936 1188.411 111.52570 40.91298
+## Mazda RX4 Wag     11.20069   2621.936 1304.077 111.52570 42.30491
+## Datsun 710        10.31643   1769.807 1052.333  94.28991 46.25702
+## Hornet 4 Drive    10.99134   4227.872 1458.298 111.52570 48.32006
+## Hornet Sportabout 12.57832   5899.356 1560.356 177.42725 42.30491
+## Valiant           12.99528   3687.097 1569.428 106.45635 50.25883
+##                                motor transmision ncyl ncarb ngear
+## Mazda RX4             cilindros en V      Manual    6     4     4
+## Mazda RX4 Wag         cilindros en V      Manual    6     4     4
+## Datsun 710        cilindros en serie      Manual    4     1     4
+## Hornet 4 Drive    cilindros en serie  Automática    6     1     3
+## Hornet Sportabout     cilindros en V  Automática    8     2     3
+## Valiant           cilindros en serie  Automática    6     1     3</code></pre>
+</div>
+<div id="archivo-.csv" class="section level3">
+<h3><span class="header-section-number">6.1.2</span> Archivo .csv</h3>
+<p>Otra opción de importación habitual son los <strong>archivos <code>.csv</code> (comma separated values)</strong>: son archivos separados por comas (u otro caracter como puntos, puntos y comas, o tabuladores). En apariencia cuando los abrimos en el ordenador son como un Excel (ya que los abre el Excel), pero ocupan mucho menos que un Excel y su <strong>lectura es universal</strong> (independiente de tener instalado o no el Excel) ya que son archivos de texto <strong>sin formato</strong>.</p>
+<p>Para leer un archivo <code>.csv</code> basta con usar la función <code>read.csv()</code>, y la mayoría de las veces basta indicarle la ruta del archivo para su lectura (argumento <code>file</code>).</p>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb360-1" data-line-number="1">vacunas_esp &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&quot;./DATOS/datos_ES.csv&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb361-1" data-line-number="1"><span class="kw">names</span>(vacunas_esp) <span class="co"># Todas las variables del data.frame</span></a></code></pre></div>
+<pre><code>##  [1] &quot;fechas&quot;                              
+##  [2] &quot;ISO&quot;                                 
+##  [3] &quot;poblacion&quot;                           
+##  [4] &quot;porc_pobl_total&quot;                     
+##  [5] &quot;poblacion_mayor_16a&quot;                 
+##  [6] &quot;porc_pobl_total_mayor_16a&quot;           
+##  [7] &quot;dosis_entrega_pfizer&quot;                
+##  [8] &quot;dosis_entrega_astra&quot;                 
+##  [9] &quot;dosis_entrega_moderna&quot;               
+## [10] &quot;dosis_entrega_janssen&quot;               
+## [11] &quot;dosis_entrega&quot;                       
+## [12] &quot;dosis_entrega_100hab&quot;                
+## [13] &quot;porc_entregadas_sobre_total&quot;         
+## [14] &quot;dosis_diarias_entrega_pfizer&quot;        
+## [15] &quot;dosis_diarias_entrega_astra&quot;         
+## [16] &quot;dosis_diarias_entrega_moderna&quot;       
+## [17] &quot;dosis_diarias_entrega&quot;               
+## [18] &quot;dosis_7D_entrega_pfizer&quot;             
+## [19] &quot;dosis_7D_entrega_astra&quot;              
+## [20] &quot;dosis_7D_entrega_moderna&quot;            
+## [21] &quot;dosis_7D_entrega&quot;                    
+## [22] &quot;dosis_7D_entrega_100hab&quot;             
+## [23] &quot;dosis_admin&quot;                         
+## [24] &quot;dosis_primera&quot;                       
+## [25] &quot;dosis_pauta_completa&quot;                
+## [26] &quot;dosis_admin_100hab&quot;                  
+## [27] &quot;porc_admin_sobre_ccaa&quot;               
+## [28] &quot;porc_admin_vs_total&quot;                 
+## [29] &quot;dosis_diarias_admin&quot;                 
+## [30] &quot;dosis_diarias_admin_100hab&quot;          
+## [31] &quot;crec_diario_dosis_admin&quot;             
+## [32] &quot;dosis_diarias_primera&quot;               
+## [33] &quot;dosis_diarias_segunda&quot;               
+## [34] &quot;dosis_7D_admin&quot;                      
+## [35] &quot;dosis_7D_admin_100hab&quot;               
+## [36] &quot;crec_7D_dosis_admin&quot;                 
+## [37] &quot;porc_admin_vs_total_7D&quot;              
+## [38] &quot;personas_vacunadas&quot;                  
+## [39] &quot;personas_pauta_completa&quot;             
+## [40] &quot;personas_1dosis&quot;                     
+## [41] &quot;porc_personas_vacunadas&quot;             
+## [42] &quot;porc_personas_pauta_completa&quot;        
+## [43] &quot;porc_personas_vacunadas_16a&quot;         
+## [44] &quot;porc_personas_pauta_completa_16a&quot;    
+## [45] &quot;personas_vacunadas_diarias&quot;          
+## [46] &quot;personas_pauta_completa_diarias&quot;     
+## [47] &quot;porc_personas_vacunadas_diarias&quot;     
+## [48] &quot;porc_personas_pauta_completa_diarias&quot;
+## [49] &quot;personas_vacunadas_7D&quot;               
+## [50] &quot;personas_pauta_completa_7D&quot;          
+## [51] &quot;porc_personas_vacunadas_7D&quot;          
+## [52] &quot;porc_personas_pauta_completa_7D&quot;     
+## [53] &quot;porc_personas_vacunadas_16a_7D&quot;      
+## [54] &quot;porc_personas_pauta_completa_16a_7D&quot; 
+## [55] &quot;crec_diario_personas_vacunadas&quot;      
+## [56] &quot;crec_7D_personas_vacunadas&quot;          
+## [57] &quot;crec_diario_personas_pauta_completa&quot; 
+## [58] &quot;crec_7D_personas_pauta_completa&quot;     
+## [59] &quot;desv_porc_admin_vs_total&quot;            
+## [60] &quot;desv_dosis_entrega&quot;                  
+## [61] &quot;desv_porc_personas_vacunadas&quot;        
+## [62] &quot;desv_porc_personas_pauta_completa&quot;   
+## [63] &quot;fecha_30vacunados_ritmo7D&quot;           
+## [64] &quot;fecha_50vacunados_ritmo7D&quot;           
+## [65] &quot;fecha_70vacunados_ritmo7D&quot;           
+## [66] &quot;fecha_30inmunizados_ritmo7D&quot;         
+## [67] &quot;fecha_50inmunizados_ritmo7D&quot;         
+## [68] &quot;fecha_70inmunizados_ritmo7D&quot;         
+## [69] &quot;fecha_30inmunizados_16a_ritmo7D&quot;     
+## [70] &quot;fecha_50inmunizados_16a_ritmo7D&quot;     
+## [71] &quot;fecha_70inmunizados_16a_ritmo7D&quot;</code></pre>
+<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb363-1" data-line-number="1">vacunas_esp[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">7</span>] <span class="co"># Primeras filas y columnas</span></a></code></pre></div>
+<pre><code>##       fechas ISO poblacion porc_pobl_total poblacion_mayor_16a
+## 1 2021-01-05  ES  47450795             100            40129822
+## 2 2021-01-06  ES  47450795             100            40129822
+## 3 2021-01-07  ES  47450795             100            40129822
+## 4 2021-01-08  ES  47450795             100            40129822
+## 5 2021-01-09  ES  47450795             100            40129822
+##   porc_pobl_total_mayor_16a dosis_entrega_pfizer
+## 1                       100               743925
+## 2                       100               743925
+## 3                       100               743925
+## 4                       100               743925
+## 5                       100               743925</code></pre>
+<p>Podemos personalizar la lectura en función del archivo, dando valores a los argumentos <code>sep</code> (para indicar el caracter que se está usando para separar columnas, en caso de no ser <code>&quot;,&quot;</code> por defecto), <code>dec</code> (el caracter que esdtamos usando para marcar decimales, por defecto es <code>&quot;.&quot;</code>) o <code>header</code> (por defecto en <code>TRUE</code>, lo que le indicamos que el nombre de las columnas está en la primera fila). Al tener nuestro archivo preparado para que sirva con los parámetros por defecto no debemos añadirlo, pero podemos hacer la prueba para ver que la lectura es la misma.</p>
+<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb365-1" data-line-number="1">vacunas_esp &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&quot;./DATOS/datos_ES.csv&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb366-1" data-line-number="1">vacunas_esp[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">7</span>] <span class="co"># Primeras filas y columnas</span></a></code></pre></div>
+<pre><code>##       fechas ISO poblacion porc_pobl_total poblacion_mayor_16a
+## 1 2021-01-05  ES  47450795             100            40129822
+## 2 2021-01-06  ES  47450795             100            40129822
+## 3 2021-01-07  ES  47450795             100            40129822
+## 4 2021-01-08  ES  47450795             100            40129822
+## 5 2021-01-09  ES  47450795             100            40129822
+##   porc_pobl_total_mayor_16a dosis_entrega_pfizer
+## 1                       100               743925
+## 2                       100               743925
+## 3                       100               743925
+## 4                       100               743925
+## 5                       100               743925</code></pre>
+</div>
+<div id="archivo-.xlsx" class="section level3">
+<h3><span class="header-section-number">6.1.3</span> Archivo .xlsx</h3>
+<p>Muchas veces no tendremos un <code>.csv</code> (por desgracia) y nos tocará leer desde un excel. Para ello deberemos instalar (la primera vez) y cargar el paquete <code>{readxl}</code> que nos permitirá usar funciones para cargar archivos <code>.xls</code> (la función <code>read_xls()</code>) y archivos <code>.xlsx</code> (la función <code>read_xlsx()</code>). Además del argumento <code>path</code> con la ruta del archivo, podemos en el argumento <code>sheet</code> indicarle la hoja de Excel a leer (en caso de tener varias).</p>
+<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb368-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;readxl&quot;</span>)</a>
+<a class="sourceLine" id="cb368-2" data-line-number="2"><span class="kw">library</span>(readxl)</a>
+<a class="sourceLine" id="cb368-3" data-line-number="3">boston &lt;-<span class="st"> </span><span class="kw">read_xlsx</span>(<span class="dt">path =</span> <span class="st">&quot;./DATOS/Boston.xlsx&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb369-1" data-line-number="1"><span class="kw">head</span>(boston)</a></code></pre></div>
+<pre><code>## # A tibble: 6 × 14
+##      crim    zn indus  chas   nox    rm   age   dis   rad   tax ptratio black
+##     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
+## 1 0.00632    18  2.31     0 0.538  6.58  65.2  4.09     1   296    15.3  397.
+## 2 0.0273      0  7.07     0 0.469  6.42  78.9  4.97     2   242    17.8  397.
+## 3 0.0273      0  7.07     0 0.469  7.18  61.1  4.97     2   242    17.8  393.
+## 4 0.0324      0  2.18     0 0.458  7.00  45.8  6.06     3   222    18.7  395.
+## 5 0.0690      0  2.18     0 0.458  7.15  54.2  6.06     3   222    18.7  397.
+## 6 0.0298      0  2.18     0 0.458  6.43  58.7  6.06     3   222    18.7  394.
+## # … with 2 more variables: lstat &lt;dbl&gt;, medv &lt;dbl&gt;</code></pre>
+</div>
+<div id="desde-web" class="section level3">
+<h3><span class="header-section-number">6.1.4</span> Desde web</h3>
+<p>Por último, muchas veces querremos cargar archivos colgados en la web que, aunque al descargarlos son <code>.csv</code> o <code>.xlsx</code>, son archivos dinámicos que sabemos que van a ir cambiando, como por ejemplo los datos de casos covid, hospitalizados, ingresos UCI y fallecidos, de la página del ISCIII <a href="https://cnecovid.isciii.es/covid19/#documentaci%C3%B3n-y-datos" class="uri">https://cnecovid.isciii.es/covid19/#documentaci%C3%B3n-y-datos</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ISCIII"></span>
+<img src="img/ISCIII.jpg" alt="Archivos de la pandemia en el ISCIII." width="75%" />
+<p class="caption">
+Imagen/gráfica 6.2: Archivos de la pandemia en el ISCIII.
+</p>
+</div>
+<p>Esos archivos cambian cada día, por lo que para visualizarlos, analizarlos o guardarlos cada día, tendríamos que, cada día, entrar de forma manual a la página y bajarnos el archivo. O no…</p>
+<p><code>R</code> nos permite <strong>leer archivos subidos en una web, dándole a la función de lectura el enlace del archivo en lugar de la ruta local de nuestro ordenador</strong> (para averiguar el enlace, basta con clickar botón derecho en la web y seleccionar «copiar dirección de enlace»)</p>
+<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb371-1" data-line-number="1">datos_ISCIII &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&quot;https://cnecovid.isciii.es/covid19/resources/casos_hosp_uci_def_sexo_edad_provres.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb371-2" data-line-number="2"><span class="kw">head</span>(datos_ISCIII)</a></code></pre></div>
+<pre><code>##   provincia_iso sexo grupo_edad      fecha num_casos num_hosp num_uci num_def
+## 1             A    H        0-9 2020-01-01         0        0       0       0
+## 2             A    H      10-19 2020-01-01         0        0       0       0
+## 3             A    H      20-29 2020-01-01         0        0       0       0
+## 4             A    H      30-39 2020-01-01         0        0       0       0
+## 5             A    H      40-49 2020-01-01         0        0       0       0
+## 6             A    H      50-59 2020-01-01         0        0       0       0</code></pre>
+<p>Mientras el enlace web no cambie, cada vez que ejecutemos esa orden en nuestro código tendremos en <code>datos_ISCIII</code> el último archivo actualizado que haya, sea el que sea, sin tener que descargarlo de forma manual, ¡y sin necesidad de guardarlo en nuestro local, solo en la memoria virtual de nuestra sesión de <code>R</code>!</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="importar_exportar.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="exportación-de-datos.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Intro_R_2021_2022.pdf"],
+"search": {
+"engine": "lunr",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5.3 Tablas: data.frames | Aprendiendo R sin morir en el intento</title>
+  <meta name="description" content="Manual básico de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM, curso académico 2021-2022), elaborado por Javier Álvarez Liébana" />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="5.3 Tablas: data.frames | Aprendiendo R sin morir en el intento" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:image" content="/img/logo_R.png" />
+  <meta property="og:description" content="Manual básico de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM, curso académico 2021-2022), elaborado por Javier Álvarez Liébana" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5.3 Tablas: data.frames | Aprendiendo R sin morir en el intento" />
+  
+  <meta name="twitter:description" content="Manual básico de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM, curso académico 2021-2022), elaborado por Javier Álvarez Liébana" />
+  <meta name="twitter:image" content="/img/logo_R.png" />
+
+<meta name="author" content="Javier Álvarez Liébana" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="apply-vs-bucles.html"/>
+<link rel="next" href="importar_exportar.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.18/datatables.js"></script>
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Aprendiendo R sin morir en el intento</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefacio</a><ul>
+<li class="chapter" data-level="" data-path="propósito.html"><a href="propósito.html"><i class="fa fa-check"></i>Propósito</a></li>
+<li class="chapter" data-level="" data-path="requisitos.html"><a href="requisitos.html"><i class="fa fa-check"></i>Requisitos</a></li>
+<li class="chapter" data-level="" data-path="sobre-el-autor.html"><a href="sobre-el-autor.html"><i class="fa fa-check"></i>Sobre el autor</a></li>
+<li class="chapter" data-level="" data-path="créditos.html"><a href="créditos.html"><i class="fa fa-check"></i>Créditos</a></li>
+</ul></li>
+<li class="part"><span><b>I Toma de contacto</b></span></li>
+<li class="chapter" data-level="1" data-path="instalacionR.html"><a href="instalacionR.html"><i class="fa fa-check"></i><b>1</b> Instalación</a><ul>
+<li class="chapter" data-level="1.1" data-path="instalacionRStudio.html"><a href="instalacionRStudio.html"><i class="fa fa-check"></i><b>1.1</b> Instalación de RStudio</a></li>
+<li class="chapter" data-level="1.2" data-path="instalacionpaquetes.html"><a href="instalacionpaquetes.html"><i class="fa fa-check"></i><b>1.2</b> Instalación de paquetes</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="primeros-pasos.html"><a href="primeros-pasos.html"><i class="fa fa-check"></i><b>2</b> Primeros pasos</a><ul>
+<li class="chapter" data-level="2.1" data-path="excel-no-es-tu-amigo.html"><a href="excel-no-es-tu-amigo.html"><i class="fa fa-check"></i><b>2.1</b> Excel no es tu amigo</a></li>
+<li class="chapter" data-level="2.2" data-path="primeros-pasos-calculadora.html"><a href="primeros-pasos-calculadora.html"><i class="fa fa-check"></i><b>2.2</b> Primeros pasos: calculadora</a></li>
+</ul></li>
+<li class="part"><span><b>II Conceptos básicos</b></span></li>
+<li class="chapter" data-level="3" data-path="tipos-de-datos-i-vectores.html"><a href="tipos-de-datos-i-vectores.html"><i class="fa fa-check"></i><b>3</b> Tipos de datos I: vectores</a><ul>
+<li class="chapter" data-level="3.1" data-path="vectores-numéricos.html"><a href="vectores-numéricos.html"><i class="fa fa-check"></i><b>3.1</b> Vectores numéricos</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="vectores-numéricos.html"><a href="vectores-numéricos.html#secuencias-de-números-con-un-patrón"><i class="fa fa-check"></i><b>3.1.1</b> Secuencias de números con un patrón</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="operaciones-aritméticas-con-vectores-numéricos.html"><a href="operaciones-aritméticas-con-vectores-numéricos.html"><i class="fa fa-check"></i><b>3.2</b> Operaciones aritméticas con vectores numéricos</a></li>
+<li class="chapter" data-level="3.3" data-path="operaciones-estadísticas-con-vectores-numéricos.html"><a href="operaciones-estadísticas-con-vectores-numéricos.html"><i class="fa fa-check"></i><b>3.3</b> Operaciones estadísticas con vectores numéricos</a></li>
+<li class="chapter" data-level="3.4" data-path="vectores-de-caracteres-texto.html"><a href="vectores-de-caracteres-texto.html"><i class="fa fa-check"></i><b>3.4</b> Vectores de caracteres (texto)</a></li>
+<li class="chapter" data-level="3.5" data-path="vectores-lógicos-truefalse.html"><a href="vectores-lógicos-truefalse.html"><i class="fa fa-check"></i><b>3.5</b> Vectores lógicos (TRUE/FALSE)</a></li>
+<li class="chapter" data-level="3.6" data-path="datos-ausentes-na-y-nan.html"><a href="datos-ausentes-na-y-nan.html"><i class="fa fa-check"></i><b>3.6</b> Datos ausentes: NA y NaN</a></li>
+<li class="chapter" data-level="3.7" data-path="seleccionar-elementos-de-un-vector.html"><a href="seleccionar-elementos-de-un-vector.html"><i class="fa fa-check"></i><b>3.7</b> Seleccionar elementos de un vector</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="seleccionar-elementos-de-un-vector.html"><a href="seleccionar-elementos-de-un-vector.html#which"><i class="fa fa-check"></i><b>3.7.1</b> which</a></li>
+<li class="chapter" data-level="3.7.2" data-path="seleccionar-elementos-de-un-vector.html"><a href="seleccionar-elementos-de-un-vector.html#null"><i class="fa fa-check"></i><b>3.7.2</b> NULL</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="ordenar-vectores.html"><a href="ordenar-vectores.html"><i class="fa fa-check"></i><b>3.8</b> Ordenar vectores</a></li>
+<li class="chapter" data-level="3.9" data-path="fechas.html"><a href="fechas.html"><i class="fa fa-check"></i><b>3.9</b> Fechas</a></li>
+<li class="chapter" data-level="3.10" data-path="ejercicios.html"><a href="ejercicios.html"><i class="fa fa-check"></i><b>3.10</b> 📝 Ejercicios</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="primer-projecto-con-r.html"><a href="primer-projecto-con-r.html"><i class="fa fa-check"></i><b>4</b> Primer projecto con R</a><ul>
+<li class="chapter" data-level="4.1" data-path="crear-proyecto.html"><a href="crear-proyecto.html"><i class="fa fa-check"></i><b>4.1</b> Crear proyecto</a></li>
+<li class="chapter" data-level="4.2" data-path="directorios-de-trabajo-y-cabecera.html"><a href="directorios-de-trabajo-y-cabecera.html"><i class="fa fa-check"></i><b>4.2</b> Directorios de trabajo y cabecera</a></li>
+<li class="chapter" data-level="4.3" data-path="ejecución.html"><a href="ejecución.html"><i class="fa fa-check"></i><b>4.3</b> Ejecución</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="datos.html"><a href="datos.html"><i class="fa fa-check"></i><b>5</b> Tipos de datos II: bases de datos</a><ul>
+<li class="chapter" data-level="5.1" data-path="matrices.html"><a href="matrices.html"><i class="fa fa-check"></i><b>5.1</b> Matrices</a></li>
+<li class="chapter" data-level="5.2" data-path="apply-vs-bucles.html"><a href="apply-vs-bucles.html"><i class="fa fa-check"></i><b>5.2</b> Apply vs bucles</a></li>
+<li class="chapter" data-level="5.3" data-path="tablas-data.html"><a href="tablas-data.html"><i class="fa fa-check"></i><b>5.3</b> Tablas: data.frames</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="tablas-data.html"><a href="tablas-data.html#data.frames-selección-manual-de-columnas-y-filas"><i class="fa fa-check"></i><b>5.3.1</b> Data.frames: selección manual de columnas y filas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="importar_exportar.html"><a href="importar_exportar.html"><i class="fa fa-check"></i><b>6</b> Importando/exportando</a><ul>
+<li class="chapter" data-level="6.1" data-path="importación-de-datos.html"><a href="importación-de-datos.html"><i class="fa fa-check"></i><b>6.1</b> Importación de datos</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="importación-de-datos.html"><a href="importación-de-datos.html#archivo-.rdata"><i class="fa fa-check"></i><b>6.1.1</b> Archivo .RData</a></li>
+<li class="chapter" data-level="6.1.2" data-path="importación-de-datos.html"><a href="importación-de-datos.html#archivo-.csv"><i class="fa fa-check"></i><b>6.1.2</b> Archivo .csv</a></li>
+<li class="chapter" data-level="6.1.3" data-path="importación-de-datos.html"><a href="importación-de-datos.html#archivo-.xlsx"><i class="fa fa-check"></i><b>6.1.3</b> Archivo .xlsx</a></li>
+<li class="chapter" data-level="6.1.4" data-path="importación-de-datos.html"><a href="importación-de-datos.html#desde-web"><i class="fa fa-check"></i><b>6.1.4</b> Desde web</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="exportación-de-datos.html"><a href="exportación-de-datos.html"><i class="fa fa-check"></i><b>6.2</b> Exportación de datos</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="exportación-de-datos.html"><a href="exportación-de-datos.html#guardar-en-.rdata"><i class="fa fa-check"></i><b>6.2.1</b> Guardar en .RData</a></li>
+<li class="chapter" data-level="6.2.2" data-path="exportación-de-datos.html"><a href="exportación-de-datos.html#guardar-en-.csv"><i class="fa fa-check"></i><b>6.2.2</b> Guardar en .csv</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="control.html"><a href="control.html"><i class="fa fa-check"></i><b>7</b> Estructuras de control</a><ul>
+<li class="chapter" data-level="7.1" data-path="ifelse.html"><a href="ifelse.html"><i class="fa fa-check"></i><b>7.1</b> if…else</a></li>
+<li class="chapter" data-level="7.2" data-path="forwhile.html"><a href="forwhile.html"><i class="fa fa-check"></i><b>7.2</b> for/while</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="forwhile.html"><a href="forwhile.html#breaknext"><i class="fa fa-check"></i><b>7.2.1</b> BREAK/NEXT</a></li>
+<li class="chapter" data-level="7.2.2" data-path="forwhile.html"><a href="forwhile.html#repeat"><i class="fa fa-check"></i><b>7.2.2</b> REPEAT</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>III Listas y funciones</b></span></li>
+<li class="chapter" data-level="8" data-path="otros_datos.html"><a href="otros_datos.html"><i class="fa fa-check"></i><b>8</b> Tipos de datos III: listas/factores</a><ul>
+<li class="chapter" data-level="8.1" data-path="listas.html"><a href="listas.html"><i class="fa fa-check"></i><b>8.1</b> Listas</a></li>
+<li class="chapter" data-level="8.2" data-path="factores.html"><a href="factores.html"><i class="fa fa-check"></i><b>8.2</b> Factores</a></li>
+<li class="chapter" data-level="8.3" data-path="fechas-y-horas.html"><a href="fechas-y-horas.html"><i class="fa fa-check"></i><b>8.3</b> Fechas y horas</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="FUNCIONES.html"><a href="FUNCIONES.html"><i class="fa fa-check"></i><b>9</b> Creación de funciones</a><ul>
+<li class="chapter" data-level="9.1" data-path="primera-función.html"><a href="primera-función.html"><i class="fa fa-check"></i><b>9.1</b> Primera función</a></li>
+<li class="chapter" data-level="9.2" data-path="segunda-función.html"><a href="segunda-función.html"><i class="fa fa-check"></i><b>9.2</b> Segunda función</a></li>
+<li class="chapter" data-level="9.3" data-path="variables-localesglobales.html"><a href="variables-localesglobales.html"><i class="fa fa-check"></i><b>9.3</b> Variables locales/globales</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="qué-sabemos-hacer.html"><a href="qué-sabemos-hacer.html"><i class="fa fa-check"></i><b>10</b> ¿Qué sabemos hacer?</a><ul>
+<li class="chapter" data-level="10.1" data-path="recursos.html"><a href="recursos.html"><i class="fa fa-check"></i><b>10.1</b> Recursos</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bibliografía.html"><a href="bibliografía.html"><i class="fa fa-check"></i>Bibliografía</a></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org/yihui/rmarkdown/" target="blank">Elaborado con bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Aprendiendo R sin morir en el intento</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="tablas-data.frames" class="section level2">
+<h2><span class="header-section-number">5.3</span> Tablas: data.frames</h2>
+<p>Además del nombre de las columnas que ha heredado la matriz <code>x</code> de la concatenación de las columnas que hemos realizado, podemos poner <strong>nombre a los registros</strong>, por ejemplo, el nombre de las personas a las que pertenece cada dato, definiendo una nueva variable con los nombres y concatenándola.</p>
+<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb317-1" data-line-number="1">nombres &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Sonia&quot;</span>, <span class="st">&quot;Carla&quot;</span>, <span class="st">&quot;Pepito&quot;</span>, <span class="st">&quot;Carlos&quot;</span>, <span class="st">&quot;Lara&quot;</span>, <span class="st">&quot;Sandra&quot;</span>, <span class="st">&quot;Javi&quot;</span>)</a>
+<a class="sourceLine" id="cb317-2" data-line-number="2"><span class="kw">cbind</span>(nombres, x)</a></code></pre></div>
+<pre><code>##      nombres  edades tlf         cp     
+## [1,] &quot;Sonia&quot;  &quot;14&quot;   NA          &quot;33007&quot;
+## [2,] &quot;Carla&quot;  &quot;24&quot;   &quot;683839390&quot; &quot;28019&quot;
+## [3,] &quot;Pepito&quot; &quot;56&quot;   &quot;621539732&quot; &quot;37005&quot;
+## [4,] &quot;Carlos&quot; &quot;31&quot;   &quot;618211286&quot; &quot;18003&quot;
+## [5,] &quot;Lara&quot;   &quot;20&quot;   NA          &quot;33091&quot;
+## [6,] &quot;Sandra&quot; &quot;87&quot;   &quot;914727164&quot; &quot;25073&quot;
+## [7,] &quot;Javi&quot;   &quot;73&quot;   NA          &quot;17140&quot;</code></pre>
+<p><strong>¿Has visto lo que ha sucedido?</strong></p>
+<p>Como <strong>una matriz solo puede tener un tipo de dato</strong>, al añadir una variable de tipo texto, ha convertido los números también a texto poniéndole comillas: hemos roto la integridad de nuestro dato. Una forma de añadir <strong>nombre a los registros, sin incluirlo como variable</strong>, es usando la función <code>row.names()</code>.</p>
+<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb319-1" data-line-number="1"><span class="kw">row.names</span>(x) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Sonia&quot;</span>, <span class="st">&quot;Carla&quot;</span>, <span class="st">&quot;Pepito&quot;</span>, <span class="st">&quot;Carlos&quot;</span>, <span class="st">&quot;Lara&quot;</span>, <span class="st">&quot;Sandra&quot;</span>, <span class="st">&quot;Javi&quot;</span>)</a>
+<a class="sourceLine" id="cb319-2" data-line-number="2">x</a></code></pre></div>
+<pre><code>##        edades       tlf    cp
+## Sonia      14        NA 33007
+## Carla      24 683839390 28019
+## Pepito     56 621539732 37005
+## Carlos     31 618211286 18003
+## Lara       20        NA 33091
+## Sandra     87 914727164 25073
+## Javi       73        NA 17140</code></pre>
+<p><em>¿Qué sucede si realmente queremos añadir variables cuyos tipos sean distintos (¡ojo, pero con la misma longitud!)?</em></p>
+<p>Vamos a crear nuevas variables de texto <code>nombres</code> y <code>apellidos</code>, un valor lógico <code>casado</code> y una fecha <code>fecha_creacion</code> (fecha de entrada en el sistema) para cada persona.</p>
+<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb321-1" data-line-number="1"><span class="co"># Nombres</span></a>
+<a class="sourceLine" id="cb321-2" data-line-number="2">nombres &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Sonia&quot;</span>, <span class="st">&quot;Carla&quot;</span>, <span class="st">&quot;Pepito&quot;</span>, <span class="st">&quot;Carlos&quot;</span>, <span class="st">&quot;Lara&quot;</span>, <span class="st">&quot;Sandra&quot;</span>, <span class="st">&quot;Javi&quot;</span>)</a>
+<a class="sourceLine" id="cb321-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb321-4" data-line-number="4"><span class="co"># Apellidos</span></a>
+<a class="sourceLine" id="cb321-5" data-line-number="5">apellidos &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Pérez&quot;</span>, <span class="st">&quot;González&quot;</span>, <span class="st">&quot;Fernández&quot;</span>, <span class="st">&quot;Martínez&quot;</span>, <span class="st">&quot;Liébana&quot;</span>, <span class="st">&quot;García&quot;</span>, <span class="st">&quot;Ortiz&quot;</span>)</a>
+<a class="sourceLine" id="cb321-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb321-7" data-line-number="7"><span class="co"># Estado civil (no lo sabemos de una persona)</span></a>
+<a class="sourceLine" id="cb321-8" data-line-number="8">casado &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">FALSE</span>, <span class="ot">NA</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb321-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb321-10" data-line-number="10"><span class="co"># Fecha de creación (fecha en el que esa persona entra en el sistema)</span></a>
+<a class="sourceLine" id="cb321-11" data-line-number="11"><span class="co"># lo convertimos a tipo fecha</span></a>
+<a class="sourceLine" id="cb321-12" data-line-number="12">fecha_creacion &lt;-<span class="st"> </span><span class="kw">as.Date</span>(<span class="kw">c</span>(<span class="st">&quot;2021-03-04&quot;</span>, <span class="st">&quot;2020-10-12&quot;</span>, <span class="st">&quot;1990-04-05&quot;</span>,</a>
+<a class="sourceLine" id="cb321-13" data-line-number="13">                            <span class="st">&quot;2019-09-10&quot;</span>, <span class="st">&quot;2017-03-21&quot;</span>, <span class="st">&quot;2020-07-07&quot;</span>,</a>
+<a class="sourceLine" id="cb321-14" data-line-number="14">                            <span class="st">&quot;2000-01-28&quot;</span>))</a></code></pre></div>
+<p>Seguimos teniendo 7 registros, uno por persona pero ahora tenemos un popurrí de variables, de la <strong>misma longitud pero de tipos distintos</strong>: <code>(edades, tlf, cp)</code> son variables numéricas, <code>(nombres, apellidos)</code> son variables de texto, <code>casado</code> es una variable lógica y <code>fecha_creacion</code> de tipo fecha. <strong>¿Qué sucederá si yo intento mezclar todo en una matriz?</strong></p>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb322-1" data-line-number="1"><span class="co"># Juntamos todo en una matriz (juntamos por columnas)</span></a>
+<a class="sourceLine" id="cb322-2" data-line-number="2">x &lt;-<span class="st"> </span><span class="kw">cbind</span>(nombres, apellidos, edades, tlf, cp, casado, fecha_creacion)</a>
+<a class="sourceLine" id="cb322-3" data-line-number="3">x</a></code></pre></div>
+<pre><code>##      nombres  apellidos   edades tlf         cp      casado  fecha_creacion
+## [1,] &quot;Sonia&quot;  &quot;Pérez&quot;     &quot;14&quot;   NA          &quot;33007&quot; &quot;TRUE&quot;  &quot;18690&quot;       
+## [2,] &quot;Carla&quot;  &quot;González&quot;  &quot;24&quot;   &quot;683839390&quot; &quot;28019&quot; &quot;FALSE&quot; &quot;18547&quot;       
+## [3,] &quot;Pepito&quot; &quot;Fernández&quot; &quot;56&quot;   &quot;621539732&quot; &quot;37005&quot; &quot;FALSE&quot; &quot;7399&quot;        
+## [4,] &quot;Carlos&quot; &quot;Martínez&quot;  &quot;31&quot;   &quot;618211286&quot; &quot;18003&quot; NA      &quot;18149&quot;       
+## [5,] &quot;Lara&quot;   &quot;Liébana&quot;   &quot;20&quot;   NA          &quot;33091&quot; &quot;TRUE&quot;  &quot;17246&quot;       
+## [6,] &quot;Sandra&quot; &quot;García&quot;    &quot;87&quot;   &quot;914727164&quot; &quot;25073&quot; &quot;FALSE&quot; &quot;18450&quot;       
+## [7,] &quot;Javi&quot;   &quot;Ortiz&quot;     &quot;73&quot;   NA          &quot;17140&quot; &quot;FALSE&quot; &quot;10984&quot;</code></pre>
+<p>Efectivamente: como en una matriz solo puede haber datos de un tipo, los números los convierte a texto, las variables lógicas las converte a texto (<code>TRUE</code> es un valor lógico, <code>&quot;TRUE&quot;</code> es un texto, como <code>&quot;Pepito&quot;</code>, sin significado lógico - booleano - de verdadero/falso) y las fechas las ha convertido a texto (aunque las veas igual, ya no son de tipo de fecha, son texto y no podemos operar con ellas).</p>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb324-1" data-line-number="1"><span class="co"># Días entre la primera y el segundo elemento de fecha de creación</span></a>
+<a class="sourceLine" id="cb324-2" data-line-number="2">fecha_creacion[<span class="dv">1</span>] <span class="op">-</span><span class="st"> </span>fecha_creacion[<span class="dv">2</span>]</a></code></pre></div>
+<pre><code>## Time difference of 143 days</code></pre>
+<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb326-1" data-line-number="1"><span class="co"># Días entre primera y segunda fecha de creación pero tomándolo de nuestra matriz (columna 7, fila 1 y 2)</span></a>
+<a class="sourceLine" id="cb326-2" data-line-number="2">x[<span class="dv">1</span>, <span class="dv">7</span>] <span class="op">-</span><span class="st"> </span>x[<span class="dv">2</span>, <span class="dv">7</span>]</a></code></pre></div>
+<pre><code>## Error in x[1, 7] - x[2, 7]: argumento no-numérico para operador binario</code></pre>
+<p>He aquí LA pregunta: <strong>¿cómo juntar variables de distinto tipo, sin cambiar su naturaleza, como cuando juntamos datos en una tabla de excel?</strong></p>
+<p>El formato de tabla de datos en <code>R</code> que vamos a empezar a usar se llama <strong>data.frame</strong>: una <strong>colección de variables de igual longitud pero cada una de un tipo distinto</strong>. Para crear un objeto de este tipo basta con usar la función <code>data.frame()</code>, pasándole como argumentos (separados por comas) las variables que queremos reunir, indicando en texto <code>&quot;...&quot;</code> el nombre de las columnas.</p>
+<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb328-1" data-line-number="1"><span class="co"># Creamos nuestro primer data.frame</span></a>
+<a class="sourceLine" id="cb328-2" data-line-number="2">tabla &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="st">&quot;Nombre&quot;</span> =<span class="st"> </span>nombres, <span class="st">&quot;Apellido&quot;</span> =<span class="st"> </span>apellidos,</a>
+<a class="sourceLine" id="cb328-3" data-line-number="3">                    <span class="st">&quot;Edad&quot;</span> =<span class="st"> </span>edades, <span class="st">&quot;Teléfono&quot;</span> =<span class="st"> </span>tlf,</a>
+<a class="sourceLine" id="cb328-4" data-line-number="4">                    <span class="st">&quot;Código Postal&quot;</span> =<span class="st"> </span>cp, <span class="st">&quot;Casado&quot;</span> =<span class="st"> </span>casado,</a>
+<a class="sourceLine" id="cb328-5" data-line-number="5">                    <span class="st">&quot;Fecha_de_creación&quot; = fecha_creacion)</span></a>
+<a class="sourceLine" id="cb328-6" data-line-number="6"><span class="st">tabla</span></a></code></pre></div>
+<pre><code>##   Nombre  Apellido Edad  Teléfono Código.Postal Casado Fecha_de_creación
+## 1  Sonia     Pérez   14        NA         33007   TRUE        2021-03-04
+## 2  Carla  González   24 683839390         28019  FALSE        2020-10-12
+## 3 Pepito Fernández   56 621539732         37005  FALSE        1990-04-05
+## 4 Carlos  Martínez   31 618211286         18003     NA        2019-09-10
+## 5   Lara   Liébana   20        NA         33091   TRUE        2017-03-21
+## 6 Sandra    García   87 914727164         25073  FALSE        2020-07-07
+## 7   Javi     Ortiz   73        NA         17140  FALSE        2000-01-28</code></pre>
+<p><strong>¡TENEMOS NUESTRO PRIMER CONJUNTO DE DATOS!</strong></p>
+<p> </p>
+<details>
+<p><summary><img src="img/logo_info.png" style="width:4.0%" /> <strong>Consejos y tips</strong></summary></p>
+<!-- toc -->
+<ul>
+<li><strong>Acceso a librería</strong></li>
+</ul>
+<p>A veces puede que no queramos cargar todo un paquete sino solo una función del mismo, para lo que es suficiente <code>nombre_paquete::nombre_funcion</code>.</p>
+<p> </p>
+<p> </p>
+<ul>
+<li><strong>Nombre de variables</strong></li>
+</ul>
+<p>La función <code>names()</code> no solo sirve para consultar los nombres de las variables de un <code>data.frame</code> sino también para cambiarlos a nuestro gusto.</p>
+<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb330-1" data-line-number="1"><span class="co"># Consultamos nombres</span></a>
+<a class="sourceLine" id="cb330-2" data-line-number="2"><span class="kw">names</span>(tabla)</a></code></pre></div>
+<pre><code>## [1] &quot;Nombre&quot;            &quot;Apellido&quot;          &quot;Edad&quot;             
+## [4] &quot;Teléfono&quot;          &quot;Código.Postal&quot;     &quot;Casado&quot;           
+## [7] &quot;Fecha_de_creación&quot;</code></pre>
+<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb332-1" data-line-number="1"><span class="co"># Cambiamos nombres</span></a>
+<a class="sourceLine" id="cb332-2" data-line-number="2"><span class="kw">names</span>(tabla) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;nombre_persona&quot;</span>, <span class="st">&quot;apellido_persona&quot;</span>, <span class="st">&quot;edad&quot;</span>, <span class="st">&quot;tlf&quot;</span>,</a>
+<a class="sourceLine" id="cb332-3" data-line-number="3">                  <span class="st">&quot;cp&quot;</span>, <span class="st">&quot;casado&quot;</span>, <span class="st">&quot;f_creacion&quot;</span>)</a>
+<a class="sourceLine" id="cb332-4" data-line-number="4">tabla</a></code></pre></div>
+<pre><code>##   nombre_persona apellido_persona edad       tlf    cp casado f_creacion
+## 1          Sonia            Pérez   14        NA 33007   TRUE 2021-03-04
+## 2          Carla         González   24 683839390 28019  FALSE 2020-10-12
+## 3         Pepito        Fernández   56 621539732 37005  FALSE 1990-04-05
+## 4         Carlos         Martínez   31 618211286 18003     NA 2019-09-10
+## 5           Lara          Liébana   20        NA 33091   TRUE 2017-03-21
+## 6         Sandra           García   87 914727164 25073  FALSE 2020-07-07
+## 7           Javi            Ortiz   73        NA 17140  FALSE 2000-01-28</code></pre>
+<!-- tocstop -->
+</details>
+<div id="data.frames-selección-manual-de-columnas-y-filas" class="section level3">
+<h3><span class="header-section-number">5.3.1</span> Data.frames: selección manual de columnas y filas</h3>
+<p>Si tenemos un <code>data.frame</code> ya creado y queremos <strong>añadir una columna</strong> es tan simple como usar la función <code>data.frame()</code> que ya hemos visto para concatenar la columna. Si queremos acceder a una columna, fila o elemento en concreto, <strong>los <code>data.frame</code> tienes las mismas ventajas que una matriz</strong>, así basta con usar los mismos operadores.</p>
+<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb334-1" data-line-number="1"><span class="co"># Añadimos una nueva columna con nº de hermanos/as</span></a>
+<a class="sourceLine" id="cb334-2" data-line-number="2">hermanos &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb334-3" data-line-number="3">tabla &lt;-<span class="st"> </span><span class="kw">data.frame</span>(tabla, hermanos)</a>
+<a class="sourceLine" id="cb334-4" data-line-number="4">tabla</a></code></pre></div>
+<pre><code>##   nombre_persona apellido_persona edad       tlf    cp casado f_creacion
+## 1          Sonia            Pérez   14        NA 33007   TRUE 2021-03-04
+## 2          Carla         González   24 683839390 28019  FALSE 2020-10-12
+## 3         Pepito        Fernández   56 621539732 37005  FALSE 1990-04-05
+## 4         Carlos         Martínez   31 618211286 18003     NA 2019-09-10
+## 5           Lara          Liébana   20        NA 33091   TRUE 2017-03-21
+## 6         Sandra           García   87 914727164 25073  FALSE 2020-07-07
+## 7           Javi            Ortiz   73        NA 17140  FALSE 2000-01-28
+##   hermanos
+## 1        0
+## 2        0
+## 3        1
+## 4        5
+## 5        2
+## 6        3
+## 7        0</code></pre>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb336-1" data-line-number="1"><span class="co"># Accedemos a la tercera columna</span></a>
+<a class="sourceLine" id="cb336-2" data-line-number="2">tabla[, <span class="dv">3</span>]</a></code></pre></div>
+<pre><code>## [1] 14 24 56 31 20 87 73</code></pre>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb338-1" data-line-number="1"><span class="co"># Accedemos a la quinta fila</span></a>
+<a class="sourceLine" id="cb338-2" data-line-number="2">tabla[<span class="dv">5</span>, ]</a></code></pre></div>
+<pre><code>##   nombre_persona apellido_persona edad tlf    cp casado f_creacion hermanos
+## 5           Lara          Liébana   20  NA 33091   TRUE 2017-03-21        2</code></pre>
+<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb340-1" data-line-number="1"><span class="co"># Accedemos a la tercera variable del quinto registro</span></a>
+<a class="sourceLine" id="cb340-2" data-line-number="2">tabla[<span class="dv">5</span>, <span class="dv">3</span>]</a></code></pre></div>
+<pre><code>## [1] 20</code></pre>
+<p>Un <code>data.frame</code> <strong>no solo tiene las ventajas de una matriz sino que también tiene las ventajas de una tabla de datos</strong>. Por ejemplo, podemos <strong>aceder a las variables</strong> por el índice de columna que ocupan pero <strong>también por su nombre</strong>, poniendo el nombre de la tabla, el símbolo <code>$</code> y con el tabulador nos aparecerá un menú de columnas a elegir.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:tabla-dolar"></span>
+<img src="img/tabla_dolar.jpg" alt="Menú desplegable de variables (columnas) de un data.frame." width="50%" />
+<p class="caption">
+Imagen/gráfica 5.1: Menú desplegable de variables (columnas) de un data.frame.
+</p>
+</div>
+<p><strong>Volvamos a nuestro script</strong>.</p>
+<p>Vamos a crear un script nuevo en la caprta <code>CODIGOS</code> de nuestro proyecto que se llame <code>primer_data_frame.R</code>. En él vamos a definir las variables que habíamos lanzado en consola, y vamos a construir el mismo <code>data.frame</code> llamado <code>tabla</code> que teníamos pero en nuestro script.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:codigo-primer-data-frame"></span>
+<img src="img/codigo_primer_data_frame.jpg" alt="Creando nuestro primer data.frame en el script." width="50%" />
+<p class="caption">
+Imagen/gráfica 5.2: Creando nuestro primer data.frame en el script.
+</p>
+</div>
+<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb342-1" data-line-number="1"><span class="co"># Descripción: creación de nuestros primeros data.frame</span></a>
+<a class="sourceLine" id="cb342-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb342-3" data-line-number="3"><span class="co"># Variables</span></a>
+<a class="sourceLine" id="cb342-4" data-line-number="4">edades &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">14</span>, <span class="dv">24</span>, <span class="dv">56</span>, <span class="dv">31</span>, <span class="dv">20</span>, <span class="dv">87</span>, <span class="dv">73</span>) <span class="co"># vector numérico de longitud 7</span></a>
+<a class="sourceLine" id="cb342-5" data-line-number="5">tlf &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">NA</span>, <span class="dv">683839390</span>, <span class="dv">621539732</span>, <span class="dv">618211286</span>, <span class="ot">NA</span>, <span class="dv">914727164</span>, <span class="ot">NA</span>)</a>
+<a class="sourceLine" id="cb342-6" data-line-number="6">cp &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">33007</span>, <span class="dv">28019</span>, <span class="dv">37005</span>, <span class="dv">18003</span>, <span class="dv">33091</span>, <span class="dv">25073</span>, <span class="dv">17140</span>)</a>
+<a class="sourceLine" id="cb342-7" data-line-number="7">nombres &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Sonia&quot;</span>, <span class="st">&quot;Carla&quot;</span>, <span class="st">&quot;Pepito&quot;</span>, <span class="st">&quot;Carlos&quot;</span>, <span class="st">&quot;Lara&quot;</span>, <span class="st">&quot;Sandra&quot;</span>, <span class="st">&quot;Javi&quot;</span>)</a>
+<a class="sourceLine" id="cb342-8" data-line-number="8">apellidos &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Pérez&quot;</span>, <span class="st">&quot;González&quot;</span>, <span class="st">&quot;Fernández&quot;</span>, <span class="st">&quot;Martínez&quot;</span>, <span class="st">&quot;Liébana&quot;</span>, <span class="st">&quot;García&quot;</span>, <span class="st">&quot;Ortiz&quot;</span>)</a>
+<a class="sourceLine" id="cb342-9" data-line-number="9">casado &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">FALSE</span>, <span class="ot">NA</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb342-10" data-line-number="10">fecha_creacion &lt;-</a>
+<a class="sourceLine" id="cb342-11" data-line-number="11"><span class="st">  </span><span class="kw">as.Date</span>(<span class="kw">c</span>(<span class="st">&quot;2021-03-04&quot;</span>, <span class="st">&quot;2020-10-12&quot;</span>, <span class="st">&quot;1990-04-05&quot;</span>, <span class="st">&quot;2019-09-10&quot;</span>,</a>
+<a class="sourceLine" id="cb342-12" data-line-number="12">            <span class="st">&quot;2017-03-21&quot;</span>, <span class="st">&quot;2020-07-07&quot;</span>, <span class="st">&quot;2000-01-28&quot;</span>))</a>
+<a class="sourceLine" id="cb342-13" data-line-number="13">hermanos &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb342-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb342-15" data-line-number="15"><span class="co"># Creamos el data.frame</span></a>
+<a class="sourceLine" id="cb342-16" data-line-number="16">tabla &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="st">&quot;Nombre&quot;</span> =<span class="st"> </span>nombres, <span class="st">&quot;Apellido&quot;</span> =<span class="st"> </span>apellidos,</a>
+<a class="sourceLine" id="cb342-17" data-line-number="17">                    <span class="st">&quot;Edad&quot;</span> =<span class="st"> </span>edades, <span class="st">&quot;Teléfono&quot;</span> =<span class="st"> </span>tlf, <span class="st">&quot;Código Postal&quot;</span> =<span class="st"> </span>cp,</a>
+<a class="sourceLine" id="cb342-18" data-line-number="18">                    <span class="st">&quot;Casado&quot;</span> =<span class="st"> </span>casado, <span class="st">&quot;Fecha_de_creación&quot; = fecha_creacion)</span></a>
+<a class="sourceLine" id="cb342-19" data-line-number="19"><span class="st">tabla &lt;- data.frame(tabla, hermanos)</span></a>
+<a class="sourceLine" id="cb342-20" data-line-number="20"><span class="st">tabla</span></a></code></pre></div>
+<pre><code>##   Nombre  Apellido Edad  Teléfono Código.Postal Casado Fecha_de_creación
+## 1  Sonia     Pérez   14        NA         33007   TRUE        2021-03-04
+## 2  Carla  González   24 683839390         28019  FALSE        2020-10-12
+## 3 Pepito Fernández   56 621539732         37005  FALSE        1990-04-05
+## 4 Carlos  Martínez   31 618211286         18003     NA        2019-09-10
+## 5   Lara   Liébana   20        NA         33091   TRUE        2017-03-21
+## 6 Sandra    García   87 914727164         25073  FALSE        2020-07-07
+## 7   Javi     Ortiz   73        NA         17140  FALSE        2000-01-28
+##   hermanos
+## 1        0
+## 2        0
+## 3        1
+## 4        5
+## 5        2
+## 6        3
+## 7        0</code></pre>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:codigo-2"></span>
+<img src="img/codigo_2.jpg" alt="Llamando a nuestro script desde nuestro código principal." width="50%" />
+<p class="caption">
+Imagen/gráfica 5.3: Llamando a nuestro script desde nuestro código principal.
+</p>
+</div>
+<p>Además de dicho conjunto de datos, vamos a instalar (sino lo hemos hecho nunca en este ordenador) un paquete muy útil en <code>R</code> llamado <code>{datasets}</code>. Los paquetes que vayamos necesitando los instalaremos y llamaremos al inicio del código principal.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:carga-paquetes-inicial"></span>
+<img src="img/carga_paquetes_inicial.jpg" alt="Instalamos y cargamos los paquetes necesarios al principio de nuestro main.R." width="50%" />
+<p class="caption">
+Imagen/gráfica 5.4: Instalamos y cargamos los paquetes necesarios al principio de nuestro main.R.
+</p>
+</div>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb344-1" data-line-number="1"><span class="co"># Paquetes necesarios</span></a>
+<a class="sourceLine" id="cb344-2" data-line-number="2"><span class="co"># install.packages(&quot;datasets&quot;) # Descomentar si nunca se ha instalado</span></a>
+<a class="sourceLine" id="cb344-3" data-line-number="3"><span class="kw">library</span>(datasets)</a></code></pre></div>
+<p>Tras ello llamaremos a nuestro script <code>primer_data_frame.R</code> desde nuestro código principal <code>main.R</code> y guardaremos el script con el <em>source on save</em> activado para que se ejecute. Además de que ahora tenemos nuestro conjunto de datos <code>tabla</code> en nuestro panel de entorno, si escribimos <code>datasets::</code> y pulsamos tabulador, se nos abre un desplegable con distintos conjuntos de datos para ser usados: el paquete <code>datasets</code> nos proporciona <code>data.frames</code> de prueba para que podamos usarlos en nuestros códigos según vamos aprendiendo.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:datasets"></span>
+<img src="img/datasets.jpg" alt="Menú desplegable con los data.frame de prueba en datasets" width="50%" />
+<p class="caption">
+Imagen/gráfica 5.5: Menú desplegable con los data.frame de prueba en datasets
+</p>
+</div>
+<p>Una de las <strong>ventajas de los <code>data.frame</code></strong> es que podemos visualizarlos como si fuera una tabla de Excel dentro de nuestro <code>R</code> con la función <code>View()</code>. Vamos a visualizar no solo el conjunto de datos <code>tabla</code> sino también el conjunto <code>iris</code> del paquete <code>datasets</code>: <strong>los <code>data.frame</code> nos permiten trabajar con ellos como bases de datos o como matrices, con las ventajas de ambos</strong>.</p>
+<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb345-1" data-line-number="1"><span class="kw">View</span>(iris)</a>
+<a class="sourceLine" id="cb345-2" data-line-number="2"><span class="kw">View</span>(tabla)</a></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:view-datasets"></span>
+<img src="img/view_datasets.jpg" alt="Menú desplegable con los data.frame de prueba en datasets" width="50%" />
+<p class="caption">
+Imagen/gráfica 5.6: Menú desplegable con los data.frame de prueba en datasets
+</p>
+</div>
+<p> </p>
+<p>En el caso de los <code>data.frame</code> tenemos además a nuestro disposición una <strong>herramienta muy potente: la función <code>subset()</code></strong> Dicha función nos va a permitir seleccionar filas y columnas automáticamente, tomando de entrada los siguientes argumentos</p>
+<ul>
+<li><code>x</code>: una tabla de entrada, un <code>data.frame</code> de entrada.</li>
+<li><code>subset</code>: la condición lógica que queramos usar para seleccionar registros (filas).</li>
+<li><code>select</code>: un vector que contenga el nombre de las columnas que queremos seleccionar (a lo mejor solo queremos filtrar por filas pero quizás también por columnas).</li>
+</ul>
+<p>Por ejemplo, vamos a seleccionar solo los nombres y apellidos de aquellas personas mayores de edad de nuestro conjunto de datos <code>tabla</code>, y del conjunto <code>iris</code> vamos a extraer todos los registros en los que el largo del sépalo es mayor que 7.1, seleccionando solo las columnas de longitud de sépalo y la especie de la planta.</p>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb346-1" data-line-number="1"><span class="kw">subset</span>(tabla, <span class="dt">subset =</span> Edad <span class="op">&gt;</span><span class="st"> </span><span class="dv">18</span>, <span class="dt">select =</span> <span class="kw">c</span>(<span class="st">&quot;Nombre&quot;</span>, <span class="st">&quot;Apellido&quot;</span>))</a></code></pre></div>
+<pre><code>##   Nombre  Apellido
+## 2  Carla  González
+## 3 Pepito Fernández
+## 4 Carlos  Martínez
+## 5   Lara   Liébana
+## 6 Sandra    García
+## 7   Javi     Ortiz</code></pre>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb348-1" data-line-number="1"><span class="kw">subset</span>(iris, <span class="dt">subset =</span> Sepal.Length <span class="op">&gt;</span><span class="st"> </span><span class="fl">7.1</span>, <span class="dt">select =</span> <span class="kw">c</span>(<span class="st">&quot;Sepal.Length&quot;</span>, <span class="st">&quot;Species&quot;</span>))</a></code></pre></div>
+<pre><code>##     Sepal.Length   Species
+## 106          7.6 virginica
+## 108          7.3 virginica
+## 110          7.2 virginica
+## 118          7.7 virginica
+## 119          7.7 virginica
+## 123          7.7 virginica
+## 126          7.2 virginica
+## 130          7.2 virginica
+## 131          7.4 virginica
+## 132          7.9 virginica
+## 136          7.7 virginica</code></pre>
+<details>
+<p><summary>📝<strong>Ejercicio</strong>: del conjunto <code>iris</code> del paquete <code>datasets</code> obtén el nombre de las variables, y selecciona aquellas filas cuya variable <code>Petal.Width</code> sea distinta de 0.2, y quédate solo con las variables <code>Sepal.Length</code>, <code>Sepal.Width</code> y <code>Species</code>. Calcula el número de filas borradas. Tras hacer todo ello, traduce a castellano el nombre de las columnas del <code>data.frame</code> filtrado.</summary></p>
+<!-- toc -->
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb350-1" data-line-number="1"><span class="co"># Nombres de variables</span></a>
+<a class="sourceLine" id="cb350-2" data-line-number="2"><span class="kw">names</span>(iris)</a></code></pre></div>
+<pre><code>## [1] &quot;Sepal.Length&quot; &quot;Sepal.Width&quot;  &quot;Petal.Length&quot; &quot;Petal.Width&quot;  &quot;Species&quot;</code></pre>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb352-1" data-line-number="1"><span class="co"># Filtramos filas</span></a>
+<a class="sourceLine" id="cb352-2" data-line-number="2">filtro_fila &lt;-<span class="st"> </span><span class="kw">subset</span>(iris, <span class="dt">subset =</span> Petal.Width <span class="op">!=</span><span class="st"> </span><span class="fl">0.2</span>)</a>
+<a class="sourceLine" id="cb352-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb352-4" data-line-number="4"><span class="co"># Filtramos columnas</span></a>
+<a class="sourceLine" id="cb352-5" data-line-number="5">filtro_col &lt;-<span class="st"> </span><span class="kw">subset</span>(filtro_fila,  <span class="dt">select =</span> <span class="kw">c</span>(<span class="st">&quot;Sepal.Length&quot;</span>, <span class="st">&quot;Sepal.Width&quot;</span>, <span class="st">&quot;Species&quot;</span>))</a>
+<a class="sourceLine" id="cb352-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb352-7" data-line-number="7"><span class="co"># Todo de una vez</span></a>
+<a class="sourceLine" id="cb352-8" data-line-number="8">filtro &lt;-<span class="st"> </span><span class="kw">subset</span>(iris, <span class="dt">subset =</span> Petal.Width <span class="op">!=</span><span class="st"> </span><span class="fl">0.2</span>, <span class="dt">select =</span> <span class="kw">c</span>(<span class="st">&quot;Sepal.Length&quot;</span>, <span class="st">&quot;Sepal.Width&quot;</span>, <span class="st">&quot;Species&quot;</span>))</a>
+<a class="sourceLine" id="cb352-9" data-line-number="9">filtro</a></code></pre></div>
+<pre><code>##     Sepal.Length Sepal.Width    Species
+## 6            5.4         3.9     setosa
+## 7            4.6         3.4     setosa
+## 10           4.9         3.1     setosa
+## 13           4.8         3.0     setosa
+## 14           4.3         3.0     setosa
+## 16           5.7         4.4     setosa
+## 17           5.4         3.9     setosa
+## 18           5.1         3.5     setosa
+## 19           5.7         3.8     setosa
+## 20           5.1         3.8     setosa
+## 22           5.1         3.7     setosa
+## 24           5.1         3.3     setosa
+## 27           5.0         3.4     setosa
+## 32           5.4         3.4     setosa
+## 33           5.2         4.1     setosa
+## 38           4.9         3.6     setosa
+## 41           5.0         3.5     setosa
+## 42           4.5         2.3     setosa
+## 44           5.0         3.5     setosa
+## 45           5.1         3.8     setosa
+## 46           4.8         3.0     setosa
+## 51           7.0         3.2 versicolor
+## 52           6.4         3.2 versicolor
+## 53           6.9         3.1 versicolor
+## 54           5.5         2.3 versicolor
+## 55           6.5         2.8 versicolor
+## 56           5.7         2.8 versicolor
+## 57           6.3         3.3 versicolor
+## 58           4.9         2.4 versicolor
+## 59           6.6         2.9 versicolor
+## 60           5.2         2.7 versicolor
+## 61           5.0         2.0 versicolor
+## 62           5.9         3.0 versicolor
+## 63           6.0         2.2 versicolor
+## 64           6.1         2.9 versicolor
+## 65           5.6         2.9 versicolor
+## 66           6.7         3.1 versicolor
+## 67           5.6         3.0 versicolor
+## 68           5.8         2.7 versicolor
+## 69           6.2         2.2 versicolor
+## 70           5.6         2.5 versicolor
+## 71           5.9         3.2 versicolor
+## 72           6.1         2.8 versicolor
+## 73           6.3         2.5 versicolor
+## 74           6.1         2.8 versicolor
+## 75           6.4         2.9 versicolor
+## 76           6.6         3.0 versicolor
+## 77           6.8         2.8 versicolor
+## 78           6.7         3.0 versicolor
+## 79           6.0         2.9 versicolor
+## 80           5.7         2.6 versicolor
+## 81           5.5         2.4 versicolor
+## 82           5.5         2.4 versicolor
+## 83           5.8         2.7 versicolor
+## 84           6.0         2.7 versicolor
+## 85           5.4         3.0 versicolor
+## 86           6.0         3.4 versicolor
+## 87           6.7         3.1 versicolor
+## 88           6.3         2.3 versicolor
+## 89           5.6         3.0 versicolor
+## 90           5.5         2.5 versicolor
+## 91           5.5         2.6 versicolor
+## 92           6.1         3.0 versicolor
+## 93           5.8         2.6 versicolor
+## 94           5.0         2.3 versicolor
+## 95           5.6         2.7 versicolor
+## 96           5.7         3.0 versicolor
+## 97           5.7         2.9 versicolor
+## 98           6.2         2.9 versicolor
+## 99           5.1         2.5 versicolor
+## 100          5.7         2.8 versicolor
+## 101          6.3         3.3  virginica
+## 102          5.8         2.7  virginica
+## 103          7.1         3.0  virginica
+## 104          6.3         2.9  virginica
+## 105          6.5         3.0  virginica
+## 106          7.6         3.0  virginica
+## 107          4.9         2.5  virginica
+## 108          7.3         2.9  virginica
+## 109          6.7         2.5  virginica
+## 110          7.2         3.6  virginica
+## 111          6.5         3.2  virginica
+## 112          6.4         2.7  virginica
+## 113          6.8         3.0  virginica
+## 114          5.7         2.5  virginica
+## 115          5.8         2.8  virginica
+## 116          6.4         3.2  virginica
+## 117          6.5         3.0  virginica
+## 118          7.7         3.8  virginica
+## 119          7.7         2.6  virginica
+## 120          6.0         2.2  virginica
+## 121          6.9         3.2  virginica
+## 122          5.6         2.8  virginica
+## 123          7.7         2.8  virginica
+## 124          6.3         2.7  virginica
+## 125          6.7         3.3  virginica
+## 126          7.2         3.2  virginica
+## 127          6.2         2.8  virginica
+## 128          6.1         3.0  virginica
+## 129          6.4         2.8  virginica
+## 130          7.2         3.0  virginica
+## 131          7.4         2.8  virginica
+## 132          7.9         3.8  virginica
+## 133          6.4         2.8  virginica
+## 134          6.3         2.8  virginica
+## 135          6.1         2.6  virginica
+## 136          7.7         3.0  virginica
+## 137          6.3         3.4  virginica
+## 138          6.4         3.1  virginica
+## 139          6.0         3.0  virginica
+## 140          6.9         3.1  virginica
+## 141          6.7         3.1  virginica
+## 142          6.9         3.1  virginica
+## 143          5.8         2.7  virginica
+## 144          6.8         3.2  virginica
+## 145          6.7         3.3  virginica
+## 146          6.7         3.0  virginica
+## 147          6.3         2.5  virginica
+## 148          6.5         3.0  virginica
+## 149          6.2         3.4  virginica
+## 150          5.9         3.0  virginica</code></pre>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb354-1" data-line-number="1"><span class="co"># Filas borradas</span></a>
+<a class="sourceLine" id="cb354-2" data-line-number="2"><span class="kw">nrow</span>(iris) <span class="op">-</span><span class="st"> </span><span class="kw">nrow</span>(filtro)</a></code></pre></div>
+<pre><code>## [1] 29</code></pre>
+<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb356-1" data-line-number="1"><span class="co"># Cambiamos nombres a castellano del conjunto filtrado</span></a>
+<a class="sourceLine" id="cb356-2" data-line-number="2"><span class="kw">names</span>(filtro) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;longitud_sepalo&quot;</span>, <span class="st">&quot;anchura_sepalo&quot;</span>, <span class="st">&quot;especies&quot;</span>)</a></code></pre></div>
+<!-- tocstop -->
+</details>
+</div>
+</div>
+<!-- </div> -->
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="apply-vs-bucles.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="importar_exportar.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Intro_R_2021_2022.pdf"],
+"search": {
+"engine": "lunr",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

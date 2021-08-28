@@ -1,0 +1,177 @@
+# Primeros pasos
+
+**¿Empezamos?**
+
+Veamos antes **un poco de historia** sobre nuestro deidad.
+
+Allá por 1975, los **laboratorios Bell** (los que inventaron la radio moderna tal y como la conocemos), necesitaban una alternativa a los lenguajes más «rudos» y antiguos como `C++` o `Fortran`, lenguajes rápidos en la ejecución pero complejos en su uso, con una gran curva de aprendizaje y con **muy poca capacidad en la visualización de datos** que se empezaba a necesitar.
+
+Así que en **1976 sacaron la primera versión del lenguaje conocido `S`** (hasta entonces estaba de moda lo de llamar a los lenguajes con una sola inicial). En **1980** se empezó a distribuir la primera versión pública de `S`, más allá de los laboratorios Bell, y en **1988** se añadieron bastantes funcionalidades nuevas como poder aplicar funciones a otras funciones (los famosos `apply()` que ya veremos). Años más tarde, en **1991**, dicho lenguaje se simplificó, reescribiendo muchas subrutinas de otros lenguajes más primitivos, para tener una versión muy parecida al actual `R`, permitiendo el usod de operadores, `data.frames` (que veremos) y otro tipo de objetos, sencillos en la programación pero muy versatiles.
+
+Sin embargo, salvo uso docente, `S` tenía licencia así que **en 1992 Ross Ihaka y Robert Gentleman se lanzaron a crear una versión de `S` libre y gratuita**, un trabajo de casi 8 años hasta que en el año 2000, ambos investigadores de la Universidad de Auckland en Nueva Zelanda lanzaron la primera versión estable del lenguaje.
+
+Tras dicho lanzamiento, se creó un **equipo de expertos en estadística computacional (el conocido como _R Development Core Team_)** que es el que se encarga de mantener toda la aerquitectura de `R` y los que se encargar de actualizar y mejorar el paquete `{base}`, una **librería motor** sobre la que se construye el resto de funciones.
+
+## Excel no es tu amigo
+
+**`R` es un lenguaje de programación**, de alto nivel para el usuario y modular. Los lenguajes de alto nivel como `R`, `Python` (curso interactivo de Python en <https://checkio.org/>) o `Matlab`, facilitan la programación al usuario, teniendo que preocuparte solo de la tarea de programar. Son lenguajes con una **menor curva de aprendizaje** aunque suelen ser más lentos en su ejecución en comparación con lenguajes de bajo nivel (`C`, `C++` o `Fortran`), lenguajes muy rápidos en su ejecución pero cuya programación requiere un mayor tiempo y formación, teniendo que además estar pendiente del tipo de variables, espacio en memoria, etc.
+
+Por su arquitectura, `R` es un lenguaje que puede ser usado para un propósito general pero que está especialmente diseñado para el **análisis estadístico de datos**. Su **modularidad** nos da la ventaja de que podemos instalar las funcionalidades que vayamos necesitando de forma progresiva.
+
+**¿Por qué no es recomendable usar Excel?**
+
+* **Software de pago**: Excel, al igual que el resto de programas de Microsoft o SPSS (por desgracia programa estrella de nuestro sistema sanitario), es un programa de pago. A nivel individual, todos hemos tenido una versión que no hemos pagado, pero dicha evasión no se la puede permitir una empresa o administración, que debe de pagar altas cantidades de dinero anuales por las licencias, dinero que no sería necesario si los investigadores y trabajadores tuvieran formación (remunerada) en otras herramientas de software libre.
+
+* **Software cerrado**: no solo es de pago sino que es cerrado, así que solo podemos hacer lo que Excel ha creído que interesante que podamos hacer. Incluso con la programación de MACROS, las funcionalidades de Excel siguen siendo mucho más limitadas ya que viene «programadas» de antemano
+
+* **Alto consumo de memoria**: dicha programación predeterminada hace que Excel ocupe muchísimo espacio en el disco duro y tenga un alto consumo de memoria (la memoria es lo que te permite hacer varias tareas a la vez en tu ordenador).
+
+* **No es universal**: no solo es de pago sino que además, dependiendo de la versión que tengas de Excel, tendrá un formato distinto para datos como fechas, teniendo incluso extensiones distintas, de forma que un archivo `.xls` abierto por un Excel moderno puede provocar errores en la carga.
+
+* **¡ES SOLO UNA HOJA DE CÁLCULO!**: el propio Microsoft desaconseja el uso de Excel para el análisis de grandes volúmenes de datos. El Excel es una herramienta maravillosa para ser usada como una sencilla hoja de cálculo: llevar las cuentas de tu familia, de tu pequeño negocio, una declaración de la Renta sencilla, planificar viajes, etc. Pero el programa **NO ESTÁ DISEÑADO** para ser una base de datos ni para análisis detallado, y muchos menos pensado para generar un entorno flexible para el análisis estadístico y la visualización de datos.
+
+**¿Puedes ser el mejor partiendo un filete con una cuchara?** Seguramente puedas (en Excel puedes hasta programar con macros), y si siempre lo hiciste así, acabarás normalizándolo, pero seguirás siendo una persona comiendo filete con cuchara.
+
+&nbsp;
+
+![](img/pregunta.png){style="float: left; margin-left: 0.5px; margin-right: 4px; margin-top: 1px; width: 4%"} **¿Qué sucede si usamos la herramienta equivocada?**
+
+Tres ejemplos: 
+
+* **Problemas para codificar fechas**: en 2016 se publicó una [revisión de artículos en genética](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-1044-7), descubriendo que 1 de cada 5 artículos contenían errores debido a una mala codificación de las fechas, conviertiendo por ejemplo los genes Septin-2 (conocido como SEPT2) en fechas, y al revés [@Ziemannetal16].
+
+```{r excel-genes, echo = FALSE,  out.width = "50%", fig.align = "center", fig.cap = "Excel en una noche loca."}
+knitr::include_graphics("./img/excel_genes.jpg")
+
+```
+
+* **Problemas de memoria**: un Excel permite por defecto una cantidad máxima de filas. Aunque dicha cantidad se puede ampliar, sigue siendo finita, por lo que cuando superas el umbral de filas, al añadir filas Excel te borra registros **sin avisarte de que lo está haciendo**. Esto es lo que sucedió con los [registros de casos covid en Reino Unido](https://www.redaccionmedica.com/secciones/sanidad-hoy/covid-reino-unido-pierden-16000-positivos-9989).
+
+```{r excel-uk, echo = FALSE,  out.width = "50%", fig.align = "center", fig.cap = "Cuando Excel dice basta."}
+knitr::include_graphics("./img/excel_uk.jpg")
+
+```
+
+* **Problemas para codificar edades**: una variable de tipo fecha, aunque nosotros la veamos con letras, en realidad es una variable numérica que representa los días que han pasado desde una fecha origen. En función de las distintas versiones de Excel, dicha fecha origen cambia. Además, si se codifica mal la fecha en formato `dd-mm-YY`, dicho formato cuando se exporta a otro excel en texto, no permite distinguir a un nacido en 1918 y a un nacido en 2018, así que podemos estar confundiendo personas de 103 años con niños de 3 años (y es lo que [sucedió en España](https://www.niusdiario.es/sociedad/sanidad/sanidad-reconoce-datos-muertes-ninos-covid-erroneos-contabilizaban-centenarios-como-menores_18_3107220241.html), observando unas tasas de mortalidad en niños muy pequeños equivalentes a personas mayores).
+
+```{r excel-edades, echo = FALSE,  out.width = "50%", fig.align = "center", fig.cap = "Los centenarios con biberón."}
+knitr::include_graphics("./img/excel_edades.jpg")
+
+```
+
+
+## Primeros pasos: calculadora
+
+¿Te acuerdas de lo que era la **consola**? Vamos a trabajar de momento en esa ventana que tienes en la ventana inferior.
+
+```{r inicio-rstudio-2a, echo = FALSE, out.width = "75%", fig.align = "center", fig.cap = "Lanzando a consola nuestras primeras órdenes en RStudio."}
+knitr::include_graphics("./img/inicio_rstudio_2.jpg")
+```
+
+Lo que ya hemos descubierto en los pasos de la instalación (ver imagen \@ref(fig:inicio-rstudio-2a)) es que la consola de `R` tiene una función muy básica y evidente: nos sirve de calculadora. Un ejemplo muy simple: si escribimos `r 1 + 2` en la consola y pulsamos _ENTER_, la consola nos mostrará el resultado de la suma
+
+```{r}
+1 + 2
+```
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio</strong>: calcula en consola la suma de 3 más 4, y todo ello multiplicado por 10.</summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+(3 + 4) * 10
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+**¿Pero cuál es la diferencia entre una calculadora y un lenguaje de programación?**
+
+Imagina que dicha suma `r 1 + 2` la quisiéramos utilizar para un segundo cálculo: ¿y si en lugar de lanzarlo a la consola sin más lo **almacenamos en alguna variable**?
+
+Como hemos visto en la instalación de `RStudio`, para **asignar variables** lo haremos con la orden `x <- 1 + 2`: una variable de nombre `x` va a tener asignada `<-` lo que valga la suma `1 + 2`
+
+```{r}
+x <- 1 + 2
+```
+
+Como puedes comprobar, en tu parte superior derecha (nuestro entorno de variables), podrás ver como una nueva variable `x` es ahora visualizada, con su valor asignado (**no se mostrará en consola** salvo que escribas `r x ` en ella: `R` asume que no querías visualizarla en consola sino solo guardarla).
+
+```{r echo = FALSE, out.width = "75%", fig.align = "center", fig.cap = "Environment."}
+knitr::include_graphics("./img/environment_1.jpg")
+
+```
+
+Dicha variable `x` además podemos reciclarla para definir una variable `y`, restándole una constante.
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio</strong>: usando la variable `x` ya definida, calcula `x - 5` y guárdalo en una nueva variable `y`.</summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+y <- x - 5
+y
+```
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+De la misma manera que hemos hecho restas, sumas y multiplicaciones, `R` tiene todas las operaciones clásicas que podrías tener en una calculadora. Prueba a ejecutar en la consola las órdenes `x^2`, `sqrt(x)` o `abs(y)`: `R` calculará las operaciones _elevar al cuadrado_, _raíz cuadrada_ y _valor absoluto_ de la variable que tengan entre paréntesis
+
+```{r}
+x^2
+sqrt(x)
+y <- x - 5
+abs(y)
+```
+
+&nbsp;
+
+
+<details>
+  <summary>![](img/logo_info.png){width=4%}  <strong>Consejos y tips</strong></summary>
+  
+<!-- toc -->
+
+* **Argumento de una función**
+
+Las órdenes `sqrt(x)` y `abs(y)` se llaman **funciones**, y la variable que tienen entre paréntesis se llama **argumento de la función**.
+
+&nbsp;  
+
+&nbsp;  
+
+* **Panel de ayuda**
+
+Si escribes en la consola `? nombre_funcion` (por ejemplo, escribe en la consola `? sqrt`), en el panel inferior derecho te aparecerá una **documentación de ayuda** de la función para saber que argumentos necesita, como puedes usar la función, qué es lo que te devuelve, ejemplos de uso, etc.
+
+&nbsp;
+
+```{r}
+? sqrt
+```
+
+
+```{r echo = FALSE, out.width = "50%", fig.align = "center", fig.cap = "Panel de ayuda."}
+knitr::include_graphics("./img/panel_ayuda.jpg")
+
+```
+
+<!-- tocstop -->
+</details>
+
+
+
+
+

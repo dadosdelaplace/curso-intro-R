@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3.7 Seleccionar elementos de un vector | Aprendiendo R sin morir en el intento</title>
+  <meta name="description" content="Manual básico de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM, curso académico 2021-2022), elaborado por Javier Álvarez Liébana" />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3.7 Seleccionar elementos de un vector | Aprendiendo R sin morir en el intento" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:image" content="/img/logo_R.png" />
+  <meta property="og:description" content="Manual básico de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM, curso académico 2021-2022), elaborado por Javier Álvarez Liébana" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3.7 Seleccionar elementos de un vector | Aprendiendo R sin morir en el intento" />
+  
+  <meta name="twitter:description" content="Manual básico de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM, curso académico 2021-2022), elaborado por Javier Álvarez Liébana" />
+  <meta name="twitter:image" content="/img/logo_R.png" />
+
+<meta name="author" content="Javier Álvarez Liébana" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="datos-ausentes-na-y-nan.html"/>
+<link rel="next" href="ordenar-vectores.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.18/datatables.js"></script>
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Aprendiendo R sin morir en el intento</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefacio</a><ul>
+<li class="chapter" data-level="" data-path="propósito.html"><a href="propósito.html"><i class="fa fa-check"></i>Propósito</a></li>
+<li class="chapter" data-level="" data-path="requisitos.html"><a href="requisitos.html"><i class="fa fa-check"></i>Requisitos</a></li>
+<li class="chapter" data-level="" data-path="sobre-el-autor.html"><a href="sobre-el-autor.html"><i class="fa fa-check"></i>Sobre el autor</a></li>
+<li class="chapter" data-level="" data-path="créditos.html"><a href="créditos.html"><i class="fa fa-check"></i>Créditos</a></li>
+</ul></li>
+<li class="part"><span><b>I Toma de contacto</b></span></li>
+<li class="chapter" data-level="1" data-path="instalacionR.html"><a href="instalacionR.html"><i class="fa fa-check"></i><b>1</b> Instalación</a><ul>
+<li class="chapter" data-level="1.1" data-path="instalacionRStudio.html"><a href="instalacionRStudio.html"><i class="fa fa-check"></i><b>1.1</b> Instalación de RStudio</a></li>
+<li class="chapter" data-level="1.2" data-path="instalacionpaquetes.html"><a href="instalacionpaquetes.html"><i class="fa fa-check"></i><b>1.2</b> Instalación de paquetes</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="primeros-pasos.html"><a href="primeros-pasos.html"><i class="fa fa-check"></i><b>2</b> Primeros pasos</a><ul>
+<li class="chapter" data-level="2.1" data-path="excel-no-es-tu-amigo.html"><a href="excel-no-es-tu-amigo.html"><i class="fa fa-check"></i><b>2.1</b> Excel no es tu amigo</a></li>
+<li class="chapter" data-level="2.2" data-path="primeros-pasos-calculadora.html"><a href="primeros-pasos-calculadora.html"><i class="fa fa-check"></i><b>2.2</b> Primeros pasos: calculadora</a></li>
+</ul></li>
+<li class="part"><span><b>II Conceptos básicos</b></span></li>
+<li class="chapter" data-level="3" data-path="tipos-de-datos-i-vectores.html"><a href="tipos-de-datos-i-vectores.html"><i class="fa fa-check"></i><b>3</b> Tipos de datos I: vectores</a><ul>
+<li class="chapter" data-level="3.1" data-path="vectores-numéricos.html"><a href="vectores-numéricos.html"><i class="fa fa-check"></i><b>3.1</b> Vectores numéricos</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="vectores-numéricos.html"><a href="vectores-numéricos.html#secuencias-de-números-con-un-patrón"><i class="fa fa-check"></i><b>3.1.1</b> Secuencias de números con un patrón</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="operaciones-aritméticas-con-vectores-numéricos.html"><a href="operaciones-aritméticas-con-vectores-numéricos.html"><i class="fa fa-check"></i><b>3.2</b> Operaciones aritméticas con vectores numéricos</a></li>
+<li class="chapter" data-level="3.3" data-path="operaciones-estadísticas-con-vectores-numéricos.html"><a href="operaciones-estadísticas-con-vectores-numéricos.html"><i class="fa fa-check"></i><b>3.3</b> Operaciones estadísticas con vectores numéricos</a></li>
+<li class="chapter" data-level="3.4" data-path="vectores-de-caracteres-texto.html"><a href="vectores-de-caracteres-texto.html"><i class="fa fa-check"></i><b>3.4</b> Vectores de caracteres (texto)</a></li>
+<li class="chapter" data-level="3.5" data-path="vectores-lógicos-truefalse.html"><a href="vectores-lógicos-truefalse.html"><i class="fa fa-check"></i><b>3.5</b> Vectores lógicos (TRUE/FALSE)</a></li>
+<li class="chapter" data-level="3.6" data-path="datos-ausentes-na-y-nan.html"><a href="datos-ausentes-na-y-nan.html"><i class="fa fa-check"></i><b>3.6</b> Datos ausentes: NA y NaN</a></li>
+<li class="chapter" data-level="3.7" data-path="seleccionar-elementos-de-un-vector.html"><a href="seleccionar-elementos-de-un-vector.html"><i class="fa fa-check"></i><b>3.7</b> Seleccionar elementos de un vector</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="seleccionar-elementos-de-un-vector.html"><a href="seleccionar-elementos-de-un-vector.html#which"><i class="fa fa-check"></i><b>3.7.1</b> which</a></li>
+<li class="chapter" data-level="3.7.2" data-path="seleccionar-elementos-de-un-vector.html"><a href="seleccionar-elementos-de-un-vector.html#null"><i class="fa fa-check"></i><b>3.7.2</b> NULL</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="ordenar-vectores.html"><a href="ordenar-vectores.html"><i class="fa fa-check"></i><b>3.8</b> Ordenar vectores</a></li>
+<li class="chapter" data-level="3.9" data-path="fechas.html"><a href="fechas.html"><i class="fa fa-check"></i><b>3.9</b> Fechas</a></li>
+<li class="chapter" data-level="3.10" data-path="ejercicios.html"><a href="ejercicios.html"><i class="fa fa-check"></i><b>3.10</b> 📝 Ejercicios</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="primer-projecto-con-r.html"><a href="primer-projecto-con-r.html"><i class="fa fa-check"></i><b>4</b> Primer projecto con R</a><ul>
+<li class="chapter" data-level="4.1" data-path="crear-proyecto.html"><a href="crear-proyecto.html"><i class="fa fa-check"></i><b>4.1</b> Crear proyecto</a></li>
+<li class="chapter" data-level="4.2" data-path="directorios-de-trabajo-y-cabecera.html"><a href="directorios-de-trabajo-y-cabecera.html"><i class="fa fa-check"></i><b>4.2</b> Directorios de trabajo y cabecera</a></li>
+<li class="chapter" data-level="4.3" data-path="ejecución.html"><a href="ejecución.html"><i class="fa fa-check"></i><b>4.3</b> Ejecución</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="datos.html"><a href="datos.html"><i class="fa fa-check"></i><b>5</b> Tipos de datos II: bases de datos</a><ul>
+<li class="chapter" data-level="5.1" data-path="matrices.html"><a href="matrices.html"><i class="fa fa-check"></i><b>5.1</b> Matrices</a></li>
+<li class="chapter" data-level="5.2" data-path="apply-vs-bucles.html"><a href="apply-vs-bucles.html"><i class="fa fa-check"></i><b>5.2</b> Apply vs bucles</a></li>
+<li class="chapter" data-level="5.3" data-path="tablas-data.html"><a href="tablas-data.html"><i class="fa fa-check"></i><b>5.3</b> Tablas: data.frames</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="tablas-data.html"><a href="tablas-data.html#data.frames-selección-manual-de-columnas-y-filas"><i class="fa fa-check"></i><b>5.3.1</b> Data.frames: selección manual de columnas y filas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="importar_exportar.html"><a href="importar_exportar.html"><i class="fa fa-check"></i><b>6</b> Importando/exportando</a><ul>
+<li class="chapter" data-level="6.1" data-path="importación-de-datos.html"><a href="importación-de-datos.html"><i class="fa fa-check"></i><b>6.1</b> Importación de datos</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="importación-de-datos.html"><a href="importación-de-datos.html#archivo-.rdata"><i class="fa fa-check"></i><b>6.1.1</b> Archivo .RData</a></li>
+<li class="chapter" data-level="6.1.2" data-path="importación-de-datos.html"><a href="importación-de-datos.html#archivo-.csv"><i class="fa fa-check"></i><b>6.1.2</b> Archivo .csv</a></li>
+<li class="chapter" data-level="6.1.3" data-path="importación-de-datos.html"><a href="importación-de-datos.html#archivo-.xlsx"><i class="fa fa-check"></i><b>6.1.3</b> Archivo .xlsx</a></li>
+<li class="chapter" data-level="6.1.4" data-path="importación-de-datos.html"><a href="importación-de-datos.html#desde-web"><i class="fa fa-check"></i><b>6.1.4</b> Desde web</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="exportación-de-datos.html"><a href="exportación-de-datos.html"><i class="fa fa-check"></i><b>6.2</b> Exportación de datos</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="exportación-de-datos.html"><a href="exportación-de-datos.html#guardar-en-.rdata"><i class="fa fa-check"></i><b>6.2.1</b> Guardar en .RData</a></li>
+<li class="chapter" data-level="6.2.2" data-path="exportación-de-datos.html"><a href="exportación-de-datos.html#guardar-en-.csv"><i class="fa fa-check"></i><b>6.2.2</b> Guardar en .csv</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="control.html"><a href="control.html"><i class="fa fa-check"></i><b>7</b> Estructuras de control</a><ul>
+<li class="chapter" data-level="7.1" data-path="ifelse.html"><a href="ifelse.html"><i class="fa fa-check"></i><b>7.1</b> if…else</a></li>
+<li class="chapter" data-level="7.2" data-path="forwhile.html"><a href="forwhile.html"><i class="fa fa-check"></i><b>7.2</b> for/while</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="forwhile.html"><a href="forwhile.html#breaknext"><i class="fa fa-check"></i><b>7.2.1</b> BREAK/NEXT</a></li>
+<li class="chapter" data-level="7.2.2" data-path="forwhile.html"><a href="forwhile.html#repeat"><i class="fa fa-check"></i><b>7.2.2</b> REPEAT</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>III Listas y funciones</b></span></li>
+<li class="chapter" data-level="8" data-path="otros_datos.html"><a href="otros_datos.html"><i class="fa fa-check"></i><b>8</b> Tipos de datos III: listas/factores</a><ul>
+<li class="chapter" data-level="8.1" data-path="listas.html"><a href="listas.html"><i class="fa fa-check"></i><b>8.1</b> Listas</a></li>
+<li class="chapter" data-level="8.2" data-path="factores.html"><a href="factores.html"><i class="fa fa-check"></i><b>8.2</b> Factores</a></li>
+<li class="chapter" data-level="8.3" data-path="fechas-y-horas.html"><a href="fechas-y-horas.html"><i class="fa fa-check"></i><b>8.3</b> Fechas y horas</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="FUNCIONES.html"><a href="FUNCIONES.html"><i class="fa fa-check"></i><b>9</b> Creación de funciones</a><ul>
+<li class="chapter" data-level="9.1" data-path="primera-función.html"><a href="primera-función.html"><i class="fa fa-check"></i><b>9.1</b> Primera función</a></li>
+<li class="chapter" data-level="9.2" data-path="segunda-función.html"><a href="segunda-función.html"><i class="fa fa-check"></i><b>9.2</b> Segunda función</a></li>
+<li class="chapter" data-level="9.3" data-path="variables-localesglobales.html"><a href="variables-localesglobales.html"><i class="fa fa-check"></i><b>9.3</b> Variables locales/globales</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="qué-sabemos-hacer.html"><a href="qué-sabemos-hacer.html"><i class="fa fa-check"></i><b>10</b> ¿Qué sabemos hacer?</a><ul>
+<li class="chapter" data-level="10.1" data-path="recursos.html"><a href="recursos.html"><i class="fa fa-check"></i><b>10.1</b> Recursos</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bibliografía.html"><a href="bibliografía.html"><i class="fa fa-check"></i>Bibliografía</a></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org/yihui/rmarkdown/" target="blank">Elaborado con bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Aprendiendo R sin morir en el intento</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="seleccionar-elementos-de-un-vector" class="section level2">
+<h2><span class="header-section-number">3.7</span> Seleccionar elementos de un vector</h2>
+<p>Ya sabemos definir variables que sean vectores (recuerda: colección de valores del mismo tipo).</p>
+<p><strong>¿Y si del vector original queremos EXTRAER UN SUBCONJUNTO del mismo, por ejemplo, los primeros 10 elementos?</strong></p>
+<p><code>R</code> tiene varias formas de hacer esto pero la más sencilla es entendiendo que si yo quiero <strong>acceder al elemento i</strong> de un vector, deberé usar el <strong>operador de selección <code>[i]</code></strong>. Veamos un ejemplo</p>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb135-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">100</span> <span class="co"># Vector de longitud 100 (del 1 al 100)</span></a>
+<a class="sourceLine" id="cb135-2" data-line-number="2">y &lt;-<span class="st"> </span>x[<span class="dv">37</span>] <span class="co"># Solo me interesa el elemento que ocupa el lugar 37</span></a>
+<a class="sourceLine" id="cb135-3" data-line-number="3">y</a></code></pre></div>
+<pre><code>## [1] 37</code></pre>
+<p>Dado que hemos visto que un número no es más que un vector de longitud uno, esta operación también la podemos aplicar usando un vector de índices a seleccionar, de forma que le podemos indicar simultaneamente que valores que queremos</p>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb137-1" data-line-number="1">x[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">51</span>, <span class="dv">77</span>)] <span class="co"># Solo queremos acceder a los elementos en la posición 1, 4, 51, y 77</span></a></code></pre></div>
+<pre><code>## [1]  1  4 51 77</code></pre>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb139-1" data-line-number="1">y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;hola&quot;</span>, <span class="st">&quot;qué&quot;</span>, <span class="st">&quot;tal&quot;</span>, <span class="st">&quot;todo&quot;</span>, <span class="st">&quot;ok&quot;</span>, <span class="st">&quot;?&quot;</span>)</a>
+<a class="sourceLine" id="cb139-2" data-line-number="2">y[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>] <span class="co"># Solo queremos acceder a los elementos en la posición 1 y 2</span></a></code></pre></div>
+<pre><code>## [1] &quot;hola&quot; &quot;qué&quot;</code></pre>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb141-1" data-line-number="1"><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, <span class="kw">length</span>(y))</a></code></pre></div>
+<pre><code>## [1] 1 2 6</code></pre>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb143-1" data-line-number="1">y[<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, <span class="kw">length</span>(y))] <span class="co"># Solo accedemos a los elementos en la posición 1, 2 y además el que ocupa la última posición (recuerda: length(y) nos da la longitud total del vector)</span></a></code></pre></div>
+<pre><code>## [1] &quot;hola&quot; &quot;qué&quot;  &quot;?&quot;</code></pre>
+<p>Otras veces no querremos seleccionar un elemento en concreto sino <strong>filtrar algunos elementos en concreto y no extraerlos</strong>, para lo cual deberemos repetir la misma operación pero con el signo <code>-</code> delante: el operador <code>[-i]</code> no selecciona el elemento i-ésimo del vector sino que lo elimina en nuestro filtro.</p>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb145-1" data-line-number="1">y</a></code></pre></div>
+<pre><code>## [1] &quot;hola&quot; &quot;qué&quot;  &quot;tal&quot;  &quot;todo&quot; &quot;ok&quot;   &quot;?&quot;</code></pre>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb147-1" data-line-number="1">z &lt;-<span class="st"> </span>y[<span class="op">-</span><span class="dv">2</span>] <span class="co"># Nos muestra todo y salvo el elemento que ocupa la segunda posición</span></a>
+<a class="sourceLine" id="cb147-2" data-line-number="2">z</a></code></pre></div>
+<pre><code>## [1] &quot;hola&quot; &quot;tal&quot;  &quot;todo&quot; &quot;ok&quot;   &quot;?&quot;</code></pre>
+<p>Sin embargo, <strong>lo habitual es que dicho filtro que hagamos de una variable lo hagamos en base a una condición lógica</strong>. Supongamos que <code>x &lt;- c(7, 20, 18, 3, 19, 9, 13, 3, 45)</code> y <code>y &lt;- c(17, 21, 58, 33, 15, 59, 13, 1, 45)</code> son las edades de dos grupos de personas y que queremos quedarnos solo con los mayores edad. ¿Tenemos que andar averiguando en que posición se encuentran para luego seleccionarlos? No, vamos a <strong>seleccionar los elementos que cumplen una condición dada</strong>.</p>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb149-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">7</span>, <span class="dv">20</span>, <span class="dv">18</span>, <span class="dv">3</span>, <span class="dv">19</span>, <span class="dv">9</span>, <span class="dv">13</span>, <span class="dv">3</span>, <span class="dv">45</span>)</a>
+<a class="sourceLine" id="cb149-2" data-line-number="2">y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">17</span>, <span class="dv">21</span>, <span class="dv">58</span>, <span class="dv">33</span>, <span class="dv">15</span>, <span class="dv">59</span>, <span class="dv">13</span>, <span class="dv">1</span>, <span class="dv">45</span>)</a>
+<a class="sourceLine" id="cb149-3" data-line-number="3">x[x <span class="op">&gt;=</span><span class="st"> </span><span class="dv">18</span>] <span class="co"># mayores de 18 años del conjunto x</span></a></code></pre></div>
+<pre><code>## [1] 20 18 19 45</code></pre>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb151-1" data-line-number="1">y[x <span class="op">&gt;=</span><span class="st"> </span><span class="dv">18</span>] <span class="co"># mayores de 18 años del conjunto y</span></a></code></pre></div>
+<pre><code>## [1] 21 58 15 45</code></pre>
+<p>Lo que hemos hecho ha sido pasarlo como índices un vector lógico <code>TRUE/FALSE</code>, de forma que solo filtrará los que tengan un <code>TRUE</code> asignado, aquellos que cumplen la condición lógica introducida. Esto también nos puede servir para limpiar de datos ausentes, combinando la función <code>is.na()</code>, que nos localiza el lugar que ocupan los ausentes, con el operador <code>!</code>, que lo que hace es negar lo que venga detrás. También podemos probar a <strong>combinar condiciones lógicas para nuestra selección</strong>.</p>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb153-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">7</span>, <span class="ot">NA</span>, <span class="dv">20</span>, <span class="dv">3</span>, <span class="dv">19</span>, <span class="dv">21</span>, <span class="dv">25</span>, <span class="dv">80</span>, <span class="ot">NA</span>)</a>
+<a class="sourceLine" id="cb153-2" data-line-number="2">x[x <span class="op">&gt;=</span><span class="st"> </span><span class="dv">18</span>] <span class="co"># mayores de 18 años del conjunto x</span></a></code></pre></div>
+<pre><code>## [1] NA 20 19 21 25 80 NA</code></pre>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb155-1" data-line-number="1">x[<span class="kw">is.na</span>(x)] <span class="co"># solo valores ausentes</span></a></code></pre></div>
+<pre><code>## [1] NA NA</code></pre>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb157-1" data-line-number="1">x[<span class="op">!</span><span class="kw">is.na</span>(x)] <span class="co"># sin valores ausentes: ! es el símbolo de la negación</span></a></code></pre></div>
+<pre><code>## [1]  7 20  3 19 21 25 80</code></pre>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb159-1" data-line-number="1"><span class="op">!</span>(x <span class="op">&gt;=</span><span class="st"> </span><span class="dv">18</span>) <span class="co"># niega los mayores de 18 años, todo lo que no cumpla esa condición</span></a></code></pre></div>
+<pre><code>## [1]  TRUE    NA FALSE  TRUE FALSE FALSE FALSE FALSE    NA</code></pre>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb161-1" data-line-number="1">x[x <span class="op">&gt;=</span><span class="st"> </span><span class="dv">18</span> <span class="op">&amp;</span><span class="st"> </span>x <span class="op">&lt;=</span><span class="st"> </span><span class="dv">25</span>] <span class="co"># los valores que cumplen ambas (&amp;): entre 18 y 25 años</span></a></code></pre></div>
+<pre><code>## [1] NA 20 19 21 25 NA</code></pre>
+<p>Como ves si un valor es <code>NA</code>, la evaluación de una condición lógica sobre él (mayor o menor de 18 años) nos seguirá devolviendo <code>NA</code>. Por último, <code>R</code> nos permite <strong>dar significado léxico</strong> a nuestros valores (significan algo, no solo números), pudiendo poner nombres a los elementos de un vector, permitiendo su selección por dichos nombres</p>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb163-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;edad&quot;</span> =<span class="st"> </span><span class="dv">31</span>, <span class="st">&quot;tlf&quot;</span> =<span class="st"> </span><span class="dv">613910687</span>, <span class="st">&quot;cp&quot;</span> =<span class="st"> </span><span class="dv">33007</span>) <span class="co"># cada número tiene un significado distinto</span></a>
+<a class="sourceLine" id="cb163-2" data-line-number="2">x</a></code></pre></div>
+<pre><code>##      edad       tlf        cp 
+##        31 613910687     33007</code></pre>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb165-1" data-line-number="1">x[<span class="kw">c</span>(<span class="st">&quot;edad&quot;</span>, <span class="st">&quot;cp&quot;</span>)] <span class="co"># seleccionamos los elementos que tienen ese nombre asignado</span></a></code></pre></div>
+<pre><code>##  edad    cp 
+##    31 33007</code></pre>
+<p>Con la función <code>names()</code> además podemos, no solo consultar los nombres de una variable, sino cambiarlos a nuestro gusto.</p>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb167-1" data-line-number="1"><span class="kw">names</span>(x) <span class="co"># Consultamos nombres</span></a></code></pre></div>
+<pre><code>## [1] &quot;edad&quot; &quot;tlf&quot;  &quot;cp&quot;</code></pre>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb169-1" data-line-number="1"><span class="kw">names</span>(x) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;años&quot;</span>, <span class="st">&quot;móvil&quot;, &quot;</span>dirección&quot;) <span class="co"># Cambiamos nombres</span></a>
+<a class="sourceLine" id="cb169-2" data-line-number="2"><span class="kw">names</span>(x) <span class="co"># Consultamos nuevos nombres</span></a></code></pre></div>
+<pre><code>## [1] &quot;años&quot;      &quot;móvil&quot;     &quot;dirección&quot;</code></pre>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb171-1" data-line-number="1">x</a></code></pre></div>
+<pre><code>##      años     móvil dirección 
+##        31 613910687     33007</code></pre>
+<p> </p>
+<details>
+<p><summary><img src="img/logo_info.png" style="width:4.0%" /> <strong>Consejos y tips</strong></summary></p>
+<!-- toc -->
+<ul>
+<li><strong>Diferencia de conjuntos</strong>: una función muy útil para ver las diferencias entre dos conjuntos es <code>setdiff()</code>, una función que nos devuelve los elementos distintos entre dos conjuntos.</li>
+</ul>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb173-1" data-line-number="1"><span class="kw">setdiff</span>(y, z) <span class="co"># Elementos en y que no están en z (el segundo elemento que hemos quitado)</span></a></code></pre></div>
+<pre><code>## [1] 17 21 58 33 15 59 13  1 45</code></pre>
+<!-- tocstop -->
+</details>
+<div id="which" class="section level3">
+<h3><span class="header-section-number">3.7.1</span> which</h3>
+<p>Hemos visto como seleccionar elementos de un vector que cumplen una condición, para a veces no queremos el elemento en sí, sino el lugar que ocupa: <strong>¿qué valores de un vector cumplen una condición lógica, qué lugar ocupan?</strong> Para obtener dicho índice tenemos a nuestro disposición la función <code>which()</code>, que no nos devuelve el elemento en sí sino su lugar.</p>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb175-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">7</span>, <span class="ot">NA</span>, <span class="dv">20</span>, <span class="dv">3</span>, <span class="dv">19</span>, <span class="dv">21</span>, <span class="dv">25</span>, <span class="dv">80</span>, <span class="ot">NA</span>)</a>
+<a class="sourceLine" id="cb175-2" data-line-number="2">x[x <span class="op">&gt;=</span><span class="st"> </span><span class="dv">18</span>] <span class="co"># Accedemos a los elementos que cumplen la condición</span></a></code></pre></div>
+<pre><code>## [1] NA 20 19 21 25 80 NA</code></pre>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb177-1" data-line-number="1"><span class="kw">which</span>(x <span class="op">&gt;=</span><span class="st"> </span><span class="dv">18</span>) <span class="co"># Obtenemos los lugares que ocupan los elementos que cumplen la condición</span></a></code></pre></div>
+<pre><code>## [1] 3 5 6 7 8</code></pre>
+<p>Esta función es muy útil especialmente cuando queremos <strong>averiguar el valor que ocupa el máximo/mínimo</strong> de una colección de valores, con las funciones <code>which.max()</code> y <code>which.min()</code>.</p>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb179-1" data-line-number="1"><span class="kw">max</span>(x, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>) <span class="co"># máximo de x (si no eliminamos NA, nos devolverá NA)</span></a></code></pre></div>
+<pre><code>## [1] 80</code></pre>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb181-1" data-line-number="1"><span class="kw">min</span>(x, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>) <span class="co"># mínimo de x (si no eliminamos NA, nos devolverá NA)</span></a></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb183-1" data-line-number="1"><span class="kw">which.max</span>(x) <span class="co"># Lugar que ocupa el máximo</span></a></code></pre></div>
+<pre><code>## [1] 8</code></pre>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb185-1" data-line-number="1">x[<span class="kw">which.max</span>(x)]</a></code></pre></div>
+<pre><code>## [1] 80</code></pre>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb187-1" data-line-number="1"><span class="kw">which.min</span>(x) <span class="co"># Lugar que ocupa el mínimo</span></a></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb189-1" data-line-number="1">x[<span class="kw">which.min</span>(x)]</a></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+</div>
+<div id="null" class="section level3">
+<h3><span class="header-section-number">3.7.2</span> NULL</h3>
+<p>A veces veremos que además de <code>NA</code> y <code>NaN</code>, <code>R</code> nos muestra un dato llamado <code>NULL</code>. Cuando tenemos <code>NA</code> en alguna variable, el registro existe, pero no está relleno. Sin embargo, cuando tenemos un <code>NULL</code> significa que ese registro ni siquiera existe: no es un dato guardado pero cuyo valor desconocemos, es un dato que ni siquiera existe (por ejemplo, si guardamos datos de 7 personas, el dato de la octava persona no es <code>NA</code>, es que no hay octava persona directamente).</p>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb191-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="ot">NA</span>, <span class="dv">3</span>, <span class="ot">NA</span>, <span class="ot">NA</span>, <span class="dv">5</span>, <span class="dv">6</span>)</a>
+<a class="sourceLine" id="cb191-2" data-line-number="2">x[<span class="dv">2</span>] <span class="co"># NA: el registro existe pero sin dato</span></a></code></pre></div>
+<pre><code>## [1] NA</code></pre>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb193-1" data-line-number="1"><span class="kw">names</span>(x) <span class="co"># No hemos definido el nombre de las variables, así que devuelve NULL</span></a></code></pre></div>
+<pre><code>## NULL</code></pre>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="datos-ausentes-na-y-nan.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ordenar-vectores.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Intro_R_2021_2022.pdf"],
+"search": {
+"engine": "lunr",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

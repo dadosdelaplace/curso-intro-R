@@ -1,0 +1,12 @@
+book_filename: "Intro_R_2021_2022"
+output_dir: _book
+clean: [packages.bib]
+language:
+  label:
+    fig: "Imagen/gráfica "
+    tab: "Tabla "
+  ui:
+    chapter_name: "Capítulo "
+delete_merged_file: true
+
+
