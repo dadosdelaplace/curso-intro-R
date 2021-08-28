@@ -13,7 +13,7 @@
   
   <meta property="og:image" content="/img/logo_R.png" />
   <meta property="og:description" content="Manual básico de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM, curso académico 2021-2022), elaborado por Javier Álvarez Liébana" />
-  
+  <meta name="github-repo" content="dadosdelaplace/cursoR_intro_2021_2022" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="5.2 Apply vs bucles | Aprendiendo R sin morir en el intento" />
@@ -294,9 +294,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##                                                                           expr
 ##  for (i in 1:dim(x)[1]) {     suma_por_filas[i] &lt;- sum(x[i, ], na.rm = TRUE) }
 ##                                apply(x, MARGIN = 1, FUN = &quot;sum&quot;, na.rm = TRUE)
-##       min        lq       mean    median        uq      max neval cld
-##  1671.073 1736.7315 1950.23235 1794.5055 1921.1745 5055.881   100   b
-##    19.943   25.1265   33.19063   30.3735   38.4875   91.835   100  a</code></pre>
+##       min        lq       mean    median       uq      max neval cld
+##  1659.130 1796.2040 2111.00880 1885.5305 2268.360 5229.174   100   b
+##    20.486   25.4345   36.75719   35.4685   43.795  120.702   100  a</code></pre>
 <p><strong>¡El bucle nos tarda 50 veces más que el <code>apply</code>!</strong> Di no a los bucles: casi siempre hay una forma mejor de hacerlo.</p>
 <p> </p>
 <details>
@@ -346,7 +346,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
-"github": false,
+"github": true,
 "facebook": true,
 "twitter": true,
 "linkedin": false,

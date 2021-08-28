@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.7.22)  28 AUG 2021 19:06
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.7.22)  28 AUG 2021 23:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1402,13 +1402,7 @@ Underfull \vbox (badness 1789) has occurred while \output is active []
 [72]
 Underfull \vbox (badness 1735) has occurred while \output is active []
 
-[73] [74]
-Overfull \hbox (2.6651pt too wide) in paragraph at lines 2174--2174
-[]\TU/SourceCodePro(0)/m/n/10.95 ##  x[order(x)] 33.983 40.3485 58.27375 48.675
-0 66.3455 2875.235  1000  a[] 
- []
-
-[75]
+[73] [74] [75]
 File: img/logo_info.png Graphic file (type bmp)
 <img/logo_info.png>
 Missing character: There is no 📝 in font Palatino Bold/AAT:mapping=tex-text;!
@@ -2047,40 +2041,37 @@ Underfull \vbox (badness 7907) has occurred while \output is active []
 
 [201] [202] [203] [204]
 Chapter 10.
-File: ./img/stanley_kubrick.jpg Graphic file (type bmp)
-<./img/stanley_kubrick.jpg>
+File: Intro_R_2021_2022_files/figure-latex/unnamed-chunk-186-1.pdf Graphic file
+ (type pdf)
+<use Intro_R_2021_2022_files/figure-latex/unnamed-chunk-186-1.pdf>
 [205
 
-] [206]
-Underfull \vbox (badness 1325) has occurred while \output is active []
+]
+File: ./img/stanley_kubrick.jpg Graphic file (type bmp)
+<./img/stanley_kubrick.jpg>
+[206] [207] [208] (./Intro_R_2021_2022.bbl [209] [210
 
-[207] (./Intro_R_2021_2022.bbl [208]
-
-Package natbib Warning: Empty `thebibliography' environment on input line 3.
-
-)
+])
 
 Package natbib Warning: There were undefined citations.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 6509.
-[209
-
-]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 6509.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 6511.
+[211]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 6511.
 (./Intro_R_2021_2022.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 6509.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 6509.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 6511.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 6511.
 
 Package rerunfilecheck Info: File `Intro_R_2021_2022.out' has not changed.
 (rerunfilecheck)             Checksum: C39570018933B620936211AB0F500614;8825.
  ) 
 Here is how much of TeX's memory you used:
- 21173 strings out of 479418
- 381730 string characters out of 5884585
- 828725 words of memory out of 5000000
- 38286 multiletter control sequences out of 15000+600000
+ 21182 strings out of 479418
+ 382126 string characters out of 5884585
+ 826747 words of memory out of 5000000
+ 38294 multiletter control sequences out of 15000+600000
  538963 words of font info for 99 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  58i,6n,121p,1569b,469s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Intro_R_2021_2022.pdf (209 pages).
+Output written on Intro_R_2021_2022.pdf (211 pages).

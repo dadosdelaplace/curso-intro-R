@@ -13,7 +13,7 @@
   
   <meta property="og:image" content="/img/logo_R.png" />
   <meta property="og:description" content="Manual básico de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM, curso académico 2021-2022), elaborado por Javier Álvarez Liébana" />
-  
+  <meta name="github-repo" content="dadosdelaplace/cursoR_intro_2021_2022" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="3.8 Ordenar vectores | Aprendiendo R sin morir en el intento" />
@@ -322,8 +322,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb226-4" data-line-number="4">               <span class="dt">times =</span> <span class="fl">1e3</span>) <span class="co"># se repetirá 1000 veces</span></a></code></pre></div>
 <pre><code>## Unit: microseconds
 ##         expr    min      lq     mean  median      uq     max neval cld
-##      sort(x) 43.434 48.9355 60.82173 56.5370 65.4495 255.319  1000   b
-##  x[order(x)] 30.463 34.0205 42.42738 39.2995 45.1180 188.300  1000  a</code></pre>
+##      sort(x) 43.270 47.6905 57.00671 51.2375 59.0405 220.256  1000   b
+##  x[order(x)] 30.248 33.4655 39.73484 36.2850 41.2805 118.188  1000  a</code></pre>
 Sí, estás viendo bien: aunque a priori parezca contraintuitivo, es más corto obtener los índices ordenados de un vector, y luego reordenarlo en base a esos índices, que la ordenación directa a través del comando <code>sort()</code> (ya que usan algoritmos de ordenación distintos).
 <!-- tocstop -->
 </details>
@@ -350,7 +350,7 @@ Sí, estás viendo bien: aunque a priori parezca contraintuitivo, es más corto 
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
-"github": false,
+"github": true,
 "facebook": true,
 "twitter": true,
 "linkedin": false,

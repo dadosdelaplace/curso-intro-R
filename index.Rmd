@@ -15,6 +15,7 @@ mainfont: Palatino
 monofont: "Source Code Pro"
 monofontoptions: "Scale=0.8"
 site: bookdown::bookdown_site
+github-repo: dadosdelaplace/cursoR_intro_2021_2022
 header-includes:
 - \usepackage{setspace}\doublespacing
 - \usepackage{float}

@@ -2168,9 +2168,9 @@ Este paquete contiene una orden para comparar el tiempo de dos órdenes: necesit
 
 \begin{verbatim}
 ## Unit: microseconds
-##         expr    min      lq     mean  median      uq      max neval cld
-##      sort(x) 47.270 57.6630 79.72670 70.6235 94.0540  289.769  1000   b
-##  x[order(x)] 33.983 40.3485 58.27375 48.6750 66.3455 2875.235  1000  a
+##         expr    min     lq     mean median      uq      max neval cld
+##      sort(x) 49.309 64.381 84.76481 75.991 92.4610 2920.357  1000   b
+##  x[order(x)] 33.989 42.579 55.01103 50.752 62.2955  130.037  1000  a
 \end{verbatim}
 
 Sí, estás viendo bien: aunque a priori parezca contraintuitivo, es más corto obtener los índices ordenados de un vector, y luego reordenarlo en base a esos índices, que la ordenación directa a través del comando \texttt{sort()} (ya que usan algoritmos de ordenación distintos).
@@ -2749,7 +2749,7 @@ La función \texttt{Sys.time()} accede al sistema de nuestro ordenador para deci
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "2021-08-28 19:06:01 CEST"
+## [1] "2021-08-28 23:11:29 CEST"
 \end{verbatim}
 
 ~
@@ -3150,9 +3150,9 @@ Veamos qué es más eficiente con el ya conocido paquete \texttt{\{microbenchmar
 ##                                                                           expr
 ##  for (i in 1:dim(x)[1]) {     suma_por_filas[i] <- sum(x[i, ], na.rm = TRUE) }
 ##                                apply(x, MARGIN = 1, FUN = "sum", na.rm = TRUE)
-##       min       lq       mean   median        uq      max neval cld
-##  2005.756 2112.761 2753.46917 2432.430 3277.0165 7109.163   100   b
-##    21.865   32.439   51.20266   48.624   60.1045  130.384   100  a
+##       min        lq       mean    median       uq       max neval cld
+##  2603.074 3888.9530 4422.26731 4326.6070 4720.151 10119.667   100   b
+##    34.942   51.4175   71.20082   68.7475   85.139   156.672   100  a
 \end{verbatim}
 
 \textbf{¡El bucle nos tarda 50 veces más que el \texttt{apply}!} Di no a los bucles: casi siempre hay una forma mejor de hacerlo.
@@ -5463,7 +5463,7 @@ Para la \textbf{fecha con hora actual} podemos usar una función similar, la fun
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 1630170366
+## [1] 1630185096
 \end{verbatim}
 
 \begin{Shaded}
@@ -5496,13 +5496,13 @@ Para la \textbf{fecha con hora actual} podemos usar una función similar, la fun
 
 \begin{verbatim}
 ## $sec
-## [1] 5.850044
+## [1] 35.60878
 ## 
 ## $min
-## [1] 6
+## [1] 11
 ## 
 ## $hour
-## [1] 19
+## [1] 23
 ## 
 ## $mday
 ## [1] 28
@@ -5540,9 +5540,9 @@ Para la \textbf{fecha con hora actual} podemos usar una función similar, la fun
 
 \begin{verbatim}
 ## List of 11
-##  $ sec   : num 5.85
-##  $ min   : int 6
-##  $ hour  : int 19
+##  $ sec   : num 35.6
+##  $ min   : int 11
+##  $ hour  : int 23
 ##  $ mday  : int 28
 ##  $ mon   : int 7
 ##  $ year  : int 121
@@ -5561,7 +5561,7 @@ Para la \textbf{fecha con hora actual} podemos usar una función similar, la fun
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 6
+## [1] 11
 \end{verbatim}
 
 Además tenemos disponibles funciones para extraer facilmente algunas variables temporales como el día de la semana, el mes o el cuatrimestre, con las funciones \texttt{weekdays()}, \texttt{months()}, and \texttt{quarters()}.
@@ -5628,7 +5628,7 @@ La función \texttt{difftime()} nos permite además hallar distancias entre fech
 \end{Shaded}
 
 \begin{verbatim}
-## Time difference of 589.3208 days
+## Time difference of 589.4912 days
 \end{verbatim}
 
 \begin{Shaded}
@@ -5638,7 +5638,7 @@ La función \texttt{difftime()} nos permite además hallar distancias entre fech
 \end{Shaded}
 
 \begin{verbatim}
-## Time difference of 14143.7 hours
+## Time difference of 14147.79 hours
 \end{verbatim}
 
 \begin{Shaded}
@@ -5648,7 +5648,7 @@ La función \texttt{difftime()} nos permite además hallar distancias entre fech
 \end{Shaded}
 
 \begin{verbatim}
-## Time difference of 84.18868 weeks
+## Time difference of 84.21304 weeks
 \end{verbatim}
 
 ~
@@ -6433,6 +6433,8 @@ Si queremos que \textbf{además de cambiar localmente lo haga globalmente} deber
 
 \textbf{Hasta aquí el aperitivo}
 
+\includegraphics{Intro_R_2021_2022_files/figure-latex/unnamed-chunk-186-1.pdf}
+
 Quizás creas que te queda un mundo por aprender:
 
 \begin{itemize}
@@ -6444,7 +6446,7 @@ Quizás creas que te queda un mundo por aprender:
 \item
   ¿Cómo \textbf{visualizo datos}?
 \item
-  ¿Cómo \textbf{generar informes} con los resultados?
+  ¿Cómo \textbf{generar informes} con los resultados (ver \citep{xie2015})?
 \item
   ¿Cómo \textbf{crear webs interactivas} para la visualización y análisis de datos?
 \end{itemize}
@@ -6457,7 +6459,7 @@ No te voy a mentir: no tendrías días de tu vida para ir investigando todos los
 
 }
 
-\caption{Cuando intentas aprenderte todos los paquetes.}\label{fig:unnamed-chunk-186}
+\caption{Cuando intentas aprenderte todos los paquetes.}\label{fig:unnamed-chunk-187}
 \end{figure}
 
 Estos primeros capítulos suelen ser un poco «aburridos»

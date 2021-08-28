@@ -13,7 +13,7 @@
   
   <meta property="og:image" content="/img/logo_R.png" />
   <meta property="og:description" content="Manual básico de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM, curso académico 2021-2022), elaborado por Javier Álvarez Liébana" />
-  
+  <meta name="github-repo" content="dadosdelaplace/cursoR_intro_2021_2022" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="8.3 Fechas y horas | Aprendiendo R sin morir en el intento" />
@@ -277,7 +277,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb505-2" data-line-number="2"><span class="kw">class</span>(fecha_hora)</a></code></pre></div>
 <pre><code>## [1] &quot;POSIXct&quot; &quot;POSIXt&quot;</code></pre>
 <div class="sourceCode" id="cb507"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb507-1" data-line-number="1"><span class="kw">unclass</span>(fecha_hora)</a></code></pre></div>
-<pre><code>## [1] 1630170349</code></pre>
+<pre><code>## [1] 1630185074</code></pre>
 <div class="sourceCode" id="cb509"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb509-1" data-line-number="1"><span class="kw">strptime</span>(<span class="st">&quot;Octubre 21, 1995 21:24&quot;</span>, <span class="st">&quot;%B %d, %Y %H:%M&quot;</span>) <span class="co"># fecha escrita</span></a></code></pre></div>
 <pre><code>## [1] &quot;1995-10-21 21:24:00 CET&quot;</code></pre>
 <div class="sourceCode" id="cb511"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb511-1" data-line-number="1"><span class="co"># fecha y hora actual en formato POSIXlt</span></a>
@@ -286,13 +286,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## [1] &quot;POSIXlt&quot; &quot;POSIXt&quot;</code></pre>
 <div class="sourceCode" id="cb513"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb513-1" data-line-number="1"><span class="kw">unclass</span>(fecha_hora2)</a></code></pre></div>
 <pre><code>## $sec
-## [1] 48.5216
+## [1] 14.07079
 ## 
 ## $min
-## [1] 5
+## [1] 11
 ## 
 ## $hour
-## [1] 19
+## [1] 23
 ## 
 ## $mday
 ## [1] 28
@@ -322,9 +322,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [1] &quot;&quot;     &quot;CET&quot;  &quot;CEST&quot;</code></pre>
 <div class="sourceCode" id="cb515"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb515-1" data-line-number="1"><span class="kw">str</span>(<span class="kw">unclass</span>(fecha_hora2))</a></code></pre></div>
 <pre><code>## List of 11
-##  $ sec   : num 48.5
-##  $ min   : int 5
-##  $ hour  : int 19
+##  $ sec   : num 14.1
+##  $ min   : int 11
+##  $ hour  : int 23
 ##  $ mday  : int 28
 ##  $ mon   : int 7
 ##  $ year  : int 121
@@ -335,7 +335,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  $ gmtoff: int 7200
 ##  - attr(*, &quot;tzone&quot;)= chr [1:3] &quot;&quot; &quot;CET&quot; &quot;CEST&quot;</code></pre>
 <div class="sourceCode" id="cb517"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb517-1" data-line-number="1">fecha_hora2<span class="op">$</span>min <span class="co"># Accedemos a los minutos</span></a></code></pre></div>
-<pre><code>## [1] 5</code></pre>
+<pre><code>## [1] 11</code></pre>
 <p>Además tenemos disponibles funciones para extraer facilmente algunas variables temporales como el día de la semana, el mes o el cuatrimestre, con las funciones <code>weekdays()</code>, <code>months()</code>, and <code>quarters()</code>.</p>
 <div class="sourceCode" id="cb519"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb519-1" data-line-number="1"><span class="kw">weekdays</span>(fecha)</a></code></pre></div>
 <pre><code>## [1] &quot;sábado&quot;</code></pre>
@@ -351,11 +351,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## [1] FALSE</code></pre>
 <p>La función <code>difftime()</code> nos permite además hallar distancias entre fechas pero no solo en días (lo que sucedería si restamos 2 fechas) sino en las unidades temporales que queramos.</p>
 <div class="sourceCode" id="cb529"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb529-1" data-line-number="1"><span class="kw">difftime</span>(<span class="kw">Sys.time</span>(), <span class="kw">as.POSIXct</span>(<span class="st">&quot;2020-01-17 10:24:12 CEST&quot;</span>), <span class="dt">units =</span> <span class="st">&quot;days&quot;</span>)</a></code></pre></div>
-<pre><code>## Time difference of 589.3206 days</code></pre>
+<pre><code>## Time difference of 589.491 days</code></pre>
 <div class="sourceCode" id="cb531"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb531-1" data-line-number="1"><span class="kw">difftime</span>(<span class="kw">Sys.time</span>(), <span class="kw">as.POSIXct</span>(<span class="st">&quot;2020-01-17 10:24:12 CEST&quot;</span>), <span class="dt">units =</span> <span class="st">&quot;hours&quot;</span>)</a></code></pre></div>
-<pre><code>## Time difference of 14143.69 hours</code></pre>
+<pre><code>## Time difference of 14147.78 hours</code></pre>
 <div class="sourceCode" id="cb533"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb533-1" data-line-number="1"><span class="kw">difftime</span>(<span class="kw">Sys.time</span>(), <span class="kw">as.POSIXct</span>(<span class="st">&quot;2020-01-17 10:24:12 CEST&quot;</span>), <span class="dt">units =</span> <span class="st">&quot;weeks&quot;</span>)</a></code></pre></div>
-<pre><code>## Time difference of 84.18865 weeks</code></pre>
+<pre><code>## Time difference of 84.213 weeks</code></pre>
 <p> </p>
 <details>
 <p><summary><img src="img/logo_info.png" style="width:4.0%" /> <strong>Consejos y tips</strong></summary></p>
@@ -477,7 +477,7 @@ Imagen/gráfica 8.3: Paquete lubridate.
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
-"github": false,
+"github": true,
 "facebook": true,
 "twitter": true,
 "linkedin": false,

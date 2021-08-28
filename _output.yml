@@ -8,6 +8,9 @@ bookdown::gitbook:
       after: |
         <li><a href="https://bookdown.org/yihui/rmarkdown/" target="blank">Elaborado con bookdown</a></li>
     download: ["pdf"]
+    sharing:
+      github: yes
+      twitter: yes
 bookdown::pdf_book:
   includes:
     in_header: latex/preamble.tex
