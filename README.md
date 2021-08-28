@@ -9,6 +9,8 @@ GPLv3](https://img.shields.io/badge/license-GPLv3-blue.svg)](https://www.gnu.org
 <a href="https://github.com/dadosdelaplace/hilostwitter/pulse" alt="Activity"> <img src="https://img.shields.io/github/commit-activity/m/dadosdelaplace/hilostwitter" /></a>
 <a href="https://twitter.com/intent/follow?screen_name=dadosdelaplace"> <img src="https://img.shields.io/twitter/follow/dadosdelaplace?style=social&logo=twitter"
             alt="Sígueme en Twitter (follow on Twitter)"></a>
+[![Netlify Status](https://api.netlify.com/api/v1/badges/42c3b375-8e0a-4b03-bd18-d8a58f60ca92/deploy-status)](https://app.netlify.com/sites/aprendiendo-r-intro/deploys)
+            
 <!-- <a href="https://discord.gg/HjJCwm5">
         <img src="https://img.shields.io/discord/308323056592486420?logo=discord"
             alt="chat on Discord"></a> --->
