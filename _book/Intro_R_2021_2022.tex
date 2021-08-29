@@ -127,7 +127,7 @@
 
 \title{Aprendiendo R sin morir en el intento}
 \author{Javier Álvarez Liébana}
-\date{Última actualización: 28-08-2021}
+\date{Última actualización: 29-08-2021}
 
 \begin{document}
 \maketitle
@@ -143,19 +143,27 @@
 \chapter*{Prefacio}\label{prefacio}}
 
 
-El manual ha sido diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM, curso académico 2021-2022), y está elaborado por \href{twitter.com/dadosdelaplace}{Javier Álvarez Liébana}.
+Este manual ha sido diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM, curso académico 2021-2022), y está elaborado por \href{twitter.com/dadosdelaplace}{Javier Álvarez Liébana}.
 
-\href{https://www.gnu.org/licenses/gpl-3.0}{\includegraphics{img/license-GPLv3-blue.png}}
+Dicho manual ha sido elaborado a su vez en \texttt{R} con \href{https://github.com/rstudio/bookdown}{\{bookdown\}}. Puedes ver un resumen de las funcionalidades algunos paquetes documentados por el equipo de \href{https://www.rstudio.com/}{R Studio} en sus \href{https://www.rstudio.com/resources/cheatsheets/}{esquemas resumen}. El \textbf{código} de dicho manual se encuentra en GitHub (\url{https://github.com/dadosdelaplace/cursoR_intro_2021_2022}).
 
-Este documento es publicado bajo \textbf{licencia pública general GNU}, una licencia libre de copyleft que garantiza a los usuarios finales (personas, organizaciones, compañías) la libertad de usar, estudiar, compartir (copiar) y modificar el software, citando adecuadamente al autor del mismo.
+~
+
+Para \textbf{elaborar informes o libros} con una estructura similar, de forma nativa en \texttt{R}, el paquete \texttt{\{bookdown\}} puede ser instalado desde la plataforma CRAN o desde su versión en desarrollo actualizada en Github:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{install.packages}\NormalTok{(}\StringTok{"bookdown"}\NormalTok{)}
+\CommentTok{# o desde su versión en desarrollo actualizada}
+\CommentTok{# devtools::install_github("rstudio/bookdown")}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{propuxf3sito}{%
 \section*{Propósito}\label{propuxf3sito}}
 
 
-El \textbf{objetivo} de este tutorial es introducir a la programación y análisis estadístico en \texttt{R} a toda aquella persona que nunca se haya iniciado en él, sin que se necesiten conocimientos de programación previos (aunque siempre ayuda, obviamente).
-
-Con este manual no se pretende que adquieras un vasto y experto conocimiento de \texttt{R}, pero si lo suficiente como para lograr \textbf{5 objetivos}:
+El \textbf{objetivo} de este tutorial es introducir a la programación y análisis estadístico en \texttt{R} a toda aquella persona que nunca se haya iniciado en él, \textbf{sin necesitar conocimientos previos} de programación (aunque siempre ayuda, obviamente). Con este manual no se pretende que adquieras un vasto y experto conocimiento de \texttt{R}, pero si lo suficiente como para lograr \textbf{5 objetivos}:
 
 \begin{itemize}
 \tightlist
@@ -169,6 +177,8 @@ Con este manual no se pretende que adquieras un vasto y experto conocimiento de 
   Darte pinceladas de sus posibilidades que te sirvan de trampolín para ir investigando por tu cuenta en el campo en el que lo vayas a aplicar.
 \item
   Algunos \textbf{trucos sencillos} para que el trabajo sea más rápido, tanto en tiempo de escritura como de ejecución.
+\item
+  Hacer \textbf{enfásis en la importancia de la visualización de datos} en estadística.
 \end{itemize}
 
 \hypertarget{requisitos}{%
@@ -186,9 +196,23 @@ Con este manual no se pretende que adquieras un vasto y experto conocimiento de 
 
 Todo lo necesario para seguir este curso es de \textbf{descarga gratuita}: viva el software libre, abajo Excel.
 
-~
+\hypertarget{emojis}{%
+\section*{Emojis}\label{emojis}}
+
 
 \includegraphics[width=0.04\textwidth,height=\textheight]{img/logo_info.png} \textbf{Info}: siempre que veas el \textbf{icono de la bombilla} encontrarás consejos o tips para ampliar y facilitar tu programación. Además en cada \textbf{cajita de código}, si pasas el ratón, encontrarás un botón en la esquina superior derecha de la caja para copiar el código directamente a tu consola.
+
+~
+
+📝 \textbf{Ejercicios}: siempre que veas el \textbf{icono de un documento escrito} encontrarás ejercicios con soluciones para que vayas afianzando conceptos (una de las soluciones, normalmente siempre habrá muchas formas distintas de realizar la misma tarea, prioriza la más sencilla y limpia).
+
+~
+
+📄📄 \textbf{Copiar código}: siempre que veas el \textbf{icono de dos documentos} en las \textbf{cajas de código} (aparecen al pasar el ratón), podrás hacer click para copiar directamente el código que haya dentro.
+
+~
+
+📚 \textbf{Glosario}: siempre que veas la pila de libros encontrarás una \textbf{sección de glosario con algunos términos estadísticos y conceptos básicos}.
 
 \hypertarget{sobre-el-autor}{%
 \section*{Sobre el autor}\label{sobre-el-autor}}
@@ -201,21 +225,13 @@ Además de \textbf{investigador} (con plaza y acreditación de Ayudante Doctor e
 🐦 \href{twitter.com/dadosdelaplace}{Twitter}\\
 📸 \href{instagram.com/javieralvarezliebana}{Instagram}
 
-\hypertarget{cruxe9ditos}{%
-\section*{Créditos}\label{cruxe9ditos}}
+\hypertarget{licencia}{%
+\section*{Licencia}\label{licencia}}
 
 
-Dicho manual/tutorial ha sido elaborado en \textbf{R Markdown} y \href{https://github.com/rstudio/bookdown}{\{bookdown\}}. Puedes ver un resumen de las funcionalidades de dicho paquete, así como de otros documentados por el equipo de \href{https://www.rstudio.com/}{R Studio} en sus \href{https://www.rstudio.com/resources/cheatsheets/}{esquemas resumen}.
+\href{https://www.gnu.org/licenses/gpl-3.0}{\includegraphics{img/license-GPLv3-blue.png}}
 
-Para elaborar informes o libros con una estructura similar, de forma nativa en \texttt{R}, el paquete \texttt{\{bookdown\}} puede ser instalado desde la plataforma CRAN o desde su versión en desarrollo actualizada en Github:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{install.packages}\NormalTok{(}\StringTok{"bookdown"}\NormalTok{)}
-\CommentTok{# o desde su versión en desarrollo actualizada}
-\CommentTok{# devtools::install_github("rstudio/bookdown")}
-\end{Highlighting}
-\end{Shaded}
+Este documento es publicado bajo \textbf{licencia pública general GNU}, una licencia libre de copyleft que garantiza a los usuarios finales (personas, organizaciones, compañías) la \textbf{libertad de usar, estudiar, compartir (copiar) y modificar el software, citando adecuadamente al autor del mismo}.
 
 \hypertarget{part-toma-de-contacto}{%
 \part{Toma de contacto}\label{part-toma-de-contacto}}
@@ -228,12 +244,12 @@ Vamos a necesitar solo 3 pasos (y conexión a internet).
 \begin{itemize}
 \tightlist
 \item
-  \textbf{Paso 1}: entra en la web de la plataforma \url{https://cran.r-project.org/} y en la pantalla de inicio \textbf{selecciona la instalación acorde a tu sistema operativo} (ver imagen \ref{fig:pantalla-cran})
+  \textbf{Paso 1}: entra en la web \url{https://cran.r-project.org/} y en la pantalla de inicio \textbf{selecciona la instalación acorde a tu sistema operativo} (ver imagen \ref{fig:pantalla-cran})
 \end{itemize}
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.75\linewidth]{./img/pantalla1_cran} 
+{\centering \includegraphics[width=0.6\linewidth]{./img/pantalla1_cran} 
 
 }
 
@@ -243,23 +259,23 @@ Vamos a necesitar solo 3 pasos (y conexión a internet).
 \begin{itemize}
 \tightlist
 \item
-  \textbf{Paso 2}: para sistemas operativos Mac basta con que hacer click en \texttt{R-4.0.5.pkg}, y una vez descargado el archivo, abrirlo como cualquier archivo de instalación (ver imagen \ref{fig:pantalla-mac})
+  \textbf{Paso 2}: para sistemas operativos Mac basta con que hacer click en el archivo \texttt{.pkg}, y abrirlo una vez descargado (ver imagen \ref{fig:pantalla-mac})
 \end{itemize}
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.75\linewidth]{./img/pantall_mac_cran} 
+{\centering \includegraphics[width=0.6\linewidth]{./img/pantall_mac_cran} 
 
 }
 
 \caption{Pantalla de instalación de R en Mac OS.}\label{fig:pantalla-mac}
 \end{figure}
 
-Para sistemas operativos Windows, debemos clickar en \texttt{install\ R\ for\ the\ first\ time} (ver imagen \ref{fig:pantalla-windows-1}) y en la siguiente pantalla hacer click en \texttt{Download\ R\ 4.0.5\ for\ Windows} (ver imagen \ref{fig:pantalla-windows-2}). Una vez descargado el archivo, abrirlo como cualquier archivo de instalación
+Para sistemas operativos Windows, debemos clickar en \texttt{install\ R\ for\ the\ first\ time} (ver imagen \ref{fig:pantalla-windows-1}) y en la siguiente pantalla hacer click en \texttt{Download\ R\ for\ Windows} (ver imagen \ref{fig:pantalla-windows-2}). Una vez descargado, abrirlo como cualquier archivo.
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.75\linewidth]{./img/pantalla_windows_1} 
+{\centering \includegraphics[width=0.6\linewidth]{./img/pantalla_windows_1} 
 
 }
 
@@ -290,7 +306,7 @@ Para sistemas operativos Windows, debemos clickar en \texttt{install\ R\ for\ th
 \caption{Primera pantalla al abrir el ejecutable de R.}\label{fig:cranR}
 \end{figure}
 
-Para comprobar que está correctamente instalado, \textbf{prueba a escribir en la consola} el siguiente código.
+Para comprobar que está correctamente instalado, \textbf{prueba a escribir en la consola} el siguiente código (\textbf{recuerda}: los códigos puedes copiarlos directamente de la cajita en la que está haciendo click en el botón de la esquina superior derecha)
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -313,9 +329,21 @@ Para comprobar que está correctamente instalado, \textbf{prueba a escribir en l
 \caption{Primera suma en la consola de R.}\label{fig:primera-suma}
 \end{figure}
 
-\textbf{¡Enhorabuena!} Si te ha devuelto \texttt{{[}1{]}\ 3}, ya has hecho más de lo que parece: has definido dos variables \texttt{a} y \texttt{b}, has \textbf{asignado un valor numérico a cada variable} (en \texttt{R} usaremos \texttt{\textless{}-} para asignar valores en lugar de \texttt{=}, como una flecha), y las hemos usado. \textbf{Ya sabemos usar \texttt{R} como calculadora}.
+\textbf{¡Enhorabuena!} Si te ha devuelto \texttt{{[}1{]}\ 3}, ya has hecho más de lo que parece: has definido dos variables \texttt{a} y \texttt{b}, has \textbf{asignado un valor numérico a cada variable} y las hemos usado. \textbf{Ya sabemos usar \texttt{R} como calculadora}.
 
-Bonita esa interfaz no es, así que lo cerraremos y no lo abriremos más. Tenemos nuestro lenguaje instalado, vamos a \textbf{instalar nuestro Word} para poder programar de forma cómoda.
+~
+
+\includegraphics[width=0.04\textwidth,height=\textheight]{img/logo_info.png} \textbf{Asignación}: como habrás advertido, en \texttt{R} usaremos \texttt{\textless{}-} para asignar valores en lugar de \texttt{=}, como una flecha.
+
+~
+
+\includegraphics[width=0.04\textwidth,height=\textheight]{img/logo_info.png} \textbf{Línea de consola}: como habrás advertido, en \texttt{R} usaremos \texttt{\textless{}-} para asignar valores en lugar de \texttt{=}, como una flecha.
+
+~
+
+~
+
+Bonita esta interfaz no es, así que la cerraremos y no la abriremos más. Tenemos nuestro lenguaje instalado, vamos a \textbf{instalar nuestro Word} para poder programar de forma cómoda.
 
 \hypertarget{instalacionRStudio}{%
 \section{Instalación de RStudio}\label{instalacionRStudio}}
@@ -427,59 +455,6 @@ Ese código no se ejecuta salvo que se lo digamos. Tenemos dos opciones para ell
 
 Listo, tienes instalado (casi) todo correctamente.
 
-\includegraphics[width=0.04\textwidth,height=\textheight]{img/logo_info.png} Consejos y tips
-
-\begin{itemize}
-\tightlist
-\item
-  \textbf{¿Cómo saber cuando la orden lanzada en consola ha terminado?}
-\end{itemize}
-
-A veces \texttt{R} y \texttt{RStudio} son tan silenciosos que no sabemos si ha acabado la orden que acabamos de lanzar en la consola o no.
-
-\includegraphics[width=0.04\textwidth,height=\textheight]{img/logo_info.png} \textbf{Truco}: siempre que veas este símbolo \texttt{\textgreater{}} como última línea en la consola significa que está listo para que le escribamos otra orden (es la forma cariñosa de decirte que ya ha acabado, ver imagen \ref{fig:tip-consola-lista})
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.7\linewidth]{./img/tip_consola_lista} 
-
-}
-
-\caption{Ejemplo de que la orden lanzada ha acabado.}\label{fig:tip-consola-lista}
-\end{figure}
-
-~
-
-~
-
-\begin{itemize}
-\tightlist
-\item
-  \textbf{¿Cómo prevenir la fatiga visual programando?}
-\end{itemize}
-
-Estar delante de una pantalla de ordenador, con la vista muy fija mientras se programa, puede que acabes teniendo cierta fatiga visual en el trabajo.
-
-\includegraphics[width=0.04\textwidth,height=\textheight]{img/logo_info.png} \textbf{Truco}: te aconsejo que cambies en tu \texttt{RStudio} la tonalidad del fondo de tu programa, en tonos oscuros y no blancos (¿te has fijado que mis capturas tienen un azul cobalto oscuro de fondo mientras el tuyo es un blanco nuclear? Echa un vistazo las imagenes \ref{fig:menu-1} y \ref{fig:menu-2})
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.4\linewidth,height=0.4\textheight]{./img/menu_1} 
-
-}
-
-\caption{Menú de opciones de nuestro editor}\label{fig:menu-1}
-\end{figure}
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.4\linewidth,height=0.4\textheight]{./img/menu_2} 
-
-}
-
-\caption{Personalizar el color de fondo de nuestro editor, la letra y el tamaño de fuente}\label{fig:menu-2}
-\end{figure}
-
 \hypertarget{instalacionpaquetes}{%
 \section{Instalación de paquetes}\label{instalacionpaquetes}}
 
@@ -523,15 +498,57 @@ Una vez que tenemos los trozos de código (el paquete) en nuestro ordenador, en 
 
 \textbf{Welcome to software libre}
 
-\includegraphics[width=0.04\textwidth,height=\textheight]{img/logo_info.png} Consejos y tips
+\hypertarget{consejos-y-tips}{%
+\section[ Consejos y tips]{\texorpdfstring{\protect\includegraphics[width=0.04\textwidth,height=\textheight]{img/logo_info.png} Consejos y tips}{ Consejos y tips}}\label{consejos-y-tips}}
 
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Entender los paquetes}
-\end{itemize}
+¿Cómo saber cuando la orden lanzada en consola ha terminado?
+
+A veces \texttt{R} y \texttt{RStudio} son tan silenciosos que no sabemos si ha acabado la orden que acabamos de lanzar en la consola o no.
+
+\includegraphics[width=0.04\textwidth,height=\textheight]{img/logo_info.png} \textbf{Truco}: siempre que veas este símbolo \texttt{\textgreater{}} como última línea en la consola significa que está listo para que le escribamos otra orden (es la forma cariñosa de decirte que ya ha acabado, ver imagen \ref{fig:tip-consola-lista})
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{./img/tip_consola_lista} 
+
+}
+
+\caption{Ejemplo de que la orden lanzada ha acabado.}\label{fig:tip-consola-lista}
+\end{figure}
+
+~
+
+¿Cómo prevenir la fatiga visual programando?
+
+Estar delante de una pantalla de ordenador, con la vista muy fija mientras se programa, puede que acabes teniendo cierta fatiga visual en el trabajo.
+
+\includegraphics[width=0.04\textwidth,height=\textheight]{img/logo_info.png} \textbf{Truco}: te aconsejo que cambies en tu \texttt{RStudio} la tonalidad del fondo de tu programa, en tonos oscuros y no blancos (¿te has fijado que mis capturas tienen un azul cobalto oscuro de fondo mientras el tuyo es un blanco nuclear? Echa un vistazo las imagenes \ref{fig:menu-1} y \ref{fig:menu-2})
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.4\linewidth,height=0.4\textheight]{./img/menu_1} 
+
+}
+
+\caption{Menú de opciones de nuestro editor}\label{fig:menu-1}
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.4\linewidth,height=0.4\textheight]{./img/menu_2} 
+
+}
+
+\caption{Personalizar el color de fondo de nuestro editor, la letra y el tamaño de fuente}\label{fig:menu-2}
+\end{figure}
+
+~
+
+Entender los paquetes
 
 Haciendo una metáfora con la colección de libros que tengas en casa: con la \textbf{instalación hemos comprado el libro} y lo tenemos en nuestra estantería (para siempre), con la llamada al paquete, por ejemplo \texttt{library(ggplot2)}, lo que hacemos es decidir, de entre todos los libros de la estantería, cuales queremos llevarnos de viaje (en cada maleta que hagamos).
+
+Los \textbf{paquetes usados} los verás denotados como \texttt{\{nombre\_paquete\}} a lo largo del manual.
 
 \hypertarget{primeros-pasos}{%
 \chapter{Primeros pasos}\label{primeros-pasos}}
@@ -651,26 +668,6 @@ Lo que ya hemos descubierto en los pasos de la instalación (ver imagen \ref{fig
 
 ~
 
-📝Ejercicio: calcula en consola la suma de 3 más 4, y todo ello multiplicado por 10.
-
-\begin{itemize}
-\tightlist
-\item
-  Solución:
-\end{itemize}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{(}\DecValTok{3} \OperatorTok{+}\StringTok{ }\DecValTok{4}\NormalTok{) }\OperatorTok{*}\StringTok{ }\DecValTok{10}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 70
-\end{verbatim}
-
-~
-
 \textbf{¿Pero cuál es la diferencia entre una calculadora y un lenguaje de programación?}
 
 Imagina que dicha suma 3 la quisiéramos utilizar para un segundo cálculo: ¿y si en lugar de lanzarlo a la consola sin más lo \textbf{almacenamos en alguna variable}?
@@ -691,31 +688,10 @@ Como puedes comprobar, en tu parte superior derecha (nuestro entorno de variable
 
 }
 
-\caption{Environment.}\label{fig:unnamed-chunk-5}
+\caption{Environment.}\label{fig:unnamed-chunk-4}
 \end{figure}
 
 Dicha variable \texttt{x} además podemos reciclarla para definir una variable \texttt{y}, restándole una constante.
-
-~
-
-📝Ejercicio: usando la variable \texttt{x} ya definida, calcula \texttt{x\ -\ 5} y guárdalo en una nueva variable \texttt{y}.
-
-\begin{itemize}
-\tightlist
-\item
-  Solución:
-\end{itemize}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{y <-}\StringTok{ }\NormalTok{x }\OperatorTok{-}\StringTok{ }\DecValTok{5}
-\NormalTok{y}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] -2
-\end{verbatim}
 
 ~
 
@@ -754,29 +730,18 @@ De la misma manera que hemos hecho restas, sumas y multiplicaciones, \texttt{R} 
 
 ~
 
-\includegraphics[width=0.04\textwidth,height=\textheight]{img/logo_info.png} Consejos y tips
+\hypertarget{consejos-y-tips-1}{%
+\section[ Consejos y tips]{\texorpdfstring{\protect\includegraphics[width=0.04\textwidth,height=\textheight]{img/logo_info.png} Consejos y tips}{ Consejos y tips}}\label{consejos-y-tips-1}}
 
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Argumento de una función}
-\end{itemize}
+Argumentos de una función
 
-Las órdenes \texttt{sqrt(x)} y \texttt{abs(y)} se llaman \textbf{funciones}, y la variable que tienen entre paréntesis se llama \textbf{argumento de la función}.
+Las órdenes \texttt{sqrt(x)} y \texttt{abs(y)} se llaman \textbf{funciones}, y la variable que tienen entre paréntesis se llama \textbf{argumento de la función}: una variable que toma de entrada la función y con la que opera internamente.
 
-~
+~\\
 
-~
-
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Panel de ayuda}
-\end{itemize}
+Panel de ayuda
 
 Si escribes en la consola \texttt{?\ nombre\_funcion} (por ejemplo, escribe en la consola \texttt{?\ sqrt}), en el panel inferior derecho te aparecerá una \textbf{documentación de ayuda} de la función para saber que argumentos necesita, como puedes usar la función, qué es lo que te devuelve, ejemplos de uso, etc.
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -790,8 +755,67 @@ Si escribes en la consola \texttt{?\ nombre\_funcion} (por ejemplo, escribe en l
 
 }
 
-\caption{Panel de ayuda.}\label{fig:unnamed-chunk-9}
+\caption{Panel de ayuda.}\label{fig:unnamed-chunk-7}
 \end{figure}
+
+\hypertarget{ejercicios}{%
+\section{📝 Ejercicios}\label{ejercicios}}
+
+📝Ejercicio 1: calcula en consola la suma de 3 más 4, y todo ello multiplicado por 10, y asígnalo a una variable \texttt{x}.
+
+\begin{itemize}
+\tightlist
+\item
+  Solución:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x <-}\StringTok{ }\NormalTok{(}\DecValTok{3} \OperatorTok{+}\StringTok{ }\DecValTok{4}\NormalTok{) }\OperatorTok{*}\StringTok{ }\DecValTok{10}
+\end{Highlighting}
+\end{Shaded}
+
+~
+
+📝Ejercicio 2: usando la variable \texttt{x} ya definida, calcula \texttt{x\ -\ 5} y guárdalo en una nueva variable \texttt{y}.
+
+\begin{itemize}
+\tightlist
+\item
+  Solución:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y <-}\StringTok{ }\NormalTok{x }\OperatorTok{-}\StringTok{ }\DecValTok{5}
+\NormalTok{y}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 65
+\end{verbatim}
+
+~
+
+📝Ejercicio 3: usando las variables \texttt{x} e \texttt{y} ya definidas, calcula la raíz cuadrada del máximo entre ambas, y guárdalo en una nueva variable \texttt{z}.
+
+\begin{itemize}
+\tightlist
+\item
+  Solución:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{z <-}\StringTok{ }\KeywordTok{sqrt}\NormalTok{(}\KeywordTok{max}\NormalTok{(x, y)) }\CommentTok{# No hace falta gastar una línea por cada orden (cada asignación que hagas es una variable guardada que consume memoria en tu ordenador)}
+\NormalTok{z}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 8.3666
+\end{verbatim}
 
 \hypertarget{part-conceptos-buxe1sicos}{%
 \part{Conceptos básicos}\label{part-conceptos-buxe1sicos}}
@@ -806,7 +830,7 @@ Bien, ya controlamos la calculadora. Vamos a ir más allá: ¿y si en lugar de t
 
 Un conjunto de elementos del mismo tipo se llama \textbf{vector} (en este caso de números), y de hecho un número individual (por ejemplo, \texttt{1}) es en realidad un vector de longitud uno (un solo elemento).
 
-La forma más sencilla de \textbf{crear un vector} en \texttt{R} es con el comando \texttt{c()} (de concatenar elementos), y basta con introducir entre paréntesis, y separados por comas. Vamos a crear el vector con los tres primeros números pares.
+La forma más sencilla de \textbf{crear un vector} en \texttt{R} es con el comando \texttt{c()} (de \textbf{concatenar elementos}), y basta con introducir sus elementos entre paréntesis, y separados por comas. Vamos a crear el vector con los tres primeros números naturales pares (el 0 no es natural, no seas bárbaro/a).
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -819,7 +843,7 @@ La forma más sencilla de \textbf{crear un vector} en \texttt{R} es con el coman
 ## [1] 2 4 6
 \end{verbatim}
 
-Como ves ahora en el environment tenemos una colección de elementos, tres en concreto, guardados en una misma variable. La longitud de un vector se puede calcular con el comando \texttt{length()}. Además podemos \textbf{concatenar a su vez vectores}: vamos a concatenar el vector \texttt{z} consigo mismo, añadiéndole al final un 8.
+Como ves ahora en el \textbf{environment tenemos una colección de elementos}, tres en concreto, guardados en una misma variable. La longitud de un vector se puede calcular con el comando \texttt{length()}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -830,6 +854,8 @@ Como ves ahora en el environment tenemos una colección de elementos, tres en co
 \begin{verbatim}
 ## [1] 3
 \end{verbatim}
+
+Además podemos \textbf{concatenar a su vez vectores}: vamos a concatenar el vector \texttt{z} consigo mismo, y añadiéndole al final un 8.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -843,10 +869,8 @@ Como ves ahora en el environment tenemos una colección de elementos, tres en co
 
 La última concatenación lo que nos ha dado son los tres primeros pares, después de nuevo los tres primeros pares, y por último un 8.
 
-\includegraphics{Intro_R_2021_2022_files/figure-latex/unnamed-chunk-13-1.pdf}
-
-\hypertarget{secuencias-de-nuxfameros-con-un-patruxf3n}{%
-\subsection{Secuencias de números con un patrón}\label{secuencias-de-nuxfameros-con-un-patruxf3n}}
+\hypertarget{secuencias-con-un-patruxf3n}{%
+\subsection{Secuencias con un patrón}\label{secuencias-con-un-patruxf3n}}
 
 Muchas veces nos gustaría \textbf{crear vectores de una forma mucho más rápida}, por ejemplo, para tener un vector de índices que queramos recorrer. Supongamos que queremos el vector de los primeros 21 números naturales. Si construyéramos el vector como antes, tendríamos ejecutar el comando \texttt{c(1,\ 2,\ 3,\ 4,\ 5,\ ...)} hasta el número 21. ¿Un poco largo, no?
 
@@ -862,7 +886,7 @@ El comando \texttt{seq()} nos permite crear una \textbf{secuencia desde un eleme
 ##  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21
 \end{verbatim}
 
-Es importante que no perdamos el foco de que \textbf{programar es similar a escribir en un idioma}, por lo que si hay algo que se puede decir de una forma más limpia y que se entienda mejor, ¿por qué no usarlo? Siempre que queramos definir secuencias entre dos números naturales (por ejemplo, entre \texttt{1} y un valor \texttt{n}), cuya distancia entre elementos consecutivos sea uno, el comando \texttt{1:n} nos devuelve lo mismo que la orden \texttt{seq(1,\ n)}. Además, si el elemento inicial es mayor que el final \texttt{R} entenderá solo que la secuencia la queremo decreciente
+Es importante que no perdamos el foco de que \textbf{programar es similar a escribir en un idioma}, por lo que si hay algo que se puede decir de una forma más limpia y que se entienda mejor, ¿por qué no usarlo? Siempre que queramos definir secuencias entre dos números naturales (por ejemplo, entre \texttt{1} y un valor \texttt{n}), cuya distancia entre elementos consecutivos sea uno, el comando \texttt{1:n} nos devuelve lo mismo que la orden \texttt{seq(1,\ n)}. Además, si el elemento inicial es mayor que el final, \texttt{R} entenderá solo que la secuencia la queremo decreciente.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -887,7 +911,7 @@ Es importante que no perdamos el foco de que \textbf{programar es similar a escr
 
 ~
 
-También podemos definir otro tipo de distancia entre dos elementos consecutivos (conocido como \textbf{paso de discretización}), por ejemplo de 0.5 en 0.5, o bien definir una secuencia entre un valor inicial y un valor final con un número de elementos fijo (y que sea \texttt{R} el que decida la distancia entre elementos consecutivos).
+También podemos definir \textbf{otro tipo de distancia entre dos elementos consecutivos} (conocido como \textbf{paso de discretización}), por ejemplo de 0.5 en 0.5, o bien definir una secuencia entre un valor inicial y un valor final con un número de elementos fijo (y que sea \texttt{R} el que decida la distancia entre elementos consecutivos).
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -955,6 +979,7 @@ Hemos dicho que un número es un vector de longitud 1, así que \textbf{toda ope
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\NormalTok{z <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{6}\NormalTok{)}
 \DecValTok{2} \OperatorTok{*}\StringTok{ }\NormalTok{z}
 \end{Highlighting}
 \end{Shaded}
@@ -1018,18 +1043,7 @@ Dado que la operación (por ejemplo, una suma) se realiza elemento a elemento, \
 ## [1]  3  7 11  9
 \end{verbatim}
 
-Como ves, \texttt{R} intenta molestarte lo menos posible, así que lo hace es reciclar: si tiene un vector de 4 elementos y le intentas sumar uno de 3 elementos, lo que hará será \textbf{reciclar} elementos del vector con menor longitud: hará \texttt{1+2}, \texttt{3+4}, \texttt{5+6} pero\ldots{} \texttt{7+2} (vuelve al primer par).\\
-\hspace*{0.333em}
-
-\includegraphics[width=0.04\textwidth,height=\textheight]{img/logo_info.png} Consejos y tips
-
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Operaciones elemento a elemento (vectorial)}
-\end{itemize}
-
-Es importante recordar que cada operación realizada de esta manera es una \textbf{operación que realizada en cada elemento del vector, devolviéndonos un vector} de salida de igual longitud que el que entró.
+Como ves, \texttt{R} intenta molestarte lo menos posible, así que lo hace es reciclar: si tiene un vector de 4 elementos y le intentas sumar uno de 3 elementos, lo que hará será \textbf{reciclar} elementos del vector con menor longitud: hará \texttt{1+2}, \texttt{3+4}, \texttt{5+6} pero\ldots{} \texttt{7+2} (vuelve al primer par).
 
 \hypertarget{operaciones-estaduxedsticas-con-vectores-numuxe9ricos}{%
 \section{Operaciones estadísticas con vectores numéricos}\label{operaciones-estaduxedsticas-con-vectores-numuxe9ricos}}
@@ -1087,6 +1101,8 @@ Al igual que podemos ejecutar operaciones aritméticas, podemos realizar tambié
 ##  15%  30%  70%  90% 
 ##  5.0  8.5 14.0 23.5
 \end{verbatim}
+
+Ver conceptos básicos en \ref{glosario3}.
 
 \hypertarget{vectores-de-caracteres-texto}{%
 \section{Vectores de caracteres (texto)}\label{vectores-de-caracteres-texto}}
@@ -1176,7 +1192,7 @@ Esta función es muy útil si queremos definir variables de texto que compartan 
 
 ~
 
-Otra f\textbf{orma más intuitiva de trabajar con textos y variables numéricas} es usar el paquete \texttt{\{glue\}}, que nos permite pegar cadenas de texto a variables numéricas de \textbf{forma simbólica}.
+Otra \textbf{forma más intuitiva de trabajar con textos y variables numéricas} es usar el paquete \texttt{\{glue\}}, que nos permite pegar cadenas de texto a variables numéricas de \textbf{forma simbólica}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1255,18 +1271,8 @@ Ya sabemos trabajar con textos :)
 
 ~
 
-\includegraphics[width=0.04\textwidth,height=\textheight]{img/logo_info.png} Consejos y tips
-
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Panel de ayuda}
-\end{itemize}
-
-No olvides que si escribes en la consola \texttt{?\ nombre\_funcion} se te abrirá un panel de ayuda para que veas los argumentos que necesitas, que opciones tienes y ejemplos de uso.
-
 \begin{figure}
-\includegraphics[width=17.08in]{./img/stringr} \caption{Paquete stringr para manejar cadenas de texto}\label{fig:stringr2}
+\includegraphics[width=17.08in]{./img/stringr} \caption{Paquete stringr para manejar cadenas de texto más complejas}\label{fig:stringr2}
 \end{figure}
 
 \hypertarget{vectores-luxf3gicos-truefalse}{%
@@ -1280,6 +1286,8 @@ No olvides que si escribes en la consola \texttt{?\ nombre\_funcion} se te abrir
   {[}X{]} Vectores de números
 \item
   {[}X{]} Vectores de caracteres
+\item
+  {[} {]} Vectores lógicos
 \end{itemize}
 
 Veamos un último tipo de vectores importante en todo lenguaje de programación: los \textbf{vectores lógicos}. Un \textbf{valor lógico} puede tomar tres valores: \texttt{TRUE} (guardado internamente como un \texttt{1}), \texttt{FALSE} (guardado internamente como un \texttt{0}) o \texttt{NA} (dato ausente, son las siglas de \emph{not available}). Estos valores son resultado de evaluar \textbf{condiciones lógicas}.
@@ -1330,6 +1338,8 @@ Dicha condición lógica puede hacerse con otros operadores como \texttt{\textle
 \begin{verbatim}
 ## [1] FALSE FALSE  TRUE  TRUE  TRUE FALSE
 \end{verbatim}
+
+~
 
 También podemos \textbf{comparar si es igual a otro elemento}, para lo que usaremos el operador \texttt{==}, pudiendo usar también su opuesto \texttt{!=} (distinto de).
 
@@ -1487,6 +1497,8 @@ Dichos \textbf{datos ausentes se pueden eliminar} (sin necesidad de sumarlos) co
 ## [1] "omit"
 \end{verbatim}
 
+~
+
 Hay un \textbf{tipo de dato muy particular, como resultado de operaciones no permitidas o cuyo resultado es indeterminado}, que en \texttt{R} lo veremos como \texttt{NaN}: \emph{not a number}, un resultado fruto de una indeterminación, como por ejemplo la operación \texttt{0/0} (cuyo límite no está definido). Importante saber que también existe una forma de denotar al infinito como \texttt{Inf}, siendo el resultado de algunas operaciones como \texttt{1/0} (cuyo límite si existe).
 
 \begin{Shaded}
@@ -1511,19 +1523,13 @@ Hay un \textbf{tipo de dato muy particular, como resultado de operaciones no per
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OtherTok{Inf} \OperatorTok{-}\StringTok{ }\DecValTok{2}
+\KeywordTok{sqrt}\NormalTok{(}\OperatorTok{-}\DecValTok{1}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## [1] Inf
+## Warning in sqrt(-1): Se han producido NaNs
 \end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\OtherTok{Inf} \OperatorTok{-}\StringTok{ }\OtherTok{Inf}
-\end{Highlighting}
-\end{Shaded}
 
 \begin{verbatim}
 ## [1] NaN
@@ -1648,6 +1654,8 @@ Otras veces no querremos seleccionar un elemento en concreto sino \textbf{filtra
 \begin{verbatim}
 ## [1] "hola" "tal"  "todo" "ok"   "?"
 \end{verbatim}
+
+~
 
 Sin embargo, \textbf{lo habitual es que dicho filtro que hagamos de una variable lo hagamos en base a una condición lógica}. Supongamos que \texttt{x\ \textless{}-\ c(7,\ 20,\ 18,\ 3,\ 19,\ 9,\ 13,\ 3,\ 45)} y \texttt{y\ \textless{}-\ c(17,\ 21,\ 58,\ 33,\ 15,\ 59,\ 13,\ 1,\ 45)} son las edades de dos grupos de personas y que queremos quedarnos solo con los mayores edad. ¿Tenemos que andar averiguando en que posición se encuentran para luego seleccionarlos? No, vamos a \textbf{seleccionar los elementos que cumplen una condición dada}.
 
@@ -1783,26 +1791,6 @@ Con la función \texttt{names()} además podemos, no solo consultar los nombres 
 \begin{verbatim}
 ##      años     móvil dirección 
 ##        31 613910687     33007
-\end{verbatim}
-
-~
-
-\includegraphics[width=0.04\textwidth,height=\textheight]{img/logo_info.png} Consejos y tips
-
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Diferencia de conjuntos}: una función muy útil para ver las diferencias entre dos conjuntos es \texttt{setdiff()}, una función que nos devuelve los elementos distintos entre dos conjuntos.
-\end{itemize}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{setdiff}\NormalTok{(y, z) }\CommentTok{# Elementos en y que no están en z (el segundo elemento que hemos quitado)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 17 21 58 33 15 59 13  1 45
 \end{verbatim}
 
 \hypertarget{which}{%
@@ -1967,45 +1955,112 @@ Otra forma de ordenar un vector es que \texttt{R} nos \textbf{devuelva los índi
 ## [1] -13  -3   0   1   2   5   7  10
 \end{verbatim}
 
+\hypertarget{fechas}{%
+\section{Fechas}\label{fechas}}
+
+Hay un tipo muy especial de datos que son los \textbf{datos tipo fecha}. Una fecha podría ser a priori una simple cadena de texto \texttt{"2021-04-21"} pero podemos usar la función \texttt{as.Date()} para que \texttt{R} entienda que esa cadena de texto representa un instante temporal. Fíjate la diferencia entre una fecha en texto y una fecha con \texttt{as.Date()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fecha_char <-}\StringTok{ "2021-04-21"}
+\NormalTok{fecha_date <-}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(fecha_char, }\DataTypeTok{format =} \StringTok{"%Y-%m-%d"}\NormalTok{)}
+\NormalTok{fecha_char }\OperatorTok{+}\StringTok{ }\DecValTok{1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Error in fecha_char + 1: argumento no-numérico para operador binario
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fecha_date }\OperatorTok{+}\StringTok{ }\DecValTok{1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "2021-04-22"
+\end{verbatim}
+
+En el momento en que el convertimos la cadena de texto a fecha, aunque se visualice como tal, internamente es un número, por lo que podemos restar fechas (días entre ambas), \textbf{podemos sumar números a fechas (fecha días después)}, etc.
+
 ~
 
-\includegraphics[width=0.04\textwidth,height=\textheight]{img/logo_info.png} Consejos y tips
+Dentro del entorno \texttt{\{tidyverse\}}, el paquete \texttt{\{lubridate\}} tiene implementadas \textbf{múltiples funciones para poder operar con fechas de forma sencilla e intuitiva}.
+
+\hypertarget{glosario3}{%
+\section{📚 Glosario}\label{glosario3}}
 
 \begin{itemize}
 \tightlist
 \item
-  \textbf{Argumentos por defecto}: la función \texttt{sort()} es un buen ejemplo de que las \textbf{funciones traen definidos argumentos por defecto} (aunque no los veamos a priori). La orden \texttt{sort(x)} en realidad está ejecutando \texttt{sort(x,\ decreasing\ =\ TRUE)}, pero como es su valor por defecto, nos podemos ahorrar incluirlo. Escribe \texttt{?\ help\ sort()} en la consola y verás como en la cabecera de la función ya hay preasignado un \texttt{decreasing\ =\ TRUE}.
+  \textbf{Media}: medida de centralización que consiste en sumar todos los elementos y dividirlos entre la cantidad de elementos sumados. A pesar de ser la más conocida, la media es \textbf{muy poco robusta}: dado un conjunto, si se introducen \textbf{valores atípicos o outliers} (valores muy grandes o muy pequeños), la media se perturbar con mucha facilidad. Dado un vector de valores \(x = (x_1, \ldots, x_n)\), se denota como \(\overline{x}\).
 \end{itemize}
 
-~
-
-~
+\[\overline{x} = \frac{\displaystyle \sum_{i=1}^{n}x_i}{n}\]
 
 \begin{itemize}
 \tightlist
 \item
-  \textbf{Recuperar un comando}: si haces click con el ratón en la consola y pulsas la flecha «arriba» del teclado, te irá apareciendo todo el \textbf{historial de órdenes ejecutadas}. Es una manera de ahorrar tiempo para ejecutar órdenes similares.
+  \textbf{Mediana}: medida de centralización que consiste en, tras ordenar los datos de menor a mayor, quedarnos con el valor que ocupa el medio (deja tantos números por debajo como por encima). Más robusta que la media aunque menos la moda. Dado un vector de valores \(x = (x_1, \ldots, x_n)\), se denota como \(Me_x\).
 \end{itemize}
 
-~
-
-~
+\[Me_x = \displaystyle \arg \min_{x_i} \left\lbrace F_i > 0.5 \right\rbrace, \quad F_i = \frac{\#\left\lbrace x_j \leq x_i \right\rbrace}{n}\]
 
 \begin{itemize}
 \tightlist
 \item
-  \textbf{Autocompletar}: si empiezas a escribir el nombre de una variable pero no te acuerdas exactamente de su nombre, si pulsas \textbf{tabulador}, \texttt{R} te autocompletará solo (prueba a escribir solo \texttt{variab} y pulsa tabulador)
+  \textbf{Moda}: medida de centralización que consiste en encontrar el valor más repetido (el valor \emph{trending}). Es la medida de centralización más robusta. Dado un vector de valores \(x = (x_1, \ldots, x_n)\), se denota como \(Mo_x\).
 \end{itemize}
+
+\[Mo_x = \displaystyle \arg \max_{x_i} f_i  , \quad f_i = \frac{\#\left\lbrace x_j = x_i \right\rbrace}{n}\]
+
+\hypertarget{consejos-y-tips-2}{%
+\section[ Consejos y tips]{\texorpdfstring{\protect\includegraphics[width=0.04\textwidth,height=\textheight]{img/logo_info.png} Consejos y tips}{ Consejos y tips}}\label{consejos-y-tips-2}}
+
+Operaciones elemento a elemento (vectorial)
+
+Es importante recordar que cada operación con un vector es una \textbf{operación realizada en CADA elemento del vector, devolviéndonos a su vez un vector} de salida de igual longitud que la variable con la que hemos operado.
 
 ~
 
+Diferencia de conjuntos
+
+Una función muy útil para ver las \textbf{diferencias entre dos conjuntos} es \texttt{setdiff()}, una función que nos devuelve los elementos distintos entre dos conjuntos.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y <-}\StringTok{ }\DecValTok{1}\OperatorTok{:}\DecValTok{10}
+\NormalTok{z <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{10}\NormalTok{)}
+\KeywordTok{setdiff}\NormalTok{(y, z) }\CommentTok{# Elementos en y que no están en z }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2 4 5 6 8 9
+\end{verbatim}
+
 ~
 
-\begin{itemize}
-\tightlist
-\item
-  \textbf{all, any}: existen dos funciones muy útiles en \texttt{R} para saber si \textbf{TODOS} o \textbf{ALGUNO} de los elementos de un vector cumple una condición. Las funciones \texttt{all()} y \texttt{any()} nos devolverá un único valor lógico. Estas funciones son muy útiles al final de los códigos para comprobar que las condiciones que tienen que verificar los datos se cumplen, y asegurarnos que el proceso se ha ejecutado correctamente (por ejemplo, que todos los datos sean positivos o no haya datos ausentes).
-\end{itemize}
+Argumentos por defecto
+
+La función \texttt{sort()} es un buen ejemplo de que las \textbf{funciones traen definidos argumentos por defecto} (aunque no los veamos a priori). La orden \texttt{sort(x)} en realidad está ejecutando \texttt{sort(x,\ decreasing\ =\ TRUE)}, pero como es su valor por defecto, nos podemos ahorrar incluirlo. Escribe \texttt{?\ help\ sort()} en la consola y verás como en la cabecera de la función ya hay preasignado un \texttt{decreasing\ =\ TRUE}.
+
+~
+
+Recuperar un comando y autocompletar
+
+Si haces click con el ratón en la consola y pulsas la flecha «arriba» del teclado, te irá apareciendo todo el \textbf{historial de órdenes ejecutadas}. Es una manera de ahorrar tiempo para ejecutar órdenes similares.
+
+~
+
+Si empiezas a escribir el nombre de una variable pero no te acuerdas exactamente de su nombre, si pulsas \textbf{tabulador}, \texttt{R} te \textbf{autocompletará} solo (prueba a escribir solo \texttt{variab} y pulsa tabulador)
+
+~
+
+all, any
+
+Existen dos funciones muy útiles en \texttt{R} para saber si \textbf{TODOS} o \textbf{ALGUNO} de los elementos de un vector cumple una condición. Las funciones \texttt{all()} y \texttt{any()} nos devolverá un único valor lógico. Estas funciones son muy útiles al final de los códigos para comprobar que las condiciones que tienen que verificar los datos se cumplen, y asegurarnos que el proceso se ha ejecutado correctamente (por ejemplo, que todos los datos sean positivos o no haya datos ausentes).
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2070,13 +2125,9 @@ Otra forma de ordenar un vector es que \texttt{R} nos \textbf{devuelva los índi
 
 ~
 
-~
+Constantes: número pi
 
-\begin{itemize}
-\tightlist
-\item
-  \textbf{El número pi}: \texttt{R} tiene una variable reservada al número \(\pi\), lista para ser usada, por lo que se \textbf{recomienda no nombrar a ninguna variable con dicho nombre}.
-\end{itemize}
+\texttt{R} tiene una variable reservada al número \(\pi\), lista para ser usada, por lo que se \textbf{recomienda no nombrar a ninguna variable con dicho nombre}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2090,13 +2141,9 @@ Otra forma de ordenar un vector es que \texttt{R} nos \textbf{devuelva los índi
 
 ~
 
-~
+Convertir tipos de datos
 
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Convertir datos}: a veces la lectura de variables numéricas de nuestros archivos puede hacer que un número, por ejemplo \texttt{1}, sea leído como la cadena de texto \texttt{"1"}, con la que no podemos operar como un número. Las funciones \texttt{as.numeric()}, \texttt{as.character()} y \texttt{as.logical()} nos permiten convertir una variable en tipo numérico, caracter o lógico, respectivamente.
-\end{itemize}
+A veces la lectura de variables numéricas de nuestros archivos puede hacer que un número, por ejemplo \texttt{1}, sea leído como la cadena de texto \texttt{"1"}, con la que no podemos operar como un número. Las funciones \texttt{as.numeric()}, \texttt{as.character()} y \texttt{as.logical()} nos permiten convertir una variable en tipo numérico, caracter o lógico, respectivamente.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2140,13 +2187,9 @@ Otra forma de ordenar un vector es que \texttt{R} nos \textbf{devuelva los índi
 
 ~
 
-~
+Optimizar nuestro código: eficiencia en tiempo de ejecución
 
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Optimizar nuestro código}: aunque parezca un tema menor, si tu código tarda 1 milisegundo más de lo que podría tardar de otra forma, si esa orden se repite muchas veces, ese milisegundo extra puede ser 5, 10 o 20 minutos más que tu código tardará en ejecutarse. Hay un paquete muy útil en \texttt{R} para medir tiempos de distintas órdenes que hacen lo mismo (el paquete \texttt{\{microbenchmark\}}), vamos a instalarlo.
-\end{itemize}
+Aunque parezca un tema menor, si tu código tarda 1 milisegundo más de lo que podría tardar de otra forma, si esa orden se repite muchas veces, ese milisegundo extra puede ser 5, 10 o 20 minutos más que tu código tardará en ejecutarse. Hay un paquete muy útil en \texttt{R} para medir tiempos de distintas órdenes que hacen lo mismo (el paquete \texttt{\{microbenchmark\}}), vamos a instalarlo.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2168,48 +2211,15 @@ Este paquete contiene una orden para comparar el tiempo de dos órdenes: necesit
 
 \begin{verbatim}
 ## Unit: microseconds
-##         expr    min     lq     mean median      uq      max neval cld
-##      sort(x) 49.309 64.381 84.76481 75.991 92.4610 2920.357  1000   b
-##  x[order(x)] 33.989 42.579 55.01103 50.752 62.2955  130.037  1000  a
+##         expr    min      lq      mean  median       uq     max neval cld
+##      sort(x) 61.416 94.5095 120.90494 118.970 139.2015 321.411  1000   b
+##  x[order(x)] 41.946 60.0830  80.81159  78.301  93.0140 407.176  1000  a
 \end{verbatim}
 
 Sí, estás viendo bien: aunque a priori parezca contraintuitivo, es más corto obtener los índices ordenados de un vector, y luego reordenarlo en base a esos índices, que la ordenación directa a través del comando \texttt{sort()} (ya que usan algoritmos de ordenación distintos).
 
-\hypertarget{fechas}{%
-\section{Fechas}\label{fechas}}
-
-Hay un tipo muy especial de datos que son los \textbf{datos tipo fecha}. Una fecha podría ser a priori una simple cadena de texto \texttt{"2021-04-21"} pero podemos usar la función \texttt{as.Date()} para que \texttt{R} entienda que esa cadena de texto representa un instante temporal. Fíjate la diferencia entre una fecha en texto y una fecha con \texttt{as.Date()}.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{fecha_char <-}\StringTok{ "2021-04-21"}
-\NormalTok{fecha_date <-}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(fecha_char, }\DataTypeTok{format =} \StringTok{"%Y-%m-%d"}\NormalTok{)}
-\NormalTok{fecha_char }\OperatorTok{+}\StringTok{ }\DecValTok{1}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Error in fecha_char + 1: argumento no-numérico para operador binario
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{fecha_date }\OperatorTok{+}\StringTok{ }\DecValTok{1}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] "2021-04-22"
-\end{verbatim}
-
-En el momento en que el convertimos la cadena de texto a fecha, aunque se visualice como tal, internamente es un número, por lo que podemos restar fechas (días entre ambas), podemos sumar números a fechas (fecha días después), etc.
-
-~
-
-\includegraphics[width=0.04\textwidth,height=\textheight]{img/logo_info.png} Dentro del entorno \texttt{\{tidyverse\}}, el paquete \texttt{\{lubridate\}} tiene implementadas múltiples funciones para poder operar con fechas de forma sencilla e intuitiva.
-
-\hypertarget{ejercicios}{%
-\section{📝 Ejercicios}\label{ejercicios}}
+\hypertarget{ejercicios-1}{%
+\section{📝 Ejercicios}\label{ejercicios-1}}
 
 📝Ejercicio 1: define un vector que contenga los números 1, 10, -1 y 2, y guárdalo en una variable llamada \texttt{vector\_num}. Tras definirlo, calcula su suma y la versión ordenada del vector definido como sumar 1 a cada elemento de \texttt{vector\_num}.
 
@@ -2366,7 +2376,7 @@ En el momento en que el convertimos la cadena de texto a fecha, aunque se visual
 \end{Shaded}
 
 \begin{verbatim}
-## Time difference of 11675 days
+## Time difference of 11676 days
 \end{verbatim}
 
 \hypertarget{primer-projecto-con-r}{%
@@ -2472,7 +2482,7 @@ Este será nuestro \textbf{código principal} (puedes ponerle el nombre que quie
 
 ~
 
-La ventaja de tener los códigos agrupados por proyectos es que si estamos trabajando en varios a la vez podemos saltar de uno a otro, visualizando solo los códigos de un proyecto, y no los 100 archivos \texttt{sin\_titulo131.R} que vayamos creando.
+La \textbf{ventaja de tener los códigos agrupados por proyectos} es que si estamos trabajando en varios a la vez podemos saltar de uno a otro, visualizando solo los códigos de un proyecto, y no los 100 archivos \texttt{sin\_titulo131.R} que vayamos creando.
 
 \begin{figure}
 
@@ -2482,32 +2492,6 @@ La ventaja de tener los códigos agrupados por proyectos es que si estamos traba
 
 \caption{Saltar de proyecto en proyecto.}\label{fig:crear-proyecto9}
 \end{figure}
-
-~
-
-\includegraphics[width=0.04\textwidth,height=\textheight]{img/logo_info.png} Consejos y tips
-
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Comentarios}
-\end{itemize}
-
-Es crucial que intentes \textbf{documentar al máximo tu código} y que te acostumbres a ello desde el principio, dejando explícito que haces en cada paso, tanto para ti como para otra persona que pueda leer tu código y lo entienda. Para ello usaremos \texttt{\#\ comentario} cuando queramos dejar comentarios en el código. Dichas partes, amén de estar en otro color, no son leídas por \texttt{R} ni ejecutadas: son comentarios que el programa «no ve», solo son para nosotros.
-
-~
-
-~
-
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Limpiar entorno}
-\end{itemize}
-
-A veces empezamos a programar sin apagar el ordenador y tenemos variables guardadas de otros días que pueden generar conflictos y consumo de memoria. Para asegurarnos que cada vez que empezamos, lo hacemos de cero, es altamente recomendable empezar el código con \texttt{rm(list\ =\ ls())}. La función \texttt{ls()} nos devuelve todas las variables que tenemos definidas en nuestro entorno, y la función \texttt{rm()} nos las elimina.
-
-~
 
 \hypertarget{directorios-de-trabajo-y-cabecera}{%
 \section{Directorios de trabajo y cabecera}\label{directorios-de-trabajo-y-cabecera}}
@@ -2678,10 +2662,10 @@ Prueba a escribir algunas funciones que hemos aprendido con dichas variables y v
 \end{Shaded}
 
 \begin{verbatim}
-## Time difference of 239 days
+## Time difference of 240 days
 \end{verbatim}
 
-La función \texttt{cat()} nos muestra por consola el texto que le pasemos de argumento.
+La función \texttt{cat()} nos muestra por consola el texto que le pasemos de argumento (\textbf{función especial para mensajes de alerta} por consola)
 
 \begin{figure}
 
@@ -2694,51 +2678,40 @@ La función \texttt{cat()} nos muestra por consola el texto que le pasemos de ar
 
 Ya hemos ejecutado nuestro primer proyecto en \texttt{.R} :)
 
+\hypertarget{consejos-y-tips-3}{%
+\section[ Consejos y tips]{\texorpdfstring{\protect\includegraphics[width=0.04\textwidth,height=\textheight]{img/logo_info.png} Consejos y tips}{ Consejos y tips}}\label{consejos-y-tips-3}}
+
+Comentarios en los códigos
+
+Es crucial que intentes \textbf{documentar al máximo tu código} y que te acostumbres a ello desde el principio, dejando explícito que haces en cada paso, tanto para ti como para otra persona que pueda leer tu código y lo entienda. Para ello usaremos \texttt{\#\ comentario} cuando queramos dejar comentarios en el código. Dichas partes, amén de estar en otro color, no son leídas por \texttt{R} ni ejecutadas: son comentarios que el programa «no ve», solo son para nosotros.
+
 ~
 
-\includegraphics[width=0.04\textwidth,height=\textheight]{img/logo_info.png} Consejos y tips
+Limpiar el entorno
 
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Anular warnings}
-\end{itemize}
+A veces empezamos a programar sin apagar el ordenador y tenemos variables guardadas de otros días que pueden generar conflictos y consumo de memoria. Para asegurarnos que cada vez que empezamos, lo hacemos de cero, es altamente recomendable empezar el código con \texttt{rm(list\ =\ ls())}. La función \texttt{ls()} nos devuelve todas las variables que tenemos definidas en nuestro entorno, y la función \texttt{rm()} nos las elimina.
+
+~
+
+Anular warnings
 
 Algunas funciones pueden arrojarse ciertas advertencias que nunca está de más leer. Pero si dichos mensajes de alerta los tenemos controlados y no queremos que nos ensucie la ejecución en la consola, podemos poner al inicio del código \texttt{assign("last.warning",\ NULL,\ envir\ =\ baseenv())} para limpiar los warnings antiguos y \texttt{options(warn\ =\ -1)} para desactivarlos.
 
 ~
 
-~
-
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Limpiar consola}
-\end{itemize}
+Limpiar consola
 
 Podemos limpiar la consola clickando en al escoba que tenemos en la parte superior derecha de la misma. Esta acción \textbf{no nos elimina ninguna variable}, simplemente nos limpia la consola de mensajes.
 
 ~
 
-~
-
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Archivo sin guardar}
-\end{itemize}
+Guardar los scripts
 
 Los scripts que tengas sin guardar tendrán un asterisco \texttt{*} al final del nombre en la pestaña superior de la ventana.
 
 ~
 
-~
-
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Fecha y hora de hoy}
-\end{itemize}
+Fecha y hora de hoy
 
 La función \texttt{Sys.time()} accede al sistema de nuestro ordenador para decirnos la \textbf{fecha y hora del momento de la ejecución} de dicha función.
 
@@ -2749,25 +2722,19 @@ La función \texttt{Sys.time()} accede al sistema de nuestro ordenador para deci
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "2021-08-28 23:11:29 CEST"
+## [1] "2021-08-29 16:04:29 CEST"
 \end{verbatim}
 
 ~
 
-~
-
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Anular notación exponencial}
-\end{itemize}
+Cambiar la notación exponencial
 
 Por defecto, \texttt{R} muestra los números en formato de notación exponencial. Por ejemplo, el número \texttt{1000000} nos lo mostrará por defecto como \texttt{1e+06}. A veces podemos querer que se muestre con todas sus cifras (por ejemplo, en el título o leyenda de una gráfica): para anular la notación exponencial, escribe al inicio del código \texttt{options("scipen"\ =\ 10)}.
 
 \hypertarget{datos}{%
-\chapter{Tipos de datos II: bases de datos}\label{datos}}
+\chapter{Tipos de datos II: tablas}\label{datos}}
 
-Sabemos un poco de la gramática y ortografía de nuestro lenguaje, y sabemos las funcionalidades básicas de nuestro Word. Vamos a encontrar la mejor trama para la novela: \textbf{hablemos de datos}.
+Sabemos un poco de la gramática y ortografía de nuestro lenguaje, y sabemos las funcionalidades básicas de nuestro Word. Vamos a encontrar la mejor trama para la novela: \textbf{hablemos de estructuras de datos}.
 
 \hypertarget{matrices}{%
 \section{Matrices}\label{matrices}}
@@ -2931,14 +2898,6 @@ También podemos definir una \textbf{matriz a partir de un vector numérico}, re
 
 ~
 
-\includegraphics[width=0.04\textwidth,height=\textheight]{img/logo_info.png} Consejos y tips
-
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Matriz transpuesta}
-\end{itemize}
-
 Dada una matriz \texttt{x} podemos darle vuelta (lo que se conoce como \textbf{matriz transpuesta}, donde filas pasan a ser columnas y viceversa) con la función \texttt{t()}.
 
 \begin{Shaded}
@@ -2969,68 +2928,6 @@ Dada una matriz \texttt{x} podemos darle vuelta (lo que se conoce como \textbf{m
 ## edades    14        24        56        31    20        87    73
 ## tlf       NA 683839390 621539732 618211286    NA 914727164    NA
 ## cp     33007     28019     37005     18003 33091     25073 17140
-\end{verbatim}
-
-~
-
-📝Ejercicio: define una matriz de ceros de 3 filas y 7 columnas. Tras hacerlo calcula su transpuesta y obtén sus dimensiones
-
-\begin{itemize}
-\tightlist
-\item
-  Solución:
-\end{itemize}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{# Matriz}
-\NormalTok{matriz <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DataTypeTok{nrow =} \DecValTok{3}\NormalTok{, }\DataTypeTok{ncol =} \DecValTok{7}\NormalTok{)}
-
-\CommentTok{# Transpuesta}
-\KeywordTok{t}\NormalTok{(matriz)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##      [,1] [,2] [,3]
-## [1,]    0    0    0
-## [2,]    0    0    0
-## [3,]    0    0    0
-## [4,]    0    0    0
-## [5,]    0    0    0
-## [6,]    0    0    0
-## [7,]    0    0    0
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{# Dimensiones transpuesta}
-\KeywordTok{dim}\NormalTok{(}\KeywordTok{t}\NormalTok{(matriz))}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 7 3
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{ncol}\NormalTok{(}\KeywordTok{t}\NormalTok{(matriz))}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 3
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{nrow}\NormalTok{(}\KeywordTok{t}\NormalTok{(matriz))}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 7
 \end{verbatim}
 
 \hypertarget{apply-vs-bucles}{%
@@ -3150,55 +3047,12 @@ Veamos qué es más eficiente con el ya conocido paquete \texttt{\{microbenchmar
 ##                                                                           expr
 ##  for (i in 1:dim(x)[1]) {     suma_por_filas[i] <- sum(x[i, ], na.rm = TRUE) }
 ##                                apply(x, MARGIN = 1, FUN = "sum", na.rm = TRUE)
-##       min        lq       mean    median       uq       max neval cld
-##  2603.074 3888.9530 4422.26731 4326.6070 4720.151 10119.667   100   b
-##    34.942   51.4175   71.20082   68.7475   85.139   156.672   100  a
+##       min        lq      mean   median        uq      max neval cld
+##  2164.480 3187.4840 3609.4142 3507.462 4077.0300 7276.474   100   b
+##    24.435   41.4115   61.2928   56.946   79.6105  141.369   100  a
 \end{verbatim}
 
 \textbf{¡El bucle nos tarda 50 veces más que el \texttt{apply}!} Di no a los bucles: casi siempre hay una forma mejor de hacerlo.
-
-~
-
-📝Ejercicio: calcula la suma de cada fila de la matriz \texttt{matriz\ \textless{}-\ matrix(1:12,\ nrow\ =\ 4)} usando un bucle. Haz lo mismo evitando usar bucles.
-
-\begin{itemize}
-\tightlist
-\item
-  Solución:
-\end{itemize}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{# Matriz}
-\NormalTok{matriz <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{12}\NormalTok{, }\DataTypeTok{nrow =} \DecValTok{4}\NormalTok{)}
-
-\CommentTok{# Con bucle (recorremos sus filas)}
-\NormalTok{suma <-}\StringTok{ }\KeywordTok{rep}\NormalTok{(}\DecValTok{0}\NormalTok{, }\KeywordTok{nrow}\NormalTok{(matriz)) }\CommentTok{# Definimos un vector de 0's con tantos elementos como filas, donde iremos metiendo los valores de la suma}
-\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\KeywordTok{nrow}\NormalTok{(matriz)) \{}
-  
-\NormalTok{  suma[i] <-}\StringTok{ }\KeywordTok{sum}\NormalTok{(matriz[i, ]) }\CommentTok{# Sumamos la fila i}
-\NormalTok{\}}
-\NormalTok{suma}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 15 18 21 24
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{# Sin bucle (MARGIN = 1 ya que es una operación por filas)}
-\NormalTok{suma <-}\StringTok{ }\KeywordTok{apply}\NormalTok{(matriz, }\DataTypeTok{MARGIN =} \DecValTok{1}\NormalTok{, }\DataTypeTok{FUN =} \StringTok{"sum"}\NormalTok{)}
-\NormalTok{suma}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 15 18 21 24
-\end{verbatim}
-
-~
 
 \hypertarget{tablas-data.frames}{%
 \section{Tablas: data.frames}\label{tablas-data.frames}}
@@ -3225,7 +3079,7 @@ Además del nombre de las columnas que ha heredado la matriz \texttt{x} de la co
 
 \textbf{¿Has visto lo que ha sucedido?}
 
-Como \textbf{una matriz solo puede tener un tipo de dato}, al añadir una variable de tipo texto, ha convertido los números también a texto poniéndole comillas: hemos roto la integridad de nuestro dato. Una forma de añadir \textbf{nombre a los registros, sin incluirlo como variable}, es usando la función \texttt{row.names()}.
+Como \textbf{una matriz SOLO puede tener un tipo de dato}, al añadir una variable de tipo textos, ha convertido los números también a texto poniéndole comillas: \textbf{hemos roto la integridad de nuestro dato}. Una forma de añadir \textbf{nombre a los registros, sin incluirlo como variable}, es usando la función \texttt{row.names()}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3244,6 +3098,8 @@ Como \textbf{una matriz solo puede tener un tipo de dato}, al añadir una variab
 ## Sandra     87 914727164 25073
 ## Javi       73        NA 17140
 \end{verbatim}
+
+~
 
 \emph{¿Qué sucede si realmente queremos añadir variables cuyos tipos sean distintos (¡ojo, pero con la misma longitud!)?}
 
@@ -3268,7 +3124,21 @@ Vamos a crear nuevas variables de texto \texttt{nombres} y \texttt{apellidos}, u
 \end{Highlighting}
 \end{Shaded}
 
-Seguimos teniendo 7 registros, uno por persona pero ahora tenemos un popurrí de variables, de la \textbf{misma longitud pero de tipos distintos}: \texttt{(edades,\ tlf,\ cp)} son variables numéricas, \texttt{(nombres,\ apellidos)} son variables de texto, \texttt{casado} es una variable lógica y \texttt{fecha\_creacion} de tipo fecha. \textbf{¿Qué sucederá si yo intento mezclar todo en una matriz?}
+Seguimos teniendo 7 registros, uno por persona pero ahora tenemos un popurrí de variables, de la \textbf{misma longitud pero de tipos distintos}:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{(edades,\ tlf,\ cp)} son variables numéricas.
+\item
+  \texttt{(nombres,\ apellidos)} son variables de texto.
+\item
+  \texttt{casado} es una variable lógica.
+\item
+  \texttt{fecha\_creacion} de tipo fecha.
+\end{itemize}
+
+\textbf{¿Qué sucedería si yo intento mezclar todo en una matriz?}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3289,7 +3159,7 @@ Seguimos teniendo 7 registros, uno por persona pero ahora tenemos un popurrí de
 ## [7,] "Javi"   "Ortiz"     "73"   NA          "17140" "FALSE" "10984"
 \end{verbatim}
 
-Efectivamente: como en una matriz solo puede haber datos de un tipo, los números los convierte a texto, las variables lógicas las converte a texto (\texttt{TRUE} es un valor lógico, \texttt{"TRUE"} es un texto, como \texttt{"Pepito"}, sin significado lógico - booleano - de verdadero/falso) y las fechas las ha convertido a texto (aunque las veas igual, ya no son de tipo de fecha, son texto y no podemos operar con ellas).
+Efectivamente: como \textbf{en una matriz solo puede haber datos de un tipo}, los números los convierte a texto, las variables lógicas las convierte a texto (\texttt{TRUE} es un valor lógico, \texttt{"TRUE"} es un texto, como \texttt{"Pepito"}, sin significado lógico - booleano - de verdadero/falso) y las fechas las ha convertido a texto (aunque las veas igual, ya no son de tipo de fecha, son texto y no podemos operar con ellas).
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3312,6 +3182,8 @@ Efectivamente: como en una matriz solo puede haber datos de un tipo, los número
 \begin{verbatim}
 ## Error in x[1, 7] - x[2, 7]: argumento no-numérico para operador binario
 \end{verbatim}
+
+~
 
 He aquí LA pregunta: \textbf{¿cómo juntar variables de distinto tipo, sin cambiar su naturaleza, como cuando juntamos datos en una tabla de excel?}
 
@@ -3341,63 +3213,6 @@ El formato de tabla de datos en \texttt{R} que vamos a empezar a usar se llama \
 
 \textbf{¡TENEMOS NUESTRO PRIMER CONJUNTO DE DATOS!}
 
-~
-
-\includegraphics[width=0.04\textwidth,height=\textheight]{img/logo_info.png} Consejos y tips
-
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Acceso a librería}
-\end{itemize}
-
-A veces puede que no queramos cargar todo un paquete sino solo una función del mismo, para lo que es suficiente \texttt{nombre\_paquete::nombre\_funcion}.
-
-~
-
-~
-
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Nombre de variables}
-\end{itemize}
-
-La función \texttt{names()} no solo sirve para consultar los nombres de las variables de un \texttt{data.frame} sino también para cambiarlos a nuestro gusto.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{# Consultamos nombres}
-\KeywordTok{names}\NormalTok{(tabla)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] "Nombre"            "Apellido"          "Edad"             
-## [4] "Teléfono"          "Código.Postal"     "Casado"           
-## [7] "Fecha_de_creación"
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{# Cambiamos nombres}
-\KeywordTok{names}\NormalTok{(tabla) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"nombre_persona"}\NormalTok{, }\StringTok{"apellido_persona"}\NormalTok{, }\StringTok{"edad"}\NormalTok{, }\StringTok{"tlf"}\NormalTok{,}
-                  \StringTok{"cp"}\NormalTok{, }\StringTok{"casado"}\NormalTok{, }\StringTok{"f_creacion"}\NormalTok{)}
-\NormalTok{tabla}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##   nombre_persona apellido_persona edad       tlf    cp casado f_creacion
-## 1          Sonia            Pérez   14        NA 33007   TRUE 2021-03-04
-## 2          Carla         González   24 683839390 28019  FALSE 2020-10-12
-## 3         Pepito        Fernández   56 621539732 37005  FALSE 1990-04-05
-## 4         Carlos         Martínez   31 618211286 18003     NA 2019-09-10
-## 5           Lara          Liébana   20        NA 33091   TRUE 2017-03-21
-## 6         Sandra           García   87 914727164 25073  FALSE 2020-07-07
-## 7           Javi            Ortiz   73        NA 17140  FALSE 2000-01-28
-\end{verbatim}
-
 \hypertarget{data.frames-selecciuxf3n-manual-de-columnas-y-filas}{%
 \subsection{Data.frames: selección manual de columnas y filas}\label{data.frames-selecciuxf3n-manual-de-columnas-y-filas}}
 
@@ -3413,14 +3228,14 @@ Si tenemos un \texttt{data.frame} ya creado y queremos \textbf{añadir una colum
 \end{Shaded}
 
 \begin{verbatim}
-##   nombre_persona apellido_persona edad       tlf    cp casado f_creacion
-## 1          Sonia            Pérez   14        NA 33007   TRUE 2021-03-04
-## 2          Carla         González   24 683839390 28019  FALSE 2020-10-12
-## 3         Pepito        Fernández   56 621539732 37005  FALSE 1990-04-05
-## 4         Carlos         Martínez   31 618211286 18003     NA 2019-09-10
-## 5           Lara          Liébana   20        NA 33091   TRUE 2017-03-21
-## 6         Sandra           García   87 914727164 25073  FALSE 2020-07-07
-## 7           Javi            Ortiz   73        NA 17140  FALSE 2000-01-28
+##   Nombre  Apellido Edad  Teléfono Código.Postal Casado Fecha_de_creación
+## 1  Sonia     Pérez   14        NA         33007   TRUE        2021-03-04
+## 2  Carla  González   24 683839390         28019  FALSE        2020-10-12
+## 3 Pepito Fernández   56 621539732         37005  FALSE        1990-04-05
+## 4 Carlos  Martínez   31 618211286         18003     NA        2019-09-10
+## 5   Lara   Liébana   20        NA         33091   TRUE        2017-03-21
+## 6 Sandra    García   87 914727164         25073  FALSE        2020-07-07
+## 7   Javi     Ortiz   73        NA         17140  FALSE        2000-01-28
 ##   hermanos
 ## 1        0
 ## 2        0
@@ -3450,8 +3265,8 @@ Si tenemos un \texttt{data.frame} ya creado y queremos \textbf{añadir una colum
 \end{Shaded}
 
 \begin{verbatim}
-##   nombre_persona apellido_persona edad tlf    cp casado f_creacion hermanos
-## 5           Lara          Liébana   20  NA 33091   TRUE 2017-03-21        2
+##   Nombre Apellido Edad Teléfono Código.Postal Casado Fecha_de_creación hermanos
+## 5   Lara  Liébana   20       NA         33091   TRUE        2017-03-21        2
 \end{verbatim}
 
 \begin{Shaded}
@@ -3643,7 +3458,165 @@ Por ejemplo, vamos a seleccionar solo los nombres y apellidos de aquellas person
 ## 136          7.7 virginica
 \end{verbatim}
 
-📝Ejercicio: del conjunto \texttt{iris} del paquete \texttt{datasets} obtén el nombre de las variables, y selecciona aquellas filas cuya variable \texttt{Petal.Width} sea distinta de 0.2, y quédate solo con las variables \texttt{Sepal.Length}, \texttt{Sepal.Width} y \texttt{Species}. Calcula el número de filas borradas. Tras hacer todo ello, traduce a castellano el nombre de las columnas del \texttt{data.frame} filtrado.
+\hypertarget{consejos-y-tips-4}{%
+\section[ Consejos y tips]{\texorpdfstring{\protect\includegraphics[width=0.04\textwidth,height=\textheight]{img/logo_info.png} Consejos y tips}{ Consejos y tips}}\label{consejos-y-tips-4}}
+
+Acceso a librería
+
+A veces puede que no queramos cargar todo un paquete sino solo una función del mismo, para lo que es suficiente \texttt{nombre\_paquete::nombre\_funcion}.
+
+~
+
+Nombre de variables
+
+La función \texttt{names()} no solo sirve para consultar los nombres de las variables de un \texttt{data.frame} sino también para cambiarlos a nuestro gusto.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Consultamos nombres}
+\KeywordTok{names}\NormalTok{(tabla)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Nombre"            "Apellido"          "Edad"             
+## [4] "Teléfono"          "Código.Postal"     "Casado"           
+## [7] "Fecha_de_creación" "hermanos"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Cambiamos nombres}
+\KeywordTok{names}\NormalTok{(tabla) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"nombre_persona"}\NormalTok{, }\StringTok{"apellido_persona"}\NormalTok{, }\StringTok{"edad"}\NormalTok{, }\StringTok{"tlf"}\NormalTok{,}
+                  \StringTok{"cp"}\NormalTok{, }\StringTok{"casado"}\NormalTok{, }\StringTok{"f_creacion"}\NormalTok{)}
+\NormalTok{tabla}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   nombre_persona apellido_persona edad       tlf    cp casado f_creacion NA
+## 1          Sonia            Pérez   14        NA 33007   TRUE 2021-03-04  0
+## 2          Carla         González   24 683839390 28019  FALSE 2020-10-12  0
+## 3         Pepito        Fernández   56 621539732 37005  FALSE 1990-04-05  1
+## 4         Carlos         Martínez   31 618211286 18003     NA 2019-09-10  5
+## 5           Lara          Liébana   20        NA 33091   TRUE 2017-03-21  2
+## 6         Sandra           García   87 914727164 25073  FALSE 2020-07-07  3
+## 7           Javi            Ortiz   73        NA 17140  FALSE 2000-01-28  0
+\end{verbatim}
+
+~
+
+Paquete \texttt{\{tibble\}}
+
+En dicho paquete tienes más \textbf{funciones para una gestión más ágil, eficiente y coherente de los \texttt{data.frame}}. Ver \url{https://tibble.tidyverse.org/}.
+
+\hypertarget{ejercicios-2}{%
+\section{📝 Ejercicios}\label{ejercicios-2}}
+
+Ejercicio 1: define una matriz de ceros de 3 filas y 7 columnas. Tras hacerlo calcula su transpuesta y obtén sus dimensiones
+
+\begin{itemize}
+\tightlist
+\item
+  Solución:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Matriz}
+\NormalTok{matriz <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DataTypeTok{nrow =} \DecValTok{3}\NormalTok{, }\DataTypeTok{ncol =} \DecValTok{7}\NormalTok{)}
+
+\CommentTok{# Transpuesta}
+\KeywordTok{t}\NormalTok{(matriz)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]    0    0    0
+## [2,]    0    0    0
+## [3,]    0    0    0
+## [4,]    0    0    0
+## [5,]    0    0    0
+## [6,]    0    0    0
+## [7,]    0    0    0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Dimensiones transpuesta}
+\KeywordTok{dim}\NormalTok{(}\KeywordTok{t}\NormalTok{(matriz))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 7 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ncol}\NormalTok{(}\KeywordTok{t}\NormalTok{(matriz))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{nrow}\NormalTok{(}\KeywordTok{t}\NormalTok{(matriz))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 7
+\end{verbatim}
+
+~
+
+Ejercicio 2: calcula la suma de cada fila de la matriz \texttt{matriz\ \textless{}-\ matrix(1:12,\ nrow\ =\ 4)} usando un bucle. Haz lo mismo evitando usar bucles.
+
+\begin{itemize}
+\tightlist
+\item
+  Solución:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Matriz}
+\NormalTok{matriz <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{12}\NormalTok{, }\DataTypeTok{nrow =} \DecValTok{4}\NormalTok{)}
+
+\CommentTok{# Con bucle (recorremos sus filas)}
+\NormalTok{suma <-}\StringTok{ }\KeywordTok{rep}\NormalTok{(}\DecValTok{0}\NormalTok{, }\KeywordTok{nrow}\NormalTok{(matriz)) }\CommentTok{# Definimos un vector de 0's con tantos elementos como filas, donde iremos metiendo los valores de la suma}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\KeywordTok{nrow}\NormalTok{(matriz)) \{}
+  
+\NormalTok{  suma[i] <-}\StringTok{ }\KeywordTok{sum}\NormalTok{(matriz[i, ]) }\CommentTok{# Sumamos la fila i}
+\NormalTok{\}}
+\NormalTok{suma}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 15 18 21 24
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Sin bucle (MARGIN = 1 ya que es una operación por filas)}
+\NormalTok{suma <-}\StringTok{ }\KeywordTok{apply}\NormalTok{(matriz, }\DataTypeTok{MARGIN =} \DecValTok{1}\NormalTok{, }\DataTypeTok{FUN =} \StringTok{"sum"}\NormalTok{)}
+\NormalTok{suma}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 15 18 21 24
+\end{verbatim}
+
+~
+
+Ejercicio 3: del conjunto \texttt{iris} del paquete \texttt{datasets} obtén el nombre de las variables, y selecciona aquellas filas cuya variable \texttt{Petal.Width} sea distinta de 0.2, y quédate solo con las variables \texttt{Sepal.Length}, \texttt{Sepal.Width} y \texttt{Species}. Calcula el número de filas borradas. Tras hacer todo ello, traduce a castellano el nombre de las columnas del \texttt{data.frame} filtrado.
 
 \begin{itemize}
 \tightlist
@@ -4150,15 +4123,10 @@ No siempre trabajamos en \texttt{R} y a veces necesitamos una exportación de un
 
 Podemos consultar con \texttt{?\ write.csv} las distintas opciones de exportaciones (por ejemplo, con \texttt{row.names} podemos indicarle si queremos nombres de filas o no, y con \texttt{col.names} si queremos exportar la cabecera con el nombre de las columnas).
 
-~
+\hypertarget{consejos-y-tips-5}{%
+\section[ Consejos y tips]{\texorpdfstring{\protect\includegraphics[width=0.04\textwidth,height=\textheight]{img/logo_info.png} Consejos y tips}{ Consejos y tips}}\label{consejos-y-tips-5}}
 
-\includegraphics[width=0.04\textwidth,height=\textheight]{img/logo_info.png} Consejos y tips
-
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Paquetes \texttt{\{readr\}} y \texttt{\{tidyr\}}}
-\end{itemize}
+Paquetes \texttt{\{readr\}} y \texttt{\{tidyr\}}
 
 En dichos paquetes tienes más funciones para una \textbf{fácil exportación y tabulación de distintos tipos de datos}, sea el formato que sea. Ver \url{https://tidyr.tidyverse.org/} y \url{https://readr.tidyverse.org/}
 
@@ -4182,37 +4150,13 @@ En dichos paquetes tienes más funciones para una \textbf{fácil exportación y 
 
 ~
 
-~
-
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Paquete \texttt{\{tibble\}}}
-\end{itemize}
-
-En dicho paquete tienes más \textbf{funciones para una gestión más ágil, eficiente y coherente de los \texttt{data.frame}}. Ver \url{https://tibble.tidyverse.org/}.
-
-~
-
-~
-
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Paquete \texttt{\{rvest\}}}
-\end{itemize}
+Paquete \texttt{\{rvest\}}
 
 En dicho paquete tienes más \textbf{funciones para una lectura directamente de una página web (no desde un documento, desde la propia página web, como si estuvieras navegando en ella)}. Ver \url{https://github.com/tidyverse/rvest}.
 
 ~
 
-~
-
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Secciones}
-\end{itemize}
+Secciones en el código
 
 Los comentarios no solo sirven para documentar el código sino que además pueden servirnos para \textbf{construir secciones de código}. Prueba a escribir un comentario con varias \texttt{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}: ¿ves la flecha que te aparece en la parte izquierda? Sirve para minimizar o maximizar trozos de código, de forma que tu código aún más limpio.
 
@@ -4227,13 +4171,7 @@ Los comentarios no solo sirven para documentar el código sino que además puede
 
 ~
 
-~
-
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Líneas de código}
-\end{itemize}
+Líneas de código en los errores
 
 Dado que los errores del código nos vendrán referenciados en la consola por el número de línea donde fueron detectados, puede sernos muy útil mostrar dichos números en la barra lateral izquierda, yendo a \texttt{Tools\ \textless{}\textless{}\ Global\ Options\ \textless{}\textless{}\ Code\ \textless{}\textless{}\ Display\ \textless{}\textless{}\ Show\ line\ numbers}
 
@@ -4248,13 +4186,7 @@ Dado que los errores del código nos vendrán referenciados en la consola por el
 
 ~
 
-~
-
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Margen derecho}
-\end{itemize}
+Margen derecho en la ventana de scripts
 
 Aunque no afecte a nuestro código escribir todo en una línea sin saltos de línea, no somos bárbaros/as. ¿Por qué cuadno escribes en un Word lo haces en formato vertical pero cuando programas pones todas las órdenes seguidas? Recuerda que la legibilidad de tu código no solo te ahorrará tiempo sino que te hará programar mejor. ¿Cómo podemos fijar un margen imaginario para nosotros ser quienes demos al \emph{ENTER}? Yendo a \texttt{Tools\ \textless{}\textless{}\ Global\ Options\ \textless{}\textless{}\ Code\ \textless{}\textless{}\ Display\ \textless{}\textless{}\ Show\ margin} (es un margen imaginario para ser nosotros quienes lo hagamos efectivo, a \texttt{R} le da igual)
 
@@ -4599,25 +4531,16 @@ Aunque es una opción muy poco usada, existe una estructura de control llamada \
 ## [1] 100
 \end{verbatim}
 
-\includegraphics[width=0.04\textwidth,height=\textheight]{img/logo_info.png} Consejos y tips
+\hypertarget{consejos-y-tips-6}{%
+\section[ Consejos y tips]{\texorpdfstring{\protect\includegraphics[width=0.04\textwidth,height=\textheight]{img/logo_info.png} Consejos y tips}{ Consejos y tips}}\label{consejos-y-tips-6}}
 
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Cuidado con los bucles infinitos}
-\end{itemize}
+Cuidado con los bucles infinitos
 
 Las estucturas \texttt{while\{\}} y \texttt{repeat\{\}} son de las menos usadas por su peligrosidad, ya que si no incluimos un \texttt{break} o la condición nunca llega a ser \texttt{TRUE}, el bucle seguirá ejecutándose de forma infinita y solo podrá ser detenido abortando la ejecución con la tecla \texttt{ESC}.
 
 ~
 
-~
-
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Código limpio}
-\end{itemize}
+Código limpio: minimizando estructuras de control en el código
 
 Puedes minimizar las estructuras de control pulsando en la flecha que aparece a la izquierda de ellas.
 
@@ -4689,7 +4612,7 @@ Vamos a crear nuestra primera lista.
 
 Hemos creado una lista de 4 elementos: el elemento \texttt{nacimiento} (una fecha), el elemento \texttt{notas\_insti} (un \texttt{data.frame}), el elemento \texttt{teléfonos} (un vector de números) y \texttt{nombre\_padres} (un vector de texto).
 
-Una lista es una varible que en un primer nivel solo tiene una dimensión por lo que si quieres saber cuantos elementos tiene debes ejecutar la función \texttt{length()}.
+Una \textbf{lista es una varible que en un primer nivel solo tiene una dimensión} por lo que si quieres saber cuantos elementos tiene debes ejecutar la función \texttt{length()}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4792,7 +4715,7 @@ Si queremos acceder a varios elementos a la vez de la lista deberemos usar el op
 ## segundo_parcial        7      5         9.5
 \end{verbatim}
 
-Como hemos comentado, también podemos \textbf{aplicar la recursividad} y hacer listas con otras listas dentro, de forma que para acceder a cada nivel deberemos usar el operador \texttt{{[}{[}{]}{]}}.
+Como hemos comentado, también podemos \textbf{aplicar la recursividad} y hacer \textbf{listas con otras listas dentro}, de forma que para acceder a cada nivel deberemos usar el operador \texttt{{[}{[}{]}{]}}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4933,7 +4856,7 @@ Cada elemento de la lista es un \texttt{data.frame} de una comunidad autonónoma
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{head}\NormalTok{(panel_vacunas}\OperatorTok{$}\NormalTok{ES[, }\DecValTok{1}\OperatorTok{:}\DecValTok{7}\NormalTok{])}
+\KeywordTok{head}\NormalTok{(panel_vacunas}\OperatorTok{$}\NormalTok{ES[, }\DecValTok{1}\OperatorTok{:}\DecValTok{5}\NormalTok{])}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4945,13 +4868,6 @@ Cada elemento de la lista es un \texttt{data.frame} de una comunidad autonónoma
 ## 3  2021-01-08  ES  47450795             100            40129822
 ## 11 2021-01-09  ES  47450795             100            40129822
 ## 12 2021-01-10  ES  47450795             100            40129822
-##    porc_pobl_total_mayor_16a dosis_entrega_pfizer
-## 1                        100               743925
-## 2                        100               743925
-## 21                       100               743925
-## 3                        100               743925
-## 11                       100               743925
-## 12                       100               743925
 \end{verbatim}
 
 El acceso lo podemos realizar por orden que ocupa en la lista pero también de forma intuitiva con \texttt{\$} y el código ISO de la comunidad autónoma. Lo mismo podemos hacer con el panel de fechas, donde ahora cada elemento de la lista es una fecha, y en cada elemento de ella, está guardada la información de cada variable (columna) y cada comunidad (fila).
@@ -5324,7 +5240,7 @@ Como ya hemos dicho, las fechas y momentos temporales no serán meras cadenas de
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "2021-08-28"
+## [1] "2021-08-29"
 \end{verbatim}
 
 \begin{Shaded}
@@ -5334,7 +5250,7 @@ Como ya hemos dicho, las fechas y momentos temporales no serán meras cadenas de
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "2021-08-21"
+## [1] "2021-08-22"
 \end{verbatim}
 
 \begin{Shaded}
@@ -5430,7 +5346,7 @@ Aunque aparentemente parezca una cadena de texto, prueba a ejecutar \texttt{uncl
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 18867
+## [1] 18868
 \end{verbatim}
 
 \begin{Shaded}
@@ -5463,7 +5379,7 @@ Para la \textbf{fecha con hora actual} podemos usar una función similar, la fun
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 1630185096
+## [1] 1630245877
 \end{verbatim}
 
 \begin{Shaded}
@@ -5496,16 +5412,16 @@ Para la \textbf{fecha con hora actual} podemos usar una función similar, la fun
 
 \begin{verbatim}
 ## $sec
-## [1] 35.60878
+## [1] 37.06462
 ## 
 ## $min
-## [1] 11
+## [1] 4
 ## 
 ## $hour
-## [1] 23
+## [1] 16
 ## 
 ## $mday
-## [1] 28
+## [1] 29
 ## 
 ## $mon
 ## [1] 7
@@ -5514,10 +5430,10 @@ Para la \textbf{fecha con hora actual} podemos usar una función similar, la fun
 ## [1] 121
 ## 
 ## $wday
-## [1] 6
+## [1] 0
 ## 
 ## $yday
-## [1] 239
+## [1] 240
 ## 
 ## $isdst
 ## [1] 1
@@ -5540,14 +5456,14 @@ Para la \textbf{fecha con hora actual} podemos usar una función similar, la fun
 
 \begin{verbatim}
 ## List of 11
-##  $ sec   : num 35.6
-##  $ min   : int 11
-##  $ hour  : int 23
-##  $ mday  : int 28
+##  $ sec   : num 37.1
+##  $ min   : int 4
+##  $ hour  : int 16
+##  $ mday  : int 29
 ##  $ mon   : int 7
 ##  $ year  : int 121
-##  $ wday  : int 6
-##  $ yday  : int 239
+##  $ wday  : int 0
+##  $ yday  : int 240
 ##  $ isdst : int 1
 ##  $ zone  : chr "CEST"
 ##  $ gmtoff: int 7200
@@ -5561,7 +5477,7 @@ Para la \textbf{fecha con hora actual} podemos usar una función similar, la fun
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 11
+## [1] 4
 \end{verbatim}
 
 Además tenemos disponibles funciones para extraer facilmente algunas variables temporales como el día de la semana, el mes o el cuatrimestre, con las funciones \texttt{weekdays()}, \texttt{months()}, and \texttt{quarters()}.
@@ -5573,7 +5489,7 @@ Además tenemos disponibles funciones para extraer facilmente algunas variables 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "sábado"
+## [1] "domingo"
 \end{verbatim}
 
 \begin{Shaded}
@@ -5628,7 +5544,7 @@ La función \texttt{difftime()} nos permite además hallar distancias entre fech
 \end{Shaded}
 
 \begin{verbatim}
-## Time difference of 589.4912 days
+## Time difference of 590.1947 days
 \end{verbatim}
 
 \begin{Shaded}
@@ -5638,7 +5554,7 @@ La función \texttt{difftime()} nos permite además hallar distancias entre fech
 \end{Shaded}
 
 \begin{verbatim}
-## Time difference of 14147.79 hours
+## Time difference of 14164.67 hours
 \end{verbatim}
 
 \begin{Shaded}
@@ -5648,39 +5564,13 @@ La función \texttt{difftime()} nos permite además hallar distancias entre fech
 \end{Shaded}
 
 \begin{verbatim}
-## Time difference of 84.21304 weeks
+## Time difference of 84.31353 weeks
 \end{verbatim}
 
-~
+\hypertarget{consejos-y-tips-7}{%
+\section[ Consejos y tips]{\texorpdfstring{\protect\includegraphics[width=0.04\textwidth,height=\textheight]{img/logo_info.png} Consejos y tips}{ Consejos y tips}}\label{consejos-y-tips-7}}
 
-\includegraphics[width=0.04\textwidth,height=\textheight]{img/logo_info.png} Consejos y tips
-
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Paquete stringr}
-\end{itemize}
-
-En dicho paquete tienes muchas \textbf{funcionalidades para trabajar con cadenas de texto} y \textbf{expresiones regulares}. En el \textbf{paquete \texttt{glue}} hay aún más funciones para pegar y concatenar de forma simbólica cadenas de texto. Ver \url{https://stringr.tidyverse.org/} y \url{https://github.com/tidyverse/glue}
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.95\linewidth]{./img/stringr} 
-
-}
-
-\caption{Paquete stringr.}\label{fig:stringr}
-\end{figure}
-
-~
-
-~
-
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Paquete lubridate}
-\end{itemize}
+Paquete \texttt{\{lubridate\}}
 
 En dicho paquete tienes muchas \textbf{funcionalidades para trabajar con fechas}. Ver \url{https://lubridate.tidyverse.org/}.
 
@@ -5695,13 +5585,7 @@ En dicho paquete tienes muchas \textbf{funcionalidades para trabajar con fechas}
 
 ~
 
-~
-
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Paquete forcats}
-\end{itemize}
+Paquete \texttt{\{forcats\}}
 
 En dicho paquete tienes muchas \textbf{funcionalidades para trabajar con factores}. Ver \url{https://forcats.tidyverse.org/}.
 
@@ -5716,13 +5600,7 @@ En dicho paquete tienes muchas \textbf{funcionalidades para trabajar con factore
 
 ~
 
-~
-
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Prohibido operaciones aritméticas con listas}
-\end{itemize}
+Operaciones aritméticas con listas
 
 Una \textbf{lista no se puede vectorizar de forma inmediata}, por lo cualquier operación aritmética aplicada a una lista dará error (ver más adelante la función \texttt{lapply()}).
 
@@ -5736,7 +5614,71 @@ Una \textbf{lista no se puede vectorizar de forma inmediata}, por lo cualquier o
 ##  [1] 0.5 1.0 1.0 1.5 0.5 1.0 1.5 1.5 0.5 1.0 1.5 1.5 0.5
 \end{verbatim}
 
-📝Ejercicio: define una lista de 4 elementos que contenga, en una sola variable, tu nombre, apellido, edad (como dato numérico) y si estás soltero/a.
+\hypertarget{ejercicios-3}{%
+\section{📝 Ejercicios}\label{ejercicios-3}}
+
+Ejercicio 1: define una lista de 4 elementos de tipos distintos y accede al segundo de ellos (yo incluiré uno que sea un \texttt{data.frame} para que veas que en una lista cabe de todo).
+
+\begin{itemize}
+\tightlist
+\item
+  Solución:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Ejemplo: lista con texto, numérico, lógico y un data.frame}
+\NormalTok{lista_ejemplo <-}\StringTok{ }\KeywordTok{list}\NormalTok{(}\StringTok{"nombre"}\NormalTok{ =}\StringTok{ "Javier"}\NormalTok{, }\StringTok{"cp"}\NormalTok{ =}\StringTok{ }\DecValTok{28019}\NormalTok{,}
+                      \StringTok{"soltero"}\NormalTok{ =}\StringTok{ }\OtherTok{TRUE}\NormalTok{,}
+                      \StringTok{"notas"}\NormalTok{ =}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\StringTok{"mates"}\NormalTok{ =}\StringTok{ }\KeywordTok{c}\NormalTok{(}\FloatTok{7.5}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{9}\NormalTok{),}
+                                           \StringTok{"lengua"}\NormalTok{ =}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{6}\NormalTok{),}
+                                           \StringTok{"gimnasia"}\NormalTok{ =}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{6}\NormalTok{)))}
+\NormalTok{lista_ejemplo}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $nombre
+## [1] "Javier"
+## 
+## $cp
+## [1] 28019
+## 
+## $soltero
+## [1] TRUE
+## 
+## $notas
+##   mates lengua gimnasia
+## 1   7.5     10        4
+## 2   8.0      5        8
+## 3   9.0      6        6
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Longitud}
+\KeywordTok{length}\NormalTok{(lista_ejemplo)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Accedemos al elemento dos}
+\NormalTok{lista_ejemplo[[}\DecValTok{2}\NormalTok{]]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 28019
+\end{verbatim}
+
+~
+
+Ejercicio 2: define una lista de 4 elementos que contenga, en una sola variable, tu nombre, apellido, edad (como dato numérico) y si estás soltero/a.
 
 \begin{itemize}
 \tightlist
@@ -5780,7 +5722,7 @@ Una \textbf{lista no se puede vectorizar de forma inmediata}, por lo cualquier o
 ## [1] "Álvarez Liébana"
 ## 
 ## $edad
-## [1] 31.96438
+## [1] 31.96712
 ## 
 ## $soltero
 ## [1] TRUE
@@ -5991,118 +5933,6 @@ Antes nos daba igual el orden de los argumentos pero ahora no, ya que en la sali
 ## [1] 3
 \end{verbatim}
 
-📝Ejercicio: define una función propia llamada \texttt{pares} que, dados dos números \texttt{x} e \texttt{y}, nos diga si la suma de ambos es par o no.
-
-\begin{itemize}
-\tightlist
-\item
-  Solución:
-\end{itemize}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{# Definimos función}
-\NormalTok{pares <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x, y) \{}
-  
-  \CommentTok{# Sumamos}
-\NormalTok{  suma <-}\StringTok{ }\NormalTok{x }\OperatorTok{+}\StringTok{ }\NormalTok{y}
-  
-  \CommentTok{# Comprobamos si es par calculando el resto al dividir entre 2: si al dividir suma entre 2 el resto es 0 ==> es par}
-  
-\NormalTok{  par <-}\StringTok{ }\NormalTok{suma }\OperatorTok{%%}\StringTok{ }\DecValTok{2} \OperatorTok{==}\StringTok{ }\DecValTok{0}
-  
-  \CommentTok{# Devolvemos la salida}
-  \KeywordTok{return}\NormalTok{(par)}
-\NormalTok{\}}
-
-\CommentTok{# Aplicamos la función}
-\KeywordTok{pares}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] TRUE
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{pares}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] FALSE
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{pares}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{6}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] TRUE
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{pares}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{7}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] FALSE
-\end{verbatim}
-
-También se puede definir directamente como
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{# Definimos función}
-\NormalTok{pares <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x, y) \{}
-
-  \CommentTok{# Devolvemos la salida}
-  \KeywordTok{return}\NormalTok{((x }\OperatorTok{+}\StringTok{ }\NormalTok{y) }\OperatorTok{%%}\StringTok{ }\DecValTok{2} \OperatorTok{==}\StringTok{ }\DecValTok{0}\NormalTok{)}
-\NormalTok{\}}
-
-\KeywordTok{pares}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] TRUE
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{pares}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] FALSE
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{pares}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{6}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] TRUE
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{pares}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{7}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] FALSE
-\end{verbatim}
-
 \hypertarget{segunda-funciuxf3n}{%
 \section{Segunda función}\label{segunda-funciuxf3n}}
 
@@ -6281,62 +6111,6 @@ Fíjate que hemos devuelto solo el último acumulado (hemos dado la vuelta al ve
 ## [91] 3550797 3470203 3470187 3350870 3246147
 \end{verbatim}
 
-📝Ejercicio: define una función propia llamada \texttt{proximo\_par} que, dados un número \texttt{x}, nos diga si es par y, en aso de no serlo, nos devuelva el próximo número que si lo sea.
-
-\begin{itemize}
-\tightlist
-\item
-  Solución:
-\end{itemize}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{# Definimos función}
-\NormalTok{proximo_par <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x) \{}
-  
-  \CommentTok{# ¿par? TRUE/FALSE}
-\NormalTok{  par <-}\StringTok{ }\NormalTok{(x }\OperatorTok{%%}\StringTok{ }\DecValTok{2}\NormalTok{) }\OperatorTok{==}\StringTok{ }\DecValTok{0}
-  
-  \CommentTok{# Si es par, devolvemos el propio número (era par), sino le sumamos uno}
-  \ControlFlowTok{if}\NormalTok{ (par) \{}
-    
-    \KeywordTok{return}\NormalTok{(}\KeywordTok{list}\NormalTok{(}\StringTok{"par"}\NormalTok{ =}\StringTok{ }\NormalTok{par, }\StringTok{"proximo"}\NormalTok{ =}\StringTok{ }\NormalTok{x))}
-    
-\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{ }\CommentTok{# Si no es par, devolvemos el siguiente (que será par) }
-    
-    \KeywordTok{return}\NormalTok{(}\KeywordTok{list}\NormalTok{(}\StringTok{"par"}\NormalTok{ =}\StringTok{ }\NormalTok{par, }\StringTok{"proximo"}\NormalTok{ =}\StringTok{ }\NormalTok{x }\OperatorTok{+}\StringTok{ }\DecValTok{1}\NormalTok{))}
-  
-\NormalTok{  \}}
-  \CommentTok{# Devolvemos una lista de dos elementos: par (TRUE/FALSE) y proximo (si es par, el propio x, sino x + 1)}
-\NormalTok{\}}
-
-\CommentTok{# Aplicamos la función}
-\KeywordTok{proximo_par}\NormalTok{(}\DecValTok{7}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## $par
-## [1] FALSE
-## 
-## $proximo
-## [1] 8
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{proximo_par}\NormalTok{(}\DecValTok{8}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## $par
-## [1] TRUE
-## 
-## $proximo
-## [1] 8
-\end{verbatim}
-
 \hypertarget{variables-localesglobales}{%
 \section{Variables locales/globales}\label{variables-localesglobales}}
 
@@ -6428,12 +6202,185 @@ Si queremos que \textbf{además de cambiar localmente lo haga globalmente} deber
 ## [1] 0
 \end{verbatim}
 
+\hypertarget{ejercicios-4}{%
+\section{📝 Ejercicios}\label{ejercicios-4}}
+
+Ejercicio 1: define una función propia llamada \texttt{pares} que, dados dos números \texttt{x} e \texttt{y}, nos diga si la suma de ambos es par o no.
+
+\begin{itemize}
+\tightlist
+\item
+  Solución:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Definimos función}
+\NormalTok{pares <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x, y) \{}
+  
+  \CommentTok{# Sumamos}
+\NormalTok{  suma <-}\StringTok{ }\NormalTok{x }\OperatorTok{+}\StringTok{ }\NormalTok{y}
+  
+  \CommentTok{# Comprobamos si es par calculando el resto al dividir entre 2: si al dividir suma entre 2 el resto es 0 ==> es par}
+  
+\NormalTok{  par <-}\StringTok{ }\NormalTok{suma }\OperatorTok{%%}\StringTok{ }\DecValTok{2} \OperatorTok{==}\StringTok{ }\DecValTok{0}
+  
+  \CommentTok{# Devolvemos la salida}
+  \KeywordTok{return}\NormalTok{(par)}
+\NormalTok{\}}
+
+\CommentTok{# Aplicamos la función}
+\KeywordTok{pares}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{pares}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{pares}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{6}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{pares}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{7}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE
+\end{verbatim}
+
+También se puede definir directamente como
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Definimos función}
+\NormalTok{pares <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x, y) \{}
+
+  \CommentTok{# Devolvemos la salida}
+  \KeywordTok{return}\NormalTok{((x }\OperatorTok{+}\StringTok{ }\NormalTok{y) }\OperatorTok{%%}\StringTok{ }\DecValTok{2} \OperatorTok{==}\StringTok{ }\DecValTok{0}\NormalTok{)}
+\NormalTok{\}}
+
+\KeywordTok{pares}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{pares}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{pares}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{6}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{pares}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{7}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE
+\end{verbatim}
+
+~
+
+Ejercicio 2: define una función propia llamada \texttt{proximo\_par} que, dados un número \texttt{x}, nos diga si es par y, en aso de no serlo, nos devuelva el próximo número que si lo sea.
+
+\begin{itemize}
+\tightlist
+\item
+  Solución:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Definimos función}
+\NormalTok{proximo_par <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x) \{}
+  
+  \CommentTok{# ¿par? TRUE/FALSE}
+\NormalTok{  par <-}\StringTok{ }\NormalTok{(x }\OperatorTok{%%}\StringTok{ }\DecValTok{2}\NormalTok{) }\OperatorTok{==}\StringTok{ }\DecValTok{0}
+  
+  \CommentTok{# Si es par, devolvemos el propio número (era par), sino le sumamos uno}
+  \ControlFlowTok{if}\NormalTok{ (par) \{}
+    
+    \KeywordTok{return}\NormalTok{(}\KeywordTok{list}\NormalTok{(}\StringTok{"par"}\NormalTok{ =}\StringTok{ }\NormalTok{par, }\StringTok{"proximo"}\NormalTok{ =}\StringTok{ }\NormalTok{x))}
+    
+\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{ }\CommentTok{# Si no es par, devolvemos el siguiente (que será par) }
+    
+    \KeywordTok{return}\NormalTok{(}\KeywordTok{list}\NormalTok{(}\StringTok{"par"}\NormalTok{ =}\StringTok{ }\NormalTok{par, }\StringTok{"proximo"}\NormalTok{ =}\StringTok{ }\NormalTok{x }\OperatorTok{+}\StringTok{ }\DecValTok{1}\NormalTok{))}
+  
+\NormalTok{  \}}
+  \CommentTok{# Devolvemos una lista de dos elementos: par (TRUE/FALSE) y proximo (si es par, el propio x, sino x + 1)}
+\NormalTok{\}}
+
+\CommentTok{# Aplicamos la función}
+\KeywordTok{proximo_par}\NormalTok{(}\DecValTok{7}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $par
+## [1] FALSE
+## 
+## $proximo
+## [1] 8
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{proximo_par}\NormalTok{(}\DecValTok{8}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $par
+## [1] TRUE
+## 
+## $proximo
+## [1] 8
+\end{verbatim}
+
 \hypertarget{quuxe9-sabemos-hacer}{%
 \chapter{¿Qué sabemos hacer?}\label{quuxe9-sabemos-hacer}}
 
 \textbf{Hasta aquí el aperitivo}
 
-\includegraphics{Intro_R_2021_2022_files/figure-latex/unnamed-chunk-186-1.pdf}
+\includegraphics{Intro_R_2021_2022_files/figure-latex/unnamed-chunk-187-1.pdf}
 
 Quizás creas que te queda un mundo por aprender:
 
@@ -6459,7 +6406,7 @@ No te voy a mentir: no tendrías días de tu vida para ir investigando todos los
 
 }
 
-\caption{Cuando intentas aprenderte todos los paquetes.}\label{fig:unnamed-chunk-187}
+\caption{Cuando intentas aprenderte todos los paquetes.}\label{fig:unnamed-chunk-188}
 \end{figure}
 
 Estos primeros capítulos suelen ser un poco «aburridos»
@@ -6499,7 +6446,7 @@ Ahora que ya sabes lo básico para poder empezar a trabajar en un entorno amigab
     Además he elaborado una \href{https://twitter.com/i/lists/1324478481338683392?s=20}{lista de Twitter} de usuarios que se dedican a la visualización de datos.
   \end{itemize}
 \item
-  \textbf{Paquetes para la visualización}: los paquetes \texttt{\{ggplot2\}} y \texttt{\{plotly\}} son probablemente los paquetes por excelencia en \texttt{R} para la visualización de datos. El \textbf{primero es uno de los paquetes más potentes de \texttt{R}, dentro del entorno \texttt{\{tidyverse\}}}, que no solo nos permite crear gráficos muy limpios y elegantes con pocas líneas sino que su sintaxis es muy intuitiva respecto a los datos visualizados. La idea inicial es poder aprender algo de \texttt{\{ggplot2\}} en futuros capítulos pero puedes empezar si quieres echando un vistazo a su \href{https://ggplot2.tidyverse.org/}{web oficial}. También te recomiendo el \href{https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/}{tutorial de Cédric Scherer}. El segundo paquete, \texttt{\{plotly\}} puede llegar a tener las mismas funcionalidades pero su programación es más tediosa. Su principal ventaja es que \textbf{genera gráficos interactivos: gráficos HTML (como si fuera una página web)} (no una imagen estática) que permite al usuario interactuar con los datos pasando el ratón (incluso permite crear menús). Un ejemplo es la \href{https://dgspasturias.shinyapps.io/panel_de_indicadores_asturias/}{web de visualización covid de Asturias} que elaboré durante la pandemia para el Gobierno de Asturias (la web en sí está elaborada con \texttt{\{shiny\}}, un paquete de \texttt{R} que \href{https://shiny.rstudio.com/tutorial/}{permite crear aplicaciones web}).
+  \textbf{Paquetes para la visualización de datos}: los paquetes \texttt{\{ggplot2\}} y \texttt{\{plotly\}} son probablemente los paquetes por excelencia en \texttt{R} para la visualización de datos. El \textbf{primero es uno de los paquetes más potentes de \texttt{R}, dentro del entorno \texttt{\{tidyverse\}}}, que no solo nos permite crear gráficos muy limpios y elegantes con pocas líneas sino que su sintaxis es muy intuitiva respecto a los datos visualizados. La idea inicial es poder aprender algo de \texttt{\{ggplot2\}} en futuros capítulos pero puedes empezar si quieres echando un vistazo a su \href{https://ggplot2.tidyverse.org/}{web oficial}. También te recomiendo el \href{https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/}{tutorial de Cédric Scherer}. El segundo paquete, \texttt{\{plotly\}} puede llegar a tener las mismas funcionalidades pero su programación es más tediosa. Su principal ventaja es que \textbf{genera gráficos interactivos: gráficos HTML (como si fuera una página web)} (no una imagen estática) que permite al usuario interactuar con los datos pasando el ratón (incluso permite crear menús). Un ejemplo es la \href{https://dgspasturias.shinyapps.io/panel_de_indicadores_asturias/}{web de visualización covid de Asturias} que elaboré durante la pandemia para el Gobierno de Asturias (la web en sí está elaborada con \texttt{\{shiny\}}, un paquete de \texttt{R} que \href{https://shiny.rstudio.com/tutorial/}{permite crear aplicaciones web}).
 \item
   \textbf{Comunidad de R hispano}: tenemos un \href{https://discord.gg/7ueKQqeaGr}{grupo de Discord} y \href{https://t.me/hispanoverse}{grupo de Telegram} varios usuarios de R en España para compartir recursos.
 \item

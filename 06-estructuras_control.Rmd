@@ -189,24 +189,21 @@ conteo
 
 
 
+## ![](img/logo_info.png){width=4%} Consejos y tips
 
 <details>
-  <summary>![](img/logo_info.png){width=4%}  <strong>Consejos y tips</strong></summary>
+  <summary><strong>Cuidado con los bucles infinitos</strong></summary>
   
-<!-- toc -->
-
-* **Cuidado con los bucles infinitos**
-
 Las estucturas `while{}` y `repeat{}` son de las menos usadas por su peligrosidad, ya que si no incluimos un `break` o la condición nunca llega a ser `TRUE`, el bucle seguirá ejecutándose de forma infinita y solo podrá ser detenido abortando la ejecución con la tecla `ESC`.
 
-&nbsp;  
+</details>
 
 &nbsp;  
 
-* **Código limpio**
-
+<details>
+  <summary><strong>Código limpio: minimizando estructuras de control en el código</strong></summary>
+  
 Puedes minimizar las estructuras de control pulsando en la flecha que aparece a la izquierda de ellas. 
 
-<!-- tocstop -->
 </details>
 

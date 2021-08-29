@@ -7,7 +7,7 @@ Cuando se empieza a programar para un trabajo concreto de `R` es recomendable cr
 
 ## Crear proyecto
 
-Para crear nuestro proyecto deberemos de ir al menú superior `File << New Project` (ver  \@ref(fig:crear-proyecto1))
+Para crear nuestro proyecto deberemos de ir al menú superior `File << New Project` (ver \@ref(fig:crear-proyecto1))
 
 ```{r crear-proyecto1, echo = FALSE, out.width = "50%", fig.align = "center", fig.cap = "Crear un nuevo proyecto en R."}
 knitr::include_graphics("./img/crear_proyecto1.jpg")
@@ -58,35 +58,12 @@ Este será nuestro **código principal** (puedes ponerle el nombre que quieras, 
 
 &nbsp;
 
-La ventaja de tener los códigos agrupados por proyectos es que si estamos trabajando en varios a la vez podemos saltar de uno a otro, visualizando solo los códigos de un proyecto, y no los 100 archivos `sin_titulo131.R` que vayamos creando.
+La **ventaja de tener los códigos agrupados por proyectos** es que si estamos trabajando en varios a la vez podemos saltar de uno a otro, visualizando solo los códigos de un proyecto, y no los 100 archivos `sin_titulo131.R` que vayamos creando.
 
 ```{r crear-proyecto9, echo = FALSE, out.width = "50%", fig.align = "center", fig.cap = "Saltar de proyecto en proyecto."}
 knitr::include_graphics("./img/crear_proyecto9.jpg")
 ```
 
-&nbsp;
-
-<details>
-  <summary>![](img/logo_info.png){width=4%}  <strong>Consejos y tips</strong></summary>
-  
-<!-- toc -->
-
-* **Comentarios**
-
-Es crucial que intentes **documentar al máximo tu código** y que te acostumbres a ello desde el principio, dejando explícito que haces en cada paso, tanto para ti como para otra persona que pueda leer tu código y lo entienda. Para ello usaremos `# comentario` cuando queramos dejar comentarios en el código. Dichas partes, amén de estar en otro color, no son leídas por `R` ni ejecutadas: son comentarios que el programa «no ve», solo son para nosotros.
-
-&nbsp;  
-
-&nbsp;  
-
-* **Limpiar entorno**
-
-A veces empezamos a programar sin apagar el ordenador y tenemos variables guardadas de otros días que pueden generar conflictos y consumo de memoria. Para asegurarnos que cada vez que empezamos, lo hacemos de cero, es altamente recomendable empezar el código con `rm(list = ls())`. La función `ls()` nos devuelve todas las variables que tenemos definidas en nuestro entorno, y la función `rm()` nos las elimina.
-
-<!-- tocstop -->
-</details>
-
-&nbsp;
 
 ## Directorios de trabajo y cabecera
 
@@ -194,7 +171,7 @@ dias <- hoy - fecha_origen
 dias
 ```
 
-La función `cat()` nos muestra por consola el texto que le pasemos de argumento.
+La función `cat()` nos muestra por consola el texto que le pasemos de argumento (**función especial para mensajes de alerta** por consola)
 
 
 ```{r codigo-1, echo = FALSE, out.width = "50%", fig.align = "center", fig.cap = "Cálculos con la variables definidas: suma, concatenación de texto y diferencia de fechas."}
@@ -204,38 +181,60 @@ knitr::include_graphics("./img/codigo_1.jpg")
 Ya hemos ejecutado nuestro primer proyecto en `.R` :)
 
 
+
+## ![](img/logo_info.png){width=4%} Consejos y tips
+
+
+<details>
+  <summary><strong>Comentarios en los códigos</strong></summary>
+
+Es crucial que intentes **documentar al máximo tu código** y que te acostumbres a ello desde el principio, dejando explícito que haces en cada paso, tanto para ti como para otra persona que pueda leer tu código y lo entienda. Para ello usaremos `# comentario` cuando queramos dejar comentarios en el código. Dichas partes, amén de estar en otro color, no son leídas por `R` ni ejecutadas: son comentarios que el programa «no ve», solo son para nosotros.
+
+</details>
+
 &nbsp; 
 
 <details>
-  <summary>![](img/logo_info.png){width=4%}  <strong>Consejos y tips</strong></summary>
-  
-<!-- toc -->
+  <summary><strong>Limpiar el entorno</strong></summary>
 
-* **Anular warnings**
+A veces empezamos a programar sin apagar el ordenador y tenemos variables guardadas de otros días que pueden generar conflictos y consumo de memoria. Para asegurarnos que cada vez que empezamos, lo hacemos de cero, es altamente recomendable empezar el código con `rm(list = ls())`. La función `ls()` nos devuelve todas las variables que tenemos definidas en nuestro entorno, y la función `rm()` nos las elimina.
+
+</details>
+
+&nbsp; 
+
+<details>
+  <summary><strong>Anular warnings</strong></summary>
 
 Algunas funciones pueden arrojarse ciertas advertencias que nunca está de más leer. Pero si dichos mensajes de alerta los tenemos controlados y no queremos que nos ensucie la ejecución en la consola, podemos poner al inicio del código ` assign("last.warning", NULL, envir = baseenv())` para limpiar los warnings antiguos y `options(warn = -1)` para desactivarlos.
 
-&nbsp;  
+</details>  
+
 
 &nbsp; 
 
-* **Limpiar consola**
+<details>
+  <summary><strong>Limpiar consola</strong></summary>
 
 Podemos limpiar la consola clickando en al escoba que tenemos en la parte superior derecha de la misma. Esta acción **no nos elimina ninguna variable**, simplemente nos limpia la consola de mensajes.
 
-&nbsp;  
+</details> 
 
 &nbsp; 
 
-* **Archivo sin guardar**
+<details>
+  <summary><strong>Guardar los scripts</strong></summary>
+
 
 Los scripts que tengas sin guardar tendrán un asterisco `*` al final del nombre en la pestaña superior de la ventana.
 
-&nbsp;  
+</details>
 
 &nbsp; 
 
-* **Fecha y hora de hoy**
+<details>
+  <summary><strong>Fecha y hora de hoy</strong></summary>
+
 
 La función `Sys.time()` accede al sistema de nuestro ordenador para decirnos la **fecha y hora del momento de la ejecución** de dicha función.
 
@@ -243,19 +242,14 @@ La función `Sys.time()` accede al sistema de nuestro ordenador para decirnos la
 Sys.time()
 ```
 
-
-&nbsp;  
+</details>
 
 &nbsp; 
 
-* **Anular notación exponencial**
+<details>
+  <summary><strong>Cambiar la notación exponencial</strong></summary>
+
 
 Por defecto, `R` muestra los números en formato de notación exponencial. Por ejemplo, el número `1000000` nos lo mostrará por defecto como `1e+06`. A veces podemos querer que se muestre con todas sus cifras (por ejemplo, en el título o leyenda de una gráfica): para anular la notación exponencial, escribe al inicio del código `options("scipen" = 10)`.
 
-<!-- tocstop -->
 </details>
-
-
-
-
-

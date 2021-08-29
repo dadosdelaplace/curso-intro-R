@@ -35,25 +35,41 @@ library(knitr)
 
 # Prefacio {-}
 
-El manual ha sido diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM, curso académico 2021-2022), y está elaborado por [Javier Álvarez Liébana](twitter.com/dadosdelaplace).
+Este manual ha sido diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM, curso académico 2021-2022), y está elaborado por [Javier Álvarez Liébana](twitter.com/dadosdelaplace).
 
-[![Licencia: GPLv3](img/license-GPLv3-blue.png)](https://www.gnu.org/licenses/gpl-3.0)
+Dicho manual ha sido elaborado a su vez en `R` con [{bookdown}](https://github.com/rstudio/bookdown). Puedes ver un resumen de las funcionalidades algunos paquetes documentados por el equipo de [R Studio](https://www.rstudio.com/) en sus [esquemas resumen](https://www.rstudio.com/resources/cheatsheets/). El **código** de dicho manual se encuentra en GitHub (https://github.com/dadosdelaplace/cursoR_intro_2021_2022).
 
-Este documento es publicado bajo **licencia pública general GNU**,
-una licencia libre de copyleft que garantiza a los usuarios finales (personas, organizaciones, compañías) la libertad de usar, estudiar, compartir (copiar) y modificar el software, citando adecuadamente al autor del mismo. 
+```{r me-github, echo = FALSE, fig.align = 'center',  include = identical(knitr:::pandoc_to(), 'html'), fig.link = 'https://github.com/dadosdelaplace/cursoR_intro_2021_2022', out.width = '80%'}
+knitr::include_graphics('img/me_github.jpg')
+```
+
+&nbsp;  
+
+Para **elaborar informes o libros** con una estructura similar, de forma nativa en `R`, el paquete `{bookdown}` puede ser instalado desde la plataforma CRAN o desde su versión en desarrollo actualizada en Github:
+
+```{r eval = FALSE}
+install.packages("bookdown")
+# o desde su versión en desarrollo actualizada
+# devtools::install_github("rstudio/bookdown")
+```
+
+
+```{r hex-rmarkdown, echo = FALSE, fig.align = 'center',  include = identical(knitr:::pandoc_to(), 'html'), fig.link = 'https://github.com/rstudio/rmarkdown', out.width = '30%'}
+knitr::include_graphics('img/hex-rmarkdown.png')
+```
+
 
 
 ## Propósito {-}
 
-El **objetivo** de este tutorial es introducir a la programación y análisis estadístico en `R` a toda aquella persona que nunca se haya iniciado en él, sin que se necesiten conocimientos de programación previos (aunque siempre ayuda, obviamente).
+El **objetivo** de este tutorial es introducir a la programación y análisis estadístico en `R` a toda aquella persona que nunca se haya iniciado en él, **sin necesitar conocimientos previos** de programación (aunque siempre ayuda, obviamente). Con este manual no se pretende que adquieras un vasto y experto conocimiento de `R`, pero si lo suficiente como para lograr **5 objetivos**:
 
-Con este manual no se pretende que adquieras un vasto y experto conocimiento de `R`, pero si lo suficiente como para lograr **5 objetivos**:
-
-- **No tener miedo** a programar.
-- Ser capaces de abordar desde la programación (ya sea en `R` o en otro lenguaje) pequeños problemas, con el fin de saber **conceptualizarlos**.
-- Entender los **usos y costumbres del lenguaje `R`**
-- Darte pinceladas de sus posibilidades que te sirvan de trampolín para ir investigando por tu cuenta en el campo en el que lo vayas a aplicar.
-- Algunos **trucos sencillos** para que el trabajo sea más rápido, tanto en tiempo de escritura como de ejecución.
+* **No tener miedo** a programar.
+* Ser capaces de abordar desde la programación (ya sea en `R` o en otro lenguaje) pequeños problemas, con el fin de saber **conceptualizarlos**.
+* Entender los **usos y costumbres del lenguaje `R`**
+* Darte pinceladas de sus posibilidades que te sirvan de trampolín para ir investigando por tu cuenta en el campo en el que lo vayas a aplicar.
+* Algunos **trucos sencillos** para que el trabajo sea más rápido, tanto en tiempo de escritura como de ejecución.
+* Hacer **enfásis en la importancia de la visualización de datos** en estadística.
 
 
 ## Requisitos {-}
@@ -70,10 +86,23 @@ knitr::include_graphics('img/rstudio_cheetsheet.jpg')
 
 Todo lo necesario para seguir este curso es de **descarga gratuita**: viva el software libre, abajo Excel.
 
-&nbsp;  
+
+## Emojis {-} 
 
 ![](img/logo_info.png){width=4%}  **Info**: siempre que veas el **icono de la bombilla** encontrarás consejos o tips para ampliar y facilitar tu programación. Además en cada **cajita de código**, si pasas el ratón, encontrarás un botón en la esquina superior derecha de la caja para copiar el código directamente a tu consola.
 
+&nbsp;  
+
+📝 **Ejercicios**: siempre que veas el **icono de un documento escrito** encontrarás ejercicios con soluciones para que vayas afianzando conceptos (una de las soluciones, normalmente siempre habrá muchas formas distintas de realizar la misma tarea, prioriza la más sencilla y limpia).
+
+&nbsp;  
+
+📄📄 **Copiar código**: siempre que veas el **icono de dos documentos** en las **cajas de código** (aparecen al pasar el ratón), podrás hacer click para copiar directamente el código que haya dentro.
+
+&nbsp;
+
+📚 **Glosario**: siempre que veas la pila de libros encontrarás una **sección de glosario con algunos términos estadísticos y conceptos básicos**.
+ 
 ## Sobre el autor {-}
 
 Esto de presentarse a sí mismo es siempre un poco raro pero vamos a intentarlo. Mi nombre es **Javier Álvarez Liébana**, soy **matemático**, nacido en 1989 en **Carabanchel (Madrid)**, pasando por Bologna (Italia). Tras terminar licenciatura y Máster en Ingeniería Matemática, recibí en julio de 2018 el título de **Doctor en Estadística** (por la Universidad de Granada, con dos estancias en Université Pierre et Marie Curie)
@@ -83,25 +112,15 @@ Además de **investigador** (con plaza y acreditación de Ayudante Doctor en la 
 🐦 [Twitter](twitter.com/dadosdelaplace)  
 📸 [Instagram](instagram.com/javieralvarezliebana)  
 
-```{r me, echo = FALSE, fig.align = 'center',  include = identical(knitr:::pandoc_to(), 'html'), fig.link = 'https://github.com/rstudio/rmarkdown', out.width = '50%'}
+```{r me, echo = FALSE, fig.align = 'center',  include = identical(knitr:::pandoc_to(), 'html'), fig.link = 'https://instagram.com/javieralvarezliebana', out.width = '50%'}
 knitr::include_graphics('img/me.jpeg')
 ```
 
+## Licencia {-}
+
+[![Licencia: GPLv3](img/license-GPLv3-blue.png)](https://www.gnu.org/licenses/gpl-3.0)
+
+Este documento es publicado bajo **licencia pública general GNU**,
+una licencia libre de copyleft que garantiza a los usuarios finales (personas, organizaciones, compañías) la **libertad de usar, estudiar, compartir (copiar) y modificar el software, citando adecuadamente al autor del mismo**. 
 
 
-## Créditos {-}
-
-Dicho manual/tutorial ha sido elaborado en **R Markdown** y [{bookdown}](https://github.com/rstudio/bookdown). Puedes ver un resumen de las funcionalidades de dicho paquete, así como de otros documentados por el equipo de [R Studio](https://www.rstudio.com/) en sus [esquemas resumen](https://www.rstudio.com/resources/cheatsheets/).
-
-Para elaborar informes o libros con una estructura similar, de forma nativa en `R`, el paquete `{bookdown}` puede ser instalado desde la plataforma CRAN o desde su versión en desarrollo actualizada en Github:
-
-```{r eval = FALSE}
-install.packages("bookdown")
-# o desde su versión en desarrollo actualizada
-# devtools::install_github("rstudio/bookdown")
-```
-
-
-```{r hex-rmarkdown, echo = FALSE, fig.align = 'center',  include = identical(knitr:::pandoc_to(), 'html'), fig.link = 'https://github.com/rstudio/rmarkdown', out.width = '30%'}
-knitr::include_graphics('img/hex-rmarkdown.png')
-```

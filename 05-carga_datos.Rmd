@@ -1,6 +1,6 @@
-# Tipos de datos II: bases de datos {#datos}
+# Tipos de datos II: tablas {#datos}
 
-Sabemos un poco de la gramática y ortografía de nuestro lenguaje, y sabemos las funcionalidades básicas de nuestro Word. Vamos a encontrar la mejor trama para la novela: **hablemos de datos**.
+Sabemos un poco de la gramática y ortografía de nuestro lenguaje, y sabemos las funcionalidades básicas de nuestro Word. Vamos a encontrar la mejor trama para la novela: **hablemos de estructuras de datos**.
 
 ## Matrices
 
@@ -63,49 +63,12 @@ class(z) # Clase de la variable
 
 &nbsp;
 
-<details>
-  <summary>![](img/logo_info.png){width=4%}  <strong>Consejos y tips</strong></summary>
-  
-<!-- toc -->
-
-* **Matriz transpuesta**
-
 Dada una matriz `x` podemos darle vuelta (lo que se conoce como **matriz transpuesta**, donde filas pasan a ser columnas y viceversa) con la función `t()`.
 
 ```{r}
 x
 t(x) # Matriz transpuesta
 ```
-
-<!-- tocstop -->
-</details>
-
-
-
-&nbsp;
-
-
-<details>
-  <summary>📝<strong>Ejercicio</strong>: define una matriz de ceros de 3 filas y 7 columnas. Tras hacerlo calcula su transpuesta y obtén sus dimensiones</summary>
-  
-<!-- toc -->
-- Solución:
-
-```{r}
-# Matriz
-matriz <- matrix(0, nrow = 3, ncol = 7)
-
-# Transpuesta
-t(matriz)
-
-# Dimensiones transpuesta
-dim(t(matriz))
-ncol(t(matriz))
-nrow(t(matriz))
-```
-
-<!-- tocstop -->
-</details>
 
 
 ## Apply vs bucles
@@ -175,36 +138,6 @@ microbenchmark::microbenchmark(for (i in 1:dim(x)[1]) {
 
 **¡El bucle nos tarda 50 veces más que el `apply`!** Di no a los bucles: casi siempre hay una forma mejor de hacerlo.
 
-&nbsp;
-
-<details>
-  <summary>📝<strong>Ejercicio</strong>: calcula la suma de cada fila de la matriz `matriz <- matrix(1:12, nrow = 4)` usando un bucle. Haz lo mismo evitando usar bucles.</summary>
-  
-<!-- toc -->
-- Solución:
-
-```{r}
-# Matriz
-matriz <- matrix(1:12, nrow = 4)
-
-# Con bucle (recorremos sus filas)
-suma <- rep(0, nrow(matriz)) # Definimos un vector de 0's con tantos elementos como filas, donde iremos metiendo los valores de la suma
-for (i in 1:nrow(matriz)) {
-  
-  suma[i] <- sum(matriz[i, ]) # Sumamos la fila i
-}
-suma
-
-# Sin bucle (MARGIN = 1 ya que es una operación por filas)
-suma <- apply(matriz, MARGIN = 1, FUN = "sum")
-suma
-```
-
-<!-- tocstop -->
-</details>
-
-
-&nbsp;
 
 
 ## Tablas: data.frames
@@ -220,12 +153,14 @@ cbind(nombres, x)
 
 **¿Has visto lo que ha sucedido?**
 
-Como **una matriz solo puede tener un tipo de dato**, al añadir una variable de tipo texto, ha convertido los números también a texto poniéndole comillas: hemos roto la integridad de nuestro dato. Una forma de añadir **nombre a los registros, sin incluirlo como variable**, es usando la función `row.names()`.
+Como **una matriz SOLO puede tener un tipo de dato**, al añadir una variable de tipo textos, ha convertido los números también a texto poniéndole comillas: **hemos roto la integridad de nuestro dato**. Una forma de añadir **nombre a los registros, sin incluirlo como variable**, es usando la función `row.names()`.
 
 ```{r}
 row.names(x) <- c("Sonia", "Carla", "Pepito", "Carlos", "Lara", "Sandra", "Javi")
 x
 ```
+
+&nbsp; 
 
 *¿Qué sucede si realmente queremos añadir variables cuyos tipos sean distintos (¡ojo, pero con la misma longitud!)?*
 
@@ -249,7 +184,14 @@ fecha_creacion <- as.Date(c("2021-03-04", "2020-10-12", "1990-04-05",
 ```
 
 
-Seguimos teniendo 7 registros, uno por persona pero ahora tenemos un popurrí de variables, de la **misma longitud pero de tipos distintos**: `(edades, tlf, cp)` son variables numéricas, `(nombres, apellidos)` son variables de texto, `casado` es una variable lógica y `fecha_creacion` de tipo fecha. **¿Qué sucederá si yo intento mezclar todo en una matriz?**
+Seguimos teniendo 7 registros, uno por persona pero ahora tenemos un popurrí de variables, de la **misma longitud pero de tipos distintos**: 
+
+* `(edades, tlf, cp)` son variables numéricas.
+* `(nombres, apellidos)` son variables de texto.
+* `casado` es una variable lógica.
+* `fecha_creacion` de tipo fecha.
+
+**¿Qué sucedería si yo intento mezclar todo en una matriz?**
 
 
 ```{r}
@@ -258,7 +200,7 @@ x <- cbind(nombres, apellidos, edades, tlf, cp, casado, fecha_creacion)
 x
 ```
 
-Efectivamente: como en una matriz solo puede haber datos de un tipo, los números los convierte a texto, las variables lógicas las converte a texto (`TRUE` es un valor lógico, `"TRUE"` es un texto, como `"Pepito"`, sin significado lógico - booleano - de verdadero/falso) y las fechas las ha convertido a texto (aunque las veas igual, ya no son de tipo de fecha, son texto y no podemos operar con ellas).
+Efectivamente: como **en una matriz solo puede haber datos de un tipo**, los números los convierte a texto, las variables lógicas las convierte a texto (`TRUE` es un valor lógico, `"TRUE"` es un texto, como `"Pepito"`, sin significado lógico - booleano - de verdadero/falso) y las fechas las ha convertido a texto (aunque las veas igual, ya no son de tipo de fecha, son texto y no podemos operar con ellas).
 
 ```{r error = TRUE}
 # Días entre la primera y el segundo elemento de fecha de creación
@@ -267,6 +209,8 @@ fecha_creacion[1] - fecha_creacion[2]
 # Días entre primera y segunda fecha de creación pero tomándolo de nuestra matriz (columna 7, fila 1 y 2)
 x[1, 7] - x[2, 7]
 ```
+
+&nbsp; 
 
 He aquí LA pregunta: **¿cómo juntar variables de distinto tipo, sin cambiar su naturaleza, como cuando juntamos datos en una tabla de excel?**
 
@@ -282,41 +226,6 @@ tabla
 ```
 
 **¡TENEMOS NUESTRO PRIMER CONJUNTO DE DATOS!**
-
-&nbsp;
-
-
-<details>
-  <summary>![](img/logo_info.png){width=4%}  <strong>Consejos y tips</strong></summary>
-  
-<!-- toc -->
-
-* **Acceso a librería**
-
-A veces puede que no queramos cargar todo un paquete sino solo una función del mismo, para lo que es suficiente `nombre_paquete::nombre_funcion`.
-
-&nbsp;  
-
-&nbsp; 
-
-* **Nombre de variables**
-
-La función `names()` no solo sirve para consultar los nombres de las variables de un `data.frame` sino también para cambiarlos a nuestro gusto.
-
-```{r}
-# Consultamos nombres
-names(tabla)
-
-# Cambiamos nombres
-names(tabla) <- c("nombre_persona", "apellido_persona", "edad", "tlf",
-                  "cp", "casado", "f_creacion")
-tabla
-```
-
-<!-- tocstop -->
-</details>
-
-
 
 
 ### Data.frames: selección manual de columnas y filas
@@ -418,9 +327,9 @@ knitr::include_graphics("./img/view_datasets.jpg")
 
 En el caso de los `data.frame` tenemos además a nuestro disposición una **herramienta muy potente: la función `subset()`** Dicha función nos va a permitir seleccionar filas y columnas automáticamente, tomando de entrada los siguientes argumentos
 
-- `x`: una tabla de entrada, un `data.frame` de entrada.
-- `subset`: la condición lógica que queramos usar para seleccionar registros (filas).
-- `select`: un vector que contenga el nombre de las columnas que queremos seleccionar (a lo mejor solo queremos filtrar por filas pero quizás también por columnas).
+* `x`: una tabla de entrada, un `data.frame` de entrada.
+* `subset`: la condición lógica que queramos usar para seleccionar registros (filas).
+* `select`: un vector que contenga el nombre de las columnas que queremos seleccionar (a lo mejor solo queremos filtrar por filas pero quizás también por columnas).
 
 Por ejemplo, vamos a seleccionar solo los nombres y apellidos de aquellas personas mayores de edad de nuestro conjunto de datos `tabla`, y del conjunto `iris` vamos a extraer todos los registros en los que el largo del sépalo es mayor que 7.1, seleccionando solo las columnas de longitud de sépalo y la especie de la planta.
 
@@ -430,11 +339,100 @@ subset(tabla, subset = Edad > 18, select = c("Nombre", "Apellido"))
 subset(iris, subset = Sepal.Length > 7.1, select = c("Sepal.Length", "Species"))
 ``` 
 
+
+## ![](img/logo_info.png){width=4%} Consejos y tips
+
+
 <details>
-  <summary>📝<strong>Ejercicio</strong>: del conjunto `iris` del paquete `datasets` obtén el nombre de las variables, y selecciona aquellas filas cuya variable `Petal.Width` sea distinta de 0.2, y quédate solo con las variables `Sepal.Length`, `Sepal.Width` y `Species`. Calcula el número de filas borradas. Tras hacer todo ello, traduce a castellano el nombre de las columnas del `data.frame` filtrado.</summary>
+  <summary>Acceso a librería</strong></summary>
+
+A veces puede que no queramos cargar todo un paquete sino solo una función del mismo, para lo que es suficiente `nombre_paquete::nombre_funcion`.
+
+</details> 
+
+&nbsp; 
+
+<details>
+  <summary>Nombre de variables</strong></summary>
+
+La función `names()` no solo sirve para consultar los nombres de las variables de un `data.frame` sino también para cambiarlos a nuestro gusto.
+
+```{r}
+# Consultamos nombres
+names(tabla)
+
+# Cambiamos nombres
+names(tabla) <- c("nombre_persona", "apellido_persona", "edad", "tlf",
+                  "cp", "casado", "f_creacion")
+tabla
+```
+
+</details>
+
+&nbsp;
+
+<details>
+  <summary>Paquete `{tibble}`</strong></summary>
   
+En dicho paquete tienes más **funciones para una gestión más ágil, eficiente y coherente de los `data.frame`**. Ver <https://tibble.tidyverse.org/>.
+
+</details>
+
+
+## 📝 Ejercicios
+
+
+
+<details>
+  <summary><strong>Ejercicio 1</strong>: define una matriz de ceros de 3 filas y 7 columnas. Tras hacerlo calcula su transpuesta y obtén sus dimensiones</summary>
+
+- Solución:
+
+```{r}
+# Matriz
+matriz <- matrix(0, nrow = 3, ncol = 7)
+
+# Transpuesta
+t(matriz)
+
+# Dimensiones transpuesta
+dim(t(matriz))
+ncol(t(matriz))
+nrow(t(matriz))
+```
+
+</details>
+
+&nbsp; 
+
+<details>
+  <summary><strong>Ejercicio 2</strong>: calcula la suma de cada fila de la matriz `matriz <- matrix(1:12, nrow = 4)` usando un bucle. Haz lo mismo evitando usar bucles.</summary>
+
+- Solución:
+
+```{r}
+# Matriz
+matriz <- matrix(1:12, nrow = 4)
+
+# Con bucle (recorremos sus filas)
+suma <- rep(0, nrow(matriz)) # Definimos un vector de 0's con tantos elementos como filas, donde iremos metiendo los valores de la suma
+for (i in 1:nrow(matriz)) {
   
-<!-- toc -->
+  suma[i] <- sum(matriz[i, ]) # Sumamos la fila i
+}
+suma
+
+# Sin bucle (MARGIN = 1 ya que es una operación por filas)
+suma <- apply(matriz, MARGIN = 1, FUN = "sum")
+suma
+```
+</details>
+
+&nbsp; 
+
+<details>
+  <summary><strong>Ejercicio 3</strong>: del conjunto `iris` del paquete `datasets` obtén el nombre de las variables, y selecciona aquellas filas cuya variable `Petal.Width` sea distinta de 0.2, y quédate solo con las variables `Sepal.Length`, `Sepal.Width` y `Species`. Calcula el número de filas borradas. Tras hacer todo ello, traduce a castellano el nombre de las columnas del `data.frame` filtrado.</summary>
+  
 - Solución:
 
 ```{r}
@@ -458,8 +456,8 @@ nrow(iris) - nrow(filtro)
 names(filtro) <- c("longitud_sepalo", "anchura_sepalo", "especies")
 ```
 
-<!-- tocstop -->
 </details>
+
 
 
 # Importando/exportando {#importar_exportar}
@@ -621,15 +619,16 @@ write.csv(tabla, file = "./EXPORTAR/tabla.csv")
 
 Podemos consultar con `? write.csv` las distintas opciones de exportaciones (por ejemplo, con `row.names` podemos indicarle si queremos nombres de filas o no, y con `col.names` si queremos exportar la cabecera con el nombre de las columnas).
 
-&nbsp;
+
+
+
+
+
+## ![](img/logo_info.png){width=4%} Consejos y tips
 
 <details>
-  <summary>![](img/logo_info.png){width=4%}  <strong>Consejos y tips</strong></summary>
+  <summary>Paquetes `{readr}` y `{tidyr}`</strong></summary>
   
-<!-- toc -->
-
-* **Paquetes `{readr}` y `{tidyr}`**
-
 En dichos paquetes tienes más funciones para una **fácil exportación y tabulación de distintos tipos de datos**, sea el formato que sea. Ver <https://tidyr.tidyverse.org/> y <https://readr.tidyverse.org/>
 
 ```{r paquete-readr, echo = FALSE, out.width = "95%", fig.align = "center", fig.cap = "Paquete readr."}
@@ -640,29 +639,22 @@ knitr::include_graphics("./img/readr.png")
 knitr::include_graphics("./img/tidyr.png")
 ```
 
+</details> 
 
-&nbsp;  
+&nbsp;
 
-&nbsp;  
-
-* **Paquete `{tibble}`**
-
-En dicho paquete tienes más **funciones para una gestión más ágil, eficiente y coherente de los `data.frame`**. Ver <https://tibble.tidyverse.org/>.
-
-&nbsp;  
-
-&nbsp;  
-
-* **Paquete `{rvest}`**
-
+<details>
+  <summary>Paquete `{rvest}`</strong></summary>
+  
 En dicho paquete tienes más **funciones para una lectura directamente de una página web (no desde un documento, desde la propia página web, como si estuvieras navegando en ella)**. Ver <https://github.com/tidyverse/rvest>.
 
+</details>
 
-&nbsp;  
+&nbsp;
 
-&nbsp;  
-
-* **Secciones**
+<details>
+  <summary>Secciones en el código</strong></summary>
+  
 
 Los comentarios no solo sirven para documentar el código sino que además pueden servirnos para **construir secciones de código**. Prueba a escribir un comentario con varias `###############`: ¿ves la flecha que te aparece en la parte izquierda? Sirve para minimizar o maximizar trozos de código, de forma que tu código aún más limpio.
 
@@ -670,23 +662,26 @@ Los comentarios no solo sirven para documentar el código sino que además puede
 knitr::include_graphics("./img/indice.jpg")
 ```
 
-&nbsp;  
+</details>
 
-&nbsp;  
+&nbsp;
 
-* **Líneas de código**
-
+<details>
+  <summary>Líneas de código en los errores</strong></summary>
+  
 Dado que los errores del código nos vendrán referenciados en la consola por el número de línea donde fueron detectados, puede sernos muy útil mostrar dichos números en la barra lateral izquierda, yendo a `Tools << Global Options << Code << Display << Show line numbers`
 
 ```{r show-line-numbers, echo = FALSE, out.width = "50%", fig.align = "center", fig.cap = "Líneas de código."}
 knitr::include_graphics("./img/show_line_numbers.jpg")
 ```
 
-&nbsp;  
+</details>
 
-&nbsp;  
+&nbsp;
 
-* **Margen derecho**
+<details>
+  <summary>Margen derecho en la ventana de scripts</strong></summary>
+  
 
 Aunque no afecte a nuestro código escribir todo en una línea sin saltos de línea, no somos bárbaros/as. ¿Por qué cuadno escribes en un Word lo haces en formato vertical pero cuando programas pones todas las órdenes seguidas? Recuerda que la legibilidad de tu código no solo te ahorrará tiempo sino que te hará programar mejor. ¿Cómo podemos fijar un margen imaginario para nosotros ser quienes demos al _ENTER_? Yendo a `Tools << Global Options << Code << Display << Show margin` (es un margen imaginario para ser nosotros quienes lo hagamos efectivo, a `R` le da igual)
 
@@ -694,8 +689,5 @@ Aunque no afecte a nuestro código escribir todo en una línea sin saltos de lí
 knitr::include_graphics("./img/show_margin.jpg")
 ```
 
-<!-- tocstop -->
 </details>
-
-
 

@@ -102,52 +102,6 @@ Antes nos daba igual el orden de los argumentos pero ahora no, ya que en la sali
 calcular_area(lado_1 = 5, lado_2 = 3)
 ```
 
-<details>
-  <summary>📝<strong>Ejercicio</strong>: define una función propia llamada `pares` que, dados dos números `x` e `y`, nos diga si la suma de ambos es par o no.</summary>
-  
-<!-- toc -->
-- Solución:
-
-```{r}
-# Definimos función
-pares <- function(x, y) {
-  
-  # Sumamos
-  suma <- x + y
-  
-  # Comprobamos si es par calculando el resto al dividir entre 2: si al dividir suma entre 2 el resto es 0 ==> es par
-  
-  par <- suma %% 2 == 0
-  
-  # Devolvemos la salida
-  return(par)
-}
-
-# Aplicamos la función
-pares(1, 3)
-pares(1, 0)
-pares(2, 6)
-pares(2, 7)
-```
-
-También se puede definir directamente como
-
-```{r}
-# Definimos función
-pares <- function(x, y) {
-
-  # Devolvemos la salida
-  return((x + y) %% 2 == 0)
-}
-
-pares(1, 3)
-pares(1, 0)
-pares(2, 6)
-pares(2, 7)
-```
-
-<!-- tocstop -->
-</details>
 
 ## Segunda función
  
@@ -232,36 +186,6 @@ datos_salida
 ``` 
 
 
-<details>
-  <summary>📝<strong>Ejercicio</strong>: define una función propia llamada `proximo_par` que, dados un número `x`, nos diga si es par y, en aso de no serlo, nos devuelva el próximo número que si lo sea.</summary>
-  
-<!-- toc -->
-- Solución:
-
-```{r}
-# Definimos función
-proximo_par <- function(x) {
-  
-  # ¿par? TRUE/FALSE
-  par <- (x %% 2) == 0
-  
-  # Si es par, devolvemos el propio número (era par), sino le sumamos uno
-  if (par) {
-    
-    return(list("par" = par, "proximo" = x))
-    
-  } else { # Si no es par, devolvemos el siguiente (que será par) 
-    
-    return(list("par" = par, "proximo" = x + 1))
-  
-  }
-  # Devolvemos una lista de dos elementos: par (TRUE/FALSE) y proximo (si es par, el propio x, sino x + 1)
-}
-
-# Aplicamos la función
-proximo_par(7)
-proximo_par(8)
-```
 
 
 ## Variables locales/globales
@@ -310,4 +234,83 @@ y # lo que vale fuera
 ```
 
 
+
+## 📝 Ejercicios
+
+<details>
+  <summary><strong>Ejercicio 1</strong>: define una función propia llamada `pares` que, dados dos números `x` e `y`, nos diga si la suma de ambos es par o no.</summary>
+  
+- Solución:
+
+```{r}
+# Definimos función
+pares <- function(x, y) {
+  
+  # Sumamos
+  suma <- x + y
+  
+  # Comprobamos si es par calculando el resto al dividir entre 2: si al dividir suma entre 2 el resto es 0 ==> es par
+  
+  par <- suma %% 2 == 0
+  
+  # Devolvemos la salida
+  return(par)
+}
+
+# Aplicamos la función
+pares(1, 3)
+pares(1, 0)
+pares(2, 6)
+pares(2, 7)
+```
+
+También se puede definir directamente como
+
+```{r}
+# Definimos función
+pares <- function(x, y) {
+
+  # Devolvemos la salida
+  return((x + y) %% 2 == 0)
+}
+
+pares(1, 3)
+pares(1, 0)
+pares(2, 6)
+pares(2, 7)
+```
+
+</details>
+
+&nbsp; 
+
+<details>
+  <summary><strong>Ejercicio 2</strong>: define una función propia llamada `proximo_par` que, dados un número `x`, nos diga si es par y, en aso de no serlo, nos devuelva el próximo número que si lo sea.</summary>
+  
+- Solución:
+
+```{r}
+# Definimos función
+proximo_par <- function(x) {
+  
+  # ¿par? TRUE/FALSE
+  par <- (x %% 2) == 0
+  
+  # Si es par, devolvemos el propio número (era par), sino le sumamos uno
+  if (par) {
+    
+    return(list("par" = par, "proximo" = x))
+    
+  } else { # Si no es par, devolvemos el siguiente (que será par) 
+    
+    return(list("par" = par, "proximo" = x + 1))
+  
+  }
+  # Devolvemos una lista de dos elementos: par (TRUE/FALSE) y proximo (si es par, el propio x, sino x + 1)
+}
+
+# Aplicamos la función
+proximo_par(7)
+proximo_par(8)
+```
 
