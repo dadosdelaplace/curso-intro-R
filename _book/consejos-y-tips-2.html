@@ -335,9 +335,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb235-3" data-line-number="3">               x[<span class="kw">order</span>(x)], <span class="co"># segunda forma</span></a>
 <a class="sourceLine" id="cb235-4" data-line-number="4">               <span class="dt">times =</span> <span class="fl">1e3</span>) <span class="co"># se repetirá 1000 veces</span></a></code></pre></div>
 <pre><code>## Unit: microseconds
-##         expr    min      lq      mean  median       uq      max neval cld
-##      sort(x) 46.429 56.6275 125.75024 94.6770 124.4755 1913.660  1000   b
-##  x[order(x)] 33.826 39.4620  84.63083 66.2355  86.3495 1868.055  1000  a</code></pre>
+##         expr    min      lq     mean  median      uq     max neval cld
+##      sort(x) 46.984 53.0045 69.61929 58.1125 77.0225 315.803  1000   b
+##  x[order(x)] 34.255 38.7525 51.14291 42.3160 53.7955 481.532  1000  a</code></pre>
 <p>Sí, estás viendo bien: aunque a priori parezca contraintuitivo, es más corto obtener los índices ordenados de un vector, y luego reordenarlo en base a esos índices, que la ordenación directa a través del comando <code>sort()</code> (ya que usan algoritmos de ordenación distintos).</p>
 </details>
 </div>

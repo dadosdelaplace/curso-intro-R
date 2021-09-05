@@ -191,6 +191,8 @@ Ahora que ya sabes lo básico para poder empezar a trabajar en un entorno amigab
 knitr::include_graphics('img/me_github.jpg')
 ```
 
+* [Big Book of R](https://www.bigbookofr.com/index.html): **recopilatorio de tutoriales de `R`** en distintos campos.
+
 * **Paquete para aprender `R`**: el paquete `{swirl}` permite ir aprendiendo de forma sencilla (con preguntas tipo test) algunos conceptos básicos de `R` (muchos de ellos vistos en este manual). Puedes consultar la documentación en su [página web](https://swirlstats.com/)
 
 ```{r swirl, echo = FALSE, fig.align = 'center',  include = identical(knitr:::pandoc_to(), 'html'), fig.link = 'https://swirlstats.com/', out.width = '60%'}
@@ -202,7 +204,6 @@ knitr::include_graphics('img/swirl.png')
 
 * [Tidyverse cookbook](https://rstudio-education.github.io/tidyverse-cookbook/)
 * [Tidyverse skills for data science](https://jhudatascience.org/tidyversecourse/)
-* [Big Book of R](https://www.bigbookofr.com/index.html)
 
 ```{r tidyverse-png, echo = FALSE, fig.align = 'center',  include = identical(knitr:::pandoc_to(), 'html'), fig.link = 'https://www.tidyverse.org/', out.width = '60%'}
 knitr::include_graphics('img/tidyverse.jpg')

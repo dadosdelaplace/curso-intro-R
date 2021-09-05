@@ -283,8 +283,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <div class="sourceCode" id="cb623"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb623-1" data-line-number="1"><span class="co"># Tiramos 20 veces una moneda</span></a>
 <a class="sourceLine" id="cb623-2" data-line-number="2"><span class="kw">sample</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="st">&quot;cara&quot;</span>, <span class="st">&quot;cruz&quot;</span>), <span class="dt">size =</span> <span class="dv">20</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
-<pre><code>##  [1] &quot;cara&quot; &quot;cara&quot; &quot;cara&quot; &quot;cara&quot; &quot;cara&quot; &quot;cara&quot; &quot;cruz&quot; &quot;cruz&quot; &quot;cara&quot; &quot;cara&quot;
-## [11] &quot;cara&quot; &quot;cruz&quot; &quot;cara&quot; &quot;cara&quot; &quot;cruz&quot; &quot;cara&quot; &quot;cara&quot; &quot;cara&quot; &quot;cara&quot; &quot;cara&quot;</code></pre>
+<pre><code>##  [1] &quot;cara&quot; &quot;cara&quot; &quot;cruz&quot; &quot;cruz&quot; &quot;cara&quot; &quot;cara&quot; &quot;cara&quot; &quot;cruz&quot; &quot;cara&quot; &quot;cara&quot;
+## [11] &quot;cruz&quot; &quot;cara&quot; &quot;cara&quot; &quot;cruz&quot; &quot;cara&quot; &quot;cruz&quot; &quot;cara&quot; &quot;cara&quot; &quot;cruz&quot; &quot;cara&quot;</code></pre>
 <p>Fíjate que hemos indicado explícitamente <code>replace = TRUE</code> para decirle que aunque solo tengamos dos opciones, vamos a permitir que tras extraer una bola, la apuntemos, y la volvamos a introducir (puede salir de nuevo). ¿Qué sucede si <code>replace = FALSE</code> (su valor por defecto)?</p>
 <div class="sourceCode" id="cb625"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb625-1" data-line-number="1"><span class="co"># Tiramos 20 veces una moneda SIN reemplazamiento</span></a>
 <a class="sourceLine" id="cb625-2" data-line-number="2"><span class="kw">sample</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="st">&quot;cara&quot;</span>, <span class="st">&quot;cruz&quot;</span>), <span class="dt">size =</span> <span class="dv">20</span>)</a></code></pre></div>
@@ -296,24 +296,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb627-2" data-line-number="2">n_tiradas &lt;-<span class="st"> </span><span class="dv">50</span></a>
 <a class="sourceLine" id="cb627-3" data-line-number="3">tiradas &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dt">x =</span> <span class="dv">0</span><span class="op">:</span><span class="dv">1</span>, <span class="dt">size =</span> n_tiradas, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb627-4" data-line-number="4">tiradas</a></code></pre></div>
-<pre><code>##  [1] 0 0 1 1 0 0 0 0 1 1 0 1 1 0 1 0 0 1 1 0 1 1 0 1 0 0 0 0 1 1 0 1 1 0 1 0 1 0
-## [39] 0 0 0 0 0 0 0 1 0 0 1 0</code></pre>
+<pre><code>##  [1] 1 1 1 0 0 1 0 0 1 1 1 0 0 1 1 0 1 0 1 0 1 1 1 1 1 0 0 1 0 0 0 1 0 0 1 0 0 0
+## [39] 1 1 1 1 0 0 1 1 1 0 0 0</code></pre>
 <div class="sourceCode" id="cb629"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb629-1" data-line-number="1"><span class="co"># Cantidad de cruces: sumamos los 1&#39;s</span></a>
 <a class="sourceLine" id="cb629-2" data-line-number="2"><span class="kw">sum</span>(tiradas)</a></code></pre></div>
-<pre><code>## [1] 20</code></pre>
+<pre><code>## [1] 26</code></pre>
 <div class="sourceCode" id="cb631"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb631-1" data-line-number="1"><span class="co"># Cantidad de caras: lo que son cruces</span></a>
 <a class="sourceLine" id="cb631-2" data-line-number="2">n_tiradas <span class="op">-</span><span class="st"> </span><span class="kw">sum</span>(tiradas)</a></code></pre></div>
-<pre><code>## [1] 30</code></pre>
+<pre><code>## [1] 24</code></pre>
 <div class="sourceCode" id="cb633"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb633-1" data-line-number="1"><span class="co"># % de caras</span></a>
 <a class="sourceLine" id="cb633-2" data-line-number="2"><span class="kw">cat</span>(<span class="kw">paste0</span>(<span class="dv">100</span> <span class="op">*</span><span class="st"> </span><span class="kw">sum</span>(tiradas) <span class="op">/</span><span class="st"> </span>n_tiradas, <span class="st">&quot;% de cruces&quot;</span>))</a></code></pre></div>
-<pre><code>## 40% de cruces</code></pre>
+<pre><code>## 52% de cruces</code></pre>
 <p>El argumento <code>prob = ...</code> nos permite generar experimentos que sean dicotómicos pero que <strong>no sean equiprobables</strong>, algo similar a <strong>lanzar una moneda trucada</strong> (por ejemplo, 30% caras y 70% cruces). Nótese como dichas probabilidades deben ser introducidas como proporciones (divididas entre 100).</p>
 <div class="sourceCode" id="cb635"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb635-1" data-line-number="1"><span class="co"># Tiradas de una moneda trucada</span></a>
 <a class="sourceLine" id="cb635-2" data-line-number="2">tiradas &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dt">x =</span> <span class="dv">0</span><span class="op">:</span><span class="dv">1</span>, <span class="dt">size =</span> n_tiradas, <span class="dt">replace =</span> <span class="ot">TRUE</span>, <span class="dt">prob =</span> <span class="kw">c</span>(<span class="fl">0.3</span>, <span class="fl">0.7</span>))</a>
 <a class="sourceLine" id="cb635-3" data-line-number="3"></a>
 <a class="sourceLine" id="cb635-4" data-line-number="4"><span class="co"># % de caras</span></a>
 <a class="sourceLine" id="cb635-5" data-line-number="5"><span class="kw">cat</span>(<span class="kw">paste0</span>(<span class="dv">100</span> <span class="op">*</span><span class="st"> </span><span class="kw">sum</span>(tiradas) <span class="op">/</span><span class="st"> </span>n_tiradas, <span class="st">&quot;% de cruces&quot;</span>))</a></code></pre></div>
-<pre><code>## 72% de cruces</code></pre>
+<pre><code>## 54% de cruces</code></pre>
 <details>
 <p><summary>📝<strong>Ejercicio</strong>: ¿cómo simularías 200 tiradas de un dado?</summary></p>
 <!-- toc -->
@@ -322,23 +322,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <div class="sourceCode" id="cb637"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb637-1" data-line-number="1"><span class="co"># Lo único que cambia son las opciones en la urna</span></a>
 <a class="sourceLine" id="cb637-2" data-line-number="2"><span class="kw">sample</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="dt">size =</span> <span class="dv">200</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
-<pre><code>##   [1] 6 1 3 2 5 4 3 1 5 5 1 4 3 1 5 3 5 1 4 3 6 5 2 5 1 4 2 4 6 2 1 2 2 4 1 5 4
-##  [38] 3 3 5 5 2 4 4 2 5 6 3 3 1 1 1 6 3 5 1 6 3 2 5 3 2 1 2 5 6 4 5 1 4 4 5 3 2
-##  [75] 4 5 6 3 6 4 5 2 5 2 1 6 2 5 1 2 5 2 1 3 6 4 5 3 4 6 2 5 3 6 6 6 3 2 1 2 2
-## [112] 1 3 4 1 5 2 6 4 2 3 4 1 1 2 3 5 6 4 6 2 2 2 3 5 5 2 4 4 1 2 5 3 1 1 5 1 4
-## [149] 5 5 6 6 6 1 6 2 3 1 3 5 2 6 5 4 1 3 1 6 3 4 3 1 5 1 4 1 3 1 5 1 6 1 3 5 6
-## [186] 3 5 2 2 1 6 3 4 2 2 5 6 4 1 6</code></pre>
+<pre><code>##   [1] 4 1 3 2 1 2 6 2 5 5 2 4 6 1 4 5 3 4 6 2 3 2 1 6 2 5 1 5 1 1 3 3 2 2 1 4 6
+##  [38] 3 6 4 1 4 5 4 6 3 2 4 2 4 4 2 6 5 2 5 5 5 5 2 1 1 5 5 6 6 4 4 4 1 5 3 5 3
+##  [75] 2 4 1 2 6 4 6 3 2 5 2 1 4 4 1 4 4 3 4 1 6 3 2 6 2 1 4 4 4 1 2 5 4 3 3 3 4
+## [112] 5 3 4 2 2 6 4 1 2 6 6 5 6 5 3 2 4 6 3 2 4 4 1 4 2 6 1 4 2 1 5 6 3 2 1 5 3
+## [149] 4 4 6 1 1 2 3 2 3 2 4 5 6 4 1 4 4 2 1 5 1 1 6 5 5 6 6 5 4 4 4 6 6 1 2 1 4
+## [186] 2 1 1 3 4 2 4 3 2 5 6 2 1 1 4</code></pre>
 <!-- tocstop -->
 </details>
 <div id="pseudoaleatorio" class="section level3">
 <h3><span class="header-section-number">10.1.1</span> Pseudoaleatoriedad</h3>
 <p>Si has hecho varias pruebas con los códigos de arriba quizás ya hayas visto que <strong>cada vez que lanzas el código, el resultado es distinto</strong>, algo similar a lo que sucedería si lanzas una moneda. Prueba a ejecutar este código varias veces.</p>
 <div class="sourceCode" id="cb639"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb639-1" data-line-number="1"><span class="kw">sample</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">1</span>, <span class="dt">size =</span> <span class="dv">20</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
-<pre><code>##  [1] 1 0 1 0 1 1 1 0 1 0 1 1 1 1 1 0 1 1 1 1</code></pre>
+<pre><code>##  [1] 1 1 1 1 0 0 0 1 0 1 1 0 0 1 0 0 1 1 0 0</code></pre>
 <div class="sourceCode" id="cb641"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb641-1" data-line-number="1"><span class="kw">sample</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">1</span>, <span class="dt">size =</span> <span class="dv">20</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
-<pre><code>##  [1] 0 1 0 0 0 0 0 1 0 1 1 1 0 1 0 0 1 1 1 1</code></pre>
+<pre><code>##  [1] 1 0 1 0 0 1 1 0 1 1 0 1 1 1 0 1 1 0 0 1</code></pre>
 <div class="sourceCode" id="cb643"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb643-1" data-line-number="1"><span class="kw">sample</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">1</span>, <span class="dt">size =</span> <span class="dv">20</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
-<pre><code>##  [1] 0 1 0 1 1 0 1 0 0 0 0 0 0 1 0 0 1 0 0 0</code></pre>
+<pre><code>##  [1] 0 1 1 1 0 1 0 1 0 0 0 0 0 1 1 1 0 0 0 1</code></pre>
 <p><strong>¿Y si quisiéramos generar toda la clase la misma tirada de moneda?</strong></p>
 <p>Lo primero que quizás pienses es que es <strong>imposible</strong>, ya que al tirar una moneda en la vida real, nunca vamos a tener forma de garantizar que salgan las mismas tiradas a diferentes personas. Y <strong>efectivamente eso sería cierto si nuestros procesos generados hubiesen sido aleatorios</strong>, como en la vida real pero…no lo son.</p>
 <p>Mientras esperamos a que lleguen al mainstream los ordenadores cuánticos, <strong>TODO lo que hay en tu ordenador es determínistico</strong>, ya que cualquier proceso se reduce a una <strong>secuencia de bits (<code>0's</code> y <code>1's</code>)</strong> y un <strong>algoritmo</strong> (sin azar, cuyo resultado siempre será el mismo bajo las mismas condiciones iniciales). He aquí la decepción de tu vida: un ordenador «normal» NO puede generar procesos aleatorios, sino <strong>procesos y números PSEUDOALEATORIOS</strong>, basados en <strong>cadenas pseudoaleatorias</strong> generadas por un algoritmo determinístico.</p>

@@ -2264,9 +2264,9 @@ Este paquete contiene una orden para comparar el tiempo de dos órdenes: necesit
 
 \begin{verbatim}
 ## Unit: microseconds
-##         expr    min      lq     mean  median      uq     max neval cld
-##      sort(x) 46.688 50.0635 62.63361 52.5465 62.1825 470.711  1000   b
-##  x[order(x)] 32.102 36.5545 45.19789 37.8575 42.6340 229.824  1000  a
+##         expr    min      lq     mean median      uq     max neval cld
+##      sort(x) 46.735 49.0885 61.93956 52.523 65.9525 228.513  1000   b
+##  x[order(x)] 34.188 35.8485 44.67441 37.876 45.6935 138.278  1000  a
 \end{verbatim}
 
 Sí, estás viendo bien: aunque a priori parezca contraintuitivo, es más corto obtener los índices ordenados de un vector, y luego reordenarlo en base a esos índices, que la ordenación directa a través del comando \texttt{sort()} (ya que usan algoritmos de ordenación distintos).
@@ -2775,7 +2775,7 @@ La función \texttt{Sys.time()} accede al sistema de nuestro ordenador para deci
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "2021-09-05 14:32:21 CEST"
+## [1] "2021-09-05 14:44:14 CEST"
 \end{verbatim}
 
 ~
@@ -3101,8 +3101,8 @@ Veamos qué es más eficiente con el ya conocido paquete \texttt{\{microbenchmar
 ##  for (i in 1:dim(x)[1]) {     suma_por_filas[i] <- sum(x[i, ], na.rm = TRUE) }
 ##                                apply(x, MARGIN = 1, FUN = "sum", na.rm = TRUE)
 ##       min        lq       mean   median        uq      max neval cld
-##  1687.765 1806.8370 2239.46695 2110.603 2525.3790 6446.246   100   b
-##    20.609   26.8265   38.09942   37.220   45.4655  104.495   100  a
+##  1746.397 1883.6265 2272.23147 2250.338 2518.0165 5114.794   100   b
+##    21.031   31.0165   42.84374   40.072   49.8965  165.617   100  a
 \end{verbatim}
 
 \textbf{¡El bucle nos tarda 50 veces más que el \texttt{apply}!} Di no a los bucles: casi siempre hay una forma mejor de hacerlo.
@@ -5432,7 +5432,7 @@ Para la \textbf{fecha con hora actual} podemos usar una función similar, la fun
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 1630845150
+## [1] 1630845860
 \end{verbatim}
 
 \begin{Shaded}
@@ -5465,10 +5465,10 @@ Para la \textbf{fecha con hora actual} podemos usar una función similar, la fun
 
 \begin{verbatim}
 ## $sec
-## [1] 30.11883
+## [1] 19.67106
 ## 
 ## $min
-## [1] 32
+## [1] 44
 ## 
 ## $hour
 ## [1] 14
@@ -5509,8 +5509,8 @@ Para la \textbf{fecha con hora actual} podemos usar una función similar, la fun
 
 \begin{verbatim}
 ## List of 11
-##  $ sec   : num 30.1
-##  $ min   : int 32
+##  $ sec   : num 19.7
+##  $ min   : int 44
 ##  $ hour  : int 14
 ##  $ mday  : int 5
 ##  $ mon   : int 8
@@ -5530,7 +5530,7 @@ Para la \textbf{fecha con hora actual} podemos usar una función similar, la fun
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 32
+## [1] 44
 \end{verbatim}
 
 Además tenemos disponibles funciones para extraer facilmente algunas variables temporales como el día de la semana, el mes o el cuatrimestre, con las funciones \texttt{weekdays()}, \texttt{months()}, and \texttt{quarters()}.
@@ -5597,7 +5597,7 @@ La función \texttt{difftime()} nos permite además hallar distancias entre fech
 \end{Shaded}
 
 \begin{verbatim}
-## Time difference of 597.1308 days
+## Time difference of 597.139 days
 \end{verbatim}
 
 \begin{Shaded}
@@ -5607,7 +5607,7 @@ La función \texttt{difftime()} nos permite además hallar distancias entre fech
 \end{Shaded}
 
 \begin{verbatim}
-## Time difference of 14331.14 hours
+## Time difference of 14331.34 hours
 \end{verbatim}
 
 \begin{Shaded}
@@ -5617,7 +5617,7 @@ La función \texttt{difftime()} nos permite además hallar distancias entre fech
 \end{Shaded}
 
 \begin{verbatim}
-## Time difference of 85.3044 weeks
+## Time difference of 85.30557 weeks
 \end{verbatim}
 
 \hypertarget{consejos-y-tips-7}{%
@@ -6525,8 +6525,8 @@ Una forma de ver el experimento de lanzar una moneda es pensar que tenemos una \
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] "cara" "cara" "cruz" "cara" "cruz" "cruz" "cara" "cara" "cara" "cara"
-## [11] "cara" "cara" "cara" "cruz" "cara" "cruz" "cara" "cara" "cruz" "cara"
+##  [1] "cara" "cara" "cara" "cara" "cruz" "cruz" "cara" "cara" "cara" "cara"
+## [11] "cruz" "cara" "cara" "cara" "cruz" "cara" "cruz" "cruz" "cruz" "cara"
 \end{verbatim}
 
 Fíjate que hemos indicado explícitamente \texttt{replace\ =\ TRUE} para decirle que aunque solo tengamos dos opciones, vamos a permitir que tras extraer una bola, la apuntemos, y la volvamos a introducir (puede salir de nuevo). ¿Qué sucede si \texttt{replace\ =\ FALSE} (su valor por defecto)?
@@ -6558,8 +6558,8 @@ Generar experimentos dicotómicos de forma binario nos permite hacer cálculos s
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 0 0 0 0 1 1 1 0 0 0 1 0 0 0 0 0 0 1 1 1 0 0 0 1 0 1 1 1 0 0 1 0 0 1 0 1 1 0
-## [39] 0 1 0 0 0 1 1 1 0 0 0 1
+##  [1] 0 1 1 0 0 0 0 0 1 0 1 0 1 0 1 0 0 1 1 0 0 0 1 0 1 0 1 1 1 1 0 1 1 1 0 1 0 0
+## [39] 0 1 0 1 0 1 1 0 0 1 1 0
 \end{verbatim}
 
 \begin{Shaded}
@@ -6570,7 +6570,7 @@ Generar experimentos dicotómicos de forma binario nos permite hacer cálculos s
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 20
+## [1] 24
 \end{verbatim}
 
 \begin{Shaded}
@@ -6581,7 +6581,7 @@ Generar experimentos dicotómicos de forma binario nos permite hacer cálculos s
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 30
+## [1] 26
 \end{verbatim}
 
 \begin{Shaded}
@@ -6592,7 +6592,7 @@ Generar experimentos dicotómicos de forma binario nos permite hacer cálculos s
 \end{Shaded}
 
 \begin{verbatim}
-## 40% de cruces
+## 48% de cruces
 \end{verbatim}
 
 El argumento \texttt{prob\ =\ ...} nos permite generar experimentos que sean dicotómicos pero que \textbf{no sean equiprobables}, algo similar a \textbf{lanzar una moneda trucada} (por ejemplo, 30\% caras y 70\% cruces). Nótese como dichas probabilidades deben ser introducidas como proporciones (divididas entre 100).
@@ -6608,7 +6608,7 @@ El argumento \texttt{prob\ =\ ...} nos permite generar experimentos que sean dic
 \end{Shaded}
 
 \begin{verbatim}
-## 68% de cruces
+## 82% de cruces
 \end{verbatim}
 
 📝Ejercicio: ¿cómo simularías 200 tiradas de un dado?
@@ -6627,12 +6627,12 @@ El argumento \texttt{prob\ =\ ...} nos permite generar experimentos que sean dic
 \end{Shaded}
 
 \begin{verbatim}
-##   [1] 1 6 5 6 3 1 6 5 4 6 1 3 4 3 1 1 5 3 1 2 4 1 6 2 6 3 5 1 5 5 3 2 4 5 3 4 2
-##  [38] 6 6 3 5 2 4 2 4 3 3 2 4 5 5 6 2 5 3 3 6 5 4 6 4 6 1 6 1 6 6 4 4 6 5 6 3 1
-##  [75] 1 4 1 2 5 3 5 1 4 3 1 6 6 3 5 3 6 6 6 1 1 5 2 3 3 6 6 3 1 4 4 6 2 3 2 2 1
-## [112] 6 5 1 3 4 2 3 6 3 6 6 5 4 4 5 1 3 4 2 3 6 4 5 5 4 4 6 4 5 1 5 6 5 5 1 6 1
-## [149] 3 1 6 4 2 1 5 4 2 4 3 3 6 2 5 5 2 1 5 2 5 3 1 3 5 3 1 5 4 3 1 3 4 4 5 1 6
-## [186] 5 2 3 3 5 3 4 4 6 6 4 6 5 6 3
+##   [1] 4 1 6 2 5 4 6 4 6 1 6 2 2 2 3 6 6 2 6 2 1 6 3 6 5 2 2 2 2 2 6 2 1 3 1 4 5
+##  [38] 1 4 3 4 4 4 5 6 5 5 6 1 1 2 4 2 2 3 6 5 6 6 3 5 5 3 5 3 3 6 4 3 4 6 4 4 5
+##  [75] 1 4 6 6 3 1 1 4 2 4 4 2 1 2 1 1 6 4 3 3 6 6 6 3 4 3 2 5 5 2 6 2 3 5 1 5 1
+## [112] 1 4 1 6 1 3 3 2 1 2 4 5 2 6 2 1 5 5 3 3 1 2 5 2 2 5 5 4 6 6 2 4 6 2 3 3 4
+## [149] 3 5 2 4 4 4 1 3 2 5 3 5 4 3 4 2 1 4 3 3 3 2 4 6 5 5 2 1 4 2 4 6 3 4 3 3 6
+## [186] 4 1 5 6 6 3 5 1 4 1 2 3 1 6 1
 \end{verbatim}
 
 \hypertarget{pseudoaleatorio}{%
@@ -6647,7 +6647,7 @@ Si has hecho varias pruebas con los códigos de arriba quizás ya hayas visto qu
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 0 1 0 0 1 0 1 1 1 1 1 0 0 1 0 0 1 0 0 0
+##  [1] 0 1 0 1 1 0 1 0 1 0 0 1 1 0 0 1 0 1 1 1
 \end{verbatim}
 
 \begin{Shaded}
@@ -6657,7 +6657,7 @@ Si has hecho varias pruebas con los códigos de arriba quizás ya hayas visto qu
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 1 1 0 0 0 1 0 0 0 0 0 1 0 1 0 0 1 1 1 1
+##  [1] 1 0 1 1 0 1 0 0 1 0 1 1 1 0 1 0 0 0 1 1
 \end{verbatim}
 
 \begin{Shaded}
@@ -6667,7 +6667,7 @@ Si has hecho varias pruebas con los códigos de arriba quizás ya hayas visto qu
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 0 0 0 0 0 1 0 1 0 1 0 0 0 1 0 0 0 0 0 1
+##  [1] 0 0 0 1 1 1 0 0 1 0 1 1 0 1 0 1 0 1 0 1
 \end{verbatim}
 
 \textbf{¿Y si quisiéramos generar toda la clase la misma tirada de moneda?}
@@ -6722,6 +6722,8 @@ Ahora que ya sabes lo básico para poder empezar a trabajar en un entorno amigab
 \item
   \textbf{Código de este manual}: este manual está programado en sí mismo en \texttt{R} y los códigos pueden ser consultados libremente en el respositorio de \href{https://github.com/dadosdelaplace/docencia}{GitHub} (hablaremos más adelante de como gestionar versiones de nuestro código en dicha plataforma).
 \item
+  \href{https://www.bigbookofr.com/index.html}{Big Book of R}: \textbf{recopilatorio de tutoriales de \texttt{R}} en distintos campos.
+\item
   \textbf{Paquete para aprender \texttt{R}}: el paquete \texttt{\{swirl\}} permite ir aprendiendo de forma sencilla (con preguntas tipo test) algunos conceptos básicos de \texttt{R} (muchos de ellos vistos en este manual). Puedes consultar la documentación en su \href{https://swirlstats.com/}{página web}
 \item
   \textbf{Manejo de datos}: probablemente el conjunto de herramientas más usadas en \texttt{R} sean los paquetes agrupados en \{\texttt{tidyverse}\} (y que veremos en capítulos sucesivos si los hubiese), un \href{https://www.tidyverse.org/}{conjunto de paquetes integrados para un manejo intuitivo de los datos}, tanto en su preprocesamiento, como en la generación de estadísticas y gráficas.
@@ -6729,8 +6731,6 @@ Ahora que ya sabes lo básico para poder empezar a trabajar en un entorno amigab
   \href{https://rstudio-education.github.io/tidyverse-cookbook/}{Tidyverse cookbook}
 \item
   \href{https://jhudatascience.org/tidyversecourse/}{Tidyverse skills for data science}
-\item
-  \href{https://www.bigbookofr.com/index.html}{Big Book of R}
 \item
   \textbf{Visualización de datos en Twitter}: una de las \textbf{fortalezas de \texttt{R}} es su versatilidad para la visualización de datos. Y al igual que un escritor necesita leer mucho para tomar ideas, hay dos recursos en Twitter que te recomiendo encarecidamente:
 
