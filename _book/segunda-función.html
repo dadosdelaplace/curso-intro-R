@@ -157,8 +157,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="primeros-pasos.html"><a href="primeros-pasos.html"><i class="fa fa-check"></i><b>2</b> Primeros pasos</a><ul>
 <li class="chapter" data-level="2.1" data-path="excel-no-es-tu-amigo.html"><a href="excel-no-es-tu-amigo.html"><i class="fa fa-check"></i><b>2.1</b> Excel no es tu amigo</a></li>
 <li class="chapter" data-level="2.2" data-path="primeros-pasos-calculadora.html"><a href="primeros-pasos-calculadora.html"><i class="fa fa-check"></i><b>2.2</b> Primeros pasos: calculadora</a></li>
-<li class="chapter" data-level="2.3" data-path="consejos-y-tips-1.html"><a href="consejos-y-tips-1.html"><i class="fa fa-check"></i><b>2.3</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
-<li class="chapter" data-level="2.4" data-path="ejercicios.html"><a href="ejercicios.html"><i class="fa fa-check"></i><b>2.4</b> 📝 Ejercicios</a></li>
+<li class="chapter" data-level="2.3" data-path="tipos_errores.html"><a href="tipos_errores.html"><i class="fa fa-check"></i><b>2.3</b> Tipos de errores</a></li>
+<li class="chapter" data-level="2.4" data-path="consejos-y-tips-1.html"><a href="consejos-y-tips-1.html"><i class="fa fa-check"></i><b>2.4</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
+<li class="chapter" data-level="2.5" data-path="ejercicios.html"><a href="ejercicios.html"><i class="fa fa-check"></i><b>2.5</b> 📝 Ejercicios</a></li>
 </ul></li>
 <li class="part"><span><b>II Conceptos básicos</b></span></li>
 <li class="chapter" data-level="3" data-path="tipos-de-datos-i-vectores.html"><a href="tipos-de-datos-i-vectores.html"><i class="fa fa-check"></i><b>3</b> Tipos de datos I: vectores</a><ul>
@@ -169,7 +170,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="operaciones-estadísticas-con-vectores-numéricos.html"><a href="operaciones-estadísticas-con-vectores-numéricos.html"><i class="fa fa-check"></i><b>3.3</b> Operaciones estadísticas con vectores numéricos</a></li>
 <li class="chapter" data-level="3.4" data-path="vectores-de-caracteres-texto.html"><a href="vectores-de-caracteres-texto.html"><i class="fa fa-check"></i><b>3.4</b> Vectores de caracteres (texto)</a></li>
 <li class="chapter" data-level="3.5" data-path="vectores-lógicos-truefalse.html"><a href="vectores-lógicos-truefalse.html"><i class="fa fa-check"></i><b>3.5</b> Vectores lógicos (TRUE/FALSE)</a></li>
-<li class="chapter" data-level="3.6" data-path="datos-ausentes-na-y-nan.html"><a href="datos-ausentes-na-y-nan.html"><i class="fa fa-check"></i><b>3.6</b> Datos ausentes: NA y NaN</a></li>
+<li class="chapter" data-level="3.6" data-path="ausentes.html"><a href="ausentes.html"><i class="fa fa-check"></i><b>3.6</b> Datos ausentes: NA y NaN</a></li>
 <li class="chapter" data-level="3.7" data-path="seleccionar-elementos-de-un-vector.html"><a href="seleccionar-elementos-de-un-vector.html"><i class="fa fa-check"></i><b>3.7</b> Seleccionar elementos de un vector</a><ul>
 <li class="chapter" data-level="3.7.1" data-path="seleccionar-elementos-de-un-vector.html"><a href="seleccionar-elementos-de-un-vector.html#which"><i class="fa fa-check"></i><b>3.7.1</b> which</a></li>
 <li class="chapter" data-level="3.7.2" data-path="seleccionar-elementos-de-un-vector.html"><a href="seleccionar-elementos-de-un-vector.html#null"><i class="fa fa-check"></i><b>3.7.2</b> NULL</a></li>
@@ -231,7 +232,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.4" data-path="ejercicios-4.html"><a href="ejercicios-4.html"><i class="fa fa-check"></i><b>9.4</b> 📝 Ejercicios</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="qué-sabemos-hacer.html"><a href="qué-sabemos-hacer.html"><i class="fa fa-check"></i><b>10</b> ¿Qué sabemos hacer?</a><ul>
-<li class="chapter" data-level="10.1" data-path="recursos.html"><a href="recursos.html"><i class="fa fa-check"></i><b>10.1</b> Recursos</a></li>
+<li class="chapter" data-level="10.1" data-path="aleatorio_1.html"><a href="aleatorio_1.html"><i class="fa fa-check"></i><b>10.1</b> Incursión aleatoria</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="aleatorio_1.html"><a href="aleatorio_1.html#pseudoaleatorio"><i class="fa fa-check"></i><b>10.1.1</b> Pseudoaleatoriedad</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="recursos.html"><a href="recursos.html"><i class="fa fa-check"></i><b>10.2</b> Recursos</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="bibliografía.html"><a href="bibliografía.html"><i class="fa fa-check"></i>Bibliografía</a></li>
 <li class="divider"></li>
@@ -257,63 +261,63 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="segunda-función" class="section level2">
 <h2><span class="header-section-number">9.2</span> Segunda función</h2>
 <p>Vayamos con un <strong>ejemplo más complejo</strong>. Imaginemos que en nuestro código vamos a tener calcular, para cada día, el número de vacunas diarias administradas, el número de vacunas administradas en los últimos 7 días y el número de vacunadas administradas en los últimos 14 días, usando tan solo el número de vacunadas acumuladas. Para ello vamos a usar la <strong>función <code>diff()</code> que nos calcula las diferencias de un vector dado</strong>.</p>
-<div class="sourceCode" id="cb568"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb568-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>, <span class="dv">50</span>, <span class="dv">100</span>, <span class="dv">250</span>, <span class="dv">600</span>, <span class="dv">1200</span>)</a>
-<a class="sourceLine" id="cb568-2" data-line-number="2"><span class="kw">diff</span>(x) <span class="co"># vector con [elemento2 - elemento1, elemento3 - elemento2, elemento4 - elemento3, ...]</span></a></code></pre></div>
+<div class="sourceCode" id="cb573"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb573-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>, <span class="dv">50</span>, <span class="dv">100</span>, <span class="dv">250</span>, <span class="dv">600</span>, <span class="dv">1200</span>)</a>
+<a class="sourceLine" id="cb573-2" data-line-number="2"><span class="kw">diff</span>(x) <span class="co"># vector con [elemento2 - elemento1, elemento3 - elemento2, elemento4 - elemento3, ...]</span></a></code></pre></div>
 <pre><code>##  [1]   1   1   4   3   5   5  30  50 150 350 600</code></pre>
-<div class="sourceCode" id="cb570"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb570-1" data-line-number="1"><span class="kw">diff</span>(x, <span class="dv">3</span>) <span class="co"># vector con [elemento4 - elemento1, elemento5 - elemento2, elemento6 - elemento3, ...]</span></a></code></pre></div>
+<div class="sourceCode" id="cb575"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb575-1" data-line-number="1"><span class="kw">diff</span>(x, <span class="dv">3</span>) <span class="co"># vector con [elemento4 - elemento1, elemento5 - elemento2, elemento6 - elemento3, ...]</span></a></code></pre></div>
 <pre><code>## [1]    6    8   12   13   40   85  230  550 1100</code></pre>
-<div class="sourceCode" id="cb572"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb572-1" data-line-number="1"><span class="kw">diff</span>(x, <span class="dv">7</span>) <span class="co"># vector con [elemento8 - elemento1, elemento9 - elemento2, elemento10 - elemento3, ...]</span></a></code></pre></div>
+<div class="sourceCode" id="cb577"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb577-1" data-line-number="1"><span class="kw">diff</span>(x, <span class="dv">7</span>) <span class="co"># vector con [elemento8 - elemento1, elemento9 - elemento2, elemento10 - elemento3, ...]</span></a></code></pre></div>
 <pre><code>## [1]   49   98  247  593 1190</code></pre>
-<div class="sourceCode" id="cb574"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb574-1" data-line-number="1"><span class="co"># Para España</span></a>
-<a class="sourceLine" id="cb574-2" data-line-number="2">casos_diarios &lt;-<span class="st"> </span><span class="kw">diff</span>(panel_vacunas<span class="op">$</span>ES<span class="op">$</span>personas_vacunadas)</a>
-<a class="sourceLine" id="cb574-3" data-line-number="3">casos_7D &lt;-<span class="st"> </span><span class="kw">diff</span>(panel_vacunas<span class="op">$</span>ES<span class="op">$</span>personas_vacunadas, <span class="dv">7</span>) <span class="co"># diferencias a 7 días</span></a>
-<a class="sourceLine" id="cb574-4" data-line-number="4">casos_14D &lt;-<span class="st"> </span><span class="kw">diff</span>(panel_vacunas<span class="op">$</span>ES<span class="op">$</span>personas_vacunadas, <span class="dv">14</span>) <span class="co"># diferencias a 14 días</span></a>
-<a class="sourceLine" id="cb574-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb574-6" data-line-number="6"><span class="co"># Para Andalucía</span></a>
-<a class="sourceLine" id="cb574-7" data-line-number="7">casos_diarios &lt;-<span class="st"> </span><span class="kw">diff</span>(panel_vacunas<span class="op">$</span>AN<span class="op">$</span>personas_vacunadas)</a>
-<a class="sourceLine" id="cb574-8" data-line-number="8">casos_7D &lt;-<span class="st"> </span><span class="kw">diff</span>(panel_vacunas<span class="op">$</span>AN<span class="op">$</span>personas_vacunadas, <span class="dv">7</span>) <span class="co"># diferencias a 7 días</span></a>
-<a class="sourceLine" id="cb574-9" data-line-number="9">casos_14D &lt;-<span class="st"> </span><span class="kw">diff</span>(panel_vacunas<span class="op">$</span>AN<span class="op">$</span>personas_vacunadas, <span class="dv">14</span>) <span class="co"># diferencias a 14 días</span></a>
-<a class="sourceLine" id="cb574-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb574-11" data-line-number="11"><span class="co"># ...</span></a></code></pre></div>
+<div class="sourceCode" id="cb579"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb579-1" data-line-number="1"><span class="co"># Para España</span></a>
+<a class="sourceLine" id="cb579-2" data-line-number="2">casos_diarios &lt;-<span class="st"> </span><span class="kw">diff</span>(panel_vacunas<span class="op">$</span>ES<span class="op">$</span>personas_vacunadas)</a>
+<a class="sourceLine" id="cb579-3" data-line-number="3">casos_7D &lt;-<span class="st"> </span><span class="kw">diff</span>(panel_vacunas<span class="op">$</span>ES<span class="op">$</span>personas_vacunadas, <span class="dv">7</span>) <span class="co"># diferencias a 7 días</span></a>
+<a class="sourceLine" id="cb579-4" data-line-number="4">casos_14D &lt;-<span class="st"> </span><span class="kw">diff</span>(panel_vacunas<span class="op">$</span>ES<span class="op">$</span>personas_vacunadas, <span class="dv">14</span>) <span class="co"># diferencias a 14 días</span></a>
+<a class="sourceLine" id="cb579-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb579-6" data-line-number="6"><span class="co"># Para Andalucía</span></a>
+<a class="sourceLine" id="cb579-7" data-line-number="7">casos_diarios &lt;-<span class="st"> </span><span class="kw">diff</span>(panel_vacunas<span class="op">$</span>AN<span class="op">$</span>personas_vacunadas)</a>
+<a class="sourceLine" id="cb579-8" data-line-number="8">casos_7D &lt;-<span class="st"> </span><span class="kw">diff</span>(panel_vacunas<span class="op">$</span>AN<span class="op">$</span>personas_vacunadas, <span class="dv">7</span>) <span class="co"># diferencias a 7 días</span></a>
+<a class="sourceLine" id="cb579-9" data-line-number="9">casos_14D &lt;-<span class="st"> </span><span class="kw">diff</span>(panel_vacunas<span class="op">$</span>AN<span class="op">$</span>personas_vacunadas, <span class="dv">14</span>) <span class="co"># diferencias a 14 días</span></a>
+<a class="sourceLine" id="cb579-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb579-11" data-line-number="11"><span class="co"># ...</span></a></code></pre></div>
 <p>¿Cuánto ocuparía realizar esta misma tarea para cada comunidad, y cada variable? <strong>¿Por qué no la automatizamos?</strong></p>
-<div class="sourceCode" id="cb575"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb575-1" data-line-number="1">datos_acumulados &lt;-<span class="st"> </span><span class="cf">function</span>(variable_acumulada, <span class="dt">dias_dif =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">7</span>, <span class="dv">14</span>)) {</a>
-<a class="sourceLine" id="cb575-2" data-line-number="2">  </a>
-<a class="sourceLine" id="cb575-3" data-line-number="3">  <span class="co"># Dentro de las llaves el cuerpo de la función</span></a>
-<a class="sourceLine" id="cb575-4" data-line-number="4">  acumulados_diferenciales &lt;-<span class="st"> </span><span class="ot">NULL</span></a>
-<a class="sourceLine" id="cb575-5" data-line-number="5">  <span class="cf">for</span> (i <span class="cf">in</span> dias_dif) { <span class="co"># Vamos calculando tantos acumulados diferenciales como le hayamos pasado por el argumento dias_dif</span></a>
-<a class="sourceLine" id="cb575-6" data-line-number="6">    </a>
-<a class="sourceLine" id="cb575-7" data-line-number="7">    <span class="co"># A lo que teníamos, le concatenamos por columnas uno nuevo</span></a>
-<a class="sourceLine" id="cb575-8" data-line-number="8">    acumulados_diferenciales &lt;-<span class="st"> </span><span class="kw">c</span>(acumulados_diferenciales,</a>
-<a class="sourceLine" id="cb575-9" data-line-number="9">                                  <span class="kw">rev</span>(<span class="kw">diff</span>(variable_acumulada, i))[<span class="dv">1</span>])</a>
-<a class="sourceLine" id="cb575-10" data-line-number="10">  </a>
-<a class="sourceLine" id="cb575-11" data-line-number="11">  }</a>
-<a class="sourceLine" id="cb575-12" data-line-number="12">  </a>
-<a class="sourceLine" id="cb575-13" data-line-number="13">  <span class="co"># La salida de la función</span></a>
-<a class="sourceLine" id="cb575-14" data-line-number="14">  <span class="kw">return</span>(acumulados_diferenciales)</a>
-<a class="sourceLine" id="cb575-15" data-line-number="15">}</a></code></pre></div>
+<div class="sourceCode" id="cb580"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb580-1" data-line-number="1">datos_acumulados &lt;-<span class="st"> </span><span class="cf">function</span>(variable_acumulada, <span class="dt">dias_dif =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">7</span>, <span class="dv">14</span>)) {</a>
+<a class="sourceLine" id="cb580-2" data-line-number="2">  </a>
+<a class="sourceLine" id="cb580-3" data-line-number="3">  <span class="co"># Dentro de las llaves el cuerpo de la función</span></a>
+<a class="sourceLine" id="cb580-4" data-line-number="4">  acumulados_diferenciales &lt;-<span class="st"> </span><span class="ot">NULL</span></a>
+<a class="sourceLine" id="cb580-5" data-line-number="5">  <span class="cf">for</span> (i <span class="cf">in</span> dias_dif) { <span class="co"># Vamos calculando tantos acumulados diferenciales como le hayamos pasado por el argumento dias_dif</span></a>
+<a class="sourceLine" id="cb580-6" data-line-number="6">    </a>
+<a class="sourceLine" id="cb580-7" data-line-number="7">    <span class="co"># A lo que teníamos, le concatenamos por columnas uno nuevo</span></a>
+<a class="sourceLine" id="cb580-8" data-line-number="8">    acumulados_diferenciales &lt;-<span class="st"> </span><span class="kw">c</span>(acumulados_diferenciales,</a>
+<a class="sourceLine" id="cb580-9" data-line-number="9">                                  <span class="kw">rev</span>(<span class="kw">diff</span>(variable_acumulada, i))[<span class="dv">1</span>])</a>
+<a class="sourceLine" id="cb580-10" data-line-number="10">  </a>
+<a class="sourceLine" id="cb580-11" data-line-number="11">  }</a>
+<a class="sourceLine" id="cb580-12" data-line-number="12">  </a>
+<a class="sourceLine" id="cb580-13" data-line-number="13">  <span class="co"># La salida de la función</span></a>
+<a class="sourceLine" id="cb580-14" data-line-number="14">  <span class="kw">return</span>(acumulados_diferenciales)</a>
+<a class="sourceLine" id="cb580-15" data-line-number="15">}</a></code></pre></div>
 <p>Como vemos, los argumentos pueden ser cualquier tipo de variable, y nos permite además <strong>generalizar y automatizar una tarea</strong> para que pueda ser usada incluso en algún escenario para el que no tuviéramos previsto (acumulados a … 13 días, por ejemplo). Para que nuestra función sea realmente útil debemos intentar asignar <strong>nombres de funciones y argumentos lo más concisos posibles y evidentes en su interpretación</strong>.</p>
-<div class="sourceCode" id="cb576"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb576-1" data-line-number="1"><span class="kw">datos_acumulados</span>(panel_vacunas<span class="op">$</span>ES<span class="op">$</span>personas_vacunadas)</a></code></pre></div>
+<div class="sourceCode" id="cb581"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb581-1" data-line-number="1"><span class="kw">datos_acumulados</span>(panel_vacunas<span class="op">$</span>ES<span class="op">$</span>personas_vacunadas)</a></code></pre></div>
 <pre><code>## [1]  263914 1403809 3246147</code></pre>
-<div class="sourceCode" id="cb578"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb578-1" data-line-number="1"><span class="kw">datos_acumulados</span>(panel_vacunas<span class="op">$</span>AN<span class="op">$</span>personas_vacunadas)</a></code></pre></div>
+<div class="sourceCode" id="cb583"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb583-1" data-line-number="1"><span class="kw">datos_acumulados</span>(panel_vacunas<span class="op">$</span>AN<span class="op">$</span>personas_vacunadas)</a></code></pre></div>
 <pre><code>## [1]  59583 235051 537727</code></pre>
-<div class="sourceCode" id="cb580"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb580-1" data-line-number="1"><span class="kw">datos_acumulados</span>(panel_vacunas<span class="op">$</span>ES<span class="op">$</span>personas_vacunadas, <span class="dt">dias_dif =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">13</span>, <span class="dv">21</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb585"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb585-1" data-line-number="1"><span class="kw">datos_acumulados</span>(panel_vacunas<span class="op">$</span>ES<span class="op">$</span>personas_vacunadas, <span class="dt">dias_dif =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">13</span>, <span class="dv">21</span>))</a></code></pre></div>
 <pre><code>## [1]  263914  816950 3073866 4779568</code></pre>
 <p>Fíjate que hemos devuelto solo el último acumulado (hemos dado la vuelta al vector resultante y nos hemos quedado con el primer elemento). Para hacer que la salida sea más interpretable, muchas de las <strong>funciones en <code>R</code> tienen como salida una lista, con unos nombres asignados</strong>.</p>
-<div class="sourceCode" id="cb582"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb582-1" data-line-number="1">datos_acumulados &lt;-<span class="st"> </span><span class="cf">function</span>(variable_acumulada) {</a>
-<a class="sourceLine" id="cb582-2" data-line-number="2">  </a>
-<a class="sourceLine" id="cb582-3" data-line-number="3">  <span class="co"># Datos</span></a>
-<a class="sourceLine" id="cb582-4" data-line-number="4">  dato_diario &lt;-<span class="st"> </span><span class="kw">diff</span>(variable_acumulada)</a>
-<a class="sourceLine" id="cb582-5" data-line-number="5">  dato_7D &lt;-<span class="st"> </span><span class="kw">diff</span>(variable_acumulada, <span class="dv">7</span>)</a>
-<a class="sourceLine" id="cb582-6" data-line-number="6">  dato_14D &lt;-<span class="st"> </span><span class="kw">diff</span>(variable_acumulada, <span class="dv">14</span>)</a>
-<a class="sourceLine" id="cb582-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb582-8" data-line-number="8">  <span class="co"># La salida de la función como una lista, con 3 vectores</span></a>
-<a class="sourceLine" id="cb582-9" data-line-number="9">  <span class="kw">return</span>(<span class="kw">list</span>(<span class="st">&quot;diario&quot;</span> =<span class="st"> </span>dato_diario, <span class="st">&quot;7D&quot;</span> =<span class="st"> </span>dato_7D,</a>
-<a class="sourceLine" id="cb582-10" data-line-number="10">              <span class="st">&quot;14D&quot;</span> =<span class="st"> </span>dato_14D))</a>
-<a class="sourceLine" id="cb582-11" data-line-number="11">}</a>
-<a class="sourceLine" id="cb582-12" data-line-number="12">datos_salida &lt;-<span class="st"> </span><span class="kw">datos_acumulados</span>(panel_vacunas<span class="op">$</span>ES<span class="op">$</span>personas_vacunadas)</a>
-<a class="sourceLine" id="cb582-13" data-line-number="13"><span class="kw">names</span>(datos_salida)</a></code></pre></div>
+<div class="sourceCode" id="cb587"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb587-1" data-line-number="1">datos_acumulados &lt;-<span class="st"> </span><span class="cf">function</span>(variable_acumulada) {</a>
+<a class="sourceLine" id="cb587-2" data-line-number="2">  </a>
+<a class="sourceLine" id="cb587-3" data-line-number="3">  <span class="co"># Datos</span></a>
+<a class="sourceLine" id="cb587-4" data-line-number="4">  dato_diario &lt;-<span class="st"> </span><span class="kw">diff</span>(variable_acumulada)</a>
+<a class="sourceLine" id="cb587-5" data-line-number="5">  dato_7D &lt;-<span class="st"> </span><span class="kw">diff</span>(variable_acumulada, <span class="dv">7</span>)</a>
+<a class="sourceLine" id="cb587-6" data-line-number="6">  dato_14D &lt;-<span class="st"> </span><span class="kw">diff</span>(variable_acumulada, <span class="dv">14</span>)</a>
+<a class="sourceLine" id="cb587-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb587-8" data-line-number="8">  <span class="co"># La salida de la función como una lista, con 3 vectores</span></a>
+<a class="sourceLine" id="cb587-9" data-line-number="9">  <span class="kw">return</span>(<span class="kw">list</span>(<span class="st">&quot;diario&quot;</span> =<span class="st"> </span>dato_diario, <span class="st">&quot;7D&quot;</span> =<span class="st"> </span>dato_7D,</a>
+<a class="sourceLine" id="cb587-10" data-line-number="10">              <span class="st">&quot;14D&quot;</span> =<span class="st"> </span>dato_14D))</a>
+<a class="sourceLine" id="cb587-11" data-line-number="11">}</a>
+<a class="sourceLine" id="cb587-12" data-line-number="12">datos_salida &lt;-<span class="st"> </span><span class="kw">datos_acumulados</span>(panel_vacunas<span class="op">$</span>ES<span class="op">$</span>personas_vacunadas)</a>
+<a class="sourceLine" id="cb587-13" data-line-number="13"><span class="kw">names</span>(datos_salida)</a></code></pre></div>
 <pre><code>## [1] &quot;diario&quot; &quot;7D&quot;     &quot;14D&quot;</code></pre>
-<div class="sourceCode" id="cb584"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb584-1" data-line-number="1">datos_salida</a></code></pre></div>
+<div class="sourceCode" id="cb589"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb589-1" data-line-number="1">datos_salida</a></code></pre></div>
 <pre><code>## $diario
 ##   [1]  33992  33992  70653  42705  42705  42705  81950  93597  94548  92764
 ##  [11]  42226  42225  42226  61129  53539  43950  43124  17175  17176  17175

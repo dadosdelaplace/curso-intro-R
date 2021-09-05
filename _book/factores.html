@@ -157,8 +157,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="primeros-pasos.html"><a href="primeros-pasos.html"><i class="fa fa-check"></i><b>2</b> Primeros pasos</a><ul>
 <li class="chapter" data-level="2.1" data-path="excel-no-es-tu-amigo.html"><a href="excel-no-es-tu-amigo.html"><i class="fa fa-check"></i><b>2.1</b> Excel no es tu amigo</a></li>
 <li class="chapter" data-level="2.2" data-path="primeros-pasos-calculadora.html"><a href="primeros-pasos-calculadora.html"><i class="fa fa-check"></i><b>2.2</b> Primeros pasos: calculadora</a></li>
-<li class="chapter" data-level="2.3" data-path="consejos-y-tips-1.html"><a href="consejos-y-tips-1.html"><i class="fa fa-check"></i><b>2.3</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
-<li class="chapter" data-level="2.4" data-path="ejercicios.html"><a href="ejercicios.html"><i class="fa fa-check"></i><b>2.4</b> 📝 Ejercicios</a></li>
+<li class="chapter" data-level="2.3" data-path="tipos_errores.html"><a href="tipos_errores.html"><i class="fa fa-check"></i><b>2.3</b> Tipos de errores</a></li>
+<li class="chapter" data-level="2.4" data-path="consejos-y-tips-1.html"><a href="consejos-y-tips-1.html"><i class="fa fa-check"></i><b>2.4</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
+<li class="chapter" data-level="2.5" data-path="ejercicios.html"><a href="ejercicios.html"><i class="fa fa-check"></i><b>2.5</b> 📝 Ejercicios</a></li>
 </ul></li>
 <li class="part"><span><b>II Conceptos básicos</b></span></li>
 <li class="chapter" data-level="3" data-path="tipos-de-datos-i-vectores.html"><a href="tipos-de-datos-i-vectores.html"><i class="fa fa-check"></i><b>3</b> Tipos de datos I: vectores</a><ul>
@@ -169,7 +170,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="operaciones-estadísticas-con-vectores-numéricos.html"><a href="operaciones-estadísticas-con-vectores-numéricos.html"><i class="fa fa-check"></i><b>3.3</b> Operaciones estadísticas con vectores numéricos</a></li>
 <li class="chapter" data-level="3.4" data-path="vectores-de-caracteres-texto.html"><a href="vectores-de-caracteres-texto.html"><i class="fa fa-check"></i><b>3.4</b> Vectores de caracteres (texto)</a></li>
 <li class="chapter" data-level="3.5" data-path="vectores-lógicos-truefalse.html"><a href="vectores-lógicos-truefalse.html"><i class="fa fa-check"></i><b>3.5</b> Vectores lógicos (TRUE/FALSE)</a></li>
-<li class="chapter" data-level="3.6" data-path="datos-ausentes-na-y-nan.html"><a href="datos-ausentes-na-y-nan.html"><i class="fa fa-check"></i><b>3.6</b> Datos ausentes: NA y NaN</a></li>
+<li class="chapter" data-level="3.6" data-path="ausentes.html"><a href="ausentes.html"><i class="fa fa-check"></i><b>3.6</b> Datos ausentes: NA y NaN</a></li>
 <li class="chapter" data-level="3.7" data-path="seleccionar-elementos-de-un-vector.html"><a href="seleccionar-elementos-de-un-vector.html"><i class="fa fa-check"></i><b>3.7</b> Seleccionar elementos de un vector</a><ul>
 <li class="chapter" data-level="3.7.1" data-path="seleccionar-elementos-de-un-vector.html"><a href="seleccionar-elementos-de-un-vector.html#which"><i class="fa fa-check"></i><b>3.7.1</b> which</a></li>
 <li class="chapter" data-level="3.7.2" data-path="seleccionar-elementos-de-un-vector.html"><a href="seleccionar-elementos-de-un-vector.html#null"><i class="fa fa-check"></i><b>3.7.2</b> NULL</a></li>
@@ -231,7 +232,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.4" data-path="ejercicios-4.html"><a href="ejercicios-4.html"><i class="fa fa-check"></i><b>9.4</b> 📝 Ejercicios</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="qué-sabemos-hacer.html"><a href="qué-sabemos-hacer.html"><i class="fa fa-check"></i><b>10</b> ¿Qué sabemos hacer?</a><ul>
-<li class="chapter" data-level="10.1" data-path="recursos.html"><a href="recursos.html"><i class="fa fa-check"></i><b>10.1</b> Recursos</a></li>
+<li class="chapter" data-level="10.1" data-path="aleatorio_1.html"><a href="aleatorio_1.html"><i class="fa fa-check"></i><b>10.1</b> Incursión aleatoria</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="aleatorio_1.html"><a href="aleatorio_1.html#pseudoaleatorio"><i class="fa fa-check"></i><b>10.1.1</b> Pseudoaleatoriedad</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="recursos.html"><a href="recursos.html"><i class="fa fa-check"></i><b>10.2</b> Recursos</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="bibliografía.html"><a href="bibliografía.html"><i class="fa fa-check"></i>Bibliografía</a></li>
 <li class="divider"></li>
@@ -257,73 +261,73 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="factores" class="section level2">
 <h2><span class="header-section-number">8.2</span> Factores</h2>
 <p>Los <strong>factores son el tipo de dato que tiene <code>R</code> para definir variables categóricas</strong>, variables que aunque puedan ser números, en realidad representa <strong>categorías (categoría 1, 2, 3…)</strong>. Internamente los factores se guardan como variable numéricas enteras (enumerando las categorías) pero se nos mostarán con el nombre asignada a dicha categoría. Para convertir una variable a factor basta con ejecutar la función <code>factor()</code>, que nos convierte cada valor diferente en una categoría (para ver valores diferentes de un vector, usar la función <code>unique()</code>).</p>
-<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb446-1" data-line-number="1">datos &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb446-2" data-line-number="2"><span class="kw">unique</span>(datos)</a></code></pre></div>
+<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb451-1" data-line-number="1">datos &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb451-2" data-line-number="2"><span class="kw">unique</span>(datos)</a></code></pre></div>
 <pre><code>## [1] 1 2 3</code></pre>
-<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb448-1" data-line-number="1">datos</a></code></pre></div>
+<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb453-1" data-line-number="1">datos</a></code></pre></div>
 <pre><code>##  [1] 1 2 2 3 1 2 3 3 1 2 3 3 1</code></pre>
-<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb450-1" data-line-number="1">datos_factor &lt;-<span class="st"> </span><span class="kw">factor</span>(datos) <span class="co"># Convertimos a factor</span></a>
-<a class="sourceLine" id="cb450-2" data-line-number="2">datos_factor </a></code></pre></div>
+<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb455-1" data-line-number="1">datos_factor &lt;-<span class="st"> </span><span class="kw">factor</span>(datos) <span class="co"># Convertimos a factor</span></a>
+<a class="sourceLine" id="cb455-2" data-line-number="2">datos_factor </a></code></pre></div>
 <pre><code>##  [1] 1 2 2 3 1 2 3 3 1 2 3 3 1
 ## Levels: 1 2 3</code></pre>
 <p>Es importante entender que un <strong>factor es una categoría</strong>, como rojo/blanco/negro, por lo que desde el momento en el que lo convertimos en factor, ya no podemos hacer operaciones aritméticas.</p>
-<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb452-1" data-line-number="1">datos <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a></code></pre></div>
+<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb457-1" data-line-number="1">datos <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a></code></pre></div>
 <pre><code>##  [1] 2 3 3 4 2 3 4 4 2 3 4 4 2</code></pre>
-<div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb454-1" data-line-number="1">datos_factor <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a></code></pre></div>
+<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb459-1" data-line-number="1">datos_factor <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a></code></pre></div>
 <pre><code>## Warning in Ops.factor(datos_factor, 1): &#39;+&#39; not meaningful for factors</code></pre>
 <pre><code>##  [1] NA NA NA NA NA NA NA NA NA NA NA NA NA</code></pre>
 <p>Como puedes observar, al tenerlo en factor, además de la variable en sí se nos <strong>muestra debajo los <code>levels</code>, los nombres de las categorías</strong>. Si no le indicamos que nombres queremos, nos convierte los valores a texto y lo toma como nombre de categoría. Con el <strong>argumento <code>labels</code> podemos configurarlo</strong> a nuestro gusto. Con la función <code>levels</code> podemos reasignarle nombres tras su generación.</p>
-<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb457-1" data-line-number="1">datos_factor &lt;-<span class="st"> </span><span class="kw">factor</span>(datos, <span class="dt">labels =</span> <span class="kw">paste</span>(<span class="st">&quot;Categoría&quot;</span>, <span class="kw">sort</span>(<span class="kw">unique</span>(datos)))) <span class="co"># damos nombre de categoría 1, 2, 3...</span></a>
-<a class="sourceLine" id="cb457-2" data-line-number="2">datos_factor </a></code></pre></div>
+<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb462-1" data-line-number="1">datos_factor &lt;-<span class="st"> </span><span class="kw">factor</span>(datos, <span class="dt">labels =</span> <span class="kw">paste</span>(<span class="st">&quot;Categoría&quot;</span>, <span class="kw">sort</span>(<span class="kw">unique</span>(datos)))) <span class="co"># damos nombre de categoría 1, 2, 3...</span></a>
+<a class="sourceLine" id="cb462-2" data-line-number="2">datos_factor </a></code></pre></div>
 <pre><code>##  [1] Categoría 1 Categoría 2 Categoría 2 Categoría 3 Categoría 1 Categoría 2
 ##  [7] Categoría 3 Categoría 3 Categoría 1 Categoría 2 Categoría 3 Categoría 3
 ## [13] Categoría 1
 ## Levels: Categoría 1 Categoría 2 Categoría 3</code></pre>
-<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb459-1" data-line-number="1"><span class="kw">levels</span>(datos_factor) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;C1&quot;</span>, <span class="st">&quot;C2&quot;</span>, <span class="st">&quot;C3&quot;</span>)</a>
-<a class="sourceLine" id="cb459-2" data-line-number="2">datos_factor</a></code></pre></div>
+<div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb464-1" data-line-number="1"><span class="kw">levels</span>(datos_factor) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;C1&quot;</span>, <span class="st">&quot;C2&quot;</span>, <span class="st">&quot;C3&quot;</span>)</a>
+<a class="sourceLine" id="cb464-2" data-line-number="2">datos_factor</a></code></pre></div>
 <pre><code>##  [1] C1 C2 C2 C3 C1 C2 C3 C3 C1 C2 C3 C3 C1
 ## Levels: C1 C2 C3</code></pre>
 <p>Aunque sirve también para variables numéricas, la función <strong><code>table()</code> nos calcula las frecuencias de cada una de las categorías</strong>, las veces que se repiten en nuestro conjunto (es una forma eficiente de guardar categorías ya que solo se guardan los valores únicos y el número de veces que se repiten, así como su lugar).</p>
-<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb461-1" data-line-number="1"><span class="kw">table</span>(datos_factor)</a></code></pre></div>
+<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb466-1" data-line-number="1"><span class="kw">table</span>(datos_factor)</a></code></pre></div>
 <pre><code>## datos_factor
 ## C1 C2 C3 
 ##  4  4  5</code></pre>
 <p>Una ventaja de los factores es que le podemos <strong>indicar que considere que las categorías son ordinales</strong>: tiene una jerarquía de orden, con el argumento <code>ordered = TRUE</code>.</p>
-<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb463-1" data-line-number="1">notas &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">10</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">10</span>, <span class="dv">8</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">10</span>) <span class="co"># notas de clase: tienen un orden</span></a>
-<a class="sourceLine" id="cb463-2" data-line-number="2">notas_factor &lt;-<span class="st"> </span><span class="kw">factor</span>(notas)</a>
-<a class="sourceLine" id="cb463-3" data-line-number="3">notas_factor[<span class="dv">1</span>] <span class="op">&lt;</span><span class="st"> </span>notas_factor[<span class="dv">2</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb468-1" data-line-number="1">notas &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">10</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">10</span>, <span class="dv">8</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">10</span>) <span class="co"># notas de clase: tienen un orden</span></a>
+<a class="sourceLine" id="cb468-2" data-line-number="2">notas_factor &lt;-<span class="st"> </span><span class="kw">factor</span>(notas)</a>
+<a class="sourceLine" id="cb468-3" data-line-number="3">notas_factor[<span class="dv">1</span>] <span class="op">&lt;</span><span class="st"> </span>notas_factor[<span class="dv">2</span>]</a></code></pre></div>
 <pre><code>## Warning in Ops.factor(notas_factor[1], notas_factor[2]): &#39;&lt;&#39; not meaningful for
 ## factors</code></pre>
 <pre><code>## [1] NA</code></pre>
-<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb466-1" data-line-number="1">notas_factor_ordenados &lt;-<span class="st"> </span><span class="kw">factor</span>(notas, <span class="dt">ordered =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb466-2" data-line-number="2">notas_factor_ordenados[<span class="dv">1</span>] <span class="op">&lt;</span><span class="st"> </span>notas_factor_ordenados[<span class="dv">2</span>] <span class="co"># nos dice que la categoría 7 no es menor que la categoría 2</span></a></code></pre></div>
+<div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb471-1" data-line-number="1">notas_factor_ordenados &lt;-<span class="st"> </span><span class="kw">factor</span>(notas, <span class="dt">ordered =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb471-2" data-line-number="2">notas_factor_ordenados[<span class="dv">1</span>] <span class="op">&lt;</span><span class="st"> </span>notas_factor_ordenados[<span class="dv">2</span>] <span class="co"># nos dice que la categoría 7 no es menor que la categoría 2</span></a></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb468-1" data-line-number="1">notas_factor_ordenados</a></code></pre></div>
+<div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb473-1" data-line-number="1">notas_factor_ordenados</a></code></pre></div>
 <pre><code>##  [1] 7  2  10 5  7  8  10 8  2  2  5  5  5  10
 ## Levels: 2 &lt; 5 &lt; 7 &lt; 8 &lt; 10</code></pre>
 <p>Para pasar de factor a variable numérica (y poder operar con ellos), basta usar la función <code>as.numeric()</code>.</p>
-<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb470-1" data-line-number="1">notas_factor_ordenados <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a></code></pre></div>
+<div class="sourceCode" id="cb475"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb475-1" data-line-number="1">notas_factor_ordenados <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a></code></pre></div>
 <pre><code>## Warning in Ops.ordered(notas_factor_ordenados, 1): &#39;+&#39; is not meaningful for
 ## ordered factors</code></pre>
 <pre><code>##  [1] NA NA NA NA NA NA NA NA NA NA NA NA NA NA</code></pre>
-<div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb473-1" data-line-number="1"><span class="kw">as.numeric</span>(notas_factor_ordenados) <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a></code></pre></div>
+<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb478-1" data-line-number="1"><span class="kw">as.numeric</span>(notas_factor_ordenados) <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a></code></pre></div>
 <pre><code>##  [1] 4 2 6 3 4 5 6 5 2 2 3 3 3 6</code></pre>
-<div class="sourceCode" id="cb475"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb475-1" data-line-number="1"><span class="kw">mean</span>(<span class="kw">as.numeric</span>(notas_factor_ordenados))</a></code></pre></div>
+<div class="sourceCode" id="cb480"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb480-1" data-line-number="1"><span class="kw">mean</span>(<span class="kw">as.numeric</span>(notas_factor_ordenados))</a></code></pre></div>
 <pre><code>## [1] 2.857143</code></pre>
 <p>También podemos <strong>convertir variables continuas (o discretas) a factores indicando los rangos de las categorías</strong> que queremos asignar con la función <code>cut()</code>. Por ejemplo, supongamos que tenemos notas numéricas de clase y queremos asignar una nota categórica. En el argumento <code>breaks</code> debemos indicarle los cortes que queremos en los datos, teniendo <code>n+1</code> valores, siendo <code>n</code> el número de categorías. Con <code>right = FALSE</code> le vamos a indicar que los intervalos son abiertos por la derecha.</p>
-<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb477-1" data-line-number="1">notas &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">7.4</span>, <span class="fl">1.1</span>, <span class="fl">2.9</span>, <span class="dv">10</span>, <span class="fl">5.2</span>, <span class="fl">7.7</span>, <span class="fl">8.9</span>, <span class="dv">10</span>, <span class="fl">8.1</span>, <span class="fl">2.6</span>, <span class="fl">2.4</span>, <span class="fl">5.5</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="fl">6.3</span>, <span class="fl">9.4</span>) <span class="co"># notas de clase</span></a>
-<a class="sourceLine" id="cb477-2" data-line-number="2">notas_categoricas &lt;-<span class="st"> </span><span class="kw">cut</span>(notas, <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">9</span>, <span class="dv">10</span>, <span class="fl">10.1</span>), <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;suspenso&quot;</span>, <span class="st">&quot;aprobado&quot;</span>, <span class="st">&quot;notable&quot;</span>, <span class="st">&quot;sobresaliente&quot;</span>, <span class="st">&quot;mh&quot;</span>), <span class="dt">right =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb477-3" data-line-number="3">notas_categoricas</a></code></pre></div>
+<div class="sourceCode" id="cb482"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb482-1" data-line-number="1">notas &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">7.4</span>, <span class="fl">1.1</span>, <span class="fl">2.9</span>, <span class="dv">10</span>, <span class="fl">5.2</span>, <span class="fl">7.7</span>, <span class="fl">8.9</span>, <span class="dv">10</span>, <span class="fl">8.1</span>, <span class="fl">2.6</span>, <span class="fl">2.4</span>, <span class="fl">5.5</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="fl">6.3</span>, <span class="fl">9.4</span>) <span class="co"># notas de clase</span></a>
+<a class="sourceLine" id="cb482-2" data-line-number="2">notas_categoricas &lt;-<span class="st"> </span><span class="kw">cut</span>(notas, <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">9</span>, <span class="dv">10</span>, <span class="fl">10.1</span>), <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;suspenso&quot;</span>, <span class="st">&quot;aprobado&quot;</span>, <span class="st">&quot;notable&quot;</span>, <span class="st">&quot;sobresaliente&quot;</span>, <span class="st">&quot;mh&quot;</span>), <span class="dt">right =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb482-3" data-line-number="3">notas_categoricas</a></code></pre></div>
 <pre><code>##  [1] notable       suspenso      suspenso      mh            aprobado     
 ##  [6] notable       notable       mh            notable       suspenso     
 ## [11] suspenso      aprobado      aprobado      aprobado      mh           
 ## [16] aprobado      sobresaliente
 ## Levels: suspenso aprobado notable sobresaliente mh</code></pre>
 <p>Además, la función <code>cut()</code> identifica los datos de tipo fecha, pudiendo hacer <strong>cortes por unidades temporales</strong>.</p>
-<div class="sourceCode" id="cb479"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb479-1" data-line-number="1">fechas &lt;-<span class="st"> </span><span class="kw">as.Date</span>(<span class="kw">c</span>(<span class="st">&quot;2021-04-10&quot;</span>, <span class="st">&quot;2021-03-10&quot;</span>, <span class="st">&quot;2021-01-01&quot;</span>, <span class="st">&quot;2020-01-15&quot;</span>, <span class="st">&quot;2020-09-10&quot;</span>, <span class="st">&quot;2020-09-15&quot;</span>, <span class="st">&quot;2020-07-08&quot;</span>))</a>
-<a class="sourceLine" id="cb479-2" data-line-number="2">fechas_cortes &lt;-<span class="st"> </span><span class="kw">cut</span>(fechas, <span class="dt">breaks =</span> <span class="st">&quot;year&quot;</span>)</a>
-<a class="sourceLine" id="cb479-3" data-line-number="3"><span class="kw">levels</span>(fechas_cortes) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;2020&quot;</span>, <span class="st">&quot;2021&quot;</span>)</a>
-<a class="sourceLine" id="cb479-4" data-line-number="4">fechas_cortes</a></code></pre></div>
+<div class="sourceCode" id="cb484"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb484-1" data-line-number="1">fechas &lt;-<span class="st"> </span><span class="kw">as.Date</span>(<span class="kw">c</span>(<span class="st">&quot;2021-04-10&quot;</span>, <span class="st">&quot;2021-03-10&quot;</span>, <span class="st">&quot;2021-01-01&quot;</span>, <span class="st">&quot;2020-01-15&quot;</span>, <span class="st">&quot;2020-09-10&quot;</span>, <span class="st">&quot;2020-09-15&quot;</span>, <span class="st">&quot;2020-07-08&quot;</span>))</a>
+<a class="sourceLine" id="cb484-2" data-line-number="2">fechas_cortes &lt;-<span class="st"> </span><span class="kw">cut</span>(fechas, <span class="dt">breaks =</span> <span class="st">&quot;year&quot;</span>)</a>
+<a class="sourceLine" id="cb484-3" data-line-number="3"><span class="kw">levels</span>(fechas_cortes) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;2020&quot;</span>, <span class="st">&quot;2021&quot;</span>)</a>
+<a class="sourceLine" id="cb484-4" data-line-number="4">fechas_cortes</a></code></pre></div>
 <pre><code>## [1] 2021 2021 2021 2020 2020 2020 2020
 ## Levels: 2020 2021</code></pre>
 </div>

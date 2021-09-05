@@ -46,6 +46,141 @@ Estos primeros capítulos suelen ser un poco «aburridos»
 
 Pero aunque sean más aburridos estos primeros conceptos, **son necesarios para empezar a caminar**: el inicio de aprender un idioma siempre es un poco meh, pero sin las reglas básicas de gramática y un mínimo de léxico nunca podrás empezar.
 
+## Incursión aleatoria {#aleatorio_1}
+
+Antes de acabar esta breve introducción a `R` merece la pena hablar de **«lo aleatorio»** y su generación en `R`.
+
+**¿Cómo se define la aleatoriedad?**
+
+Si alguna vez has interactuado con matemáticos o estadísticos (Dios te libre), seguramente es una palabra que les hayas escuchado mentar: **aleatoriedad**. Existen múltiples definiciones, y este manual tampoco pretende ser un tratado de filosofía de la ciencia, pero podemos definir la aleatoriedad de la siguiente manera:
+
+> **Aleatoriedad**: propiedad de todo proceso cuyo resultado final no se puede conocer con exactitud - a nivel individual  o particular - antes de que se realice, aunque las condiciones iniciales se mantengan constantes (ejemplo: lanzar un dado).
+
+**¿Qué NO significa la palabra «aleatorio»?**
+
+🛑 **NO** tiene que implicar algo **caótico**.  
+🛑 **NO** significa que no se pueda **predecir** a nivel de conjunto.  
+🛑 **NO** significa que **carezca de un patrón** de comportamiento.
+
+El ejemplo perfecto para entender las implicaciones de algo aleatorio es un dado, ya que no podemos saber con exactitud cuál será la siguiente tirada, pero tiene un patrón: si tiramos un millón de veces, aproximadamente un sexto del total de tiradas serán un 1.
+
+&nbsp;
+
+En el análisis estadístico y en la programación en `R` nos vamos a encontrar con múltiples situaciones en las que **lo aleatorio juega un papel importante**, y aunque este sea un tutorial muy básico e introductorio, creo que es interesante conocer **algunas formas muy sencillas de generar números aleatorios** (o...no tanto, ahora llegamos a la Sección \@ref(pseudoaleatorio)).
+
+Empecemos por lo más simple: vamos a **simular tiradas de una moneda**, asumiendo que solo tenemos dos opciones (eliminando la opción de caer de canto). Cuando tiramos una moneda es un experimento aleatorio, ya que no sabemos el resultado exacto de la siguiente tirada, pero sí sabemos que la probabilidad teórica es de 50-50, y que las únicas opciones a elegir son `cara` y `cruz`.
+
+Una forma de ver el experimento de lanzar una moneda es pensar que tenemos una **urna con dos bolas (cara y cruz)**, y empezamos a sacar bolas de la urna (**permitiendo que al sacar una bola, se pueda devolver a la urna de nuevo**). Eso es precisamente lo que hace la función `sample()`, una función que nos seleccionará «aleatoriamente» elementos de una urna.
+
+* `x`: los elementos distintos que tiene para elegir, que en nuestro caso serán `"cara"` y `"cruz"`.
+* `size`: el número de bolas que queremos sacar de la urna.
+* `replace`: si tras extraer devolvemos la bola a la urna (`replace = TRUE`) o si se queda fuera (`replace = FALSE`, valor por defecto).
+* `prob`: la probabilidad que tiene cada elemento en caso de no ser equiprobables (valor por defecto).
+
+```{r moneda}
+# Tiramos 20 veces una moneda
+sample(x = c("cara", "cruz"), size = 20, replace = TRUE)
+```
+
+Fíjate que hemos indicado explícitamente `replace = TRUE` para decirle que aunque solo tengamos dos opciones, vamos a permitir que tras extraer una bola, la apuntemos, y la volvamos a introducir (puede salir de nuevo). ¿Qué sucede si `replace = FALSE` (su valor por defecto)?
+
+```{r moneda2, error = TRUE}
+# Tiramos 20 veces una moneda SIN reemplazamiento
+sample(x = c("cara", "cruz"), size = 20)
+```
+
+**Al tener solo dos opciones**, y no permitir que al extraer bolas vuelvan a la urna, tras extraer las dos únicas bolas, **el proceso no puede continuar** hasta los 20 lanzamientos.
+
+Como seguramente te hayas percatado, lanzar una moneda es un experimento dicotómico, y dichos experimentos tienen una gran ventaja en programación y es que podemos escribirlo en binario: `0` para lo que llamemos fracaso (cara, por ejemplo), `1` para lo que llamemos éxito (cruz).
+
+Generar experimentos dicotómicos de forma binario nos permite hacer cálculos sobre las tiradas de forma muy sencilla e intuitiva, ya que nos permite pasar de tener cadenas de texto a números.
+
+```{r}
+# Tiramos 50 veces una moneda: 0 es cara, 1 es cruz
+n_tiradas <- 50
+tiradas <- sample(x = 0:1, size = n_tiradas, replace = TRUE)
+tiradas
+
+# Cantidad de cruces: sumamos los 1's
+sum(tiradas)
+
+# Cantidad de caras: lo que son cruces
+n_tiradas - sum(tiradas)
+
+# % de caras
+cat(paste0(100 * sum(tiradas) / n_tiradas, "% de cruces"))
+```
+
+El argumento `prob = ...` nos permite generar experimentos que sean dicotómicos pero que **no sean equiprobables**, algo similar a **lanzar una moneda trucada** (por ejemplo, 30% caras y 70% cruces). Nótese como dichas probabilidades deben ser introducidas como proporciones (divididas entre 100).
+
+```{r}
+# Tiradas de una moneda trucada
+tiradas <- sample(x = 0:1, size = n_tiradas, replace = TRUE, prob = c(0.3, 0.7))
+
+# % de caras
+cat(paste0(100 * sum(tiradas) / n_tiradas, "% de cruces"))
+```
+
+<details>
+  <summary>📝<strong>Ejercicio</strong>: ¿cómo simularías 200 tiradas de un dado?</summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Lo único que cambia son las opciones en la urna
+sample(x = 1:6, size = 200, replace = TRUE)
+```
+
+<!-- tocstop -->
+</details>
+
+
+### Pseudoaleatoriedad {#pseudoaleatorio}
+
+Si has hecho varias pruebas con los códigos de arriba quizás ya hayas visto que **cada vez que lanzas el código, el resultado es distinto**, algo similar a lo que sucedería si lanzas una moneda. Prueba a ejecutar este código varias veces.
+
+```{r}
+sample(0:1, size = 20, replace = TRUE)
+```
+
+```{r}
+sample(0:1, size = 20, replace = TRUE)
+```
+
+```{r}
+sample(0:1, size = 20, replace = TRUE)
+```
+
+
+**¿Y si quisiéramos generar toda la clase la misma tirada de moneda?**
+
+Lo primero que quizás pienses es que es **imposible**, ya que al tirar una moneda en la vida real, nunca vamos a tener forma de garantizar que salgan las mismas tiradas a diferentes personas. Y **efectivamente eso sería cierto si nuestros procesos generados hubiesen sido aleatorios**, como en la vida real pero...no lo son.
+
+Mientras esperamos a que lleguen al mainstream los ordenadores cuánticos, **TODO lo que hay en tu ordenador es determínistico**, ya que cualquier proceso se reduce a una **secuencia de bits (`0's` y `1's`)** y un **algoritmo** (sin azar, cuyo resultado siempre será el mismo bajo las mismas condiciones iniciales). He aquí la decepción de tu vida: un ordenador «normal» NO puede generar procesos aleatorios, sino **procesos y números PSEUDOALEATORIOS**, basados en **cadenas pseudoaleatorias** generadas por un algoritmo determinístico.
+
+Dichas secuencias aparentan ser aleatorias pero no lo son, y de hecho muchas son **periódicas**: si generamos el número suficiente de elementos de la cadena pseudoaleatoria volveremos al inicio. Muchos de los algoritmos disponibles para generar números aleatorios dependen, entre otros factores, de un **valor inicial llamada semilla** (normalmente obtenida a partir del reloj interno del ordenador): misma semilla, mismo resultado «aleatorio». Para **fijar la semilla** usaremos `set.seed()`, pasándole como argumento una secuencia de números (todos la misma).
+
+```{r}
+set.seed(1234567)
+sample(0:1, size = 20, replace = TRUE)
+```
+
+```{r}
+set.seed(1234567)
+sample(0:1, size = 20, replace = TRUE)
+```
+
+
+```{r}
+set.seed(1234567)
+sample(0:1, size = 20, replace = TRUE)
+```
+
+**Siempre la misma tirada si la semilla inicial es la misma** ya que las cadenas pseudoaleatorias que usa el ordenador para simular nuestras tiradas son idénticas.
+
+
+
 ## Recursos {#recursos}
 
 Ahora que ya sabes lo básico para poder empezar a trabajar en un entorno amigable, aunque la idea es que este manual tenga más capítulos (¿los tiene?) para seguir avanzando, por si se me olvida, te dejo una **lista de recursos útiles** para que puedas ir viendo el abanico de opciones que tienes
@@ -64,6 +199,10 @@ knitr::include_graphics('img/swirl.png')
 
 
 * **Manejo de datos**: probablemente el conjunto de herramientas más usadas en `R` sean los paquetes agrupados en {`tidyverse`} (y que veremos en capítulos sucesivos si los hubiese), un [conjunto de paquetes integrados para un manejo intuitivo de los datos](https://www.tidyverse.org/), tanto en su preprocesamiento, como en la generación de estadísticas y gráficas.
+
+* [Tidyverse cookbook](https://rstudio-education.github.io/tidyverse-cookbook/)
+* [Tidyverse skills for data science](https://jhudatascience.org/tidyversecourse/)
+* [Big Book of R](https://www.bigbookofr.com/index.html)
 
 ```{r tidyverse-png, echo = FALSE, fig.align = 'center',  include = identical(knitr:::pandoc_to(), 'html'), fig.link = 'https://www.tidyverse.org/', out.width = '60%'}
 knitr::include_graphics('img/tidyverse.jpg')

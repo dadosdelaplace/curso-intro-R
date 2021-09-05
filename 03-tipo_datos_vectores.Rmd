@@ -293,7 +293,7 @@ sum(x < 2) # sumamos el vector de TRUE/FALSE --> número de TRUE
 
 
 
-## Datos ausentes: NA y NaN
+## Datos ausentes: NA y NaN {#ausentes}
 
 La vida no siempre es perfecta así en muchas ocasiones nos encontraremos con lo que llamamos en estadística un **dato ausente o _missing value_**, un **valor que no tenemos en nuestra variable**, y un ejemplo práctico lo tenemos con los datos de vacunación de covid del Ministerio de Sanidad. Cada día se publicaba un PDF (ya...mal) con los datos de vacunación PERO...no se publican datos los fines de semana: en dichas fechas hay datos que no tenemos, y en `R` se representan por `NA` (significa _not available_). Vamos a crear un vector de números con datos ausentes con la orden `x <- c(1, NA, 3, NA, NA, 5, 6)`: el vector tendrá longitud 7 pero en el segundo, cuarto y quinto elemento tendremos un dato faltante, un lugar que no tenemos relleno (pero que no eliminamos).
 

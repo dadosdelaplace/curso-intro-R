@@ -127,7 +127,7 @@
 
 \title{Aprendiendo R sin morir en el intento}
 \author{Javier Álvarez Liébana}
-\date{Última actualización: 29-08-2021}
+\date{Última actualización: 05-09-2021}
 
 \begin{document}
 \maketitle
@@ -730,6 +730,59 @@ De la misma manera que hemos hecho restas, sumas y multiplicaciones, \texttt{R} 
 
 ~
 
+\hypertarget{tipos_errores}{%
+\section{Tipos de errores}\label{tipos_errores}}
+
+Durante tu aprendizaje en \texttt{R} va a ser \textbf{muy habitual} que las cosas no salgan a la primera, \textbf{apareciendo en consola mensajes en un color rojo}. Un \textbf{miedo} muy habitual cuando se empieza a programar es pensar que si haces algo mal o aparece algún mensaje de error, el ordenador puede explotar en cualquier momento. \textbf{A programar se aprende programando}, así que haz las pruebas que quieres, lo peor que puede pasar es que necesites cerrar sesión en \texttt{R\ Studio} y abrirlo de nuevo.
+
+Dado que el 99.99999\% de veces tu código tendrá errores que deberás ir solventando, no está de más conocer los tipos de mensajes que \texttt{R} puede sacarte por consola:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{\textcolor{red}{Errores}}: los mensajes de error irán precedidos de la frase \textbf{«Error in\ldots{}»}, dándote a veces incluso el tipo de error y la línea de código en la que se ha producido. Veamos un ejemplo intentando sumar un número a una cadena de texto.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\StringTok{"a"} \OperatorTok{+}\StringTok{ }\DecValTok{1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Error in "a" + 1: argumento no-numérico para operador binario
+\end{verbatim}
+
+Los \textbf{errores son aquellos fallos que seguramente impidan la ejecución} del código. Un \textbf{error muy habitual} es intentar acceder a alguna función de algún paquete que, o bien no tenemos instalado, o bien no hemos llamado haciendo uso del \texttt{library()}: estás intentando leerte un libro de tu biblioteca pero ni siquiera has ido a la tienda a «comprarlo».
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{\textcolor{yellow}{Warnings}}: los mensajes de \emph{warning} irán precedidos de la frase \textbf{«Warning:\ldots{}»}, y son los fallos más delicados ya que son \textbf{posibles errores o incoherencias} que \texttt{R} detecta en tu código pero que \textbf{no van a hacer que tu código deje de ejecutarse}, aunque probablemente no lo haga como a ti te gustaría. Un ejemplo es cuando tratamos de hacer la raiz cuadrada de un número negativo.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sqrt}\NormalTok{(}\OperatorTok{-}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in sqrt(-1): Se han producido NaNs
+\end{verbatim}
+
+\begin{verbatim}
+## [1] NaN
+\end{verbatim}
+
+¿Ha ejecutado la orden? Sí, pero te **advierte de que el resultado de la operación es un \texttt{NaN}, un valor que no existe (al menos dentro de los números reales), un \emph{Not A Number} (ver Sección \ref{ausentes}).
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{\textcolor{green}{Mensajes de control}}: los mensajes de control serán aquellos que aparecerán por consola sin empezar por «Error in\ldots{}» ni «Warning:\ldots{}». Dichos mensajes, que puedes incluir tú mismo en tu código con funciones como \texttt{cat()} para monitorizar la ejecución de códigos largos, no son errores ni problemas, son simplemente información que \texttt{R} considera útil aportarte.
+\end{itemize}
+
 \hypertarget{consejos-y-tips-1}{%
 \section[ Consejos y tips]{\texorpdfstring{\protect\includegraphics[width=0.04\textwidth,height=\textheight]{img/logo_info.png} Consejos y tips}{ Consejos y tips}}\label{consejos-y-tips-1}}
 
@@ -755,7 +808,7 @@ Si escribes en la consola \texttt{?\ nombre\_funcion} (por ejemplo, escribe en l
 
 }
 
-\caption{Panel de ayuda.}\label{fig:unnamed-chunk-7}
+\caption{Panel de ayuda.}\label{fig:unnamed-chunk-9}
 \end{figure}
 
 \hypertarget{ejercicios}{%
@@ -1407,8 +1460,8 @@ Como hemos comentado anteriormente, los valores lógicos \texttt{TRUE/FALSE} son
 ## [1] 3
 \end{verbatim}
 
-\hypertarget{datos-ausentes-na-y-nan}{%
-\section{Datos ausentes: NA y NaN}\label{datos-ausentes-na-y-nan}}
+\hypertarget{ausentes}{%
+\section{Datos ausentes: NA y NaN}\label{ausentes}}
 
 La vida no siempre es perfecta así en muchas ocasiones nos encontraremos con lo que llamamos en estadística un \textbf{dato ausente o \emph{missing value}}, un \textbf{valor que no tenemos en nuestra variable}, y un ejemplo práctico lo tenemos con los datos de vacunación de covid del Ministerio de Sanidad. Cada día se publicaba un PDF (ya\ldots{}mal) con los datos de vacunación PERO\ldots{}no se publican datos los fines de semana: en dichas fechas hay datos que no tenemos, y en \texttt{R} se representan por \texttt{NA} (significa \emph{not available}). Vamos a crear un vector de números con datos ausentes con la orden \texttt{x\ \textless{}-\ c(1,\ NA,\ 3,\ NA,\ NA,\ 5,\ 6)}: el vector tendrá longitud 7 pero en el segundo, cuarto y quinto elemento tendremos un dato faltante, un lugar que no tenemos relleno (pero que no eliminamos).
 
@@ -2211,9 +2264,9 @@ Este paquete contiene una orden para comparar el tiempo de dos órdenes: necesit
 
 \begin{verbatim}
 ## Unit: microseconds
-##         expr    min      lq      mean  median       uq     max neval cld
-##      sort(x) 61.416 94.5095 120.90494 118.970 139.2015 321.411  1000   b
-##  x[order(x)] 41.946 60.0830  80.81159  78.301  93.0140 407.176  1000  a
+##         expr    min      lq     mean  median      uq     max neval cld
+##      sort(x) 46.688 50.0635 62.63361 52.5465 62.1825 470.711  1000   b
+##  x[order(x)] 32.102 36.5545 45.19789 37.8575 42.6340 229.824  1000  a
 \end{verbatim}
 
 Sí, estás viendo bien: aunque a priori parezca contraintuitivo, es más corto obtener los índices ordenados de un vector, y luego reordenarlo en base a esos índices, que la ordenación directa a través del comando \texttt{sort()} (ya que usan algoritmos de ordenación distintos).
@@ -2376,7 +2429,7 @@ Sí, estás viendo bien: aunque a priori parezca contraintuitivo, es más corto 
 \end{Shaded}
 
 \begin{verbatim}
-## Time difference of 11676 days
+## Time difference of 11683 days
 \end{verbatim}
 
 \hypertarget{primer-projecto-con-r}{%
@@ -2662,7 +2715,7 @@ Prueba a escribir algunas funciones que hemos aprendido con dichas variables y v
 \end{Shaded}
 
 \begin{verbatim}
-## Time difference of 240 days
+## Time difference of 247 days
 \end{verbatim}
 
 La función \texttt{cat()} nos muestra por consola el texto que le pasemos de argumento (\textbf{función especial para mensajes de alerta} por consola)
@@ -2722,7 +2775,7 @@ La función \texttt{Sys.time()} accede al sistema de nuestro ordenador para deci
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "2021-08-29 16:04:29 CEST"
+## [1] "2021-09-05 14:32:21 CEST"
 \end{verbatim}
 
 ~
@@ -3047,9 +3100,9 @@ Veamos qué es más eficiente con el ya conocido paquete \texttt{\{microbenchmar
 ##                                                                           expr
 ##  for (i in 1:dim(x)[1]) {     suma_por_filas[i] <- sum(x[i, ], na.rm = TRUE) }
 ##                                apply(x, MARGIN = 1, FUN = "sum", na.rm = TRUE)
-##       min        lq      mean   median        uq      max neval cld
-##  2164.480 3187.4840 3609.4142 3507.462 4077.0300 7276.474   100   b
-##    24.435   41.4115   61.2928   56.946   79.6105  141.369   100  a
+##       min        lq       mean   median        uq      max neval cld
+##  1687.765 1806.8370 2239.46695 2110.603 2525.3790 6446.246   100   b
+##    20.609   26.8265   38.09942   37.220   45.4655  104.495   100  a
 \end{verbatim}
 
 \textbf{¡El bucle nos tarda 50 veces más que el \texttt{apply}!} Di no a los bucles: casi siempre hay una forma mejor de hacerlo.
@@ -5240,7 +5293,7 @@ Como ya hemos dicho, las fechas y momentos temporales no serán meras cadenas de
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "2021-08-29"
+## [1] "2021-09-05"
 \end{verbatim}
 
 \begin{Shaded}
@@ -5250,7 +5303,7 @@ Como ya hemos dicho, las fechas y momentos temporales no serán meras cadenas de
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "2021-08-22"
+## [1] "2021-08-29"
 \end{verbatim}
 
 \begin{Shaded}
@@ -5346,7 +5399,7 @@ Aunque aparentemente parezca una cadena de texto, prueba a ejecutar \texttt{uncl
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 18868
+## [1] 18875
 \end{verbatim}
 
 \begin{Shaded}
@@ -5379,7 +5432,7 @@ Para la \textbf{fecha con hora actual} podemos usar una función similar, la fun
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 1630245877
+## [1] 1630845150
 \end{verbatim}
 
 \begin{Shaded}
@@ -5412,19 +5465,19 @@ Para la \textbf{fecha con hora actual} podemos usar una función similar, la fun
 
 \begin{verbatim}
 ## $sec
-## [1] 37.06462
+## [1] 30.11883
 ## 
 ## $min
-## [1] 4
+## [1] 32
 ## 
 ## $hour
-## [1] 16
+## [1] 14
 ## 
 ## $mday
-## [1] 29
+## [1] 5
 ## 
 ## $mon
-## [1] 7
+## [1] 8
 ## 
 ## $year
 ## [1] 121
@@ -5433,7 +5486,7 @@ Para la \textbf{fecha con hora actual} podemos usar una función similar, la fun
 ## [1] 0
 ## 
 ## $yday
-## [1] 240
+## [1] 247
 ## 
 ## $isdst
 ## [1] 1
@@ -5456,14 +5509,14 @@ Para la \textbf{fecha con hora actual} podemos usar una función similar, la fun
 
 \begin{verbatim}
 ## List of 11
-##  $ sec   : num 37.1
-##  $ min   : int 4
-##  $ hour  : int 16
-##  $ mday  : int 29
-##  $ mon   : int 7
+##  $ sec   : num 30.1
+##  $ min   : int 32
+##  $ hour  : int 14
+##  $ mday  : int 5
+##  $ mon   : int 8
 ##  $ year  : int 121
 ##  $ wday  : int 0
-##  $ yday  : int 240
+##  $ yday  : int 247
 ##  $ isdst : int 1
 ##  $ zone  : chr "CEST"
 ##  $ gmtoff: int 7200
@@ -5477,7 +5530,7 @@ Para la \textbf{fecha con hora actual} podemos usar una función similar, la fun
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 4
+## [1] 32
 \end{verbatim}
 
 Además tenemos disponibles funciones para extraer facilmente algunas variables temporales como el día de la semana, el mes o el cuatrimestre, con las funciones \texttt{weekdays()}, \texttt{months()}, and \texttt{quarters()}.
@@ -5499,7 +5552,7 @@ Además tenemos disponibles funciones para extraer facilmente algunas variables 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "agosto"
+## [1] "septiembre"
 \end{verbatim}
 
 \begin{Shaded}
@@ -5544,7 +5597,7 @@ La función \texttt{difftime()} nos permite además hallar distancias entre fech
 \end{Shaded}
 
 \begin{verbatim}
-## Time difference of 590.1947 days
+## Time difference of 597.1308 days
 \end{verbatim}
 
 \begin{Shaded}
@@ -5554,7 +5607,7 @@ La función \texttt{difftime()} nos permite además hallar distancias entre fech
 \end{Shaded}
 
 \begin{verbatim}
-## Time difference of 14164.67 hours
+## Time difference of 14331.14 hours
 \end{verbatim}
 
 \begin{Shaded}
@@ -5564,7 +5617,7 @@ La función \texttt{difftime()} nos permite además hallar distancias entre fech
 \end{Shaded}
 
 \begin{verbatim}
-## Time difference of 84.31353 weeks
+## Time difference of 85.3044 weeks
 \end{verbatim}
 
 \hypertarget{consejos-y-tips-7}{%
@@ -5722,7 +5775,7 @@ Ejercicio 2: define una lista de 4 elementos que contenga, en una sola variable,
 ## [1] "Álvarez Liébana"
 ## 
 ## $edad
-## [1] 31.96712
+## [1] 31.9863
 ## 
 ## $soltero
 ## [1] TRUE
@@ -6380,7 +6433,7 @@ Ejercicio 2: define una función propia llamada \texttt{proximo\_par} que, dados
 
 \textbf{Hasta aquí el aperitivo}
 
-\includegraphics{Intro_R_2021_2022_files/figure-latex/unnamed-chunk-187-1.pdf}
+\includegraphics{Intro_R_2021_2022_files/figure-latex/unnamed-chunk-189-1.pdf}
 
 Quizás creas que te queda un mundo por aprender:
 
@@ -6406,7 +6459,7 @@ No te voy a mentir: no tendrías días de tu vida para ir investigando todos los
 
 }
 
-\caption{Cuando intentas aprenderte todos los paquetes.}\label{fig:unnamed-chunk-188}
+\caption{Cuando intentas aprenderte todos los paquetes.}\label{fig:unnamed-chunk-190}
 \end{figure}
 
 Estos primeros capítulos suelen ser un poco «aburridos»
@@ -6423,6 +6476,243 @@ Estos primeros capítulos suelen ser un poco «aburridos»
 
 Pero aunque sean más aburridos estos primeros conceptos, \textbf{son necesarios para empezar a caminar}: el inicio de aprender un idioma siempre es un poco meh, pero sin las reglas básicas de gramática y un mínimo de léxico nunca podrás empezar.
 
+\hypertarget{aleatorio_1}{%
+\section{Incursión aleatoria}\label{aleatorio_1}}
+
+Antes de acabar esta breve introducción a \texttt{R} merece la pena hablar de \textbf{«lo aleatorio»} y su generación en \texttt{R}.
+
+\textbf{¿Cómo se define la aleatoriedad?}
+
+Si alguna vez has interactuado con matemáticos o estadísticos (Dios te libre), seguramente es una palabra que les hayas escuchado mentar: \textbf{aleatoriedad}. Existen múltiples definiciones, y este manual tampoco pretende ser un tratado de filosofía de la ciencia, pero podemos definir la aleatoriedad de la siguiente manera:
+
+\begin{quote}
+\textbf{Aleatoriedad}: propiedad de todo proceso cuyo resultado final no se puede conocer con exactitud - a nivel individual o particular - antes de que se realice, aunque las condiciones iniciales se mantengan constantes (ejemplo: lanzar un dado).
+\end{quote}
+
+\textbf{¿Qué NO significa la palabra «aleatorio»?}
+
+🛑 \textbf{NO} tiene que implicar algo \textbf{caótico}.\\
+🛑 \textbf{NO} significa que no se pueda \textbf{predecir} a nivel de conjunto.\\
+🛑 \textbf{NO} significa que \textbf{carezca de un patrón} de comportamiento.
+
+El ejemplo perfecto para entender las implicaciones de algo aleatorio es un dado, ya que no podemos saber con exactitud cuál será la siguiente tirada, pero tiene un patrón: si tiramos un millón de veces, aproximadamente un sexto del total de tiradas serán un 1.
+
+~
+
+En el análisis estadístico y en la programación en \texttt{R} nos vamos a encontrar con múltiples situaciones en las que \textbf{lo aleatorio juega un papel importante}, y aunque este sea un tutorial muy básico e introductorio, creo que es interesante conocer \textbf{algunas formas muy sencillas de generar números aleatorios} (o\ldots{}no tanto, ahora llegamos a la Sección \ref{pseudoaleatorio}).
+
+Empecemos por lo más simple: vamos a \textbf{simular tiradas de una moneda}, asumiendo que solo tenemos dos opciones (eliminando la opción de caer de canto). Cuando tiramos una moneda es un experimento aleatorio, ya que no sabemos el resultado exacto de la siguiente tirada, pero sí sabemos que la probabilidad teórica es de 50-50, y que las únicas opciones a elegir son \texttt{cara} y \texttt{cruz}.
+
+Una forma de ver el experimento de lanzar una moneda es pensar que tenemos una \textbf{urna con dos bolas (cara y cruz)}, y empezamos a sacar bolas de la urna (\textbf{permitiendo que al sacar una bola, se pueda devolver a la urna de nuevo}). Eso es precisamente lo que hace la función \texttt{sample()}, una función que nos seleccionará «aleatoriamente» elementos de una urna.
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{x}: los elementos distintos que tiene para elegir, que en nuestro caso serán \texttt{"cara"} y \texttt{"cruz"}.
+\item
+  \texttt{size}: el número de bolas que queremos sacar de la urna.
+\item
+  \texttt{replace}: si tras extraer devolvemos la bola a la urna (\texttt{replace\ =\ TRUE}) o si se queda fuera (\texttt{replace\ =\ FALSE}, valor por defecto).
+\item
+  \texttt{prob}: la probabilidad que tiene cada elemento en caso de no ser equiprobables (valor por defecto).
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Tiramos 20 veces una moneda}
+\KeywordTok{sample}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{c}\NormalTok{(}\StringTok{"cara"}\NormalTok{, }\StringTok{"cruz"}\NormalTok{), }\DataTypeTok{size =} \DecValTok{20}\NormalTok{, }\DataTypeTok{replace =} \OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] "cara" "cara" "cruz" "cara" "cruz" "cruz" "cara" "cara" "cara" "cara"
+## [11] "cara" "cara" "cara" "cruz" "cara" "cruz" "cara" "cara" "cruz" "cara"
+\end{verbatim}
+
+Fíjate que hemos indicado explícitamente \texttt{replace\ =\ TRUE} para decirle que aunque solo tengamos dos opciones, vamos a permitir que tras extraer una bola, la apuntemos, y la volvamos a introducir (puede salir de nuevo). ¿Qué sucede si \texttt{replace\ =\ FALSE} (su valor por defecto)?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Tiramos 20 veces una moneda SIN reemplazamiento}
+\KeywordTok{sample}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{c}\NormalTok{(}\StringTok{"cara"}\NormalTok{, }\StringTok{"cruz"}\NormalTok{), }\DataTypeTok{size =} \DecValTok{20}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Error in sample.int(length(x), size, replace, prob): cannot take a sample larger than the population when 'replace = FALSE'
+\end{verbatim}
+
+\textbf{Al tener solo dos opciones}, y no permitir que al extraer bolas vuelvan a la urna, tras extraer las dos únicas bolas, \textbf{el proceso no puede continuar} hasta los 20 lanzamientos.
+
+Como seguramente te hayas percatado, lanzar una moneda es un experimento dicotómico, y dichos experimentos tienen una gran ventaja en programación y es que podemos escribirlo en binario: \texttt{0} para lo que llamemos fracaso (cara, por ejemplo), \texttt{1} para lo que llamemos éxito (cruz).
+
+Generar experimentos dicotómicos de forma binario nos permite hacer cálculos sobre las tiradas de forma muy sencilla e intuitiva, ya que nos permite pasar de tener cadenas de texto a números.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Tiramos 50 veces una moneda: 0 es cara, 1 es cruz}
+\NormalTok{n_tiradas <-}\StringTok{ }\DecValTok{50}
+\NormalTok{tiradas <-}\StringTok{ }\KeywordTok{sample}\NormalTok{(}\DataTypeTok{x =} \DecValTok{0}\OperatorTok{:}\DecValTok{1}\NormalTok{, }\DataTypeTok{size =}\NormalTok{ n_tiradas, }\DataTypeTok{replace =} \OtherTok{TRUE}\NormalTok{)}
+\NormalTok{tiradas}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 0 0 0 0 1 1 1 0 0 0 1 0 0 0 0 0 0 1 1 1 0 0 0 1 0 1 1 1 0 0 1 0 0 1 0 1 1 0
+## [39] 0 1 0 0 0 1 1 1 0 0 0 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Cantidad de cruces: sumamos los 1's}
+\KeywordTok{sum}\NormalTok{(tiradas)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 20
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Cantidad de caras: lo que son cruces}
+\NormalTok{n_tiradas }\OperatorTok{-}\StringTok{ }\KeywordTok{sum}\NormalTok{(tiradas)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 30
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# % de caras}
+\KeywordTok{cat}\NormalTok{(}\KeywordTok{paste0}\NormalTok{(}\DecValTok{100} \OperatorTok{*}\StringTok{ }\KeywordTok{sum}\NormalTok{(tiradas) }\OperatorTok{/}\StringTok{ }\NormalTok{n_tiradas, }\StringTok{"% de cruces"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 40% de cruces
+\end{verbatim}
+
+El argumento \texttt{prob\ =\ ...} nos permite generar experimentos que sean dicotómicos pero que \textbf{no sean equiprobables}, algo similar a \textbf{lanzar una moneda trucada} (por ejemplo, 30\% caras y 70\% cruces). Nótese como dichas probabilidades deben ser introducidas como proporciones (divididas entre 100).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Tiradas de una moneda trucada}
+\NormalTok{tiradas <-}\StringTok{ }\KeywordTok{sample}\NormalTok{(}\DataTypeTok{x =} \DecValTok{0}\OperatorTok{:}\DecValTok{1}\NormalTok{, }\DataTypeTok{size =}\NormalTok{ n_tiradas, }\DataTypeTok{replace =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{prob =} \KeywordTok{c}\NormalTok{(}\FloatTok{0.3}\NormalTok{, }\FloatTok{0.7}\NormalTok{))}
+
+\CommentTok{# % de caras}
+\KeywordTok{cat}\NormalTok{(}\KeywordTok{paste0}\NormalTok{(}\DecValTok{100} \OperatorTok{*}\StringTok{ }\KeywordTok{sum}\NormalTok{(tiradas) }\OperatorTok{/}\StringTok{ }\NormalTok{n_tiradas, }\StringTok{"% de cruces"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 68% de cruces
+\end{verbatim}
+
+📝Ejercicio: ¿cómo simularías 200 tiradas de un dado?
+
+\begin{itemize}
+\tightlist
+\item
+  Solución:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Lo único que cambia son las opciones en la urna}
+\KeywordTok{sample}\NormalTok{(}\DataTypeTok{x =} \DecValTok{1}\OperatorTok{:}\DecValTok{6}\NormalTok{, }\DataTypeTok{size =} \DecValTok{200}\NormalTok{, }\DataTypeTok{replace =} \OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   [1] 1 6 5 6 3 1 6 5 4 6 1 3 4 3 1 1 5 3 1 2 4 1 6 2 6 3 5 1 5 5 3 2 4 5 3 4 2
+##  [38] 6 6 3 5 2 4 2 4 3 3 2 4 5 5 6 2 5 3 3 6 5 4 6 4 6 1 6 1 6 6 4 4 6 5 6 3 1
+##  [75] 1 4 1 2 5 3 5 1 4 3 1 6 6 3 5 3 6 6 6 1 1 5 2 3 3 6 6 3 1 4 4 6 2 3 2 2 1
+## [112] 6 5 1 3 4 2 3 6 3 6 6 5 4 4 5 1 3 4 2 3 6 4 5 5 4 4 6 4 5 1 5 6 5 5 1 6 1
+## [149] 3 1 6 4 2 1 5 4 2 4 3 3 6 2 5 5 2 1 5 2 5 3 1 3 5 3 1 5 4 3 1 3 4 4 5 1 6
+## [186] 5 2 3 3 5 3 4 4 6 6 4 6 5 6 3
+\end{verbatim}
+
+\hypertarget{pseudoaleatorio}{%
+\subsection{Pseudoaleatoriedad}\label{pseudoaleatorio}}
+
+Si has hecho varias pruebas con los códigos de arriba quizás ya hayas visto que \textbf{cada vez que lanzas el código, el resultado es distinto}, algo similar a lo que sucedería si lanzas una moneda. Prueba a ejecutar este código varias veces.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sample}\NormalTok{(}\DecValTok{0}\OperatorTok{:}\DecValTok{1}\NormalTok{, }\DataTypeTok{size =} \DecValTok{20}\NormalTok{, }\DataTypeTok{replace =} \OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 0 1 0 0 1 0 1 1 1 1 1 0 0 1 0 0 1 0 0 0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sample}\NormalTok{(}\DecValTok{0}\OperatorTok{:}\DecValTok{1}\NormalTok{, }\DataTypeTok{size =} \DecValTok{20}\NormalTok{, }\DataTypeTok{replace =} \OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 1 1 0 0 0 1 0 0 0 0 0 1 0 1 0 0 1 1 1 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sample}\NormalTok{(}\DecValTok{0}\OperatorTok{:}\DecValTok{1}\NormalTok{, }\DataTypeTok{size =} \DecValTok{20}\NormalTok{, }\DataTypeTok{replace =} \OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 0 0 0 0 0 1 0 1 0 1 0 0 0 1 0 0 0 0 0 1
+\end{verbatim}
+
+\textbf{¿Y si quisiéramos generar toda la clase la misma tirada de moneda?}
+
+Lo primero que quizás pienses es que es \textbf{imposible}, ya que al tirar una moneda en la vida real, nunca vamos a tener forma de garantizar que salgan las mismas tiradas a diferentes personas. Y \textbf{efectivamente eso sería cierto si nuestros procesos generados hubiesen sido aleatorios}, como en la vida real pero\ldots{}no lo son.
+
+Mientras esperamos a que lleguen al mainstream los ordenadores cuánticos, \textbf{TODO lo que hay en tu ordenador es determínistico}, ya que cualquier proceso se reduce a una \textbf{secuencia de bits (\texttt{0\textquotesingle{}s} y \texttt{1\textquotesingle{}s})} y un \textbf{algoritmo} (sin azar, cuyo resultado siempre será el mismo bajo las mismas condiciones iniciales). He aquí la decepción de tu vida: un ordenador «normal» NO puede generar procesos aleatorios, sino \textbf{procesos y números PSEUDOALEATORIOS}, basados en \textbf{cadenas pseudoaleatorias} generadas por un algoritmo determinístico.
+
+Dichas secuencias aparentan ser aleatorias pero no lo son, y de hecho muchas son \textbf{periódicas}: si generamos el número suficiente de elementos de la cadena pseudoaleatoria volveremos al inicio. Muchos de los algoritmos disponibles para generar números aleatorios dependen, entre otros factores, de un \textbf{valor inicial llamada semilla} (normalmente obtenida a partir del reloj interno del ordenador): misma semilla, mismo resultado «aleatorio». Para \textbf{fijar la semilla} usaremos \texttt{set.seed()}, pasándole como argumento una secuencia de números (todos la misma).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{1234567}\NormalTok{)}
+\KeywordTok{sample}\NormalTok{(}\DecValTok{0}\OperatorTok{:}\DecValTok{1}\NormalTok{, }\DataTypeTok{size =} \DecValTok{20}\NormalTok{, }\DataTypeTok{replace =} \OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 0 1 1 0 1 0 0 0 1 1 0 1 0 1 0 0 1 1 1 0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{1234567}\NormalTok{)}
+\KeywordTok{sample}\NormalTok{(}\DecValTok{0}\OperatorTok{:}\DecValTok{1}\NormalTok{, }\DataTypeTok{size =} \DecValTok{20}\NormalTok{, }\DataTypeTok{replace =} \OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 0 1 1 0 1 0 0 0 1 1 0 1 0 1 0 0 1 1 1 0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{1234567}\NormalTok{)}
+\KeywordTok{sample}\NormalTok{(}\DecValTok{0}\OperatorTok{:}\DecValTok{1}\NormalTok{, }\DataTypeTok{size =} \DecValTok{20}\NormalTok{, }\DataTypeTok{replace =} \OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 0 1 1 0 1 0 0 0 1 1 0 1 0 1 0 0 1 1 1 0
+\end{verbatim}
+
+\textbf{Siempre la misma tirada si la semilla inicial es la misma} ya que las cadenas pseudoaleatorias que usa el ordenador para simular nuestras tiradas son idénticas.
+
 \hypertarget{recursos}{%
 \section{Recursos}\label{recursos}}
 
@@ -6435,6 +6725,12 @@ Ahora que ya sabes lo básico para poder empezar a trabajar en un entorno amigab
   \textbf{Paquete para aprender \texttt{R}}: el paquete \texttt{\{swirl\}} permite ir aprendiendo de forma sencilla (con preguntas tipo test) algunos conceptos básicos de \texttt{R} (muchos de ellos vistos en este manual). Puedes consultar la documentación en su \href{https://swirlstats.com/}{página web}
 \item
   \textbf{Manejo de datos}: probablemente el conjunto de herramientas más usadas en \texttt{R} sean los paquetes agrupados en \{\texttt{tidyverse}\} (y que veremos en capítulos sucesivos si los hubiese), un \href{https://www.tidyverse.org/}{conjunto de paquetes integrados para un manejo intuitivo de los datos}, tanto en su preprocesamiento, como en la generación de estadísticas y gráficas.
+\item
+  \href{https://rstudio-education.github.io/tidyverse-cookbook/}{Tidyverse cookbook}
+\item
+  \href{https://jhudatascience.org/tidyversecourse/}{Tidyverse skills for data science}
+\item
+  \href{https://www.bigbookofr.com/index.html}{Big Book of R}
 \item
   \textbf{Visualización de datos en Twitter}: una de las \textbf{fortalezas de \texttt{R}} es su versatilidad para la visualización de datos. Y al igual que un escritor necesita leer mucho para tomar ideas, hay dos recursos en Twitter que te recomiendo encarecidamente:
 

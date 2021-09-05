@@ -157,8 +157,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="primeros-pasos.html"><a href="primeros-pasos.html"><i class="fa fa-check"></i><b>2</b> Primeros pasos</a><ul>
 <li class="chapter" data-level="2.1" data-path="excel-no-es-tu-amigo.html"><a href="excel-no-es-tu-amigo.html"><i class="fa fa-check"></i><b>2.1</b> Excel no es tu amigo</a></li>
 <li class="chapter" data-level="2.2" data-path="primeros-pasos-calculadora.html"><a href="primeros-pasos-calculadora.html"><i class="fa fa-check"></i><b>2.2</b> Primeros pasos: calculadora</a></li>
-<li class="chapter" data-level="2.3" data-path="consejos-y-tips-1.html"><a href="consejos-y-tips-1.html"><i class="fa fa-check"></i><b>2.3</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
-<li class="chapter" data-level="2.4" data-path="ejercicios.html"><a href="ejercicios.html"><i class="fa fa-check"></i><b>2.4</b> 📝 Ejercicios</a></li>
+<li class="chapter" data-level="2.3" data-path="tipos_errores.html"><a href="tipos_errores.html"><i class="fa fa-check"></i><b>2.3</b> Tipos de errores</a></li>
+<li class="chapter" data-level="2.4" data-path="consejos-y-tips-1.html"><a href="consejos-y-tips-1.html"><i class="fa fa-check"></i><b>2.4</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
+<li class="chapter" data-level="2.5" data-path="ejercicios.html"><a href="ejercicios.html"><i class="fa fa-check"></i><b>2.5</b> 📝 Ejercicios</a></li>
 </ul></li>
 <li class="part"><span><b>II Conceptos básicos</b></span></li>
 <li class="chapter" data-level="3" data-path="tipos-de-datos-i-vectores.html"><a href="tipos-de-datos-i-vectores.html"><i class="fa fa-check"></i><b>3</b> Tipos de datos I: vectores</a><ul>
@@ -169,7 +170,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="operaciones-estadísticas-con-vectores-numéricos.html"><a href="operaciones-estadísticas-con-vectores-numéricos.html"><i class="fa fa-check"></i><b>3.3</b> Operaciones estadísticas con vectores numéricos</a></li>
 <li class="chapter" data-level="3.4" data-path="vectores-de-caracteres-texto.html"><a href="vectores-de-caracteres-texto.html"><i class="fa fa-check"></i><b>3.4</b> Vectores de caracteres (texto)</a></li>
 <li class="chapter" data-level="3.5" data-path="vectores-lógicos-truefalse.html"><a href="vectores-lógicos-truefalse.html"><i class="fa fa-check"></i><b>3.5</b> Vectores lógicos (TRUE/FALSE)</a></li>
-<li class="chapter" data-level="3.6" data-path="datos-ausentes-na-y-nan.html"><a href="datos-ausentes-na-y-nan.html"><i class="fa fa-check"></i><b>3.6</b> Datos ausentes: NA y NaN</a></li>
+<li class="chapter" data-level="3.6" data-path="ausentes.html"><a href="ausentes.html"><i class="fa fa-check"></i><b>3.6</b> Datos ausentes: NA y NaN</a></li>
 <li class="chapter" data-level="3.7" data-path="seleccionar-elementos-de-un-vector.html"><a href="seleccionar-elementos-de-un-vector.html"><i class="fa fa-check"></i><b>3.7</b> Seleccionar elementos de un vector</a><ul>
 <li class="chapter" data-level="3.7.1" data-path="seleccionar-elementos-de-un-vector.html"><a href="seleccionar-elementos-de-un-vector.html#which"><i class="fa fa-check"></i><b>3.7.1</b> which</a></li>
 <li class="chapter" data-level="3.7.2" data-path="seleccionar-elementos-de-un-vector.html"><a href="seleccionar-elementos-de-un-vector.html#null"><i class="fa fa-check"></i><b>3.7.2</b> NULL</a></li>
@@ -231,7 +232,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.4" data-path="ejercicios-4.html"><a href="ejercicios-4.html"><i class="fa fa-check"></i><b>9.4</b> 📝 Ejercicios</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="qué-sabemos-hacer.html"><a href="qué-sabemos-hacer.html"><i class="fa fa-check"></i><b>10</b> ¿Qué sabemos hacer?</a><ul>
-<li class="chapter" data-level="10.1" data-path="recursos.html"><a href="recursos.html"><i class="fa fa-check"></i><b>10.1</b> Recursos</a></li>
+<li class="chapter" data-level="10.1" data-path="aleatorio_1.html"><a href="aleatorio_1.html"><i class="fa fa-check"></i><b>10.1</b> Incursión aleatoria</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="aleatorio_1.html"><a href="aleatorio_1.html#pseudoaleatorio"><i class="fa fa-check"></i><b>10.1.1</b> Pseudoaleatoriedad</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="recursos.html"><a href="recursos.html"><i class="fa fa-check"></i><b>10.2</b> Recursos</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="bibliografía.html"><a href="bibliografía.html"><i class="fa fa-check"></i>Bibliografía</a></li>
 <li class="divider"></li>
@@ -259,12 +263,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Hasta ahora <strong>hemos visto solo datos en una dimensión</strong>: una variable, que tiene n valores numéricos, n valores lógicos o n valores de tipo texto. <strong>Una sola variable</strong> (de n elementos).</p>
 <p>Pero cuando analizamos datos solemos tener varias variables distintas. Cuando tenemos <strong>distintas variables numéricas de igual longitud</strong>, un formato de dato muy habitual de trabajar es lo que conocemos como <strong>matrices</strong>: una «tabla» de números, con filas y columnas.</p>
 <p>Vamos a definir las <strong>edades, teléfonos y códigos postales de una serie de individuos</strong>.</p>
-<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb264-1" data-line-number="1">edades &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">14</span>, <span class="dv">24</span>, <span class="dv">56</span>, <span class="dv">31</span>, <span class="dv">20</span>, <span class="dv">87</span>, <span class="dv">73</span>) <span class="co"># vector numérico de longitud 7</span></a>
-<a class="sourceLine" id="cb264-2" data-line-number="2">tlf &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">NA</span>, <span class="dv">683839390</span>, <span class="dv">621539732</span>, <span class="dv">618211286</span>, <span class="ot">NA</span>, <span class="dv">914727164</span>, <span class="ot">NA</span>)</a>
-<a class="sourceLine" id="cb264-3" data-line-number="3">cp &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">33007</span>, <span class="dv">28019</span>, <span class="dv">37005</span>, <span class="dv">18003</span>, <span class="dv">33091</span>, <span class="dv">25073</span>, <span class="dv">17140</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb269-1" data-line-number="1">edades &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">14</span>, <span class="dv">24</span>, <span class="dv">56</span>, <span class="dv">31</span>, <span class="dv">20</span>, <span class="dv">87</span>, <span class="dv">73</span>) <span class="co"># vector numérico de longitud 7</span></a>
+<a class="sourceLine" id="cb269-2" data-line-number="2">tlf &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">NA</span>, <span class="dv">683839390</span>, <span class="dv">621539732</span>, <span class="dv">618211286</span>, <span class="ot">NA</span>, <span class="dv">914727164</span>, <span class="ot">NA</span>)</a>
+<a class="sourceLine" id="cb269-3" data-line-number="3">cp &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">33007</span>, <span class="dv">28019</span>, <span class="dv">37005</span>, <span class="dv">18003</span>, <span class="dv">33091</span>, <span class="dv">25073</span>, <span class="dv">17140</span>)</a></code></pre></div>
 <p>Hasta ahora, cada variable la hemos definido por separado, pero ahora vamos a juntarlas: vamos a crear nuestro <strong>primer conjunto de datos</strong> juntado todas ellas en una matriz, un conjunto de números organizado en <strong>3 columnas (una por variable)</strong> y <strong>7 filas o registros (una por persona)</strong>. Para ello usaremos la función <code>cbind()</code>, que nos concatena vectores de igual longitud en formato columna.</p>
-<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb265-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">cbind</span>(edades, tlf, cp) <span class="co"># Construimos la matriz por columnas</span></a>
-<a class="sourceLine" id="cb265-2" data-line-number="2">x</a></code></pre></div>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb270-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">cbind</span>(edades, tlf, cp) <span class="co"># Construimos la matriz por columnas</span></a>
+<a class="sourceLine" id="cb270-2" data-line-number="2">x</a></code></pre></div>
 <pre><code>##      edades       tlf    cp
 ## [1,]     14        NA 33007
 ## [2,]     24 683839390 28019
@@ -274,28 +278,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [6,]     87 914727164 25073
 ## [7,]     73        NA 17140</code></pre>
 <p>Lo que tenemos es una columna por variable y una fila por registro. También podemos construir la matriz por filas con el comando <code>rbind()</code> (aunque lo habitual es tener cada variable en una columna).</p>
-<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb267-1" data-line-number="1">y &lt;-<span class="st"> </span><span class="kw">rbind</span>(edades, tlf, cp) <span class="co"># Construimos la matriz por filas</span></a>
-<a class="sourceLine" id="cb267-2" data-line-number="2">y</a></code></pre></div>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb272-1" data-line-number="1">y &lt;-<span class="st"> </span><span class="kw">rbind</span>(edades, tlf, cp) <span class="co"># Construimos la matriz por filas</span></a>
+<a class="sourceLine" id="cb272-2" data-line-number="2">y</a></code></pre></div>
 <pre><code>##         [,1]      [,2]      [,3]      [,4]  [,5]      [,6]  [,7]
 ## edades    14        24        56        31    20        87    73
 ## tlf       NA 683839390 621539732 618211286    NA 914727164    NA
 ## cp     33007     28019     37005     18003 33091     25073 17140</code></pre>
 <p>Como ves, ahora nuestros datos están <strong>tabulados</strong>, tienen dos dimensiones. ¿Cómo saber las <strong>dimensiones</strong> que tiene una matriz? Prueba a ejecutar la función <code>dim()</code>.</p>
-<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb269-1" data-line-number="1"><span class="kw">dim</span>(x)</a></code></pre></div>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb274-1" data-line-number="1"><span class="kw">dim</span>(x)</a></code></pre></div>
 <pre><code>## [1] 7 3</code></pre>
-<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb271-1" data-line-number="1"><span class="kw">dim</span>(y)</a></code></pre></div>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb276-1" data-line-number="1"><span class="kw">dim</span>(y)</a></code></pre></div>
 <pre><code>## [1] 3 7</code></pre>
 <p>Fíjate que <code>dim()</code> devuelve un vector de 2 elementos, por lo que para acceder las filas deberemos ejecutar <code>dim(x)[1]</code> (y <code>dim(x)[2]</code> para las columnas). También tenemos a nuestra disposición las funciones <code>nrow()</code> y <code>ncol()</code>, que nos devuelven directamente el número de filas y columnas.</p>
-<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb273-1" data-line-number="1"><span class="kw">dim</span>(x)[<span class="dv">1</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb278-1" data-line-number="1"><span class="kw">dim</span>(x)[<span class="dv">1</span>]</a></code></pre></div>
 <pre><code>## [1] 7</code></pre>
-<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb275-1" data-line-number="1"><span class="kw">dim</span>(x)[<span class="dv">2</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb280-1" data-line-number="1"><span class="kw">dim</span>(x)[<span class="dv">2</span>]</a></code></pre></div>
 <pre><code>## [1] 3</code></pre>
-<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb277-1" data-line-number="1"><span class="kw">nrow</span>(x)</a></code></pre></div>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb282-1" data-line-number="1"><span class="kw">nrow</span>(x)</a></code></pre></div>
 <pre><code>## [1] 7</code></pre>
-<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb279-1" data-line-number="1"><span class="kw">ncol</span>(x)</a></code></pre></div>
+<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb284-1" data-line-number="1"><span class="kw">ncol</span>(x)</a></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 <p>Bien, ya sabemos definir una matriz a partir de variables. Igual que a veces es útil generar un vector de elementos repetidos, también podemos definir una <strong>matriz de números repetidos</strong> (por ejemplo, de ceros), con la función <code>matrix()</code>, indicándole el número de filas y columnas.</p>
-<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb281-1" data-line-number="1"><span class="kw">matrix</span>(<span class="dv">0</span>, <span class="dt">nrow =</span> <span class="dv">5</span>, <span class="dt">ncol =</span> <span class="dv">3</span>) <span class="co"># 5 filas, 3 columnas, todo 0&#39;s</span></a></code></pre></div>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb286-1" data-line-number="1"><span class="kw">matrix</span>(<span class="dv">0</span>, <span class="dt">nrow =</span> <span class="dv">5</span>, <span class="dt">ncol =</span> <span class="dv">3</span>) <span class="co"># 5 filas, 3 columnas, todo 0&#39;s</span></a></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    0    0    0
 ## [2,]    0    0    0
@@ -303,17 +307,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [4,]    0    0    0
 ## [5,]    0    0    0</code></pre>
 <p>También podemos definir una <strong>matriz a partir de un vector numérico</strong>, reorganizando los valores en forma de matriz (con una dimensión tal que <code>filas * columnas = longitud del vector</code>), sabiendo que los elementos se van colocando por columnas (primeros valores en la primera columna, de arriba a abajo).</p>
-<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb283-1" data-line-number="1">z &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">15</span>, <span class="dt">ncol =</span> <span class="dv">5</span>) <span class="co"># Matriz con el vector 1:5 con 5 columnas (ergo 3 filas)</span></a>
-<a class="sourceLine" id="cb283-2" data-line-number="2">z</a></code></pre></div>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb288-1" data-line-number="1">z &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">15</span>, <span class="dt">ncol =</span> <span class="dv">5</span>) <span class="co"># Matriz con el vector 1:5 con 5 columnas (ergo 3 filas)</span></a>
+<a class="sourceLine" id="cb288-2" data-line-number="2">z</a></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4] [,5]
 ## [1,]    1    4    7   10   13
 ## [2,]    2    5    8   11   14
 ## [3,]    3    6    9   12   15</code></pre>
-<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb285-1" data-line-number="1"><span class="kw">class</span>(z) <span class="co"># Clase de la variable</span></a></code></pre></div>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb290-1" data-line-number="1"><span class="kw">class</span>(z) <span class="co"># Clase de la variable</span></a></code></pre></div>
 <pre><code>## [1] &quot;matrix&quot;</code></pre>
 <p> </p>
 <p>Dada una matriz <code>x</code> podemos darle vuelta (lo que se conoce como <strong>matriz transpuesta</strong>, donde filas pasan a ser columnas y viceversa) con la función <code>t()</code>.</p>
-<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb287-1" data-line-number="1">x</a></code></pre></div>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb292-1" data-line-number="1">x</a></code></pre></div>
 <pre><code>##      edades       tlf    cp
 ## [1,]     14        NA 33007
 ## [2,]     24 683839390 28019
@@ -322,7 +326,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [5,]     20        NA 33091
 ## [6,]     87 914727164 25073
 ## [7,]     73        NA 17140</code></pre>
-<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb289-1" data-line-number="1"><span class="kw">t</span>(x) <span class="co"># Matriz transpuesta</span></a></code></pre></div>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb294-1" data-line-number="1"><span class="kw">t</span>(x) <span class="co"># Matriz transpuesta</span></a></code></pre></div>
 <pre><code>##         [,1]      [,2]      [,3]      [,4]  [,5]      [,6]  [,7]
 ## edades    14        24        56        31    20        87    73
 ## tlf       NA 683839390 621539732 618211286    NA 914727164    NA

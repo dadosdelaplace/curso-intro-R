@@ -157,8 +157,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="primeros-pasos.html"><a href="primeros-pasos.html"><i class="fa fa-check"></i><b>2</b> Primeros pasos</a><ul>
 <li class="chapter" data-level="2.1" data-path="excel-no-es-tu-amigo.html"><a href="excel-no-es-tu-amigo.html"><i class="fa fa-check"></i><b>2.1</b> Excel no es tu amigo</a></li>
 <li class="chapter" data-level="2.2" data-path="primeros-pasos-calculadora.html"><a href="primeros-pasos-calculadora.html"><i class="fa fa-check"></i><b>2.2</b> Primeros pasos: calculadora</a></li>
-<li class="chapter" data-level="2.3" data-path="consejos-y-tips-1.html"><a href="consejos-y-tips-1.html"><i class="fa fa-check"></i><b>2.3</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
-<li class="chapter" data-level="2.4" data-path="ejercicios.html"><a href="ejercicios.html"><i class="fa fa-check"></i><b>2.4</b> 📝 Ejercicios</a></li>
+<li class="chapter" data-level="2.3" data-path="tipos_errores.html"><a href="tipos_errores.html"><i class="fa fa-check"></i><b>2.3</b> Tipos de errores</a></li>
+<li class="chapter" data-level="2.4" data-path="consejos-y-tips-1.html"><a href="consejos-y-tips-1.html"><i class="fa fa-check"></i><b>2.4</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
+<li class="chapter" data-level="2.5" data-path="ejercicios.html"><a href="ejercicios.html"><i class="fa fa-check"></i><b>2.5</b> 📝 Ejercicios</a></li>
 </ul></li>
 <li class="part"><span><b>II Conceptos básicos</b></span></li>
 <li class="chapter" data-level="3" data-path="tipos-de-datos-i-vectores.html"><a href="tipos-de-datos-i-vectores.html"><i class="fa fa-check"></i><b>3</b> Tipos de datos I: vectores</a><ul>
@@ -169,7 +170,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="operaciones-estadísticas-con-vectores-numéricos.html"><a href="operaciones-estadísticas-con-vectores-numéricos.html"><i class="fa fa-check"></i><b>3.3</b> Operaciones estadísticas con vectores numéricos</a></li>
 <li class="chapter" data-level="3.4" data-path="vectores-de-caracteres-texto.html"><a href="vectores-de-caracteres-texto.html"><i class="fa fa-check"></i><b>3.4</b> Vectores de caracteres (texto)</a></li>
 <li class="chapter" data-level="3.5" data-path="vectores-lógicos-truefalse.html"><a href="vectores-lógicos-truefalse.html"><i class="fa fa-check"></i><b>3.5</b> Vectores lógicos (TRUE/FALSE)</a></li>
-<li class="chapter" data-level="3.6" data-path="datos-ausentes-na-y-nan.html"><a href="datos-ausentes-na-y-nan.html"><i class="fa fa-check"></i><b>3.6</b> Datos ausentes: NA y NaN</a></li>
+<li class="chapter" data-level="3.6" data-path="ausentes.html"><a href="ausentes.html"><i class="fa fa-check"></i><b>3.6</b> Datos ausentes: NA y NaN</a></li>
 <li class="chapter" data-level="3.7" data-path="seleccionar-elementos-de-un-vector.html"><a href="seleccionar-elementos-de-un-vector.html"><i class="fa fa-check"></i><b>3.7</b> Seleccionar elementos de un vector</a><ul>
 <li class="chapter" data-level="3.7.1" data-path="seleccionar-elementos-de-un-vector.html"><a href="seleccionar-elementos-de-un-vector.html#which"><i class="fa fa-check"></i><b>3.7.1</b> which</a></li>
 <li class="chapter" data-level="3.7.2" data-path="seleccionar-elementos-de-un-vector.html"><a href="seleccionar-elementos-de-un-vector.html#null"><i class="fa fa-check"></i><b>3.7.2</b> NULL</a></li>
@@ -231,7 +232,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.4" data-path="ejercicios-4.html"><a href="ejercicios-4.html"><i class="fa fa-check"></i><b>9.4</b> 📝 Ejercicios</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="qué-sabemos-hacer.html"><a href="qué-sabemos-hacer.html"><i class="fa fa-check"></i><b>10</b> ¿Qué sabemos hacer?</a><ul>
-<li class="chapter" data-level="10.1" data-path="recursos.html"><a href="recursos.html"><i class="fa fa-check"></i><b>10.1</b> Recursos</a></li>
+<li class="chapter" data-level="10.1" data-path="aleatorio_1.html"><a href="aleatorio_1.html"><i class="fa fa-check"></i><b>10.1</b> Incursión aleatoria</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="aleatorio_1.html"><a href="aleatorio_1.html#pseudoaleatorio"><i class="fa fa-check"></i><b>10.1.1</b> Pseudoaleatoriedad</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="recursos.html"><a href="recursos.html"><i class="fa fa-check"></i><b>10.2</b> Recursos</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="bibliografía.html"><a href="bibliografía.html"><i class="fa fa-check"></i>Bibliografía</a></li>
 <li class="divider"></li>
@@ -258,44 +262,44 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">3.1</span> Vectores numéricos</h2>
 <p>Un conjunto de elementos del mismo tipo se llama <strong>vector</strong> (en este caso de números), y de hecho un número individual (por ejemplo, <code>1</code>) es en realidad un vector de longitud uno (un solo elemento).</p>
 <p>La forma más sencilla de <strong>crear un vector</strong> en <code>R</code> es con el comando <code>c()</code> (de <strong>concatenar elementos</strong>), y basta con introducir sus elementos entre paréntesis, y separados por comas. Vamos a crear el vector con los tres primeros números naturales pares (el 0 no es natural, no seas bárbaro/a).</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1">z &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>)</a>
-<a class="sourceLine" id="cb22-2" data-line-number="2">z</a></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1">z &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>)</a>
+<a class="sourceLine" id="cb27-2" data-line-number="2">z</a></code></pre></div>
 <pre><code>## [1] 2 4 6</code></pre>
 <p>Como ves ahora en el <strong>environment tenemos una colección de elementos</strong>, tres en concreto, guardados en una misma variable. La longitud de un vector se puede calcular con el comando <code>length()</code>.</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1"><span class="kw">length</span>(z)</a></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="kw">length</span>(z)</a></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 <p>Además podemos <strong>concatenar a su vez vectores</strong>: vamos a concatenar el vector <code>z</code> consigo mismo, y añadiéndole al final un 8.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1"><span class="kw">c</span>(z, z, <span class="dv">8</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="kw">c</span>(z, z, <span class="dv">8</span>)</a></code></pre></div>
 <pre><code>## [1] 2 4 6 2 4 6 8</code></pre>
 <p>La última concatenación lo que nos ha dado son los tres primeros pares, después de nuevo los tres primeros pares, y por último un 8.</p>
 <div id="secuencias-con-un-patrón" class="section level3">
 <h3><span class="header-section-number">3.1.1</span> Secuencias con un patrón</h3>
 <p>Muchas veces nos gustaría <strong>crear vectores de una forma mucho más rápida</strong>, por ejemplo, para tener un vector de índices que queramos recorrer. Supongamos que queremos el vector de los primeros 21 números naturales. Si construyéramos el vector como antes, tendríamos ejecutar el comando <code>c(1, 2, 3, 4, 5, ...)</code> hasta el número 21. ¿Un poco largo, no?</p>
 <p>El comando <code>seq()</code> nos permite crear una <strong>secuencia desde un elemento inicial hasta un elemento final, avanzando de uno en uno</strong>.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1"><span class="kw">seq</span>(<span class="dv">1</span>, <span class="dv">21</span>) <span class="co"># secuencia desde 1 hasta 21 de uno en uno</span></a></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="kw">seq</span>(<span class="dv">1</span>, <span class="dv">21</span>) <span class="co"># secuencia desde 1 hasta 21 de uno en uno</span></a></code></pre></div>
 <pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21</code></pre>
 <p>Es importante que no perdamos el foco de que <strong>programar es similar a escribir en un idioma</strong>, por lo que si hay algo que se puede decir de una forma más limpia y que se entienda mejor, ¿por qué no usarlo? Siempre que queramos definir secuencias entre dos números naturales (por ejemplo, entre <code>1</code> y un valor <code>n</code>), cuya distancia entre elementos consecutivos sea uno, el comando <code>1:n</code> nos devuelve lo mismo que la orden <code>seq(1, n)</code>. Además, si el elemento inicial es mayor que el final, <code>R</code> entenderá solo que la secuencia la queremo decreciente.</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1">n &lt;-<span class="st"> </span><span class="dv">21</span></a>
-<a class="sourceLine" id="cb30-2" data-line-number="2"><span class="dv">1</span><span class="op">:</span>n <span class="co"># secuencia desde 1 hasta n (21) de uno en uno</span></a></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1">n &lt;-<span class="st"> </span><span class="dv">21</span></a>
+<a class="sourceLine" id="cb35-2" data-line-number="2"><span class="dv">1</span><span class="op">:</span>n <span class="co"># secuencia desde 1 hasta n (21) de uno en uno</span></a></code></pre></div>
 <pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21</code></pre>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="dv">17</span><span class="op">:</span><span class="dv">1</span> <span class="co"># secuencia decreciente de 17 a 1</span></a></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1"><span class="dv">17</span><span class="op">:</span><span class="dv">1</span> <span class="co"># secuencia decreciente de 17 a 1</span></a></code></pre></div>
 <pre><code>##  [1] 17 16 15 14 13 12 11 10  9  8  7  6  5  4  3  2  1</code></pre>
 <p> </p>
 <p>También podemos definir <strong>otro tipo de distancia entre dos elementos consecutivos</strong> (conocido como <strong>paso de discretización</strong>), por ejemplo de 0.5 en 0.5, o bien definir una secuencia entre un valor inicial y un valor final con un número de elementos fijo (y que sea <code>R</code> el que decida la distancia entre elementos consecutivos).</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="kw">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dt">by =</span> <span class="fl">0.5</span>) <span class="co"># secuencia desde 1 a 10 de 0.5 en 0.5</span></a></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1"><span class="kw">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dt">by =</span> <span class="fl">0.5</span>) <span class="co"># secuencia desde 1 a 10 de 0.5 en 0.5</span></a></code></pre></div>
 <pre><code>##  [1]  1.0  1.5  2.0  2.5  3.0  3.5  4.0  4.5  5.0  5.5  6.0  6.5  7.0  7.5  8.0
 ## [16]  8.5  9.0  9.5 10.0</code></pre>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="kw">seq</span>(<span class="dv">1</span>, <span class="dv">50</span>, <span class="dt">l =</span> <span class="dv">11</span>) <span class="co"># secuencia desde 1 a 100 de longitud 11</span></a></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1"><span class="kw">seq</span>(<span class="dv">1</span>, <span class="dv">50</span>, <span class="dt">l =</span> <span class="dv">11</span>) <span class="co"># secuencia desde 1 a 100 de longitud 11</span></a></code></pre></div>
 <pre><code>##  [1]  1.0  5.9 10.8 15.7 20.6 25.5 30.4 35.3 40.2 45.1 50.0</code></pre>
 <p> </p>
 <p>Otro atajo que podemos usar para definir secuencias de números con un patrón es definir <strong>vectores repetidos</strong>, por ejemplo un vector lleno de 0, para luego ser rellenado (pero ya tenerlo definido). La función <code>rep()</code> nos permite repetir un elemento un número fijado de veces.</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1"><span class="kw">rep</span>(<span class="dv">0</span>, <span class="dv">7</span>) <span class="co"># vector de 7 ceros</span></a></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1"><span class="kw">rep</span>(<span class="dv">0</span>, <span class="dv">7</span>) <span class="co"># vector de 7 ceros</span></a></code></pre></div>
 <pre><code>## [1] 0 0 0 0 0 0 0</code></pre>
 <p>No solo podemos repetir un número sino que podemos repetir vectores enteros.</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1"><span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>), <span class="dv">4</span>) <span class="co"># repetimos el vector c(0, 1, 2) 4 veces</span></a></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" data-line-number="1"><span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>), <span class="dv">4</span>) <span class="co"># repetimos el vector c(0, 1, 2) 4 veces</span></a></code></pre></div>
 <pre><code>##  [1] 0 1 2 0 1 2 0 1 2 0 1 2</code></pre>
 <p>Esa repetición además podemos definirla también de forma <strong>intercalada</strong>: en lugar de repetir <code>c(0, 1, 2)</code> cuatro veces seguidas, queremos cuatro 0, después cuatro 1, y después cuatro 2.</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1"><span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>), <span class="dt">each =</span> <span class="dv">4</span>) <span class="co"># cuatro 0, luego cuatro 1, luego cuatro 2</span></a></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" data-line-number="1"><span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>), <span class="dt">each =</span> <span class="dv">4</span>) <span class="co"># cuatro 0, luego cuatro 1, luego cuatro 2</span></a></code></pre></div>
 <pre><code>##  [1] 0 0 0 0 1 1 1 1 2 2 2 2</code></pre>
 </div>
 </div>

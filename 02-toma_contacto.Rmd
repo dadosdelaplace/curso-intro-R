@@ -107,6 +107,48 @@ abs(y)
 &nbsp;
 
 
+## Tipos de errores {#tipos_errores}
+
+Durante tu aprendizaje en `R` va a ser **muy habitual** que las cosas no salgan a la primera, **apareciendo en consola mensajes en un color rojo**. Un **miedo** muy habitual cuando se empieza a programar es pensar que si haces algo mal o aparece algún mensaje de error, el ordenador puede explotar en cualquier momento. **A programar se aprende programando**, así que haz las pruebas que quieres, lo peor que puede pasar es que necesites cerrar sesión en `R Studio` y abrirlo de nuevo.
+
+Dado que el 99.99999% de veces tu código tendrá errores que deberás ir solventando, no está de más conocer los tipos de mensajes que `R` puede sacarte por consola:
+
+```{r colorize, echo = FALSE}
+# Color text
+colorize <- function(x, color) {
+  
+  if (knitr::is_latex_output()) {
+    
+    sprintf("\\textcolor{%s}{%s}", color, x)
+    
+  } else if (knitr::is_html_output()) {
+    
+    sprintf("<span style='color: %s;'>%s</span>", color, x)
+    
+  } else { x }
+}
+```
+
+* **`r colorize("Errores", "red")`**: los mensajes de error irán precedidos de la frase **«Error in...»**, dándote a veces incluso el tipo de error y la línea de código en la que se ha producido. Veamos un ejemplo intentando sumar un número a una cadena de texto.
+
+```{r error = TRUE}
+"a" + 1
+```
+
+Los **errores son aquellos fallos que seguramente impidan la ejecución** del código. Un **error muy habitual** es intentar acceder a alguna función de algún paquete que, o bien no tenemos instalado, o bien no hemos llamado haciendo uso del `library()`: estás intentando leerte un libro de tu biblioteca pero ni siquiera has ido a la tienda a «comprarlo».
+
+
+* **`r colorize("Warnings", "yellow")`**: los mensajes de _warning_ irán precedidos de la frase **«Warning:...»**, y son los fallos más delicados ya que son **posibles errores o incoherencias** que `R` detecta en tu código pero que **no van a hacer que tu código deje de ejecutarse**, aunque probablemente no lo haga como a ti te gustaría. Un ejemplo es cuando tratamos de hacer la raiz cuadrada de un número negativo.
+
+```{r warning = TRUE}
+sqrt(-1)
+``` 
+
+¿Ha ejecutado la orden? Sí, pero te **advierte de que el resultado de la operación es un `NaN`, un valor que no existe (al menos dentro de los números reales), un _Not A Number_ (ver Sección \@ref(ausentes)).
+
+* **`r colorize("Mensajes de control", "green")`**: los mensajes de control serán aquellos que aparecerán por consola sin empezar por «Error in...» ni «Warning:...». Dichos mensajes, que puedes incluir tú mismo en tu código con funciones como `cat()` para monitorizar la ejecución de códigos largos, no son errores ni problemas, son simplemente información que `R` considera útil aportarte.
+
+
 ## ![](img/logo_info.png){width=4%}  Consejos y tips
   
 

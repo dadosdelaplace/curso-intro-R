@@ -157,8 +157,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="primeros-pasos.html"><a href="primeros-pasos.html"><i class="fa fa-check"></i><b>2</b> Primeros pasos</a><ul>
 <li class="chapter" data-level="2.1" data-path="excel-no-es-tu-amigo.html"><a href="excel-no-es-tu-amigo.html"><i class="fa fa-check"></i><b>2.1</b> Excel no es tu amigo</a></li>
 <li class="chapter" data-level="2.2" data-path="primeros-pasos-calculadora.html"><a href="primeros-pasos-calculadora.html"><i class="fa fa-check"></i><b>2.2</b> Primeros pasos: calculadora</a></li>
-<li class="chapter" data-level="2.3" data-path="consejos-y-tips-1.html"><a href="consejos-y-tips-1.html"><i class="fa fa-check"></i><b>2.3</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
-<li class="chapter" data-level="2.4" data-path="ejercicios.html"><a href="ejercicios.html"><i class="fa fa-check"></i><b>2.4</b> 📝 Ejercicios</a></li>
+<li class="chapter" data-level="2.3" data-path="tipos_errores.html"><a href="tipos_errores.html"><i class="fa fa-check"></i><b>2.3</b> Tipos de errores</a></li>
+<li class="chapter" data-level="2.4" data-path="consejos-y-tips-1.html"><a href="consejos-y-tips-1.html"><i class="fa fa-check"></i><b>2.4</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
+<li class="chapter" data-level="2.5" data-path="ejercicios.html"><a href="ejercicios.html"><i class="fa fa-check"></i><b>2.5</b> 📝 Ejercicios</a></li>
 </ul></li>
 <li class="part"><span><b>II Conceptos básicos</b></span></li>
 <li class="chapter" data-level="3" data-path="tipos-de-datos-i-vectores.html"><a href="tipos-de-datos-i-vectores.html"><i class="fa fa-check"></i><b>3</b> Tipos de datos I: vectores</a><ul>
@@ -169,7 +170,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="operaciones-estadísticas-con-vectores-numéricos.html"><a href="operaciones-estadísticas-con-vectores-numéricos.html"><i class="fa fa-check"></i><b>3.3</b> Operaciones estadísticas con vectores numéricos</a></li>
 <li class="chapter" data-level="3.4" data-path="vectores-de-caracteres-texto.html"><a href="vectores-de-caracteres-texto.html"><i class="fa fa-check"></i><b>3.4</b> Vectores de caracteres (texto)</a></li>
 <li class="chapter" data-level="3.5" data-path="vectores-lógicos-truefalse.html"><a href="vectores-lógicos-truefalse.html"><i class="fa fa-check"></i><b>3.5</b> Vectores lógicos (TRUE/FALSE)</a></li>
-<li class="chapter" data-level="3.6" data-path="datos-ausentes-na-y-nan.html"><a href="datos-ausentes-na-y-nan.html"><i class="fa fa-check"></i><b>3.6</b> Datos ausentes: NA y NaN</a></li>
+<li class="chapter" data-level="3.6" data-path="ausentes.html"><a href="ausentes.html"><i class="fa fa-check"></i><b>3.6</b> Datos ausentes: NA y NaN</a></li>
 <li class="chapter" data-level="3.7" data-path="seleccionar-elementos-de-un-vector.html"><a href="seleccionar-elementos-de-un-vector.html"><i class="fa fa-check"></i><b>3.7</b> Seleccionar elementos de un vector</a><ul>
 <li class="chapter" data-level="3.7.1" data-path="seleccionar-elementos-de-un-vector.html"><a href="seleccionar-elementos-de-un-vector.html#which"><i class="fa fa-check"></i><b>3.7.1</b> which</a></li>
 <li class="chapter" data-level="3.7.2" data-path="seleccionar-elementos-de-un-vector.html"><a href="seleccionar-elementos-de-un-vector.html#null"><i class="fa fa-check"></i><b>3.7.2</b> NULL</a></li>
@@ -231,7 +232,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.4" data-path="ejercicios-4.html"><a href="ejercicios-4.html"><i class="fa fa-check"></i><b>9.4</b> 📝 Ejercicios</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="qué-sabemos-hacer.html"><a href="qué-sabemos-hacer.html"><i class="fa fa-check"></i><b>10</b> ¿Qué sabemos hacer?</a><ul>
-<li class="chapter" data-level="10.1" data-path="recursos.html"><a href="recursos.html"><i class="fa fa-check"></i><b>10.1</b> Recursos</a></li>
+<li class="chapter" data-level="10.1" data-path="aleatorio_1.html"><a href="aleatorio_1.html"><i class="fa fa-check"></i><b>10.1</b> Incursión aleatoria</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="aleatorio_1.html"><a href="aleatorio_1.html#pseudoaleatorio"><i class="fa fa-check"></i><b>10.1.1</b> Pseudoaleatoriedad</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="recursos.html"><a href="recursos.html"><i class="fa fa-check"></i><b>10.2</b> Recursos</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="bibliografía.html"><a href="bibliografía.html"><i class="fa fa-check"></i>Bibliografía</a></li>
 <li class="divider"></li>
@@ -258,59 +262,59 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">5.2</span> Apply vs bucles</h2>
 <p>Si has programado en algún otro lenguaje, estarás echando en falta elementos como un <code>if (blabla) {...} else {...}</code> (que los usaremos a veces) o bucles <code>for</code> y <code>while</code>.</p>
 <p><strong>¿No existen los bucles en <code>R</code>?</strong> Sí, sí existen. He aquí un ejemplo.</p>
-<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb291-1" data-line-number="1">v &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span>, <span class="dv">20</span>) <span class="co"># Vector de 20 ceros</span></a>
-<a class="sourceLine" id="cb291-2" data-line-number="2"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">20</span>) { <span class="co"># Bucle en base a un índice i que va de 1 a 20</span></a>
-<a class="sourceLine" id="cb291-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb291-4" data-line-number="4">  v[i] &lt;-<span class="st"> </span>i<span class="op">^</span><span class="dv">2</span> <span class="co"># En cada iteración guardamos el valor de i al cuadrado en el elemento i del vector v</span></a>
-<a class="sourceLine" id="cb291-5" data-line-number="5">    </a>
-<a class="sourceLine" id="cb291-6" data-line-number="6">}</a>
-<a class="sourceLine" id="cb291-7" data-line-number="7">v</a></code></pre></div>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb296-1" data-line-number="1">v &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span>, <span class="dv">20</span>) <span class="co"># Vector de 20 ceros</span></a>
+<a class="sourceLine" id="cb296-2" data-line-number="2"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">20</span>) { <span class="co"># Bucle en base a un índice i que va de 1 a 20</span></a>
+<a class="sourceLine" id="cb296-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb296-4" data-line-number="4">  v[i] &lt;-<span class="st"> </span>i<span class="op">^</span><span class="dv">2</span> <span class="co"># En cada iteración guardamos el valor de i al cuadrado en el elemento i del vector v</span></a>
+<a class="sourceLine" id="cb296-5" data-line-number="5">    </a>
+<a class="sourceLine" id="cb296-6" data-line-number="6">}</a>
+<a class="sourceLine" id="cb296-7" data-line-number="7">v</a></code></pre></div>
 <pre><code>##  [1]   1   4   9  16  25  36  49  64  81 100 121 144 169 196 225 256 289 324 361
 ## [20] 400</code></pre>
 <p>La razón por la que no hemos usado aún <strong>bucles</strong>, e intentaremos evitarlos lo máximo posible, es porque son <strong>muy ineficientes</strong> en tiempo de ejecución. Vamos a poner un ejemplo. Supongamos que de la matriz <code>x</code> queremos calcular la suma de cada fila (es decir, 7 valores) o la suma de cada columna (3 valores). Con bucles sería así.</p>
-<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb293-1" data-line-number="1">suma_por_filas &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span>, <span class="kw">dim</span>(x)[<span class="dv">1</span>]) <span class="co"># dim(x)[1] número de filas</span></a>
-<a class="sourceLine" id="cb293-2" data-line-number="2">suma_por_cols &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span>, <span class="kw">dim</span>(x)[<span class="dv">2</span>]) <span class="co"># dim(x)[2] número de columnas</span></a>
-<a class="sourceLine" id="cb293-3" data-line-number="3"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">dim</span>(x)[<span class="dv">1</span>]) { <span class="co"># Bucle recorriendo filas</span></a>
-<a class="sourceLine" id="cb293-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb293-5" data-line-number="5">  suma_por_filas[i] &lt;-<span class="st"> </span><span class="kw">sum</span>(x[i, ], <span class="dt">na.rm =</span> <span class="ot">TRUE</span>) <span class="co"># Suma de la fila i, eliminando NA</span></a>
-<a class="sourceLine" id="cb293-6" data-line-number="6">    </a>
-<a class="sourceLine" id="cb293-7" data-line-number="7">}</a>
-<a class="sourceLine" id="cb293-8" data-line-number="8">suma_por_filas</a></code></pre></div>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb298-1" data-line-number="1">suma_por_filas &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span>, <span class="kw">dim</span>(x)[<span class="dv">1</span>]) <span class="co"># dim(x)[1] número de filas</span></a>
+<a class="sourceLine" id="cb298-2" data-line-number="2">suma_por_cols &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span>, <span class="kw">dim</span>(x)[<span class="dv">2</span>]) <span class="co"># dim(x)[2] número de columnas</span></a>
+<a class="sourceLine" id="cb298-3" data-line-number="3"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">dim</span>(x)[<span class="dv">1</span>]) { <span class="co"># Bucle recorriendo filas</span></a>
+<a class="sourceLine" id="cb298-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb298-5" data-line-number="5">  suma_por_filas[i] &lt;-<span class="st"> </span><span class="kw">sum</span>(x[i, ], <span class="dt">na.rm =</span> <span class="ot">TRUE</span>) <span class="co"># Suma de la fila i, eliminando NA</span></a>
+<a class="sourceLine" id="cb298-6" data-line-number="6">    </a>
+<a class="sourceLine" id="cb298-7" data-line-number="7">}</a>
+<a class="sourceLine" id="cb298-8" data-line-number="8">suma_por_filas</a></code></pre></div>
 <pre><code>## [1]     33021 683867433 621576793 618229320     33111 914752324     17213</code></pre>
-<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb295-1" data-line-number="1"><span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">dim</span>(x)[<span class="dv">2</span>]) { <span class="co"># Bucle recorriendo filas</span></a>
-<a class="sourceLine" id="cb295-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb295-3" data-line-number="3">  suma_por_cols[j] &lt;-<span class="st"> </span><span class="kw">sum</span>(x[, j], <span class="dt">na.rm =</span> <span class="ot">TRUE</span>) <span class="co"># Suma de la columna j, eliminando NA</span></a>
-<a class="sourceLine" id="cb295-4" data-line-number="4">    </a>
-<a class="sourceLine" id="cb295-5" data-line-number="5">}</a>
-<a class="sourceLine" id="cb295-6" data-line-number="6">suma_por_cols</a></code></pre></div>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb300-1" data-line-number="1"><span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">dim</span>(x)[<span class="dv">2</span>]) { <span class="co"># Bucle recorriendo filas</span></a>
+<a class="sourceLine" id="cb300-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb300-3" data-line-number="3">  suma_por_cols[j] &lt;-<span class="st"> </span><span class="kw">sum</span>(x[, j], <span class="dt">na.rm =</span> <span class="ot">TRUE</span>) <span class="co"># Suma de la columna j, eliminando NA</span></a>
+<a class="sourceLine" id="cb300-4" data-line-number="4">    </a>
+<a class="sourceLine" id="cb300-5" data-line-number="5">}</a>
+<a class="sourceLine" id="cb300-6" data-line-number="6">suma_por_cols</a></code></pre></div>
 <pre><code>## [1]        305 2838317572     191338</code></pre>
 <p>En el código anterior puedes ver como para <strong>acceder a la fila i-ésima de la matriz</strong> se usa el operador <code>[i, ]</code> (dejando libre el índice de la columna), mientras que para <strong>acceder a la columna j-ésima de la matriz</strong> se usa el operador <code>[, j]</code>. Para <strong>acceder al elemento <code>(i, j)</code></strong> se usa el operador <code>[i, j]</code>. También habrás observado que, si escribes los bucles en tu script, tienen una flecha a la izquierda para ser minimizados.</p>
 <p>La pregunta es: <strong>¿no hay una forma más eficiente de hacerlo?</strong></p>
 <p>La respuesta: sí. La <strong>función <code>apply()</code> nos permite ejecutar una función por filas o por columnas</strong>.</p>
-<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb297-1" data-line-number="1"><span class="co"># Suma por filas (MARGIN = 1) quitando NA</span></a>
-<a class="sourceLine" id="cb297-2" data-line-number="2">suma_por_filas &lt;-<span class="st"> </span><span class="kw">apply</span>(x, <span class="dt">MARGIN =</span> <span class="dv">1</span>, <span class="dt">FUN =</span> <span class="st">&quot;sum&quot;</span>, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb297-3" data-line-number="3">suma_por_filas </a></code></pre></div>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb302-1" data-line-number="1"><span class="co"># Suma por filas (MARGIN = 1) quitando NA</span></a>
+<a class="sourceLine" id="cb302-2" data-line-number="2">suma_por_filas &lt;-<span class="st"> </span><span class="kw">apply</span>(x, <span class="dt">MARGIN =</span> <span class="dv">1</span>, <span class="dt">FUN =</span> <span class="st">&quot;sum&quot;</span>, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb302-3" data-line-number="3">suma_por_filas </a></code></pre></div>
 <pre><code>## [1]     33021 683867433 621576793 618229320     33111 914752324     17213</code></pre>
-<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb299-1" data-line-number="1"><span class="co"># Una función cualquiera por filas</span></a>
-<a class="sourceLine" id="cb299-2" data-line-number="2">operacion_por_filas &lt;-<span class="st"> </span><span class="kw">apply</span>(x, <span class="dt">MARGIN =</span> <span class="dv">1</span>, <span class="dt">FUN =</span> <span class="cf">function</span>(x) { <span class="kw">sum</span>(<span class="kw">sqrt</span>(<span class="dv">2</span>) <span class="op">-</span><span class="st"> </span><span class="dv">2</span>) })</a>
-<a class="sourceLine" id="cb299-3" data-line-number="3">operacion_por_filas</a></code></pre></div>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb304-1" data-line-number="1"><span class="co"># Una función cualquiera por filas</span></a>
+<a class="sourceLine" id="cb304-2" data-line-number="2">operacion_por_filas &lt;-<span class="st"> </span><span class="kw">apply</span>(x, <span class="dt">MARGIN =</span> <span class="dv">1</span>, <span class="dt">FUN =</span> <span class="cf">function</span>(x) { <span class="kw">sum</span>(<span class="kw">sqrt</span>(<span class="dv">2</span>) <span class="op">-</span><span class="st"> </span><span class="dv">2</span>) })</a>
+<a class="sourceLine" id="cb304-3" data-line-number="3">operacion_por_filas</a></code></pre></div>
 <pre><code>## [1] -0.5857864 -0.5857864 -0.5857864 -0.5857864 -0.5857864 -0.5857864 -0.5857864</code></pre>
-<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb301-1" data-line-number="1"><span class="co"># Suma por columnas (MARGIN = 2) quitando NA</span></a>
-<a class="sourceLine" id="cb301-2" data-line-number="2">suma_por_cols &lt;-<span class="st"> </span><span class="kw">apply</span>(x, <span class="dt">MARGIN =</span> <span class="dv">2</span>, <span class="dt">FUN =</span> <span class="st">&quot;sum&quot;</span>, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb301-3" data-line-number="3">suma_por_cols</a></code></pre></div>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb306-1" data-line-number="1"><span class="co"># Suma por columnas (MARGIN = 2) quitando NA</span></a>
+<a class="sourceLine" id="cb306-2" data-line-number="2">suma_por_cols &lt;-<span class="st"> </span><span class="kw">apply</span>(x, <span class="dt">MARGIN =</span> <span class="dv">2</span>, <span class="dt">FUN =</span> <span class="st">&quot;sum&quot;</span>, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb306-3" data-line-number="3">suma_por_cols</a></code></pre></div>
 <pre><code>##     edades        tlf         cp 
 ##        305 2838317572     191338</code></pre>
 <p>Como puedes observar, necesitas tres argmentos y otros opcionales: la matriz, el índice por el que operar (<code>MARGIN = 1</code> por filas, <code>MARGIN = 2</code> por columnas) y la función a aplicar, amén de otros argumentos extras que pudiera necesitar la función.</p>
 <p>Veamos qué es más eficiente con el ya conocido paquete <code>{microbenchmark}</code>.</p>
-<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb303-1" data-line-number="1">microbenchmark<span class="op">::</span><span class="kw">microbenchmark</span>(<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">dim</span>(x)[<span class="dv">1</span>]) {</a>
-<a class="sourceLine" id="cb303-2" data-line-number="2">  suma_por_filas[i] &lt;-<span class="st"> </span><span class="kw">sum</span>(x[i, ], <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)}, <span class="kw">apply</span>(x, <span class="dt">MARGIN =</span> <span class="dv">1</span>, <span class="dt">FUN =</span> <span class="st">&quot;sum&quot;</span>, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), <span class="dt">times =</span> <span class="fl">1e2</span>) <span class="co"># Comparamos tiempos de ejecución de ambas formas, y lo repetimos 100 veces para sacar tiempos medios</span></a></code></pre></div>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb308-1" data-line-number="1">microbenchmark<span class="op">::</span><span class="kw">microbenchmark</span>(<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">dim</span>(x)[<span class="dv">1</span>]) {</a>
+<a class="sourceLine" id="cb308-2" data-line-number="2">  suma_por_filas[i] &lt;-<span class="st"> </span><span class="kw">sum</span>(x[i, ], <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)}, <span class="kw">apply</span>(x, <span class="dt">MARGIN =</span> <span class="dv">1</span>, <span class="dt">FUN =</span> <span class="st">&quot;sum&quot;</span>, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), <span class="dt">times =</span> <span class="fl">1e2</span>) <span class="co"># Comparamos tiempos de ejecución de ambas formas, y lo repetimos 100 veces para sacar tiempos medios</span></a></code></pre></div>
 <pre><code>## Unit: microseconds
 ##                                                                           expr
 ##  for (i in 1:dim(x)[1]) {     suma_por_filas[i] &lt;- sum(x[i, ], na.rm = TRUE) }
 ##                                apply(x, MARGIN = 1, FUN = &quot;sum&quot;, na.rm = TRUE)
-##       min        lq       mean    median       uq      max neval cld
-##  1723.314 1924.0755 2368.67930 2137.7500 2514.632 7134.873   100   b
-##    20.996   26.7975   42.53326   38.3755   47.609  148.318   100  a</code></pre>
+##       min        lq       mean   median        uq      max neval cld
+##  1697.511 1902.8905 2534.86035 2365.645 2691.9950 7573.282   100   b
+##    19.557   25.7975   44.62248   41.981   50.4775  355.530   100  a</code></pre>
 <p><strong>¡El bucle nos tarda 50 veces más que el <code>apply</code>!</strong> Di no a los bucles: casi siempre hay una forma mejor de hacerlo.</p>
 </div>
             </section>

@@ -157,8 +157,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="primeros-pasos.html"><a href="primeros-pasos.html"><i class="fa fa-check"></i><b>2</b> Primeros pasos</a><ul>
 <li class="chapter" data-level="2.1" data-path="excel-no-es-tu-amigo.html"><a href="excel-no-es-tu-amigo.html"><i class="fa fa-check"></i><b>2.1</b> Excel no es tu amigo</a></li>
 <li class="chapter" data-level="2.2" data-path="primeros-pasos-calculadora.html"><a href="primeros-pasos-calculadora.html"><i class="fa fa-check"></i><b>2.2</b> Primeros pasos: calculadora</a></li>
-<li class="chapter" data-level="2.3" data-path="consejos-y-tips-1.html"><a href="consejos-y-tips-1.html"><i class="fa fa-check"></i><b>2.3</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
-<li class="chapter" data-level="2.4" data-path="ejercicios.html"><a href="ejercicios.html"><i class="fa fa-check"></i><b>2.4</b> 📝 Ejercicios</a></li>
+<li class="chapter" data-level="2.3" data-path="tipos_errores.html"><a href="tipos_errores.html"><i class="fa fa-check"></i><b>2.3</b> Tipos de errores</a></li>
+<li class="chapter" data-level="2.4" data-path="consejos-y-tips-1.html"><a href="consejos-y-tips-1.html"><i class="fa fa-check"></i><b>2.4</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
+<li class="chapter" data-level="2.5" data-path="ejercicios.html"><a href="ejercicios.html"><i class="fa fa-check"></i><b>2.5</b> 📝 Ejercicios</a></li>
 </ul></li>
 <li class="part"><span><b>II Conceptos básicos</b></span></li>
 <li class="chapter" data-level="3" data-path="tipos-de-datos-i-vectores.html"><a href="tipos-de-datos-i-vectores.html"><i class="fa fa-check"></i><b>3</b> Tipos de datos I: vectores</a><ul>
@@ -169,7 +170,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="operaciones-estadísticas-con-vectores-numéricos.html"><a href="operaciones-estadísticas-con-vectores-numéricos.html"><i class="fa fa-check"></i><b>3.3</b> Operaciones estadísticas con vectores numéricos</a></li>
 <li class="chapter" data-level="3.4" data-path="vectores-de-caracteres-texto.html"><a href="vectores-de-caracteres-texto.html"><i class="fa fa-check"></i><b>3.4</b> Vectores de caracteres (texto)</a></li>
 <li class="chapter" data-level="3.5" data-path="vectores-lógicos-truefalse.html"><a href="vectores-lógicos-truefalse.html"><i class="fa fa-check"></i><b>3.5</b> Vectores lógicos (TRUE/FALSE)</a></li>
-<li class="chapter" data-level="3.6" data-path="datos-ausentes-na-y-nan.html"><a href="datos-ausentes-na-y-nan.html"><i class="fa fa-check"></i><b>3.6</b> Datos ausentes: NA y NaN</a></li>
+<li class="chapter" data-level="3.6" data-path="ausentes.html"><a href="ausentes.html"><i class="fa fa-check"></i><b>3.6</b> Datos ausentes: NA y NaN</a></li>
 <li class="chapter" data-level="3.7" data-path="seleccionar-elementos-de-un-vector.html"><a href="seleccionar-elementos-de-un-vector.html"><i class="fa fa-check"></i><b>3.7</b> Seleccionar elementos de un vector</a><ul>
 <li class="chapter" data-level="3.7.1" data-path="seleccionar-elementos-de-un-vector.html"><a href="seleccionar-elementos-de-un-vector.html#which"><i class="fa fa-check"></i><b>3.7.1</b> which</a></li>
 <li class="chapter" data-level="3.7.2" data-path="seleccionar-elementos-de-un-vector.html"><a href="seleccionar-elementos-de-un-vector.html#null"><i class="fa fa-check"></i><b>3.7.2</b> NULL</a></li>
@@ -231,7 +232,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.4" data-path="ejercicios-4.html"><a href="ejercicios-4.html"><i class="fa fa-check"></i><b>9.4</b> 📝 Ejercicios</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="qué-sabemos-hacer.html"><a href="qué-sabemos-hacer.html"><i class="fa fa-check"></i><b>10</b> ¿Qué sabemos hacer?</a><ul>
-<li class="chapter" data-level="10.1" data-path="recursos.html"><a href="recursos.html"><i class="fa fa-check"></i><b>10.1</b> Recursos</a></li>
+<li class="chapter" data-level="10.1" data-path="aleatorio_1.html"><a href="aleatorio_1.html"><i class="fa fa-check"></i><b>10.1</b> Incursión aleatoria</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="aleatorio_1.html"><a href="aleatorio_1.html#pseudoaleatorio"><i class="fa fa-check"></i><b>10.1.1</b> Pseudoaleatoriedad</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="recursos.html"><a href="recursos.html"><i class="fa fa-check"></i><b>10.2</b> Recursos</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="bibliografía.html"><a href="bibliografía.html"><i class="fa fa-check"></i>Bibliografía</a></li>
 <li class="divider"></li>
@@ -268,11 +272,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>La forma más sencilla de guardar datos y variables en <code>R</code>, y que además ocupa menos espacio en nuestro disco duro, es guardarlo en archivos propios que tiene <code>R</code> como son los archivos con extensiones <code>.rda</code> y <code>.RData</code>.</p>
 <p>Es <strong>recomendable</strong> tener los datos en la misma carpeta del proyecto pero una carpeta separada, ya que podemos tener muchos archivos y así no mezclamos dichos ficheros con los códigos que escirbamos. En la carpeta <code>DATOS</code> del proyecto tenemos 4 archivos <code>.RData</code>: <code>coches.RData</code>, <code>panel_vacunas_ccaa.RData</code>, <code>panel_vacunas_fecha.RData</code> y <code>panel_variables.RData</code>. <strong>¿Cómo cargar archivos <code>.RData</code>?</strong></p>
 <p>Muy sencillo: como son ficheros nativos de <code>R</code>, basta con usar la función de carga <code>load()</code>, y dentro la ruta de los archivos.</p>
-<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb357-1" data-line-number="1"><span class="co"># Al fijar directorio de trabajo, no necesitamos toda la ruta, solo &quot;./&quot; y la ruta dentro de la carpeta del proyecto</span></a>
-<a class="sourceLine" id="cb357-2" data-line-number="2"><span class="kw">load</span>(<span class="st">&quot;./DATOS/coches.RData&quot;</span>) </a>
-<a class="sourceLine" id="cb357-3" data-line-number="3"><span class="kw">load</span>(<span class="st">&quot;./DATOS/panel_vacunas_ccaa.RData&quot;</span>)</a>
-<a class="sourceLine" id="cb357-4" data-line-number="4"><span class="kw">load</span>(<span class="st">&quot;./DATOS/panel_vacunas_fecha.RData&quot;</span>)</a>
-<a class="sourceLine" id="cb357-5" data-line-number="5"><span class="kw">load</span>(<span class="st">&quot;./DATOS/panel_variables.RData&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb362-1" data-line-number="1"><span class="co"># Al fijar directorio de trabajo, no necesitamos toda la ruta, solo &quot;./&quot; y la ruta dentro de la carpeta del proyecto</span></a>
+<a class="sourceLine" id="cb362-2" data-line-number="2"><span class="kw">load</span>(<span class="st">&quot;./DATOS/coches.RData&quot;</span>) </a>
+<a class="sourceLine" id="cb362-3" data-line-number="3"><span class="kw">load</span>(<span class="st">&quot;./DATOS/panel_vacunas_ccaa.RData&quot;</span>)</a>
+<a class="sourceLine" id="cb362-4" data-line-number="4"><span class="kw">load</span>(<span class="st">&quot;./DATOS/panel_vacunas_fecha.RData&quot;</span>)</a>
+<a class="sourceLine" id="cb362-5" data-line-number="5"><span class="kw">load</span>(<span class="st">&quot;./DATOS/panel_variables.RData&quot;</span>)</a></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:carga-RDATA"></span>
 <img src="img/carga_RDATA.jpg" alt="Importación de ficheros de extensión .RData." width="50%" />
 <p class="caption">
@@ -280,8 +284,8 @@ Imagen/gráfica 6.1: Importación de ficheros de extensión .RData.
 </p>
 </div>
 <p>Como ves en la imagen <a href="importación-de-datos.html#fig:carga-RDATA">6.1</a>, en el panel de entorno de la parte superior derecha ahora tendremos 4 <code>data.frames</code> que antes no teníamos. Un función muy útil es <code>head()</code>, con argumento el nombre de un <code>data.frame</code>, que nos permite visualizar las primeras columnas.</p>
-<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb358-1" data-line-number="1"><span class="co"># Ver las primeras filas de la tabla que guarda distintos modelos de coche y características</span></a>
-<a class="sourceLine" id="cb358-2" data-line-number="2"><span class="kw">head</span>(coches)</a></code></pre></div>
+<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb363-1" data-line-number="1"><span class="co"># Ver las primeras filas de la tabla que guarda distintos modelos de coche y características</span></a>
+<a class="sourceLine" id="cb363-2" data-line-number="2"><span class="kw">head</span>(coches)</a></code></pre></div>
 <pre><code>##                    consumo cilindrada     peso  potencia   tiempo
 ## Mazda RX4         11.20069   2621.936 1188.411 111.52570 40.91298
 ## Mazda RX4 Wag     11.20069   2621.936 1304.077 111.52570 42.30491
@@ -301,8 +305,8 @@ Imagen/gráfica 6.1: Importación de ficheros de extensión .RData.
 <h3><span class="header-section-number">6.1.2</span> Archivo .csv</h3>
 <p>Otra opción de importación habitual son los <strong>archivos <code>.csv</code> (comma separated values)</strong>: son archivos separados por comas (u otro caracter como puntos, puntos y comas, o tabuladores). En apariencia cuando los abrimos en el ordenador son como un Excel (ya que los abre el Excel), pero ocupan mucho menos que un Excel y su <strong>lectura es universal</strong> (independiente de tener instalado o no el Excel) ya que son archivos de texto <strong>sin formato</strong>.</p>
 <p>Para leer un archivo <code>.csv</code> basta con usar la función <code>read.csv()</code>, y la mayoría de las veces basta indicarle la ruta del archivo para su lectura (argumento <code>file</code>).</p>
-<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb360-1" data-line-number="1">vacunas_esp &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&quot;./DATOS/datos_ES.csv&quot;</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb361-1" data-line-number="1"><span class="kw">names</span>(vacunas_esp) <span class="co"># Todas las variables del data.frame</span></a></code></pre></div>
+<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb365-1" data-line-number="1">vacunas_esp &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&quot;./DATOS/datos_ES.csv&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb366-1" data-line-number="1"><span class="kw">names</span>(vacunas_esp) <span class="co"># Todas las variables del data.frame</span></a></code></pre></div>
 <pre><code>##  [1] &quot;fechas&quot;                              
 ##  [2] &quot;ISO&quot;                                 
 ##  [3] &quot;poblacion&quot;                           
@@ -374,7 +378,7 @@ Imagen/gráfica 6.1: Importación de ficheros de extensión .RData.
 ## [69] &quot;fecha_30inmunizados_16a_ritmo7D&quot;     
 ## [70] &quot;fecha_50inmunizados_16a_ritmo7D&quot;     
 ## [71] &quot;fecha_70inmunizados_16a_ritmo7D&quot;</code></pre>
-<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb363-1" data-line-number="1">vacunas_esp[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">7</span>] <span class="co"># Primeras filas y columnas</span></a></code></pre></div>
+<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb368-1" data-line-number="1">vacunas_esp[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">7</span>] <span class="co"># Primeras filas y columnas</span></a></code></pre></div>
 <pre><code>##       fechas ISO poblacion porc_pobl_total poblacion_mayor_16a
 ## 1 2021-01-05  ES  47450795             100            40129822
 ## 2 2021-01-06  ES  47450795             100            40129822
@@ -388,8 +392,8 @@ Imagen/gráfica 6.1: Importación de ficheros de extensión .RData.
 ## 4                       100               743925
 ## 5                       100               743925</code></pre>
 <p>Podemos personalizar la lectura en función del archivo, dando valores a los argumentos <code>sep</code> (para indicar el caracter que se está usando para separar columnas, en caso de no ser <code>&quot;,&quot;</code> por defecto), <code>dec</code> (el caracter que esdtamos usando para marcar decimales, por defecto es <code>&quot;.&quot;</code>) o <code>header</code> (por defecto en <code>TRUE</code>, lo que le indicamos que el nombre de las columnas está en la primera fila). Al tener nuestro archivo preparado para que sirva con los parámetros por defecto no debemos añadirlo, pero podemos hacer la prueba para ver que la lectura es la misma.</p>
-<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb365-1" data-line-number="1">vacunas_esp &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&quot;./DATOS/datos_ES.csv&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb366-1" data-line-number="1">vacunas_esp[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">7</span>] <span class="co"># Primeras filas y columnas</span></a></code></pre></div>
+<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb370-1" data-line-number="1">vacunas_esp &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&quot;./DATOS/datos_ES.csv&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb371-1" data-line-number="1">vacunas_esp[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">7</span>] <span class="co"># Primeras filas y columnas</span></a></code></pre></div>
 <pre><code>##       fechas ISO poblacion porc_pobl_total poblacion_mayor_16a
 ## 1 2021-01-05  ES  47450795             100            40129822
 ## 2 2021-01-06  ES  47450795             100            40129822
@@ -406,10 +410,10 @@ Imagen/gráfica 6.1: Importación de ficheros de extensión .RData.
 <div id="archivo-.xlsx" class="section level3">
 <h3><span class="header-section-number">6.1.3</span> Archivo .xlsx</h3>
 <p>Muchas veces no tendremos un <code>.csv</code> (por desgracia) y nos tocará leer desde un excel. Para ello deberemos instalar (la primera vez) y cargar el paquete <code>{readxl}</code> que nos permitirá usar funciones para cargar archivos <code>.xls</code> (la función <code>read_xls()</code>) y archivos <code>.xlsx</code> (la función <code>read_xlsx()</code>). Además del argumento <code>path</code> con la ruta del archivo, podemos en el argumento <code>sheet</code> indicarle la hoja de Excel a leer (en caso de tener varias).</p>
-<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb368-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;readxl&quot;</span>)</a>
-<a class="sourceLine" id="cb368-2" data-line-number="2"><span class="kw">library</span>(readxl)</a>
-<a class="sourceLine" id="cb368-3" data-line-number="3">boston &lt;-<span class="st"> </span><span class="kw">read_xlsx</span>(<span class="dt">path =</span> <span class="st">&quot;./DATOS/Boston.xlsx&quot;</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb369-1" data-line-number="1"><span class="kw">head</span>(boston)</a></code></pre></div>
+<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb373-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;readxl&quot;</span>)</a>
+<a class="sourceLine" id="cb373-2" data-line-number="2"><span class="kw">library</span>(readxl)</a>
+<a class="sourceLine" id="cb373-3" data-line-number="3">boston &lt;-<span class="st"> </span><span class="kw">read_xlsx</span>(<span class="dt">path =</span> <span class="st">&quot;./DATOS/Boston.xlsx&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb374-1" data-line-number="1"><span class="kw">head</span>(boston)</a></code></pre></div>
 <pre><code>## # A tibble: 6 × 14
 ##      crim    zn indus  chas   nox    rm   age   dis   rad   tax ptratio black
 ##     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
@@ -432,8 +436,8 @@ Imagen/gráfica 6.2: Archivos de la pandemia en el ISCIII.
 </div>
 <p>Esos archivos cambian cada día, por lo que para visualizarlos, analizarlos o guardarlos cada día, tendríamos que, cada día, entrar de forma manual a la página y bajarnos el archivo. O no…</p>
 <p><code>R</code> nos permite <strong>leer archivos subidos en una web, dándole a la función de lectura el enlace del archivo en lugar de la ruta local de nuestro ordenador</strong> (para averiguar el enlace, basta con clickar botón derecho en la web y seleccionar «copiar dirección de enlace»)</p>
-<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb371-1" data-line-number="1">datos_ISCIII &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&quot;https://cnecovid.isciii.es/covid19/resources/casos_hosp_uci_def_sexo_edad_provres.csv&quot;</span>)</a>
-<a class="sourceLine" id="cb371-2" data-line-number="2"><span class="kw">head</span>(datos_ISCIII)</a></code></pre></div>
+<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb376-1" data-line-number="1">datos_ISCIII &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&quot;https://cnecovid.isciii.es/covid19/resources/casos_hosp_uci_def_sexo_edad_provres.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb376-2" data-line-number="2"><span class="kw">head</span>(datos_ISCIII)</a></code></pre></div>
 <pre><code>##   provincia_iso sexo grupo_edad      fecha num_casos num_hosp num_uci num_def
 ## 1             A    H        0-9 2020-01-01         0        0       0       0
 ## 2             A    H      10-19 2020-01-01         0        0       0       0

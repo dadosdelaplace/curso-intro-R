@@ -157,8 +157,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="primeros-pasos.html"><a href="primeros-pasos.html"><i class="fa fa-check"></i><b>2</b> Primeros pasos</a><ul>
 <li class="chapter" data-level="2.1" data-path="excel-no-es-tu-amigo.html"><a href="excel-no-es-tu-amigo.html"><i class="fa fa-check"></i><b>2.1</b> Excel no es tu amigo</a></li>
 <li class="chapter" data-level="2.2" data-path="primeros-pasos-calculadora.html"><a href="primeros-pasos-calculadora.html"><i class="fa fa-check"></i><b>2.2</b> Primeros pasos: calculadora</a></li>
-<li class="chapter" data-level="2.3" data-path="consejos-y-tips-1.html"><a href="consejos-y-tips-1.html"><i class="fa fa-check"></i><b>2.3</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
-<li class="chapter" data-level="2.4" data-path="ejercicios.html"><a href="ejercicios.html"><i class="fa fa-check"></i><b>2.4</b> 📝 Ejercicios</a></li>
+<li class="chapter" data-level="2.3" data-path="tipos_errores.html"><a href="tipos_errores.html"><i class="fa fa-check"></i><b>2.3</b> Tipos de errores</a></li>
+<li class="chapter" data-level="2.4" data-path="consejos-y-tips-1.html"><a href="consejos-y-tips-1.html"><i class="fa fa-check"></i><b>2.4</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
+<li class="chapter" data-level="2.5" data-path="ejercicios.html"><a href="ejercicios.html"><i class="fa fa-check"></i><b>2.5</b> 📝 Ejercicios</a></li>
 </ul></li>
 <li class="part"><span><b>II Conceptos básicos</b></span></li>
 <li class="chapter" data-level="3" data-path="tipos-de-datos-i-vectores.html"><a href="tipos-de-datos-i-vectores.html"><i class="fa fa-check"></i><b>3</b> Tipos de datos I: vectores</a><ul>
@@ -169,7 +170,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="operaciones-estadísticas-con-vectores-numéricos.html"><a href="operaciones-estadísticas-con-vectores-numéricos.html"><i class="fa fa-check"></i><b>3.3</b> Operaciones estadísticas con vectores numéricos</a></li>
 <li class="chapter" data-level="3.4" data-path="vectores-de-caracteres-texto.html"><a href="vectores-de-caracteres-texto.html"><i class="fa fa-check"></i><b>3.4</b> Vectores de caracteres (texto)</a></li>
 <li class="chapter" data-level="3.5" data-path="vectores-lógicos-truefalse.html"><a href="vectores-lógicos-truefalse.html"><i class="fa fa-check"></i><b>3.5</b> Vectores lógicos (TRUE/FALSE)</a></li>
-<li class="chapter" data-level="3.6" data-path="datos-ausentes-na-y-nan.html"><a href="datos-ausentes-na-y-nan.html"><i class="fa fa-check"></i><b>3.6</b> Datos ausentes: NA y NaN</a></li>
+<li class="chapter" data-level="3.6" data-path="ausentes.html"><a href="ausentes.html"><i class="fa fa-check"></i><b>3.6</b> Datos ausentes: NA y NaN</a></li>
 <li class="chapter" data-level="3.7" data-path="seleccionar-elementos-de-un-vector.html"><a href="seleccionar-elementos-de-un-vector.html"><i class="fa fa-check"></i><b>3.7</b> Seleccionar elementos de un vector</a><ul>
 <li class="chapter" data-level="3.7.1" data-path="seleccionar-elementos-de-un-vector.html"><a href="seleccionar-elementos-de-un-vector.html#which"><i class="fa fa-check"></i><b>3.7.1</b> which</a></li>
 <li class="chapter" data-level="3.7.2" data-path="seleccionar-elementos-de-un-vector.html"><a href="seleccionar-elementos-de-un-vector.html#null"><i class="fa fa-check"></i><b>3.7.2</b> NULL</a></li>
@@ -231,7 +232,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.4" data-path="ejercicios-4.html"><a href="ejercicios-4.html"><i class="fa fa-check"></i><b>9.4</b> 📝 Ejercicios</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="qué-sabemos-hacer.html"><a href="qué-sabemos-hacer.html"><i class="fa fa-check"></i><b>10</b> ¿Qué sabemos hacer?</a><ul>
-<li class="chapter" data-level="10.1" data-path="recursos.html"><a href="recursos.html"><i class="fa fa-check"></i><b>10.1</b> Recursos</a></li>
+<li class="chapter" data-level="10.1" data-path="aleatorio_1.html"><a href="aleatorio_1.html"><i class="fa fa-check"></i><b>10.1</b> Incursión aleatoria</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="aleatorio_1.html"><a href="aleatorio_1.html#pseudoaleatorio"><i class="fa fa-check"></i><b>10.1.1</b> Pseudoaleatoriedad</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="recursos.html"><a href="recursos.html"><i class="fa fa-check"></i><b>10.2</b> Recursos</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="bibliografía.html"><a href="bibliografía.html"><i class="fa fa-check"></i>Bibliografía</a></li>
 <li class="divider"></li>
@@ -258,24 +262,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">7.2</span> for/while</h2>
 <p>Aunque el 99% (porcentaje inventado, pero más o menos) de las veces los bucles pueden ser sustituidos por códigos de forma vectorial mucho más eficientes (ya hemos visto algunos ejemplos), a veces no nos quedará más remedio que usarlos por lo que nunca viene mal conocer su estructura.</p>
 <p>Un <strong>bucle <code>for{}</code> es una estructura que nos permite ejecutar un conjunto de órdenes un número repetido (finito y conocido)</strong> de veces: dado un conjunto de índices, el <strong>bucle irá recorriendo cada elemento</strong> de dicho conjunto, y para cada uno de ellos ejecutará lo que tenga dentro de las llaves.</p>
-<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb389-1" data-line-number="1">indices &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></a>
-<a class="sourceLine" id="cb389-2" data-line-number="2">variable &lt;-<span class="st"> </span><span class="ot">NULL</span> <span class="co"># vector donde guardaremos los pasos del bucle</span></a>
-<a class="sourceLine" id="cb389-3" data-line-number="3"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>) { </a>
-<a class="sourceLine" id="cb389-4" data-line-number="4">  </a>
-<a class="sourceLine" id="cb389-5" data-line-number="5">  variable[i] &lt;-<span class="st"> </span>i <span class="co"># R es silenciosos: salvo que hagamos un print dentro del bucle no nos imprimirá nada por pantalla</span></a>
-<a class="sourceLine" id="cb389-6" data-line-number="6">}</a>
-<a class="sourceLine" id="cb389-7" data-line-number="7">variable</a></code></pre></div>
+<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb394-1" data-line-number="1">indices &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb394-2" data-line-number="2">variable &lt;-<span class="st"> </span><span class="ot">NULL</span> <span class="co"># vector donde guardaremos los pasos del bucle</span></a>
+<a class="sourceLine" id="cb394-3" data-line-number="3"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>) { </a>
+<a class="sourceLine" id="cb394-4" data-line-number="4">  </a>
+<a class="sourceLine" id="cb394-5" data-line-number="5">  variable[i] &lt;-<span class="st"> </span>i <span class="co"># R es silenciosos: salvo que hagamos un print dentro del bucle no nos imprimirá nada por pantalla</span></a>
+<a class="sourceLine" id="cb394-6" data-line-number="6">}</a>
+<a class="sourceLine" id="cb394-7" data-line-number="7">variable</a></code></pre></div>
 <pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
-<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb391-1" data-line-number="1"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(indices)) { </a>
-<a class="sourceLine" id="cb391-2" data-line-number="2">  </a>
-<a class="sourceLine" id="cb391-3" data-line-number="3">  variable[i] &lt;-<span class="st"> </span>i</a>
-<a class="sourceLine" id="cb391-4" data-line-number="4">}</a>
-<a class="sourceLine" id="cb391-5" data-line-number="5">variable</a></code></pre></div>
+<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb396-1" data-line-number="1"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(indices)) { </a>
+<a class="sourceLine" id="cb396-2" data-line-number="2">  </a>
+<a class="sourceLine" id="cb396-3" data-line-number="3">  variable[i] &lt;-<span class="st"> </span>i</a>
+<a class="sourceLine" id="cb396-4" data-line-number="4">}</a>
+<a class="sourceLine" id="cb396-5" data-line-number="5">variable</a></code></pre></div>
 <pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
-<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb393-1" data-line-number="1"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(indices)) { </a>
-<a class="sourceLine" id="cb393-2" data-line-number="2">  </a>
-<a class="sourceLine" id="cb393-3" data-line-number="3">  <span class="kw">print</span>(i<span class="op">^</span><span class="dv">3</span>) <span class="co"># imprimimos el índice al cubo</span></a>
-<a class="sourceLine" id="cb393-4" data-line-number="4">}</a></code></pre></div>
+<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb398-1" data-line-number="1"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(indices)) { </a>
+<a class="sourceLine" id="cb398-2" data-line-number="2">  </a>
+<a class="sourceLine" id="cb398-3" data-line-number="3">  <span class="kw">print</span>(i<span class="op">^</span><span class="dv">3</span>) <span class="co"># imprimimos el índice al cubo</span></a>
+<a class="sourceLine" id="cb398-4" data-line-number="4">}</a></code></pre></div>
 <pre><code>## [1] 1
 ## [1] 8
 ## [1] 27
@@ -288,13 +292,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [1] 1000</code></pre>
 <p>Escribiendo <code>length(indices)</code>, si cambiamos la variable <code>indice</code> no necesitamos cambiar el bucle (llegará hasta el final de dicho conjunto de valores, valga lo que valga).</p>
 <p>Aunque normalmente el conjunto que recorre el bucle suelen ser índices numéricos, <strong>podemos recorrer cualquier tipo de objeto</strong>.</p>
-<div class="sourceCode" id="cb395"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb395-1" data-line-number="1">dias_semana &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;lunes&quot;</span>, <span class="st">&quot;martes&quot;</span>, <span class="st">&quot;miércoles&quot;</span>, <span class="st">&quot;jueves&quot;</span>,</a>
-<a class="sourceLine" id="cb395-2" data-line-number="2">                 <span class="st">&quot;viernes&quot;</span>, <span class="st">&quot;sábado&quot;</span>, <span class="st">&quot;domingo&quot;</span>)</a>
-<a class="sourceLine" id="cb395-3" data-line-number="3">nombre_mayuscula &lt;-<span class="st"> </span><span class="ot">NULL</span></a>
-<a class="sourceLine" id="cb395-4" data-line-number="4"><span class="cf">for</span> (dias <span class="cf">in</span> dias_semana) { <span class="co"># dias recorre los días de la semana tomando sus valores</span></a>
-<a class="sourceLine" id="cb395-5" data-line-number="5">  </a>
-<a class="sourceLine" id="cb395-6" data-line-number="6">  <span class="kw">print</span>(<span class="kw">toupper</span>(dias))</a>
-<a class="sourceLine" id="cb395-7" data-line-number="7">}</a></code></pre></div>
+<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb400-1" data-line-number="1">dias_semana &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;lunes&quot;</span>, <span class="st">&quot;martes&quot;</span>, <span class="st">&quot;miércoles&quot;</span>, <span class="st">&quot;jueves&quot;</span>,</a>
+<a class="sourceLine" id="cb400-2" data-line-number="2">                 <span class="st">&quot;viernes&quot;</span>, <span class="st">&quot;sábado&quot;</span>, <span class="st">&quot;domingo&quot;</span>)</a>
+<a class="sourceLine" id="cb400-3" data-line-number="3">nombre_mayuscula &lt;-<span class="st"> </span><span class="ot">NULL</span></a>
+<a class="sourceLine" id="cb400-4" data-line-number="4"><span class="cf">for</span> (dias <span class="cf">in</span> dias_semana) { <span class="co"># dias recorre los días de la semana tomando sus valores</span></a>
+<a class="sourceLine" id="cb400-5" data-line-number="5">  </a>
+<a class="sourceLine" id="cb400-6" data-line-number="6">  <span class="kw">print</span>(<span class="kw">toupper</span>(dias))</a>
+<a class="sourceLine" id="cb400-7" data-line-number="7">}</a></code></pre></div>
 <pre><code>## [1] &quot;LUNES&quot;
 ## [1] &quot;MARTES&quot;
 ## [1] &quot;MIÉRCOLES&quot;
@@ -304,16 +308,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [1] &quot;DOMINGO&quot;</code></pre>
 <p> </p>
 <p>Otra manera de diseñar un bucle es con la <strong>estructura <code>while{}</code></strong>, que ejecutará el <strong>bucle un número de veces a priori desconocido</strong> hasta que la condición impuesta deje de ser <code>TRUE</code>.</p>
-<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb397-1" data-line-number="1">max_ciclos &lt;-<span class="st"> </span><span class="dv">10</span></a>
-<a class="sourceLine" id="cb397-2" data-line-number="2">ciclos &lt;-<span class="st"> </span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb397-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb397-4" data-line-number="4"><span class="co"># Mientras el número de ciclos sea inferior 10, imprime</span></a>
-<a class="sourceLine" id="cb397-5" data-line-number="5"><span class="cf">while</span>(ciclos <span class="op">&lt;=</span><span class="st"> </span>max_ciclos) {</a>
-<a class="sourceLine" id="cb397-6" data-line-number="6">  </a>
-<a class="sourceLine" id="cb397-7" data-line-number="7">  <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Todavía no, vamos por el ciclo &quot;</span>, ciclos)) <span class="co"># Pegamos la frase al número de ciclo por el que vayamos con paste</span></a>
-<a class="sourceLine" id="cb397-8" data-line-number="8">  ciclos &lt;-<span class="st"> </span>ciclos <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb397-9" data-line-number="9">  </a>
-<a class="sourceLine" id="cb397-10" data-line-number="10">}</a></code></pre></div>
+<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb402-1" data-line-number="1">max_ciclos &lt;-<span class="st"> </span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb402-2" data-line-number="2">ciclos &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb402-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb402-4" data-line-number="4"><span class="co"># Mientras el número de ciclos sea inferior 10, imprime</span></a>
+<a class="sourceLine" id="cb402-5" data-line-number="5"><span class="cf">while</span>(ciclos <span class="op">&lt;=</span><span class="st"> </span>max_ciclos) {</a>
+<a class="sourceLine" id="cb402-6" data-line-number="6">  </a>
+<a class="sourceLine" id="cb402-7" data-line-number="7">  <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Todavía no, vamos por el ciclo &quot;</span>, ciclos)) <span class="co"># Pegamos la frase al número de ciclo por el que vayamos con paste</span></a>
+<a class="sourceLine" id="cb402-8" data-line-number="8">  ciclos &lt;-<span class="st"> </span>ciclos <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb402-9" data-line-number="9">  </a>
+<a class="sourceLine" id="cb402-10" data-line-number="10">}</a></code></pre></div>
 <pre><code>## [1] &quot;Todavía no, vamos por el ciclo  1&quot;
 ## [1] &quot;Todavía no, vamos por el ciclo  2&quot;
 ## [1] &quot;Todavía no, vamos por el ciclo  3&quot;
@@ -325,22 +329,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [1] &quot;Todavía no, vamos por el ciclo  9&quot;
 ## [1] &quot;Todavía no, vamos por el ciclo  10&quot;</code></pre>
 <p><strong>¿Y qué sucede cuando la condición nunca llega a ser <code>FALSE</code>?</strong> Compruébalo tú mismo/a.</p>
-<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb399-1" data-line-number="1"><span class="cf">while</span> (<span class="dv">1</span> <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) { <span class="co"># Nunca va a dejar de ser cierto</span></a>
-<a class="sourceLine" id="cb399-2" data-line-number="2">  </a>
-<a class="sourceLine" id="cb399-3" data-line-number="3">  <span class="kw">print</span>(<span class="st">&quot;Presiona ESC para salir del bucle&quot;</span>)</a>
-<a class="sourceLine" id="cb399-4" data-line-number="4">  </a>
-<a class="sourceLine" id="cb399-5" data-line-number="5">}</a></code></pre></div>
+<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb404-1" data-line-number="1"><span class="cf">while</span> (<span class="dv">1</span> <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) { <span class="co"># Nunca va a dejar de ser cierto</span></a>
+<a class="sourceLine" id="cb404-2" data-line-number="2">  </a>
+<a class="sourceLine" id="cb404-3" data-line-number="3">  <span class="kw">print</span>(<span class="st">&quot;Presiona ESC para salir del bucle&quot;</span>)</a>
+<a class="sourceLine" id="cb404-4" data-line-number="4">  </a>
+<a class="sourceLine" id="cb404-5" data-line-number="5">}</a></code></pre></div>
 <div id="breaknext" class="section level3">
 <h3><span class="header-section-number">7.2.1</span> BREAK/NEXT</h3>
 <p>En <code>R</code> tenemos dos comandos reservados para poder <strong>abortar un bucle</strong> o <strong>avanzar forzosamente un bucle</strong>: dichas palabras son <code>break</code> y <code>next</code>. La primera nos habilita para <strong>parar un bucle</strong> aunque no haya llegado al final de su conjunto de índices a recorrer (o se siga cumpliendo la condición del <code>while{}</code>).</p>
-<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb400-1" data-line-number="1"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>) {</a>
-<a class="sourceLine" id="cb400-2" data-line-number="2">  <span class="cf">if</span> (i <span class="op">==</span><span class="st"> </span><span class="dv">7</span>) {</a>
-<a class="sourceLine" id="cb400-3" data-line-number="3">    </a>
-<a class="sourceLine" id="cb400-4" data-line-number="4">    <span class="cf">break</span> <span class="co"># si i es 7, el bucle frena aquí (nunca llegará a imprimir el 7 ni los sucesivos)</span></a>
-<a class="sourceLine" id="cb400-5" data-line-number="5">    </a>
-<a class="sourceLine" id="cb400-6" data-line-number="6">  }</a>
-<a class="sourceLine" id="cb400-7" data-line-number="7">  <span class="kw">print</span>(i)</a>
-<a class="sourceLine" id="cb400-8" data-line-number="8">}</a></code></pre></div>
+<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb405-1" data-line-number="1"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>) {</a>
+<a class="sourceLine" id="cb405-2" data-line-number="2">  <span class="cf">if</span> (i <span class="op">==</span><span class="st"> </span><span class="dv">7</span>) {</a>
+<a class="sourceLine" id="cb405-3" data-line-number="3">    </a>
+<a class="sourceLine" id="cb405-4" data-line-number="4">    <span class="cf">break</span> <span class="co"># si i es 7, el bucle frena aquí (nunca llegará a imprimir el 7 ni los sucesivos)</span></a>
+<a class="sourceLine" id="cb405-5" data-line-number="5">    </a>
+<a class="sourceLine" id="cb405-6" data-line-number="6">  }</a>
+<a class="sourceLine" id="cb405-7" data-line-number="7">  <span class="kw">print</span>(i)</a>
+<a class="sourceLine" id="cb405-8" data-line-number="8">}</a></code></pre></div>
 <pre><code>## [1] 1
 ## [1] 2
 ## [1] 3
@@ -348,14 +352,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [1] 5
 ## [1] 6</code></pre>
 <p>Mientras que la segunda <strong>obliga al bucle a avanzar a la siguiente interacción</strong>, abortando la iteración actual en la que se encuentra.</p>
-<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb402-1" data-line-number="1"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>) {</a>
-<a class="sourceLine" id="cb402-2" data-line-number="2">  <span class="cf">if</span> (i <span class="op">==</span><span class="st"> </span><span class="dv">7</span>) {</a>
-<a class="sourceLine" id="cb402-3" data-line-number="3">    </a>
-<a class="sourceLine" id="cb402-4" data-line-number="4">    <span class="cf">next</span> <span class="co"># si i es 7, la iteración frenará aquí y pasará a la siguiente por lo que imprimirá todos menos el 7</span></a>
-<a class="sourceLine" id="cb402-5" data-line-number="5">    </a>
-<a class="sourceLine" id="cb402-6" data-line-number="6">  }</a>
-<a class="sourceLine" id="cb402-7" data-line-number="7">  <span class="kw">print</span>(i)</a>
-<a class="sourceLine" id="cb402-8" data-line-number="8">}</a></code></pre></div>
+<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb407-1" data-line-number="1"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>) {</a>
+<a class="sourceLine" id="cb407-2" data-line-number="2">  <span class="cf">if</span> (i <span class="op">==</span><span class="st"> </span><span class="dv">7</span>) {</a>
+<a class="sourceLine" id="cb407-3" data-line-number="3">    </a>
+<a class="sourceLine" id="cb407-4" data-line-number="4">    <span class="cf">next</span> <span class="co"># si i es 7, la iteración frenará aquí y pasará a la siguiente por lo que imprimirá todos menos el 7</span></a>
+<a class="sourceLine" id="cb407-5" data-line-number="5">    </a>
+<a class="sourceLine" id="cb407-6" data-line-number="6">  }</a>
+<a class="sourceLine" id="cb407-7" data-line-number="7">  <span class="kw">print</span>(i)</a>
+<a class="sourceLine" id="cb407-8" data-line-number="8">}</a></code></pre></div>
 <pre><code>## [1] 1
 ## [1] 2
 ## [1] 3
@@ -369,14 +373,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="repeat" class="section level3">
 <h3><span class="header-section-number">7.2.2</span> REPEAT</h3>
 <p>Aunque es una opción muy poco usada, existe una estructura de control llamada <code>repeat{}</code> que nos <strong>ejecuta un bucle de forma infinita</strong> hasta que le ordenemos parar con un <code>break</code>.</p>
-<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb404-1" data-line-number="1">conteo &lt;-<span class="st"> </span><span class="dv">0</span></a>
-<a class="sourceLine" id="cb404-2" data-line-number="2"><span class="cf">repeat</span> { </a>
-<a class="sourceLine" id="cb404-3" data-line-number="3">  </a>
-<a class="sourceLine" id="cb404-4" data-line-number="4">  conteo &lt;-<span class="st"> </span>conteo <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb404-5" data-line-number="5">  <span class="cf">if</span> (conteo <span class="op">&gt;=</span><span class="st"> </span><span class="dv">100</span>) { <span class="cf">break</span> }</a>
-<a class="sourceLine" id="cb404-6" data-line-number="6">  </a>
-<a class="sourceLine" id="cb404-7" data-line-number="7">}</a>
-<a class="sourceLine" id="cb404-8" data-line-number="8">conteo</a></code></pre></div>
+<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb409-1" data-line-number="1">conteo &lt;-<span class="st"> </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb409-2" data-line-number="2"><span class="cf">repeat</span> { </a>
+<a class="sourceLine" id="cb409-3" data-line-number="3">  </a>
+<a class="sourceLine" id="cb409-4" data-line-number="4">  conteo &lt;-<span class="st"> </span>conteo <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb409-5" data-line-number="5">  <span class="cf">if</span> (conteo <span class="op">&gt;=</span><span class="st"> </span><span class="dv">100</span>) { <span class="cf">break</span> }</a>
+<a class="sourceLine" id="cb409-6" data-line-number="6">  </a>
+<a class="sourceLine" id="cb409-7" data-line-number="7">}</a>
+<a class="sourceLine" id="cb409-8" data-line-number="8">conteo</a></code></pre></div>
 <pre><code>## [1] 100</code></pre>
 </div>
 </div>
