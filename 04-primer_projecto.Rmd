@@ -1,4 +1,4 @@
-# Primer projecto con R
+# Flujo de trabajo: proyecto
 
 Estamos listos/as para crear nuestro **primer proyecto de `R`** :)
 

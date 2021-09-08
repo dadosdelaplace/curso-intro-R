@@ -127,7 +127,7 @@
 
 \title{Aprendiendo R sin morir en el intento}
 \author{Javier Álvarez Liébana}
-\date{Última actualización: 05-09-2021}
+\date{Última actualización: 08-09-2021}
 
 \begin{document}
 \maketitle
@@ -2045,7 +2045,12 @@ Dentro del entorno \texttt{\{tidyverse\}}, el paquete \texttt{\{lubridate\}} tie
 \section{📚 Glosario}\label{glosario3}}
 
 \begin{itemize}
-\tightlist
+\item
+  \texttt{numeric}: variables de tipo numéricas (algunas veces vendrán indicados como \texttt{int} o integer para enteros, y \texttt{dbl} o \texttt{double} para números con decimales).
+\item
+  \texttt{character}: variables de tipo caracter.
+\item
+  \texttt{Date}: variables de tipo fecha.
 \item
   \textbf{Media}: medida de centralización que consiste en sumar todos los elementos y dividirlos entre la cantidad de elementos sumados. A pesar de ser la más conocida, la media es \textbf{muy poco robusta}: dado un conjunto, si se introducen \textbf{valores atípicos o outliers} (valores muy grandes o muy pequeños), la media se perturbar con mucha facilidad. Dado un vector de valores \(x = (x_1, \ldots, x_n)\), se denota como \(\overline{x}\).
 \end{itemize}
@@ -2264,9 +2269,9 @@ Este paquete contiene una orden para comparar el tiempo de dos órdenes: necesit
 
 \begin{verbatim}
 ## Unit: microseconds
-##         expr    min      lq     mean median      uq     max neval cld
-##      sort(x) 46.735 49.0885 61.93956 52.523 65.9525 228.513  1000   b
-##  x[order(x)] 34.188 35.8485 44.67441 37.876 45.6935 138.278  1000  a
+##         expr    min      lq      mean   median      uq      max neval cld
+##      sort(x) 61.073 75.7945 128.48072 122.1875 133.542 2419.649  1000   b
+##  x[order(x)] 43.100 51.1910  83.34992  82.9075  90.034 1498.709  1000  a
 \end{verbatim}
 
 Sí, estás viendo bien: aunque a priori parezca contraintuitivo, es más corto obtener los índices ordenados de un vector, y luego reordenarlo en base a esos índices, que la ordenación directa a través del comando \texttt{sort()} (ya que usan algoritmos de ordenación distintos).
@@ -2429,11 +2434,11 @@ Sí, estás viendo bien: aunque a priori parezca contraintuitivo, es más corto 
 \end{Shaded}
 
 \begin{verbatim}
-## Time difference of 11683 days
+## Time difference of 11686 days
 \end{verbatim}
 
-\hypertarget{primer-projecto-con-r}{%
-\chapter{Primer projecto con R}\label{primer-projecto-con-r}}
+\hypertarget{flujo-de-trabajo-proyecto}{%
+\chapter{Flujo de trabajo: proyecto}\label{flujo-de-trabajo-proyecto}}
 
 Estamos listos/as para crear nuestro \textbf{primer proyecto de \texttt{R}} :)
 
@@ -2715,7 +2720,7 @@ Prueba a escribir algunas funciones que hemos aprendido con dichas variables y v
 \end{Shaded}
 
 \begin{verbatim}
-## Time difference of 247 days
+## Time difference of 250 days
 \end{verbatim}
 
 La función \texttt{cat()} nos muestra por consola el texto que le pasemos de argumento (\textbf{función especial para mensajes de alerta} por consola)
@@ -2775,7 +2780,7 @@ La función \texttt{Sys.time()} accede al sistema de nuestro ordenador para deci
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "2021-09-05 14:44:14 CEST"
+## [1] "2021-09-08 11:29:36 CEST"
 \end{verbatim}
 
 ~
@@ -3100,9 +3105,9 @@ Veamos qué es más eficiente con el ya conocido paquete \texttt{\{microbenchmar
 ##                                                                           expr
 ##  for (i in 1:dim(x)[1]) {     suma_por_filas[i] <- sum(x[i, ], na.rm = TRUE) }
 ##                                apply(x, MARGIN = 1, FUN = "sum", na.rm = TRUE)
-##       min        lq       mean   median        uq      max neval cld
-##  1746.397 1883.6265 2272.23147 2250.338 2518.0165 5114.794   100   b
-##    21.031   31.0165   42.84374   40.072   49.8965  165.617   100  a
+##       min        lq       mean    median       uq      max neval cld
+##  2607.994 4053.0550 4586.44823 4414.4410 5122.586 9400.864   100   b
+##    27.707   54.1985   70.23329   67.9855   82.126  150.828   100  a
 \end{verbatim}
 
 \textbf{¡El bucle nos tarda 50 veces más que el \texttt{apply}!} Di no a los bucles: casi siempre hay una forma mejor de hacerlo.
@@ -5293,7 +5298,7 @@ Como ya hemos dicho, las fechas y momentos temporales no serán meras cadenas de
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "2021-09-05"
+## [1] "2021-09-08"
 \end{verbatim}
 
 \begin{Shaded}
@@ -5303,7 +5308,7 @@ Como ya hemos dicho, las fechas y momentos temporales no serán meras cadenas de
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "2021-08-29"
+## [1] "2021-09-01"
 \end{verbatim}
 
 \begin{Shaded}
@@ -5399,7 +5404,7 @@ Aunque aparentemente parezca una cadena de texto, prueba a ejecutar \texttt{uncl
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 18875
+## [1] 18878
 \end{verbatim}
 
 \begin{Shaded}
@@ -5432,7 +5437,7 @@ Para la \textbf{fecha con hora actual} podemos usar una función similar, la fun
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 1630845860
+## [1] 1631093385
 \end{verbatim}
 
 \begin{Shaded}
@@ -5465,16 +5470,16 @@ Para la \textbf{fecha con hora actual} podemos usar una función similar, la fun
 
 \begin{verbatim}
 ## $sec
-## [1] 19.67106
+## [1] 45.1763
 ## 
 ## $min
-## [1] 44
+## [1] 29
 ## 
 ## $hour
-## [1] 14
+## [1] 11
 ## 
 ## $mday
-## [1] 5
+## [1] 8
 ## 
 ## $mon
 ## [1] 8
@@ -5483,10 +5488,10 @@ Para la \textbf{fecha con hora actual} podemos usar una función similar, la fun
 ## [1] 121
 ## 
 ## $wday
-## [1] 0
+## [1] 3
 ## 
 ## $yday
-## [1] 247
+## [1] 250
 ## 
 ## $isdst
 ## [1] 1
@@ -5509,14 +5514,14 @@ Para la \textbf{fecha con hora actual} podemos usar una función similar, la fun
 
 \begin{verbatim}
 ## List of 11
-##  $ sec   : num 19.7
-##  $ min   : int 44
-##  $ hour  : int 14
-##  $ mday  : int 5
+##  $ sec   : num 45.2
+##  $ min   : int 29
+##  $ hour  : int 11
+##  $ mday  : int 8
 ##  $ mon   : int 8
 ##  $ year  : int 121
-##  $ wday  : int 0
-##  $ yday  : int 247
+##  $ wday  : int 3
+##  $ yday  : int 250
 ##  $ isdst : int 1
 ##  $ zone  : chr "CEST"
 ##  $ gmtoff: int 7200
@@ -5530,7 +5535,7 @@ Para la \textbf{fecha con hora actual} podemos usar una función similar, la fun
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 44
+## [1] 29
 \end{verbatim}
 
 Además tenemos disponibles funciones para extraer facilmente algunas variables temporales como el día de la semana, el mes o el cuatrimestre, con las funciones \texttt{weekdays()}, \texttt{months()}, and \texttt{quarters()}.
@@ -5542,7 +5547,7 @@ Además tenemos disponibles funciones para extraer facilmente algunas variables 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "domingo"
+## [1] "miércoles"
 \end{verbatim}
 
 \begin{Shaded}
@@ -5597,7 +5602,7 @@ La función \texttt{difftime()} nos permite además hallar distancias entre fech
 \end{Shaded}
 
 \begin{verbatim}
-## Time difference of 597.139 days
+## Time difference of 600.0039 days
 \end{verbatim}
 
 \begin{Shaded}
@@ -5607,7 +5612,7 @@ La función \texttt{difftime()} nos permite además hallar distancias entre fech
 \end{Shaded}
 
 \begin{verbatim}
-## Time difference of 14331.34 hours
+## Time difference of 14400.09 hours
 \end{verbatim}
 
 \begin{Shaded}
@@ -5617,7 +5622,7 @@ La función \texttt{difftime()} nos permite además hallar distancias entre fech
 \end{Shaded}
 
 \begin{verbatim}
-## Time difference of 85.30557 weeks
+## Time difference of 85.71484 weeks
 \end{verbatim}
 
 \hypertarget{consejos-y-tips-7}{%
@@ -5775,7 +5780,7 @@ Ejercicio 2: define una lista de 4 elementos que contenga, en una sola variable,
 ## [1] "Álvarez Liébana"
 ## 
 ## $edad
-## [1] 31.9863
+## [1] 31.99452
 ## 
 ## $soltero
 ## [1] TRUE
@@ -6525,8 +6530,8 @@ Una forma de ver el experimento de lanzar una moneda es pensar que tenemos una \
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] "cara" "cara" "cara" "cara" "cruz" "cruz" "cara" "cara" "cara" "cara"
-## [11] "cruz" "cara" "cara" "cara" "cruz" "cara" "cruz" "cruz" "cruz" "cara"
+##  [1] "cruz" "cara" "cruz" "cara" "cruz" "cara" "cruz" "cara" "cara" "cara"
+## [11] "cruz" "cruz" "cara" "cruz" "cruz" "cruz" "cruz" "cruz" "cara" "cara"
 \end{verbatim}
 
 Fíjate que hemos indicado explícitamente \texttt{replace\ =\ TRUE} para decirle que aunque solo tengamos dos opciones, vamos a permitir que tras extraer una bola, la apuntemos, y la volvamos a introducir (puede salir de nuevo). ¿Qué sucede si \texttt{replace\ =\ FALSE} (su valor por defecto)?
@@ -6558,8 +6563,8 @@ Generar experimentos dicotómicos de forma binario nos permite hacer cálculos s
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 0 1 1 0 0 0 0 0 1 0 1 0 1 0 1 0 0 1 1 0 0 0 1 0 1 0 1 1 1 1 0 1 1 1 0 1 0 0
-## [39] 0 1 0 1 0 1 1 0 0 1 1 0
+##  [1] 1 0 1 0 0 1 0 0 0 1 1 1 1 0 0 0 0 1 0 0 0 0 1 0 0 1 0 1 0 0 1 1 1 1 0 1 1 1
+## [39] 0 0 0 0 0 0 1 1 0 0 1 1
 \end{verbatim}
 
 \begin{Shaded}
@@ -6570,7 +6575,7 @@ Generar experimentos dicotómicos de forma binario nos permite hacer cálculos s
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 24
+## [1] 22
 \end{verbatim}
 
 \begin{Shaded}
@@ -6581,7 +6586,7 @@ Generar experimentos dicotómicos de forma binario nos permite hacer cálculos s
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 26
+## [1] 28
 \end{verbatim}
 
 \begin{Shaded}
@@ -6592,7 +6597,7 @@ Generar experimentos dicotómicos de forma binario nos permite hacer cálculos s
 \end{Shaded}
 
 \begin{verbatim}
-## 48% de cruces
+## 44% de cruces
 \end{verbatim}
 
 El argumento \texttt{prob\ =\ ...} nos permite generar experimentos que sean dicotómicos pero que \textbf{no sean equiprobables}, algo similar a \textbf{lanzar una moneda trucada} (por ejemplo, 30\% caras y 70\% cruces). Nótese como dichas probabilidades deben ser introducidas como proporciones (divididas entre 100).
@@ -6608,7 +6613,7 @@ El argumento \texttt{prob\ =\ ...} nos permite generar experimentos que sean dic
 \end{Shaded}
 
 \begin{verbatim}
-## 82% de cruces
+## 70% de cruces
 \end{verbatim}
 
 📝Ejercicio: ¿cómo simularías 200 tiradas de un dado?
@@ -6627,12 +6632,12 @@ El argumento \texttt{prob\ =\ ...} nos permite generar experimentos que sean dic
 \end{Shaded}
 
 \begin{verbatim}
-##   [1] 4 1 6 2 5 4 6 4 6 1 6 2 2 2 3 6 6 2 6 2 1 6 3 6 5 2 2 2 2 2 6 2 1 3 1 4 5
-##  [38] 1 4 3 4 4 4 5 6 5 5 6 1 1 2 4 2 2 3 6 5 6 6 3 5 5 3 5 3 3 6 4 3 4 6 4 4 5
-##  [75] 1 4 6 6 3 1 1 4 2 4 4 2 1 2 1 1 6 4 3 3 6 6 6 3 4 3 2 5 5 2 6 2 3 5 1 5 1
-## [112] 1 4 1 6 1 3 3 2 1 2 4 5 2 6 2 1 5 5 3 3 1 2 5 2 2 5 5 4 6 6 2 4 6 2 3 3 4
-## [149] 3 5 2 4 4 4 1 3 2 5 3 5 4 3 4 2 1 4 3 3 3 2 4 6 5 5 2 1 4 2 4 6 3 4 3 3 6
-## [186] 4 1 5 6 6 3 5 1 4 1 2 3 1 6 1
+##   [1] 6 4 6 4 4 6 6 4 4 3 5 5 1 1 5 1 3 1 5 2 1 6 6 2 1 1 4 3 4 1 3 2 6 5 2 1 5
+##  [38] 2 6 1 6 4 1 5 5 1 4 4 6 6 5 6 3 4 6 1 3 1 1 5 1 2 3 6 5 2 5 6 1 1 1 5 5 1
+##  [75] 2 5 3 2 5 5 6 4 4 6 5 2 4 1 5 4 6 1 4 3 1 2 1 3 6 6 1 5 3 2 1 6 2 6 6 4 3
+## [112] 5 1 2 2 6 5 2 2 6 1 6 6 1 2 3 2 5 1 3 5 5 3 5 3 6 3 2 6 1 3 6 3 3 2 3 5 5
+## [149] 3 4 1 5 2 1 2 3 4 1 1 3 5 6 6 3 6 5 2 6 6 6 4 6 3 3 3 4 2 3 1 5 6 3 4 3 6
+## [186] 1 4 3 6 1 3 1 1 4 1 5 6 3 5 6
 \end{verbatim}
 
 \hypertarget{pseudoaleatorio}{%
@@ -6647,7 +6652,7 @@ Si has hecho varias pruebas con los códigos de arriba quizás ya hayas visto qu
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 0 1 0 1 1 0 1 0 1 0 0 1 1 0 0 1 0 1 1 1
+##  [1] 1 0 1 1 0 0 0 0 0 1 1 1 0 1 1 0 1 0 0 1
 \end{verbatim}
 
 \begin{Shaded}
@@ -6657,7 +6662,7 @@ Si has hecho varias pruebas con los códigos de arriba quizás ya hayas visto qu
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 1 0 1 1 0 1 0 0 1 0 1 1 1 0 1 0 0 0 1 1
+##  [1] 0 1 1 1 0 0 1 1 1 1 1 1 0 1 0 1 1 0 0 0
 \end{verbatim}
 
 \begin{Shaded}
@@ -6667,7 +6672,7 @@ Si has hecho varias pruebas con los códigos de arriba quizás ya hayas visto qu
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 0 0 0 1 1 1 0 0 1 0 1 1 0 1 0 1 0 1 0 1
+##  [1] 0 1 1 0 0 1 1 0 1 0 1 1 0 1 1 1 1 1 1 0
 \end{verbatim}
 
 \textbf{¿Y si quisiéramos generar toda la clase la misma tirada de moneda?}
@@ -6724,6 +6729,8 @@ Ahora que ya sabes lo básico para poder empezar a trabajar en un entorno amigab
 \item
   \href{https://www.bigbookofr.com/index.html}{Big Book of R}: \textbf{recopilatorio de tutoriales de \texttt{R}} en distintos campos.
 \item
+  \href{https://bookdown.org/roback/bookdown-BeyondMLR/}{Incursión a los modelos de regresión en \texttt{R}}: manual sobre el uso de distintos modelos predictivos basados los Modelos Lineales Generalizados (GLM).
+\item
   \textbf{Paquete para aprender \texttt{R}}: el paquete \texttt{\{swirl\}} permite ir aprendiendo de forma sencilla (con preguntas tipo test) algunos conceptos básicos de \texttt{R} (muchos de ellos vistos en este manual). Puedes consultar la documentación en su \href{https://swirlstats.com/}{página web}
 \item
   \textbf{Manejo de datos}: probablemente el conjunto de herramientas más usadas en \texttt{R} sean los paquetes agrupados en \{\texttt{tidyverse}\} (y que veremos en capítulos sucesivos si los hubiese), un \href{https://www.tidyverse.org/}{conjunto de paquetes integrados para un manejo intuitivo de los datos}, tanto en su preprocesamiento, como en la generación de estadísticas y gráficas.
@@ -6744,9 +6751,9 @@ Ahora que ya sabes lo básico para poder empezar a trabajar en un entorno amigab
 \item
   \textbf{Paquetes para la visualización de datos}: los paquetes \texttt{\{ggplot2\}} y \texttt{\{plotly\}} son probablemente los paquetes por excelencia en \texttt{R} para la visualización de datos. El \textbf{primero es uno de los paquetes más potentes de \texttt{R}, dentro del entorno \texttt{\{tidyverse\}}}, que no solo nos permite crear gráficos muy limpios y elegantes con pocas líneas sino que su sintaxis es muy intuitiva respecto a los datos visualizados. La idea inicial es poder aprender algo de \texttt{\{ggplot2\}} en futuros capítulos pero puedes empezar si quieres echando un vistazo a su \href{https://ggplot2.tidyverse.org/}{web oficial}. También te recomiendo el \href{https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/}{tutorial de Cédric Scherer}. El segundo paquete, \texttt{\{plotly\}} puede llegar a tener las mismas funcionalidades pero su programación es más tediosa. Su principal ventaja es que \textbf{genera gráficos interactivos: gráficos HTML (como si fuera una página web)} (no una imagen estática) que permite al usuario interactuar con los datos pasando el ratón (incluso permite crear menús). Un ejemplo es la \href{https://dgspasturias.shinyapps.io/panel_de_indicadores_asturias/}{web de visualización covid de Asturias} que elaboré durante la pandemia para el Gobierno de Asturias (la web en sí está elaborada con \texttt{\{shiny\}}, un paquete de \texttt{R} que \href{https://shiny.rstudio.com/tutorial/}{permite crear aplicaciones web}).
 \item
-  \textbf{Comunidad de R hispano}: tenemos un \href{https://discord.gg/7ueKQqeaGr}{grupo de Discord} y \href{https://t.me/hispanoverse}{grupo de Telegram} varios usuarios de R en España para compartir recursos.
-\item
   \textbf{Generación de informes desde R}: el paquete \texttt{\{rmarkdown\}} permite \href{https://rmarkdown.rstudio.com/}{generar directamente informes} que mezclen texto, fórmulas matemáticas, gráficas y código \texttt{R} (como este mismo manual), sin necesidad de importarlos a otras herramientas de Office.
+\item
+  \textbf{Comunidad de R hispano}: tenemos un \href{https://discord.gg/7ueKQqeaGr}{grupo de Discord} y \href{https://t.me/hispanoverse}{grupo de Telegram} varios usuarios de R en España para compartir recursos.
 \end{itemize}
 
 \bibliography{book.bib,packages.bib}

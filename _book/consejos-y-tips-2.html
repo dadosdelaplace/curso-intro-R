@@ -181,7 +181,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.11" data-path="consejos-y-tips-2.html"><a href="consejos-y-tips-2.html"><i class="fa fa-check"></i><b>3.11</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
 <li class="chapter" data-level="3.12" data-path="ejercicios-1.html"><a href="ejercicios-1.html"><i class="fa fa-check"></i><b>3.12</b> 📝 Ejercicios</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="primer-projecto-con-r.html"><a href="primer-projecto-con-r.html"><i class="fa fa-check"></i><b>4</b> Primer projecto con R</a><ul>
+<li class="chapter" data-level="4" data-path="flujo-de-trabajo-proyecto.html"><a href="flujo-de-trabajo-proyecto.html"><i class="fa fa-check"></i><b>4</b> Flujo de trabajo: proyecto</a><ul>
 <li class="chapter" data-level="4.1" data-path="crear-proyecto.html"><a href="crear-proyecto.html"><i class="fa fa-check"></i><b>4.1</b> Crear proyecto</a></li>
 <li class="chapter" data-level="4.2" data-path="directorios-de-trabajo-y-cabecera.html"><a href="directorios-de-trabajo-y-cabecera.html"><i class="fa fa-check"></i><b>4.2</b> Directorios de trabajo y cabecera</a></li>
 <li class="chapter" data-level="4.3" data-path="ejecución.html"><a href="ejecución.html"><i class="fa fa-check"></i><b>4.3</b> Ejecución</a></li>
@@ -336,8 +336,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb235-4" data-line-number="4">               <span class="dt">times =</span> <span class="fl">1e3</span>) <span class="co"># se repetirá 1000 veces</span></a></code></pre></div>
 <pre><code>## Unit: microseconds
 ##         expr    min      lq     mean  median      uq     max neval cld
-##      sort(x) 46.984 53.0045 69.61929 58.1125 77.0225 315.803  1000   b
-##  x[order(x)] 34.255 38.7525 51.14291 42.3160 53.7955 481.532  1000  a</code></pre>
+##      sort(x) 46.978 49.8095 58.72934 51.6795 58.3395 196.788  1000   b
+##  x[order(x)] 34.311 36.7055 42.74070 37.9775 41.7645 169.096  1000  a</code></pre>
 <p>Sí, estás viendo bien: aunque a priori parezca contraintuitivo, es más corto obtener los índices ordenados de un vector, y luego reordenarlo en base a esos índices, que la ordenación directa a través del comando <code>sort()</code> (ya que usan algoritmos de ordenación distintos).</p>
 </details>
 </div>
