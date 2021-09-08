@@ -5,20 +5,20 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>8.3 Fechas y horas | Aprendiendo R sin morir en el intento</title>
-  <meta name="description" content="Manual básico de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM, curso académico 2021-2022), elaborado por Javier Álvarez Liébana" />
+  <meta name="description" content="Manual básico e introductorio de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM), elaborado por Javier Álvarez Liébana" />
   <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
 
   <meta property="og:title" content="8.3 Fechas y horas | Aprendiendo R sin morir en el intento" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="/img/logo_R.png" />
-  <meta property="og:description" content="Manual básico de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM, curso académico 2021-2022), elaborado por Javier Álvarez Liébana" />
+  <meta property="og:description" content="Manual básico e introductorio de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM), elaborado por Javier Álvarez Liébana" />
   <meta name="github-repo" content="dadosdelaplace/cursoR_intro_2021_2022" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="8.3 Fechas y horas | Aprendiendo R sin morir en el intento" />
   
-  <meta name="twitter:description" content="Manual básico de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM, curso académico 2021-2022), elaborado por Javier Álvarez Liébana" />
+  <meta name="twitter:description" content="Manual básico e introductorio de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM), elaborado por Javier Álvarez Liébana" />
   <meta name="twitter:image" content="/img/logo_R.png" />
 
 <meta name="author" content="Javier Álvarez Liébana" />
@@ -295,7 +295,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb512-2" data-line-number="2"><span class="kw">class</span>(fecha_hora)</a></code></pre></div>
 <pre><code>## [1] &quot;POSIXct&quot; &quot;POSIXt&quot;</code></pre>
 <div class="sourceCode" id="cb514"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb514-1" data-line-number="1"><span class="kw">unclass</span>(fecha_hora)</a></code></pre></div>
-<pre><code>## [1] 1631098180</code></pre>
+<pre><code>## [1] 1631098646</code></pre>
 <div class="sourceCode" id="cb516"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb516-1" data-line-number="1"><span class="kw">strptime</span>(<span class="st">&quot;Octubre 21, 1995 21:24&quot;</span>, <span class="st">&quot;%B %d, %Y %H:%M&quot;</span>) <span class="co"># fecha escrita</span></a></code></pre></div>
 <pre><code>## [1] &quot;1995-10-21 21:24:00 CET&quot;</code></pre>
 <div class="sourceCode" id="cb518"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb518-1" data-line-number="1"><span class="co"># fecha y hora actual en formato POSIXlt</span></a>
@@ -304,10 +304,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## [1] &quot;POSIXlt&quot; &quot;POSIXt&quot;</code></pre>
 <div class="sourceCode" id="cb520"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb520-1" data-line-number="1"><span class="kw">unclass</span>(fecha_hora2)</a></code></pre></div>
 <pre><code>## $sec
-## [1] 40.00236
+## [1] 25.66934
 ## 
 ## $min
-## [1] 49
+## [1] 57
 ## 
 ## $hour
 ## [1] 12
@@ -340,8 +340,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [1] &quot;&quot;     &quot;CET&quot;  &quot;CEST&quot;</code></pre>
 <div class="sourceCode" id="cb522"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb522-1" data-line-number="1"><span class="kw">str</span>(<span class="kw">unclass</span>(fecha_hora2))</a></code></pre></div>
 <pre><code>## List of 11
-##  $ sec   : num 40
-##  $ min   : int 49
+##  $ sec   : num 25.7
+##  $ min   : int 57
 ##  $ hour  : int 12
 ##  $ mday  : int 8
 ##  $ mon   : int 8
@@ -353,7 +353,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  $ gmtoff: int 7200
 ##  - attr(*, &quot;tzone&quot;)= chr [1:3] &quot;&quot; &quot;CET&quot; &quot;CEST&quot;</code></pre>
 <div class="sourceCode" id="cb524"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb524-1" data-line-number="1">fecha_hora2<span class="op">$</span>min <span class="co"># Accedemos a los minutos</span></a></code></pre></div>
-<pre><code>## [1] 49</code></pre>
+<pre><code>## [1] 57</code></pre>
 <p>Además tenemos disponibles funciones para extraer facilmente algunas variables temporales como el día de la semana, el mes o el cuatrimestre, con las funciones <code>weekdays()</code>, <code>months()</code>, and <code>quarters()</code>.</p>
 <div class="sourceCode" id="cb526"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb526-1" data-line-number="1"><span class="kw">weekdays</span>(fecha)</a></code></pre></div>
 <pre><code>## [1] &quot;miércoles&quot;</code></pre>
@@ -369,11 +369,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## [1] FALSE</code></pre>
 <p>La función <code>difftime()</code> nos permite además hallar distancias entre fechas pero no solo en días (lo que sucedería si restamos 2 fechas) sino en las unidades temporales que queramos.</p>
 <div class="sourceCode" id="cb536"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb536-1" data-line-number="1"><span class="kw">difftime</span>(<span class="kw">Sys.time</span>(), <span class="kw">as.POSIXct</span>(<span class="st">&quot;2020-01-17 10:24:12 CEST&quot;</span>), <span class="dt">units =</span> <span class="st">&quot;days&quot;</span>)</a></code></pre></div>
-<pre><code>## Time difference of 600.0594 days</code></pre>
+<pre><code>## Time difference of 600.0647 days</code></pre>
 <div class="sourceCode" id="cb538"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb538-1" data-line-number="1"><span class="kw">difftime</span>(<span class="kw">Sys.time</span>(), <span class="kw">as.POSIXct</span>(<span class="st">&quot;2020-01-17 10:24:12 CEST&quot;</span>), <span class="dt">units =</span> <span class="st">&quot;hours&quot;</span>)</a></code></pre></div>
-<pre><code>## Time difference of 14401.42 hours</code></pre>
+<pre><code>## Time difference of 14401.55 hours</code></pre>
 <div class="sourceCode" id="cb540"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb540-1" data-line-number="1"><span class="kw">difftime</span>(<span class="kw">Sys.time</span>(), <span class="kw">as.POSIXct</span>(<span class="st">&quot;2020-01-17 10:24:12 CEST&quot;</span>), <span class="dt">units =</span> <span class="st">&quot;weeks&quot;</span>)</a></code></pre></div>
-<pre><code>## Time difference of 85.72276 weeks</code></pre>
+<pre><code>## Time difference of 85.72353 weeks</code></pre>
 </div>
             </section>
 

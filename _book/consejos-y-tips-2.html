@@ -5,20 +5,20 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>3.11 Consejos y tips | Aprendiendo R sin morir en el intento</title>
-  <meta name="description" content="Manual básico de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM, curso académico 2021-2022), elaborado por Javier Álvarez Liébana" />
+  <meta name="description" content="Manual básico e introductorio de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM), elaborado por Javier Álvarez Liébana" />
   <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
 
   <meta property="og:title" content="3.11 Consejos y tips | Aprendiendo R sin morir en el intento" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="/img/logo_R.png" />
-  <meta property="og:description" content="Manual básico de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM, curso académico 2021-2022), elaborado por Javier Álvarez Liébana" />
+  <meta property="og:description" content="Manual básico e introductorio de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM), elaborado por Javier Álvarez Liébana" />
   <meta name="github-repo" content="dadosdelaplace/cursoR_intro_2021_2022" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="3.11 Consejos y tips | Aprendiendo R sin morir en el intento" />
   
-  <meta name="twitter:description" content="Manual básico de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM, curso académico 2021-2022), elaborado por Javier Álvarez Liébana" />
+  <meta name="twitter:description" content="Manual básico e introductorio de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM), elaborado por Javier Álvarez Liébana" />
   <meta name="twitter:image" content="/img/logo_R.png" />
 
 <meta name="author" content="Javier Álvarez Liébana" />
@@ -335,9 +335,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb235-3" data-line-number="3">               x[<span class="kw">order</span>(x)], <span class="co"># segunda forma</span></a>
 <a class="sourceLine" id="cb235-4" data-line-number="4">               <span class="dt">times =</span> <span class="fl">1e3</span>) <span class="co"># se repetirá 1000 veces</span></a></code></pre></div>
 <pre><code>## Unit: microseconds
-##         expr    min      lq     mean  median      uq     max neval cld
-##      sort(x) 46.601 50.3615 62.66841 53.8305 62.9520 489.418  1000   b
-##  x[order(x)] 33.836 36.6155 44.83326 38.2610 43.7965 182.390  1000  a</code></pre>
+##         expr    min      lq      mean  median       uq       max neval cld
+##      sort(x) 46.440 54.8850 161.91762 93.5935 111.9105 30436.980  1000   b
+##  x[order(x)] 34.207 38.8165  89.99378 64.9535  75.4020  3929.656  1000  a</code></pre>
 <p>Sí, estás viendo bien: aunque a priori parezca contraintuitivo, es más corto obtener los índices ordenados de un vector, y luego reordenarlo en base a esos índices, que la ordenación directa a través del comando <code>sort()</code> (ya que usan algoritmos de ordenación distintos).</p>
 </details>
 </div>

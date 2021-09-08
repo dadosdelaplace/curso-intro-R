@@ -5,20 +5,20 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>7.2 for/while | Aprendiendo R sin morir en el intento</title>
-  <meta name="description" content="Manual básico de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM, curso académico 2021-2022), elaborado por Javier Álvarez Liébana" />
+  <meta name="description" content="Manual básico e introductorio de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM), elaborado por Javier Álvarez Liébana" />
   <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
 
   <meta property="og:title" content="7.2 for/while | Aprendiendo R sin morir en el intento" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="/img/logo_R.png" />
-  <meta property="og:description" content="Manual básico de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM, curso académico 2021-2022), elaborado por Javier Álvarez Liébana" />
+  <meta property="og:description" content="Manual básico e introductorio de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM), elaborado por Javier Álvarez Liébana" />
   <meta name="github-repo" content="dadosdelaplace/cursoR_intro_2021_2022" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="7.2 for/while | Aprendiendo R sin morir en el intento" />
   
-  <meta name="twitter:description" content="Manual básico de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM, curso académico 2021-2022), elaborado por Javier Álvarez Liébana" />
+  <meta name="twitter:description" content="Manual básico e introductorio de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM), elaborado por Javier Álvarez Liébana" />
   <meta name="twitter:image" content="/img/logo_R.png" />
 
 <meta name="author" content="Javier Álvarez Liébana" />
@@ -315,11 +315,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb402-5" data-line-number="5">                               <span class="dt">times =</span> <span class="fl">1e3</span>)</a></code></pre></div>
 <pre><code>## Unit: microseconds
 ##                                     expr      min       lq       mean    median
-##                               x &lt;- idx^2   17.732   30.781   58.00036   55.8875
-##  for (i in idx) {     y[i] &lt;- idx[i]^2 } 1828.979 2144.927 2852.94142 2427.3650
-##         uq       max neval cld
-##    68.9395  1403.646  1000  a 
-##  2996.1615 19593.200  1000   b</code></pre>
+##                               x &lt;- idx^2   18.208   27.769   55.34074   54.0685
+##  for (i in idx) {     y[i] &lt;- idx[i]^2 } 1851.306 2100.708 2687.69570 2349.6625
+##        uq       max neval cld
+##    65.104   697.248  1000  a 
+##  2745.156 65969.342  1000   b</code></pre>
 <p>Una tarea tan sencilla, <strong>programada en un bucle, tarda 40 veces más que hacerlo de forma vectorial</strong> (elevando cada elemento al cuadrado, iterando internamente, sin necesidad de implementar un bucle).</p>
 <p> </p>
 <p>Otra manera de diseñar un bucle es con la <strong>estructura <code>while{}</code></strong>, que ejecutará el <strong>bucle un número de veces a priori desconocido</strong> hasta que la condición impuesta deje de ser <code>TRUE</code>.</p>

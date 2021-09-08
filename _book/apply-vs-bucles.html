@@ -5,20 +5,20 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>5.2 Apply vs bucles | Aprendiendo R sin morir en el intento</title>
-  <meta name="description" content="Manual básico de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM, curso académico 2021-2022), elaborado por Javier Álvarez Liébana" />
+  <meta name="description" content="Manual básico e introductorio de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM), elaborado por Javier Álvarez Liébana" />
   <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
 
   <meta property="og:title" content="5.2 Apply vs bucles | Aprendiendo R sin morir en el intento" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="/img/logo_R.png" />
-  <meta property="og:description" content="Manual básico de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM, curso académico 2021-2022), elaborado por Javier Álvarez Liébana" />
+  <meta property="og:description" content="Manual básico e introductorio de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM), elaborado por Javier Álvarez Liébana" />
   <meta name="github-repo" content="dadosdelaplace/cursoR_intro_2021_2022" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="5.2 Apply vs bucles | Aprendiendo R sin morir en el intento" />
   
-  <meta name="twitter:description" content="Manual básico de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM, curso académico 2021-2022), elaborado por Javier Álvarez Liébana" />
+  <meta name="twitter:description" content="Manual básico e introductorio de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM), elaborado por Javier Álvarez Liébana" />
   <meta name="twitter:image" content="/img/logo_R.png" />
 
 <meta name="author" content="Javier Álvarez Liébana" />
@@ -312,9 +312,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##                                                                           expr
 ##  for (i in 1:dim(x)[1]) {     suma_por_filas[i] &lt;- sum(x[i, ], na.rm = TRUE) }
 ##                                apply(x, MARGIN = 1, FUN = &quot;sum&quot;, na.rm = TRUE)
-##       min        lq       mean   median       uq      max neval cld
-##  1689.823 1922.7520 2411.56382 2164.845 2607.398 5794.192   100   b
-##    21.116   27.5965   47.15837   43.826   53.249  251.479   100  a</code></pre>
+##       min       lq       mean    median        uq      max neval cld
+##  1691.192 1911.303 2764.19677 2444.9380 3079.6785 7172.652   100   b
+##    20.256   25.975   45.52772   43.0065   54.0685  160.935   100  a</code></pre>
 <p><strong>¡El bucle nos tarda 50 veces más que el <code>apply</code>!</strong> Di no a los bucles: casi siempre hay una forma mejor de hacerlo.</p>
 </div>
             </section>

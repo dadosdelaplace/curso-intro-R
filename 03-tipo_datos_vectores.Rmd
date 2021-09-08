@@ -656,7 +656,7 @@ Sí, estás viendo bien: aunque a priori parezca contraintuitivo, es más corto 
 ## 📝 Ejercicios
 
 <details>
-  <summary>📝<strong>Ejercicio 1</strong>: define un vector que contenga los números 1, 10, -1 y 2, y guárdalo en una variable llamada `vector_num`. Tras definirlo, calcula su suma y la versión ordenada del vector definido como sumar 1 a cada elemento de `vector_num`. </summary>
+  <summary>📝<strong>Ejercicio 1</strong>: define un vector que contenga los números 1, 10, -1 y 2, y guárdalo en una variable llamada `vector_num`. Tras definirlo, calcula su suma y la versión ordenada del vector definido como sumar 1 a cada elemento de `vector_num` (**haz click** en la flecha para la solución propuesta). </summary>
   
 <!-- toc -->
 - Solución:
@@ -679,8 +679,10 @@ vector_num2[order(vector_num2)]
 <!-- tocstop -->
 </details>
 
+&nbsp;
+
 <details>
-  <summary>📝<strong>Ejercicio 2</strong>: encuentra del vector `vector_num` original el lugar (el índice) que ocupa su mínimo y su máximo. Devuelve un vector lógico con los elementos que son mayores 1 y menores que 7. Piensa una manera de encontrar si todos son positivos. </summary>
+  <summary>📝<strong>Ejercicio 2</strong>: encuentra del vector `vector_num` original el lugar (el índice) que ocupa su mínimo y su máximo. Devuelve un vector lógico con los elementos que son mayores 1 y menores que 7. Piensa una manera de encontrar si todos son positivos (**haz click** en la flecha para la solución propuesta). </summary>
   
 <!-- toc -->
 - Solución:
@@ -702,8 +704,10 @@ all(vector_num > 0)
 <!-- tocstop -->
 </details>
 
+&nbsp;
+
 <details>
-  <summary>📝<strong>Ejercicio 3</strong>: crea un vector con las palabras "Hola", "me", "llamo" (y tu nombre y apellidos), y pega luego sus elementos de forma que la frase esté correctamente escrita en castellano. Tras hacerlo, añade "y tengo 30 años". </summary>
+  <summary>📝<strong>Ejercicio 3</strong>: crea un vector con las palabras "Hola", "me", "llamo" (y tu nombre y apellidos), y pega luego sus elementos de forma que la frase esté correctamente escrita en castellano. Tras hacerlo, añade "y tengo 30 años" (**haz click** en la flecha para la solución propuesta). </summary>
   
 <!-- toc -->
 - Solución:
@@ -723,8 +727,10 @@ paste0(paste(vector_char, collapse = " "), " y tengo 30 años.")
 <!-- tocstop -->
 </details>
 
+&nbsp;
+
 <details>
-  <summary>📝<strong>Ejercicio 4</strong>: obten la fecha de hoy, define la fecha de tu cumpleaños, y calcula la diferencia de días.</summary>
+  <summary>📝<strong>Ejercicio 4</strong>: obten la fecha de hoy, define la fecha de tu cumpleaños, y calcula la diferencia de días (**haz click** en la flecha para la solución propuesta).</summary>
   
 <!-- toc -->
 - Solución:

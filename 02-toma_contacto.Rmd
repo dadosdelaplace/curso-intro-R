@@ -195,7 +195,7 @@ x <- (3 + 4) * 10
 &nbsp;
 
 <details>
-  <summary>📝<strong>Ejercicio 2</strong>: usando la variable `x` ya definida, calcula `x - 5` y guárdalo en una nueva variable `y`.</summary>
+  <summary>📝<strong>Ejercicio 2</strong>: usando la variable `x` ya definida, calcula `x - 5` y guárdalo en una nueva variable `y` (**haz click** en la flecha para la solución propuesta).</summary>
   
 <!-- toc -->
 - Solución:
@@ -210,7 +210,7 @@ y
 &nbsp;
 
 <details>
-  <summary>📝<strong>Ejercicio 3</strong>: usando las variables `x` e `y` ya definidas, calcula la raíz cuadrada del máximo entre ambas, y guárdalo en una nueva variable `z`.</summary>
+  <summary>📝<strong>Ejercicio 3</strong>: usando las variables `x` e `y` ya definidas, calcula la raíz cuadrada del máximo entre ambas, y guárdalo en una nueva variable `z` (**haz click** en la flecha para la solución propuesta).</summary>
   
 <!-- toc -->
 - Solución:

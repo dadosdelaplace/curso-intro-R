@@ -25,7 +25,7 @@ header-includes:
 - \usepackage{multicol}
 - \usepackage{threeparttable}
 - \usepackage{caption}
-description: "Manual básico de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM, curso académico 2021-2022), elaborado por Javier Álvarez Liébana"
+description: "Manual básico e introductorio de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM), elaborado por Javier Álvarez Liébana"
 cover-image: img/logo_R.png
 ---
 
@@ -49,7 +49,7 @@ colorize <- function(x, color) {
 
 # Prefacio {-}
 
-Este manual ha sido diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM, curso académico 2021-2022), y está elaborado por [Javier Álvarez Liébana](twitter.com/dadosdelaplace).
+Este manual ha sido diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM), y está elaborado por [Javier Álvarez Liébana](twitter.com/dadosdelaplace).
 
 Dicho manual ha sido elaborado a su vez en `R` con [{bookdown}](https://github.com/rstudio/bookdown). Puedes ver un resumen de las funcionalidades algunos paquetes documentados por el equipo de [R Studio](https://www.rstudio.com/) en sus [esquemas resumen](https://www.rstudio.com/resources/cheatsheets/). El **código** de dicho manual se encuentra en GitHub (https://github.com/dadosdelaplace/cursoR_intro_2021_2022).
 
