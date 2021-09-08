@@ -502,6 +502,11 @@ knitr::include_graphics('img/lubridate.png')
 
 ## 📚 Glosario {#glosario3}
 
+* `numeric`: variables de tipo numéricas (algunas veces vendrán indicados como `int` o integer para enteros, y `dbl` o `double` para números con decimales).
+* `character`: variables de tipo caracter.
+* `Date`: variables de tipo fecha.
+
+
 * **Media**: medida de centralización que consiste en sumar todos los elementos y dividirlos entre la cantidad de elementos sumados. A pesar de ser la más conocida, la media es **muy poco robusta**: dado un conjunto, si se introducen **valores atípicos o outliers** (valores muy grandes o muy pequeños), la media se perturbar con mucha facilidad. Dado un vector de valores $x = (x_1, \ldots, x_n)$, se denota como $\overline{x}$.
 
 $$\overline{x} = \frac{\displaystyle \sum_{i=1}^{n}x_i}{n}$$
