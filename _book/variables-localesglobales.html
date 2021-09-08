@@ -261,41 +261,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="variables-localesglobales" class="section level2">
 <h2><span class="header-section-number">9.3</span> Variables locales/globales</h2>
 <p>Hemos dicho que «lo local se queda en lo local», ¿pero qué sucede si nombramos a una variable dentro de una función que se nos ha olvidado asignar un valor dentro de la misma? Debemos ser cautos al usar funciones en <code>R</code>, ya que debido a la <strong>«regla lexicográfica»</strong>, si una variable no se define dentro de la función, <code>R</code> buscará dicha variable en el entorno de variable.</p>
-<div class="sourceCode" id="cb591"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb591-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb591-2" data-line-number="2">funcion_ejemplo &lt;-<span class="st"> </span><span class="cf">function</span>() {</a>
-<a class="sourceLine" id="cb591-3" data-line-number="3">    </a>
-<a class="sourceLine" id="cb591-4" data-line-number="4">  <span class="kw">print</span>(x) <span class="co"># No devuelve nada per se, solo realiza la acción de imprimir en consola</span></a>
-<a class="sourceLine" id="cb591-5" data-line-number="5">}</a>
-<a class="sourceLine" id="cb591-6" data-line-number="6"><span class="kw">funcion_ejemplo</span>()</a></code></pre></div>
-<pre><code>## [1] 1</code></pre>
-<p>Si una <strong>variable ya está definida fuera de la función (entorno global)</strong>, y además es usada dentro de la misma cambiando su valor, el valor de dicha variable solo cambia dentro de la función pero no en el entorno global.</p>
 <div class="sourceCode" id="cb593"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb593-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="dv">1</span></a>
 <a class="sourceLine" id="cb593-2" data-line-number="2">funcion_ejemplo &lt;-<span class="st"> </span><span class="cf">function</span>() {</a>
 <a class="sourceLine" id="cb593-3" data-line-number="3">    </a>
-<a class="sourceLine" id="cb593-4" data-line-number="4">  x &lt;-<span class="st"> </span><span class="dv">2</span></a>
-<a class="sourceLine" id="cb593-5" data-line-number="5">  <span class="kw">print</span>(x) <span class="co"># lo que vale dentro</span></a>
-<a class="sourceLine" id="cb593-6" data-line-number="6">}</a>
-<a class="sourceLine" id="cb593-7" data-line-number="7"><span class="kw">funcion_ejemplo</span>() <span class="co"># lo que vale dentro</span></a></code></pre></div>
+<a class="sourceLine" id="cb593-4" data-line-number="4">  <span class="kw">print</span>(x) <span class="co"># No devuelve nada per se, solo realiza la acción de imprimir en consola</span></a>
+<a class="sourceLine" id="cb593-5" data-line-number="5">}</a>
+<a class="sourceLine" id="cb593-6" data-line-number="6"><span class="kw">funcion_ejemplo</span>()</a></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<p>Si una <strong>variable ya está definida fuera de la función (entorno global)</strong>, y además es usada dentro de la misma cambiando su valor, el valor de dicha variable solo cambia dentro de la función pero no en el entorno global.</p>
+<div class="sourceCode" id="cb595"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb595-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb595-2" data-line-number="2">funcion_ejemplo &lt;-<span class="st"> </span><span class="cf">function</span>() {</a>
+<a class="sourceLine" id="cb595-3" data-line-number="3">    </a>
+<a class="sourceLine" id="cb595-4" data-line-number="4">  x &lt;-<span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb595-5" data-line-number="5">  <span class="kw">print</span>(x) <span class="co"># lo que vale dentro</span></a>
+<a class="sourceLine" id="cb595-6" data-line-number="6">}</a>
+<a class="sourceLine" id="cb595-7" data-line-number="7"><span class="kw">funcion_ejemplo</span>() <span class="co"># lo que vale dentro</span></a></code></pre></div>
 <pre><code>## [1] 2</code></pre>
-<div class="sourceCode" id="cb595"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb595-1" data-line-number="1"><span class="kw">print</span>(x) <span class="co"># lo que vale fuera</span></a></code></pre></div>
+<div class="sourceCode" id="cb597"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb597-1" data-line-number="1"><span class="kw">print</span>(x) <span class="co"># lo que vale fuera</span></a></code></pre></div>
 <pre><code>## [1] 1</code></pre>
 <p>Si queremos que <strong>además de cambiar localmente lo haga globalmente</strong> deberemos usar la <strong>doble asignación</strong> (<code>&lt;&lt;-</code>).</p>
-<div class="sourceCode" id="cb597"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb597-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb597-2" data-line-number="2">y &lt;-<span class="st"> </span><span class="dv">2</span></a>
-<a class="sourceLine" id="cb597-3" data-line-number="3">funcion_ejemplo &lt;-<span class="st"> </span><span class="cf">function</span>() {</a>
-<a class="sourceLine" id="cb597-4" data-line-number="4">  </a>
-<a class="sourceLine" id="cb597-5" data-line-number="5">  x &lt;-<span class="st"> </span><span class="dv">3</span> <span class="co"># no cambia globalmente, solo localmente</span></a>
-<a class="sourceLine" id="cb597-6" data-line-number="6">  y &lt;&lt;-<span class="st"> </span><span class="dv">0</span> <span class="co"># cambia globalmente</span></a>
-<a class="sourceLine" id="cb597-7" data-line-number="7">  <span class="kw">print</span>(x)</a>
-<a class="sourceLine" id="cb597-8" data-line-number="8">  <span class="kw">print</span>(y)</a>
-<a class="sourceLine" id="cb597-9" data-line-number="9">}</a>
-<a class="sourceLine" id="cb597-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb597-11" data-line-number="11"><span class="kw">funcion_ejemplo</span>() <span class="co"># lo que vale dentro</span></a></code></pre></div>
+<div class="sourceCode" id="cb599"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb599-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb599-2" data-line-number="2">y &lt;-<span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb599-3" data-line-number="3">funcion_ejemplo &lt;-<span class="st"> </span><span class="cf">function</span>() {</a>
+<a class="sourceLine" id="cb599-4" data-line-number="4">  </a>
+<a class="sourceLine" id="cb599-5" data-line-number="5">  x &lt;-<span class="st"> </span><span class="dv">3</span> <span class="co"># no cambia globalmente, solo localmente</span></a>
+<a class="sourceLine" id="cb599-6" data-line-number="6">  y &lt;&lt;-<span class="st"> </span><span class="dv">0</span> <span class="co"># cambia globalmente</span></a>
+<a class="sourceLine" id="cb599-7" data-line-number="7">  <span class="kw">print</span>(x)</a>
+<a class="sourceLine" id="cb599-8" data-line-number="8">  <span class="kw">print</span>(y)</a>
+<a class="sourceLine" id="cb599-9" data-line-number="9">}</a>
+<a class="sourceLine" id="cb599-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb599-11" data-line-number="11"><span class="kw">funcion_ejemplo</span>() <span class="co"># lo que vale dentro</span></a></code></pre></div>
 <pre><code>## [1] 3
 ## [1] 0</code></pre>
-<div class="sourceCode" id="cb599"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb599-1" data-line-number="1">x <span class="co"># lo que vale fuera</span></a></code></pre></div>
+<div class="sourceCode" id="cb601"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb601-1" data-line-number="1">x <span class="co"># lo que vale fuera</span></a></code></pre></div>
 <pre><code>## [1] 1</code></pre>
-<div class="sourceCode" id="cb601"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb601-1" data-line-number="1">y <span class="co"># lo que vale fuera</span></a></code></pre></div>
+<div class="sourceCode" id="cb603"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb603-1" data-line-number="1">y <span class="co"># lo que vale fuera</span></a></code></pre></div>
 <pre><code>## [1] 0</code></pre>
 </div>
             </section>

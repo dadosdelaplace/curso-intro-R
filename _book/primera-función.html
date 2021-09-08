@@ -261,48 +261,48 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="primera-función" class="section level2">
 <h2><span class="header-section-number">9.1</span> Primera función</h2>
 <p>Veamos un <strong>ejemplo muy simple de función</strong> para calcular el área de un rectángulo.</p>
-<div class="sourceCode" id="cb556"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb556-1" data-line-number="1"><span class="co"># Definición del nombre de función y argumentos de entrada</span></a>
-<a class="sourceLine" id="cb556-2" data-line-number="2">calcular_area &lt;-<span class="st"> </span><span class="cf">function</span>(lado_<span class="dv">1</span>, lado_<span class="dv">2</span>) {</a>
-<a class="sourceLine" id="cb556-3" data-line-number="3">  </a>
-<a class="sourceLine" id="cb556-4" data-line-number="4">  <span class="co"># Cuerpo de la función</span></a>
-<a class="sourceLine" id="cb556-5" data-line-number="5">  area &lt;-<span class="st"> </span>lado_<span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lado_<span class="dv">2</span></a>
-<a class="sourceLine" id="cb556-6" data-line-number="6">  </a>
-<a class="sourceLine" id="cb556-7" data-line-number="7">  <span class="co"># Resultado que devolvemos</span></a>
-<a class="sourceLine" id="cb556-8" data-line-number="8">  <span class="kw">return</span>(area)</a>
-<a class="sourceLine" id="cb556-9" data-line-number="9">  </a>
-<a class="sourceLine" id="cb556-10" data-line-number="10">}</a></code></pre></div>
+<div class="sourceCode" id="cb558"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb558-1" data-line-number="1"><span class="co"># Definición del nombre de función y argumentos de entrada</span></a>
+<a class="sourceLine" id="cb558-2" data-line-number="2">calcular_area &lt;-<span class="st"> </span><span class="cf">function</span>(lado_<span class="dv">1</span>, lado_<span class="dv">2</span>) {</a>
+<a class="sourceLine" id="cb558-3" data-line-number="3">  </a>
+<a class="sourceLine" id="cb558-4" data-line-number="4">  <span class="co"># Cuerpo de la función</span></a>
+<a class="sourceLine" id="cb558-5" data-line-number="5">  area &lt;-<span class="st"> </span>lado_<span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lado_<span class="dv">2</span></a>
+<a class="sourceLine" id="cb558-6" data-line-number="6">  </a>
+<a class="sourceLine" id="cb558-7" data-line-number="7">  <span class="co"># Resultado que devolvemos</span></a>
+<a class="sourceLine" id="cb558-8" data-line-number="8">  <span class="kw">return</span>(area)</a>
+<a class="sourceLine" id="cb558-9" data-line-number="9">  </a>
+<a class="sourceLine" id="cb558-10" data-line-number="10">}</a></code></pre></div>
 <p><strong>¿Cómo aplicar la función?</strong> Con el nombre y los valores de los argumentos.</p>
-<div class="sourceCode" id="cb557"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb557-1" data-line-number="1"><span class="co"># Aplicación de la función con los parámetros por defecto</span></a>
-<a class="sourceLine" id="cb557-2" data-line-number="2"><span class="kw">calcular_area</span>(<span class="dv">5</span>, <span class="dv">3</span>) <span class="co"># área de un rectángulo 5 x 3 </span></a></code></pre></div>
+<div class="sourceCode" id="cb559"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb559-1" data-line-number="1"><span class="co"># Aplicación de la función con los parámetros por defecto</span></a>
+<a class="sourceLine" id="cb559-2" data-line-number="2"><span class="kw">calcular_area</span>(<span class="dv">5</span>, <span class="dv">3</span>) <span class="co"># área de un rectángulo 5 x 3 </span></a></code></pre></div>
 <pre><code>## [1] 15</code></pre>
 <p>Imagina ahora que nos damos cuenta que el 90% de las veces el área que nos toca calcular es la de un cuadrado: <code>R</code> nos permite definir <strong>argumentos en la función con valores por defecto</strong> (tomarán dicho valor salvo que le asignemos otro). ¿<strong>Por qué no asignar <code>lado_2 = lado_1</code> por defecto</strong>, para ahorrar líneas de código y tiempo?</p>
-<div class="sourceCode" id="cb559"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb559-1" data-line-number="1"><span class="co"># Definición del nombre de función y argumentos de entrada</span></a>
-<a class="sourceLine" id="cb559-2" data-line-number="2">calcular_area &lt;-<span class="st"> </span><span class="cf">function</span>(lado_<span class="dv">1</span>, <span class="dt">lado_2 =</span> lado_<span class="dv">1</span>) {</a>
-<a class="sourceLine" id="cb559-3" data-line-number="3">  </a>
-<a class="sourceLine" id="cb559-4" data-line-number="4">  <span class="co"># Cuerpo de la función</span></a>
-<a class="sourceLine" id="cb559-5" data-line-number="5">  area &lt;-<span class="st"> </span>lado_<span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lado_<span class="dv">2</span></a>
-<a class="sourceLine" id="cb559-6" data-line-number="6">  </a>
-<a class="sourceLine" id="cb559-7" data-line-number="7">  <span class="co"># Resultado que devolvemos</span></a>
-<a class="sourceLine" id="cb559-8" data-line-number="8">  <span class="kw">return</span>(area)</a>
-<a class="sourceLine" id="cb559-9" data-line-number="9">  </a>
-<a class="sourceLine" id="cb559-10" data-line-number="10">}</a></code></pre></div>
-<div class="sourceCode" id="cb560"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb560-1" data-line-number="1"><span class="kw">calcular_area</span>(<span class="dt">lado_1 =</span> <span class="dv">5</span>) <span class="co"># si no indicamos nada, lado_2 = lado_1</span></a></code></pre></div>
+<div class="sourceCode" id="cb561"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb561-1" data-line-number="1"><span class="co"># Definición del nombre de función y argumentos de entrada</span></a>
+<a class="sourceLine" id="cb561-2" data-line-number="2">calcular_area &lt;-<span class="st"> </span><span class="cf">function</span>(lado_<span class="dv">1</span>, <span class="dt">lado_2 =</span> lado_<span class="dv">1</span>) {</a>
+<a class="sourceLine" id="cb561-3" data-line-number="3">  </a>
+<a class="sourceLine" id="cb561-4" data-line-number="4">  <span class="co"># Cuerpo de la función</span></a>
+<a class="sourceLine" id="cb561-5" data-line-number="5">  area &lt;-<span class="st"> </span>lado_<span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lado_<span class="dv">2</span></a>
+<a class="sourceLine" id="cb561-6" data-line-number="6">  </a>
+<a class="sourceLine" id="cb561-7" data-line-number="7">  <span class="co"># Resultado que devolvemos</span></a>
+<a class="sourceLine" id="cb561-8" data-line-number="8">  <span class="kw">return</span>(area)</a>
+<a class="sourceLine" id="cb561-9" data-line-number="9">  </a>
+<a class="sourceLine" id="cb561-10" data-line-number="10">}</a></code></pre></div>
+<div class="sourceCode" id="cb562"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb562-1" data-line-number="1"><span class="kw">calcular_area</span>(<span class="dt">lado_1 =</span> <span class="dv">5</span>) <span class="co"># si no indicamos nada, lado_2 = lado_1</span></a></code></pre></div>
 <pre><code>## [1] 25</code></pre>
 <p>Compliquemos un poco la función y añadamos en la salida los valores de cada lado etiquetados como primer lado y segundo lado.</p>
-<div class="sourceCode" id="cb562"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb562-1" data-line-number="1"><span class="co"># Definición del nombre de función y argumentos de entrada</span></a>
-<a class="sourceLine" id="cb562-2" data-line-number="2">calcular_area &lt;-<span class="st"> </span><span class="cf">function</span>(lado_<span class="dv">1</span>, <span class="dt">lado_2 =</span> lado_<span class="dv">1</span>) {</a>
-<a class="sourceLine" id="cb562-3" data-line-number="3">  </a>
-<a class="sourceLine" id="cb562-4" data-line-number="4">  <span class="co"># Cuerpo de la función</span></a>
-<a class="sourceLine" id="cb562-5" data-line-number="5">  area &lt;-<span class="st"> </span>lado_<span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lado_<span class="dv">2</span></a>
-<a class="sourceLine" id="cb562-6" data-line-number="6">  </a>
-<a class="sourceLine" id="cb562-7" data-line-number="7">  <span class="co"># Resultado que devolvemos en modo lista ya que devolvemos</span></a>
-<a class="sourceLine" id="cb562-8" data-line-number="8">  <span class="co"># varios argumentos a la vez (podemos dar a cada elemento </span></a>
-<a class="sourceLine" id="cb562-9" data-line-number="9">  <span class="co"># de la lista con un nombre que nos permita identificarlo)</span></a>
-<a class="sourceLine" id="cb562-10" data-line-number="10">  <span class="kw">return</span>(<span class="kw">list</span>(<span class="st">&quot;area&quot;</span> =<span class="st"> </span>area, <span class="st">&quot;lado_1&quot;</span> =<span class="st"> </span>lado_<span class="dv">1</span>, <span class="st">&quot;lado_2&quot;</span> =<span class="st"> </span>lado_<span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb562-11" data-line-number="11">  </a>
-<a class="sourceLine" id="cb562-12" data-line-number="12">}</a></code></pre></div>
+<div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb564-1" data-line-number="1"><span class="co"># Definición del nombre de función y argumentos de entrada</span></a>
+<a class="sourceLine" id="cb564-2" data-line-number="2">calcular_area &lt;-<span class="st"> </span><span class="cf">function</span>(lado_<span class="dv">1</span>, <span class="dt">lado_2 =</span> lado_<span class="dv">1</span>) {</a>
+<a class="sourceLine" id="cb564-3" data-line-number="3">  </a>
+<a class="sourceLine" id="cb564-4" data-line-number="4">  <span class="co"># Cuerpo de la función</span></a>
+<a class="sourceLine" id="cb564-5" data-line-number="5">  area &lt;-<span class="st"> </span>lado_<span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lado_<span class="dv">2</span></a>
+<a class="sourceLine" id="cb564-6" data-line-number="6">  </a>
+<a class="sourceLine" id="cb564-7" data-line-number="7">  <span class="co"># Resultado que devolvemos en modo lista ya que devolvemos</span></a>
+<a class="sourceLine" id="cb564-8" data-line-number="8">  <span class="co"># varios argumentos a la vez (podemos dar a cada elemento </span></a>
+<a class="sourceLine" id="cb564-9" data-line-number="9">  <span class="co"># de la lista con un nombre que nos permita identificarlo)</span></a>
+<a class="sourceLine" id="cb564-10" data-line-number="10">  <span class="kw">return</span>(<span class="kw">list</span>(<span class="st">&quot;area&quot;</span> =<span class="st"> </span>area, <span class="st">&quot;lado_1&quot;</span> =<span class="st"> </span>lado_<span class="dv">1</span>, <span class="st">&quot;lado_2&quot;</span> =<span class="st"> </span>lado_<span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb564-11" data-line-number="11">  </a>
+<a class="sourceLine" id="cb564-12" data-line-number="12">}</a></code></pre></div>
 <p>Veamos que nos devuelve ahora</p>
-<div class="sourceCode" id="cb563"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb563-1" data-line-number="1"><span class="kw">calcular_area</span>(<span class="dv">5</span>, <span class="dv">3</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb565"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb565-1" data-line-number="1"><span class="kw">calcular_area</span>(<span class="dv">5</span>, <span class="dv">3</span>)</a></code></pre></div>
 <pre><code>## $area
 ## [1] 15
 ## 
@@ -312,15 +312,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## $lado_2
 ## [1] 3</code></pre>
 <p>Fíjate que puedes guardar la salida de forma conjunta para luego acceder a solo uno de los elementos de la lista de salida.</p>
-<div class="sourceCode" id="cb565"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb565-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">calcular_area</span>(<span class="dv">5</span>, <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb565-2" data-line-number="2">x<span class="op">$</span>area</a></code></pre></div>
+<div class="sourceCode" id="cb567"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb567-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">calcular_area</span>(<span class="dv">5</span>, <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb567-2" data-line-number="2">x<span class="op">$</span>area</a></code></pre></div>
 <pre><code>## [1] 15</code></pre>
-<div class="sourceCode" id="cb567"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb567-1" data-line-number="1">x<span class="op">$</span>lado_<span class="dv">1</span></a></code></pre></div>
+<div class="sourceCode" id="cb569"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb569-1" data-line-number="1">x<span class="op">$</span>lado_<span class="dv">1</span></a></code></pre></div>
 <pre><code>## [1] 5</code></pre>
-<div class="sourceCode" id="cb569"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb569-1" data-line-number="1">x<span class="op">$</span>lado_<span class="dv">2</span></a></code></pre></div>
+<div class="sourceCode" id="cb571"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb571-1" data-line-number="1">x<span class="op">$</span>lado_<span class="dv">2</span></a></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 <p>Antes nos daba igual el orden de los argumentos pero ahora no, ya que en la salida incluimos <code>lado_1</code> y <code>lado_2</code>. Es <strong>altamente recomendable</strong> hacer la llamada a la función indicando explícitamente los argumentos <code>argumento_1 = valor_1</code> para <strong>mejorar la legibilidad e interpretabilidad de nuestro código</strong> (recuerda: programa como escribirías una novela).</p>
-<div class="sourceCode" id="cb571"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb571-1" data-line-number="1"><span class="kw">calcular_area</span>(<span class="dt">lado_1 =</span> <span class="dv">5</span>, <span class="dt">lado_2 =</span> <span class="dv">3</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb573"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb573-1" data-line-number="1"><span class="kw">calcular_area</span>(<span class="dt">lado_1 =</span> <span class="dv">5</span>, <span class="dt">lado_2 =</span> <span class="dv">3</span>)</a></code></pre></div>
 <pre><code>## $area
 ## [1] 15
 ## 

@@ -266,13 +266,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Solución:</li>
 </ul>
-<div class="sourceCode" id="cb542"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb542-1" data-line-number="1"><span class="co"># Ejemplo: lista con texto, numérico, lógico y un data.frame</span></a>
-<a class="sourceLine" id="cb542-2" data-line-number="2">lista_ejemplo &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="st">&quot;nombre&quot;</span> =<span class="st"> &quot;Javier&quot;</span>, <span class="st">&quot;cp&quot;</span> =<span class="st"> </span><span class="dv">28019</span>,</a>
-<a class="sourceLine" id="cb542-3" data-line-number="3">                      <span class="st">&quot;soltero&quot;</span> =<span class="st"> </span><span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb542-4" data-line-number="4">                      <span class="st">&quot;notas&quot;</span> =<span class="st"> </span><span class="kw">data.frame</span>(<span class="st">&quot;mates&quot;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="fl">7.5</span>, <span class="dv">8</span>, <span class="dv">9</span>),</a>
-<a class="sourceLine" id="cb542-5" data-line-number="5">                                           <span class="st">&quot;lengua&quot;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">5</span>, <span class="dv">6</span>),</a>
-<a class="sourceLine" id="cb542-6" data-line-number="6">                                           <span class="st">&quot;gimnasia&quot;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">8</span>, <span class="dv">6</span>)))</a>
-<a class="sourceLine" id="cb542-7" data-line-number="7">lista_ejemplo</a></code></pre></div>
+<div class="sourceCode" id="cb544"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb544-1" data-line-number="1"><span class="co"># Ejemplo: lista con texto, numérico, lógico y un data.frame</span></a>
+<a class="sourceLine" id="cb544-2" data-line-number="2">lista_ejemplo &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="st">&quot;nombre&quot;</span> =<span class="st"> &quot;Javier&quot;</span>, <span class="st">&quot;cp&quot;</span> =<span class="st"> </span><span class="dv">28019</span>,</a>
+<a class="sourceLine" id="cb544-3" data-line-number="3">                      <span class="st">&quot;soltero&quot;</span> =<span class="st"> </span><span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb544-4" data-line-number="4">                      <span class="st">&quot;notas&quot;</span> =<span class="st"> </span><span class="kw">data.frame</span>(<span class="st">&quot;mates&quot;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="fl">7.5</span>, <span class="dv">8</span>, <span class="dv">9</span>),</a>
+<a class="sourceLine" id="cb544-5" data-line-number="5">                                           <span class="st">&quot;lengua&quot;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">5</span>, <span class="dv">6</span>),</a>
+<a class="sourceLine" id="cb544-6" data-line-number="6">                                           <span class="st">&quot;gimnasia&quot;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">8</span>, <span class="dv">6</span>)))</a>
+<a class="sourceLine" id="cb544-7" data-line-number="7">lista_ejemplo</a></code></pre></div>
 <pre><code>## $nombre
 ## [1] &quot;Javier&quot;
 ## 
@@ -287,11 +287,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 1   7.5     10        4
 ## 2   8.0      5        8
 ## 3   9.0      6        6</code></pre>
-<div class="sourceCode" id="cb544"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb544-1" data-line-number="1"><span class="co"># Longitud</span></a>
-<a class="sourceLine" id="cb544-2" data-line-number="2"><span class="kw">length</span>(lista_ejemplo)</a></code></pre></div>
+<div class="sourceCode" id="cb546"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb546-1" data-line-number="1"><span class="co"># Longitud</span></a>
+<a class="sourceLine" id="cb546-2" data-line-number="2"><span class="kw">length</span>(lista_ejemplo)</a></code></pre></div>
 <pre><code>## [1] 4</code></pre>
-<div class="sourceCode" id="cb546"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb546-1" data-line-number="1"><span class="co"># Accedemos al elemento dos</span></a>
-<a class="sourceLine" id="cb546-2" data-line-number="2">lista_ejemplo[[<span class="dv">2</span>]]</a></code></pre></div>
+<div class="sourceCode" id="cb548"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb548-1" data-line-number="1"><span class="co"># Accedemos al elemento dos</span></a>
+<a class="sourceLine" id="cb548-2" data-line-number="2">lista_ejemplo[[<span class="dv">2</span>]]</a></code></pre></div>
 <pre><code>## [1] 28019</code></pre>
 </details>
 <p> </p>
@@ -301,18 +301,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Solución:</li>
 </ul>
-<div class="sourceCode" id="cb548"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb548-1" data-line-number="1"><span class="kw">library</span>(lubridate)</a></code></pre></div>
+<div class="sourceCode" id="cb550"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb550-1" data-line-number="1"><span class="kw">library</span>(lubridate)</a></code></pre></div>
 <pre><code>## 
 ## Attaching package: &#39;lubridate&#39;</code></pre>
 <pre><code>## The following objects are masked from &#39;package:base&#39;:
 ## 
 ##     date, intersect, setdiff, union</code></pre>
-<div class="sourceCode" id="cb551"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb551-1" data-line-number="1"><span class="co"># Creamos lista: con lubridate calculamos la diferencia de años desde la fecha de nuestro nacimiento hasta hoy (sea cuando sea hoy)</span></a>
-<a class="sourceLine" id="cb551-2" data-line-number="2">lista_personal &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="st">&quot;nombre&quot;</span> =<span class="st"> &quot;Javier&quot;</span>,</a>
-<a class="sourceLine" id="cb551-3" data-line-number="3">                       <span class="st">&quot;apellidos&quot;</span> =<span class="st"> &quot;Álvarez Liébana&quot;</span>,</a>
-<a class="sourceLine" id="cb551-4" data-line-number="4">                       <span class="st">&quot;edad&quot;</span> =<span class="st"> </span><span class="kw">time_length</span>(<span class="kw">interval</span>(<span class="kw">ymd</span>(<span class="st">&quot;1989-09-10&quot;</span>), <span class="kw">ymd</span>(<span class="kw">Sys.Date</span>())), <span class="dt">unit =</span> <span class="st">&quot;years&quot;</span>),</a>
-<a class="sourceLine" id="cb551-5" data-line-number="5">                       <span class="st">&quot;soltero&quot;</span> =<span class="st"> </span><span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb551-6" data-line-number="6">lista_personal</a></code></pre></div>
+<div class="sourceCode" id="cb553"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb553-1" data-line-number="1"><span class="co"># Creamos lista: con lubridate calculamos la diferencia de años desde la fecha de nuestro nacimiento hasta hoy (sea cuando sea hoy)</span></a>
+<a class="sourceLine" id="cb553-2" data-line-number="2">lista_personal &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="st">&quot;nombre&quot;</span> =<span class="st"> &quot;Javier&quot;</span>,</a>
+<a class="sourceLine" id="cb553-3" data-line-number="3">                       <span class="st">&quot;apellidos&quot;</span> =<span class="st"> &quot;Álvarez Liébana&quot;</span>,</a>
+<a class="sourceLine" id="cb553-4" data-line-number="4">                       <span class="st">&quot;edad&quot;</span> =<span class="st"> </span><span class="kw">time_length</span>(<span class="kw">interval</span>(<span class="kw">ymd</span>(<span class="st">&quot;1989-09-10&quot;</span>), <span class="kw">ymd</span>(<span class="kw">Sys.Date</span>())), <span class="dt">unit =</span> <span class="st">&quot;years&quot;</span>),</a>
+<a class="sourceLine" id="cb553-5" data-line-number="5">                       <span class="st">&quot;soltero&quot;</span> =<span class="st"> </span><span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb553-6" data-line-number="6">lista_personal</a></code></pre></div>
 <pre><code>## $nombre
 ## [1] &quot;Javier&quot;
 ## 
@@ -324,12 +324,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## $soltero
 ## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb553"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb553-1" data-line-number="1"><span class="co"># Otra opción: la edad calculada con floor (quita decimales y se queda con la parte entera)</span></a>
-<a class="sourceLine" id="cb553-2" data-line-number="2">lista_personal &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="st">&quot;nombre&quot;</span> =<span class="st"> &quot;Javier&quot;</span>,</a>
-<a class="sourceLine" id="cb553-3" data-line-number="3">                       <span class="st">&quot;apellidos&quot;</span> =<span class="st"> &quot;Álvarez Liébana&quot;</span>,</a>
-<a class="sourceLine" id="cb553-4" data-line-number="4">                       <span class="st">&quot;edad&quot;</span> =<span class="st"> </span><span class="kw">floor</span>(<span class="kw">time_length</span>(<span class="kw">interval</span>(<span class="kw">ymd</span>(<span class="st">&quot;1989-09-10&quot;</span>), <span class="kw">ymd</span>(<span class="kw">Sys.Date</span>())), <span class="dt">unit =</span> <span class="st">&quot;years&quot;</span>)),</a>
-<a class="sourceLine" id="cb553-5" data-line-number="5">                       <span class="st">&quot;soltero&quot;</span> =<span class="st"> </span><span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb553-6" data-line-number="6">lista_personal</a></code></pre></div>
+<div class="sourceCode" id="cb555"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb555-1" data-line-number="1"><span class="co"># Otra opción: la edad calculada con floor (quita decimales y se queda con la parte entera)</span></a>
+<a class="sourceLine" id="cb555-2" data-line-number="2">lista_personal &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="st">&quot;nombre&quot;</span> =<span class="st"> &quot;Javier&quot;</span>,</a>
+<a class="sourceLine" id="cb555-3" data-line-number="3">                       <span class="st">&quot;apellidos&quot;</span> =<span class="st"> &quot;Álvarez Liébana&quot;</span>,</a>
+<a class="sourceLine" id="cb555-4" data-line-number="4">                       <span class="st">&quot;edad&quot;</span> =<span class="st"> </span><span class="kw">floor</span>(<span class="kw">time_length</span>(<span class="kw">interval</span>(<span class="kw">ymd</span>(<span class="st">&quot;1989-09-10&quot;</span>), <span class="kw">ymd</span>(<span class="kw">Sys.Date</span>())), <span class="dt">unit =</span> <span class="st">&quot;years&quot;</span>)),</a>
+<a class="sourceLine" id="cb555-5" data-line-number="5">                       <span class="st">&quot;soltero&quot;</span> =<span class="st"> </span><span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb555-6" data-line-number="6">lista_personal</a></code></pre></div>
 <pre><code>## $nombre
 ## [1] &quot;Javier&quot;
 ## 

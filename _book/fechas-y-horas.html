@@ -262,55 +262,55 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">8.3</span> Fechas y horas</h2>
 <p>Como ya hemos dicho, las fechas y momentos temporales no serán meras cadenas de caracter sino que tienen clases especiales asociadas y algunas funciones especiales que pueden sernos útiles: las fechas serán de tipo <code>dates</code> mientras que las horas será de tipo <code>POSIXct</code> o <code>POSIXlt</code>. En el primer caso, las fechas serán guardadas internamente como el <strong>número de días transcurridos desde el 1 de enero de 1970</strong>, y las horas como <strong>número de segundos desde el 1 de enero de 1970</strong> (para la clase <code>POSIXct</code>) o una lista de segundos, minutos y horas (para la clase <code>POSIXlt</code>).</p>
 <p><strong>¿Cómo obtener automáticamente la fecha de hoy, por ejemplo?</strong> La función <code>Sys.Date()</code> nos devuelve directamente la fecha y hora en el momento de la ejecución de la orden.</p>
-<div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb486-1" data-line-number="1">fecha &lt;-<span class="st"> </span><span class="kw">Sys.Date</span>()</a>
-<a class="sourceLine" id="cb486-2" data-line-number="2">fecha</a></code></pre></div>
+<div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb488-1" data-line-number="1">fecha &lt;-<span class="st"> </span><span class="kw">Sys.Date</span>()</a>
+<a class="sourceLine" id="cb488-2" data-line-number="2">fecha</a></code></pre></div>
 <pre><code>## [1] &quot;2021-09-08&quot;</code></pre>
-<div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb488-1" data-line-number="1">fecha <span class="op">-</span><span class="st"> </span><span class="dv">7</span> <span class="co"># una semana antes</span></a></code></pre></div>
+<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb490-1" data-line-number="1">fecha <span class="op">-</span><span class="st"> </span><span class="dv">7</span> <span class="co"># una semana antes</span></a></code></pre></div>
 <pre><code>## [1] &quot;2021-09-01&quot;</code></pre>
-<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb490-1" data-line-number="1"><span class="kw">class</span>(fecha) <span class="co"># de clase fecha</span></a></code></pre></div>
+<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb492-1" data-line-number="1"><span class="kw">class</span>(fecha) <span class="co"># de clase fecha</span></a></code></pre></div>
 <pre><code>## [1] &quot;Date&quot;</code></pre>
 <p>Para <strong>convertir una cadena de texto a fecha</strong>, basta usar la función <code>as.Date()</code> con la fecha en formato <code>&quot;yyyy-mm-dd&quot;</code> por defecto. Si le introducimos otro tipo de formato, debemos especificárselo en un segundo argumento.</p>
-<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb492-1" data-line-number="1"><span class="kw">as.Date</span>(<span class="st">&quot;2021-03-10&quot;</span>) <span class="co"># formato por defecto</span></a></code></pre></div>
+<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb494-1" data-line-number="1"><span class="kw">as.Date</span>(<span class="st">&quot;2021-03-10&quot;</span>) <span class="co"># formato por defecto</span></a></code></pre></div>
 <pre><code>## [1] &quot;2021-03-10&quot;</code></pre>
-<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb494-1" data-line-number="1"><span class="kw">as.Date</span>(<span class="st">&quot;10-03-2020&quot;</span>, <span class="st">&quot;%d-%m-%Y&quot;</span>) <span class="co"># con día-mes-año (4 cifras)</span></a></code></pre></div>
+<div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb496-1" data-line-number="1"><span class="kw">as.Date</span>(<span class="st">&quot;10-03-2020&quot;</span>, <span class="st">&quot;%d-%m-%Y&quot;</span>) <span class="co"># con día-mes-año (4 cifras)</span></a></code></pre></div>
 <pre><code>## [1] &quot;2020-03-10&quot;</code></pre>
-<div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb496-1" data-line-number="1"><span class="kw">as.Date</span>(<span class="st">&quot;10-03-20&quot;</span>, <span class="st">&quot;%d-%m-%y&quot;</span>)  <span class="co"># con día-mes-año (2 cifras)</span></a></code></pre></div>
+<div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb498-1" data-line-number="1"><span class="kw">as.Date</span>(<span class="st">&quot;10-03-20&quot;</span>, <span class="st">&quot;%d-%m-%y&quot;</span>)  <span class="co"># con día-mes-año (2 cifras)</span></a></code></pre></div>
 <pre><code>## [1] &quot;2020-03-10&quot;</code></pre>
-<div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb498-1" data-line-number="1"><span class="kw">as.Date</span>(<span class="st">&quot;03-10-2020&quot;</span>, <span class="st">&quot;%m-%d-%Y&quot;</span>) <span class="co"># con mes-día-año (4 cifras)</span></a></code></pre></div>
+<div class="sourceCode" id="cb500"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb500-1" data-line-number="1"><span class="kw">as.Date</span>(<span class="st">&quot;03-10-2020&quot;</span>, <span class="st">&quot;%m-%d-%Y&quot;</span>) <span class="co"># con mes-día-año (4 cifras)</span></a></code></pre></div>
 <pre><code>## [1] &quot;2020-03-10&quot;</code></pre>
-<div class="sourceCode" id="cb500"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb500-1" data-line-number="1"><span class="kw">as.Date</span>(<span class="st">&quot;Octubre 21, 1995 21:24&quot;</span>, <span class="st">&quot;%B %d, %Y %H:%M&quot;</span>) <span class="co"># fecha escrita</span></a></code></pre></div>
+<div class="sourceCode" id="cb502"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb502-1" data-line-number="1"><span class="kw">as.Date</span>(<span class="st">&quot;Octubre 21, 1995 21:24&quot;</span>, <span class="st">&quot;%B %d, %Y %H:%M&quot;</span>) <span class="co"># fecha escrita</span></a></code></pre></div>
 <pre><code>## [1] &quot;1995-10-21&quot;</code></pre>
 <p>Fíjate la diferencia cuando lo convertimos en fecha</p>
-<div class="sourceCode" id="cb502"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb502-1" data-line-number="1"><span class="st">&quot;2021-03-10&quot;</span> <span class="op">-</span><span class="st"> </span><span class="dv">1</span> <span class="co"># error</span></a></code></pre></div>
+<div class="sourceCode" id="cb504"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb504-1" data-line-number="1"><span class="st">&quot;2021-03-10&quot;</span> <span class="op">-</span><span class="st"> </span><span class="dv">1</span> <span class="co"># error</span></a></code></pre></div>
 <pre><code>## Error in &quot;2021-03-10&quot; - 1: argumento no-numérico para operador binario</code></pre>
-<div class="sourceCode" id="cb504"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb504-1" data-line-number="1"><span class="kw">as.Date</span>(<span class="st">&quot;2021-03-10&quot;</span>) <span class="op">-</span><span class="st"> </span><span class="dv">1</span> <span class="co"># día previo</span></a></code></pre></div>
+<div class="sourceCode" id="cb506"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb506-1" data-line-number="1"><span class="kw">as.Date</span>(<span class="st">&quot;2021-03-10&quot;</span>) <span class="op">-</span><span class="st"> </span><span class="dv">1</span> <span class="co"># día previo</span></a></code></pre></div>
 <pre><code>## [1] &quot;2021-03-09&quot;</code></pre>
 <p>Aunque aparentemente parezca una cadena de texto, prueba a ejecutar <code>unclass(fecha)</code> para comprobar que tiene internamente guardado.</p>
-<div class="sourceCode" id="cb506"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb506-1" data-line-number="1"><span class="kw">unclass</span>(fecha)</a></code></pre></div>
+<div class="sourceCode" id="cb508"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb508-1" data-line-number="1"><span class="kw">unclass</span>(fecha)</a></code></pre></div>
 <pre><code>## [1] 18878</code></pre>
-<div class="sourceCode" id="cb508"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb508-1" data-line-number="1"><span class="kw">unclass</span>(<span class="kw">as.Date</span>(<span class="st">&quot;1969-01-01&quot;</span>)) <span class="co"># justo un año antes de la referencia</span></a></code></pre></div>
+<div class="sourceCode" id="cb510"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb510-1" data-line-number="1"><span class="kw">unclass</span>(<span class="kw">as.Date</span>(<span class="st">&quot;1969-01-01&quot;</span>)) <span class="co"># justo un año antes de la referencia</span></a></code></pre></div>
 <pre><code>## [1] -365</code></pre>
 <p>Para la <strong>fecha con hora actual</strong> podemos usar una función similar, la función <code>Sys.time()</code>. Al igual que la función <code>as.Date()</code> para convertir cadenas de texto en fechas, podemos hacer uso de la función <code>strptime()</code> para convertir cadenas de texto en fecha-hora.</p>
-<div class="sourceCode" id="cb510"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb510-1" data-line-number="1">fecha_hora &lt;-<span class="st"> </span><span class="kw">Sys.time</span>() <span class="co"># fecha y hora actual en formato POSIXct</span></a>
-<a class="sourceLine" id="cb510-2" data-line-number="2"><span class="kw">class</span>(fecha_hora)</a></code></pre></div>
+<div class="sourceCode" id="cb512"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb512-1" data-line-number="1">fecha_hora &lt;-<span class="st"> </span><span class="kw">Sys.time</span>() <span class="co"># fecha y hora actual en formato POSIXct</span></a>
+<a class="sourceLine" id="cb512-2" data-line-number="2"><span class="kw">class</span>(fecha_hora)</a></code></pre></div>
 <pre><code>## [1] &quot;POSIXct&quot; &quot;POSIXt&quot;</code></pre>
-<div class="sourceCode" id="cb512"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb512-1" data-line-number="1"><span class="kw">unclass</span>(fecha_hora)</a></code></pre></div>
-<pre><code>## [1] 1631093364</code></pre>
-<div class="sourceCode" id="cb514"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb514-1" data-line-number="1"><span class="kw">strptime</span>(<span class="st">&quot;Octubre 21, 1995 21:24&quot;</span>, <span class="st">&quot;%B %d, %Y %H:%M&quot;</span>) <span class="co"># fecha escrita</span></a></code></pre></div>
+<div class="sourceCode" id="cb514"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb514-1" data-line-number="1"><span class="kw">unclass</span>(fecha_hora)</a></code></pre></div>
+<pre><code>## [1] 1631098180</code></pre>
+<div class="sourceCode" id="cb516"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb516-1" data-line-number="1"><span class="kw">strptime</span>(<span class="st">&quot;Octubre 21, 1995 21:24&quot;</span>, <span class="st">&quot;%B %d, %Y %H:%M&quot;</span>) <span class="co"># fecha escrita</span></a></code></pre></div>
 <pre><code>## [1] &quot;1995-10-21 21:24:00 CET&quot;</code></pre>
-<div class="sourceCode" id="cb516"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb516-1" data-line-number="1"><span class="co"># fecha y hora actual en formato POSIXlt</span></a>
-<a class="sourceLine" id="cb516-2" data-line-number="2">fecha_hora2 &lt;-<span class="st"> </span><span class="kw">as.POSIXlt</span>(<span class="kw">Sys.time</span>())</a>
-<a class="sourceLine" id="cb516-3" data-line-number="3"><span class="kw">class</span>(fecha_hora2)</a></code></pre></div>
+<div class="sourceCode" id="cb518"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb518-1" data-line-number="1"><span class="co"># fecha y hora actual en formato POSIXlt</span></a>
+<a class="sourceLine" id="cb518-2" data-line-number="2">fecha_hora2 &lt;-<span class="st"> </span><span class="kw">as.POSIXlt</span>(<span class="kw">Sys.time</span>())</a>
+<a class="sourceLine" id="cb518-3" data-line-number="3"><span class="kw">class</span>(fecha_hora2)</a></code></pre></div>
 <pre><code>## [1] &quot;POSIXlt&quot; &quot;POSIXt&quot;</code></pre>
-<div class="sourceCode" id="cb518"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb518-1" data-line-number="1"><span class="kw">unclass</span>(fecha_hora2)</a></code></pre></div>
+<div class="sourceCode" id="cb520"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb520-1" data-line-number="1"><span class="kw">unclass</span>(fecha_hora2)</a></code></pre></div>
 <pre><code>## $sec
-## [1] 24.06899
+## [1] 40.00236
 ## 
 ## $min
-## [1] 29
+## [1] 49
 ## 
 ## $hour
-## [1] 11
+## [1] 12
 ## 
 ## $mday
 ## [1] 8
@@ -338,11 +338,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## attr(,&quot;tzone&quot;)
 ## [1] &quot;&quot;     &quot;CET&quot;  &quot;CEST&quot;</code></pre>
-<div class="sourceCode" id="cb520"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb520-1" data-line-number="1"><span class="kw">str</span>(<span class="kw">unclass</span>(fecha_hora2))</a></code></pre></div>
+<div class="sourceCode" id="cb522"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb522-1" data-line-number="1"><span class="kw">str</span>(<span class="kw">unclass</span>(fecha_hora2))</a></code></pre></div>
 <pre><code>## List of 11
-##  $ sec   : num 24.1
-##  $ min   : int 29
-##  $ hour  : int 11
+##  $ sec   : num 40
+##  $ min   : int 49
+##  $ hour  : int 12
 ##  $ mday  : int 8
 ##  $ mon   : int 8
 ##  $ year  : int 121
@@ -352,28 +352,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  $ zone  : chr &quot;CEST&quot;
 ##  $ gmtoff: int 7200
 ##  - attr(*, &quot;tzone&quot;)= chr [1:3] &quot;&quot; &quot;CET&quot; &quot;CEST&quot;</code></pre>
-<div class="sourceCode" id="cb522"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb522-1" data-line-number="1">fecha_hora2<span class="op">$</span>min <span class="co"># Accedemos a los minutos</span></a></code></pre></div>
-<pre><code>## [1] 29</code></pre>
+<div class="sourceCode" id="cb524"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb524-1" data-line-number="1">fecha_hora2<span class="op">$</span>min <span class="co"># Accedemos a los minutos</span></a></code></pre></div>
+<pre><code>## [1] 49</code></pre>
 <p>Además tenemos disponibles funciones para extraer facilmente algunas variables temporales como el día de la semana, el mes o el cuatrimestre, con las funciones <code>weekdays()</code>, <code>months()</code>, and <code>quarters()</code>.</p>
-<div class="sourceCode" id="cb524"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb524-1" data-line-number="1"><span class="kw">weekdays</span>(fecha)</a></code></pre></div>
+<div class="sourceCode" id="cb526"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb526-1" data-line-number="1"><span class="kw">weekdays</span>(fecha)</a></code></pre></div>
 <pre><code>## [1] &quot;miércoles&quot;</code></pre>
-<div class="sourceCode" id="cb526"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb526-1" data-line-number="1"><span class="kw">months</span>(fecha)</a></code></pre></div>
+<div class="sourceCode" id="cb528"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb528-1" data-line-number="1"><span class="kw">months</span>(fecha)</a></code></pre></div>
 <pre><code>## [1] &quot;septiembre&quot;</code></pre>
-<div class="sourceCode" id="cb528"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb528-1" data-line-number="1"><span class="kw">quarters</span>(fecha)</a></code></pre></div>
+<div class="sourceCode" id="cb530"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb530-1" data-line-number="1"><span class="kw">quarters</span>(fecha)</a></code></pre></div>
 <pre><code>## [1] &quot;Q3&quot;</code></pre>
 <p>Al igual que podemos realizar operaciones aritméticas sencillas con las fechas, también podemos <strong>realizar comparaciones</strong>, por ejemplo, si el día actual es menor o mayor que otra fecha dada.</p>
-<div class="sourceCode" id="cb530"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb530-1" data-line-number="1">fecha_actual &lt;-<span class="st"> </span><span class="kw">Sys.Date</span>()</a>
-<a class="sourceLine" id="cb530-2" data-line-number="2">fecha_actual <span class="op">&gt;</span><span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2020-04-15&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb532"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb532-1" data-line-number="1">fecha_actual &lt;-<span class="st"> </span><span class="kw">Sys.Date</span>()</a>
+<a class="sourceLine" id="cb532-2" data-line-number="2">fecha_actual <span class="op">&gt;</span><span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2020-04-15&quot;</span>)</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb532"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb532-1" data-line-number="1">fecha_actual <span class="op">&lt;</span><span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2020-04-15&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb534"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb534-1" data-line-number="1">fecha_actual <span class="op">&lt;</span><span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2020-04-15&quot;</span>)</a></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <p>La función <code>difftime()</code> nos permite además hallar distancias entre fechas pero no solo en días (lo que sucedería si restamos 2 fechas) sino en las unidades temporales que queramos.</p>
-<div class="sourceCode" id="cb534"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb534-1" data-line-number="1"><span class="kw">difftime</span>(<span class="kw">Sys.time</span>(), <span class="kw">as.POSIXct</span>(<span class="st">&quot;2020-01-17 10:24:12 CEST&quot;</span>), <span class="dt">units =</span> <span class="st">&quot;days&quot;</span>)</a></code></pre></div>
-<pre><code>## Time difference of 600.0036 days</code></pre>
-<div class="sourceCode" id="cb536"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb536-1" data-line-number="1"><span class="kw">difftime</span>(<span class="kw">Sys.time</span>(), <span class="kw">as.POSIXct</span>(<span class="st">&quot;2020-01-17 10:24:12 CEST&quot;</span>), <span class="dt">units =</span> <span class="st">&quot;hours&quot;</span>)</a></code></pre></div>
-<pre><code>## Time difference of 14400.09 hours</code></pre>
-<div class="sourceCode" id="cb538"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb538-1" data-line-number="1"><span class="kw">difftime</span>(<span class="kw">Sys.time</span>(), <span class="kw">as.POSIXct</span>(<span class="st">&quot;2020-01-17 10:24:12 CEST&quot;</span>), <span class="dt">units =</span> <span class="st">&quot;weeks&quot;</span>)</a></code></pre></div>
-<pre><code>## Time difference of 85.7148 weeks</code></pre>
+<div class="sourceCode" id="cb536"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb536-1" data-line-number="1"><span class="kw">difftime</span>(<span class="kw">Sys.time</span>(), <span class="kw">as.POSIXct</span>(<span class="st">&quot;2020-01-17 10:24:12 CEST&quot;</span>), <span class="dt">units =</span> <span class="st">&quot;days&quot;</span>)</a></code></pre></div>
+<pre><code>## Time difference of 600.0594 days</code></pre>
+<div class="sourceCode" id="cb538"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb538-1" data-line-number="1"><span class="kw">difftime</span>(<span class="kw">Sys.time</span>(), <span class="kw">as.POSIXct</span>(<span class="st">&quot;2020-01-17 10:24:12 CEST&quot;</span>), <span class="dt">units =</span> <span class="st">&quot;hours&quot;</span>)</a></code></pre></div>
+<pre><code>## Time difference of 14401.42 hours</code></pre>
+<div class="sourceCode" id="cb540"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb540-1" data-line-number="1"><span class="kw">difftime</span>(<span class="kw">Sys.time</span>(), <span class="kw">as.POSIXct</span>(<span class="st">&quot;2020-01-17 10:24:12 CEST&quot;</span>), <span class="dt">units =</span> <span class="st">&quot;weeks&quot;</span>)</a></code></pre></div>
+<pre><code>## Time difference of 85.72276 weeks</code></pre>
 </div>
             </section>
 

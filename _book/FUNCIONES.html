@@ -262,14 +262,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Capítulo 9</span> Creación de funciones</h1>
 <p>En <code>R</code> no solo podemos usar las funciones predeterminadas que vienen ya cargadas, o las de los paquetes que instalamos, sino que además podemos <strong>crear nuestras propias funciones</strong>, para automatizar tareas que vayamos a repetir a lo largo de nuestro código.</p>
 <p><strong>¿Cómo crear nuestra propia función?</strong> Veamos su sintaxis básica. Para crear una función necesitamos un <code>nombre_funcion</code> (sin espacios ni caracteres extraños), al que le asignamos la orden <code>function()</code>. Dentro de <code>function()</code> tendríamos que definir los argumentos de entrada que vamos a usar.</p>
-<div class="sourceCode" id="cb555"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb555-1" data-line-number="1">nombre_funcion &lt;-<span class="st"> </span><span class="cf">function</span>(argumento_<span class="dv">1</span>, argumento_<span class="dv">2</span>, ... ) {</a>
-<a class="sourceLine" id="cb555-2" data-line-number="2">  </a>
-<a class="sourceLine" id="cb555-3" data-line-number="3">  <span class="co"># Código que queramos ejecutar en la función</span></a>
-<a class="sourceLine" id="cb555-4" data-line-number="4">  código</a>
-<a class="sourceLine" id="cb555-5" data-line-number="5">  </a>
-<a class="sourceLine" id="cb555-6" data-line-number="6">  <span class="co"># Salida</span></a>
-<a class="sourceLine" id="cb555-7" data-line-number="7">  <span class="kw">return</span>(variable_salida)</a>
-<a class="sourceLine" id="cb555-8" data-line-number="8">}</a></code></pre></div>
+<div class="sourceCode" id="cb557"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb557-1" data-line-number="1">nombre_funcion &lt;-<span class="st"> </span><span class="cf">function</span>(argumento_<span class="dv">1</span>, argumento_<span class="dv">2</span>, ... ) {</a>
+<a class="sourceLine" id="cb557-2" data-line-number="2">  </a>
+<a class="sourceLine" id="cb557-3" data-line-number="3">  <span class="co"># Código que queramos ejecutar en la función</span></a>
+<a class="sourceLine" id="cb557-4" data-line-number="4">  código</a>
+<a class="sourceLine" id="cb557-5" data-line-number="5">  </a>
+<a class="sourceLine" id="cb557-6" data-line-number="6">  <span class="co"># Salida</span></a>
+<a class="sourceLine" id="cb557-7" data-line-number="7">  <span class="kw">return</span>(variable_salida)</a>
+<a class="sourceLine" id="cb557-8" data-line-number="8">}</a></code></pre></div>
 <ul>
 <li><strong>argumento_1, argumento_2, …</strong>: serán los argumentos de entrada, los argumentos que toma la función para ejecutar el código que tiene dentro</li>
 <li><strong>código</strong>: líneas de código que queramos que ejecute la función. <strong>IMPORTANTE</strong>: todas las variables que definamos dentro de la función son variables locales, solo existirán dentro de la función salvo que especifiquemos lo contrario.</li>

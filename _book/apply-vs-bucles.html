@@ -312,9 +312,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##                                                                           expr
 ##  for (i in 1:dim(x)[1]) {     suma_por_filas[i] &lt;- sum(x[i, ], na.rm = TRUE) }
 ##                                apply(x, MARGIN = 1, FUN = &quot;sum&quot;, na.rm = TRUE)
-##       min        lq      mean   median        uq      max neval cld
-##  1647.750 1698.9235 1956.5178 1802.896 2029.3400 5223.842   100   b
-##    20.091   26.0675   35.3532   34.876   41.0475   87.760   100  a</code></pre>
+##       min        lq       mean   median       uq      max neval cld
+##  1689.823 1922.7520 2411.56382 2164.845 2607.398 5794.192   100   b
+##    21.116   27.5965   47.15837   43.826   53.249  251.479   100  a</code></pre>
 <p><strong>¡El bucle nos tarda 50 veces más que el <code>apply</code>!</strong> Di no a los bucles: casi siempre hay una forma mejor de hacerlo.</p>
 </div>
             </section>

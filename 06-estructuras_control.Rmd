@@ -115,6 +115,19 @@ for (dias in dias_semana) { # dias recorre los días de la semana tomando sus va
 }
 ```
 
+&nbsp;
+
+**CONSEJO**: evita al máximo los bucles, suele existir una forma más eficiente de programarlo. Veamos un ejemplo muy sencillo: dado un vector de índices `idx`, queremos calcular su cuadrado y guardarlo. Vamos a comparar como sería con un sencillo bucle y de forma vectorial, repitiéndolo 1000 veces para sacar tiempos medios, haciendo uso del paquete `{microbenchmark}`.
+
+```{r}
+idx <- 1:1e4
+x <- y <- rep(0, length(idx))
+microbenchmark::microbenchmark(x <- idx^2, 
+                               for (i in idx) {  y[i] <- idx[i]^2},
+                               times = 1e3)
+``` 
+
+Una tarea tan sencilla, **programada en un bucle, tarda 40 veces más que hacerlo de forma vectorial** (elevando cada elemento al cuadrado, iterando internamente, sin necesidad de implementar un bucle).
 
 &nbsp;
 

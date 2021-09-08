@@ -265,44 +265,44 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Solución:</li>
 </ul>
-<div class="sourceCode" id="cb603"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb603-1" data-line-number="1"><span class="co"># Definimos función</span></a>
-<a class="sourceLine" id="cb603-2" data-line-number="2">pares &lt;-<span class="st"> </span><span class="cf">function</span>(x, y) {</a>
-<a class="sourceLine" id="cb603-3" data-line-number="3">  </a>
-<a class="sourceLine" id="cb603-4" data-line-number="4">  <span class="co"># Sumamos</span></a>
-<a class="sourceLine" id="cb603-5" data-line-number="5">  suma &lt;-<span class="st"> </span>x <span class="op">+</span><span class="st"> </span>y</a>
-<a class="sourceLine" id="cb603-6" data-line-number="6">  </a>
-<a class="sourceLine" id="cb603-7" data-line-number="7">  <span class="co"># Comprobamos si es par calculando el resto al dividir entre 2: si al dividir suma entre 2 el resto es 0 ==&gt; es par</span></a>
-<a class="sourceLine" id="cb603-8" data-line-number="8">  </a>
-<a class="sourceLine" id="cb603-9" data-line-number="9">  par &lt;-<span class="st"> </span>suma <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span></a>
-<a class="sourceLine" id="cb603-10" data-line-number="10">  </a>
-<a class="sourceLine" id="cb603-11" data-line-number="11">  <span class="co"># Devolvemos la salida</span></a>
-<a class="sourceLine" id="cb603-12" data-line-number="12">  <span class="kw">return</span>(par)</a>
-<a class="sourceLine" id="cb603-13" data-line-number="13">}</a>
-<a class="sourceLine" id="cb603-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb603-15" data-line-number="15"><span class="co"># Aplicamos la función</span></a>
-<a class="sourceLine" id="cb603-16" data-line-number="16"><span class="kw">pares</span>(<span class="dv">1</span>, <span class="dv">3</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb605"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb605-1" data-line-number="1"><span class="co"># Definimos función</span></a>
+<a class="sourceLine" id="cb605-2" data-line-number="2">pares &lt;-<span class="st"> </span><span class="cf">function</span>(x, y) {</a>
+<a class="sourceLine" id="cb605-3" data-line-number="3">  </a>
+<a class="sourceLine" id="cb605-4" data-line-number="4">  <span class="co"># Sumamos</span></a>
+<a class="sourceLine" id="cb605-5" data-line-number="5">  suma &lt;-<span class="st"> </span>x <span class="op">+</span><span class="st"> </span>y</a>
+<a class="sourceLine" id="cb605-6" data-line-number="6">  </a>
+<a class="sourceLine" id="cb605-7" data-line-number="7">  <span class="co"># Comprobamos si es par calculando el resto al dividir entre 2: si al dividir suma entre 2 el resto es 0 ==&gt; es par</span></a>
+<a class="sourceLine" id="cb605-8" data-line-number="8">  </a>
+<a class="sourceLine" id="cb605-9" data-line-number="9">  par &lt;-<span class="st"> </span>suma <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb605-10" data-line-number="10">  </a>
+<a class="sourceLine" id="cb605-11" data-line-number="11">  <span class="co"># Devolvemos la salida</span></a>
+<a class="sourceLine" id="cb605-12" data-line-number="12">  <span class="kw">return</span>(par)</a>
+<a class="sourceLine" id="cb605-13" data-line-number="13">}</a>
+<a class="sourceLine" id="cb605-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb605-15" data-line-number="15"><span class="co"># Aplicamos la función</span></a>
+<a class="sourceLine" id="cb605-16" data-line-number="16"><span class="kw">pares</span>(<span class="dv">1</span>, <span class="dv">3</span>)</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb605"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb605-1" data-line-number="1"><span class="kw">pares</span>(<span class="dv">1</span>, <span class="dv">0</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb607"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb607-1" data-line-number="1"><span class="kw">pares</span>(<span class="dv">1</span>, <span class="dv">0</span>)</a></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb607"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb607-1" data-line-number="1"><span class="kw">pares</span>(<span class="dv">2</span>, <span class="dv">6</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb609"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb609-1" data-line-number="1"><span class="kw">pares</span>(<span class="dv">2</span>, <span class="dv">6</span>)</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb609"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb609-1" data-line-number="1"><span class="kw">pares</span>(<span class="dv">2</span>, <span class="dv">7</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb611"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb611-1" data-line-number="1"><span class="kw">pares</span>(<span class="dv">2</span>, <span class="dv">7</span>)</a></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <p>También se puede definir directamente como</p>
-<div class="sourceCode" id="cb611"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb611-1" data-line-number="1"><span class="co"># Definimos función</span></a>
-<a class="sourceLine" id="cb611-2" data-line-number="2">pares &lt;-<span class="st"> </span><span class="cf">function</span>(x, y) {</a>
-<a class="sourceLine" id="cb611-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb611-4" data-line-number="4">  <span class="co"># Devolvemos la salida</span></a>
-<a class="sourceLine" id="cb611-5" data-line-number="5">  <span class="kw">return</span>((x <span class="op">+</span><span class="st"> </span>y) <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb611-6" data-line-number="6">}</a>
-<a class="sourceLine" id="cb611-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb611-8" data-line-number="8"><span class="kw">pares</span>(<span class="dv">1</span>, <span class="dv">3</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb613"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb613-1" data-line-number="1"><span class="co"># Definimos función</span></a>
+<a class="sourceLine" id="cb613-2" data-line-number="2">pares &lt;-<span class="st"> </span><span class="cf">function</span>(x, y) {</a>
+<a class="sourceLine" id="cb613-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb613-4" data-line-number="4">  <span class="co"># Devolvemos la salida</span></a>
+<a class="sourceLine" id="cb613-5" data-line-number="5">  <span class="kw">return</span>((x <span class="op">+</span><span class="st"> </span>y) <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb613-6" data-line-number="6">}</a>
+<a class="sourceLine" id="cb613-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb613-8" data-line-number="8"><span class="kw">pares</span>(<span class="dv">1</span>, <span class="dv">3</span>)</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb613"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb613-1" data-line-number="1"><span class="kw">pares</span>(<span class="dv">1</span>, <span class="dv">0</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb615"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb615-1" data-line-number="1"><span class="kw">pares</span>(<span class="dv">1</span>, <span class="dv">0</span>)</a></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb615"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb615-1" data-line-number="1"><span class="kw">pares</span>(<span class="dv">2</span>, <span class="dv">6</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb617"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb617-1" data-line-number="1"><span class="kw">pares</span>(<span class="dv">2</span>, <span class="dv">6</span>)</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb617"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb617-1" data-line-number="1"><span class="kw">pares</span>(<span class="dv">2</span>, <span class="dv">7</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb619"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb619-1" data-line-number="1"><span class="kw">pares</span>(<span class="dv">2</span>, <span class="dv">7</span>)</a></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 </details>
 <p> </p>
@@ -311,33 +311,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Solución:</li>
 </ul>
-<div class="sourceCode" id="cb619"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb619-1" data-line-number="1"><span class="co"># Definimos función</span></a>
-<a class="sourceLine" id="cb619-2" data-line-number="2">proximo_par &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</a>
-<a class="sourceLine" id="cb619-3" data-line-number="3">  </a>
-<a class="sourceLine" id="cb619-4" data-line-number="4">  <span class="co"># ¿par? TRUE/FALSE</span></a>
-<a class="sourceLine" id="cb619-5" data-line-number="5">  par &lt;-<span class="st"> </span>(x <span class="op">%%</span><span class="st"> </span><span class="dv">2</span>) <span class="op">==</span><span class="st"> </span><span class="dv">0</span></a>
-<a class="sourceLine" id="cb619-6" data-line-number="6">  </a>
-<a class="sourceLine" id="cb619-7" data-line-number="7">  <span class="co"># Si es par, devolvemos el propio número (era par), sino le sumamos uno</span></a>
-<a class="sourceLine" id="cb619-8" data-line-number="8">  <span class="cf">if</span> (par) {</a>
-<a class="sourceLine" id="cb619-9" data-line-number="9">    </a>
-<a class="sourceLine" id="cb619-10" data-line-number="10">    <span class="kw">return</span>(<span class="kw">list</span>(<span class="st">&quot;par&quot;</span> =<span class="st"> </span>par, <span class="st">&quot;proximo&quot;</span> =<span class="st"> </span>x))</a>
-<a class="sourceLine" id="cb619-11" data-line-number="11">    </a>
-<a class="sourceLine" id="cb619-12" data-line-number="12">  } <span class="cf">else</span> { <span class="co"># Si no es par, devolvemos el siguiente (que será par) </span></a>
-<a class="sourceLine" id="cb619-13" data-line-number="13">    </a>
-<a class="sourceLine" id="cb619-14" data-line-number="14">    <span class="kw">return</span>(<span class="kw">list</span>(<span class="st">&quot;par&quot;</span> =<span class="st"> </span>par, <span class="st">&quot;proximo&quot;</span> =<span class="st"> </span>x <span class="op">+</span><span class="st"> </span><span class="dv">1</span>))</a>
-<a class="sourceLine" id="cb619-15" data-line-number="15">  </a>
-<a class="sourceLine" id="cb619-16" data-line-number="16">  }</a>
-<a class="sourceLine" id="cb619-17" data-line-number="17">  <span class="co"># Devolvemos una lista de dos elementos: par (TRUE/FALSE) y proximo (si es par, el propio x, sino x + 1)</span></a>
-<a class="sourceLine" id="cb619-18" data-line-number="18">}</a>
-<a class="sourceLine" id="cb619-19" data-line-number="19"></a>
-<a class="sourceLine" id="cb619-20" data-line-number="20"><span class="co"># Aplicamos la función</span></a>
-<a class="sourceLine" id="cb619-21" data-line-number="21"><span class="kw">proximo_par</span>(<span class="dv">7</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb621"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb621-1" data-line-number="1"><span class="co"># Definimos función</span></a>
+<a class="sourceLine" id="cb621-2" data-line-number="2">proximo_par &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</a>
+<a class="sourceLine" id="cb621-3" data-line-number="3">  </a>
+<a class="sourceLine" id="cb621-4" data-line-number="4">  <span class="co"># ¿par? TRUE/FALSE</span></a>
+<a class="sourceLine" id="cb621-5" data-line-number="5">  par &lt;-<span class="st"> </span>(x <span class="op">%%</span><span class="st"> </span><span class="dv">2</span>) <span class="op">==</span><span class="st"> </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb621-6" data-line-number="6">  </a>
+<a class="sourceLine" id="cb621-7" data-line-number="7">  <span class="co"># Si es par, devolvemos el propio número (era par), sino le sumamos uno</span></a>
+<a class="sourceLine" id="cb621-8" data-line-number="8">  <span class="cf">if</span> (par) {</a>
+<a class="sourceLine" id="cb621-9" data-line-number="9">    </a>
+<a class="sourceLine" id="cb621-10" data-line-number="10">    <span class="kw">return</span>(<span class="kw">list</span>(<span class="st">&quot;par&quot;</span> =<span class="st"> </span>par, <span class="st">&quot;proximo&quot;</span> =<span class="st"> </span>x))</a>
+<a class="sourceLine" id="cb621-11" data-line-number="11">    </a>
+<a class="sourceLine" id="cb621-12" data-line-number="12">  } <span class="cf">else</span> { <span class="co"># Si no es par, devolvemos el siguiente (que será par) </span></a>
+<a class="sourceLine" id="cb621-13" data-line-number="13">    </a>
+<a class="sourceLine" id="cb621-14" data-line-number="14">    <span class="kw">return</span>(<span class="kw">list</span>(<span class="st">&quot;par&quot;</span> =<span class="st"> </span>par, <span class="st">&quot;proximo&quot;</span> =<span class="st"> </span>x <span class="op">+</span><span class="st"> </span><span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb621-15" data-line-number="15">  </a>
+<a class="sourceLine" id="cb621-16" data-line-number="16">  }</a>
+<a class="sourceLine" id="cb621-17" data-line-number="17">  <span class="co"># Devolvemos una lista de dos elementos: par (TRUE/FALSE) y proximo (si es par, el propio x, sino x + 1)</span></a>
+<a class="sourceLine" id="cb621-18" data-line-number="18">}</a>
+<a class="sourceLine" id="cb621-19" data-line-number="19"></a>
+<a class="sourceLine" id="cb621-20" data-line-number="20"><span class="co"># Aplicamos la función</span></a>
+<a class="sourceLine" id="cb621-21" data-line-number="21"><span class="kw">proximo_par</span>(<span class="dv">7</span>)</a></code></pre></div>
 <pre><code>## $par
 ## [1] FALSE
 ## 
 ## $proximo
 ## [1] 8</code></pre>
-<div class="sourceCode" id="cb621"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb621-1" data-line-number="1"><span class="kw">proximo_par</span>(<span class="dv">8</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb623"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb623-1" data-line-number="1"><span class="kw">proximo_par</span>(<span class="dv">8</span>)</a></code></pre></div>
 <pre><code>## $par
 ## [1] TRUE
 ## 

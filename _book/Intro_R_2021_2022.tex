@@ -2269,9 +2269,9 @@ Este paquete contiene una orden para comparar el tiempo de dos órdenes: necesit
 
 \begin{verbatim}
 ## Unit: microseconds
-##         expr    min      lq      mean   median      uq      max neval cld
-##      sort(x) 61.073 75.7945 128.48072 122.1875 133.542 2419.649  1000   b
-##  x[order(x)] 43.100 51.1910  83.34992  82.9075  90.034 1498.709  1000  a
+##         expr     min       lq     mean   median       uq       max neval cld
+##      sort(x) 125.061 240.5335 650.4693 261.7675 309.6525 169912.76  1000   a
+##  x[order(x)]  91.097 167.0730 359.4541 180.8995 209.7690  53435.15  1000   a
 \end{verbatim}
 
 Sí, estás viendo bien: aunque a priori parezca contraintuitivo, es más corto obtener los índices ordenados de un vector, y luego reordenarlo en base a esos índices, que la ordenación directa a través del comando \texttt{sort()} (ya que usan algoritmos de ordenación distintos).
@@ -2780,7 +2780,7 @@ La función \texttt{Sys.time()} accede al sistema de nuestro ordenador para deci
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "2021-09-08 11:29:36 CEST"
+## [1] "2021-09-08 12:50:00 CEST"
 \end{verbatim}
 
 ~
@@ -3105,9 +3105,9 @@ Veamos qué es más eficiente con el ya conocido paquete \texttt{\{microbenchmar
 ##                                                                           expr
 ##  for (i in 1:dim(x)[1]) {     suma_por_filas[i] <- sum(x[i, ], na.rm = TRUE) }
 ##                                apply(x, MARGIN = 1, FUN = "sum", na.rm = TRUE)
-##       min        lq       mean    median       uq      max neval cld
-##  2607.994 4053.0550 4586.44823 4414.4410 5122.586 9400.864   100   b
-##    27.707   54.1985   70.23329   67.9855   82.126  150.828   100  a
+##       min        lq       mean   median        uq       max neval cld
+##  5265.692 7738.8675 10209.1556 9282.173 11805.926 25933.019   100   b
+##    44.271  104.3165   139.5918  125.009   161.149   703.218   100  a
 \end{verbatim}
 
 \textbf{¡El bucle nos tarda 50 veces más que el \texttt{apply}!} Di no a los bucles: casi siempre hay una forma mejor de hacerlo.
@@ -4471,6 +4471,32 @@ Aunque normalmente el conjunto que recorre el bucle suelen ser índices numéric
 
 ~
 
+\textbf{CONSEJO}: evita al máximo los bucles, suele existir una forma más eficiente de programarlo. Veamos un ejemplo muy sencillo: dado un vector de índices \texttt{idx}, queremos calcular su cuadrado y guardarlo. Vamos a comparar como sería con un sencillo bucle y de forma vectorial, repitiéndolo 1000 veces para sacar tiempos medios, haciendo uso del paquete \texttt{\{microbenchmark\}}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{idx <-}\StringTok{ }\DecValTok{1}\OperatorTok{:}\FloatTok{1e4}
+\NormalTok{x <-}\StringTok{ }\NormalTok{y <-}\StringTok{ }\KeywordTok{rep}\NormalTok{(}\DecValTok{0}\NormalTok{, }\KeywordTok{length}\NormalTok{(idx))}
+\NormalTok{microbenchmark}\OperatorTok{::}\KeywordTok{microbenchmark}\NormalTok{(x <-}\StringTok{ }\NormalTok{idx}\OperatorTok{^}\DecValTok{2}\NormalTok{, }
+                               \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in}\NormalTok{ idx) \{  y[i] <-}\StringTok{ }\NormalTok{idx[i]}\OperatorTok{^}\DecValTok{2}\NormalTok{\},}
+                               \DataTypeTok{times =} \FloatTok{1e3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Unit: microseconds
+##                                     expr      min       lq      mean   median
+##                               x <- idx^2   25.959   70.395  109.1929   88.813
+##  for (i in idx) {     y[i] <- idx[i]^2 } 2865.757 3728.834 7190.7898 4956.790
+##        uq        max neval cld
+##   119.357   2996.265  1000  a 
+##  6604.146 305836.035  1000   b
+\end{verbatim}
+
+Una tarea tan sencilla, \textbf{programada en un bucle, tarda 40 veces más que hacerlo de forma vectorial} (elevando cada elemento al cuadrado, iterando internamente, sin necesidad de implementar un bucle).
+
+~
+
 Otra manera de diseñar un bucle es con la \textbf{estructura \texttt{while\{\}}}, que ejecutará el \textbf{bucle un número de veces a priori desconocido} hasta que la condición impuesta deje de ser \texttt{TRUE}.
 
 \begin{Shaded}
@@ -5437,7 +5463,7 @@ Para la \textbf{fecha con hora actual} podemos usar una función similar, la fun
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 1631093385
+## [1] 1631098222
 \end{verbatim}
 
 \begin{Shaded}
@@ -5470,13 +5496,13 @@ Para la \textbf{fecha con hora actual} podemos usar una función similar, la fun
 
 \begin{verbatim}
 ## $sec
-## [1] 45.1763
+## [1] 21.53896
 ## 
 ## $min
-## [1] 29
+## [1] 50
 ## 
 ## $hour
-## [1] 11
+## [1] 12
 ## 
 ## $mday
 ## [1] 8
@@ -5514,9 +5540,9 @@ Para la \textbf{fecha con hora actual} podemos usar una función similar, la fun
 
 \begin{verbatim}
 ## List of 11
-##  $ sec   : num 45.2
-##  $ min   : int 29
-##  $ hour  : int 11
+##  $ sec   : num 21.5
+##  $ min   : int 50
+##  $ hour  : int 12
 ##  $ mday  : int 8
 ##  $ mon   : int 8
 ##  $ year  : int 121
@@ -5535,7 +5561,7 @@ Para la \textbf{fecha con hora actual} podemos usar una función similar, la fun
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 29
+## [1] 50
 \end{verbatim}
 
 Además tenemos disponibles funciones para extraer facilmente algunas variables temporales como el día de la semana, el mes o el cuatrimestre, con las funciones \texttt{weekdays()}, \texttt{months()}, and \texttt{quarters()}.
@@ -5602,7 +5628,7 @@ La función \texttt{difftime()} nos permite además hallar distancias entre fech
 \end{Shaded}
 
 \begin{verbatim}
-## Time difference of 600.0039 days
+## Time difference of 600.0598 days
 \end{verbatim}
 
 \begin{Shaded}
@@ -5612,7 +5638,7 @@ La función \texttt{difftime()} nos permite además hallar distancias entre fech
 \end{Shaded}
 
 \begin{verbatim}
-## Time difference of 14400.09 hours
+## Time difference of 14401.44 hours
 \end{verbatim}
 
 \begin{Shaded}
@@ -5622,7 +5648,7 @@ La función \texttt{difftime()} nos permite además hallar distancias entre fech
 \end{Shaded}
 
 \begin{verbatim}
-## Time difference of 85.71484 weeks
+## Time difference of 85.72283 weeks
 \end{verbatim}
 
 \hypertarget{consejos-y-tips-7}{%
@@ -6438,7 +6464,7 @@ Ejercicio 2: define una función propia llamada \texttt{proximo\_par} que, dados
 
 \textbf{Hasta aquí el aperitivo}
 
-\includegraphics{Intro_R_2021_2022_files/figure-latex/unnamed-chunk-189-1.pdf}
+\includegraphics{Intro_R_2021_2022_files/figure-latex/unnamed-chunk-190-1.pdf}
 
 Quizás creas que te queda un mundo por aprender:
 
@@ -6464,7 +6490,7 @@ No te voy a mentir: no tendrías días de tu vida para ir investigando todos los
 
 }
 
-\caption{Cuando intentas aprenderte todos los paquetes.}\label{fig:unnamed-chunk-190}
+\caption{Cuando intentas aprenderte todos los paquetes.}\label{fig:unnamed-chunk-191}
 \end{figure}
 
 Estos primeros capítulos suelen ser un poco «aburridos»
@@ -6530,8 +6556,8 @@ Una forma de ver el experimento de lanzar una moneda es pensar que tenemos una \
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] "cruz" "cara" "cruz" "cara" "cruz" "cara" "cruz" "cara" "cara" "cara"
-## [11] "cruz" "cruz" "cara" "cruz" "cruz" "cruz" "cruz" "cruz" "cara" "cara"
+##  [1] "cara" "cruz" "cara" "cara" "cara" "cara" "cruz" "cara" "cruz" "cara"
+## [11] "cara" "cruz" "cara" "cara" "cara" "cruz" "cruz" "cara" "cruz" "cruz"
 \end{verbatim}
 
 Fíjate que hemos indicado explícitamente \texttt{replace\ =\ TRUE} para decirle que aunque solo tengamos dos opciones, vamos a permitir que tras extraer una bola, la apuntemos, y la volvamos a introducir (puede salir de nuevo). ¿Qué sucede si \texttt{replace\ =\ FALSE} (su valor por defecto)?
@@ -6563,8 +6589,8 @@ Generar experimentos dicotómicos de forma binario nos permite hacer cálculos s
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 1 0 1 0 0 1 0 0 0 1 1 1 1 0 0 0 0 1 0 0 0 0 1 0 0 1 0 1 0 0 1 1 1 1 0 1 1 1
-## [39] 0 0 0 0 0 0 1 1 0 0 1 1
+##  [1] 1 1 1 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 1 1 1 1 1 0 0 0 1 0 0
+## [39] 0 1 0 1 1 0 0 0 0 1 1 0
 \end{verbatim}
 
 \begin{Shaded}
@@ -6575,7 +6601,7 @@ Generar experimentos dicotómicos de forma binario nos permite hacer cálculos s
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 22
+## [1] 18
 \end{verbatim}
 
 \begin{Shaded}
@@ -6586,7 +6612,7 @@ Generar experimentos dicotómicos de forma binario nos permite hacer cálculos s
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 28
+## [1] 32
 \end{verbatim}
 
 \begin{Shaded}
@@ -6597,7 +6623,7 @@ Generar experimentos dicotómicos de forma binario nos permite hacer cálculos s
 \end{Shaded}
 
 \begin{verbatim}
-## 44% de cruces
+## 36% de cruces
 \end{verbatim}
 
 El argumento \texttt{prob\ =\ ...} nos permite generar experimentos que sean dicotómicos pero que \textbf{no sean equiprobables}, algo similar a \textbf{lanzar una moneda trucada} (por ejemplo, 30\% caras y 70\% cruces). Nótese como dichas probabilidades deben ser introducidas como proporciones (divididas entre 100).
@@ -6613,7 +6639,7 @@ El argumento \texttt{prob\ =\ ...} nos permite generar experimentos que sean dic
 \end{Shaded}
 
 \begin{verbatim}
-## 70% de cruces
+## 58% de cruces
 \end{verbatim}
 
 📝Ejercicio: ¿cómo simularías 200 tiradas de un dado?
@@ -6632,12 +6658,12 @@ El argumento \texttt{prob\ =\ ...} nos permite generar experimentos que sean dic
 \end{Shaded}
 
 \begin{verbatim}
-##   [1] 6 4 6 4 4 6 6 4 4 3 5 5 1 1 5 1 3 1 5 2 1 6 6 2 1 1 4 3 4 1 3 2 6 5 2 1 5
-##  [38] 2 6 1 6 4 1 5 5 1 4 4 6 6 5 6 3 4 6 1 3 1 1 5 1 2 3 6 5 2 5 6 1 1 1 5 5 1
-##  [75] 2 5 3 2 5 5 6 4 4 6 5 2 4 1 5 4 6 1 4 3 1 2 1 3 6 6 1 5 3 2 1 6 2 6 6 4 3
-## [112] 5 1 2 2 6 5 2 2 6 1 6 6 1 2 3 2 5 1 3 5 5 3 5 3 6 3 2 6 1 3 6 3 3 2 3 5 5
-## [149] 3 4 1 5 2 1 2 3 4 1 1 3 5 6 6 3 6 5 2 6 6 6 4 6 3 3 3 4 2 3 1 5 6 3 4 3 6
-## [186] 1 4 3 6 1 3 1 1 4 1 5 6 3 5 6
+##   [1] 3 2 1 3 5 1 2 6 4 2 5 5 1 6 5 1 1 6 6 3 2 6 6 4 2 2 5 3 1 3 1 5 2 5 1 2 2
+##  [38] 5 6 1 1 5 3 5 6 3 1 3 6 4 3 4 4 3 2 5 3 5 2 2 4 4 5 2 2 2 3 4 3 5 2 6 3 4
+##  [75] 1 3 2 5 3 3 4 6 4 1 6 5 6 4 1 4 1 6 1 6 3 6 5 6 4 1 6 4 1 6 6 2 3 3 4 1 2
+## [112] 6 6 4 6 6 5 6 6 3 3 2 5 1 2 6 2 3 5 5 2 2 2 5 5 4 3 4 3 4 1 1 5 6 4 1 4 5
+## [149] 6 4 2 6 5 5 6 4 3 4 5 5 5 1 5 3 6 3 1 4 6 1 3 5 4 1 1 5 2 1 5 4 2 5 3 2 3
+## [186] 6 6 3 6 5 1 5 6 1 4 4 1 4 1 5
 \end{verbatim}
 
 \hypertarget{pseudoaleatorio}{%
@@ -6652,7 +6678,7 @@ Si has hecho varias pruebas con los códigos de arriba quizás ya hayas visto qu
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 1 0 1 1 0 0 0 0 0 1 1 1 0 1 1 0 1 0 0 1
+##  [1] 0 0 1 0 0 0 0 0 1 0 1 0 0 0 0 1 1 0 0 1
 \end{verbatim}
 
 \begin{Shaded}
@@ -6662,7 +6688,7 @@ Si has hecho varias pruebas con los códigos de arriba quizás ya hayas visto qu
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 0 1 1 1 0 0 1 1 1 1 1 1 0 1 0 1 1 0 0 0
+##  [1] 1 1 1 0 0 1 0 0 1 0 0 0 0 1 1 0 0 1 1 1
 \end{verbatim}
 
 \begin{Shaded}
@@ -6672,7 +6698,7 @@ Si has hecho varias pruebas con los códigos de arriba quizás ya hayas visto qu
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 0 1 1 0 0 1 1 0 1 0 1 1 0 1 1 1 1 1 1 0
+##  [1] 1 0 0 1 1 0 1 1 0 0 0 1 0 1 0 1 0 0 0 0
 \end{verbatim}
 
 \textbf{¿Y si quisiéramos generar toda la clase la misma tirada de moneda?}
