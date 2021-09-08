@@ -193,6 +193,8 @@ knitr::include_graphics('img/me_github.jpg')
 
 * [Big Book of R](https://www.bigbookofr.com/index.html): **recopilatorio de tutoriales de `R`** en distintos campos.
 
+* [Incursión a los modelos de regresión en `R`](https://bookdown.org/roback/bookdown-BeyondMLR/): manual sobre el uso de distintos modelos predictivos basados los Modelos Lineales Generalizados (GLM).
+
 * **Paquete para aprender `R`**: el paquete `{swirl}` permite ir aprendiendo de forma sencilla (con preguntas tipo test) algunos conceptos básicos de `R` (muchos de ellos vistos en este manual). Puedes consultar la documentación en su [página web](https://swirlstats.com/)
 
 ```{r swirl, echo = FALSE, fig.align = 'center',  include = identical(knitr:::pandoc_to(), 'html'), fig.link = 'https://swirlstats.com/', out.width = '60%'}
@@ -215,9 +217,9 @@ knitr::include_graphics('img/tidyverse.jpg')
   
 * **Paquetes para la visualización de datos**: los paquetes `{ggplot2}` y `{plotly}` son probablemente los paquetes por excelencia en `R` para la visualización de datos. El **primero es uno de los paquetes más potentes de `R`, dentro del entorno `{tidyverse}`**, que no solo nos permite crear gráficos muy limpios y elegantes con pocas líneas sino que su sintaxis es muy intuitiva respecto a los datos visualizados. La idea inicial es poder aprender algo de `{ggplot2}` en futuros capítulos pero puedes empezar si quieres echando un vistazo a su [web oficial](https://ggplot2.tidyverse.org/). También te recomiendo el [tutorial de Cédric Scherer](https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/). El segundo paquete, `{plotly}` puede llegar a tener las mismas funcionalidades pero su programación es más tediosa. Su principal ventaja es que **genera gráficos interactivos: gráficos HTML (como si fuera una página web)** (no una imagen estática) que permite al usuario interactuar con los datos pasando el ratón (incluso permite crear menús). Un ejemplo es la [web de visualización covid de Asturias](https://dgspasturias.shinyapps.io/panel_de_indicadores_asturias/) que elaboré durante la pandemia para el Gobierno de Asturias (la web en sí está elaborada con `{shiny}`, un paquete de `R` que [permite crear aplicaciones web](https://shiny.rstudio.com/tutorial/)).
 
-* **Comunidad de R hispano**: tenemos un [grupo de Discord](https://discord.gg/7ueKQqeaGr) y [grupo de Telegram](https://t.me/hispanoverse) varios usuarios de R en España para compartir recursos.
-
 * **Generación de informes desde R**: el paquete `{rmarkdown}` permite [generar directamente informes](https://rmarkdown.rstudio.com/) que mezclen texto, fórmulas matemáticas, gráficas y código `R` (como este mismo manual), sin necesidad de importarlos a otras herramientas de Office.
+
+* **Comunidad de R hispano**: tenemos un [grupo de Discord](https://discord.gg/7ueKQqeaGr) y [grupo de Telegram](https://t.me/hispanoverse) varios usuarios de R en España para compartir recursos.
 
 
 
