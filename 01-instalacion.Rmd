@@ -56,10 +56,6 @@ knitr::include_graphics("./img/primera_suma.jpg")
 
 ![](img/logo_info.png){width=4%}  **Asignación**: como habrás advertido, en `R` usaremos `<-` para asignar valores en lugar de `=`, como una flecha.
 
-&nbsp;  
-
-![](img/logo_info.png){width=4%}  **Línea de consola**: como habrás advertido, en `R` usaremos `<-` para asignar valores en lugar de `=`, como una flecha.
-
 &nbsp; 
 
 &nbsp; 
