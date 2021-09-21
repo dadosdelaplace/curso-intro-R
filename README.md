@@ -16,7 +16,13 @@ GPLv3](https://img.shields.io/badge/license-GPLv3-blue.svg)](https://www.gnu.org
             alt="chat on Discord"></a> --->
 
 
-<div align="center">
+<div align="left">
+
+            
+
+### ¿Cómo contribuir al proyecto?
+            
+ <a href="https://patreon.com/dadosdelaplace"><img border="0" alt="Patreon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Patreon_logomark.svg/1024px-Patreon_logomark.svg.png" width="70" height="70"></a>  
             
 ### ✨ Algunas redes donde puedes encontrarme :man_technologist:👀👇🏻
  
