@@ -26,7 +26,7 @@ GPLv3](https://img.shields.io/badge/license-GPLv3-blue.svg)](https://www.gnu.org
 <a href="mailto:alvarezljavier@uniovi.es"><img border="0" alt="Email" src="https://assets.dryicons.com/uploads/icon/svg/8007/c804652c-fae4-43d7-b539-187d6a408254.svg" width="40" height="40"></a>
 </div>
 
-**Manual básico de R** (https://aprendiendo-r-intro.netlify.app) diseñado para la asignatura de «Descripción y Exploración de Datos» del grado de Estadística Aplicada (UCM, curso académico 2021-2022), elaborado por **Javier Álvarez Liébana**. Dicho manual/tutorial ha sido elaborado en **R Markdown** y [bookdown](https://github.com/rstudio/bookdown). Puedes ver un resumen de las funcionalidades de dicho paquete, así como de otros documentados por el equipo de [R Studio](https://www.rstudio.com/) en sus [esquemas resumen](https://www.rstudio.com/resources/cheatsheets/).
+**Manual básico de R** (https://aprendiendo-r-intro.netlify.app) diseñado para empezar desde cero, elaborado por **Javier Álvarez Liébana**. Dicho manual/tutorial ha sido elaborado en **R Markdown** y [bookdown](https://github.com/rstudio/bookdown). Puedes ver un resumen de las funcionalidades de dicho paquete, así como de otros documentados por el equipo de [R Studio](https://www.rstudio.com/) en sus [esquemas resumen](https://www.rstudio.com/resources/cheatsheets/).
 
 ```{r eval = FALSE}
 install.packages("bookdown")
