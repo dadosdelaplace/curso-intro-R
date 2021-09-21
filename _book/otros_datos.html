@@ -57,7 +57,11 @@
 <li class="book-part">Listas y funciones</li>
 <li><a class="active" href="otros_datos.html"><span class="header-section-number">8</span> Listas y factores</a></li>
 <li><a class="" href="FUNCIONES.html"><span class="header-section-number">9</span> Creación de funciones</a></li>
+<li class="book-part">Epílogo</li>
 <li><a class="" href="qu%C3%A9-sabemos-hacer.html"><span class="header-section-number">10</span> ¿Qué sabemos hacer?</a></li>
+<li><a class="" href="aleatorio_1.html"><span class="header-section-number">11</span> Incursión aleatoria</a></li>
+<li><a class="" href="contribuye-al-proyecto.html"><span class="header-section-number">12</span> Contribuye al proyecto</a></li>
+<li><a class="" href="bibliograf%C3%ADa.html">Bibliografía</a></li>
 </ul>
 
         <div class="book-extra">
@@ -673,7 +677,7 @@ Imagen/gráfica 8.2: Paquete lubridate.
 <pre><code>## [1] "2021-09-21"</code></pre>
 <div class="sourceCode" id="cb532"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="http://lubridate.tidyverse.org/reference/now.html">now</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "2021-09-21 13:41:21 CEST"</code></pre>
+<pre><code>## [1] "2021-09-21 14:02:47 CEST"</code></pre>
 <p>Además tenemos disponibles en dicho paquete funciones para extraer facilmente algunas variables temporales como el día de la semana, el mes o el cuatrimestre, con las funciones <code><a href="http://lubridate.tidyverse.org/reference/year.html">year()</a></code>, <code><a href="https://rdrr.io/r/base/weekday.POSIXt.html">months()</a></code>, <code><a href="http://lubridate.tidyverse.org/reference/day.html">day()</a></code> o <code><a href="http://lubridate.tidyverse.org/reference/day.html">wday()</a></code> (día de la semana).</p>
 <div class="sourceCode" id="cb534"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fecha</span> <span class="op">&lt;-</span> <span class="fu"><a href="http://lubridate.tidyverse.org/reference/now.html">now</a></span><span class="op">(</span><span class="op">)</span>
@@ -690,13 +694,13 @@ Imagen/gráfica 8.2: Paquete lubridate.
 <pre><code>## [1] 2</code></pre>
 <div class="sourceCode" id="cb542"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="http://lubridate.tidyverse.org/reference/hour.html">hour</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 13</code></pre>
+<pre><code>## [1] 14</code></pre>
 <div class="sourceCode" id="cb544"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="http://lubridate.tidyverse.org/reference/minute.html">minute</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 41</code></pre>
+<pre><code>## [1] 2</code></pre>
 <div class="sourceCode" id="cb546"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="http://lubridate.tidyverse.org/reference/second.html">second</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 21.78808</code></pre>
+<pre><code>## [1] 48.00613</code></pre>
 <div class="sourceCode" id="cb548"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="http://lubridate.tidyverse.org/reference/week.html">week</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span> <span class="co"># Número de semana (del año)</span></code></pre></div>
 <pre><code>## [1] 38</code></pre>

@@ -57,7 +57,11 @@
 <li class="book-part">Listas y funciones</li>
 <li><a class="" href="otros_datos.html"><span class="header-section-number">8</span> Listas y factores</a></li>
 <li><a class="" href="FUNCIONES.html"><span class="header-section-number">9</span> Creación de funciones</a></li>
+<li class="book-part">Epílogo</li>
 <li><a class="active" href="qu%C3%A9-sabemos-hacer.html"><span class="header-section-number">10</span> ¿Qué sabemos hacer?</a></li>
+<li><a class="" href="aleatorio_1.html"><span class="header-section-number">11</span> Incursión aleatoria</a></li>
+<li><a class="" href="contribuye-al-proyecto.html"><span class="header-section-number">12</span> Contribuye al proyecto</a></li>
+<li><a class="" href="bibliograf%C3%ADa.html">Bibliografía</a></li>
 </ul>
 
         <div class="book-extra">
@@ -178,7 +182,7 @@
 <li>¿Cómo <strong>manejo datos de forma más profunda</strong> (filtrar, operar con ellos, etc)?</li>
 <li>¿Cómo realizo <strong>análisis estadísticos</strong>?</li>
 <li>¿Cómo <strong>visualizo datos</strong>?</li>
-<li>¿Cómo <strong>generar informes</strong> con los resultados (ver <span class="citation">(Xie <a href="qu%C3%A9-sabemos-hacer.html#ref-xie2015">2015</a>)</span>)?</li>
+<li>¿Cómo <strong>generar informes</strong> con los resultados (ver <span class="citation">(Xie <a href="bibliograf%C3%ADa.html#ref-xie2015">2015</a>)</span>)?</li>
 <li>¿Cómo <strong>crear webs interactivas</strong> para la visualización y análisis de datos?</li>
 </ul>
 <p>No te voy a mentir: no tendrías días de tu vida para ir investigando todos los paquetes que hay hechos en <code>R</code> (ni tú ni nadie). Pero la idea de estos primeros capítulos no era que fueses experto en <code>R</code> sino que vieses que, <strong>con pocas líneas de código y con cierta práctica</strong>, se puede empezar a tener herramientas para <strong>comenzar nuestra andadura</strong> en el análisis estadístico a través de este software. No te obsesiones con saberte todos los comandos de todos los paquetes o acabarás loco/a.</p>
@@ -197,133 +201,14 @@ Imagen/gráfica 10.1: Cuando intentas aprenderte todos los paquetes.
 </ul>
 <p><strong>Lo importante es entender, no memorizar comandos</strong></p>
 <p>Pero aunque sean más aburridos estos primeros conceptos, <strong>son necesarios para empezar a caminar</strong>: el inicio de aprender un idioma siempre es un poco meh, pero sin las reglas básicas de gramática y un mínimo de léxico nunca podrás empezar.</p>
-<div id="aleatorio_1" class="section level2">
-<h2>
-<span class="header-section-number">10.1</span> Incursión aleatoria<a class="anchor" aria-label="anchor" href="#aleatorio_1"><i class="fas fa-link"></i></a>
-</h2>
-<p>Antes de acabar esta breve introducción a <code>R</code> merece la pena hablar de <strong>«lo aleatorio»</strong> y su generación en <code>R</code>.</p>
-<p><strong>¿Cómo se define la aleatoriedad?</strong></p>
-<p>Si alguna vez has interactuado con matemáticos o estadísticos (Dios te libre), seguramente es una palabra que les hayas escuchado mentar: <strong>aleatoriedad</strong>. Existen múltiples definiciones, y este manual tampoco pretende ser un tratado de filosofía de la ciencia, pero podemos definir la aleatoriedad de la siguiente manera:</p>
-<div class="rmdnote">
-<p><strong><span style="color: #4197D2;">Aleatoriedad</span></strong></p>
-<p>Propiedad de todo proceso cuyo resultado final no se puede conocer con exactitud - a nivel individual o particular - antes de que se realice, aunque las condiciones iniciales se mantengan constantes (ejemplo: lanzar un dado).</p>
-<p><strong>¿Qué NO significa la palabra «aleatorio»?</strong></p>
-<p>🛑 <strong>NO</strong> tiene que implicar algo <strong>caótico</strong>.<br>
-🛑 <strong>NO</strong> significa que no se pueda <strong>predecir</strong> a nivel de conjunto.<br>
-🛑 <strong>NO</strong> significa que <strong>carezca de un patrón</strong> de comportamiento.</p>
-</div>
-<p>El ejemplo perfecto para <strong>entender las implicaciones de algo aleatorio es un dado</strong>, ya que no podemos saber con exactitud cuál será la siguiente tirada, pero tiene un patrón: si tiramos un millón de veces, aproximadamente un sexto del total de tiradas serán un 1.</p>
-<p> </p>
-<p>En el análisis estadístico y en la programación en <code>R</code> nos vamos a encontrar con múltiples situaciones en las que <strong>lo aleatorio juega un papel importante</strong>, y aunque este sea un tutorial muy básico e introductorio, creo que es interesante conocer <strong>algunas formas muy sencillas de generar números aleatorios</strong> (o…no tanto, ahora llegamos a la Sección <a href="qu%C3%A9-sabemos-hacer.html#pseudoaleatorio">10.2</a>).</p>
-<p>Empecemos por lo más simple: vamos a <strong>simular tiradas de una moneda</strong>, asumiendo que solo tenemos dos opciones (eliminando la opción de caer de canto). Cuando tiramos una moneda es un experimento aleatorio, ya que no sabemos el resultado exacto de la siguiente tirada, pero sí sabemos que la probabilidad teórica es de 50-50, y que las únicas opciones a elegir son <code>cara</code> y <code>cruz</code>.</p>
-<p>Una forma de ver el experimento de lanzar una moneda es pensar que tenemos una <strong>urna con dos bolas (cara y cruz)</strong>, y empezamos a sacar bolas de la urna (<strong>permitiendo que al sacar una bola, se pueda devolver a la urna de nuevo</strong>). Eso es precisamente lo que hace la función <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code>, una función que nos seleccionará «aleatoriamente» elementos de una urna.</p>
-<ul>
-<li>
-<code>x</code>: los elementos distintos que tiene para elegir, que en nuestro caso serán <code>"cara"</code> y <code>"cruz"</code>.</li>
-<li>
-<code>size</code>: el número de bolas que queremos sacar de la urna.</li>
-<li>
-<code>replace</code>: si tras extraer devolvemos la bola a la urna (<code>replace = TRUE</code>) o si se queda fuera (<code>replace = FALSE</code>, valor por defecto).</li>
-<li>
-<code>prob</code>: la probabilidad que tiene cada elemento en caso de no ser equiprobables (valor por defecto).</li>
-</ul>
-<div class="sourceCode" id="cb639"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Tiramos 20 veces una moneda</span>
-<span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"cara"</span>, <span class="st">"cruz"</span><span class="op">)</span>, size <span class="op">=</span> <span class="fl">20</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [1] "cruz" "cara" "cara" "cruz" "cruz" "cruz" "cruz" "cruz" "cara" "cara"
-## [11] "cruz" "cara" "cara" "cruz" "cara" "cara" "cruz" "cara" "cara" "cara"</code></pre>
-<p>Fíjate que hemos indicado explícitamente <code>replace = TRUE</code> para decirle que aunque solo tengamos dos opciones, vamos a permitir que tras extraer una bola, la apuntemos, y la volvamos a introducir (puede salir de nuevo). ¿Qué sucede si <code>replace = FALSE</code> (su valor por defecto)?</p>
-<div class="sourceCode" id="cb641"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Tiramos 20 veces una moneda SIN reemplazamiento</span>
-<span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"cara"</span>, <span class="st">"cruz"</span><span class="op">)</span>, size <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></code></pre></div>
-<pre><code>## Error in sample.int(length(x), size, replace, prob): cannot take a sample larger than the population when 'replace = FALSE'</code></pre>
-<p><strong>Al tener solo dos opciones</strong>, y no permitir que al extraer bolas vuelvan a la urna, tras extraer las dos únicas bolas, <strong>el proceso no puede continuar</strong> hasta los 20 lanzamientos.</p>
-<p>Como seguramente te hayas percatado, lanzar una moneda es un experimento dicotómico, y dichos experimentos tienen una gran ventaja en programación y es que podemos escribirlo en binario: <code>0</code> para lo que llamemos fracaso (cara, por ejemplo), <code>1</code> para lo que llamemos éxito (cruz).</p>
-<p>Generar experimentos dicotómicos de forma binario nos permite hacer cálculos sobre las tiradas de forma muy sencilla e intuitiva, ya que nos permite pasar de tener cadenas de texto a números.</p>
-<div class="sourceCode" id="cb643"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Tiramos 50 veces una moneda: 0 es cara, 1 es cruz</span>
-<span class="va">n_tiradas</span> <span class="op">&lt;-</span> <span class="fl">50</span>
-<span class="va">tiradas</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">1</span>, size <span class="op">=</span> <span class="va">n_tiradas</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="va">tiradas</span></code></pre></div>
-<pre><code>##  [1] 1 1 0 1 0 1 0 1 1 1 1 1 1 1 1 1 1 0 0 1 1 1 1 0 1 0 0 1 0 0 0 1 0 0 1 0 0 1
-## [39] 1 1 0 0 1 1 0 0 1 1 0 0</code></pre>
-<div class="sourceCode" id="cb645"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Cantidad de cruces: sumamos los 1's</span>
-<span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">tiradas</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 29</code></pre>
-<div class="sourceCode" id="cb647"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Cantidad de caras: lo que son cruces</span>
-<span class="va">n_tiradas</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">tiradas</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 21</code></pre>
-<div class="sourceCode" id="cb649"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># % de caras</span>
-<span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fl">100</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">tiradas</span><span class="op">)</span> <span class="op">/</span> <span class="va">n_tiradas</span>, <span class="st">"% de cruces"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>## 58% de cruces</code></pre>
-<p>El argumento <code>prob = ...</code> nos permite generar experimentos que sean dicotómicos pero que <strong>no sean equiprobables</strong>, algo similar a <strong>lanzar una moneda trucada</strong> (por ejemplo, 30% caras y 70% cruces). Nótese como dichas probabilidades deben ser introducidas como proporciones (divididas entre 100).</p>
-<div class="sourceCode" id="cb651"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Tiradas de una moneda trucada</span>
-<span class="va">tiradas</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">1</span>, size <span class="op">=</span> <span class="va">n_tiradas</span>, replace <span class="op">=</span> <span class="cn">TRUE</span>, prob <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.3</span>, <span class="fl">0.7</span><span class="op">)</span><span class="op">)</span>
-
-<span class="co"># % de caras</span>
-<span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fl">100</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">tiradas</span><span class="op">)</span> <span class="op">/</span> <span class="va">n_tiradas</span>, <span class="st">"% de cruces"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>## 72% de cruces</code></pre>
-<details><p><summary>📝<strong>Ejercicio</strong>: ¿cómo simularías 200 tiradas de un dado?</summary></p>
-<!-- toc -->
-<ul>
-<li>Solución:</li>
-</ul>
-<div class="sourceCode" id="cb653"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Lo único que cambia son las opciones en la urna</span>
-<span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">6</span>, size <span class="op">=</span> <span class="fl">200</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<pre><code>##   [1] 4 4 1 4 5 3 3 3 2 4 5 6 6 4 5 1 2 5 3 3 2 3 1 3 5 6 6 4 1 5 6 1 5 4 1 3 1
-##  [38] 4 3 3 1 2 1 2 5 3 4 4 1 4 4 6 5 6 2 5 6 5 1 5 4 1 2 1 2 3 5 1 5 5 3 4 1 4
-##  [75] 6 3 1 4 2 3 2 4 6 3 2 5 2 4 4 1 4 5 6 2 2 1 6 3 4 3 6 3 1 5 3 6 5 2 6 4 6
-## [112] 4 4 4 6 6 1 3 1 3 6 3 5 3 3 3 5 6 2 4 4 1 6 1 4 3 1 1 1 4 5 5 3 1 4 4 1 4
-## [149] 3 6 2 5 1 4 6 3 5 3 1 6 6 1 6 1 6 4 1 1 4 4 5 5 3 4 4 1 6 1 2 5 2 6 4 3 1
-## [186] 3 5 4 6 5 2 4 3 4 5 4 2 2 3 6</code></pre>
-<!-- tocstop -->
-</details>
-</div>
-<div id="pseudoaleatorio" class="section level2">
-<h2>
-<span class="header-section-number">10.2</span> Pseudoaleatoriedad<a class="anchor" aria-label="anchor" href="#pseudoaleatorio"><i class="fas fa-link"></i></a>
-</h2>
-<p>Si has hecho varias pruebas con los códigos de arriba quizás ya hayas visto que <strong>cada vez que lanzas el código, el resultado es distinto</strong>, algo similar a lo que sucedería si lanzas una moneda. Prueba a ejecutar este código varias veces.</p>
-<div class="sourceCode" id="cb655"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">1</span>, size <span class="op">=</span> <span class="fl">20</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [1] 0 0 0 1 1 0 0 1 1 0 0 1 0 1 1 1 1 0 0 0</code></pre>
-<div class="sourceCode" id="cb657"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">1</span>, size <span class="op">=</span> <span class="fl">20</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [1] 0 1 0 0 0 0 1 0 0 1 1 1 0 0 1 0 1 0 1 0</code></pre>
-<div class="sourceCode" id="cb659"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">1</span>, size <span class="op">=</span> <span class="fl">20</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [1] 1 1 1 0 1 1 1 0 0 0 1 1 0 0 0 1 1 0 0 0</code></pre>
-<p><strong>¿Y si quisiéramos generar toda la clase la misma tirada de moneda?</strong></p>
-<p>Lo primero que quizás pienses es que es <strong>imposible</strong>, ya que al tirar una moneda en la vida real, nunca vamos a tener forma de garantizar que salgan las mismas tiradas a diferentes personas. Y <strong>efectivamente eso sería cierto si nuestros procesos generados hubiesen sido aleatorios</strong>, como en la vida real pero…no lo son.</p>
-<p>Mientras esperamos a que lleguen al mainstream los ordenadores cuánticos, <strong>TODO lo que hay en tu ordenador es determínistico</strong>, ya que cualquier proceso se reduce a una <strong>secuencia de bits (<code>0's</code> y <code>1's</code>)</strong> y un <strong>algoritmo</strong> (sin azar, cuyo resultado siempre será el mismo bajo las mismas condiciones iniciales). He aquí la decepción de tu vida: un ordenador «normal» NO puede generar procesos aleatorios, sino <strong>procesos y números PSEUDOALEATORIOS</strong>, basados en <strong>cadenas pseudoaleatorias</strong> generadas por un algoritmo determinístico.</p>
-<p>Dichas secuencias aparentan ser aleatorias pero no lo son, y de hecho muchas son <strong>periódicas</strong>: si generamos el número suficiente de elementos de la cadena pseudoaleatoria volveremos al inicio. Muchos de los algoritmos disponibles para generar números aleatorios dependen, entre otros factores, de un <strong>valor inicial llamada semilla</strong> (normalmente obtenida a partir del reloj interno del ordenador): misma semilla, mismo resultado «aleatorio». Para <strong>fijar la semilla</strong> usaremos <code><a href="https://rdrr.io/r/base/Random.html">set.seed()</a></code>, pasándole como argumento una secuencia de números (todos la misma).</p>
-<div class="sourceCode" id="cb661"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1234567</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">1</span>, size <span class="op">=</span> <span class="fl">20</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [1] 0 1 1 0 1 0 0 0 1 1 0 1 0 1 0 0 1 1 1 0</code></pre>
-<div class="sourceCode" id="cb663"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1234567</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">1</span>, size <span class="op">=</span> <span class="fl">20</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [1] 0 1 1 0 1 0 0 0 1 1 0 1 0 1 0 0 1 1 1 0</code></pre>
-<div class="sourceCode" id="cb665"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1234567</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">1</span>, size <span class="op">=</span> <span class="fl">20</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [1] 0 1 1 0 1 0 0 0 1 1 0 1 0 1 0 0 1 1 1 0</code></pre>
-<p><strong>Siempre la misma tirada si la semilla inicial es la misma</strong> ya que las cadenas pseudoaleatorias que usa el ordenador para simular nuestras tiradas son idénticas.</p>
-</div>
 <div id="recursos" class="section level2">
 <h2>
-<span class="header-section-number">10.3</span> Recursos<a class="anchor" aria-label="anchor" href="#recursos"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.1</span> Recursos extras<a class="anchor" aria-label="anchor" href="#recursos"><i class="fas fa-link"></i></a>
 </h2>
 <p>Ahora que ya sabes lo básico para poder empezar a trabajar en un entorno amigable, aunque la idea es que este manual tenga más capítulos (¿los tiene?) para seguir avanzando, por si se me olvida, te dejo una <strong>lista de recursos útiles</strong> para que puedas ir viendo el abanico de opciones que tienes</p>
 <ul>
 <li>
-<strong>Código de este manual</strong>: este manual está programado en sí mismo en <code>R</code> y los códigos pueden ser consultados libremente en el respositorio de <a href="https://github.com/dadosdelaplace/docencia">GitHub</a> (hablaremos más adelante de como gestionar versiones de nuestro código en dicha plataforma).</li>
+<strong>Código de este manual</strong>: este manual está programado en sí mismo en <code>R</code> y los códigos pueden ser consultados libremente en el repositorio de <a href="https://github.com/dadosdelaplace/docencia">GitHub</a> (hablaremos más adelante de como gestionar versiones de nuestro código en dicha plataforma).</li>
 </ul>
 <p><a href="https://github.com/dadosdelaplace/docencia" target="_blank"><img src="img/me_github.jpg" width="70%" style="display: block; margin: auto;"></a></p>
 <ul>
@@ -350,26 +235,16 @@ Imagen/gráfica 10.1: Cuando intentas aprenderte todos los paquetes.
 <li><p><strong>Generación de informes desde R</strong>: el paquete <a href="https://github.com/rstudio/rmarkdown">rmarkdown</a> permite <a href="https://rmarkdown.rstudio.com/">generar directamente informes</a> que mezclen texto, fórmulas matemáticas, gráficas y código <code>R</code> (como este mismo manual), sin necesidad de importarlos a otras herramientas de Office.</p></li>
 <li><p><strong>Comunidad de R hispano</strong>: tenemos un <a href="https://discord.gg/7ueKQqeaGr">grupo de Discord</a> y <a href="https://t.me/hispanoverse">grupo de Telegram</a> varios usuarios de R en España para compartir recursos.</p></li>
 </ul>
-<div id="refs" class="references">
-<div id="ref-xie2015">
-<p>Xie, Yihui. 2015. <em>Dynamic Documents with R and Knitr</em>. 2nd ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="http://yihui.org/knitr/">http://yihui.org/knitr/</a>.</p>
-</div>
-<div id="ref-Ziemannetal16">
-<p>Ziemann, M., Y. Eren, and A. El-Osta. 2016. “Gene Name Errors Are Widespread in the Scientific Literature.” <em>Genome Biology</em> 17 (177).</p>
-</div>
-</div>
 </div>
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="FUNCIONES.html"><span class="header-section-number">9</span> Creación de funciones</a></div>
-<div class="empty"></div>
+<div class="next"><a href="aleatorio_1.html"><span class="header-section-number">11</span> Incursión aleatoria</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#qu%C3%A9-sabemos-hacer"><span class="header-section-number">10</span> ¿Qué sabemos hacer?</a></li>
-<li><a class="nav-link" href="#aleatorio_1"><span class="header-section-number">10.1</span> Incursión aleatoria</a></li>
-<li><a class="nav-link" href="#pseudoaleatorio"><span class="header-section-number">10.2</span> Pseudoaleatoriedad</a></li>
-<li><a class="nav-link" href="#recursos"><span class="header-section-number">10.3</span> Recursos</a></li>
+<li><a class="nav-link" href="#recursos"><span class="header-section-number">10.1</span> Recursos extras</a></li>
 </ul>
 
       <div class="book-extra">

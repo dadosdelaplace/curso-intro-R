@@ -57,7 +57,11 @@
 <li class="book-part">Listas y funciones</li>
 <li><a class="" href="otros_datos.html"><span class="header-section-number">8</span> Listas y factores</a></li>
 <li><a class="" href="FUNCIONES.html"><span class="header-section-number">9</span> Creación de funciones</a></li>
+<li class="book-part">Epílogo</li>
 <li><a class="" href="qu%C3%A9-sabemos-hacer.html"><span class="header-section-number">10</span> ¿Qué sabemos hacer?</a></li>
+<li><a class="" href="aleatorio_1.html"><span class="header-section-number">11</span> Incursión aleatoria</a></li>
+<li><a class="" href="contribuye-al-proyecto.html"><span class="header-section-number">12</span> Contribuye al proyecto</a></li>
+<li><a class="" href="bibliograf%C3%ADa.html">Bibliografía</a></li>
 </ul>
 
         <div class="book-extra">
@@ -196,12 +200,12 @@
                                <span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="va">idx</span><span class="op">)</span> <span class="op">{</span>  <span class="va">y</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">idx</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">^</span><span class="fl">2</span><span class="op">}</span>,
                                times <span class="op">=</span> <span class="fl">1e3</span><span class="op">)</span></code></pre></div>
 <pre><code>## Unit: microseconds
-##                                     expr      min       lq       mean   median
-##                               x &lt;- idx^2   17.907   48.233   52.49677   53.019
-##  for (i in idx) {     y[i] &lt;- idx[i]^2 } 1778.993 1855.252 2083.83908 1909.276
-##        uq      max neval cld
-##    58.180  202.258  1000  a 
-##  2086.095 7271.526  1000   b</code></pre>
+##                                     expr      min       lq       mean    median
+##                               x &lt;- idx^2   18.205   48.346   50.62247   52.0595
+##  for (i in idx) {     y[i] &lt;- idx[i]^2 } 1788.931 1855.546 2013.82823 1891.1065
+##         uq      max neval cld
+##    55.6405  143.835  1000  a 
+##  1972.3315 6687.018  1000   b</code></pre>
 <p>Una tarea tan sencilla, <strong>programada en un bucle (segunda fila), tarda 40 veces más que hacerlo de forma vectorial (primera fila)</strong> (elevando cada elemento al cuadrado, iterando internamente, sin necesidad de implementar un bucle).</p>
 <p> </p>
 <p>Otra manera de diseñar un bucle es con la <strong>estructura <code>while{}</code></strong>, que ejecutará el <strong>bucle un número de veces a priori desconocido</strong> hasta que la condición impuesta deje de ser <code>TRUE</code>.</p>

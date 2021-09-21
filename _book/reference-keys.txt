@@ -67,6 +67,7 @@ tab:unnamed-chunk-193
 tab:unnamed-chunk-224
 tab:unnamed-chunk-225
 fig:unnamed-chunk-226
+fig:me-photo
 instalacionR
 instalacionRStudio
 instalacionpaquetes
@@ -126,6 +127,7 @@ segunda-función
 variables-localesglobales
 ejercicios-4
 qué-sabemos-hacer
+recursos
 aleatorio_1
 pseudoaleatorio
-recursos
+contribuye-al-proyecto

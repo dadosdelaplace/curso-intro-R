@@ -17,6 +17,9 @@ colorize <- function(x, color) {
 ```
 
 
+# (PART) Epílogo {-}
+
+
 # ¿Qué sabemos hacer?
 
 **Hasta aquí el aperitivo**
@@ -102,7 +105,49 @@ Estos primeros capítulos de un lenguaje de programación suelen ser un poco «a
 
 Pero aunque sean más aburridos estos primeros conceptos, **son necesarios para empezar a caminar**: el inicio de aprender un idioma siempre es un poco meh, pero sin las reglas básicas de gramática y un mínimo de léxico nunca podrás empezar.
 
-## Incursión aleatoria {#aleatorio_1}
+## Recursos extras {#recursos}
+
+Ahora que ya sabes lo básico para poder empezar a trabajar en un entorno amigable, aunque la idea es que este manual tenga más capítulos (¿los tiene?) para seguir avanzando, por si se me olvida, te dejo una **lista de recursos útiles** para que puedas ir viendo el abanico de opciones que tienes
+
+* **Código de este manual**: este manual está programado en sí mismo en `R` y los códigos pueden ser consultados libremente en el repositorio de [GitHub](https://github.com/dadosdelaplace/docencia) (hablaremos más adelante de como gestionar versiones de nuestro código en dicha plataforma).
+
+```{r github, echo = FALSE, fig.align = 'center',  include = identical(knitr:::pandoc_to(), 'html'), fig.link = 'https://github.com/dadosdelaplace/docencia', out.width = '70%'}
+knitr::include_graphics('img/me_github.jpg')
+```
+
+* [Cursos y selección de paquetes](https://dadosdelaplace.com): **recopilatorio y selección de tutoriales y cursos de `R`** en distintos campos.
+
+* [Incursión a los modelos de regresión en `R`](https://bookdown.org/roback/bookdown-BeyondMLR/): manual sobre el uso de distintos modelos predictivos basados los Modelos Lineales Generalizados (GLM).
+
+* **Paquete para aprender `R`**: el paquete `{swirl}` permite ir aprendiendo de forma sencilla (con preguntas tipo test) algunos conceptos básicos de `R` (muchos de ellos vistos en este manual). Puedes consultar la documentación en su [página web](https://swirlstats.com/)
+
+```{r swirl, echo = FALSE, fig.align = 'center',  include = identical(knitr:::pandoc_to(), 'html'), fig.link = 'https://swirlstats.com/', out.width = '60%'}
+knitr::include_graphics('img/swirl.png')
+```
+
+
+* **Manejo de datos**: probablemente el conjunto de herramientas más usadas en `R` sean los paquetes agrupados en {`tidyverse`} (y que veremos en capítulos sucesivos si los hubiese), un [conjunto de paquetes integrados para un manejo intuitivo de los datos](https://www.tidyverse.org/), tanto en su preprocesamiento, como en la generación de estadísticas y gráficas.
+
+* [Tidyverse cookbook](https://rstudio-education.github.io/tidyverse-cookbook/)
+* [Tidyverse skills for data science](https://jhudatascience.org/tidyversecourse/)
+
+```{r tidyverse-png, echo = FALSE, fig.align = 'center',  include = identical(knitr:::pandoc_to(), 'html'), fig.link = 'https://www.tidyverse.org/', out.width = '60%'}
+knitr::include_graphics('img/tidyverse.jpg')
+```
+
+* **Visualización de datos en Twitter**: una de las **fortalezas de `R`** es su versatilidad para la visualización de datos. Y al igual que un escritor necesita leer mucho para tomar ideas, hay dos recursos en Twitter que te recomiendo encarecidamente:
+  - El **hashtag #TidyTuesday** es una etiqueta en la que cada semana se plantea el reto de proponer la mejor visualización para un conjunto de datos dado, donde no solo puedes participar con la comunidad sino [ver las visualizaciones de otros usuarios](https://github.com/rfordatascience/tidytuesday) de `R`.
+  - Además he elaborado una [lista de Twitter](https://twitter.com/i/lists/1324478481338683392?s=20) de usuarios que se dedican a la visualización de datos.
+  
+* **Paquetes para la visualización de datos**: los paquetes `{ggplot2}` y `{plotly}` son probablemente los paquetes por excelencia en `R` para la visualización de datos. El **primero es uno de los paquetes más potentes de `R`, dentro del entorno `{tidyverse}`**, que no solo nos permite crear gráficos muy limpios y elegantes con pocas líneas sino que su sintaxis es muy intuitiva respecto a los datos visualizados. La idea inicial es poder aprender algo de `{ggplot2}` en futuros capítulos pero puedes empezar si quieres echando un vistazo a su [web oficial](https://ggplot2.tidyverse.org/). También te recomiendo el [tutorial de Cédric Scherer](https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/). El segundo paquete, `{plotly}` puede llegar a tener las mismas funcionalidades pero su programación es más tediosa. Su principal ventaja es que **genera gráficos interactivos: gráficos HTML (como si fuera una página web)** (no una imagen estática) que permite al usuario interactuar con los datos pasando el ratón (incluso permite crear menús). Un ejemplo es la [web de visualización covid de Asturias](https://dgspasturias.shinyapps.io/panel_de_indicadores_asturias/) que elaboré durante la pandemia para el Gobierno de Asturias (la web en sí está elaborada con `{shiny}`, un paquete de `R` que [permite crear aplicaciones web](https://shiny.rstudio.com/tutorial/)).
+
+* **Generación de informes desde R**: el paquete `{rmarkdown}` permite [generar directamente informes](https://rmarkdown.rstudio.com/) que mezclen texto, fórmulas matemáticas, gráficas y código `R` (como este mismo manual), sin necesidad de importarlos a otras herramientas de Office.
+
+* **Comunidad de R hispano**: tenemos un [grupo de Discord](https://discord.gg/7ueKQqeaGr) y [grupo de Telegram](https://t.me/hispanoverse) varios usuarios de R en España para compartir recursos.
+
+
+
+# Incursión aleatoria {#aleatorio_1}
 
 Antes de acabar esta breve introducción a `R` merece la pena hablar de **«lo aleatorio»** y su generación en `R`.
 
@@ -244,47 +289,27 @@ sample(0:1, size = 20, replace = TRUE)
 
 
 
-## Recursos {#recursos}
 
-Ahora que ya sabes lo básico para poder empezar a trabajar en un entorno amigable, aunque la idea es que este manual tenga más capítulos (¿los tiene?) para seguir avanzando, por si se me olvida, te dejo una **lista de recursos útiles** para que puedas ir viendo el abanico de opciones que tienes
 
-* **Código de este manual**: este manual está programado en sí mismo en `R` y los códigos pueden ser consultados libremente en el respositorio de [GitHub](https://github.com/dadosdelaplace/docencia) (hablaremos más adelante de como gestionar versiones de nuestro código en dicha plataforma).
 
-```{r github, echo = FALSE, fig.align = 'center',  include = identical(knitr:::pandoc_to(), 'html'), fig.link = 'https://github.com/dadosdelaplace/docencia', out.width = '70%'}
-knitr::include_graphics('img/me_github.jpg')
+
+
+
+# Contribuye al proyecto
+
+```{r me-photo, echo = FALSE, out.width = "35%", fig.align = "center", fig.cap = "Holi."}
+knitr::include_graphics("./img/me.jpeg")
 ```
 
-* [Cursos y selección de paquetes](https://dadosdelaplace.com): **recopilatorio y selección de tutoriales y cursos de `R`** en distintos campos.
+Espero que te haya servido de ayuda este manual, no para ser un experto en `R` (ya que el manual no pretendía dicho objetivo) sino ser capaz de **ENTENDER** cómo funciona `R` y quitarte el miedo a empezar tus análisis.
 
-* [Incursión a los modelos de regresión en `R`](https://bookdown.org/roback/bookdown-BeyondMLR/): manual sobre el uso de distintos modelos predictivos basados los Modelos Lineales Generalizados (GLM).
+La idea es que haya otros manuales más avanzados, que partan de lo aprendido en este, pero si quieres (y te ha servido) puedes dejarme tu feedback y/o difundir dicho material por **redes**. Te dejo por aquí las mías:
 
-* **Paquete para aprender `R`**: el paquete `{swirl}` permite ir aprendiendo de forma sencilla (con preguntas tipo test) algunos conceptos básicos de `R` (muchos de ellos vistos en este manual). Puedes consultar la documentación en su [página web](https://swirlstats.com/)
+* [Twitter](https://twitter.com/dadosdelaplace)
+* [Instagram](https://instagram.com/javieralvarezliebana)
+* [Web](https://dadosdelaplace.com)
+* [Newsletter](https://cartasdelaplace.substack.com)
 
-```{r swirl, echo = FALSE, fig.align = 'center',  include = identical(knitr:::pandoc_to(), 'html'), fig.link = 'https://swirlstats.com/', out.width = '60%'}
-knitr::include_graphics('img/swirl.png')
-```
+Si además crees que este trabajo lo merece, así como mi divulgación en dichas redes, puedes dejar una **pequeña contribución económica en el Patreon** y poder interaccionar con la comunidad.
 
-
-* **Manejo de datos**: probablemente el conjunto de herramientas más usadas en `R` sean los paquetes agrupados en {`tidyverse`} (y que veremos en capítulos sucesivos si los hubiese), un [conjunto de paquetes integrados para un manejo intuitivo de los datos](https://www.tidyverse.org/), tanto en su preprocesamiento, como en la generación de estadísticas y gráficas.
-
-* [Tidyverse cookbook](https://rstudio-education.github.io/tidyverse-cookbook/)
-* [Tidyverse skills for data science](https://jhudatascience.org/tidyversecourse/)
-
-```{r tidyverse-png, echo = FALSE, fig.align = 'center',  include = identical(knitr:::pandoc_to(), 'html'), fig.link = 'https://www.tidyverse.org/', out.width = '60%'}
-knitr::include_graphics('img/tidyverse.jpg')
-```
-
-* **Visualización de datos en Twitter**: una de las **fortalezas de `R`** es su versatilidad para la visualización de datos. Y al igual que un escritor necesita leer mucho para tomar ideas, hay dos recursos en Twitter que te recomiendo encarecidamente:
-  - El **hashtag #TidyTuesday** es una etiqueta en la que cada semana se plantea el reto de proponer la mejor visualización para un conjunto de datos dado, donde no solo puedes participar con la comunidad sino [ver las visualizaciones de otros usuarios](https://github.com/rfordatascience/tidytuesday) de `R`.
-  - Además he elaborado una [lista de Twitter](https://twitter.com/i/lists/1324478481338683392?s=20) de usuarios que se dedican a la visualización de datos.
-  
-* **Paquetes para la visualización de datos**: los paquetes `{ggplot2}` y `{plotly}` son probablemente los paquetes por excelencia en `R` para la visualización de datos. El **primero es uno de los paquetes más potentes de `R`, dentro del entorno `{tidyverse}`**, que no solo nos permite crear gráficos muy limpios y elegantes con pocas líneas sino que su sintaxis es muy intuitiva respecto a los datos visualizados. La idea inicial es poder aprender algo de `{ggplot2}` en futuros capítulos pero puedes empezar si quieres echando un vistazo a su [web oficial](https://ggplot2.tidyverse.org/). También te recomiendo el [tutorial de Cédric Scherer](https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/). El segundo paquete, `{plotly}` puede llegar a tener las mismas funcionalidades pero su programación es más tediosa. Su principal ventaja es que **genera gráficos interactivos: gráficos HTML (como si fuera una página web)** (no una imagen estática) que permite al usuario interactuar con los datos pasando el ratón (incluso permite crear menús). Un ejemplo es la [web de visualización covid de Asturias](https://dgspasturias.shinyapps.io/panel_de_indicadores_asturias/) que elaboré durante la pandemia para el Gobierno de Asturias (la web en sí está elaborada con `{shiny}`, un paquete de `R` que [permite crear aplicaciones web](https://shiny.rstudio.com/tutorial/)).
-
-* **Generación de informes desde R**: el paquete `{rmarkdown}` permite [generar directamente informes](https://rmarkdown.rstudio.com/) que mezclen texto, fórmulas matemáticas, gráficas y código `R` (como este mismo manual), sin necesidad de importarlos a otras herramientas de Office.
-
-* **Comunidad de R hispano**: tenemos un [grupo de Discord](https://discord.gg/7ueKQqeaGr) y [grupo de Telegram](https://t.me/hispanoverse) varios usuarios de R en España para compartir recursos.
-
-
-
-
-
+[Patreon](https://patreon.com/dadosdelaplace)
