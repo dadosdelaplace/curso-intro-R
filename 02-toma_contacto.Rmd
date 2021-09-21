@@ -1,3 +1,21 @@
+```{r echo = FALSE}
+library(knitr)
+
+# Color text
+colorize <- function(x, color) {
+  
+  if (knitr::is_latex_output()) {
+    
+    sprintf("\\textcolor{%s}{%s}", color, x)
+    
+  } else if (knitr::is_html_output()) {
+    
+    sprintf("<span style='color: %s;'>%s</span>", color, x)
+    
+  } else { x }
+}
+```
+
 # Primeros pasos
 
 **¿Empezamos?**
@@ -20,38 +38,57 @@ Por su arquitectura, `R` es un lenguaje que puede ser usado para un propósito g
 
 **¿Por qué no es recomendable usar Excel?**
 
+::: {.rmdwarning}
+
 * **Software de pago**: Excel, al igual que el resto de programas de Microsoft o SPSS (por desgracia programa estrella de nuestro sistema sanitario), es un programa de pago. A nivel individual, todos hemos tenido una versión que no hemos pagado, pero dicha evasión no se la puede permitir una empresa o administración, que debe de pagar altas cantidades de dinero anuales por las licencias, dinero que no sería necesario si los investigadores y trabajadores tuvieran formación (remunerada) en otras herramientas de software libre.
+:::
+
+::: {.rmdwarning}
 
 * **Software cerrado**: no solo es de pago sino que es cerrado, así que solo podemos hacer lo que Excel ha creído que interesante que podamos hacer. Incluso con la programación de MACROS, las funcionalidades de Excel siguen siendo mucho más limitadas ya que viene «programadas» de antemano
+:::
+
+::: {.rmdwarning}
 
 * **Alto consumo de memoria**: dicha programación predeterminada hace que Excel ocupe muchísimo espacio en el disco duro y tenga un alto consumo de memoria (la memoria es lo que te permite hacer varias tareas a la vez en tu ordenador).
+:::
+
+::: {.rmdwarning}
 
 * **No es universal**: no solo es de pago sino que además, dependiendo de la versión que tengas de Excel, tendrá un formato distinto para datos como fechas, teniendo incluso extensiones distintas, de forma que un archivo `.xls` abierto por un Excel moderno puede provocar errores en la carga.
+:::
+
+::: {.rmdwarning}
 
 * **¡ES SOLO UNA HOJA DE CÁLCULO!**: el propio Microsoft desaconseja el uso de Excel para el análisis de grandes volúmenes de datos. El Excel es una herramienta maravillosa para ser usada como una sencilla hoja de cálculo: llevar las cuentas de tu familia, de tu pequeño negocio, una declaración de la Renta sencilla, planificar viajes, etc. Pero el programa **NO ESTÁ DISEÑADO** para ser una base de datos ni para análisis detallado, y muchos menos pensado para generar un entorno flexible para el análisis estadístico y la visualización de datos.
+:::
+
+&nbsp; 
 
 **¿Puedes ser el mejor partiendo un filete con una cuchara?** Seguramente puedas (en Excel puedes hasta programar con macros), y si siempre lo hiciste así, acabarás normalizándolo, pero seguirás siendo una persona comiendo filete con cuchara.
 
-&nbsp;
+**¿Qué sucede si usamos la herramienta equivocada?** Tres ejemplos: 
 
-![](img/pregunta.png){style="float: left; margin-left: 0.5px; margin-right: 4px; margin-top: 1px; width: 4%"} **¿Qué sucede si usamos la herramienta equivocada?**
-
-Tres ejemplos: 
-
+::: {.rmdcaution}
 * **Problemas para codificar fechas**: en 2016 se publicó una [revisión de artículos en genética](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-1044-7), descubriendo que 1 de cada 5 artículos contenían errores debido a una mala codificación de las fechas, conviertiendo por ejemplo los genes Septin-2 (conocido como SEPT2) en fechas, y al revés [@Ziemannetal16].
+:::
 
 ```{r excel-genes, echo = FALSE,  out.width = "50%", fig.align = "center", fig.cap = "Excel en una noche loca."}
 knitr::include_graphics("./img/excel_genes.jpg")
 ```
 
+::: {.rmdcaution}
 * **Problemas de memoria**: un Excel permite por defecto una cantidad máxima de filas. Aunque dicha cantidad se puede ampliar, sigue siendo finita, por lo que cuando superas el umbral de filas, al añadir filas Excel te borra registros **sin avisarte de que lo está haciendo**. Esto es lo que sucedió con los [registros de casos covid en Reino Unido](https://www.redaccionmedica.com/secciones/sanidad-hoy/covid-reino-unido-pierden-16000-positivos-9989).
+:::
 
 ```{r excel-uk, echo = FALSE,  out.width = "50%", fig.align = "center", fig.cap = "Cuando Excel dice basta."}
 knitr::include_graphics("./img/excel_uk.jpg")
 
 ```
 
+::: {.rmdcaution}
 * **Problemas para codificar edades**: una variable de tipo fecha, aunque nosotros la veamos con letras, en realidad es una variable numérica que representa los días que han pasado desde una fecha origen. En función de las distintas versiones de Excel, dicha fecha origen cambia. Además, si se codifica mal la fecha en formato `dd-mm-YY`, dicho formato cuando se exporta a otro excel en texto, no permite distinguir a un nacido en 1918 y a un nacido en 2018, así que podemos estar confundiendo personas de 103 años con niños de 3 años (y es lo que [sucedió en España](https://www.niusdiario.es/sociedad/sanidad/sanidad-reconoce-datos-muertes-ninos-covid-erroneos-contabilizaban-centenarios-como-menores_18_3107220241.html), observando unas tasas de mortalidad en niños muy pequeños equivalentes a personas mayores).
+:::
 
 ```{r excel-edades, echo = FALSE,  out.width = "50%", fig.align = "center", fig.cap = "Los centenarios con biberón."}
 knitr::include_graphics("./img/excel_edades.jpg")
@@ -113,23 +150,10 @@ Durante tu aprendizaje en `R` va a ser **muy habitual** que las cosas no salgan 
 
 Dado que el 99.99999% de veces tu código tendrá errores que deberás ir solventando, no está de más conocer los tipos de mensajes que `R` puede sacarte por consola:
 
-```{r colorize, echo = FALSE}
-# Color text
-colorize <- function(x, color) {
-  
-  if (knitr::is_latex_output()) {
-    
-    sprintf("\\textcolor{%s}{%s}", color, x)
-    
-  } else if (knitr::is_html_output()) {
-    
-    sprintf("<span style='color: %s;'>%s</span>", color, x)
-    
-  } else { x }
-}
-```
 
-* **`r colorize("Errores", "red")`**: los mensajes de error irán precedidos de la frase **«Error in...»**, dándote a veces incluso el tipo de error y la línea de código en la que se ha producido. Veamos un ejemplo intentando sumar un número a una cadena de texto.
+::: {.rmdcaution}
+Los **`r colorize("mensajes de error", "#dc3545")`** irán precedidos de la frase **`r colorize("«Error in...»", "#dc3545")`**, dándote a veces incluso el tipo de error y la línea de código en la que se ha producido. Veamos un ejemplo intentando sumar un número a una cadena de texto.
+:::
 
 ```{r error = TRUE}
 "a" + 1
@@ -138,7 +162,9 @@ colorize <- function(x, color) {
 Los **errores son aquellos fallos que seguramente impidan la ejecución** del código. Un **error muy habitual** es intentar acceder a alguna función de algún paquete que, o bien no tenemos instalado, o bien no hemos llamado haciendo uso del `library()`: estás intentando leerte un libro de tu biblioteca pero ni siquiera has ido a la tienda a «comprarlo».
 
 
-* **`r colorize("Warnings", "yellow")`**: los mensajes de _warning_ irán precedidos de la frase **«Warning:...»**, y son los fallos más delicados ya que son **posibles errores o incoherencias** que `R` detecta en tu código pero que **no van a hacer que tu código deje de ejecutarse**, aunque probablemente no lo haga como a ti te gustaría. Un ejemplo es cuando tratamos de hacer la raiz cuadrada de un número negativo.
+::: {.rmdwarning}
+Los **`r colorize("mensajes de warnings", "#ffc107")`** irán precedidos de la frase **`r colorize("«Warning in...»", "#ffc107")`**, y son los fallos más delicados ya que son **posibles errores o incoherencias** que `R` detecta en tu código pero que **no van a hacer que tu código deje de ejecutarse**, aunque probablemente no lo haga como a ti te gustaría. Un ejemplo es cuando tratamos de hacer la raiz cuadrada de un número negativo.
+:::
 
 ```{r warning = TRUE}
 sqrt(-1)
@@ -146,18 +172,14 @@ sqrt(-1)
 
 ¿Ha ejecutado la orden? Sí, pero te **advierte de que el resultado de la operación es un `NaN`, un valor que no existe (al menos dentro de los números reales), un _Not A Number_ (ver Sección \@ref(ausentes)).
 
-* **`r colorize("Mensajes de control", "green")`**: los mensajes de control serán aquellos que aparecerán por consola sin empezar por «Error in...» ni «Warning:...». Dichos mensajes, que puedes incluir tú mismo en tu código con funciones como `cat()` para monitorizar la ejecución de códigos largos, no son errores ni problemas, son simplemente información que `R` considera útil aportarte.
+::: {.rmdimportant}
+Los **`r colorize("mensajes de control", "#20935E")`** serán aquellos que aparecerán por consola sin empezar por «Error in...» ni «Warning:...». Dichos mensajes, que puedes incluir tú mismo en tu código con funciones como `cat()` para monitorizar la ejecución de códigos largos, no son errores ni problemas, son simplemente información que `R` considera útil aportarte.
+
+:::
 
 
 ## ![](img/logo_info.png){width=4%}  Consejos y tips
-  
 
-<details>
-  <summary><strong>Argumentos de una función</strong></summary>
-
-Las órdenes `sqrt(x)` y `abs(y)` se llaman **funciones**, y la variable que tienen entre paréntesis se llama **argumento de la función**: una variable que toma de entrada la función y con la que opera internamente.
-
-</details> 
 
 &nbsp;  
 <details>
@@ -179,7 +201,7 @@ knitr::include_graphics("./img/panel_ayuda.jpg")
 ## 📝 Ejercicios
 
 <details>
-  <summary>📝<strong>Ejercicio 1</strong>: calcula en consola la suma de 3 más 4, y todo ello multiplicado por 10, y asígnalo a una variable `x`.</summary>
+  <summary>📝<strong>Ejercicio 1</strong>: calcula en consola la suma de 3 más 4, y todo ello multiplicado por 10, y asígnalo a una variable `x` (**haz click** en la flecha para la solución propuesta).</summary>
   
 <!-- toc -->
 - Solución:
@@ -195,14 +217,40 @@ x <- (3 + 4) * 10
 &nbsp;
 
 <details>
-  <summary>📝<strong>Ejercicio 2</strong>: usando la variable `x` ya definida, calcula `x - 5` y guárdalo en una nueva variable `y` (**haz click** en la flecha para la solución propuesta).</summary>
+  <summary>📝<strong>Ejercicio 2</strong>: asigna un valor positivo a `x` y calcula  su raíz cuadrada; asigna otro negativo y calcula su valor absoluto (**haz click** en la flecha para la solución propuesta).</summary>
   
 <!-- toc -->
 - Solución:
 
 ```{r}
-y <- x - 5
-y
+# Raíz cuadrada
+x <- 73
+sqrt(x)
+
+# Valor absoluto
+y <- -73
+abs(y)
+```
+
+<!-- tocstop -->
+</details>
+
+::: {.rmdimportant}
+
+Las órdenes `sqrt(x)` y `abs(y)` se llaman **funciones**, y la variable que tienen entre paréntesis se llama **argumento de la función**: una variable que toma de entrada la función y con la que opera internamente.
+:::
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 3</strong>: usando la variable `x` ya definida, calcula `x - 5` y guárdalo en una nueva variable `z` (**haz click** en la flecha para la solución propuesta).</summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+z <- x - 5
+z
 ```
 <!-- tocstop -->
 </details>
@@ -210,18 +258,21 @@ y
 &nbsp;
 
 <details>
-  <summary>📝<strong>Ejercicio 3</strong>: usando las variables `x` e `y` ya definidas, calcula la raíz cuadrada del máximo entre ambas, y guárdalo en una nueva variable `z` (**haz click** en la flecha para la solución propuesta).</summary>
+  <summary>📝<strong>Ejercicio 4</strong>: usando las variables `x` y `z` ya definidas, calcula la raíz cuadrada del máximo entre ambas, y guárdalo en una nueva variable `t` (**haz click** en la flecha para la solución propuesta).</summary>
   
 <!-- toc -->
 - Solución:
 
 ```{r}
-z <- sqrt(max(x, y)) # No hace falta gastar una línea por cada orden (cada asignación que hagas es una variable guardada que consume memoria en tu ordenador)
-z
+t <- sqrt(max(x, z)) 
+t
 ```
 <!-- tocstop -->
 </details>
 
+::: {.rmdwarning}
+**`r colorize("CUIDADO", "#ffc107")`**
 
-
+No hace falta gastar una línea por cada orden que quieras ejecutar. Tampoco necesitas guardar cada paso intermedio que realices. Cuidado con la memoria: cada asignación que hagas es una variable guardada que consume recursos en tu ordenador.
+:::
 

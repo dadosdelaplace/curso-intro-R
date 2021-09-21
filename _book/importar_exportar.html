@@ -1,330 +1,522 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html lang="en">
 <head>
-
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 6 Importando/exportando | Aprendiendo R sin morir en el intento</title>
-  <meta name="description" content="Manual básico e introductorio de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM), elaborado por Javier Álvarez Liébana" />
-  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
-
-  <meta property="og:title" content="Capítulo 6 Importando/exportando | Aprendiendo R sin morir en el intento" />
-  <meta property="og:type" content="book" />
-  
-  <meta property="og:image" content="/img/logo_R.png" />
-  <meta property="og:description" content="Manual básico e introductorio de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM), elaborado por Javier Álvarez Liébana" />
-  <meta name="github-repo" content="dadosdelaplace/cursoR_intro_2021_2022" />
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 6 Importando/exportando | Aprendiendo R sin morir en el intento" />
-  
-  <meta name="twitter:description" content="Manual básico e introductorio de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM), elaborado por Javier Álvarez Liébana" />
-  <meta name="twitter:image" content="/img/logo_R.png" />
-
-<meta name="author" content="Javier Álvarez Liébana" />
-
-
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  
-<link rel="prev" href="ejercicios-2.html"/>
-<link rel="next" href="importación-de-datos.html"/>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
-
-
-
-
-
-
-
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
-<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.18/datatables.js"></script>
-<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
-<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
-<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
-
-
-<style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-
-<link rel="stylesheet" href="css/style.css" type="text/css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Capítulo 7 Importando/exportando | Aprendiendo R sin morir en el intento</title>
+<meta name="author" content="Javier Álvarez Liébana">
+<meta name="description" content="Hemos aprendido a crear nuestros propios datos pero la mayoría de veces los cargaremos de distintos archivos, fuentes, etc. Vamos a ver las 4 formas más comunes de importar (cargar) datos  7.1...">
+<meta name="generator" content="bookdown 0.23 with bs4_book()">
+<meta property="og:title" content="Capítulo 7 Importando/exportando | Aprendiendo R sin morir en el intento">
+<meta property="og:type" content="book">
+<meta property="og:image" content="/img/logo_R.png">
+<meta property="og:description" content="Hemos aprendido a crear nuestros propios datos pero la mayoría de veces los cargaremos de distintos archivos, fuentes, etc. Vamos a ver las 4 formas más comunes de importar (cargar) datos  7.1...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Capítulo 7 Importando/exportando | Aprendiendo R sin morir en el intento">
+<meta name="twitter:description" content="Hemos aprendido a crear nuestros propios datos pero la mayoría de veces los cargaremos de distintos archivos, fuentes, etc. Vamos a ver las 4 formas más comunes de importar (cargar) datos  7.1...">
+<meta name="twitter:image" content="/img/logo_R.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/_Sen-0.4.0/font.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM%20Mono&amp;display=swap" rel="stylesheet">
+<link href="libs/_Bitter-0.4.0/font.css" rel="stylesheet">
+<script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS -->
 </head>
+<body data-spy="scroll" data-target="#toc">
 
-<body>
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Aprendiendo R sin morir en el intento</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
 
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
 
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li><a href="./">Aprendiendo R sin morir en el intento</a></li>
-
-<li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefacio</a><ul>
-<li class="chapter" data-level="" data-path="propósito.html"><a href="propósito.html"><i class="fa fa-check"></i>Propósito</a></li>
-<li class="chapter" data-level="" data-path="requisitos.html"><a href="requisitos.html"><i class="fa fa-check"></i>Requisitos</a></li>
-<li class="chapter" data-level="" data-path="emojis.html"><a href="emojis.html"><i class="fa fa-check"></i>Emojis</a></li>
-<li class="chapter" data-level="" data-path="sobre-el-autor.html"><a href="sobre-el-autor.html"><i class="fa fa-check"></i>Sobre el autor</a></li>
-<li class="chapter" data-level="" data-path="licencia.html"><a href="licencia.html"><i class="fa fa-check"></i>Licencia</a></li>
-</ul></li>
-<li class="part"><span><b>I Toma de contacto</b></span></li>
-<li class="chapter" data-level="1" data-path="instalacionR.html"><a href="instalacionR.html"><i class="fa fa-check"></i><b>1</b> Instalación</a><ul>
-<li class="chapter" data-level="1.1" data-path="instalacionRStudio.html"><a href="instalacionRStudio.html"><i class="fa fa-check"></i><b>1.1</b> Instalación de RStudio</a></li>
-<li class="chapter" data-level="1.2" data-path="instalacionpaquetes.html"><a href="instalacionpaquetes.html"><i class="fa fa-check"></i><b>1.2</b> Instalación de paquetes</a></li>
-<li class="chapter" data-level="1.3" data-path="consejos-y-tips.html"><a href="consejos-y-tips.html"><i class="fa fa-check"></i><b>1.3</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="primeros-pasos.html"><a href="primeros-pasos.html"><i class="fa fa-check"></i><b>2</b> Primeros pasos</a><ul>
-<li class="chapter" data-level="2.1" data-path="excel-no-es-tu-amigo.html"><a href="excel-no-es-tu-amigo.html"><i class="fa fa-check"></i><b>2.1</b> Excel no es tu amigo</a></li>
-<li class="chapter" data-level="2.2" data-path="primeros-pasos-calculadora.html"><a href="primeros-pasos-calculadora.html"><i class="fa fa-check"></i><b>2.2</b> Primeros pasos: calculadora</a></li>
-<li class="chapter" data-level="2.3" data-path="tipos_errores.html"><a href="tipos_errores.html"><i class="fa fa-check"></i><b>2.3</b> Tipos de errores</a></li>
-<li class="chapter" data-level="2.4" data-path="consejos-y-tips-1.html"><a href="consejos-y-tips-1.html"><i class="fa fa-check"></i><b>2.4</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
-<li class="chapter" data-level="2.5" data-path="ejercicios.html"><a href="ejercicios.html"><i class="fa fa-check"></i><b>2.5</b> 📝 Ejercicios</a></li>
-</ul></li>
-<li class="part"><span><b>II Conceptos básicos</b></span></li>
-<li class="chapter" data-level="3" data-path="tipos-de-datos-i-vectores.html"><a href="tipos-de-datos-i-vectores.html"><i class="fa fa-check"></i><b>3</b> Tipos de datos I: vectores</a><ul>
-<li class="chapter" data-level="3.1" data-path="vectores-numéricos.html"><a href="vectores-numéricos.html"><i class="fa fa-check"></i><b>3.1</b> Vectores numéricos</a><ul>
-<li class="chapter" data-level="3.1.1" data-path="vectores-numéricos.html"><a href="vectores-numéricos.html#secuencias-con-un-patrón"><i class="fa fa-check"></i><b>3.1.1</b> Secuencias con un patrón</a></li>
-</ul></li>
-<li class="chapter" data-level="3.2" data-path="operaciones-aritméticas-con-vectores-numéricos.html"><a href="operaciones-aritméticas-con-vectores-numéricos.html"><i class="fa fa-check"></i><b>3.2</b> Operaciones aritméticas con vectores numéricos</a></li>
-<li class="chapter" data-level="3.3" data-path="operaciones-estadísticas-con-vectores-numéricos.html"><a href="operaciones-estadísticas-con-vectores-numéricos.html"><i class="fa fa-check"></i><b>3.3</b> Operaciones estadísticas con vectores numéricos</a></li>
-<li class="chapter" data-level="3.4" data-path="vectores-de-caracteres-texto.html"><a href="vectores-de-caracteres-texto.html"><i class="fa fa-check"></i><b>3.4</b> Vectores de caracteres (texto)</a></li>
-<li class="chapter" data-level="3.5" data-path="vectores-lógicos-truefalse.html"><a href="vectores-lógicos-truefalse.html"><i class="fa fa-check"></i><b>3.5</b> Vectores lógicos (TRUE/FALSE)</a></li>
-<li class="chapter" data-level="3.6" data-path="ausentes.html"><a href="ausentes.html"><i class="fa fa-check"></i><b>3.6</b> Datos ausentes: NA y NaN</a></li>
-<li class="chapter" data-level="3.7" data-path="seleccionar-elementos-de-un-vector.html"><a href="seleccionar-elementos-de-un-vector.html"><i class="fa fa-check"></i><b>3.7</b> Seleccionar elementos de un vector</a><ul>
-<li class="chapter" data-level="3.7.1" data-path="seleccionar-elementos-de-un-vector.html"><a href="seleccionar-elementos-de-un-vector.html#which"><i class="fa fa-check"></i><b>3.7.1</b> which</a></li>
-<li class="chapter" data-level="3.7.2" data-path="seleccionar-elementos-de-un-vector.html"><a href="seleccionar-elementos-de-un-vector.html#null"><i class="fa fa-check"></i><b>3.7.2</b> NULL</a></li>
-</ul></li>
-<li class="chapter" data-level="3.8" data-path="ordenar-vectores.html"><a href="ordenar-vectores.html"><i class="fa fa-check"></i><b>3.8</b> Ordenar vectores</a></li>
-<li class="chapter" data-level="3.9" data-path="fechas.html"><a href="fechas.html"><i class="fa fa-check"></i><b>3.9</b> Fechas</a></li>
-<li class="chapter" data-level="3.10" data-path="glosario3.html"><a href="glosario3.html"><i class="fa fa-check"></i><b>3.10</b> 📚 Glosario</a></li>
-<li class="chapter" data-level="3.11" data-path="consejos-y-tips-2.html"><a href="consejos-y-tips-2.html"><i class="fa fa-check"></i><b>3.11</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
-<li class="chapter" data-level="3.12" data-path="ejercicios-1.html"><a href="ejercicios-1.html"><i class="fa fa-check"></i><b>3.12</b> 📝 Ejercicios</a></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="flujo-de-trabajo-proyecto.html"><a href="flujo-de-trabajo-proyecto.html"><i class="fa fa-check"></i><b>4</b> Flujo de trabajo: proyecto</a><ul>
-<li class="chapter" data-level="4.1" data-path="crear-proyecto.html"><a href="crear-proyecto.html"><i class="fa fa-check"></i><b>4.1</b> Crear proyecto</a></li>
-<li class="chapter" data-level="4.2" data-path="directorios-de-trabajo-y-cabecera.html"><a href="directorios-de-trabajo-y-cabecera.html"><i class="fa fa-check"></i><b>4.2</b> Directorios de trabajo y cabecera</a></li>
-<li class="chapter" data-level="4.3" data-path="ejecución.html"><a href="ejecución.html"><i class="fa fa-check"></i><b>4.3</b> Ejecución</a></li>
-<li class="chapter" data-level="4.4" data-path="consejos-y-tips-3.html"><a href="consejos-y-tips-3.html"><i class="fa fa-check"></i><b>4.4</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="datos.html"><a href="datos.html"><i class="fa fa-check"></i><b>5</b> Tipos de datos II: tablas</a><ul>
-<li class="chapter" data-level="5.1" data-path="matrices.html"><a href="matrices.html"><i class="fa fa-check"></i><b>5.1</b> Matrices</a></li>
-<li class="chapter" data-level="5.2" data-path="apply-vs-bucles.html"><a href="apply-vs-bucles.html"><i class="fa fa-check"></i><b>5.2</b> Apply vs bucles</a></li>
-<li class="chapter" data-level="5.3" data-path="tablas-data.html"><a href="tablas-data.html"><i class="fa fa-check"></i><b>5.3</b> Tablas: data.frames</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="tablas-data.html"><a href="tablas-data.html#data.frames-selección-manual-de-columnas-y-filas"><i class="fa fa-check"></i><b>5.3.1</b> Data.frames: selección manual de columnas y filas</a></li>
-</ul></li>
-<li class="chapter" data-level="5.4" data-path="consejos-y-tips-4.html"><a href="consejos-y-tips-4.html"><i class="fa fa-check"></i><b>5.4</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
-<li class="chapter" data-level="5.5" data-path="ejercicios-2.html"><a href="ejercicios-2.html"><i class="fa fa-check"></i><b>5.5</b> 📝 Ejercicios</a></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="importar_exportar.html"><a href="importar_exportar.html"><i class="fa fa-check"></i><b>6</b> Importando/exportando</a><ul>
-<li class="chapter" data-level="6.1" data-path="importación-de-datos.html"><a href="importación-de-datos.html"><i class="fa fa-check"></i><b>6.1</b> Importación de datos</a><ul>
-<li class="chapter" data-level="6.1.1" data-path="importación-de-datos.html"><a href="importación-de-datos.html#archivo-.rdata"><i class="fa fa-check"></i><b>6.1.1</b> Archivo .RData</a></li>
-<li class="chapter" data-level="6.1.2" data-path="importación-de-datos.html"><a href="importación-de-datos.html#archivo-.csv"><i class="fa fa-check"></i><b>6.1.2</b> Archivo .csv</a></li>
-<li class="chapter" data-level="6.1.3" data-path="importación-de-datos.html"><a href="importación-de-datos.html#archivo-.xlsx"><i class="fa fa-check"></i><b>6.1.3</b> Archivo .xlsx</a></li>
-<li class="chapter" data-level="6.1.4" data-path="importación-de-datos.html"><a href="importación-de-datos.html#desde-web"><i class="fa fa-check"></i><b>6.1.4</b> Desde web</a></li>
-</ul></li>
-<li class="chapter" data-level="6.2" data-path="exportación-de-datos.html"><a href="exportación-de-datos.html"><i class="fa fa-check"></i><b>6.2</b> Exportación de datos</a><ul>
-<li class="chapter" data-level="6.2.1" data-path="exportación-de-datos.html"><a href="exportación-de-datos.html#guardar-en-.rdata"><i class="fa fa-check"></i><b>6.2.1</b> Guardar en .RData</a></li>
-<li class="chapter" data-level="6.2.2" data-path="exportación-de-datos.html"><a href="exportación-de-datos.html#guardar-en-.csv"><i class="fa fa-check"></i><b>6.2.2</b> Guardar en .csv</a></li>
-</ul></li>
-<li class="chapter" data-level="6.3" data-path="consejos-y-tips-5.html"><a href="consejos-y-tips-5.html"><i class="fa fa-check"></i><b>6.3</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="control.html"><a href="control.html"><i class="fa fa-check"></i><b>7</b> Estructuras de control</a><ul>
-<li class="chapter" data-level="7.1" data-path="ifelse.html"><a href="ifelse.html"><i class="fa fa-check"></i><b>7.1</b> if…else</a></li>
-<li class="chapter" data-level="7.2" data-path="forwhile.html"><a href="forwhile.html"><i class="fa fa-check"></i><b>7.2</b> for/while</a><ul>
-<li class="chapter" data-level="7.2.1" data-path="forwhile.html"><a href="forwhile.html#breaknext"><i class="fa fa-check"></i><b>7.2.1</b> BREAK/NEXT</a></li>
-<li class="chapter" data-level="7.2.2" data-path="forwhile.html"><a href="forwhile.html#repeat"><i class="fa fa-check"></i><b>7.2.2</b> REPEAT</a></li>
-</ul></li>
-<li class="chapter" data-level="7.3" data-path="consejos-y-tips-6.html"><a href="consejos-y-tips-6.html"><i class="fa fa-check"></i><b>7.3</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
-</ul></li>
-<li class="part"><span><b>III Listas y funciones</b></span></li>
-<li class="chapter" data-level="8" data-path="otros_datos.html"><a href="otros_datos.html"><i class="fa fa-check"></i><b>8</b> Tipos de datos III: listas/factores</a><ul>
-<li class="chapter" data-level="8.1" data-path="listas.html"><a href="listas.html"><i class="fa fa-check"></i><b>8.1</b> Listas</a></li>
-<li class="chapter" data-level="8.2" data-path="factores.html"><a href="factores.html"><i class="fa fa-check"></i><b>8.2</b> Factores</a></li>
-<li class="chapter" data-level="8.3" data-path="fechas-y-horas.html"><a href="fechas-y-horas.html"><i class="fa fa-check"></i><b>8.3</b> Fechas y horas</a></li>
-<li class="chapter" data-level="8.4" data-path="consejos-y-tips-7.html"><a href="consejos-y-tips-7.html"><i class="fa fa-check"></i><b>8.4</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
-<li class="chapter" data-level="8.5" data-path="ejercicios-3.html"><a href="ejercicios-3.html"><i class="fa fa-check"></i><b>8.5</b> 📝 Ejercicios</a></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="FUNCIONES.html"><a href="FUNCIONES.html"><i class="fa fa-check"></i><b>9</b> Creación de funciones</a><ul>
-<li class="chapter" data-level="9.1" data-path="primera-función.html"><a href="primera-función.html"><i class="fa fa-check"></i><b>9.1</b> Primera función</a></li>
-<li class="chapter" data-level="9.2" data-path="segunda-función.html"><a href="segunda-función.html"><i class="fa fa-check"></i><b>9.2</b> Segunda función</a></li>
-<li class="chapter" data-level="9.3" data-path="variables-localesglobales.html"><a href="variables-localesglobales.html"><i class="fa fa-check"></i><b>9.3</b> Variables locales/globales</a></li>
-<li class="chapter" data-level="9.4" data-path="ejercicios-4.html"><a href="ejercicios-4.html"><i class="fa fa-check"></i><b>9.4</b> 📝 Ejercicios</a></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="qué-sabemos-hacer.html"><a href="qué-sabemos-hacer.html"><i class="fa fa-check"></i><b>10</b> ¿Qué sabemos hacer?</a><ul>
-<li class="chapter" data-level="10.1" data-path="aleatorio_1.html"><a href="aleatorio_1.html"><i class="fa fa-check"></i><b>10.1</b> Incursión aleatoria</a><ul>
-<li class="chapter" data-level="10.1.1" data-path="aleatorio_1.html"><a href="aleatorio_1.html#pseudoaleatorio"><i class="fa fa-check"></i><b>10.1.1</b> Pseudoaleatoriedad</a></li>
-</ul></li>
-<li class="chapter" data-level="10.2" data-path="recursos.html"><a href="recursos.html"><i class="fa fa-check"></i><b>10.2</b> Recursos</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="bibliografía.html"><a href="bibliografía.html"><i class="fa fa-check"></i>Bibliografía</a></li>
-<li class="divider"></li>
-<li><a href="https://bookdown.org/yihui/rmarkdown/" target="blank">Elaborado con bookdown</a></li>
-
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Prefacio</a></li>
+<li class="book-part">Toma de contacto</li>
+<li><a class="" href="instalacionR.html"><span class="header-section-number">1</span> Instalación</a></li>
+<li><a class="" href="primeros-pasos.html"><span class="header-section-number">2</span> Primeros pasos</a></li>
+<li class="book-part">Conceptos básicos</li>
+<li><a class="" href="tipos-de-datos-i-vectores.html"><span class="header-section-number">3</span> Tipos de datos I: vectores</a></li>
+<li><a class="" href="flujo-de-trabajo-proyecto.html"><span class="header-section-number">4</span> Flujo de trabajo: proyecto</a></li>
+<li><a class="" href="control.html"><span class="header-section-number">5</span> Estructuras de control</a></li>
+<li><a class="" href="datos.html"><span class="header-section-number">6</span> Datos estructurados: matrices y tablas</a></li>
+<li><a class="active" href="importar_exportar.html"><span class="header-section-number">7</span> Importando/exportando</a></li>
+<li class="book-part">Listas y funciones</li>
+<li><a class="" href="otros_datos.html"><span class="header-section-number">8</span> Listas y factores</a></li>
+<li><a class="" href="FUNCIONES.html"><span class="header-section-number">9</span> Creación de funciones</a></li>
+<li><a class="" href="qu%C3%A9-sabemos-hacer.html"><span class="header-section-number">10</span> ¿Qué sabemos hacer?</a></li>
 </ul>
 
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/dadosdelaplace/cursoR_intro_2021_2022">View book source <i class="fab fa-github"></i></a></p>
+        </div>
       </nav>
-    </div>
-
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Aprendiendo R sin morir en el intento</a>
-          </h1>
-        </div>
-
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
-
-            <section class="normal" id="section-">
-<div id="importar_exportar" class="section level1">
-<h1><span class="header-section-number">Capítulo 6</span> Importando/exportando</h1>
-<p>Hemos aprendido a <strong>crear nuestros propios datos</strong> pero la mayoría de veces los cargaremos de distintos archivos, fuentes, etc. Vamos a ver las <strong>4 formas más comunes de importar (cargar) datos</strong></p>
 </div>
-            </section>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="importar_exportar" class="section level1">
+<h1>
+<span class="header-section-number">Capítulo 7</span> Importando/exportando<a class="anchor" aria-label="anchor" href="#importar_exportar"><i class="fas fa-link"></i></a>
+</h1>
+<p>Hemos aprendido a <strong>crear nuestros propios datos</strong> pero la mayoría de veces los cargaremos de distintos archivos, fuentes, etc. Vamos a ver las <strong>4 formas más comunes de importar (cargar) datos</strong></p>
+<div id="importación-de-datos" class="section level2">
+<h2>
+<span class="header-section-number">7.1</span> Importación de datos<a class="anchor" aria-label="anchor" href="#importaci%C3%B3n-de-datos"><i class="fas fa-link"></i></a>
+</h2>
+<div class="rmdnote">
+<p>Las <strong><span style="color: #4197D2;">4 formas más comunes de importar (cargar) datos</span></strong> son:</p>
+<ul>
+<li>desde un archivo propio de <code>R</code> (extensión <code>.RData</code>).</li>
+<li>desde un archivo separado por comas (un archivo <code>.csv</code>).</li>
+<li>desde un excel (archivo <code>.xlsx</code>).</li>
+<li>desde un enlace de internet.</li>
+</ul>
+</div>
+<div id="archivo-.rdata" class="section level3">
+<h3>
+<span class="header-section-number">7.1.1</span> Archivo .RData<a class="anchor" aria-label="anchor" href="#archivo-.rdata"><i class="fas fa-link"></i></a>
+</h3>
+<p>La forma más sencilla de guardar datos y variables en <code>R</code>, y que además ocupa menos espacio en nuestro disco duro, es guardarlo en archivos propios que tiene <code>R</code> como son los archivos con extensiones <code>.rda</code> y <code>.RData</code>.</p>
+<p>Es <strong>recomendable</strong> tener los datos en la misma carpeta del proyecto pero una carpeta separada, ya que podemos tener muchos archivos y así no mezclamos dichos ficheros con los códigos que escirbamos. En la carpeta <code>DATOS</code> del proyecto tenemos 4 archivos <code>.RData</code>: <code>coches.RData</code>, <code>panel_vacunas_ccaa.RData</code>, <code>panel_vacunas_fecha.RData</code> y <code>panel_variables.RData</code>. <strong>¿Cómo cargar archivos <code>.RData</code>?</strong></p>
+<p>Muy sencillo: como son ficheros nativos de <code>R</code>, basta con usar la función de carga <code><a href="https://rdrr.io/r/base/load.html">load()</a></code>, y dentro la ruta de los archivos.</p>
+<div class="sourceCode" id="cb403"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Al fijar directorio de trabajo, no necesitamos toda la ruta, solo "./" y la ruta dentro de la carpeta del proyecto</span>
+<span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="st">"./DATOS/coches.RData"</span><span class="op">)</span> 
+<span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="st">"./DATOS/panel_vacunas_ccaa.RData"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="st">"./DATOS/panel_vacunas_fecha.RData"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="st">"./DATOS/panel_variables.RData"</span><span class="op">)</span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:carga-RDATA"></span>
+<img src="img/carga_RDATA.jpg" alt="Importación de ficheros de extensión .RData." width="50%"><p class="caption">
+Imagen/gráfica 7.1: Importación de ficheros de extensión .RData.
+</p>
+</div>
+<p>Como ves en la imagen <a href="importar_exportar.html#fig:carga-RDATA">7.1</a>, en el panel de entorno de la parte superior derecha ahora tendremos 4 <code>data.frames</code> que antes no teníamos. Un función muy útil es <code><a href="https://rdrr.io/r/utils/head.html">head()</a></code>, con argumento el nombre de un <code>data.frame</code>, que nos permite visualizar las primeras columnas.</p>
+<div class="sourceCode" id="cb404"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Ver las primeras filas de la tabla que guarda distintos modelos de coche y características</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">coches</span><span class="op">)</span></code></pre></div>
+<pre><code>##                    consumo cilindrada     peso  potencia   tiempo
+## Mazda RX4         11.20069   2621.936 1188.411 111.52570 40.91298
+## Mazda RX4 Wag     11.20069   2621.936 1304.077 111.52570 42.30491
+## Datsun 710        10.31643   1769.807 1052.333  94.28991 46.25702
+## Hornet 4 Drive    10.99134   4227.872 1458.298 111.52570 48.32006
+## Hornet Sportabout 12.57832   5899.356 1560.356 177.42725 42.30491
+## Valiant           12.99528   3687.097 1569.428 106.45635 50.25883
+##                                motor transmision ncyl ncarb ngear
+## Mazda RX4             cilindros en V      Manual    6     4     4
+## Mazda RX4 Wag         cilindros en V      Manual    6     4     4
+## Datsun 710        cilindros en serie      Manual    4     1     4
+## Hornet 4 Drive    cilindros en serie  Automática    6     1     3
+## Hornet Sportabout     cilindros en V  Automática    8     2     3
+## Valiant           cilindros en serie  Automática    6     1     3</code></pre>
+</div>
+<div id="archivo-.csv" class="section level3">
+<h3>
+<span class="header-section-number">7.1.2</span> Archivo .csv<a class="anchor" aria-label="anchor" href="#archivo-.csv"><i class="fas fa-link"></i></a>
+</h3>
+<p>Otra opción de importación habitual son los <strong>archivos <code>.csv</code> (comma separated values)</strong>: son archivos separados por comas (u otro caracter como puntos, puntos y comas, o tabuladores). En apariencia cuando los abrimos en el ordenador son como un Excel (ya que los abre el Excel), pero ocupan mucho menos que un Excel y su <strong>lectura es universal</strong> (independiente de tener instalado o no el Excel) ya que son archivos de texto <strong>sin formato</strong>.</p>
+<p>Para leer un archivo <code>.csv</code> basta con usar la función <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code> del paquete <a href="https://readr.tidyverse.org">readr</a> y la mayoría de las veces basta indicarle la ruta del archivo para su lectura (argumento <code>file</code>).</p>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:unnamed-chunk-149">Tabla 7.1: </span>Paquetes mencionados hasta ahora</caption>
+<thead><tr class="header">
+<th align="left">paquetes</th>
+<th align="left">descripción</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">{base}</td>
+<td align="left">utilidades básicas</td>
+</tr>
+<tr class="even">
+<td align="left">{bookdown}</td>
+<td align="left">creación de libros, manuales e informes en R</td>
+</tr>
+<tr class="odd">
+<td align="left">{glue}</td>
+<td align="left">manejo de texto literal</td>
+</tr>
+<tr class="even">
+<td align="left">{stringr}</td>
+<td align="left">manejo complejo de cadenas de texto</td>
+</tr>
+<tr class="odd">
+<td align="left">{lubridate}</td>
+<td align="left">manejo de fechas</td>
+</tr>
+<tr class="even">
+<td align="left">{microbenchmark}</td>
+<td align="left">comparativa de tiempos de ejecución</td>
+</tr>
+<tr class="odd">
+<td align="left">{tibble}</td>
+<td align="left">data.frames eficientes</td>
+</tr>
+<tr class="even">
+<td align="left">{datasets}</td>
+<td align="left">conjuntos de datos</td>
+</tr>
+<tr class="odd">
+<td align="left">{readr}</td>
+<td align="left">lectura de datos rectangulares (tablas)</td>
+</tr>
+</tbody>
+</table></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:paquete-readr"></span>
+<img src="img/readr.png" alt="Paquete readr." width="95%"><p class="caption">
+Imagen/gráfica 7.2: Paquete readr.
+</p>
+</div>
+<div class="sourceCode" id="cb406"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"readr"</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span>
+<span class="va">vacunas_esp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span>file <span class="op">=</span> <span class="st">"./DATOS/datos_ES.csv"</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb407"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">vacunas_esp</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 71
+##   fechas     ISO   poblacion porc_pobl_total poblacion_mayor_… porc_pobl_total_…
+##   &lt;date&gt;     &lt;chr&gt;     &lt;dbl&gt;           &lt;dbl&gt;             &lt;dbl&gt;             &lt;dbl&gt;
+## 1 2021-01-05 ES     47450795             100          40129822               100
+## 2 2021-01-06 ES     47450795             100          40129822               100
+## 3 2021-01-07 ES     47450795             100          40129822               100
+## 4 2021-01-08 ES     47450795             100          40129822               100
+## 5 2021-01-09 ES     47450795             100          40129822               100
+## 6 2021-01-10 ES     47450795             100          40129822               100
+## # … with 65 more variables: dosis_entrega_pfizer &lt;dbl&gt;,
+## #   dosis_entrega_astra &lt;dbl&gt;, dosis_entrega_moderna &lt;dbl&gt;,
+## #   dosis_entrega_janssen &lt;dbl&gt;, dosis_entrega &lt;dbl&gt;,
+## #   dosis_entrega_100hab &lt;dbl&gt;, porc_entregadas_sobre_total &lt;dbl&gt;,
+## #   dosis_diarias_entrega_pfizer &lt;dbl&gt;, dosis_diarias_entrega_astra &lt;dbl&gt;,
+## #   dosis_diarias_entrega_moderna &lt;dbl&gt;, dosis_diarias_entrega &lt;dbl&gt;,
+## #   dosis_7D_entrega_pfizer &lt;dbl&gt;, dosis_7D_entrega_astra &lt;dbl&gt;, …</code></pre>
+<div class="sourceCode" id="cb409"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">vacunas_esp</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">7</span><span class="op">]</span> <span class="co"># Primeras filas y columnas</span></code></pre></div>
+<pre><code>## # A tibble: 5 × 7
+##   fechas     ISO   poblacion porc_pobl_total poblacion_mayor_… porc_pobl_total_…
+##   &lt;date&gt;     &lt;chr&gt;     &lt;dbl&gt;           &lt;dbl&gt;             &lt;dbl&gt;             &lt;dbl&gt;
+## 1 2021-01-05 ES     47450795             100          40129822               100
+## 2 2021-01-06 ES     47450795             100          40129822               100
+## 3 2021-01-07 ES     47450795             100          40129822               100
+## 4 2021-01-08 ES     47450795             100          40129822               100
+## 5 2021-01-09 ES     47450795             100          40129822               100
+## # … with 1 more variable: dosis_entrega_pfizer &lt;dbl&gt;</code></pre>
+<p>Ya tenemos nuestro archivo <code>.csv</code> cargado y además en formato <code>tibble</code>. Como hemos mentado anteriormente, las tablas en formato <code>tibble</code> son una especie particular de tablas <code>data.frame</code> con una gestión más eficiente.</p>
+</div>
+<div id="archivo-.xlsx" class="section level3">
+<h3>
+<span class="header-section-number">7.1.3</span> Archivo .xlsx<a class="anchor" aria-label="anchor" href="#archivo-.xlsx"><i class="fas fa-link"></i></a>
+</h3>
+<p>Muchas veces no tendremos un <code>.csv</code> (por desgracia) y nos tocará leer desde un excel. Para ello deberemos instalar (la primera vez) y cargar el paquete <a href="https://readxl.tidyverse.org">readxl</a> que nos permitirá usar funciones para cargar archivos <code>.xls</code> (la función <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_xls()</a></code>) y archivos <code>.xlsx</code> (la función <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_xlsx()</a></code>). Además del argumento <code>path</code> con la ruta del archivo, podemos en el argumento <code>sheet</code> indicarle la hoja de Excel a leer (en caso de tener varias).</p>
+<div class="sourceCode" id="cb411"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"readxl"</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readxl.tidyverse.org">readxl</a></span><span class="op">)</span>
+<span class="va">boston</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_xlsx</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"./DATOS/Boston.xlsx"</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb412"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">boston</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 14
+##      crim    zn indus  chas   nox    rm   age   dis   rad   tax ptratio black
+##     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
+## 1 0.00632    18  2.31     0 0.538  6.58  65.2  4.09     1   296    15.3  397.
+## 2 0.0273      0  7.07     0 0.469  6.42  78.9  4.97     2   242    17.8  397.
+## 3 0.0273      0  7.07     0 0.469  7.18  61.1  4.97     2   242    17.8  393.
+## 4 0.0324      0  2.18     0 0.458  7.00  45.8  6.06     3   222    18.7  395.
+## 5 0.0690      0  2.18     0 0.458  7.15  54.2  6.06     3   222    18.7  397.
+## 6 0.0298      0  2.18     0 0.458  6.43  58.7  6.06     3   222    18.7  394.
+## # … with 2 more variables: lstat &lt;dbl&gt;, medv &lt;dbl&gt;</code></pre>
+<div class="rmdimportant">
+<p><strong><span style="color: #20935E;">CONSEJO: entorno tidyverse</span></strong></p>
+<p>Una de las <strong>herramientas más potentes en <code>R</code></strong> es el conjunto de paquetes <a href="https://tidyverse.tidyverse.org">tidyverse</a>: un entorno de paquetes que nos permite una gestión ágil y eficiente de nuestros conjuntos de datos. Aunque su uso profundo corresponde a un futuro curso, veamos una función muy útil del paquete <a href="https://dplyr.tidyverse.org">dplyr</a> (incluido en <a href="https://tidyverse.tidyverse.org">tidyverse</a>) para visualizar un resumen de nuestros datos.</p>
+<div class="sourceCode" id="cb414"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"tidyverse"</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb415"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">glimpse</span><span class="op">(</span><span class="va">boston</span><span class="op">)</span><span class="co"># Resumen por columnas</span></code></pre></div>
+<pre><code>## Rows: 506
+## Columns: 14
+## $ crim    &lt;dbl&gt; 0.00632, 0.02731, 0.02729, 0.03237, 0.06905, 0.02985, 0.08829,…
+## $ zn      &lt;dbl&gt; 18.0, 0.0, 0.0, 0.0, 0.0, 0.0, 12.5, 12.5, 12.5, 12.5, 12.5, 1…
+## $ indus   &lt;dbl&gt; 2.31, 7.07, 7.07, 2.18, 2.18, 2.18, 7.87, 7.87, 7.87, 7.87, 7.…
+## $ chas    &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+## $ nox     &lt;dbl&gt; 0.538, 0.469, 0.469, 0.458, 0.458, 0.458, 0.524, 0.524, 0.524,…
+## $ rm      &lt;dbl&gt; 6.575, 6.421, 7.185, 6.998, 7.147, 6.430, 6.012, 6.172, 5.631,…
+## $ age     &lt;dbl&gt; 65.2, 78.9, 61.1, 45.8, 54.2, 58.7, 66.6, 96.1, 100.0, 85.9, 9…
+## $ dis     &lt;dbl&gt; 4.0900, 4.9671, 4.9671, 6.0622, 6.0622, 6.0622, 5.5605, 5.9505…
+## $ rad     &lt;dbl&gt; 1, 2, 2, 3, 3, 3, 5, 5, 5, 5, 5, 5, 5, 4, 4, 4, 4, 4, 4, 4, 4,…
+## $ tax     &lt;dbl&gt; 296, 242, 242, 222, 222, 222, 311, 311, 311, 311, 311, 311, 31…
+## $ ptratio &lt;dbl&gt; 15.3, 17.8, 17.8, 18.7, 18.7, 18.7, 15.2, 15.2, 15.2, 15.2, 15…
+## $ black   &lt;dbl&gt; 396.90, 396.90, 392.83, 394.63, 396.90, 394.12, 395.60, 396.90…
+## $ lstat   &lt;dbl&gt; 4.98, 9.14, 4.03, 2.94, 5.33, 5.21, 12.43, 19.15, 29.93, 17.10…
+## $ medv    &lt;dbl&gt; 24.0, 21.6, 34.7, 33.4, 36.2, 28.7, 22.9, 27.1, 16.5, 18.9, 15…</code></pre>
+</div>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:unnamed-chunk-159">Tabla 7.2: </span>Paquetes mencionados hasta ahora</caption>
+<thead><tr class="header">
+<th align="left">paquetes</th>
+<th align="left">descripción</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">{base}</td>
+<td align="left">utilidades básicas</td>
+</tr>
+<tr class="even">
+<td align="left">{bookdown}</td>
+<td align="left">creación de libros, manuales e informes en R</td>
+</tr>
+<tr class="odd">
+<td align="left">{glue}</td>
+<td align="left">manejo de texto literal</td>
+</tr>
+<tr class="even">
+<td align="left">{stringr}</td>
+<td align="left">manejo complejo de cadenas de texto</td>
+</tr>
+<tr class="odd">
+<td align="left">{lubridate}</td>
+<td align="left">manejo de fechas</td>
+</tr>
+<tr class="even">
+<td align="left">{microbenchmark}</td>
+<td align="left">comparativa de tiempos de ejecución</td>
+</tr>
+<tr class="odd">
+<td align="left">{tibble}</td>
+<td align="left">data.frames eficientes</td>
+</tr>
+<tr class="even">
+<td align="left">{datasets}</td>
+<td align="left">conjuntos de datos</td>
+</tr>
+<tr class="odd">
+<td align="left">{readr}</td>
+<td align="left">lectura de datos rectangulares (tablas)</td>
+</tr>
+<tr class="even">
+<td align="left">{tidyverse}</td>
+<td align="left">entorno de paquetes para el manejo de datos</td>
+</tr>
+<tr class="odd">
+<td align="left">{readxl}</td>
+<td align="left">lectura de datos en formato excel</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div id="desde-web" class="section level3">
+<h3>
+<span class="header-section-number">7.1.4</span> Desde web<a class="anchor" aria-label="anchor" href="#desde-web"><i class="fas fa-link"></i></a>
+</h3>
+<p>Por último, muchas veces querremos cargar archivos colgados en la web que, aunque al descargarlos son <code>.csv</code> o <code>.xlsx</code>, son archivos dinámicos que sabemos que van a ir cambiando, como por ejemplo los datos de casos covid, hospitalizados, ingresos UCI y fallecidos, de la página del ISCIII <a href="https://cnecovid.isciii.es/covid19/#documentaci%C3%B3n-y-datos" class="uri">https://cnecovid.isciii.es/covid19/#documentaci%C3%B3n-y-datos</a>.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:ISCIII"></span>
+<img src="img/ISCIII.jpg" alt="Archivos de la pandemia en el ISCIII." width="75%"><p class="caption">
+Imagen/gráfica 7.3: Archivos de la pandemia en el ISCIII.
+</p>
+</div>
+<p>Esos archivos cambian cada día, por lo que para visualizarlos, analizarlos o guardarlos cada día, tendríamos que, cada día, entrar de forma manual a la página y bajarnos el archivo. O no…</p>
+<p><code>R</code> nos permite <strong>leer archivos subidos en una web, dándole a la función de lectura el enlace del archivo en lugar de la ruta local de nuestro ordenador</strong> (para averiguar el enlace, basta con clickar botón derecho en la web y seleccionar «copiar dirección de enlace»)</p>
+<div class="sourceCode" id="cb417"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">datos_ISCIII</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span>file <span class="op">=</span> <span class="st">"https://cnecovid.isciii.es/covid19/resources/casos_hosp_uci_def_sexo_edad_provres.csv"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">datos_ISCIII</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 8
+##   provincia_iso sexo  grupo_edad fecha      num_casos num_hosp num_uci num_def
+##   &lt;chr&gt;         &lt;chr&gt; &lt;chr&gt;      &lt;date&gt;         &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1 A             H     0-9        2020-01-01         0        0       0       0
+## 2 A             H     10-19      2020-01-01         0        0       0       0
+## 3 A             H     20-29      2020-01-01         0        0       0       0
+## 4 A             H     30-39      2020-01-01         0        0       0       0
+## 5 A             H     40-49      2020-01-01         0        0       0       0
+## 6 A             H     50-59      2020-01-01         0        0       0       0</code></pre>
+<p>Mientras el enlace web no cambie, cada vez que ejecutemos esa orden en nuestro código tendremos en <code>datos_ISCIII</code> el último archivo actualizado que haya, sea el que sea, sin tener que descargarlo de forma manual, ¡y sin necesidad de guardarlo en nuestro local, solo en la memoria virtual de nuestra sesión de <code>R</code>!</p>
+</div>
+</div>
+<div id="exportación-de-datos" class="section level2">
+<h2>
+<span class="header-section-number">7.2</span> Exportación de datos<a class="anchor" aria-label="anchor" href="#exportaci%C3%B3n-de-datos"><i class="fas fa-link"></i></a>
+</h2>
+<p>Aunque se puede exportar en cualquier formato que puedas importar, vamos a ver las <strong>dos formas más útiles y eficientes de exportar datos en <code>R</code></strong>:</p>
+<ul>
+<li>fichero <code>.RData</code>.</li>
+<li>fichero <code>.csv</code> (obviaremos la exportación a Excel porque un <code>.csv</code> ya es posible abrirlo con dicho engendro del demonio).</li>
+</ul>
+<div id="guardar-en-.rdata" class="section level3">
+<h3>
+<span class="header-section-number">7.2.1</span> Guardar en .RData<a class="anchor" aria-label="anchor" href="#guardar-en-.rdata"><i class="fas fa-link"></i></a>
+</h3>
+<p>La exportación en fichero <code>.RData</code> es la opción <strong>más recomendable si tú o tu equipo solo trabajáis con <code>R</code></strong>, es la opción nativa de fichero, para que su importación sea tan sencilla como una función <code><a href="https://rdrr.io/r/base/load.html">load()</a></code>. Para exportar en <code>R.Data</code> basta con uses la función <code><a href="https://rdrr.io/r/base/save.html">save()</a></code>, indícandole lo que quieres guardar y la ruta donde quieres guardarlo.</p>
+<p>Es <strong>importante</strong> entender que la principal ventaja de exportar un fichero <code>.RData</code> es que no se está portando una tabla, o un fichero tabulado con un formato de filas y columnas: estás exportando <strong>cualquier cosa</strong>, cualquier variable de <code>R</code>, con la naturaleza de esa variable intacta, sin necesidad de pasarlo otro formato.</p>
+<div class="sourceCode" id="cb419"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Exportamos en .RData la variable nombres </span>
+<span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">nombres</span>, file <span class="op">=</span> <span class="st">"./EXPORTAR/nombres.RData"</span><span class="op">)</span></code></pre></div>
+<p>Para tenerlo organizado, la orden anterior está hecha habiendo creado en nuestra carpeta del proyecto una carpeta <code>EXPORTAR</code> para guardar lo que vayamos exportando. Ese fichero solo podrá ser abierto por <code>R</code>, pero cuando lo cargemos, tendremos la variable <code>nombres</code> tal cual la hemos guardado.</p>
+</div>
+<div id="guardar-en-.csv" class="section level3">
+<h3>
+<span class="header-section-number">7.2.2</span> Guardar en .csv<a class="anchor" aria-label="anchor" href="#guardar-en-.csv"><i class="fas fa-link"></i></a>
+</h3>
+<p>No siempre trabajamos en <code>R</code> y a veces necesitamos una exportación de un <code>data.frame</code> o una tabla que podamos abrir en nuestra ordenador, ya sea para explicársela a alguien o para enviársela a otra persona. Para ello exportaremos en <code>.csv</code>, un fichero sin formato, y que es capaz de ser abierto por todo tipo de hojas de cálculo: basta que usemos la función <code><a href="https://rdrr.io/r/utils/write.table.html">write.csv()</a></code> del paquete <a href="https://readr.tidyverse.org">readr</a>.</p>
+<div class="sourceCode" id="cb420"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Exportamos en .csv el data.frame tabla</span>
+<span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">tabla</span>, file <span class="op">=</span> <span class="st">"./EXPORTAR/tabla.csv"</span><span class="op">)</span></code></pre></div>
+<div class="rmdnote">
+<p><strong><span style="color: #4197D2;">Paquete rvest</span></strong></p>
+<p>En dicho paquete tienes más <strong>funciones para una lectura directamente de una página web (no desde un documento, desde la propia página web, como si estuvieras navegando en ella)</strong>. Ver <a href="https://github.com/tidyverse/rvest" class="uri">https://github.com/tidyverse/rvest</a>.</p>
+</div>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:unnamed-chunk-163">Tabla 7.3: </span>Paquetes mencionados hasta ahora</caption>
+<thead><tr class="header">
+<th align="left">paquetes</th>
+<th align="left">descripción</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">{base}</td>
+<td align="left">utilidades básicas</td>
+</tr>
+<tr class="even">
+<td align="left">{bookdown}</td>
+<td align="left">creación de libros, manuales e informes en R</td>
+</tr>
+<tr class="odd">
+<td align="left">{glue}</td>
+<td align="left">manejo de texto literal</td>
+</tr>
+<tr class="even">
+<td align="left">{stringr}</td>
+<td align="left">manejo complejo de cadenas de texto</td>
+</tr>
+<tr class="odd">
+<td align="left">{lubridate}</td>
+<td align="left">manejo de fechas</td>
+</tr>
+<tr class="even">
+<td align="left">{microbenchmark}</td>
+<td align="left">comparativa de tiempos de ejecución</td>
+</tr>
+<tr class="odd">
+<td align="left">{tibble}</td>
+<td align="left">data.frames eficientes</td>
+</tr>
+<tr class="even">
+<td align="left">{datasets}</td>
+<td align="left">conjuntos de datos</td>
+</tr>
+<tr class="odd">
+<td align="left">{readr}</td>
+<td align="left">lectura de datos rectangulares (tablas)</td>
+</tr>
+<tr class="even">
+<td align="left">{tidyverse}</td>
+<td align="left">entorno de paquetes para el manejo de datos</td>
+</tr>
+<tr class="odd">
+<td align="left">{readxl}</td>
+<td align="left">lectura de datos en formato excel</td>
+</tr>
+<tr class="even">
+<td align="left">{rvest}</td>
+<td align="left">lectura de datos web</td>
+</tr>
+</tbody>
+</table></div>
+<div class="rmdimportant">
+<p><strong><span style="color: #20935E;">CONSEJO: secciones en el código</span></strong></p>
+<p>Los comentarios no solo sirven para documentar el código sino que además pueden servirnos para <strong>construir secciones de código</strong>. Prueba a escribir un comentario con varias <code>###############</code>: ¿ves la flecha que te aparece en la parte izquierda? Sirve para minimizar o maximizar trozos de código, de forma que tu código aún más limpio.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:indice"></span>
+<img src="img/indice.jpg" alt="Secciones en el código." width="50%"><p class="caption">
+Imagen/gráfica 7.4: Secciones en el código.
+</p>
+</div>
+</div>
+<div class="rmdwarning">
+<p><strong><span style="color: #ffc107;">Líneas de código en los errores</span></strong></p>
+<p>Dado que los errores del código nos vendrán referenciados en la consola por el número de línea donde fueron detectados, puede sernos muy útil mostrar dichos números en la barra lateral izquierda, yendo a <code>Tools &lt;&lt; Global Options &lt;&lt; Code &lt;&lt; Display &lt;&lt; Show line numbers</code></p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:show-line-numbers"></span>
+<img src="img/show_line_numbers.jpg" alt="Líneas de código." width="50%"><p class="caption">
+Imagen/gráfica 7.5: Líneas de código.
+</p>
+</div>
+</div>
+<div class="rmdimportant">
+<p><strong><span style="color: #20935E;">CONSEJO: Margen derecho en la ventana de scripts</span></strong></p>
+<p>Aunque no afecte a nuestro código escribir todo en una línea sin saltos de línea, no somos bárbaros/as. ¿Por qué cuadno escribes en un Word lo haces en formato vertical pero cuando programas pones todas las órdenes seguidas? Recuerda que la legibilidad de tu código no solo te ahorrará tiempo sino que te hará programar mejor. ¿Cómo podemos fijar un margen imaginario para nosotros ser quienes demos al <em>ENTER</em>? Yendo a <code>Tools &lt;&lt; Global Options &lt;&lt; Code &lt;&lt; Display &lt;&lt; Show margin</code> (es un margen imaginario para ser nosotros quienes lo hagamos efectivo, a <code>R</code> le da igual)</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:show-margin"></span>
+<img src="img/show_margin.jpg" alt="Margen derecho." width="50%"><p class="caption">
+Imagen/gráfica 7.6: Margen derecho.
+</p>
+</div>
+</div>
 
-          </div>
-        </div>
-      </div>
-<a href="ejercicios-2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="importación-de-datos.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
-    </div>
+</div>
+</div>
+</div>
+
+
+
+  <div class="chapter-nav">
+<div class="prev"><a href="datos.html"><span class="header-section-number">6</span> Datos estructurados: matrices y tablas</a></div>
+<div class="next"><a href="otros_datos.html"><span class="header-section-number">8</span> Listas y factores</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#importar_exportar"><span class="header-section-number">7</span> Importando/exportando</a></li>
+<li>
+<a class="nav-link" href="#importaci%C3%B3n-de-datos"><span class="header-section-number">7.1</span> Importación de datos</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#archivo-.rdata"><span class="header-section-number">7.1.1</span> Archivo .RData</a></li>
+<li><a class="nav-link" href="#archivo-.csv"><span class="header-section-number">7.1.2</span> Archivo .csv</a></li>
+<li><a class="nav-link" href="#archivo-.xlsx"><span class="header-section-number">7.1.3</span> Archivo .xlsx</a></li>
+<li><a class="nav-link" href="#desde-web"><span class="header-section-number">7.1.4</span> Desde web</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#exportaci%C3%B3n-de-datos"><span class="header-section-number">7.2</span> Exportación de datos</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#guardar-en-.rdata"><span class="header-section-number">7.2.1</span> Guardar en .RData</a></li>
+<li><a class="nav-link" href="#guardar-en-.csv"><span class="header-section-number">7.2.2</span> Guardar en .csv</a></li>
+</ul>
+</li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/dadosdelaplace/cursoR_intro_2021_2022/blob/master/07-carga_datos.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/dadosdelaplace/cursoR_intro_2021_2022/edit/master/07-carga_datos.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 21-09-2021.</p>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
-<script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": {
-"github": true,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["Intro_R_2021_2022.pdf"],
-"search": {
-"engine": "lunr",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
-});
-});
-</script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -336,7 +528,22 @@ gitbook.start({
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
 </script>
 </body>
-
 </html>

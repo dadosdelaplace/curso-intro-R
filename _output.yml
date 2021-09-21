@@ -1,13 +1,37 @@
+bookdown::bs4_book:
+  latex_engine: xelatex
+  theme:
+    primary: "#4197D2"   # default .rmdnote = blue #546f8a
+    danger:  "#dc3545"   # default .rmdcaution = red
+    success: "#20935E"   # default .rmdimportant = green
+    info:    "#4197D2"   # default .rmdtip = cyan
+    warning: "#ffc107"   # default .rmdwarning = yellow
+    base_font: 
+      google: Sen
+    heading_font:
+      google:
+        family: Bitter
+        wght: 300
+    code_font:
+      google: 
+        # arguments to sass::font_google() 
+        family: DM Mono
+        local: false
+  repo: "https://github.com/dadosdelaplace/cursoR_intro_2021_2022"
+  search:
+    engine: lunr
 bookdown::gitbook:
   css: css/style.css
   split_by: section
   config:
     toc:
+      collapse: section
+      scroll_highlight: true
       before: |
         <li><a href="./">Aprendiendo R sin morir en el intento</a></li>
       after: |
         <li><a href="https://bookdown.org/yihui/rmarkdown/" target="blank">Elaborado con bookdown</a></li>
-    download: ["pdf"]
+    download: ["curso_R.pdf"]
     sharing:
       github: yes
       twitter: yes

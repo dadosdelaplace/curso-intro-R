@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Licencia | Aprendiendo R sin morir en el intento</title>
+  <title>Código de colores | Aprendiendo R sin morir en el intento</title>
   <meta name="description" content="Introducción a R desde cero. Curos elaborado por Javier Álvarez Liébana" />
   <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Licencia | Aprendiendo R sin morir en el intento" />
+  <meta property="og:title" content="Código de colores | Aprendiendo R sin morir en el intento" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="/img/logo_R.png" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="dadosdelaplace/cursoR_intro_2021_2022" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Licencia | Aprendiendo R sin morir en el intento" />
+  <meta name="twitter:title" content="Código de colores | Aprendiendo R sin morir en el intento" />
   
   <meta name="twitter:description" content="Introducción a R desde cero. Curos elaborado por Javier Álvarez Liébana" />
   <meta name="twitter:image" content="/img/logo_R.png" />
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="sobre-el-autor.html"/>
-
+<link rel="prev" href="requisitos.html"/>
+<link rel="next" href="sobre-el-autor.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -160,21 +160,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="licencia" class="section level2 unnumbered">
-<h2>Licencia</h2>
-<p><a href="https://www.gnu.org/licenses/gpl-3.0"><img src="img/license-GPLv3-blue.png" alt="Licencia: GPLv3" /></a></p>
-<p>Este documento es publicado bajo <strong>licencia pública general GNU</strong>,
-una licencia libre de copyleft que garantiza a los usuarios finales (personas, organizaciones, compañías) la <strong>libertad de usar, estudiar, compartir (copiar) y modificar el software, citando adecuadamente al autor del mismo</strong>.</p>
-
+<div id="código-de-colores" class="section level2 unnumbered">
+<h2>Código de colores</h2>
+<div class="rmdcaution">
+<p>En los <strong><span style="color: #dc3545;">recuadros rojos</span></strong> encontrarás <strong>errores comunes</strong> o prácticas que no deberías hacer.</p>
 </div>
-<!-- </div> -->
+<div class="rmdwarning">
+<p>En los <strong><span style="color: #ffc107;">recuadros naranjas</span></strong> encontrarás <strong>warnings o advertencias</strong> sobre cosas a tener en cuenta para evitar problemas.</p>
+</div>
+<div class="rmdwarning">
+<p><strong><span style="color: #ffc107;">Anular warnings</span></strong></p>
+<p>Algunas funciones pueden arrojarse ciertas advertencias que nunca está de más leer. Pero si dichos mensajes de alerta los tenemos controlados y no queremos que nos ensucie la ejecución en la consola, podemos poner al inicio del código <code>assign(&quot;last.warning&quot;, NULL, envir = baseenv())</code> para limpiar los warnings antiguos y <code>options(warn = -1)</code> para desactivarlos.</p>
+</div>
+<div class="rmdimportant">
+<p>En los <strong><span style="color: #20935E;">recuadros verdes</span></strong> encontrarás consejos o tips para ampliar y facilitar tu programación. Además en cada <strong>cajita de código</strong>, si pasas el ratón, encontrarás un botón 📄📄 en la esquina superior derecha de la caja para copiar el código directamente a tu consola. <strong>Puedes encontrarlos todos escribiendo «consejo» en el buscador</strong>.</p>
+</div>
+<div class="rmdnote">
+<p>En los <strong><span style="color: #4197D2;">recuadros azules</span></strong> encontrarás un 📚 <strong>glosario</strong> con algunos términos estadísticos y conceptos básicos.</p>
+</div>
+</div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="sobre-el-autor.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="requisitos.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="sobre-el-autor.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

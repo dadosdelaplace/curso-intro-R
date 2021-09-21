@@ -1,12 +1,26 @@
 book_filename: "Intro_R_2021_2022"
 output_dir: _book
 clean: [packages.bib]
+toc-title: "Índice"
 language:
   label:
+    toc-title: "Índice"
     fig: "Imagen/gráfica "
     tab: "Tabla "
+    toc: "Índice"
+    eq: "Ecuación "
+    thm: "Teorema "
+    lem: "Lema "
+    cor: "Corolario "
+    prp: "Proposición "
+    def: "Definición "
+    exm: "Ejemplo "
+    exr: "Ejercicio "
+    proof: "Demostración. "
+    remark: "Remark "
+    solution: "Solución. "
   ui:
     chapter_name: "Capítulo "
+    toc: "Índice "
 delete_merged_file: true
-
 

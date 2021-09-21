@@ -1,3 +1,20 @@
+```{r colorize, echo = FALSE}
+library(knitr)
+
+# Color text
+colorize <- function(x, color) {
+  
+  if (knitr::is_latex_output()) {
+    
+    sprintf("\\textcolor{%s}{%s}", color, x)
+    
+  } else if (knitr::is_html_output()) {
+    
+    sprintf("<span style='color: %s;'>%s</span>", color, x)
+    
+  } else { x }
+}
+```
 
 # (PART) Toma de contacto {-}
 
@@ -49,16 +66,18 @@ a + b
 knitr::include_graphics("./img/primera_suma.jpg")
 ```
 
+::: {.rmdimportant}
 
 **¡Enhorabuena!** Si te ha devuelto `[1] 3`, ya has hecho más de lo que parece: has definido dos variables `a` y `b`, has **asignado un valor numérico a cada variable** y las hemos usado. **Ya sabemos usar `R` como calculadora**.
 
-&nbsp;  
+:::
+ 
 
-![](img/logo_info.png){width=4%}  **Asignación**: como habrás advertido, en `R` usaremos `<-` para asignar valores en lugar de `=`, como una flecha.
+::: {.rmdwarning}
 
-&nbsp; 
+Como habrás advertido, en `R` usaremos `<-` para **asignar valores** en lugar de `=`, como una flecha.
 
-&nbsp; 
+::: 
 
 Bonita esta interfaz no es, así que la cerraremos y no la abriremos más. Tenemos nuestro lenguaje instalado, vamos a **instalar nuestro Word** para poder programar de forma cómoda.
 
@@ -66,11 +85,6 @@ Bonita esta interfaz no es, así que la cerraremos y no la abriremos más. Tenem
 ## Instalación de RStudio {#instalacionRStudio}
 
 Para instalar `RStudio` deberemos ir a la web <https://www.rstudio.com/products/rstudio/download/#download> y seleccionar el ejecutable que te aperezca acorde a tu sistema operativo (ver imagen \@ref(fig:pantalla-rstudio)). Tras descargar el ejecutable, hay que abrirlo como otro cualquier otro ejecutable y dejar que termine la instalación.
-
-```{r rstudio-ide2, echo = FALSE, fig.align = 'center',  include = identical(knitr:::pandoc_to(), 'html'), fig.link = 'https://www.rstudio.com/products/rstudio/download/#download', out.width = '90%'}
-knitr::include_graphics('img/rstudio_cheetsheet.jpg')
-```
-
 
 ```{r pantalla-rstudio, echo = FALSE, out.width = "75%", fig.align = "center", fig.cap = "Descargar el ejecutable de RStudio para su posterior instalación."}
 knitr::include_graphics("./img/pantalla_rstudio.jpg")
@@ -84,7 +98,10 @@ knitr::include_graphics("./img/inicio_rstudio_1.jpg")
 
 ```
 
+::: {.rmdnote}
+
 * **Consola**: es el nombre para llamar a esa ventana grande que te ocupa la mayor parte de tu pantalla. Prueba a escribir el mismo código que antes en ella (es el equivalente a la consola de R que hemos abierto al principio).
+:::
 
 ```{r codigo-prueba-1bis, eval = FALSE}
 a <- 1
@@ -99,14 +116,19 @@ knitr::include_graphics("./img/inicio_rstudio_2.jpg")
 
 **La consola será donde ejecutaremos órdenes y mostraremos resultados**
 
+::: {.rmdnote}
+
 * **Environment (entorno)**: la pantalla pequeña (puedes ajustar los márgenes con el ratón a tu gusto) que tenemos en la parte superior derecha se denomina environment o entorno de variables, donde como puedes ver, tras ejecutar el pequeño código en la consola, nos informa de que tenemos dos variables numéricas y su valor asignado. Nos **mostrará las variables que tenemos definidas, el tipo y su valor**.
+::: 
 
 ```{r inicio-rstudio-3, echo = FALSE, out.width = "75%", fig.align = "center", fig.cap = "Environment de variables."}
 knitr::include_graphics("./img/inicio_rstudio_3.jpg")
 
 ```
 
+::: {.rmdnote}
 * **Panel multiusos**: la ventana que tenemos en la parte inferior derecha no servirá para buscar ayuda de comandos y órdenes, además de para visualizar gráficos. Lo veremos cuando sea necesario.
+:::
 
 ```{r inicio-rstudio-4, echo = FALSE, out.width = "75%", fig.align = "center", fig.cap = "Panel multiusos."}
 knitr::include_graphics("./img/inicio_rstudio_4.jpg")
@@ -158,7 +180,12 @@ Esto nos ahorra muchísimo tiempo ya el **90% de lo que querramos hacer ya lo ha
 install.packages("ggplot2")
 ```
 
-Dicha orden (puede tardar un poco la primera vez, depende de tu conexión a internet) lo que hará será acceder a la web de R, bajarse a tu ordenador los trozos de código incluidos en el paquete llamado `{ggplot2}` (para realizar gráficas), y dejarlos para siempre en él: **la instalación de paquetes SOLO ES NECESARIO la primera vez** que se usa dicho paquete en la vida del ordenador, no hace falta hacerlo cada vez que lo usas.
+Dicha orden (puede tardar un poco la primera vez, depende de tu conexión a internet) lo que hará será acceder a la web de R, bajarse a tu ordenador los trozos de código incluidos en el paquete llamado `{ggplot2}`, y dejarlos para siempre en él.
+
+::: {.rmdwarning}
+
+La **instalación de paquetes SOLO ES NECESARIO la primera vez** que se usa dicho paquete en la vida del ordenador, no hace falta hacerlo cada vez que lo usas.
+:::
 
 Una vez que tenemos los trozos de código (el paquete) en nuestro ordenador, en cada sesión de `R` que abramos (cada vez que cierres y abras `RStudio`) deberemos (si queremos) llamar a ese paquete que tenemos instalado, escribiendo el siguiente comando en consola
 
@@ -168,36 +195,36 @@ library(ggplot2)
 
 **Welcome to software libre**
 
+::: {.rmdnote}
+* **Paquete**: trozos de código realizadas por otros usuarios de la comunidad (y validades por el equipo de CRAN si la descarga es mediante `install.packages()`) para ser usados. Una vez instalados (descargados) los trozos de código a nuestro ordenador, basta con «acudir» a ellos con `library()`.
 
-## ![](img/logo_info.png){width=4%} Consejos y tips
+Haciendo una metáfora con la colección de libros que tengas en casa: con la **instalación hemos comprado el libro** y lo tenemos en nuestra estantería (para siempre), con la llamada al paquete, por ejemplo `library(ggplot2)`, lo que hacemos es decidir, de entre todos los libros de la estantería, cuales queremos llevarnos de viaje (en cada maleta que hagamos).
 
+Los **paquetes usados** los verás denotados como `{nombre_paquete}` a lo largo del manual.
+:::
 
+::: {.rmdimportant}
+**`r colorize("CONSEJO", "#20935E")`**
 
-<details>
-  <summary><strong>¿Cómo saber cuando la orden lanzada en consola ha terminado?</strong></summary>
+¿Cómo saber cuando la orden lanzada en consola ha terminado?
   
-A veces `R` y `RStudio` son tan silenciosos que no sabemos si ha acabado la orden que acabamos de lanzar en la consola o no.
+A veces `R` y `RStudio` son tan silenciosos que no sabemos si ha acabado la orden que acabamos de lanzar en la consola o no. Siempre que veas el símbolo `>` como última línea en la consola significa que está listo para que le escribamos otra orden (es la forma cariñosa de decirte que ya ha acabado, ver imagen \@ref(fig:tip-consola-lista))
+:::
 
-
-![](img/logo_info.png){width=4%} **Truco**: siempre que veas este símbolo `>` como última línea en la consola significa que está listo para que le escribamos otra orden (es la forma cariñosa de decirte que ya ha acabado, ver imagen \@ref(fig:tip-consola-lista))
 
 ```{r tip-consola-lista, echo = FALSE,  out.width = "70%", fig.align = "center", fig.cap = "Ejemplo de que la orden lanzada ha acabado."}
 knitr::include_graphics("./img/tip_consola_lista.jpg")
 
 ```
 
-</details>
+::: {.rmdimportant}
+**`r colorize("CONSEJO", "#20935E")`**
 
+¿Cómo prevenir la fatiga visual programando?</strong></summary>
 
-&nbsp;  
+Estar delante de una pantalla de ordenador, con la vista muy fija mientras se programa, puede que acabes teniendo cierta fatiga visual en el trabajo. Te aconsejo que cambies en tu `RStudio` la tonalidad del fondo de tu programa, en tonos oscuros y no blancos (¿te has fijado que mis capturas tienen un azul cobalto oscuro de fondo mientras el tuyo es un blanco nuclear? Echa un vistazo a las imágenes \@ref(fig:menu-1) y \@ref(fig:menu-2))
 
-
-<details>
-  <summary><strong>¿Cómo prevenir la fatiga visual programando?</strong></summary>
-
-Estar delante de una pantalla de ordenador, con la vista muy fija mientras se programa, puede que acabes teniendo cierta fatiga visual en el trabajo.
-
-![](img/logo_info.png){width=4%}  **Truco**: te aconsejo que cambies en tu `RStudio` la tonalidad del fondo de tu programa, en tonos oscuros y no blancos (¿te has fijado que mis capturas tienen un azul cobalto oscuro de fondo mientras el tuyo es un blanco nuclear? Echa un vistazo las imagenes \@ref(fig:menu-1) y \@ref(fig:menu-2))
+:::
 
 ```{r menu-1, echo = FALSE, out.height = "40%", out.width = "40%", fig.align = "center", fig.cap = "Menú de opciones de nuestro editor"}
 knitr::include_graphics("./img/menu_1.jpg")
@@ -209,18 +236,7 @@ knitr::include_graphics("./img/menu_2.jpg")
 
 ```
 
-</details>
 
-&nbsp; 
-
-<details>
-  <summary><strong>Entender los paquetes</strong></summary>
-  
-Haciendo una metáfora con la colección de libros que tengas en casa: con la **instalación hemos comprado el libro** y lo tenemos en nuestra estantería (para siempre), con la llamada al paquete, por ejemplo `library(ggplot2)`, lo que hacemos es decidir, de entre todos los libros de la estantería, cuales queremos llevarnos de viaje (en cada maleta que hagamos).
-
-Los **paquetes usados** los verás denotados como `{nombre_paquete}` a lo largo del manual.
-
-</details>
 
  
  

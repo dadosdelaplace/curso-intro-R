@@ -1,344 +1,474 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html lang="en">
 <head>
-
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 9 Creación de funciones | Aprendiendo R sin morir en el intento</title>
-  <meta name="description" content="Manual básico e introductorio de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM), elaborado por Javier Álvarez Liébana" />
-  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
-
-  <meta property="og:title" content="Capítulo 9 Creación de funciones | Aprendiendo R sin morir en el intento" />
-  <meta property="og:type" content="book" />
-  
-  <meta property="og:image" content="/img/logo_R.png" />
-  <meta property="og:description" content="Manual básico e introductorio de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM), elaborado por Javier Álvarez Liébana" />
-  <meta name="github-repo" content="dadosdelaplace/cursoR_intro_2021_2022" />
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 9 Creación de funciones | Aprendiendo R sin morir en el intento" />
-  
-  <meta name="twitter:description" content="Manual básico e introductorio de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM), elaborado por Javier Álvarez Liébana" />
-  <meta name="twitter:image" content="/img/logo_R.png" />
-
-<meta name="author" content="Javier Álvarez Liébana" />
-
-
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  
-<link rel="prev" href="ejercicios-3.html"/>
-<link rel="next" href="primera-función.html"/>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
-
-
-
-
-
-
-
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
-<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.18/datatables.js"></script>
-<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
-<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
-<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
-
-
-<style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-
-<link rel="stylesheet" href="css/style.css" type="text/css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Capítulo 9 Creación de funciones | Aprendiendo R sin morir en el intento</title>
+<meta name="author" content="Javier Álvarez Liébana">
+<meta name="description" content="En R no solo podemos usar las funciones predeterminadas que vienen ya cargadas, o las de los paquetes que instalamos, sino que además podemos crear nuestras propias funciones, para automatizar...">
+<meta name="generator" content="bookdown 0.23 with bs4_book()">
+<meta property="og:title" content="Capítulo 9 Creación de funciones | Aprendiendo R sin morir en el intento">
+<meta property="og:type" content="book">
+<meta property="og:image" content="/img/logo_R.png">
+<meta property="og:description" content="En R no solo podemos usar las funciones predeterminadas que vienen ya cargadas, o las de los paquetes que instalamos, sino que además podemos crear nuestras propias funciones, para automatizar...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Capítulo 9 Creación de funciones | Aprendiendo R sin morir en el intento">
+<meta name="twitter:description" content="En R no solo podemos usar las funciones predeterminadas que vienen ya cargadas, o las de los paquetes que instalamos, sino que además podemos crear nuestras propias funciones, para automatizar...">
+<meta name="twitter:image" content="/img/logo_R.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/_Sen-0.4.0/font.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM%20Mono&amp;display=swap" rel="stylesheet">
+<link href="libs/_Bitter-0.4.0/font.css" rel="stylesheet">
+<script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS -->
 </head>
+<body data-spy="scroll" data-target="#toc">
 
-<body>
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
-
-
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li><a href="./">Aprendiendo R sin morir en el intento</a></li>
-
-<li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefacio</a><ul>
-<li class="chapter" data-level="" data-path="propósito.html"><a href="propósito.html"><i class="fa fa-check"></i>Propósito</a></li>
-<li class="chapter" data-level="" data-path="requisitos.html"><a href="requisitos.html"><i class="fa fa-check"></i>Requisitos</a></li>
-<li class="chapter" data-level="" data-path="emojis.html"><a href="emojis.html"><i class="fa fa-check"></i>Emojis</a></li>
-<li class="chapter" data-level="" data-path="sobre-el-autor.html"><a href="sobre-el-autor.html"><i class="fa fa-check"></i>Sobre el autor</a></li>
-<li class="chapter" data-level="" data-path="licencia.html"><a href="licencia.html"><i class="fa fa-check"></i>Licencia</a></li>
-</ul></li>
-<li class="part"><span><b>I Toma de contacto</b></span></li>
-<li class="chapter" data-level="1" data-path="instalacionR.html"><a href="instalacionR.html"><i class="fa fa-check"></i><b>1</b> Instalación</a><ul>
-<li class="chapter" data-level="1.1" data-path="instalacionRStudio.html"><a href="instalacionRStudio.html"><i class="fa fa-check"></i><b>1.1</b> Instalación de RStudio</a></li>
-<li class="chapter" data-level="1.2" data-path="instalacionpaquetes.html"><a href="instalacionpaquetes.html"><i class="fa fa-check"></i><b>1.2</b> Instalación de paquetes</a></li>
-<li class="chapter" data-level="1.3" data-path="consejos-y-tips.html"><a href="consejos-y-tips.html"><i class="fa fa-check"></i><b>1.3</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="primeros-pasos.html"><a href="primeros-pasos.html"><i class="fa fa-check"></i><b>2</b> Primeros pasos</a><ul>
-<li class="chapter" data-level="2.1" data-path="excel-no-es-tu-amigo.html"><a href="excel-no-es-tu-amigo.html"><i class="fa fa-check"></i><b>2.1</b> Excel no es tu amigo</a></li>
-<li class="chapter" data-level="2.2" data-path="primeros-pasos-calculadora.html"><a href="primeros-pasos-calculadora.html"><i class="fa fa-check"></i><b>2.2</b> Primeros pasos: calculadora</a></li>
-<li class="chapter" data-level="2.3" data-path="tipos_errores.html"><a href="tipos_errores.html"><i class="fa fa-check"></i><b>2.3</b> Tipos de errores</a></li>
-<li class="chapter" data-level="2.4" data-path="consejos-y-tips-1.html"><a href="consejos-y-tips-1.html"><i class="fa fa-check"></i><b>2.4</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
-<li class="chapter" data-level="2.5" data-path="ejercicios.html"><a href="ejercicios.html"><i class="fa fa-check"></i><b>2.5</b> 📝 Ejercicios</a></li>
-</ul></li>
-<li class="part"><span><b>II Conceptos básicos</b></span></li>
-<li class="chapter" data-level="3" data-path="tipos-de-datos-i-vectores.html"><a href="tipos-de-datos-i-vectores.html"><i class="fa fa-check"></i><b>3</b> Tipos de datos I: vectores</a><ul>
-<li class="chapter" data-level="3.1" data-path="vectores-numéricos.html"><a href="vectores-numéricos.html"><i class="fa fa-check"></i><b>3.1</b> Vectores numéricos</a><ul>
-<li class="chapter" data-level="3.1.1" data-path="vectores-numéricos.html"><a href="vectores-numéricos.html#secuencias-con-un-patrón"><i class="fa fa-check"></i><b>3.1.1</b> Secuencias con un patrón</a></li>
-</ul></li>
-<li class="chapter" data-level="3.2" data-path="operaciones-aritméticas-con-vectores-numéricos.html"><a href="operaciones-aritméticas-con-vectores-numéricos.html"><i class="fa fa-check"></i><b>3.2</b> Operaciones aritméticas con vectores numéricos</a></li>
-<li class="chapter" data-level="3.3" data-path="operaciones-estadísticas-con-vectores-numéricos.html"><a href="operaciones-estadísticas-con-vectores-numéricos.html"><i class="fa fa-check"></i><b>3.3</b> Operaciones estadísticas con vectores numéricos</a></li>
-<li class="chapter" data-level="3.4" data-path="vectores-de-caracteres-texto.html"><a href="vectores-de-caracteres-texto.html"><i class="fa fa-check"></i><b>3.4</b> Vectores de caracteres (texto)</a></li>
-<li class="chapter" data-level="3.5" data-path="vectores-lógicos-truefalse.html"><a href="vectores-lógicos-truefalse.html"><i class="fa fa-check"></i><b>3.5</b> Vectores lógicos (TRUE/FALSE)</a></li>
-<li class="chapter" data-level="3.6" data-path="ausentes.html"><a href="ausentes.html"><i class="fa fa-check"></i><b>3.6</b> Datos ausentes: NA y NaN</a></li>
-<li class="chapter" data-level="3.7" data-path="seleccionar-elementos-de-un-vector.html"><a href="seleccionar-elementos-de-un-vector.html"><i class="fa fa-check"></i><b>3.7</b> Seleccionar elementos de un vector</a><ul>
-<li class="chapter" data-level="3.7.1" data-path="seleccionar-elementos-de-un-vector.html"><a href="seleccionar-elementos-de-un-vector.html#which"><i class="fa fa-check"></i><b>3.7.1</b> which</a></li>
-<li class="chapter" data-level="3.7.2" data-path="seleccionar-elementos-de-un-vector.html"><a href="seleccionar-elementos-de-un-vector.html#null"><i class="fa fa-check"></i><b>3.7.2</b> NULL</a></li>
-</ul></li>
-<li class="chapter" data-level="3.8" data-path="ordenar-vectores.html"><a href="ordenar-vectores.html"><i class="fa fa-check"></i><b>3.8</b> Ordenar vectores</a></li>
-<li class="chapter" data-level="3.9" data-path="fechas.html"><a href="fechas.html"><i class="fa fa-check"></i><b>3.9</b> Fechas</a></li>
-<li class="chapter" data-level="3.10" data-path="glosario3.html"><a href="glosario3.html"><i class="fa fa-check"></i><b>3.10</b> 📚 Glosario</a></li>
-<li class="chapter" data-level="3.11" data-path="consejos-y-tips-2.html"><a href="consejos-y-tips-2.html"><i class="fa fa-check"></i><b>3.11</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
-<li class="chapter" data-level="3.12" data-path="ejercicios-1.html"><a href="ejercicios-1.html"><i class="fa fa-check"></i><b>3.12</b> 📝 Ejercicios</a></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="flujo-de-trabajo-proyecto.html"><a href="flujo-de-trabajo-proyecto.html"><i class="fa fa-check"></i><b>4</b> Flujo de trabajo: proyecto</a><ul>
-<li class="chapter" data-level="4.1" data-path="crear-proyecto.html"><a href="crear-proyecto.html"><i class="fa fa-check"></i><b>4.1</b> Crear proyecto</a></li>
-<li class="chapter" data-level="4.2" data-path="directorios-de-trabajo-y-cabecera.html"><a href="directorios-de-trabajo-y-cabecera.html"><i class="fa fa-check"></i><b>4.2</b> Directorios de trabajo y cabecera</a></li>
-<li class="chapter" data-level="4.3" data-path="ejecución.html"><a href="ejecución.html"><i class="fa fa-check"></i><b>4.3</b> Ejecución</a></li>
-<li class="chapter" data-level="4.4" data-path="consejos-y-tips-3.html"><a href="consejos-y-tips-3.html"><i class="fa fa-check"></i><b>4.4</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="datos.html"><a href="datos.html"><i class="fa fa-check"></i><b>5</b> Tipos de datos II: tablas</a><ul>
-<li class="chapter" data-level="5.1" data-path="matrices.html"><a href="matrices.html"><i class="fa fa-check"></i><b>5.1</b> Matrices</a></li>
-<li class="chapter" data-level="5.2" data-path="apply-vs-bucles.html"><a href="apply-vs-bucles.html"><i class="fa fa-check"></i><b>5.2</b> Apply vs bucles</a></li>
-<li class="chapter" data-level="5.3" data-path="tablas-data.html"><a href="tablas-data.html"><i class="fa fa-check"></i><b>5.3</b> Tablas: data.frames</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="tablas-data.html"><a href="tablas-data.html#data.frames-selección-manual-de-columnas-y-filas"><i class="fa fa-check"></i><b>5.3.1</b> Data.frames: selección manual de columnas y filas</a></li>
-</ul></li>
-<li class="chapter" data-level="5.4" data-path="consejos-y-tips-4.html"><a href="consejos-y-tips-4.html"><i class="fa fa-check"></i><b>5.4</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
-<li class="chapter" data-level="5.5" data-path="ejercicios-2.html"><a href="ejercicios-2.html"><i class="fa fa-check"></i><b>5.5</b> 📝 Ejercicios</a></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="importar_exportar.html"><a href="importar_exportar.html"><i class="fa fa-check"></i><b>6</b> Importando/exportando</a><ul>
-<li class="chapter" data-level="6.1" data-path="importación-de-datos.html"><a href="importación-de-datos.html"><i class="fa fa-check"></i><b>6.1</b> Importación de datos</a><ul>
-<li class="chapter" data-level="6.1.1" data-path="importación-de-datos.html"><a href="importación-de-datos.html#archivo-.rdata"><i class="fa fa-check"></i><b>6.1.1</b> Archivo .RData</a></li>
-<li class="chapter" data-level="6.1.2" data-path="importación-de-datos.html"><a href="importación-de-datos.html#archivo-.csv"><i class="fa fa-check"></i><b>6.1.2</b> Archivo .csv</a></li>
-<li class="chapter" data-level="6.1.3" data-path="importación-de-datos.html"><a href="importación-de-datos.html#archivo-.xlsx"><i class="fa fa-check"></i><b>6.1.3</b> Archivo .xlsx</a></li>
-<li class="chapter" data-level="6.1.4" data-path="importación-de-datos.html"><a href="importación-de-datos.html#desde-web"><i class="fa fa-check"></i><b>6.1.4</b> Desde web</a></li>
-</ul></li>
-<li class="chapter" data-level="6.2" data-path="exportación-de-datos.html"><a href="exportación-de-datos.html"><i class="fa fa-check"></i><b>6.2</b> Exportación de datos</a><ul>
-<li class="chapter" data-level="6.2.1" data-path="exportación-de-datos.html"><a href="exportación-de-datos.html#guardar-en-.rdata"><i class="fa fa-check"></i><b>6.2.1</b> Guardar en .RData</a></li>
-<li class="chapter" data-level="6.2.2" data-path="exportación-de-datos.html"><a href="exportación-de-datos.html#guardar-en-.csv"><i class="fa fa-check"></i><b>6.2.2</b> Guardar en .csv</a></li>
-</ul></li>
-<li class="chapter" data-level="6.3" data-path="consejos-y-tips-5.html"><a href="consejos-y-tips-5.html"><i class="fa fa-check"></i><b>6.3</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="control.html"><a href="control.html"><i class="fa fa-check"></i><b>7</b> Estructuras de control</a><ul>
-<li class="chapter" data-level="7.1" data-path="ifelse.html"><a href="ifelse.html"><i class="fa fa-check"></i><b>7.1</b> if…else</a></li>
-<li class="chapter" data-level="7.2" data-path="forwhile.html"><a href="forwhile.html"><i class="fa fa-check"></i><b>7.2</b> for/while</a><ul>
-<li class="chapter" data-level="7.2.1" data-path="forwhile.html"><a href="forwhile.html#breaknext"><i class="fa fa-check"></i><b>7.2.1</b> BREAK/NEXT</a></li>
-<li class="chapter" data-level="7.2.2" data-path="forwhile.html"><a href="forwhile.html#repeat"><i class="fa fa-check"></i><b>7.2.2</b> REPEAT</a></li>
-</ul></li>
-<li class="chapter" data-level="7.3" data-path="consejos-y-tips-6.html"><a href="consejos-y-tips-6.html"><i class="fa fa-check"></i><b>7.3</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
-</ul></li>
-<li class="part"><span><b>III Listas y funciones</b></span></li>
-<li class="chapter" data-level="8" data-path="otros_datos.html"><a href="otros_datos.html"><i class="fa fa-check"></i><b>8</b> Tipos de datos III: listas/factores</a><ul>
-<li class="chapter" data-level="8.1" data-path="listas.html"><a href="listas.html"><i class="fa fa-check"></i><b>8.1</b> Listas</a></li>
-<li class="chapter" data-level="8.2" data-path="factores.html"><a href="factores.html"><i class="fa fa-check"></i><b>8.2</b> Factores</a></li>
-<li class="chapter" data-level="8.3" data-path="fechas-y-horas.html"><a href="fechas-y-horas.html"><i class="fa fa-check"></i><b>8.3</b> Fechas y horas</a></li>
-<li class="chapter" data-level="8.4" data-path="consejos-y-tips-7.html"><a href="consejos-y-tips-7.html"><i class="fa fa-check"></i><b>8.4</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
-<li class="chapter" data-level="8.5" data-path="ejercicios-3.html"><a href="ejercicios-3.html"><i class="fa fa-check"></i><b>8.5</b> 📝 Ejercicios</a></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="FUNCIONES.html"><a href="FUNCIONES.html"><i class="fa fa-check"></i><b>9</b> Creación de funciones</a><ul>
-<li class="chapter" data-level="9.1" data-path="primera-función.html"><a href="primera-función.html"><i class="fa fa-check"></i><b>9.1</b> Primera función</a></li>
-<li class="chapter" data-level="9.2" data-path="segunda-función.html"><a href="segunda-función.html"><i class="fa fa-check"></i><b>9.2</b> Segunda función</a></li>
-<li class="chapter" data-level="9.3" data-path="variables-localesglobales.html"><a href="variables-localesglobales.html"><i class="fa fa-check"></i><b>9.3</b> Variables locales/globales</a></li>
-<li class="chapter" data-level="9.4" data-path="ejercicios-4.html"><a href="ejercicios-4.html"><i class="fa fa-check"></i><b>9.4</b> 📝 Ejercicios</a></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="qué-sabemos-hacer.html"><a href="qué-sabemos-hacer.html"><i class="fa fa-check"></i><b>10</b> ¿Qué sabemos hacer?</a><ul>
-<li class="chapter" data-level="10.1" data-path="aleatorio_1.html"><a href="aleatorio_1.html"><i class="fa fa-check"></i><b>10.1</b> Incursión aleatoria</a><ul>
-<li class="chapter" data-level="10.1.1" data-path="aleatorio_1.html"><a href="aleatorio_1.html#pseudoaleatorio"><i class="fa fa-check"></i><b>10.1.1</b> Pseudoaleatoriedad</a></li>
-</ul></li>
-<li class="chapter" data-level="10.2" data-path="recursos.html"><a href="recursos.html"><i class="fa fa-check"></i><b>10.2</b> Recursos</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="bibliografía.html"><a href="bibliografía.html"><i class="fa fa-check"></i>Bibliografía</a></li>
-<li class="divider"></li>
-<li><a href="https://bookdown.org/yihui/rmarkdown/" target="blank">Elaborado con bookdown</a></li>
-
-</ul>
-
-      </nav>
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Aprendiendo R sin morir en el intento</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
 
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Aprendiendo R sin morir en el intento</a>
-          </h1>
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Prefacio</a></li>
+<li class="book-part">Toma de contacto</li>
+<li><a class="" href="instalacionR.html"><span class="header-section-number">1</span> Instalación</a></li>
+<li><a class="" href="primeros-pasos.html"><span class="header-section-number">2</span> Primeros pasos</a></li>
+<li class="book-part">Conceptos básicos</li>
+<li><a class="" href="tipos-de-datos-i-vectores.html"><span class="header-section-number">3</span> Tipos de datos I: vectores</a></li>
+<li><a class="" href="flujo-de-trabajo-proyecto.html"><span class="header-section-number">4</span> Flujo de trabajo: proyecto</a></li>
+<li><a class="" href="control.html"><span class="header-section-number">5</span> Estructuras de control</a></li>
+<li><a class="" href="datos.html"><span class="header-section-number">6</span> Datos estructurados: matrices y tablas</a></li>
+<li><a class="" href="importar_exportar.html"><span class="header-section-number">7</span> Importando/exportando</a></li>
+<li class="book-part">Listas y funciones</li>
+<li><a class="" href="otros_datos.html"><span class="header-section-number">8</span> Listas y factores</a></li>
+<li><a class="active" href="FUNCIONES.html"><span class="header-section-number">9</span> Creación de funciones</a></li>
+<li><a class="" href="qu%C3%A9-sabemos-hacer.html"><span class="header-section-number">10</span> ¿Qué sabemos hacer?</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/dadosdelaplace/cursoR_intro_2021_2022">View book source <i class="fab fa-github"></i></a></p>
         </div>
-
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
-
-            <section class="normal" id="section-">
-<div id="FUNCIONES" class="section level1">
-<h1><span class="header-section-number">Capítulo 9</span> Creación de funciones</h1>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="FUNCIONES" class="section level1">
+<h1>
+<span class="header-section-number">Capítulo 9</span> Creación de funciones<a class="anchor" aria-label="anchor" href="#FUNCIONES"><i class="fas fa-link"></i></a>
+</h1>
 <p>En <code>R</code> no solo podemos usar las funciones predeterminadas que vienen ya cargadas, o las de los paquetes que instalamos, sino que además podemos <strong>crear nuestras propias funciones</strong>, para automatizar tareas que vayamos a repetir a lo largo de nuestro código.</p>
 <p><strong>¿Cómo crear nuestra propia función?</strong> Veamos su sintaxis básica. Para crear una función necesitamos un <code>nombre_funcion</code> (sin espacios ni caracteres extraños), al que le asignamos la orden <code>function()</code>. Dentro de <code>function()</code> tendríamos que definir los argumentos de entrada que vamos a usar.</p>
-<div class="sourceCode" id="cb557"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb557-1" data-line-number="1">nombre_funcion &lt;-<span class="st"> </span><span class="cf">function</span>(argumento_<span class="dv">1</span>, argumento_<span class="dv">2</span>, ... ) {</a>
-<a class="sourceLine" id="cb557-2" data-line-number="2">  </a>
-<a class="sourceLine" id="cb557-3" data-line-number="3">  <span class="co"># Código que queramos ejecutar en la función</span></a>
-<a class="sourceLine" id="cb557-4" data-line-number="4">  código</a>
-<a class="sourceLine" id="cb557-5" data-line-number="5">  </a>
-<a class="sourceLine" id="cb557-6" data-line-number="6">  <span class="co"># Salida</span></a>
-<a class="sourceLine" id="cb557-7" data-line-number="7">  <span class="kw">return</span>(variable_salida)</a>
-<a class="sourceLine" id="cb557-8" data-line-number="8">}</a></code></pre></div>
+<div class="sourceCode" id="cb570"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">nombre_funcion</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">argumento_1</span>, <span class="va">argumento_2</span>, <span class="va">...</span> <span class="op">)</span> <span class="op">{</span>
+  
+  <span class="co"># Código que queramos ejecutar en la función</span>
+  <span class="va">código</span>
+  
+  <span class="co"># Salida</span>
+  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">variable_salida</span><span class="op">)</span>
+<span class="op">}</span></code></pre></div>
 <ul>
-<li><strong>argumento_1, argumento_2, …</strong>: serán los argumentos de entrada, los argumentos que toma la función para ejecutar el código que tiene dentro</li>
-<li><strong>código</strong>: líneas de código que queramos que ejecute la función. <strong>IMPORTANTE</strong>: todas las variables que definamos dentro de la función son variables locales, solo existirán dentro de la función salvo que especifiquemos lo contrario.</li>
-<li><code>return(variable_salida)</code>: dentro del comando <code>return()</code> se introducirá la salida de la función, que puede ser un número, un <code>data.frame</code>, una gráfica, una matriz, o todo junto en una lista.</li>
+<li>
+<strong>argumento_1, argumento_2, …</strong>: serán los argumentos de entrada, los argumentos que toma la función para ejecutar el código que tiene dentro</li>
+<li>
+<strong>código</strong>: líneas de código que queramos que ejecute la función. <strong>IMPORTANTE</strong>: todas las variables que definamos dentro de la función son variables locales, solo existirán dentro de la función salvo que especifiquemos lo contrario.</li>
+<li>
+<code><a href="https://rdrr.io/r/base/function.html">return(variable_salida)</a></code>: dentro del comando <code><a href="https://rdrr.io/r/base/function.html">return()</a></code> se introducirá la salida de la función, que puede ser un número, un <code>data.frame</code>, una gráfica, una matriz… o todo junto en una lista.</li>
 </ul>
+<div id="primera-función" class="section level2">
+<h2>
+<span class="header-section-number">9.1</span> Primera función<a class="anchor" aria-label="anchor" href="#primera-funci%C3%B3n"><i class="fas fa-link"></i></a>
+</h2>
+<p>Veamos un <strong>ejemplo muy simple de función</strong> para calcular el área de un rectángulo: dados dos lados <code>lado_1</code> y <code>lado_2</code>, deberá devolver el área como su producto.</p>
+<div class="sourceCode" id="cb571"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Definición del nombre de función y argumentos de entrada</span>
+<span class="va">calcular_area</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">lado_1</span>, <span class="va">lado_2</span><span class="op">)</span> <span class="op">{</span>
+  
+  <span class="co"># Cuerpo de la función</span>
+  <span class="va">area</span> <span class="op">&lt;-</span> <span class="va">lado_1</span> <span class="op">*</span> <span class="va">lado_2</span>
+  
+  <span class="co"># Resultado que devolvemos</span>
+  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">area</span><span class="op">)</span>
+  
+<span class="op">}</span></code></pre></div>
+<p>También podemos hacer la definición directa sin almacenar variables.</p>
+<div class="sourceCode" id="cb572"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Definición del nombre de función y argumentos de entrada</span>
+<span class="va">calcular_area</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">lado_1</span>, <span class="va">lado_2</span><span class="op">)</span> <span class="op">{</span>
+
+  <span class="co"># Resultado que devolvemos</span>
+  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">lado_1</span> <span class="op">*</span> <span class="va">lado_2</span><span class="op">)</span>
+  
+<span class="op">}</span></code></pre></div>
+<p><strong>¿Cómo aplicar la función?</strong> Con el nombre y los valores de los argumentos.</p>
+<div class="sourceCode" id="cb573"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Aplicación de la función con los parámetros por defecto</span>
+<span class="fu">calcular_area</span><span class="op">(</span><span class="fl">5</span>, <span class="fl">3</span><span class="op">)</span> <span class="co"># área de un rectángulo 5 x 3 </span></code></pre></div>
+<pre><code>## [1] 15</code></pre>
+<p>Imagina ahora que nos damos cuenta que el 90% de las veces el área que nos toca calcular es la de un cuadrado: <code>R</code> nos permite definir <strong>argumentos en la función con valores por defecto</strong> (tomarán dicho valor salvo que le asignemos otro). ¿<strong>Por qué no asignar <code>lado_2 = lado_1</code> por defecto</strong>, para ahorrar líneas de código y tiempo?</p>
+<div class="sourceCode" id="cb575"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Definición del nombre de función y argumentos de entrada</span>
+<span class="va">calcular_area</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">lado_1</span>, <span class="va">lado_2</span> <span class="op">=</span> <span class="va">lado_1</span><span class="op">)</span> <span class="op">{</span>
+  
+  <span class="co"># Cuerpo de la función</span>
+  <span class="va">area</span> <span class="op">&lt;-</span> <span class="va">lado_1</span> <span class="op">*</span> <span class="va">lado_2</span>
+  
+  <span class="co"># Resultado que devolvemos</span>
+  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">area</span><span class="op">)</span>
+  
+<span class="op">}</span></code></pre></div>
+<div class="sourceCode" id="cb576"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">calcular_area</span><span class="op">(</span>lado_1 <span class="op">=</span> <span class="fl">5</span><span class="op">)</span> <span class="co"># si no indicamos nada, lado_2 = lado_1</span></code></pre></div>
+<pre><code>## [1] 25</code></pre>
+<p>Compliquemos un poco la función y añadamos en la salida los valores de cada lado etiquetados como primer lado y segundo lado.</p>
+<div class="sourceCode" id="cb578"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Definición del nombre de función y argumentos de entrada</span>
+<span class="va">calcular_area</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">lado_1</span>, <span class="va">lado_2</span> <span class="op">=</span> <span class="va">lado_1</span><span class="op">)</span> <span class="op">{</span>
+  
+  <span class="co"># Cuerpo de la función</span>
+  <span class="va">area</span> <span class="op">&lt;-</span> <span class="va">lado_1</span> <span class="op">*</span> <span class="va">lado_2</span>
+  
+  <span class="co"># Resultado que devolvemos en modo lista ya que devolvemos</span>
+  <span class="co"># varios argumentos a la vez (podemos dar a cada elemento </span>
+  <span class="co"># de la lista con un nombre que nos permita identificarlo)</span>
+  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"area"</span> <span class="op">=</span> <span class="va">area</span>, <span class="st">"lado_1"</span> <span class="op">=</span> <span class="va">lado_1</span>, <span class="st">"lado_2"</span> <span class="op">=</span> <span class="va">lado_2</span><span class="op">)</span><span class="op">)</span>
+  
+<span class="op">}</span></code></pre></div>
+<p>Veamos que nos devuelve ahora</p>
+<div class="sourceCode" id="cb579"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">calcular_area</span><span class="op">(</span><span class="fl">5</span>, <span class="fl">3</span><span class="op">)</span></code></pre></div>
+<pre><code>## $area
+## [1] 15
+## 
+## $lado_1
+## [1] 5
+## 
+## $lado_2
+## [1] 3</code></pre>
+<p>Fíjate que puedes guardar la salida de forma conjunta para luego acceder a solo uno de los elementos de la lista de salida.</p>
+<div class="sourceCode" id="cb581"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">calcular_area</span><span class="op">(</span><span class="fl">5</span>, <span class="fl">3</span><span class="op">)</span>
+<span class="va">x</span><span class="op">$</span><span class="va">area</span></code></pre></div>
+<pre><code>## [1] 15</code></pre>
+<div class="sourceCode" id="cb583"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span><span class="op">$</span><span class="va">lado_1</span></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<div class="sourceCode" id="cb585"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span><span class="op">$</span><span class="va">lado_2</span></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<p>Antes nos daba igual el orden de los argumentos pero ahora no, ya que en la salida incluimos <code>lado_1</code> y <code>lado_2</code>. Es <strong>altamente recomendable</strong> hacer la llamada a la función indicando explícitamente los argumentos <code>argumento_1 = valor_1</code> para <strong>mejorar la legibilidad e interpretabilidad de nuestro código</strong> (recuerda: programa como escribirías una novela).</p>
+<div class="sourceCode" id="cb587"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">calcular_area</span><span class="op">(</span>lado_1 <span class="op">=</span> <span class="fl">5</span>, lado_2 <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></code></pre></div>
+<pre><code>## $area
+## [1] 15
+## 
+## $lado_1
+## [1] 5
+## 
+## $lado_2
+## [1] 3</code></pre>
 </div>
-            </section>
+<div id="segunda-función" class="section level2">
+<h2>
+<span class="header-section-number">9.2</span> Segunda función<a class="anchor" aria-label="anchor" href="#segunda-funci%C3%B3n"><i class="fas fa-link"></i></a>
+</h2>
+<p>Vayamos con un <strong>ejemplo más complejo</strong>. Imaginemos que en nuestro código vamos a tener calcular, <strong>para cada día, el número de vacunas diarias administradas, el número de vacunas administradas en los últimos 7 días y el número de vacunadas administradas en los últimos 14 días</strong>, usando tan solo el número de vacunadas acumuladas. Para ello vamos a usar la <strong>función <code><a href="https://rdrr.io/r/base/diff.html">diff()</a></code> que nos calcula las diferencias de un vector dado</strong>.</p>
+<div class="sourceCode" id="cb589"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">7</span>, <span class="fl">10</span>, <span class="fl">15</span>, <span class="fl">20</span>, <span class="fl">50</span>, <span class="fl">100</span>, <span class="fl">250</span>, <span class="fl">600</span>, <span class="fl">1200</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/diff.html">diff</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="co"># vector con [elemento2 - elemento1, elemento3 - elemento2, elemento4 - elemento3, ...]</span></code></pre></div>
+<pre><code>##  [1]   1   1   4   3   5   5  30  50 150 350 600</code></pre>
+<div class="sourceCode" id="cb591"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/diff.html">diff</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">3</span><span class="op">)</span> <span class="co"># vector con [elemento4 - elemento1, elemento5 - elemento2, elemento6 - elemento3, ...]</span></code></pre></div>
+<pre><code>## [1]    6    8   12   13   40   85  230  550 1100</code></pre>
+<div class="sourceCode" id="cb593"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/diff.html">diff</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">7</span><span class="op">)</span> <span class="co"># vector con [elemento8 - elemento1, elemento9 - elemento2, elemento10 - elemento3, ...]</span></code></pre></div>
+<pre><code>## [1]   49   98  247  593 1190</code></pre>
+<div class="sourceCode" id="cb595"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Para España</span>
+<span class="va">casos_diarios</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/diff.html">diff</a></span><span class="op">(</span><span class="va">panel_vacunas</span><span class="op">$</span><span class="va">ES</span><span class="op">$</span><span class="va">personas_vacunadas</span><span class="op">)</span>
+<span class="va">casos_7D</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/diff.html">diff</a></span><span class="op">(</span><span class="va">panel_vacunas</span><span class="op">$</span><span class="va">ES</span><span class="op">$</span><span class="va">personas_vacunadas</span>, <span class="fl">7</span><span class="op">)</span> <span class="co"># diferencias a 7 días</span>
+<span class="va">casos_14D</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/diff.html">diff</a></span><span class="op">(</span><span class="va">panel_vacunas</span><span class="op">$</span><span class="va">ES</span><span class="op">$</span><span class="va">personas_vacunadas</span>, <span class="fl">14</span><span class="op">)</span> <span class="co"># diferencias a 14 días</span></code></pre></div>
+<p>¿Cuánto ocuparía realizar esta misma tarea para cada comunidad, y cada variable? <strong>¿Por qué no la automatizamos?</strong></p>
+<div class="sourceCode" id="cb596"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">datos_acumulados</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">variable_acumulada</span>, <span class="va">dias_dif</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">7</span>, <span class="fl">14</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+  
+  <span class="co"># Dentro de las llaves el cuerpo de la función</span>
+  <span class="va">acumulados_diferenciales</span> <span class="op">&lt;-</span> <span class="cn">NULL</span>
+  <span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="va">dias_dif</span><span class="op">)</span> <span class="op">{</span> <span class="co"># Vamos calculando tantos acumulados diferenciales como le hayamos pasado por el argumento dias_dif</span>
+    
+    <span class="co"># A lo que teníamos, le concatenamos por columnas uno nuevo</span>
+    <span class="va">acumulados_diferenciales</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">acumulados_diferenciales</span>,
+                                  <span class="fu"><a href="https://rdrr.io/r/base/rev.html">rev</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/diff.html">diff</a></span><span class="op">(</span><span class="va">variable_acumulada</span>, <span class="va">i</span><span class="op">)</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>
+  
+  <span class="op">}</span>
+  
+  <span class="co"># La salida de la función</span>
+  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">acumulados_diferenciales</span><span class="op">)</span>
+<span class="op">}</span></code></pre></div>
+<p>Como vemos, los argumentos pueden ser cualquier tipo de variable, y nos permite además <strong>generalizar y automatizar una tarea</strong> para que pueda ser usada incluso en algún escenario para el que no tuviéramos previsto (acumulados a … 13 días, por ejemplo). Para que nuestra función sea realmente útil debemos intentar asignar <strong>nombres de funciones y argumentos lo más concisos posibles y evidentes en su interpretación</strong>.</p>
+<div class="sourceCode" id="cb597"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">datos_acumulados</span><span class="op">(</span><span class="va">panel_vacunas</span><span class="op">$</span><span class="va">ES</span><span class="op">$</span><span class="va">personas_vacunadas</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1]  263914 1403809 3246147</code></pre>
+<div class="sourceCode" id="cb599"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">datos_acumulados</span><span class="op">(</span><span class="va">panel_vacunas</span><span class="op">$</span><span class="va">AN</span><span class="op">$</span><span class="va">personas_vacunadas</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1]  59583 235051 537727</code></pre>
+<div class="sourceCode" id="cb601"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">datos_acumulados</span><span class="op">(</span><span class="va">panel_vacunas</span><span class="op">$</span><span class="va">ES</span><span class="op">$</span><span class="va">personas_vacunadas</span>, dias_dif <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">13</span>, <span class="fl">21</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1]  263914  816950 3073866 4779568</code></pre>
+<p>Fíjate que hemos devuelto solo el último acumulado (hemos dado la vuelta al vector resultante y nos hemos quedado con el primer elemento). Para hacer que la salida sea más interpretable, muchas de las <strong>funciones en <code>R</code> tienen como salida una lista, con unos nombres asignados</strong>.</p>
+<div class="sourceCode" id="cb603"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">datos_acumulados</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">variable_acumulada</span><span class="op">)</span> <span class="op">{</span>
+  
+  <span class="co"># Datos</span>
+  <span class="va">dato_diario</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/diff.html">diff</a></span><span class="op">(</span><span class="va">variable_acumulada</span><span class="op">)</span>
+  <span class="va">dato_7D</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/diff.html">diff</a></span><span class="op">(</span><span class="va">variable_acumulada</span>, <span class="fl">7</span><span class="op">)</span>
+  <span class="va">dato_14D</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/diff.html">diff</a></span><span class="op">(</span><span class="va">variable_acumulada</span>, <span class="fl">14</span><span class="op">)</span>
 
-          </div>
-        </div>
-      </div>
-<a href="ejercicios-3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="primera-función.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
-    </div>
+  <span class="co"># La salida de la función como una lista, con 3 vectores</span>
+  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"diario"</span> <span class="op">=</span> <span class="va">dato_diario</span>, <span class="st">"7D"</span> <span class="op">=</span> <span class="va">dato_7D</span>,
+              <span class="st">"14D"</span> <span class="op">=</span> <span class="va">dato_14D</span><span class="op">)</span><span class="op">)</span>
+<span class="op">}</span>
+<span class="va">datos_salida</span> <span class="op">&lt;-</span> <span class="fu">datos_acumulados</span><span class="op">(</span><span class="va">panel_vacunas</span><span class="op">$</span><span class="va">ES</span><span class="op">$</span><span class="va">personas_vacunadas</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">datos_salida</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "diario" "7D"     "14D"</code></pre>
+<div class="sourceCode" id="cb605"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">datos_salida</span></code></pre></div>
+<pre><code>## $diario
+##   [1]  33992  33992  70653  42705  42705  42705  81950  93597  94548  92764
+##  [11]  42226  42225  42226  61129  53539  43950  43124  17175  17176  17175
+##  [21]  18624  15876  19464  19464   9682   9682   9682   3166  11265  13420
+##  [31]  26031   4458   4459   4458   9833  15107  33663  45331  22986  22985
+##  [41]  22986  36073  43687  66918 126790  42768  42769  42768  63596 106609
+##  [51] 140881 157476  68588  68589  68588  74417 130284 147861 208913  66537
+##  [61]  66537  66537 107709 105255 127181 100675  60566  60566  60566  62460
+##  [71]  38789  54080  26122  26123  26123  26122  41558  91262 103674 113995
+##  [81] 135234 135233 135234 125305 221541 231064  81155  81155  91719  91719
+##  [91] 227822 297306 375063 368637 172281 172282 172281 261006 313321 380661
+## [101] 370506 146544 146543 146544 147228 297290 255746 263914
+## 
+## $`7D`
+##   [1]  348702  408307  468863  490974  490495  490015  489536  468715  428657
+##  [10]  378059  328419  303368  278319  253268  210763  173100  148614  124954
+##  [19]  117461  109967  102474   87016   82405   76361   82928   77704   72481
+##  [28]   67257   73924   77766   98009  117309  135837  154363  172891  199131
+##  [37]  227711  260966  342425  362207  381991  401773  429296  492218  566181
+##  [46]  596867  622687  648507  674327  685148  708823  715803  767240  765189
+##  [55]  763137  761086  794378  769349  748669  640431  634460  628489  622518
+##  [64]  577269  510803  437702  363149  328706  294263  259819  238917  291390
+##  [73]  340984  428857  537968  647078  756190  839937  970216 1097606 1064766
+##  [82] 1010687  967173  923658 1026175 1101940 1245939 1533421 1624547 1705110
+##  [91] 1785672 1818856 1834871 1840469 1842338 1816601 1790862 1765125 1651347
+## [100] 1635316 1510401 1403809
+## 
+## $`14D`
+##  [1]  817417  836964  846922  819393  793863  768334  742804  679478  601757
+## [10]  526673  453373  420829  388286  355742  297779  255505  224975  207882
+## [19]  195165  182448  169731  160940  160171  174370  200237  213541  226844
+## [28]  240148  273055  305477  358975  459734  498044  536354  574664  628427
+## [37]  719929  827147  939292  984894 1030498 1076100 1114444 1201041 1281984
+## [46] 1364107 1387876 1411644 1435413 1479526 1478172 1464472 1407671 1399649
+## [55] 1391626 1383604 1371647 1280152 1186371 1003580  963166  922752  882337
+## [64]  816186  802193  778686  792006  866674  941341 1016009 1078854 1261606
+## [73] 1438590 1493623 1548655 1614251 1679848 1866112 2072156 2343545 2598187
+## [82] 2635234 2672283 2709330 2845031 2936811 3086408 3375759 3441148 3495972
+## [91] 3550797 3470203 3470187 3350870 3246147</code></pre>
+</div>
+<div id="variables-localesglobales" class="section level2">
+<h2>
+<span class="header-section-number">9.3</span> Variables locales/globales<a class="anchor" aria-label="anchor" href="#variables-localesglobales"><i class="fas fa-link"></i></a>
+</h2>
+<p>Hemos dicho que «lo local se queda en lo local», ¿pero qué sucede si nombramos a una variable dentro de una función que se nos ha olvidado asignar un valor dentro de la misma? Debemos ser cautos al usar funciones en <code>R</code>, ya que debido a la <strong>«regla lexicográfica»</strong>, si una variable no se define dentro de la función, <code>R</code> buscará dicha variable en el entorno de variable.</p>
+<div class="sourceCode" id="cb607"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span>
+<span class="va">funcion_ejemplo</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span>
+    
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="co"># No devuelve nada per se, solo realiza la acción de imprimir en consola</span>
+<span class="op">}</span>
+<span class="fu">funcion_ejemplo</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<p>Si una <strong>variable ya está definida fuera de la función (entorno global)</strong>, y además es usada dentro de la misma cambiando su valor, el valor de dicha variable solo cambia dentro de la función pero no en el entorno global.</p>
+<div class="sourceCode" id="cb609"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span>
+<span class="va">funcion_ejemplo</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span>
+    
+  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">2</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="co"># lo que vale dentro</span>
+<span class="op">}</span>
+<span class="fu">funcion_ejemplo</span><span class="op">(</span><span class="op">)</span> <span class="co"># lo que vale dentro</span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<div class="sourceCode" id="cb611"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="co"># lo que vale fuera</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<p>Si queremos que <strong>además de cambiar localmente lo haga globalmente</strong> deberemos usar la <strong>doble asignación</strong> (<code><a href="https://rdrr.io/r/base/assignOps.html">&lt;&lt;-</a></code>).</p>
+<div class="sourceCode" id="cb613"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span>
+<span class="va">y</span> <span class="op">&lt;-</span> <span class="fl">2</span>
+<span class="va">funcion_ejemplo</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span>
+  
+  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">3</span> <span class="co"># no cambia globalmente, solo localmente</span>
+  <span class="va">y</span> <span class="op">&lt;&lt;-</span> <span class="fl">0</span> <span class="co"># cambia globalmente</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span>
+<span class="op">}</span>
+
+<span class="fu">funcion_ejemplo</span><span class="op">(</span><span class="op">)</span> <span class="co"># lo que vale dentro</span></code></pre></div>
+<pre><code>## [1] 3
+## [1] 0</code></pre>
+<div class="sourceCode" id="cb615"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="co"># lo que vale fuera</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode" id="cb617"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">y</span> <span class="co"># lo que vale fuera</span></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+</div>
+<div id="ejercicios-4" class="section level2">
+<h2>
+<span class="header-section-number">9.4</span> 📝 Ejercicios<a class="anchor" aria-label="anchor" href="#ejercicios-4"><i class="fas fa-link"></i></a>
+</h2>
+<details><p><summary><strong>Ejercicio 1</strong>: define una función propia llamada <code>pares</code> que, dados dos números <code>x</code> e <code>y</code>, nos diga si la suma de ambos es par o no.</summary></p>
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb619"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Definimos función</span>
+<span class="va">pares</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span> <span class="op">{</span>
+  
+  <span class="co"># Sumamos</span>
+  <span class="va">suma</span> <span class="op">&lt;-</span> <span class="va">x</span> <span class="op">+</span> <span class="va">y</span>
+  
+  <span class="co"># Comprobamos si es par calculando el resto al dividir entre 2: si al dividir suma entre 2 el resto es 0 ==&gt; es par</span>
+  
+  <span class="va">par</span> <span class="op">&lt;-</span> <span class="va">suma</span> <span class="op">%%</span> <span class="fl">2</span> <span class="op">==</span> <span class="fl">0</span>
+  
+  <span class="co"># Devolvemos la salida</span>
+  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">par</span><span class="op">)</span>
+<span class="op">}</span>
+
+<span class="co"># Aplicamos la función</span>
+<span class="fu">pares</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb621"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">pares</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb623"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">pares</span><span class="op">(</span><span class="fl">2</span>, <span class="fl">6</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb625"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">pares</span><span class="op">(</span><span class="fl">2</span>, <span class="fl">7</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<p>También se puede definir directamente como</p>
+<div class="sourceCode" id="cb627"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Definimos función</span>
+<span class="va">pares</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span> <span class="op">{</span>
+
+  <span class="co"># Devolvemos la salida</span>
+  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="op">(</span><span class="va">x</span> <span class="op">+</span> <span class="va">y</span><span class="op">)</span> <span class="op">%%</span> <span class="fl">2</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span>
+<span class="op">}</span>
+
+<span class="fu">pares</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb629"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">pares</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb631"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">pares</span><span class="op">(</span><span class="fl">2</span>, <span class="fl">6</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb633"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">pares</span><span class="op">(</span><span class="fl">2</span>, <span class="fl">7</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+</details><p> </p>
+<details><p><summary><strong>Ejercicio 2</strong>: define una función propia llamada <code>proximo_par</code> que, dados un número <code>x</code>, nos diga si es par y, en aso de no serlo, nos devuelva el próximo número que si lo sea.</summary></p>
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb635"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Definimos función</span>
+<span class="va">proximo_par</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span>
+  
+  <span class="co"># ¿par? TRUE/FALSE</span>
+  <span class="va">par</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">x</span> <span class="op">%%</span> <span class="fl">2</span><span class="op">)</span> <span class="op">==</span> <span class="fl">0</span>
+  
+  <span class="co"># Si es par, devolvemos el propio número (era par), sino le sumamos uno</span>
+  <span class="kw">if</span> <span class="op">(</span><span class="va">par</span><span class="op">)</span> <span class="op">{</span>
+    
+    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"par"</span> <span class="op">=</span> <span class="va">par</span>, <span class="st">"proximo"</span> <span class="op">=</span> <span class="va">x</span><span class="op">)</span><span class="op">)</span>
+    
+  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span> <span class="co"># Si no es par, devolvemos el siguiente (que será par) </span>
+    
+    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"par"</span> <span class="op">=</span> <span class="va">par</span>, <span class="st">"proximo"</span> <span class="op">=</span> <span class="va">x</span> <span class="op">+</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span>
+  
+  <span class="op">}</span>
+  <span class="co"># Devolvemos una lista de dos elementos: par (TRUE/FALSE) y proximo (si es par, el propio x, sino x + 1)</span>
+<span class="op">}</span>
+
+<span class="co"># Aplicamos la función</span>
+<span class="fu">proximo_par</span><span class="op">(</span><span class="fl">7</span><span class="op">)</span></code></pre></div>
+<pre><code>## $par
+## [1] FALSE
+## 
+## $proximo
+## [1] 8</code></pre>
+<div class="sourceCode" id="cb637"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">proximo_par</span><span class="op">(</span><span class="fl">8</span><span class="op">)</span></code></pre></div>
+<pre><code>## $par
+## [1] TRUE
+## 
+## $proximo
+## [1] 8</code></pre>
+
+</details>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="otros_datos.html"><span class="header-section-number">8</span> Listas y factores</a></div>
+<div class="next"><a href="qu%C3%A9-sabemos-hacer.html"><span class="header-section-number">10</span> ¿Qué sabemos hacer?</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#FUNCIONES"><span class="header-section-number">9</span> Creación de funciones</a></li>
+<li><a class="nav-link" href="#primera-funci%C3%B3n"><span class="header-section-number">9.1</span> Primera función</a></li>
+<li><a class="nav-link" href="#segunda-funci%C3%B3n"><span class="header-section-number">9.2</span> Segunda función</a></li>
+<li><a class="nav-link" href="#variables-localesglobales"><span class="header-section-number">9.3</span> Variables locales/globales</a></li>
+<li><a class="nav-link" href="#ejercicios-4"><span class="header-section-number">9.4</span> 📝 Ejercicios</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/dadosdelaplace/cursoR_intro_2021_2022/blob/master/09-funciones.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/dadosdelaplace/cursoR_intro_2021_2022/edit/master/09-funciones.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 21-09-2021.</p>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
-<script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": {
-"github": true,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["Intro_R_2021_2022.pdf"],
-"search": {
-"engine": "lunr",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
-});
-});
-</script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -350,7 +480,22 @@ gitbook.start({
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
 </script>
 </body>
-
 </html>

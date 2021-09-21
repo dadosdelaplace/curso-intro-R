@@ -1,335 +1,343 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html lang="en">
 <head>
-
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 2 Primeros pasos | Aprendiendo R sin morir en el intento</title>
-  <meta name="description" content="Manual básico e introductorio de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM), elaborado por Javier Álvarez Liébana" />
-  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
-
-  <meta property="og:title" content="Capítulo 2 Primeros pasos | Aprendiendo R sin morir en el intento" />
-  <meta property="og:type" content="book" />
-  
-  <meta property="og:image" content="/img/logo_R.png" />
-  <meta property="og:description" content="Manual básico e introductorio de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM), elaborado por Javier Álvarez Liébana" />
-  <meta name="github-repo" content="dadosdelaplace/cursoR_intro_2021_2022" />
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 2 Primeros pasos | Aprendiendo R sin morir en el intento" />
-  
-  <meta name="twitter:description" content="Manual básico e introductorio de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM), elaborado por Javier Álvarez Liébana" />
-  <meta name="twitter:image" content="/img/logo_R.png" />
-
-<meta name="author" content="Javier Álvarez Liébana" />
-
-
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  
-<link rel="prev" href="consejos-y-tips.html"/>
-<link rel="next" href="excel-no-es-tu-amigo.html"/>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
-
-
-
-
-
-
-
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
-<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.18/datatables.js"></script>
-<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
-<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
-<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
-
-
-<style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-
-<link rel="stylesheet" href="css/style.css" type="text/css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Capítulo 2 Primeros pasos | Aprendiendo R sin morir en el intento</title>
+<meta name="author" content="Javier Álvarez Liébana">
+<meta name="description" content="¿Empezamos? Veamos antes un poco de historia sobre nuestro deidad. Allá por 1975, los laboratorios Bell (los que inventaron la radio moderna tal y como la conocemos), necesitaban una alternativa a...">
+<meta name="generator" content="bookdown 0.23 with bs4_book()">
+<meta property="og:title" content="Capítulo 2 Primeros pasos | Aprendiendo R sin morir en el intento">
+<meta property="og:type" content="book">
+<meta property="og:image" content="/img/logo_R.png">
+<meta property="og:description" content="¿Empezamos? Veamos antes un poco de historia sobre nuestro deidad. Allá por 1975, los laboratorios Bell (los que inventaron la radio moderna tal y como la conocemos), necesitaban una alternativa a...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Capítulo 2 Primeros pasos | Aprendiendo R sin morir en el intento">
+<meta name="twitter:description" content="¿Empezamos? Veamos antes un poco de historia sobre nuestro deidad. Allá por 1975, los laboratorios Bell (los que inventaron la radio moderna tal y como la conocemos), necesitaban una alternativa a...">
+<meta name="twitter:image" content="/img/logo_R.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/_Sen-0.4.0/font.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM%20Mono&amp;display=swap" rel="stylesheet">
+<link href="libs/_Bitter-0.4.0/font.css" rel="stylesheet">
+<script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS -->
 </head>
+<body data-spy="scroll" data-target="#toc">
 
-<body>
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
-
-
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li><a href="./">Aprendiendo R sin morir en el intento</a></li>
-
-<li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefacio</a><ul>
-<li class="chapter" data-level="" data-path="propósito.html"><a href="propósito.html"><i class="fa fa-check"></i>Propósito</a></li>
-<li class="chapter" data-level="" data-path="requisitos.html"><a href="requisitos.html"><i class="fa fa-check"></i>Requisitos</a></li>
-<li class="chapter" data-level="" data-path="emojis.html"><a href="emojis.html"><i class="fa fa-check"></i>Emojis</a></li>
-<li class="chapter" data-level="" data-path="sobre-el-autor.html"><a href="sobre-el-autor.html"><i class="fa fa-check"></i>Sobre el autor</a></li>
-<li class="chapter" data-level="" data-path="licencia.html"><a href="licencia.html"><i class="fa fa-check"></i>Licencia</a></li>
-</ul></li>
-<li class="part"><span><b>I Toma de contacto</b></span></li>
-<li class="chapter" data-level="1" data-path="instalacionR.html"><a href="instalacionR.html"><i class="fa fa-check"></i><b>1</b> Instalación</a><ul>
-<li class="chapter" data-level="1.1" data-path="instalacionRStudio.html"><a href="instalacionRStudio.html"><i class="fa fa-check"></i><b>1.1</b> Instalación de RStudio</a></li>
-<li class="chapter" data-level="1.2" data-path="instalacionpaquetes.html"><a href="instalacionpaquetes.html"><i class="fa fa-check"></i><b>1.2</b> Instalación de paquetes</a></li>
-<li class="chapter" data-level="1.3" data-path="consejos-y-tips.html"><a href="consejos-y-tips.html"><i class="fa fa-check"></i><b>1.3</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="primeros-pasos.html"><a href="primeros-pasos.html"><i class="fa fa-check"></i><b>2</b> Primeros pasos</a><ul>
-<li class="chapter" data-level="2.1" data-path="excel-no-es-tu-amigo.html"><a href="excel-no-es-tu-amigo.html"><i class="fa fa-check"></i><b>2.1</b> Excel no es tu amigo</a></li>
-<li class="chapter" data-level="2.2" data-path="primeros-pasos-calculadora.html"><a href="primeros-pasos-calculadora.html"><i class="fa fa-check"></i><b>2.2</b> Primeros pasos: calculadora</a></li>
-<li class="chapter" data-level="2.3" data-path="tipos_errores.html"><a href="tipos_errores.html"><i class="fa fa-check"></i><b>2.3</b> Tipos de errores</a></li>
-<li class="chapter" data-level="2.4" data-path="consejos-y-tips-1.html"><a href="consejos-y-tips-1.html"><i class="fa fa-check"></i><b>2.4</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
-<li class="chapter" data-level="2.5" data-path="ejercicios.html"><a href="ejercicios.html"><i class="fa fa-check"></i><b>2.5</b> 📝 Ejercicios</a></li>
-</ul></li>
-<li class="part"><span><b>II Conceptos básicos</b></span></li>
-<li class="chapter" data-level="3" data-path="tipos-de-datos-i-vectores.html"><a href="tipos-de-datos-i-vectores.html"><i class="fa fa-check"></i><b>3</b> Tipos de datos I: vectores</a><ul>
-<li class="chapter" data-level="3.1" data-path="vectores-numéricos.html"><a href="vectores-numéricos.html"><i class="fa fa-check"></i><b>3.1</b> Vectores numéricos</a><ul>
-<li class="chapter" data-level="3.1.1" data-path="vectores-numéricos.html"><a href="vectores-numéricos.html#secuencias-con-un-patrón"><i class="fa fa-check"></i><b>3.1.1</b> Secuencias con un patrón</a></li>
-</ul></li>
-<li class="chapter" data-level="3.2" data-path="operaciones-aritméticas-con-vectores-numéricos.html"><a href="operaciones-aritméticas-con-vectores-numéricos.html"><i class="fa fa-check"></i><b>3.2</b> Operaciones aritméticas con vectores numéricos</a></li>
-<li class="chapter" data-level="3.3" data-path="operaciones-estadísticas-con-vectores-numéricos.html"><a href="operaciones-estadísticas-con-vectores-numéricos.html"><i class="fa fa-check"></i><b>3.3</b> Operaciones estadísticas con vectores numéricos</a></li>
-<li class="chapter" data-level="3.4" data-path="vectores-de-caracteres-texto.html"><a href="vectores-de-caracteres-texto.html"><i class="fa fa-check"></i><b>3.4</b> Vectores de caracteres (texto)</a></li>
-<li class="chapter" data-level="3.5" data-path="vectores-lógicos-truefalse.html"><a href="vectores-lógicos-truefalse.html"><i class="fa fa-check"></i><b>3.5</b> Vectores lógicos (TRUE/FALSE)</a></li>
-<li class="chapter" data-level="3.6" data-path="ausentes.html"><a href="ausentes.html"><i class="fa fa-check"></i><b>3.6</b> Datos ausentes: NA y NaN</a></li>
-<li class="chapter" data-level="3.7" data-path="seleccionar-elementos-de-un-vector.html"><a href="seleccionar-elementos-de-un-vector.html"><i class="fa fa-check"></i><b>3.7</b> Seleccionar elementos de un vector</a><ul>
-<li class="chapter" data-level="3.7.1" data-path="seleccionar-elementos-de-un-vector.html"><a href="seleccionar-elementos-de-un-vector.html#which"><i class="fa fa-check"></i><b>3.7.1</b> which</a></li>
-<li class="chapter" data-level="3.7.2" data-path="seleccionar-elementos-de-un-vector.html"><a href="seleccionar-elementos-de-un-vector.html#null"><i class="fa fa-check"></i><b>3.7.2</b> NULL</a></li>
-</ul></li>
-<li class="chapter" data-level="3.8" data-path="ordenar-vectores.html"><a href="ordenar-vectores.html"><i class="fa fa-check"></i><b>3.8</b> Ordenar vectores</a></li>
-<li class="chapter" data-level="3.9" data-path="fechas.html"><a href="fechas.html"><i class="fa fa-check"></i><b>3.9</b> Fechas</a></li>
-<li class="chapter" data-level="3.10" data-path="glosario3.html"><a href="glosario3.html"><i class="fa fa-check"></i><b>3.10</b> 📚 Glosario</a></li>
-<li class="chapter" data-level="3.11" data-path="consejos-y-tips-2.html"><a href="consejos-y-tips-2.html"><i class="fa fa-check"></i><b>3.11</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
-<li class="chapter" data-level="3.12" data-path="ejercicios-1.html"><a href="ejercicios-1.html"><i class="fa fa-check"></i><b>3.12</b> 📝 Ejercicios</a></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="flujo-de-trabajo-proyecto.html"><a href="flujo-de-trabajo-proyecto.html"><i class="fa fa-check"></i><b>4</b> Flujo de trabajo: proyecto</a><ul>
-<li class="chapter" data-level="4.1" data-path="crear-proyecto.html"><a href="crear-proyecto.html"><i class="fa fa-check"></i><b>4.1</b> Crear proyecto</a></li>
-<li class="chapter" data-level="4.2" data-path="directorios-de-trabajo-y-cabecera.html"><a href="directorios-de-trabajo-y-cabecera.html"><i class="fa fa-check"></i><b>4.2</b> Directorios de trabajo y cabecera</a></li>
-<li class="chapter" data-level="4.3" data-path="ejecución.html"><a href="ejecución.html"><i class="fa fa-check"></i><b>4.3</b> Ejecución</a></li>
-<li class="chapter" data-level="4.4" data-path="consejos-y-tips-3.html"><a href="consejos-y-tips-3.html"><i class="fa fa-check"></i><b>4.4</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="datos.html"><a href="datos.html"><i class="fa fa-check"></i><b>5</b> Tipos de datos II: tablas</a><ul>
-<li class="chapter" data-level="5.1" data-path="matrices.html"><a href="matrices.html"><i class="fa fa-check"></i><b>5.1</b> Matrices</a></li>
-<li class="chapter" data-level="5.2" data-path="apply-vs-bucles.html"><a href="apply-vs-bucles.html"><i class="fa fa-check"></i><b>5.2</b> Apply vs bucles</a></li>
-<li class="chapter" data-level="5.3" data-path="tablas-data.html"><a href="tablas-data.html"><i class="fa fa-check"></i><b>5.3</b> Tablas: data.frames</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="tablas-data.html"><a href="tablas-data.html#data.frames-selección-manual-de-columnas-y-filas"><i class="fa fa-check"></i><b>5.3.1</b> Data.frames: selección manual de columnas y filas</a></li>
-</ul></li>
-<li class="chapter" data-level="5.4" data-path="consejos-y-tips-4.html"><a href="consejos-y-tips-4.html"><i class="fa fa-check"></i><b>5.4</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
-<li class="chapter" data-level="5.5" data-path="ejercicios-2.html"><a href="ejercicios-2.html"><i class="fa fa-check"></i><b>5.5</b> 📝 Ejercicios</a></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="importar_exportar.html"><a href="importar_exportar.html"><i class="fa fa-check"></i><b>6</b> Importando/exportando</a><ul>
-<li class="chapter" data-level="6.1" data-path="importación-de-datos.html"><a href="importación-de-datos.html"><i class="fa fa-check"></i><b>6.1</b> Importación de datos</a><ul>
-<li class="chapter" data-level="6.1.1" data-path="importación-de-datos.html"><a href="importación-de-datos.html#archivo-.rdata"><i class="fa fa-check"></i><b>6.1.1</b> Archivo .RData</a></li>
-<li class="chapter" data-level="6.1.2" data-path="importación-de-datos.html"><a href="importación-de-datos.html#archivo-.csv"><i class="fa fa-check"></i><b>6.1.2</b> Archivo .csv</a></li>
-<li class="chapter" data-level="6.1.3" data-path="importación-de-datos.html"><a href="importación-de-datos.html#archivo-.xlsx"><i class="fa fa-check"></i><b>6.1.3</b> Archivo .xlsx</a></li>
-<li class="chapter" data-level="6.1.4" data-path="importación-de-datos.html"><a href="importación-de-datos.html#desde-web"><i class="fa fa-check"></i><b>6.1.4</b> Desde web</a></li>
-</ul></li>
-<li class="chapter" data-level="6.2" data-path="exportación-de-datos.html"><a href="exportación-de-datos.html"><i class="fa fa-check"></i><b>6.2</b> Exportación de datos</a><ul>
-<li class="chapter" data-level="6.2.1" data-path="exportación-de-datos.html"><a href="exportación-de-datos.html#guardar-en-.rdata"><i class="fa fa-check"></i><b>6.2.1</b> Guardar en .RData</a></li>
-<li class="chapter" data-level="6.2.2" data-path="exportación-de-datos.html"><a href="exportación-de-datos.html#guardar-en-.csv"><i class="fa fa-check"></i><b>6.2.2</b> Guardar en .csv</a></li>
-</ul></li>
-<li class="chapter" data-level="6.3" data-path="consejos-y-tips-5.html"><a href="consejos-y-tips-5.html"><i class="fa fa-check"></i><b>6.3</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="control.html"><a href="control.html"><i class="fa fa-check"></i><b>7</b> Estructuras de control</a><ul>
-<li class="chapter" data-level="7.1" data-path="ifelse.html"><a href="ifelse.html"><i class="fa fa-check"></i><b>7.1</b> if…else</a></li>
-<li class="chapter" data-level="7.2" data-path="forwhile.html"><a href="forwhile.html"><i class="fa fa-check"></i><b>7.2</b> for/while</a><ul>
-<li class="chapter" data-level="7.2.1" data-path="forwhile.html"><a href="forwhile.html#breaknext"><i class="fa fa-check"></i><b>7.2.1</b> BREAK/NEXT</a></li>
-<li class="chapter" data-level="7.2.2" data-path="forwhile.html"><a href="forwhile.html#repeat"><i class="fa fa-check"></i><b>7.2.2</b> REPEAT</a></li>
-</ul></li>
-<li class="chapter" data-level="7.3" data-path="consejos-y-tips-6.html"><a href="consejos-y-tips-6.html"><i class="fa fa-check"></i><b>7.3</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
-</ul></li>
-<li class="part"><span><b>III Listas y funciones</b></span></li>
-<li class="chapter" data-level="8" data-path="otros_datos.html"><a href="otros_datos.html"><i class="fa fa-check"></i><b>8</b> Tipos de datos III: listas/factores</a><ul>
-<li class="chapter" data-level="8.1" data-path="listas.html"><a href="listas.html"><i class="fa fa-check"></i><b>8.1</b> Listas</a></li>
-<li class="chapter" data-level="8.2" data-path="factores.html"><a href="factores.html"><i class="fa fa-check"></i><b>8.2</b> Factores</a></li>
-<li class="chapter" data-level="8.3" data-path="fechas-y-horas.html"><a href="fechas-y-horas.html"><i class="fa fa-check"></i><b>8.3</b> Fechas y horas</a></li>
-<li class="chapter" data-level="8.4" data-path="consejos-y-tips-7.html"><a href="consejos-y-tips-7.html"><i class="fa fa-check"></i><b>8.4</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
-<li class="chapter" data-level="8.5" data-path="ejercicios-3.html"><a href="ejercicios-3.html"><i class="fa fa-check"></i><b>8.5</b> 📝 Ejercicios</a></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="FUNCIONES.html"><a href="FUNCIONES.html"><i class="fa fa-check"></i><b>9</b> Creación de funciones</a><ul>
-<li class="chapter" data-level="9.1" data-path="primera-función.html"><a href="primera-función.html"><i class="fa fa-check"></i><b>9.1</b> Primera función</a></li>
-<li class="chapter" data-level="9.2" data-path="segunda-función.html"><a href="segunda-función.html"><i class="fa fa-check"></i><b>9.2</b> Segunda función</a></li>
-<li class="chapter" data-level="9.3" data-path="variables-localesglobales.html"><a href="variables-localesglobales.html"><i class="fa fa-check"></i><b>9.3</b> Variables locales/globales</a></li>
-<li class="chapter" data-level="9.4" data-path="ejercicios-4.html"><a href="ejercicios-4.html"><i class="fa fa-check"></i><b>9.4</b> 📝 Ejercicios</a></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="qué-sabemos-hacer.html"><a href="qué-sabemos-hacer.html"><i class="fa fa-check"></i><b>10</b> ¿Qué sabemos hacer?</a><ul>
-<li class="chapter" data-level="10.1" data-path="aleatorio_1.html"><a href="aleatorio_1.html"><i class="fa fa-check"></i><b>10.1</b> Incursión aleatoria</a><ul>
-<li class="chapter" data-level="10.1.1" data-path="aleatorio_1.html"><a href="aleatorio_1.html#pseudoaleatorio"><i class="fa fa-check"></i><b>10.1.1</b> Pseudoaleatoriedad</a></li>
-</ul></li>
-<li class="chapter" data-level="10.2" data-path="recursos.html"><a href="recursos.html"><i class="fa fa-check"></i><b>10.2</b> Recursos</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="bibliografía.html"><a href="bibliografía.html"><i class="fa fa-check"></i>Bibliografía</a></li>
-<li class="divider"></li>
-<li><a href="https://bookdown.org/yihui/rmarkdown/" target="blank">Elaborado con bookdown</a></li>
-
-</ul>
-
-      </nav>
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Aprendiendo R sin morir en el intento</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
 
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Aprendiendo R sin morir en el intento</a>
-          </h1>
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Prefacio</a></li>
+<li class="book-part">Toma de contacto</li>
+<li><a class="" href="instalacionR.html"><span class="header-section-number">1</span> Instalación</a></li>
+<li><a class="active" href="primeros-pasos.html"><span class="header-section-number">2</span> Primeros pasos</a></li>
+<li class="book-part">Conceptos básicos</li>
+<li><a class="" href="tipos-de-datos-i-vectores.html"><span class="header-section-number">3</span> Tipos de datos I: vectores</a></li>
+<li><a class="" href="flujo-de-trabajo-proyecto.html"><span class="header-section-number">4</span> Flujo de trabajo: proyecto</a></li>
+<li><a class="" href="control.html"><span class="header-section-number">5</span> Estructuras de control</a></li>
+<li><a class="" href="datos.html"><span class="header-section-number">6</span> Datos estructurados: matrices y tablas</a></li>
+<li><a class="" href="importar_exportar.html"><span class="header-section-number">7</span> Importando/exportando</a></li>
+<li class="book-part">Listas y funciones</li>
+<li><a class="" href="otros_datos.html"><span class="header-section-number">8</span> Listas y factores</a></li>
+<li><a class="" href="FUNCIONES.html"><span class="header-section-number">9</span> Creación de funciones</a></li>
+<li><a class="" href="qu%C3%A9-sabemos-hacer.html"><span class="header-section-number">10</span> ¿Qué sabemos hacer?</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/dadosdelaplace/cursoR_intro_2021_2022">View book source <i class="fab fa-github"></i></a></p>
         </div>
-
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
-
-            <section class="normal" id="section-">
-<div id="primeros-pasos" class="section level1">
-<h1><span class="header-section-number">Capítulo 2</span> Primeros pasos</h1>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="primeros-pasos" class="section level1">
+<h1>
+<span class="header-section-number">Capítulo 2</span> Primeros pasos<a class="anchor" aria-label="anchor" href="#primeros-pasos"><i class="fas fa-link"></i></a>
+</h1>
 <p><strong>¿Empezamos?</strong></p>
 <p>Veamos antes <strong>un poco de historia</strong> sobre nuestro deidad.</p>
 <p>Allá por 1975, los <strong>laboratorios Bell</strong> (los que inventaron la radio moderna tal y como la conocemos), necesitaban una alternativa a los lenguajes más «rudos» y antiguos como <code>C++</code> o <code>Fortran</code>, lenguajes rápidos en la ejecución pero complejos en su uso, con una gran curva de aprendizaje y con <strong>muy poca capacidad en la visualización de datos</strong> que se empezaba a necesitar.</p>
-<p>Así que en <strong>1976 sacaron la primera versión del lenguaje conocido <code>S</code></strong> (hasta entonces estaba de moda lo de llamar a los lenguajes con una sola inicial). En <strong>1980</strong> se empezó a distribuir la primera versión pública de <code>S</code>, más allá de los laboratorios Bell, y en <strong>1988</strong> se añadieron bastantes funcionalidades nuevas como poder aplicar funciones a otras funciones (los famosos <code>apply()</code> que ya veremos). Años más tarde, en <strong>1991</strong>, dicho lenguaje se simplificó, reescribiendo muchas subrutinas de otros lenguajes más primitivos, para tener una versión muy parecida al actual <code>R</code>, permitiendo el usod de operadores, <code>data.frames</code> (que veremos) y otro tipo de objetos, sencillos en la programación pero muy versatiles.</p>
+<p>Así que en <strong>1976 sacaron la primera versión del lenguaje conocido <code>S</code></strong> (hasta entonces estaba de moda lo de llamar a los lenguajes con una sola inicial). En <strong>1980</strong> se empezó a distribuir la primera versión pública de <code>S</code>, más allá de los laboratorios Bell, y en <strong>1988</strong> se añadieron bastantes funcionalidades nuevas como poder aplicar funciones a otras funciones (los famosos <code><a href="https://rdrr.io/r/base/apply.html">apply()</a></code> que ya veremos). Años más tarde, en <strong>1991</strong>, dicho lenguaje se simplificó, reescribiendo muchas subrutinas de otros lenguajes más primitivos, para tener una versión muy parecida al actual <code>R</code>, permitiendo el usod de operadores, <code>data.frames</code> (que veremos) y otro tipo de objetos, sencillos en la programación pero muy versatiles.</p>
 <p>Sin embargo, salvo uso docente, <code>S</code> tenía licencia así que <strong>en 1992 Ross Ihaka y Robert Gentleman se lanzaron a crear una versión de <code>S</code> libre y gratuita</strong>, un trabajo de casi 8 años hasta que en el año 2000, ambos investigadores de la Universidad de Auckland en Nueva Zelanda lanzaron la primera versión estable del lenguaje.</p>
 <p>Tras dicho lanzamiento, se creó un <strong>equipo de expertos en estadística computacional (el conocido como <em>R Development Core Team</em>)</strong> que es el que se encarga de mantener toda la aerquitectura de <code>R</code> y los que se encargar de actualizar y mejorar el paquete <code>{base}</code>, una <strong>librería motor</strong> sobre la que se construye el resto de funciones.</p>
+<div id="excel-no-es-tu-amigo" class="section level2">
+<h2>
+<span class="header-section-number">2.1</span> Excel no es tu amigo<a class="anchor" aria-label="anchor" href="#excel-no-es-tu-amigo"><i class="fas fa-link"></i></a>
+</h2>
+<p><strong><code>R</code> es un lenguaje de programación</strong>, de alto nivel para el usuario y modular. Los lenguajes de alto nivel como <code>R</code>, <code>Python</code> (curso interactivo de Python en <a href="https://checkio.org/" class="uri">https://checkio.org/</a>) o <code>Matlab</code>, facilitan la programación al usuario, teniendo que preocuparte solo de la tarea de programar. Son lenguajes con una <strong>menor curva de aprendizaje</strong> aunque suelen ser más lentos en su ejecución en comparación con lenguajes de bajo nivel (<code>C</code>, <code>C++</code> o <code>Fortran</code>), lenguajes muy rápidos en su ejecución pero cuya programación requiere un mayor tiempo y formación, teniendo que además estar pendiente del tipo de variables, espacio en memoria, etc.</p>
+<p>Por su arquitectura, <code>R</code> es un lenguaje que puede ser usado para un propósito general pero que está especialmente diseñado para el <strong>análisis estadístico de datos</strong>. Su <strong>modularidad</strong> nos da la ventaja de que podemos instalar las funcionalidades que vayamos necesitando de forma progresiva.</p>
+<p><strong>¿Por qué no es recomendable usar Excel?</strong></p>
+<div class="rmdwarning">
+<ul>
+<li>
+<strong>Software de pago</strong>: Excel, al igual que el resto de programas de Microsoft o SPSS (por desgracia programa estrella de nuestro sistema sanitario), es un programa de pago. A nivel individual, todos hemos tenido una versión que no hemos pagado, pero dicha evasión no se la puede permitir una empresa o administración, que debe de pagar altas cantidades de dinero anuales por las licencias, dinero que no sería necesario si los investigadores y trabajadores tuvieran formación (remunerada) en otras herramientas de software libre.</li>
+</ul>
 </div>
-            </section>
+<div class="rmdwarning">
+<ul>
+<li>
+<strong>Software cerrado</strong>: no solo es de pago sino que es cerrado, así que solo podemos hacer lo que Excel ha creído que interesante que podamos hacer. Incluso con la programación de MACROS, las funcionalidades de Excel siguen siendo mucho más limitadas ya que viene «programadas» de antemano</li>
+</ul>
+</div>
+<div class="rmdwarning">
+<ul>
+<li>
+<strong>Alto consumo de memoria</strong>: dicha programación predeterminada hace que Excel ocupe muchísimo espacio en el disco duro y tenga un alto consumo de memoria (la memoria es lo que te permite hacer varias tareas a la vez en tu ordenador).</li>
+</ul>
+</div>
+<div class="rmdwarning">
+<ul>
+<li>
+<strong>No es universal</strong>: no solo es de pago sino que además, dependiendo de la versión que tengas de Excel, tendrá un formato distinto para datos como fechas, teniendo incluso extensiones distintas, de forma que un archivo <code>.xls</code> abierto por un Excel moderno puede provocar errores en la carga.</li>
+</ul>
+</div>
+<div class="rmdwarning">
+<ul>
+<li>
+<strong>¡ES SOLO UNA HOJA DE CÁLCULO!</strong>: el propio Microsoft desaconseja el uso de Excel para el análisis de grandes volúmenes de datos. El Excel es una herramienta maravillosa para ser usada como una sencilla hoja de cálculo: llevar las cuentas de tu familia, de tu pequeño negocio, una declaración de la Renta sencilla, planificar viajes, etc. Pero el programa <strong>NO ESTÁ DISEÑADO</strong> para ser una base de datos ni para análisis detallado, y muchos menos pensado para generar un entorno flexible para el análisis estadístico y la visualización de datos.</li>
+</ul>
+</div>
+<p> </p>
+<p><strong>¿Puedes ser el mejor partiendo un filete con una cuchara?</strong> Seguramente puedas (en Excel puedes hasta programar con macros), y si siempre lo hiciste así, acabarás normalizándolo, pero seguirás siendo una persona comiendo filete con cuchara.</p>
+<p><strong>¿Qué sucede si usamos la herramienta equivocada?</strong> Tres ejemplos:</p>
+<div class="rmdcaution">
+<ul>
+<li>
+<strong>Problemas para codificar fechas</strong>: en 2016 se publicó una <a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-1044-7">revisión de artículos en genética</a>, descubriendo que 1 de cada 5 artículos contenían errores debido a una mala codificación de las fechas, conviertiendo por ejemplo los genes Septin-2 (conocido como SEPT2) en fechas, y al revés <span class="citation">(Ziemann, Eren, and El-Osta <a href="qu%C3%A9-sabemos-hacer.html#ref-Ziemannetal16">2016</a>)</span>.</li>
+</ul>
+</div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:excel-genes"></span>
+<img src="img/excel_genes.jpg" alt="Excel en una noche loca." width="50%"><p class="caption">
+Imagen/gráfica 2.1: Excel en una noche loca.
+</p>
+</div>
+<div class="rmdcaution">
+<ul>
+<li>
+<strong>Problemas de memoria</strong>: un Excel permite por defecto una cantidad máxima de filas. Aunque dicha cantidad se puede ampliar, sigue siendo finita, por lo que cuando superas el umbral de filas, al añadir filas Excel te borra registros <strong>sin avisarte de que lo está haciendo</strong>. Esto es lo que sucedió con los <a href="https://www.redaccionmedica.com/secciones/sanidad-hoy/covid-reino-unido-pierden-16000-positivos-9989">registros de casos covid en Reino Unido</a>.</li>
+</ul>
+</div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:excel-uk"></span>
+<img src="img/excel_uk.jpg" alt="Cuando Excel dice basta." width="50%"><p class="caption">
+Imagen/gráfica 2.2: Cuando Excel dice basta.
+</p>
+</div>
+<div class="rmdcaution">
+<ul>
+<li>
+<strong>Problemas para codificar edades</strong>: una variable de tipo fecha, aunque nosotros la veamos con letras, en realidad es una variable numérica que representa los días que han pasado desde una fecha origen. En función de las distintas versiones de Excel, dicha fecha origen cambia. Además, si se codifica mal la fecha en formato <code>dd-mm-YY</code>, dicho formato cuando se exporta a otro excel en texto, no permite distinguir a un nacido en 1918 y a un nacido en 2018, así que podemos estar confundiendo personas de 103 años con niños de 3 años (y es lo que <a href="https://www.niusdiario.es/sociedad/sanidad/sanidad-reconoce-datos-muertes-ninos-covid-erroneos-contabilizaban-centenarios-como-menores_18_3107220241.html">sucedió en España</a>, observando unas tasas de mortalidad en niños muy pequeños equivalentes a personas mayores).</li>
+</ul>
+</div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:excel-edades"></span>
+<img src="img/excel_edades.jpg" alt="Los centenarios con biberón." width="50%"><p class="caption">
+Imagen/gráfica 2.3: Los centenarios con biberón.
+</p>
+</div>
+</div>
+<div id="primeros-pasos-calculadora" class="section level2">
+<h2>
+<span class="header-section-number">2.2</span> Primeros pasos: calculadora<a class="anchor" aria-label="anchor" href="#primeros-pasos-calculadora"><i class="fas fa-link"></i></a>
+</h2>
+<p>¿Te acuerdas de lo que era la <strong>consola</strong>? Vamos a trabajar de momento en esa ventana que tienes en la ventana inferior.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:inicio-rstudio-2a"></span>
+<img src="img/inicio_rstudio_2.jpg" alt="Lanzando a consola nuestras primeras órdenes en RStudio." width="75%"><p class="caption">
+Imagen/gráfica 2.4: Lanzando a consola nuestras primeras órdenes en RStudio.
+</p>
+</div>
+<p>Lo que ya hemos descubierto en los pasos de la instalación (ver imagen <a href="primeros-pasos.html#fig:inicio-rstudio-2a">2.4</a>) es que la consola de <code>R</code> tiene una función muy básica y evidente: nos sirve de calculadora. Un ejemplo muy simple: si escribimos 3 en la consola y pulsamos <em>ENTER</em>, la consola nos mostrará el resultado de la suma</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fl">1</span> <span class="op">+</span> <span class="fl">2</span></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<p> </p>
+<p><strong>¿Pero cuál es la diferencia entre una calculadora y un lenguaje de programación?</strong></p>
+<p>Imagina que dicha suma 3 la quisiéramos utilizar para un segundo cálculo: ¿y si en lugar de lanzarlo a la consola sin más lo <strong>almacenamos en alguna variable</strong>?</p>
+<p>Como hemos visto en la instalación de <code>RStudio</code>, para <strong>asignar variables</strong> lo haremos con la orden <code>x &lt;- 1 + 2</code>: una variable de nombre <code>x</code> va a tener asignada <code><a href="https://rdrr.io/r/base/assignOps.html">&lt;-</a></code> lo que valga la suma <code>1 + 2</code></p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span> <span class="op">+</span> <span class="fl">2</span></code></pre></div>
+<p>Como puedes comprobar, en tu parte superior derecha (nuestro entorno de variables), podrás ver como una nueva variable <code>x</code> es ahora visualizada, con su valor asignado (<strong>no se mostrará en consola</strong> salvo que escribas 3 en ella: <code>R</code> asume que no querías visualizarla en consola sino solo guardarla).</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:unnamed-chunk-5"></span>
+<img src="img/environment_1.jpg" alt="Environment." width="75%"><p class="caption">
+Imagen/gráfica 2.5: Environment.
+</p>
+</div>
+<p>Dicha variable <code>x</code> además podemos reciclarla para definir una variable <code>y</code>, restándole una constante.</p>
+<p> </p>
+<p>De la misma manera que hemos hecho restas, sumas y multiplicaciones, <code>R</code> tiene todas las operaciones clásicas que podrías tener en una calculadora. Prueba a ejecutar en la consola las órdenes <code>x^2</code>, <code><a href="https://rdrr.io/r/base/MathFun.html">sqrt(x)</a></code> o <code><a href="https://rdrr.io/r/base/MathFun.html">abs(y)</a></code>: <code>R</code> calculará las operaciones <em>elevar al cuadrado</em>, <em>raíz cuadrada</em> y <em>valor absoluto</em> de la variable que tengan entre paréntesis</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span><span class="op">^</span><span class="fl">2</span></code></pre></div>
+<pre><code>## [1] 9</code></pre>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 1.732051</code></pre>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">y</span> <span class="op">&lt;-</span> <span class="va">x</span> <span class="op">-</span> <span class="fl">5</span>
+<span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<p> </p>
+</div>
+<div id="tipos_errores" class="section level2">
+<h2>
+<span class="header-section-number">2.3</span> Tipos de errores<a class="anchor" aria-label="anchor" href="#tipos_errores"><i class="fas fa-link"></i></a>
+</h2>
+<p>Durante tu aprendizaje en <code>R</code> va a ser <strong>muy habitual</strong> que las cosas no salgan a la primera, <strong>apareciendo en consola mensajes en un color rojo</strong>. Un <strong>miedo</strong> muy habitual cuando se empieza a programar es pensar que si haces algo mal o aparece algún mensaje de error, el ordenador puede explotar en cualquier momento. <strong>A programar se aprende programando</strong>, así que haz las pruebas que quieres, lo peor que puede pasar es que necesites cerrar sesión en <code>R Studio</code> y abrirlo de nuevo.</p>
+<p>Dado que el 99.99999% de veces tu código tendrá errores que deberás ir solventando, no está de más conocer los tipos de mensajes que <code>R</code> puede sacarte por consola:</p>
+<div class="rmdcaution">
+<p>Los <strong><span style="color: #dc3545;">mensajes de error</span></strong> irán precedidos de la frase <strong><span style="color: #dc3545;">«Error in…»</span></strong>, dándote a veces incluso el tipo de error y la línea de código en la que se ha producido. Veamos un ejemplo intentando sumar un número a una cadena de texto.</p>
+</div>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="st">"a"</span> <span class="op">+</span> <span class="fl">1</span></code></pre></div>
+<pre><code>## Error in "a" + 1: argumento no-numérico para operador binario</code></pre>
+<p>Los <strong>errores son aquellos fallos que seguramente impidan la ejecución</strong> del código. Un <strong>error muy habitual</strong> es intentar acceder a alguna función de algún paquete que, o bien no tenemos instalado, o bien no hemos llamado haciendo uso del <code><a href="https://rdrr.io/r/base/library.html">library()</a></code>: estás intentando leerte un libro de tu biblioteca pero ni siquiera has ido a la tienda a «comprarlo».</p>
+<div class="rmdwarning">
+<p>Los <strong><span style="color: #ffc107;">mensajes de warnings</span></strong> irán precedidos de la frase <strong><span style="color: #ffc107;">«Warning in…»</span></strong>, y son los fallos más delicados ya que son <strong>posibles errores o incoherencias</strong> que <code>R</code> detecta en tu código pero que <strong>no van a hacer que tu código deje de ejecutarse</strong>, aunque probablemente no lo haga como a ti te gustaría. Un ejemplo es cuando tratamos de hacer la raiz cuadrada de un número negativo.</p>
+</div>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span></code></pre></div>
+<pre><code>## Warning in sqrt(-1): Se han producido NaNs</code></pre>
+<pre><code>## [1] NaN</code></pre>
+<p>¿Ha ejecutado la orden? Sí, pero te **advierte de que el resultado de la operación es un <code>NaN</code>, un valor que no existe (al menos dentro de los números reales), un <em>Not A Number</em> (ver Sección <a href="tipos-de-datos-i-vectores.html#ausentes">3.7</a>).</p>
+<div class="rmdimportant">
+<p>Los <strong><span style="color: #20935E;">mensajes de control</span></strong> serán aquellos que aparecerán por consola sin empezar por «Error in…» ni «Warning:…». Dichos mensajes, que puedes incluir tú mismo en tu código con funciones como <code><a href="https://rdrr.io/r/base/cat.html">cat()</a></code> para monitorizar la ejecución de códigos largos, no son errores ni problemas, son simplemente información que <code>R</code> considera útil aportarte.</p>
+</div>
+</div>
+<div id="consejos-y-tips" class="section level2">
+<h2>
+<span class="header-section-number">2.4</span> <img src="img/logo_info.png" style="width:4.0%"> Consejos y tips<a class="anchor" aria-label="anchor" href="#consejos-y-tips"><i class="fas fa-link"></i></a>
+</h2>
+ <br><details><p><summary><strong>Panel de ayuda</strong></summary></p>
+<p>Si escribes en la consola <code>? nombre_funcion</code> (por ejemplo, escribe en la consola <code><a href="https://rdrr.io/r/base/MathFun.html">? sqrt</a></code>), en el panel inferior derecho te aparecerá una <strong>documentación de ayuda</strong> de la función para saber que argumentos necesita, como puedes usar la función, qué es lo que te devuelve, ejemplos de uso, etc.</p>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="op">?</span> <span class="va">sqrt</span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:unnamed-chunk-10"></span>
+<img src="img/panel_ayuda.jpg" alt="Panel de ayuda." width="50%"><p class="caption">
+Imagen/gráfica 2.6: Panel de ayuda.
+</p>
+</div>
+</details>
+</div>
+<div id="ejercicios" class="section level2">
+<h2>
+<span class="header-section-number">2.5</span> 📝 Ejercicios<a class="anchor" aria-label="anchor" href="#ejercicios"><i class="fas fa-link"></i></a>
+</h2>
+<details><p><summary>📝<strong>Ejercicio 1</strong>: calcula en consola la suma de 3 más 4, y todo ello multiplicado por 10, y asígnalo a una variable <code>x</code> (<strong>haz click</strong> en la flecha para la solución propuesta).</summary></p>
+<!-- toc -->
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fl">3</span> <span class="op">+</span> <span class="fl">4</span><span class="op">)</span> <span class="op">*</span> <span class="fl">10</span></code></pre></div>
+<!-- tocstop -->
+</details><p> </p>
+<details><p><summary>📝<strong>Ejercicio 2</strong>: asigna un valor positivo a <code>x</code> y calcula su raíz cuadrada; asigna otro negativo y calcula su valor absoluto (<strong>haz click</strong> en la flecha para la solución propuesta).</summary></p>
+<!-- toc -->
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Raíz cuadrada</span>
+<span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">73</span>
+<span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 8.544004</code></pre>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Valor absoluto</span>
+<span class="va">y</span> <span class="op">&lt;-</span> <span class="op">-</span><span class="fl">73</span>
+<span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 73</code></pre>
+<!-- tocstop -->
+</details><div class="rmdimportant">
+<p>Las órdenes <code><a href="https://rdrr.io/r/base/MathFun.html">sqrt(x)</a></code> y <code><a href="https://rdrr.io/r/base/MathFun.html">abs(y)</a></code> se llaman <strong>funciones</strong>, y la variable que tienen entre paréntesis se llama <strong>argumento de la función</strong>: una variable que toma de entrada la función y con la que opera internamente.</p>
+</div>
+<p> </p>
+<details><p><summary>📝<strong>Ejercicio 3</strong>: usando la variable <code>x</code> ya definida, calcula <code>x - 5</code> y guárdalo en una nueva variable <code>z</code> (<strong>haz click</strong> en la flecha para la solución propuesta).</summary></p>
+<!-- toc -->
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">z</span> <span class="op">&lt;-</span> <span class="va">x</span> <span class="op">-</span> <span class="fl">5</span>
+<span class="va">z</span></code></pre></div>
+<pre><code>## [1] 68</code></pre>
+<!-- tocstop -->
+</details><p> </p>
+<details><p><summary>📝<strong>Ejercicio 4</strong>: usando las variables <code>x</code> y <code>z</code> ya definidas, calcula la raíz cuadrada del máximo entre ambas, y guárdalo en una nueva variable <code>t</code> (<strong>haz click</strong> en la flecha para la solución propuesta).</summary></p>
+<!-- toc -->
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">t</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">z</span><span class="op">)</span><span class="op">)</span> 
+<span class="va">t</span></code></pre></div>
+<pre><code>## [1] 8.544004</code></pre>
+<!-- tocstop -->
+</details><div class="rmdwarning">
+<p><strong><span style="color: #ffc107;">CUIDADO</span></strong></p>
+<p>No hace falta gastar una línea por cada orden que quieras ejecutar. Tampoco necesitas guardar cada paso intermedio que realices. Cuidado con la memoria: cada asignación que hagas es una variable guardada que consume recursos en tu ordenador.</p>
+</div>
 
-          </div>
-        </div>
-      </div>
-<a href="consejos-y-tips.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="excel-no-es-tu-amigo.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
-    </div>
+</div>
+</div>
+
+
+
+  <div class="chapter-nav">
+<div class="prev"><a href="instalacionR.html"><span class="header-section-number">1</span> Instalación</a></div>
+<div class="next"><a href="tipos-de-datos-i-vectores.html"><span class="header-section-number">3</span> Tipos de datos I: vectores</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#primeros-pasos"><span class="header-section-number">2</span> Primeros pasos</a></li>
+<li><a class="nav-link" href="#excel-no-es-tu-amigo"><span class="header-section-number">2.1</span> Excel no es tu amigo</a></li>
+<li><a class="nav-link" href="#primeros-pasos-calculadora"><span class="header-section-number">2.2</span> Primeros pasos: calculadora</a></li>
+<li><a class="nav-link" href="#tipos_errores"><span class="header-section-number">2.3</span> Tipos de errores</a></li>
+<li><a class="nav-link" href="#consejos-y-tips"><span class="header-section-number">2.4</span>  Consejos y tips</a></li>
+<li><a class="nav-link" href="#ejercicios"><span class="header-section-number">2.5</span> 📝 Ejercicios</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/dadosdelaplace/cursoR_intro_2021_2022/blob/master/02-toma_contacto.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/dadosdelaplace/cursoR_intro_2021_2022/edit/master/02-toma_contacto.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 21-09-2021.</p>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
-<script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": {
-"github": true,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["Intro_R_2021_2022.pdf"],
-"search": {
-"engine": "lunr",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
-});
-});
-</script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -341,7 +349,22 @@ gitbook.start({
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
 </script>
 </body>
-
 </html>

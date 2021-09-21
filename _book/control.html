@@ -1,330 +1,345 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html lang="en">
 <head>
-
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 7 Estructuras de control | Aprendiendo R sin morir en el intento</title>
-  <meta name="description" content="Manual básico e introductorio de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM), elaborado por Javier Álvarez Liébana" />
-  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
-
-  <meta property="og:title" content="Capítulo 7 Estructuras de control | Aprendiendo R sin morir en el intento" />
-  <meta property="og:type" content="book" />
-  
-  <meta property="og:image" content="/img/logo_R.png" />
-  <meta property="og:description" content="Manual básico e introductorio de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM), elaborado por Javier Álvarez Liébana" />
-  <meta name="github-repo" content="dadosdelaplace/cursoR_intro_2021_2022" />
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 7 Estructuras de control | Aprendiendo R sin morir en el intento" />
-  
-  <meta name="twitter:description" content="Manual básico e introductorio de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM), elaborado por Javier Álvarez Liébana" />
-  <meta name="twitter:image" content="/img/logo_R.png" />
-
-<meta name="author" content="Javier Álvarez Liébana" />
-
-
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  
-<link rel="prev" href="consejos-y-tips-5.html"/>
-<link rel="next" href="ifelse.html"/>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
-
-
-
-
-
-
-
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
-<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.18/datatables.js"></script>
-<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
-<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
-<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
-
-
-<style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-
-<link rel="stylesheet" href="css/style.css" type="text/css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Capítulo 5 Estructuras de control | Aprendiendo R sin morir en el intento</title>
+<meta name="author" content="Javier Álvarez Liébana">
+<meta name="description" content="Aunque la mayoría de veces son sustituibles por otras expresiones más legibles y eficientes, es importante que conozcamos como se usan las expresiones de control más típicas.  5.1 if…else Como en...">
+<meta name="generator" content="bookdown 0.23 with bs4_book()">
+<meta property="og:title" content="Capítulo 5 Estructuras de control | Aprendiendo R sin morir en el intento">
+<meta property="og:type" content="book">
+<meta property="og:image" content="/img/logo_R.png">
+<meta property="og:description" content="Aunque la mayoría de veces son sustituibles por otras expresiones más legibles y eficientes, es importante que conozcamos como se usan las expresiones de control más típicas.  5.1 if…else Como en...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Capítulo 5 Estructuras de control | Aprendiendo R sin morir en el intento">
+<meta name="twitter:description" content="Aunque la mayoría de veces son sustituibles por otras expresiones más legibles y eficientes, es importante que conozcamos como se usan las expresiones de control más típicas.  5.1 if…else Como en...">
+<meta name="twitter:image" content="/img/logo_R.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/_Sen-0.4.0/font.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM%20Mono&amp;display=swap" rel="stylesheet">
+<link href="libs/_Bitter-0.4.0/font.css" rel="stylesheet">
+<script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS -->
 </head>
+<body data-spy="scroll" data-target="#toc">
 
-<body>
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Aprendiendo R sin morir en el intento</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
 
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
 
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li><a href="./">Aprendiendo R sin morir en el intento</a></li>
-
-<li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefacio</a><ul>
-<li class="chapter" data-level="" data-path="propósito.html"><a href="propósito.html"><i class="fa fa-check"></i>Propósito</a></li>
-<li class="chapter" data-level="" data-path="requisitos.html"><a href="requisitos.html"><i class="fa fa-check"></i>Requisitos</a></li>
-<li class="chapter" data-level="" data-path="emojis.html"><a href="emojis.html"><i class="fa fa-check"></i>Emojis</a></li>
-<li class="chapter" data-level="" data-path="sobre-el-autor.html"><a href="sobre-el-autor.html"><i class="fa fa-check"></i>Sobre el autor</a></li>
-<li class="chapter" data-level="" data-path="licencia.html"><a href="licencia.html"><i class="fa fa-check"></i>Licencia</a></li>
-</ul></li>
-<li class="part"><span><b>I Toma de contacto</b></span></li>
-<li class="chapter" data-level="1" data-path="instalacionR.html"><a href="instalacionR.html"><i class="fa fa-check"></i><b>1</b> Instalación</a><ul>
-<li class="chapter" data-level="1.1" data-path="instalacionRStudio.html"><a href="instalacionRStudio.html"><i class="fa fa-check"></i><b>1.1</b> Instalación de RStudio</a></li>
-<li class="chapter" data-level="1.2" data-path="instalacionpaquetes.html"><a href="instalacionpaquetes.html"><i class="fa fa-check"></i><b>1.2</b> Instalación de paquetes</a></li>
-<li class="chapter" data-level="1.3" data-path="consejos-y-tips.html"><a href="consejos-y-tips.html"><i class="fa fa-check"></i><b>1.3</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="primeros-pasos.html"><a href="primeros-pasos.html"><i class="fa fa-check"></i><b>2</b> Primeros pasos</a><ul>
-<li class="chapter" data-level="2.1" data-path="excel-no-es-tu-amigo.html"><a href="excel-no-es-tu-amigo.html"><i class="fa fa-check"></i><b>2.1</b> Excel no es tu amigo</a></li>
-<li class="chapter" data-level="2.2" data-path="primeros-pasos-calculadora.html"><a href="primeros-pasos-calculadora.html"><i class="fa fa-check"></i><b>2.2</b> Primeros pasos: calculadora</a></li>
-<li class="chapter" data-level="2.3" data-path="tipos_errores.html"><a href="tipos_errores.html"><i class="fa fa-check"></i><b>2.3</b> Tipos de errores</a></li>
-<li class="chapter" data-level="2.4" data-path="consejos-y-tips-1.html"><a href="consejos-y-tips-1.html"><i class="fa fa-check"></i><b>2.4</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
-<li class="chapter" data-level="2.5" data-path="ejercicios.html"><a href="ejercicios.html"><i class="fa fa-check"></i><b>2.5</b> 📝 Ejercicios</a></li>
-</ul></li>
-<li class="part"><span><b>II Conceptos básicos</b></span></li>
-<li class="chapter" data-level="3" data-path="tipos-de-datos-i-vectores.html"><a href="tipos-de-datos-i-vectores.html"><i class="fa fa-check"></i><b>3</b> Tipos de datos I: vectores</a><ul>
-<li class="chapter" data-level="3.1" data-path="vectores-numéricos.html"><a href="vectores-numéricos.html"><i class="fa fa-check"></i><b>3.1</b> Vectores numéricos</a><ul>
-<li class="chapter" data-level="3.1.1" data-path="vectores-numéricos.html"><a href="vectores-numéricos.html#secuencias-con-un-patrón"><i class="fa fa-check"></i><b>3.1.1</b> Secuencias con un patrón</a></li>
-</ul></li>
-<li class="chapter" data-level="3.2" data-path="operaciones-aritméticas-con-vectores-numéricos.html"><a href="operaciones-aritméticas-con-vectores-numéricos.html"><i class="fa fa-check"></i><b>3.2</b> Operaciones aritméticas con vectores numéricos</a></li>
-<li class="chapter" data-level="3.3" data-path="operaciones-estadísticas-con-vectores-numéricos.html"><a href="operaciones-estadísticas-con-vectores-numéricos.html"><i class="fa fa-check"></i><b>3.3</b> Operaciones estadísticas con vectores numéricos</a></li>
-<li class="chapter" data-level="3.4" data-path="vectores-de-caracteres-texto.html"><a href="vectores-de-caracteres-texto.html"><i class="fa fa-check"></i><b>3.4</b> Vectores de caracteres (texto)</a></li>
-<li class="chapter" data-level="3.5" data-path="vectores-lógicos-truefalse.html"><a href="vectores-lógicos-truefalse.html"><i class="fa fa-check"></i><b>3.5</b> Vectores lógicos (TRUE/FALSE)</a></li>
-<li class="chapter" data-level="3.6" data-path="ausentes.html"><a href="ausentes.html"><i class="fa fa-check"></i><b>3.6</b> Datos ausentes: NA y NaN</a></li>
-<li class="chapter" data-level="3.7" data-path="seleccionar-elementos-de-un-vector.html"><a href="seleccionar-elementos-de-un-vector.html"><i class="fa fa-check"></i><b>3.7</b> Seleccionar elementos de un vector</a><ul>
-<li class="chapter" data-level="3.7.1" data-path="seleccionar-elementos-de-un-vector.html"><a href="seleccionar-elementos-de-un-vector.html#which"><i class="fa fa-check"></i><b>3.7.1</b> which</a></li>
-<li class="chapter" data-level="3.7.2" data-path="seleccionar-elementos-de-un-vector.html"><a href="seleccionar-elementos-de-un-vector.html#null"><i class="fa fa-check"></i><b>3.7.2</b> NULL</a></li>
-</ul></li>
-<li class="chapter" data-level="3.8" data-path="ordenar-vectores.html"><a href="ordenar-vectores.html"><i class="fa fa-check"></i><b>3.8</b> Ordenar vectores</a></li>
-<li class="chapter" data-level="3.9" data-path="fechas.html"><a href="fechas.html"><i class="fa fa-check"></i><b>3.9</b> Fechas</a></li>
-<li class="chapter" data-level="3.10" data-path="glosario3.html"><a href="glosario3.html"><i class="fa fa-check"></i><b>3.10</b> 📚 Glosario</a></li>
-<li class="chapter" data-level="3.11" data-path="consejos-y-tips-2.html"><a href="consejos-y-tips-2.html"><i class="fa fa-check"></i><b>3.11</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
-<li class="chapter" data-level="3.12" data-path="ejercicios-1.html"><a href="ejercicios-1.html"><i class="fa fa-check"></i><b>3.12</b> 📝 Ejercicios</a></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="flujo-de-trabajo-proyecto.html"><a href="flujo-de-trabajo-proyecto.html"><i class="fa fa-check"></i><b>4</b> Flujo de trabajo: proyecto</a><ul>
-<li class="chapter" data-level="4.1" data-path="crear-proyecto.html"><a href="crear-proyecto.html"><i class="fa fa-check"></i><b>4.1</b> Crear proyecto</a></li>
-<li class="chapter" data-level="4.2" data-path="directorios-de-trabajo-y-cabecera.html"><a href="directorios-de-trabajo-y-cabecera.html"><i class="fa fa-check"></i><b>4.2</b> Directorios de trabajo y cabecera</a></li>
-<li class="chapter" data-level="4.3" data-path="ejecución.html"><a href="ejecución.html"><i class="fa fa-check"></i><b>4.3</b> Ejecución</a></li>
-<li class="chapter" data-level="4.4" data-path="consejos-y-tips-3.html"><a href="consejos-y-tips-3.html"><i class="fa fa-check"></i><b>4.4</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="datos.html"><a href="datos.html"><i class="fa fa-check"></i><b>5</b> Tipos de datos II: tablas</a><ul>
-<li class="chapter" data-level="5.1" data-path="matrices.html"><a href="matrices.html"><i class="fa fa-check"></i><b>5.1</b> Matrices</a></li>
-<li class="chapter" data-level="5.2" data-path="apply-vs-bucles.html"><a href="apply-vs-bucles.html"><i class="fa fa-check"></i><b>5.2</b> Apply vs bucles</a></li>
-<li class="chapter" data-level="5.3" data-path="tablas-data.html"><a href="tablas-data.html"><i class="fa fa-check"></i><b>5.3</b> Tablas: data.frames</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="tablas-data.html"><a href="tablas-data.html#data.frames-selección-manual-de-columnas-y-filas"><i class="fa fa-check"></i><b>5.3.1</b> Data.frames: selección manual de columnas y filas</a></li>
-</ul></li>
-<li class="chapter" data-level="5.4" data-path="consejos-y-tips-4.html"><a href="consejos-y-tips-4.html"><i class="fa fa-check"></i><b>5.4</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
-<li class="chapter" data-level="5.5" data-path="ejercicios-2.html"><a href="ejercicios-2.html"><i class="fa fa-check"></i><b>5.5</b> 📝 Ejercicios</a></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="importar_exportar.html"><a href="importar_exportar.html"><i class="fa fa-check"></i><b>6</b> Importando/exportando</a><ul>
-<li class="chapter" data-level="6.1" data-path="importación-de-datos.html"><a href="importación-de-datos.html"><i class="fa fa-check"></i><b>6.1</b> Importación de datos</a><ul>
-<li class="chapter" data-level="6.1.1" data-path="importación-de-datos.html"><a href="importación-de-datos.html#archivo-.rdata"><i class="fa fa-check"></i><b>6.1.1</b> Archivo .RData</a></li>
-<li class="chapter" data-level="6.1.2" data-path="importación-de-datos.html"><a href="importación-de-datos.html#archivo-.csv"><i class="fa fa-check"></i><b>6.1.2</b> Archivo .csv</a></li>
-<li class="chapter" data-level="6.1.3" data-path="importación-de-datos.html"><a href="importación-de-datos.html#archivo-.xlsx"><i class="fa fa-check"></i><b>6.1.3</b> Archivo .xlsx</a></li>
-<li class="chapter" data-level="6.1.4" data-path="importación-de-datos.html"><a href="importación-de-datos.html#desde-web"><i class="fa fa-check"></i><b>6.1.4</b> Desde web</a></li>
-</ul></li>
-<li class="chapter" data-level="6.2" data-path="exportación-de-datos.html"><a href="exportación-de-datos.html"><i class="fa fa-check"></i><b>6.2</b> Exportación de datos</a><ul>
-<li class="chapter" data-level="6.2.1" data-path="exportación-de-datos.html"><a href="exportación-de-datos.html#guardar-en-.rdata"><i class="fa fa-check"></i><b>6.2.1</b> Guardar en .RData</a></li>
-<li class="chapter" data-level="6.2.2" data-path="exportación-de-datos.html"><a href="exportación-de-datos.html#guardar-en-.csv"><i class="fa fa-check"></i><b>6.2.2</b> Guardar en .csv</a></li>
-</ul></li>
-<li class="chapter" data-level="6.3" data-path="consejos-y-tips-5.html"><a href="consejos-y-tips-5.html"><i class="fa fa-check"></i><b>6.3</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="control.html"><a href="control.html"><i class="fa fa-check"></i><b>7</b> Estructuras de control</a><ul>
-<li class="chapter" data-level="7.1" data-path="ifelse.html"><a href="ifelse.html"><i class="fa fa-check"></i><b>7.1</b> if…else</a></li>
-<li class="chapter" data-level="7.2" data-path="forwhile.html"><a href="forwhile.html"><i class="fa fa-check"></i><b>7.2</b> for/while</a><ul>
-<li class="chapter" data-level="7.2.1" data-path="forwhile.html"><a href="forwhile.html#breaknext"><i class="fa fa-check"></i><b>7.2.1</b> BREAK/NEXT</a></li>
-<li class="chapter" data-level="7.2.2" data-path="forwhile.html"><a href="forwhile.html#repeat"><i class="fa fa-check"></i><b>7.2.2</b> REPEAT</a></li>
-</ul></li>
-<li class="chapter" data-level="7.3" data-path="consejos-y-tips-6.html"><a href="consejos-y-tips-6.html"><i class="fa fa-check"></i><b>7.3</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
-</ul></li>
-<li class="part"><span><b>III Listas y funciones</b></span></li>
-<li class="chapter" data-level="8" data-path="otros_datos.html"><a href="otros_datos.html"><i class="fa fa-check"></i><b>8</b> Tipos de datos III: listas/factores</a><ul>
-<li class="chapter" data-level="8.1" data-path="listas.html"><a href="listas.html"><i class="fa fa-check"></i><b>8.1</b> Listas</a></li>
-<li class="chapter" data-level="8.2" data-path="factores.html"><a href="factores.html"><i class="fa fa-check"></i><b>8.2</b> Factores</a></li>
-<li class="chapter" data-level="8.3" data-path="fechas-y-horas.html"><a href="fechas-y-horas.html"><i class="fa fa-check"></i><b>8.3</b> Fechas y horas</a></li>
-<li class="chapter" data-level="8.4" data-path="consejos-y-tips-7.html"><a href="consejos-y-tips-7.html"><i class="fa fa-check"></i><b>8.4</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
-<li class="chapter" data-level="8.5" data-path="ejercicios-3.html"><a href="ejercicios-3.html"><i class="fa fa-check"></i><b>8.5</b> 📝 Ejercicios</a></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="FUNCIONES.html"><a href="FUNCIONES.html"><i class="fa fa-check"></i><b>9</b> Creación de funciones</a><ul>
-<li class="chapter" data-level="9.1" data-path="primera-función.html"><a href="primera-función.html"><i class="fa fa-check"></i><b>9.1</b> Primera función</a></li>
-<li class="chapter" data-level="9.2" data-path="segunda-función.html"><a href="segunda-función.html"><i class="fa fa-check"></i><b>9.2</b> Segunda función</a></li>
-<li class="chapter" data-level="9.3" data-path="variables-localesglobales.html"><a href="variables-localesglobales.html"><i class="fa fa-check"></i><b>9.3</b> Variables locales/globales</a></li>
-<li class="chapter" data-level="9.4" data-path="ejercicios-4.html"><a href="ejercicios-4.html"><i class="fa fa-check"></i><b>9.4</b> 📝 Ejercicios</a></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="qué-sabemos-hacer.html"><a href="qué-sabemos-hacer.html"><i class="fa fa-check"></i><b>10</b> ¿Qué sabemos hacer?</a><ul>
-<li class="chapter" data-level="10.1" data-path="aleatorio_1.html"><a href="aleatorio_1.html"><i class="fa fa-check"></i><b>10.1</b> Incursión aleatoria</a><ul>
-<li class="chapter" data-level="10.1.1" data-path="aleatorio_1.html"><a href="aleatorio_1.html#pseudoaleatorio"><i class="fa fa-check"></i><b>10.1.1</b> Pseudoaleatoriedad</a></li>
-</ul></li>
-<li class="chapter" data-level="10.2" data-path="recursos.html"><a href="recursos.html"><i class="fa fa-check"></i><b>10.2</b> Recursos</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="bibliografía.html"><a href="bibliografía.html"><i class="fa fa-check"></i>Bibliografía</a></li>
-<li class="divider"></li>
-<li><a href="https://bookdown.org/yihui/rmarkdown/" target="blank">Elaborado con bookdown</a></li>
-
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Prefacio</a></li>
+<li class="book-part">Toma de contacto</li>
+<li><a class="" href="instalacionR.html"><span class="header-section-number">1</span> Instalación</a></li>
+<li><a class="" href="primeros-pasos.html"><span class="header-section-number">2</span> Primeros pasos</a></li>
+<li class="book-part">Conceptos básicos</li>
+<li><a class="" href="tipos-de-datos-i-vectores.html"><span class="header-section-number">3</span> Tipos de datos I: vectores</a></li>
+<li><a class="" href="flujo-de-trabajo-proyecto.html"><span class="header-section-number">4</span> Flujo de trabajo: proyecto</a></li>
+<li><a class="active" href="control.html"><span class="header-section-number">5</span> Estructuras de control</a></li>
+<li><a class="" href="datos.html"><span class="header-section-number">6</span> Datos estructurados: matrices y tablas</a></li>
+<li><a class="" href="importar_exportar.html"><span class="header-section-number">7</span> Importando/exportando</a></li>
+<li class="book-part">Listas y funciones</li>
+<li><a class="" href="otros_datos.html"><span class="header-section-number">8</span> Listas y factores</a></li>
+<li><a class="" href="FUNCIONES.html"><span class="header-section-number">9</span> Creación de funciones</a></li>
+<li><a class="" href="qu%C3%A9-sabemos-hacer.html"><span class="header-section-number">10</span> ¿Qué sabemos hacer?</a></li>
 </ul>
 
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/dadosdelaplace/cursoR_intro_2021_2022">View book source <i class="fab fa-github"></i></a></p>
+        </div>
       </nav>
-    </div>
-
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Aprendiendo R sin morir en el intento</a>
-          </h1>
-        </div>
-
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
-
-            <section class="normal" id="section-">
-<div id="control" class="section level1">
-<h1><span class="header-section-number">Capítulo 7</span> Estructuras de control</h1>
-<p>Aunque la mayoría de veces son sustituibles por otras expresiones más legibles y eficientes, es importante que conozcamos como se usan las <strong>expresiones de control más típicas</strong>.</p>
 </div>
-            </section>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="control" class="section level1">
+<h1>
+<span class="header-section-number">Capítulo 5</span> Estructuras de control<a class="anchor" aria-label="anchor" href="#control"><i class="fas fa-link"></i></a>
+</h1>
+<p>Aunque la mayoría de veces son sustituibles por otras expresiones más legibles y eficientes, es importante que conozcamos como se usan las <strong>expresiones de control más típicas</strong>.</p>
+<div id="ifelse" class="section level2">
+<h2>
+<span class="header-section-number">5.1</span> if…else<a class="anchor" aria-label="anchor" href="#ifelse"><i class="fas fa-link"></i></a>
+</h2>
+<p>Como en cualquier lenguaje de programación, las <strong>estructuras <code>if...else...</code> nos permiten ejecutar partes de nuestro código solo cuando se cumple la condición o condiciones lógicas</strong> que queremos. Cuando ejecutamos un <code>if</code> estamos diciendo</p>
+<div class="rmdnote">
+<p><strong><span style="color: #4197D2;">if…else</span></strong></p>
+<p>SI las condiciones impuestas se cumplen (<code>TRUE</code>), ejecuta las órdenes que tengamos dentro de las llaves. Si el<code>if</code> devuelve <code>FALSE</code>, no sucederá nada <strong>SALVO</strong> que tengamos además un <strong><code>else</code>: lo que sucede cuando no se cumple</strong>, como en el ejemplo que tenemos debajo.</p>
+</div>
+<div class="sourceCode" id="cb271"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">edades</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">14</span>, <span class="fl">24</span>, <span class="fl">56</span>, <span class="fl">31</span>, <span class="fl">20</span>, <span class="fl">87</span>, <span class="fl">73</span><span class="op">)</span>
+<span class="va">mayores_de_edad</span> <span class="op">&lt;-</span> <span class="cn">FALSE</span> 
 
-          </div>
-        </div>
-      </div>
-<a href="consejos-y-tips-5.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="ifelse.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
-    </div>
+<span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/all.html">all</a></span><span class="op">(</span><span class="va">edades</span> <span class="op">&gt;=</span> <span class="fl">18</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span> <span class="co"># Si todas las personas son mayores de edad</span>
+  
+  <span class="va">mayores_de_edad</span> <span class="op">&lt;-</span> <span class="cn">TRUE</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"todos mayores de edad"</span><span class="op">)</span>
+  
+<span class="op">}</span> <span class="kw">else</span> <span class="op">{</span> <span class="co"># si la condición no se cumple: filtramos solo los mayores</span>
+
+  <span class="va">edades</span> <span class="op">&lt;-</span> <span class="va">edades</span><span class="op">[</span><span class="va">edades</span> <span class="op">&gt;=</span> <span class="fl">18</span><span class="op">]</span>  
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"algún menor de edad se ha eliminado"</span><span class="op">)</span>
+  
+<span class="op">}</span></code></pre></div>
+<pre><code>## [1] "algún menor de edad se ha eliminado"</code></pre>
+<p>Las órdenes dentro del primer <code>if</code> se ejecutarán si todas las personas son mayores de edad. En caso de no cumplirse (como es el caso), se ejecutará lo que hay entre llaves tras el <code>else</code> (filtra solo los mayores de edad e imprime un mensaje de control).</p>
+<p>Dicha estructura puede <strong>anidarse</strong>, de forma que vayamos concatenando estructuras <code>ifelse</code>, como en el ejemplo que tenemos debajo.</p>
+<div class="sourceCode" id="cb273"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">edades</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">14</span>, <span class="fl">14</span>, <span class="fl">16</span>, <span class="fl">11</span>, <span class="fl">2</span>, <span class="fl">17</span>, <span class="fl">13</span><span class="op">)</span>
+
+<span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/all.html">all</a></span><span class="op">(</span><span class="va">edades</span> <span class="op">&gt;=</span> <span class="fl">18</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span> <span class="co"># Si todas las personas son mayores de edad</span>
+  
+  <span class="va">mayores_de_edad</span> <span class="op">&lt;-</span> <span class="cn">TRUE</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"todos mayores de edad"</span><span class="op">)</span>
+  
+<span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/any.html">any</a></span><span class="op">(</span><span class="va">edades</span> <span class="op">&gt;=</span> <span class="fl">18</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span> <span class="co"># si alguna es mayor de edad</span>
+
+  <span class="va">edades_18</span> <span class="op">&lt;-</span> <span class="va">edades</span><span class="op">[</span><span class="va">edades</span> <span class="op">&gt;=</span> <span class="fl">18</span><span class="op">]</span>  
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"algún menor de edad se ha eliminado"</span><span class="op">)</span>
+  
+<span class="op">}</span> <span class="kw">else</span> <span class="op">{</span> <span class="co"># ninguna persona mayor de edad</span>
+  
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"todas las personas son menores de edad"</span><span class="op">)</span>
+  
+<span class="op">}</span></code></pre></div>
+<pre><code>## [1] "todas las personas son menores de edad"</code></pre>
+<p>Esta <strong>estructura condicional puede ser vectorizada</strong>, de forma que podamos reunir en una <strong>sola fila un número elevado de estructuras de comparación</strong>. Por ejemplo, vamos a definir un vector de números y vamos a comprobar si son números pares o impares (para ello, usamos el operador <code><a href="https://rdrr.io/r/base/Arithmetic.html">%%</a></code>, que nos calcula el resto de cada número al dividirlo por una cifra).</p>
+<div class="sourceCode" id="cb275"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fl">1</span> <span class="op">%%</span> <span class="fl">2</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode" id="cb277"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fl">2</span> <span class="op">%%</span> <span class="fl">2</span></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<div class="sourceCode" id="cb279"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fl">3</span> <span class="op">%%</span> <span class="fl">2</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode" id="cb281"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fl">5</span> <span class="op">%%</span> <span class="fl">3</span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<p>Para nuestro objetivo aplicaremos la función <code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code>, cuyos argumentos de entrada serán la condición a evaluar, lo que sucede cuando se cumple y lo que no, que aplicará a cada elemento del vector de entrada.</p>
+<div class="sourceCode" id="cb283"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">numeros</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>
+<span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="op">(</span><span class="va">numeros</span> <span class="op">%%</span> <span class="fl">2</span><span class="op">)</span> <span class="op">==</span> <span class="fl">0</span>, <span class="st">"par"</span>, <span class="st">"impar"</span><span class="op">)</span> <span class="co"># Los pares al dividir entre 2 tienen resto 0</span></code></pre></div>
+<pre><code>##  [1] "impar" "par"   "impar" "par"   "impar" "par"   "impar" "par"   "impar"
+## [10] "par"</code></pre>
+<p>Esta función <code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code> es muy util para codificar variables o averiguar cuales cumplen una condición, sin necesidad de hacer un bucle que recorra todos los valores.</p>
+<div class="rmdimportant">
+<p><strong><span style="color: #20935E;">CONSEJO</span></strong></p>
+<p>Recuerda: di (por lo general) no a los bucles en <code>R</code>.</p>
+</div>
+</div>
+<div id="forwhile" class="section level2">
+<h2>
+<span class="header-section-number">5.2</span> for/while<a class="anchor" aria-label="anchor" href="#forwhile"><i class="fas fa-link"></i></a>
+</h2>
+<p>Aunque el 99% de las veces (porcentaje inventado) los bucles pueden ser sustituidos por códigos de forma vectorial mucho más eficientes, a veces no nos quedará más remedio que usarlos por lo que nunca viene mal conocer su estructura.</p>
+<p>Un <strong>bucle <code>for{}</code> es una estructura que nos permite ejecutar un conjunto de órdenes un número repetido (finito y conocido)</strong> de veces: dado un conjunto de índices, el <strong>bucle irá recorriendo cada elemento</strong> de dicho conjunto, y para cada uno de ellos ejecutará lo que tenga dentro de las llaves.</p>
+<div class="sourceCode" id="cb285"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">variable</span> <span class="op">&lt;-</span> <span class="cn">NULL</span> <span class="co"># vector donde guardaremos los pasos del bucle</span>
+<span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span> <span class="op">{</span> 
+  
+  <span class="va">variable</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">i</span> <span class="co"># R es silenciosos: salvo que hagamos un print dentro del bucle no nos imprimirá nada por pantalla</span>
+<span class="op">}</span>
+<span class="va">variable</span></code></pre></div>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+<div class="sourceCode" id="cb287"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span> <span class="op">{</span> 
+  
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">i</span><span class="op">^</span><span class="fl">3</span><span class="op">)</span> <span class="co"># imprimimos el índice al cubo</span>
+<span class="op">}</span></code></pre></div>
+<pre><code>## [1] 1
+## [1] 8
+## [1] 27
+## [1] 64
+## [1] 125
+## [1] 216
+## [1] 343
+## [1] 512
+## [1] 729
+## [1] 1000</code></pre>
+<p>Aunque normalmente el conjunto que recorre el bucle suelen ser índices numéricos, <strong>podemos recorrer cualquier tipo de objeto</strong>.</p>
+<div class="sourceCode" id="cb289"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">dias_semana</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"lunes"</span>, <span class="st">"martes"</span>, <span class="st">"miércoles"</span>, <span class="st">"jueves"</span>,
+                 <span class="st">"viernes"</span>, <span class="st">"sábado"</span>, <span class="st">"domingo"</span><span class="op">)</span>
+<span class="va">nombre_mayuscula</span> <span class="op">&lt;-</span> <span class="cn">NULL</span>
+<span class="kw">for</span> <span class="op">(</span><span class="va">dias</span> <span class="kw">in</span> <span class="va">dias_semana</span><span class="op">)</span> <span class="op">{</span> <span class="co"># dias recorre los días de la semana tomando sus valores</span>
+  
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/chartr.html">toupper</a></span><span class="op">(</span><span class="va">dias</span><span class="op">)</span><span class="op">)</span>
+<span class="op">}</span></code></pre></div>
+<pre><code>## [1] "LUNES"
+## [1] "MARTES"
+## [1] "MIÉRCOLES"
+## [1] "JUEVES"
+## [1] "VIERNES"
+## [1] "SÁBADO"
+## [1] "DOMINGO"</code></pre>
+<p>::: {.rmdimportant}</p>
+<p><strong><span style="color: #20935E;">CONSEJO: evita bucles</span></strong></p>
+<p>Evita al máximo los bucles en <code>R</code>: suele existir una forma más eficiente de programarlo. Veamos un ejemplo muy sencillo: dado un vector de índices <code>idx</code>, queremos calcular su cuadrado y guardarlo. Vamos a comparar como sería con un sencillo bucle y de forma vectorial, repitiéndolo 1000 veces para sacar tiempos medios, haciendo uso del paquete <a href="https://github.com/joshuaulrich/microbenchmark/">microbenchmark</a>.</p>
+<div class="sourceCode" id="cb291"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">idx</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10000</span>
+<span class="va">x</span> <span class="op">&lt;-</span> <span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">idx</span><span class="op">)</span><span class="op">)</span>
+<span class="fu">microbenchmark</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html">microbenchmark</a></span><span class="op">(</span><span class="va">x</span> <span class="op">&lt;-</span> <span class="va">idx</span><span class="op">^</span><span class="fl">2</span>, 
+                               <span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="va">idx</span><span class="op">)</span> <span class="op">{</span>  <span class="va">y</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">idx</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">^</span><span class="fl">2</span><span class="op">}</span>,
+                               times <span class="op">=</span> <span class="fl">1e3</span><span class="op">)</span></code></pre></div>
+<pre><code>## Unit: microseconds
+##                                     expr      min       lq       mean   median
+##                               x &lt;- idx^2   17.907   48.233   52.49677   53.019
+##  for (i in idx) {     y[i] &lt;- idx[i]^2 } 1778.993 1855.252 2083.83908 1909.276
+##        uq      max neval cld
+##    58.180  202.258  1000  a 
+##  2086.095 7271.526  1000   b</code></pre>
+<p>Una tarea tan sencilla, <strong>programada en un bucle (segunda fila), tarda 40 veces más que hacerlo de forma vectorial (primera fila)</strong> (elevando cada elemento al cuadrado, iterando internamente, sin necesidad de implementar un bucle).</p>
+<p> </p>
+<p>Otra manera de diseñar un bucle es con la <strong>estructura <code>while{}</code></strong>, que ejecutará el <strong>bucle un número de veces a priori desconocido</strong> hasta que la condición impuesta deje de ser <code>TRUE</code>.</p>
+<div class="sourceCode" id="cb293"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">max_ciclos</span> <span class="op">&lt;-</span> <span class="fl">10</span>
+<span class="va">ciclos</span> <span class="op">&lt;-</span> <span class="fl">1</span>
+
+<span class="co"># Mientras el número de ciclos sea inferior 10, imprime</span>
+<span class="kw">while</span><span class="op">(</span><span class="va">ciclos</span> <span class="op">&lt;=</span> <span class="va">max_ciclos</span><span class="op">)</span> <span class="op">{</span>
+  
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"Todavía no, vamos por el ciclo "</span>, <span class="va">ciclos</span><span class="op">)</span><span class="op">)</span> <span class="co"># Pegamos la frase al número de ciclo por el que vayamos con paste</span>
+  <span class="va">ciclos</span> <span class="op">&lt;-</span> <span class="va">ciclos</span> <span class="op">+</span> <span class="fl">1</span>
+  
+<span class="op">}</span></code></pre></div>
+<pre><code>## [1] "Todavía no, vamos por el ciclo  1"
+## [1] "Todavía no, vamos por el ciclo  2"
+## [1] "Todavía no, vamos por el ciclo  3"
+## [1] "Todavía no, vamos por el ciclo  4"
+## [1] "Todavía no, vamos por el ciclo  5"
+## [1] "Todavía no, vamos por el ciclo  6"
+## [1] "Todavía no, vamos por el ciclo  7"
+## [1] "Todavía no, vamos por el ciclo  8"
+## [1] "Todavía no, vamos por el ciclo  9"
+## [1] "Todavía no, vamos por el ciclo  10"</code></pre>
+<p><strong>¿Y qué sucede cuando la condición nunca llega a ser <code>FALSE</code>?</strong> Compruébalo tú mismo/a.</p>
+<div class="sourceCode" id="cb295"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw">while</span> <span class="op">(</span><span class="fl">1</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span> <span class="co"># Nunca va a dejar de ser cierto</span>
+  
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Presiona ESC para salir del bucle"</span><span class="op">)</span>
+  
+<span class="op">}</span></code></pre></div>
+<div id="breaknext" class="section level3">
+<h3>
+<span class="header-section-number">5.2.1</span> BREAK/NEXT<a class="anchor" aria-label="anchor" href="#breaknext"><i class="fas fa-link"></i></a>
+</h3>
+<p>En <code>R</code> tenemos dos comandos reservados para poder <strong>abortar un bucle</strong> o <strong>avanzar forzosamente un bucle</strong>: dichas palabras son <code>break</code> y <code>next</code>. La primera nos habilita para <strong>parar un bucle</strong> aunque no haya llegado al final de su conjunto de índices a recorrer (o se siga cumpliendo la condición del <code>while{}</code>).</p>
+<div class="sourceCode" id="cb296"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw">for</span><span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span> <span class="op">{</span>
+  <span class="kw">if</span> <span class="op">(</span><span class="va">i</span> <span class="op">==</span> <span class="fl">7</span><span class="op">)</span> <span class="op">{</span>
+    
+    <span class="kw">break</span> <span class="co"># si i es 7, el bucle frena aquí (nunca llegará a imprimir el 7 ni los sucesivos)</span>
+    
+  <span class="op">}</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">i</span><span class="op">)</span>
+<span class="op">}</span></code></pre></div>
+<pre><code>## [1] 1
+## [1] 2
+## [1] 3
+## [1] 4
+## [1] 5
+## [1] 6</code></pre>
+<p>Mientras que la segunda <strong>obliga al bucle a avanzar a la siguiente interacción</strong>, abortando la iteración actual en la que se encuentra.</p>
+<div class="sourceCode" id="cb298"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw">for</span><span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span> <span class="op">{</span>
+  <span class="kw">if</span> <span class="op">(</span><span class="va">i</span> <span class="op">==</span> <span class="fl">7</span><span class="op">)</span> <span class="op">{</span>
+    
+    <span class="kw">next</span> <span class="co"># si i es 7, la iteración frenará aquí y pasará a la siguiente por lo que imprimirá todos menos el 7</span>
+    
+  <span class="op">}</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">i</span><span class="op">)</span>
+<span class="op">}</span></code></pre></div>
+<pre><code>## [1] 1
+## [1] 2
+## [1] 3
+## [1] 4
+## [1] 5
+## [1] 6
+## [1] 8
+## [1] 9
+## [1] 10</code></pre>
+</div>
+<div id="repeat" class="section level3">
+<h3>
+<span class="header-section-number">5.2.2</span> REPEAT<a class="anchor" aria-label="anchor" href="#repeat"><i class="fas fa-link"></i></a>
+</h3>
+<p>Aunque es una opción muy poco usada, existe una estructura de control llamada <code>repeat{}</code> que nos <strong>ejecuta un bucle de forma infinita</strong> hasta que le ordenemos parar con un <code>break</code>.</p>
+<div class="sourceCode" id="cb300"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">conteo</span> <span class="op">&lt;-</span> <span class="fl">0</span>
+<span class="kw">repeat</span> <span class="op">{</span> 
+  
+  <span class="va">conteo</span> <span class="op">&lt;-</span> <span class="va">conteo</span> <span class="op">+</span> <span class="fl">1</span>
+  <span class="kw">if</span> <span class="op">(</span><span class="va">conteo</span> <span class="op">&gt;=</span> <span class="fl">100</span><span class="op">)</span> <span class="op">{</span> <span class="kw">break</span> <span class="op">}</span>
+  
+<span class="op">}</span>
+<span class="va">conteo</span></code></pre></div>
+<pre><code>## [1] 100</code></pre>
+<div class="rmdwarning">
+<p><strong><span style="color: #ffc107;">Cuidado con los bucles infinitos</span></strong></p>
+<p>Las estucturas <code>while{}</code> y <code>repeat{}</code> son de las menos usadas por su peligrosidad, ya que si no incluimos un <code>break</code> o la condición nunca llega a ser <code>TRUE</code>, el bucle seguirá ejecutándose de forma infinita y solo podrá ser detenido abortando la ejecución con la tecla <code>ESC</code>.</p>
+</div>
+<div class="rmdimportant">
+<p><strong><span style="color: #20935E;">CONSEJO: minimiza estructuras de control en el código</span></strong></p>
+<p>Puedes minimizar las estructuras de control pulsando en la flecha que aparece a la izquierda de ellas.</p>
+</div>
+
+</div>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="flujo-de-trabajo-proyecto.html"><span class="header-section-number">4</span> Flujo de trabajo: proyecto</a></div>
+<div class="next"><a href="datos.html"><span class="header-section-number">6</span> Datos estructurados: matrices y tablas</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#control"><span class="header-section-number">5</span> Estructuras de control</a></li>
+<li><a class="nav-link" href="#ifelse"><span class="header-section-number">5.1</span> if…else</a></li>
+<li>
+<a class="nav-link" href="#forwhile"><span class="header-section-number">5.2</span> for/while</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#breaknext"><span class="header-section-number">5.2.1</span> BREAK/NEXT</a></li>
+<li><a class="nav-link" href="#repeat"><span class="header-section-number">5.2.2</span> REPEAT</a></li>
+</ul>
+</li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/dadosdelaplace/cursoR_intro_2021_2022/blob/master/05-estructuras_control.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/dadosdelaplace/cursoR_intro_2021_2022/edit/master/05-estructuras_control.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 21-09-2021.</p>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
-<script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": {
-"github": true,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["Intro_R_2021_2022.pdf"],
-"search": {
-"engine": "lunr",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
-});
-});
-</script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -336,7 +351,22 @@ gitbook.start({
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
 </script>
 </body>
-
 </html>

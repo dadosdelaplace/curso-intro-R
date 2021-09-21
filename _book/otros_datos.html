@@ -1,330 +1,864 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html lang="en">
 <head>
-
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 8 Tipos de datos III: listas/factores | Aprendiendo R sin morir en el intento</title>
-  <meta name="description" content="Manual básico e introductorio de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM), elaborado por Javier Álvarez Liébana" />
-  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
-
-  <meta property="og:title" content="Capítulo 8 Tipos de datos III: listas/factores | Aprendiendo R sin morir en el intento" />
-  <meta property="og:type" content="book" />
-  
-  <meta property="og:image" content="/img/logo_R.png" />
-  <meta property="og:description" content="Manual básico e introductorio de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM), elaborado por Javier Álvarez Liébana" />
-  <meta name="github-repo" content="dadosdelaplace/cursoR_intro_2021_2022" />
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 8 Tipos de datos III: listas/factores | Aprendiendo R sin morir en el intento" />
-  
-  <meta name="twitter:description" content="Manual básico e introductorio de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM), elaborado por Javier Álvarez Liébana" />
-  <meta name="twitter:image" content="/img/logo_R.png" />
-
-<meta name="author" content="Javier Álvarez Liébana" />
-
-
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  
-<link rel="prev" href="consejos-y-tips-6.html"/>
-<link rel="next" href="listas.html"/>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
-
-
-
-
-
-
-
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
-<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.18/datatables.js"></script>
-<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
-<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
-<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
-
-
-<style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-
-<link rel="stylesheet" href="css/style.css" type="text/css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Capítulo 8 Listas y factores | Aprendiendo R sin morir en el intento</title>
+<meta name="author" content="Javier Álvarez Liébana">
+<meta name="description" content="Veamos dos tipos de datos muy particulares más allá de vectores, matrices y data.frames.  8.1 Listas Probablemente las listas sea uno de los tipos de datos más importantes en R ya que permiten...">
+<meta name="generator" content="bookdown 0.23 with bs4_book()">
+<meta property="og:title" content="Capítulo 8 Listas y factores | Aprendiendo R sin morir en el intento">
+<meta property="og:type" content="book">
+<meta property="og:image" content="/img/logo_R.png">
+<meta property="og:description" content="Veamos dos tipos de datos muy particulares más allá de vectores, matrices y data.frames.  8.1 Listas Probablemente las listas sea uno de los tipos de datos más importantes en R ya que permiten...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Capítulo 8 Listas y factores | Aprendiendo R sin morir en el intento">
+<meta name="twitter:description" content="Veamos dos tipos de datos muy particulares más allá de vectores, matrices y data.frames.  8.1 Listas Probablemente las listas sea uno de los tipos de datos más importantes en R ya que permiten...">
+<meta name="twitter:image" content="/img/logo_R.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/_Sen-0.4.0/font.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM%20Mono&amp;display=swap" rel="stylesheet">
+<link href="libs/_Bitter-0.4.0/font.css" rel="stylesheet">
+<script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS -->
 </head>
+<body data-spy="scroll" data-target="#toc">
 
-<body>
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Aprendiendo R sin morir en el intento</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
 
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
 
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li><a href="./">Aprendiendo R sin morir en el intento</a></li>
-
-<li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefacio</a><ul>
-<li class="chapter" data-level="" data-path="propósito.html"><a href="propósito.html"><i class="fa fa-check"></i>Propósito</a></li>
-<li class="chapter" data-level="" data-path="requisitos.html"><a href="requisitos.html"><i class="fa fa-check"></i>Requisitos</a></li>
-<li class="chapter" data-level="" data-path="emojis.html"><a href="emojis.html"><i class="fa fa-check"></i>Emojis</a></li>
-<li class="chapter" data-level="" data-path="sobre-el-autor.html"><a href="sobre-el-autor.html"><i class="fa fa-check"></i>Sobre el autor</a></li>
-<li class="chapter" data-level="" data-path="licencia.html"><a href="licencia.html"><i class="fa fa-check"></i>Licencia</a></li>
-</ul></li>
-<li class="part"><span><b>I Toma de contacto</b></span></li>
-<li class="chapter" data-level="1" data-path="instalacionR.html"><a href="instalacionR.html"><i class="fa fa-check"></i><b>1</b> Instalación</a><ul>
-<li class="chapter" data-level="1.1" data-path="instalacionRStudio.html"><a href="instalacionRStudio.html"><i class="fa fa-check"></i><b>1.1</b> Instalación de RStudio</a></li>
-<li class="chapter" data-level="1.2" data-path="instalacionpaquetes.html"><a href="instalacionpaquetes.html"><i class="fa fa-check"></i><b>1.2</b> Instalación de paquetes</a></li>
-<li class="chapter" data-level="1.3" data-path="consejos-y-tips.html"><a href="consejos-y-tips.html"><i class="fa fa-check"></i><b>1.3</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="primeros-pasos.html"><a href="primeros-pasos.html"><i class="fa fa-check"></i><b>2</b> Primeros pasos</a><ul>
-<li class="chapter" data-level="2.1" data-path="excel-no-es-tu-amigo.html"><a href="excel-no-es-tu-amigo.html"><i class="fa fa-check"></i><b>2.1</b> Excel no es tu amigo</a></li>
-<li class="chapter" data-level="2.2" data-path="primeros-pasos-calculadora.html"><a href="primeros-pasos-calculadora.html"><i class="fa fa-check"></i><b>2.2</b> Primeros pasos: calculadora</a></li>
-<li class="chapter" data-level="2.3" data-path="tipos_errores.html"><a href="tipos_errores.html"><i class="fa fa-check"></i><b>2.3</b> Tipos de errores</a></li>
-<li class="chapter" data-level="2.4" data-path="consejos-y-tips-1.html"><a href="consejos-y-tips-1.html"><i class="fa fa-check"></i><b>2.4</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
-<li class="chapter" data-level="2.5" data-path="ejercicios.html"><a href="ejercicios.html"><i class="fa fa-check"></i><b>2.5</b> 📝 Ejercicios</a></li>
-</ul></li>
-<li class="part"><span><b>II Conceptos básicos</b></span></li>
-<li class="chapter" data-level="3" data-path="tipos-de-datos-i-vectores.html"><a href="tipos-de-datos-i-vectores.html"><i class="fa fa-check"></i><b>3</b> Tipos de datos I: vectores</a><ul>
-<li class="chapter" data-level="3.1" data-path="vectores-numéricos.html"><a href="vectores-numéricos.html"><i class="fa fa-check"></i><b>3.1</b> Vectores numéricos</a><ul>
-<li class="chapter" data-level="3.1.1" data-path="vectores-numéricos.html"><a href="vectores-numéricos.html#secuencias-con-un-patrón"><i class="fa fa-check"></i><b>3.1.1</b> Secuencias con un patrón</a></li>
-</ul></li>
-<li class="chapter" data-level="3.2" data-path="operaciones-aritméticas-con-vectores-numéricos.html"><a href="operaciones-aritméticas-con-vectores-numéricos.html"><i class="fa fa-check"></i><b>3.2</b> Operaciones aritméticas con vectores numéricos</a></li>
-<li class="chapter" data-level="3.3" data-path="operaciones-estadísticas-con-vectores-numéricos.html"><a href="operaciones-estadísticas-con-vectores-numéricos.html"><i class="fa fa-check"></i><b>3.3</b> Operaciones estadísticas con vectores numéricos</a></li>
-<li class="chapter" data-level="3.4" data-path="vectores-de-caracteres-texto.html"><a href="vectores-de-caracteres-texto.html"><i class="fa fa-check"></i><b>3.4</b> Vectores de caracteres (texto)</a></li>
-<li class="chapter" data-level="3.5" data-path="vectores-lógicos-truefalse.html"><a href="vectores-lógicos-truefalse.html"><i class="fa fa-check"></i><b>3.5</b> Vectores lógicos (TRUE/FALSE)</a></li>
-<li class="chapter" data-level="3.6" data-path="ausentes.html"><a href="ausentes.html"><i class="fa fa-check"></i><b>3.6</b> Datos ausentes: NA y NaN</a></li>
-<li class="chapter" data-level="3.7" data-path="seleccionar-elementos-de-un-vector.html"><a href="seleccionar-elementos-de-un-vector.html"><i class="fa fa-check"></i><b>3.7</b> Seleccionar elementos de un vector</a><ul>
-<li class="chapter" data-level="3.7.1" data-path="seleccionar-elementos-de-un-vector.html"><a href="seleccionar-elementos-de-un-vector.html#which"><i class="fa fa-check"></i><b>3.7.1</b> which</a></li>
-<li class="chapter" data-level="3.7.2" data-path="seleccionar-elementos-de-un-vector.html"><a href="seleccionar-elementos-de-un-vector.html#null"><i class="fa fa-check"></i><b>3.7.2</b> NULL</a></li>
-</ul></li>
-<li class="chapter" data-level="3.8" data-path="ordenar-vectores.html"><a href="ordenar-vectores.html"><i class="fa fa-check"></i><b>3.8</b> Ordenar vectores</a></li>
-<li class="chapter" data-level="3.9" data-path="fechas.html"><a href="fechas.html"><i class="fa fa-check"></i><b>3.9</b> Fechas</a></li>
-<li class="chapter" data-level="3.10" data-path="glosario3.html"><a href="glosario3.html"><i class="fa fa-check"></i><b>3.10</b> 📚 Glosario</a></li>
-<li class="chapter" data-level="3.11" data-path="consejos-y-tips-2.html"><a href="consejos-y-tips-2.html"><i class="fa fa-check"></i><b>3.11</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
-<li class="chapter" data-level="3.12" data-path="ejercicios-1.html"><a href="ejercicios-1.html"><i class="fa fa-check"></i><b>3.12</b> 📝 Ejercicios</a></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="flujo-de-trabajo-proyecto.html"><a href="flujo-de-trabajo-proyecto.html"><i class="fa fa-check"></i><b>4</b> Flujo de trabajo: proyecto</a><ul>
-<li class="chapter" data-level="4.1" data-path="crear-proyecto.html"><a href="crear-proyecto.html"><i class="fa fa-check"></i><b>4.1</b> Crear proyecto</a></li>
-<li class="chapter" data-level="4.2" data-path="directorios-de-trabajo-y-cabecera.html"><a href="directorios-de-trabajo-y-cabecera.html"><i class="fa fa-check"></i><b>4.2</b> Directorios de trabajo y cabecera</a></li>
-<li class="chapter" data-level="4.3" data-path="ejecución.html"><a href="ejecución.html"><i class="fa fa-check"></i><b>4.3</b> Ejecución</a></li>
-<li class="chapter" data-level="4.4" data-path="consejos-y-tips-3.html"><a href="consejos-y-tips-3.html"><i class="fa fa-check"></i><b>4.4</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="datos.html"><a href="datos.html"><i class="fa fa-check"></i><b>5</b> Tipos de datos II: tablas</a><ul>
-<li class="chapter" data-level="5.1" data-path="matrices.html"><a href="matrices.html"><i class="fa fa-check"></i><b>5.1</b> Matrices</a></li>
-<li class="chapter" data-level="5.2" data-path="apply-vs-bucles.html"><a href="apply-vs-bucles.html"><i class="fa fa-check"></i><b>5.2</b> Apply vs bucles</a></li>
-<li class="chapter" data-level="5.3" data-path="tablas-data.html"><a href="tablas-data.html"><i class="fa fa-check"></i><b>5.3</b> Tablas: data.frames</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="tablas-data.html"><a href="tablas-data.html#data.frames-selección-manual-de-columnas-y-filas"><i class="fa fa-check"></i><b>5.3.1</b> Data.frames: selección manual de columnas y filas</a></li>
-</ul></li>
-<li class="chapter" data-level="5.4" data-path="consejos-y-tips-4.html"><a href="consejos-y-tips-4.html"><i class="fa fa-check"></i><b>5.4</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
-<li class="chapter" data-level="5.5" data-path="ejercicios-2.html"><a href="ejercicios-2.html"><i class="fa fa-check"></i><b>5.5</b> 📝 Ejercicios</a></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="importar_exportar.html"><a href="importar_exportar.html"><i class="fa fa-check"></i><b>6</b> Importando/exportando</a><ul>
-<li class="chapter" data-level="6.1" data-path="importación-de-datos.html"><a href="importación-de-datos.html"><i class="fa fa-check"></i><b>6.1</b> Importación de datos</a><ul>
-<li class="chapter" data-level="6.1.1" data-path="importación-de-datos.html"><a href="importación-de-datos.html#archivo-.rdata"><i class="fa fa-check"></i><b>6.1.1</b> Archivo .RData</a></li>
-<li class="chapter" data-level="6.1.2" data-path="importación-de-datos.html"><a href="importación-de-datos.html#archivo-.csv"><i class="fa fa-check"></i><b>6.1.2</b> Archivo .csv</a></li>
-<li class="chapter" data-level="6.1.3" data-path="importación-de-datos.html"><a href="importación-de-datos.html#archivo-.xlsx"><i class="fa fa-check"></i><b>6.1.3</b> Archivo .xlsx</a></li>
-<li class="chapter" data-level="6.1.4" data-path="importación-de-datos.html"><a href="importación-de-datos.html#desde-web"><i class="fa fa-check"></i><b>6.1.4</b> Desde web</a></li>
-</ul></li>
-<li class="chapter" data-level="6.2" data-path="exportación-de-datos.html"><a href="exportación-de-datos.html"><i class="fa fa-check"></i><b>6.2</b> Exportación de datos</a><ul>
-<li class="chapter" data-level="6.2.1" data-path="exportación-de-datos.html"><a href="exportación-de-datos.html#guardar-en-.rdata"><i class="fa fa-check"></i><b>6.2.1</b> Guardar en .RData</a></li>
-<li class="chapter" data-level="6.2.2" data-path="exportación-de-datos.html"><a href="exportación-de-datos.html#guardar-en-.csv"><i class="fa fa-check"></i><b>6.2.2</b> Guardar en .csv</a></li>
-</ul></li>
-<li class="chapter" data-level="6.3" data-path="consejos-y-tips-5.html"><a href="consejos-y-tips-5.html"><i class="fa fa-check"></i><b>6.3</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="control.html"><a href="control.html"><i class="fa fa-check"></i><b>7</b> Estructuras de control</a><ul>
-<li class="chapter" data-level="7.1" data-path="ifelse.html"><a href="ifelse.html"><i class="fa fa-check"></i><b>7.1</b> if…else</a></li>
-<li class="chapter" data-level="7.2" data-path="forwhile.html"><a href="forwhile.html"><i class="fa fa-check"></i><b>7.2</b> for/while</a><ul>
-<li class="chapter" data-level="7.2.1" data-path="forwhile.html"><a href="forwhile.html#breaknext"><i class="fa fa-check"></i><b>7.2.1</b> BREAK/NEXT</a></li>
-<li class="chapter" data-level="7.2.2" data-path="forwhile.html"><a href="forwhile.html#repeat"><i class="fa fa-check"></i><b>7.2.2</b> REPEAT</a></li>
-</ul></li>
-<li class="chapter" data-level="7.3" data-path="consejos-y-tips-6.html"><a href="consejos-y-tips-6.html"><i class="fa fa-check"></i><b>7.3</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
-</ul></li>
-<li class="part"><span><b>III Listas y funciones</b></span></li>
-<li class="chapter" data-level="8" data-path="otros_datos.html"><a href="otros_datos.html"><i class="fa fa-check"></i><b>8</b> Tipos de datos III: listas/factores</a><ul>
-<li class="chapter" data-level="8.1" data-path="listas.html"><a href="listas.html"><i class="fa fa-check"></i><b>8.1</b> Listas</a></li>
-<li class="chapter" data-level="8.2" data-path="factores.html"><a href="factores.html"><i class="fa fa-check"></i><b>8.2</b> Factores</a></li>
-<li class="chapter" data-level="8.3" data-path="fechas-y-horas.html"><a href="fechas-y-horas.html"><i class="fa fa-check"></i><b>8.3</b> Fechas y horas</a></li>
-<li class="chapter" data-level="8.4" data-path="consejos-y-tips-7.html"><a href="consejos-y-tips-7.html"><i class="fa fa-check"></i><b>8.4</b> <img src="img/logo_info.png" style="width:4.0%" /> Consejos y tips</a></li>
-<li class="chapter" data-level="8.5" data-path="ejercicios-3.html"><a href="ejercicios-3.html"><i class="fa fa-check"></i><b>8.5</b> 📝 Ejercicios</a></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="FUNCIONES.html"><a href="FUNCIONES.html"><i class="fa fa-check"></i><b>9</b> Creación de funciones</a><ul>
-<li class="chapter" data-level="9.1" data-path="primera-función.html"><a href="primera-función.html"><i class="fa fa-check"></i><b>9.1</b> Primera función</a></li>
-<li class="chapter" data-level="9.2" data-path="segunda-función.html"><a href="segunda-función.html"><i class="fa fa-check"></i><b>9.2</b> Segunda función</a></li>
-<li class="chapter" data-level="9.3" data-path="variables-localesglobales.html"><a href="variables-localesglobales.html"><i class="fa fa-check"></i><b>9.3</b> Variables locales/globales</a></li>
-<li class="chapter" data-level="9.4" data-path="ejercicios-4.html"><a href="ejercicios-4.html"><i class="fa fa-check"></i><b>9.4</b> 📝 Ejercicios</a></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="qué-sabemos-hacer.html"><a href="qué-sabemos-hacer.html"><i class="fa fa-check"></i><b>10</b> ¿Qué sabemos hacer?</a><ul>
-<li class="chapter" data-level="10.1" data-path="aleatorio_1.html"><a href="aleatorio_1.html"><i class="fa fa-check"></i><b>10.1</b> Incursión aleatoria</a><ul>
-<li class="chapter" data-level="10.1.1" data-path="aleatorio_1.html"><a href="aleatorio_1.html#pseudoaleatorio"><i class="fa fa-check"></i><b>10.1.1</b> Pseudoaleatoriedad</a></li>
-</ul></li>
-<li class="chapter" data-level="10.2" data-path="recursos.html"><a href="recursos.html"><i class="fa fa-check"></i><b>10.2</b> Recursos</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="bibliografía.html"><a href="bibliografía.html"><i class="fa fa-check"></i>Bibliografía</a></li>
-<li class="divider"></li>
-<li><a href="https://bookdown.org/yihui/rmarkdown/" target="blank">Elaborado con bookdown</a></li>
-
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Prefacio</a></li>
+<li class="book-part">Toma de contacto</li>
+<li><a class="" href="instalacionR.html"><span class="header-section-number">1</span> Instalación</a></li>
+<li><a class="" href="primeros-pasos.html"><span class="header-section-number">2</span> Primeros pasos</a></li>
+<li class="book-part">Conceptos básicos</li>
+<li><a class="" href="tipos-de-datos-i-vectores.html"><span class="header-section-number">3</span> Tipos de datos I: vectores</a></li>
+<li><a class="" href="flujo-de-trabajo-proyecto.html"><span class="header-section-number">4</span> Flujo de trabajo: proyecto</a></li>
+<li><a class="" href="control.html"><span class="header-section-number">5</span> Estructuras de control</a></li>
+<li><a class="" href="datos.html"><span class="header-section-number">6</span> Datos estructurados: matrices y tablas</a></li>
+<li><a class="" href="importar_exportar.html"><span class="header-section-number">7</span> Importando/exportando</a></li>
+<li class="book-part">Listas y funciones</li>
+<li><a class="active" href="otros_datos.html"><span class="header-section-number">8</span> Listas y factores</a></li>
+<li><a class="" href="FUNCIONES.html"><span class="header-section-number">9</span> Creación de funciones</a></li>
+<li><a class="" href="qu%C3%A9-sabemos-hacer.html"><span class="header-section-number">10</span> ¿Qué sabemos hacer?</a></li>
 </ul>
 
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/dadosdelaplace/cursoR_intro_2021_2022">View book source <i class="fab fa-github"></i></a></p>
+        </div>
       </nav>
-    </div>
-
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Aprendiendo R sin morir en el intento</a>
-          </h1>
-        </div>
-
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
-
-            <section class="normal" id="section-">
-<div id="otros_datos" class="section level1">
-<h1><span class="header-section-number">Capítulo 8</span> Tipos de datos III: listas/factores</h1>
-<p>Veamos algún tipo de dato muy particular más allá de vectores, matrices y <code>data.frames</code>.</p>
 </div>
-            </section>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="otros_datos" class="section level1">
+<h1>
+<span class="header-section-number">Capítulo 8</span> Listas y factores<a class="anchor" aria-label="anchor" href="#otros_datos"><i class="fas fa-link"></i></a>
+</h1>
+<p>Veamos dos tipos de datos muy particulares más allá de vectores, matrices y <code>data.frames</code>.</p>
+<div id="listas" class="section level2">
+<h2>
+<span class="header-section-number">8.1</span> Listas<a class="anchor" aria-label="anchor" href="#listas"><i class="fas fa-link"></i></a>
+</h2>
+<p>Probablemente las <strong>listas</strong> sea uno de los tipos de datos más importantes en <code>R</code> ya que permiten almacenar <strong>colecciones de variables de diferente tipo (ya lo hacían los <code>data.frames</code>) pero también de diferente longitud</strong>, y con estructuras totalmente heterógeneas, de ahí que sea el formato de salida de muchísimas funciones de <code>R</code> que te devuelven a la vez un cadena de texto, un vector de números o una tabla, todo guardado en la misma variable (incluso una lista puede tener dentro a su vez otra lista).</p>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:unnamed-chunk-165">Tabla 8.1: </span>Tipos de datos mencionados hasta ahora</caption>
+<colgroup>
+<col width="64%">
+<col width="35%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">paquetes</th>
+<th align="left">descripción</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">x &lt;- 1 (dato numérico)</td>
+<td align="left">vector de longitud 1</td>
+</tr>
+<tr class="even">
+<td align="left">x &lt;- c(1, 2, 3) (vector de números)</td>
+<td align="left">vector (mismo tipo)</td>
+</tr>
+<tr class="odd">
+<td align="left">x &lt;- c(‘a’, ‘b’, ‘c’) (vector de caracteres)</td>
+<td align="left">vector (mismo tipo)</td>
+</tr>
+<tr class="even">
+<td align="left">x &lt;- matrix(1:6, nrow = 2)</td>
+<td align="left">matriz (mismo tipo, misma longitud)</td>
+</tr>
+<tr class="odd">
+<td align="left">x &lt;- data.frame(‘a’ = 1:3, ‘b’ = c(‘a’, ‘b’, ‘c’), ‘c’ = c(TRUE, TRUE, FALSE))</td>
+<td align="left">data.frame (distinto tipo, misma longitud)</td>
+</tr>
+<tr class="even">
+<td align="left">x &lt;- list(1:3, c(‘a’), c(TRUE, FALSE))</td>
+<td align="left">lista (distinto tipo, distinta longitud)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Vamos a crear nuestra primera lista.</p>
+<div class="sourceCode" id="cb421"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Fecha de nacimiento</span>
+<span class="va">fecha_nacimiento</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"1989-09-10"</span><span class="op">)</span>
 
-          </div>
-        </div>
-      </div>
-<a href="consejos-y-tips-6.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="listas.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
-    </div>
+<span class="co"># Notas de asignaturas en primer y segundo parcial</span>
+<span class="va">notas</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="st">"biología"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">7</span><span class="op">)</span>, <span class="st">"física"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">5</span><span class="op">)</span>,
+                    <span class="st">"matemáticas"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">8</span>, <span class="fl">9.5</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">notas</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="co"># Nombre a las filas</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"primer_parcial"</span>, <span class="st">"segundo_parcial"</span><span class="op">)</span>
+
+<span class="co"># Números de teléfono</span>
+<span class="va">tlf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"914719567"</span>, <span class="st">"617920765"</span>, <span class="st">"716505013"</span><span class="op">)</span>
+
+<span class="co"># Nombres</span>
+<span class="va">padres</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Juan"</span>, <span class="st">"Julia"</span><span class="op">)</span>
+
+<span class="co"># Guardamos TODO en una lista (con nombres de cada elemento)</span>
+<span class="va">datos</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"nacimiento"</span> <span class="op">=</span> <span class="va">fecha_nacimiento</span>,
+              <span class="st">"notas_insti"</span> <span class="op">=</span> <span class="va">notas</span>, <span class="st">"teléfonos"</span> <span class="op">=</span> <span class="va">tlf</span>,
+              <span class="st">"nombre_padres"</span> <span class="op">=</span> <span class="va">padres</span><span class="op">)</span>
+<span class="va">datos</span></code></pre></div>
+<pre><code>## $nacimiento
+## [1] "1989-09-10"
+## 
+## $notas_insti
+##                 biología física matemáticas
+## primer_parcial         5      4         8.0
+## segundo_parcial        7      5         9.5
+## 
+## $teléfonos
+## [1] "914719567" "617920765" "716505013"
+## 
+## $nombre_padres
+## [1] "Juan"  "Julia"</code></pre>
+<div class="sourceCode" id="cb423"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">datos</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "nacimiento"    "notas_insti"   "teléfonos"     "nombre_padres"</code></pre>
+<p>Hemos creado una lista de 4 elementos:</p>
+<ul>
+<li>
+<code>nacimiento</code>: una fecha.</li>
+<li>
+<code>notas_insti</code>: un <code>data.frame</code>.</li>
+<li>
+<code>teléfonos</code>: vector de números.</li>
+<li>
+<code>nombre_padres</code>: vector de texto.</li>
+</ul>
+<p>Una <strong>lista es una varible que en un primer nivel solo tiene una dimensión</strong> por lo que si quieres saber cuantos elementos tiene debes ejecutar la función <code><a href="https://rdrr.io/r/base/length.html">length()</a></code>.</p>
+<div class="sourceCode" id="cb425"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">datos</span><span class="op">)</span> <span class="co"># devolverá NULL al no tener dos dimensiones</span></code></pre></div>
+<pre><code>## NULL</code></pre>
+<div class="sourceCode" id="cb427"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">datos</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<div class="sourceCode" id="cb429"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">datos</span><span class="op">)</span> <span class="co"># de tipo lista</span></code></pre></div>
+<pre><code>## [1] "list"</code></pre>
+<p>Para acceder a un elemento de la lista tenemos dos opciones:</p>
+<ul>
+<li><p>Acceder por índice: con el operador <code>[[i]]</code> accedemos al elemento i-ésimo de la lista.</p></li>
+<li><p>Acceder por nombre: con el operador <code>$nombre_elemento</code> accedemos al elemento cuyo nombre sea <code>nombre_elemento</code>.</p></li>
+</ul>
+<div class="sourceCode" id="cb431"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">datos</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></code></pre></div>
+<pre><code>## [1] "1989-09-10"</code></pre>
+<div class="sourceCode" id="cb433"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">datos</span><span class="op">$</span><span class="va">nacimiento</span></code></pre></div>
+<pre><code>## [1] "1989-09-10"</code></pre>
+<div class="sourceCode" id="cb435"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">datos</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span></code></pre></div>
+<pre><code>##                 biología física matemáticas
+## primer_parcial         5      4         8.0
+## segundo_parcial        7      5         9.5</code></pre>
+<div class="sourceCode" id="cb437"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">datos</span><span class="op">$</span><span class="va">notas_insti</span></code></pre></div>
+<pre><code>##                 biología física matemáticas
+## primer_parcial         5      4         8.0
+## segundo_parcial        7      5         9.5</code></pre>
+<p>Si queremos acceder a varios elementos a la vez de la lista deberemos usar el operador <code>[]</code>.</p>
+<div class="sourceCode" id="cb439"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">datos</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span></code></pre></div>
+<pre><code>## $nacimiento
+## [1] "1989-09-10"
+## 
+## $notas_insti
+##                 biología física matemáticas
+## primer_parcial         5      4         8.0
+## segundo_parcial        7      5         9.5</code></pre>
+<p>Como hemos comentado, también podemos <strong>aplicar la recursividad</strong> y hacer <strong>listas con otras listas dentro</strong>, de forma que para acceder a cada nivel deberemos usar el operador <code>[[]]</code>.</p>
+<div class="sourceCode" id="cb441"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">lista_de_listas</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"lista_1"</span> <span class="op">=</span> <span class="va">datos</span><span class="op">[</span><span class="fl">3</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, <span class="st">"lista_2"</span> <span class="op">=</span> <span class="va">datos</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">lista_de_listas</span><span class="op">)</span> <span class="co"># Nombres de los elementos del primer nivel</span></code></pre></div>
+<pre><code>## [1] "lista_1" "lista_2"</code></pre>
+<div class="sourceCode" id="cb443"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">lista_de_listas</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span> <span class="co"># Nombres de los elementos guardados en el primer elemento, que es a su vez una lista</span></code></pre></div>
+<pre><code>## [1] "teléfonos"     "nombre_padres"</code></pre>
+<div class="sourceCode" id="cb445"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">lista_de_listas</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span> <span class="co"># Elemento 1 de la lista guardada como elemento 1 de la lista superior</span></code></pre></div>
+<pre><code>## [1] "914719567" "617920765" "716505013"</code></pre>
+<p>Un ejemplo de la utilidad de las listas la tenemos en los archivos <code>R.Data</code> de vacunas que hemos cargado en nuestro script. Con <code><a href="https://rdrr.io/r/base/names.html">names(panel_vacunas)</a></code> podemos ver que elementos contiene en el primer nivel.</p>
+<div class="sourceCode" id="cb447"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">panel_vacunas</span><span class="op">)</span></code></pre></div>
+<pre><code>##  [1] "AN"   "AR"   "AS"   "IB"   "CN"   "CB"   "CL"   "CM"   "CT"   "VC"  
+## [11] "EX"   "GA"   "RI"   "MD"   "MC"   "NC"   "PV"   "CE"   "ML"   "FFAA"
+## [21] "ES"</code></pre>
+<p>Cada elemento de la lista es un <code>data.frame</code> de una comunidad autonónoma, que a su vez contiene una serie de variables (columnas) para cada una de las fechas (filas): <strong>¡nos permite guardar «datos tridimensionales»!</strong>.</p>
+<div class="sourceCode" id="cb449"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">panel_vacunas</span><span class="op">$</span><span class="va">ES</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "data.frame"</code></pre>
+<div class="sourceCode" id="cb451"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">panel_vacunas</span><span class="op">$</span><span class="va">ES</span><span class="op">)</span></code></pre></div>
+<pre><code>##  [1] "fechas"                              
+##  [2] "ISO"                                 
+##  [3] "poblacion"                           
+##  [4] "porc_pobl_total"                     
+##  [5] "poblacion_mayor_16a"                 
+##  [6] "porc_pobl_total_mayor_16a"           
+##  [7] "dosis_entrega_pfizer"                
+##  [8] "dosis_entrega_astra"                 
+##  [9] "dosis_entrega_moderna"               
+## [10] "dosis_entrega_janssen"               
+## [11] "dosis_entrega"                       
+## [12] "dosis_entrega_100hab"                
+## [13] "porc_entregadas_sobre_total"         
+## [14] "dosis_diarias_entrega_pfizer"        
+## [15] "dosis_diarias_entrega_astra"         
+## [16] "dosis_diarias_entrega_moderna"       
+## [17] "dosis_diarias_entrega"               
+## [18] "dosis_7D_entrega_pfizer"             
+## [19] "dosis_7D_entrega_astra"              
+## [20] "dosis_7D_entrega_moderna"            
+## [21] "dosis_7D_entrega"                    
+## [22] "dosis_7D_entrega_100hab"             
+## [23] "dosis_admin"                         
+## [24] "dosis_primera"                       
+## [25] "dosis_pauta_completa"                
+## [26] "dosis_admin_100hab"                  
+## [27] "porc_admin_sobre_ccaa"               
+## [28] "porc_admin_vs_total"                 
+## [29] "dosis_diarias_admin"                 
+## [30] "dosis_diarias_admin_100hab"          
+## [31] "crec_diario_dosis_admin"             
+## [32] "dosis_diarias_primera"               
+## [33] "dosis_diarias_segunda"               
+## [34] "dosis_7D_admin"                      
+## [35] "dosis_7D_admin_100hab"               
+## [36] "crec_7D_dosis_admin"                 
+## [37] "porc_admin_vs_total_7D"              
+## [38] "personas_vacunadas"                  
+## [39] "personas_pauta_completa"             
+## [40] "personas_1dosis"                     
+## [41] "porc_personas_vacunadas"             
+## [42] "porc_personas_pauta_completa"        
+## [43] "porc_personas_vacunadas_16a"         
+## [44] "porc_personas_pauta_completa_16a"    
+## [45] "personas_vacunadas_diarias"          
+## [46] "personas_pauta_completa_diarias"     
+## [47] "porc_personas_vacunadas_diarias"     
+## [48] "porc_personas_pauta_completa_diarias"
+## [49] "personas_vacunadas_7D"               
+## [50] "personas_pauta_completa_7D"          
+## [51] "porc_personas_vacunadas_7D"          
+## [52] "porc_personas_pauta_completa_7D"     
+## [53] "porc_personas_vacunadas_16a_7D"      
+## [54] "porc_personas_pauta_completa_16a_7D" 
+## [55] "crec_diario_personas_vacunadas"      
+## [56] "crec_7D_personas_vacunadas"          
+## [57] "crec_diario_personas_pauta_completa" 
+## [58] "crec_7D_personas_pauta_completa"     
+## [59] "desv_porc_admin_vs_total"            
+## [60] "desv_dosis_entrega"                  
+## [61] "desv_porc_personas_vacunadas"        
+## [62] "desv_porc_personas_pauta_completa"   
+## [63] "fecha_30vacunados_ritmo7D"           
+## [64] "fecha_50vacunados_ritmo7D"           
+## [65] "fecha_70vacunados_ritmo7D"           
+## [66] "fecha_30inmunizados_ritmo7D"         
+## [67] "fecha_50inmunizados_ritmo7D"         
+## [68] "fecha_70inmunizados_ritmo7D"         
+## [69] "fecha_30inmunizados_16a_ritmo7D"     
+## [70] "fecha_50inmunizados_16a_ritmo7D"     
+## [71] "fecha_70inmunizados_16a_ritmo7D"</code></pre>
+<div class="sourceCode" id="cb453"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">panel_vacunas</span><span class="op">$</span><span class="va">ES</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span><span class="op">)</span></code></pre></div>
+<pre><code>##        fechas ISO poblacion porc_pobl_total poblacion_mayor_16a
+## 1  2021-01-05  ES  47450795             100            40129822
+## 2  2021-01-06  ES  47450795             100            40129822
+## 21 2021-01-07  ES  47450795             100            40129822
+## 3  2021-01-08  ES  47450795             100            40129822
+## 11 2021-01-09  ES  47450795             100            40129822
+## 12 2021-01-10  ES  47450795             100            40129822</code></pre>
+<p>El acceso lo podemos realizar por orden que ocupa en la lista pero también de forma intuitiva con <code><a href="https://rdrr.io/r/base/Extract.html">$</a></code> y el código ISO de la comunidad autónoma. Lo mismo podemos hacer con el panel de fechas, donde ahora cada elemento de la lista es una fecha, y en cada elemento de ella, está guardada la información de cada variable (columna) y cada comunidad (fila).</p>
+<div class="sourceCode" id="cb455"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">panel_vacunas_fecha</span><span class="op">)</span></code></pre></div>
+<pre><code>##   [1] "2021-01-05" "2021-01-06" "2021-01-07" "2021-01-08" "2021-01-09"
+##   [6] "2021-01-10" "2021-01-11" "2021-01-12" "2021-01-13" "2021-01-14"
+##  [11] "2021-01-15" "2021-01-16" "2021-01-17" "2021-01-18" "2021-01-19"
+##  [16] "2021-01-20" "2021-01-21" "2021-01-22" "2021-01-23" "2021-01-24"
+##  [21] "2021-01-25" "2021-01-26" "2021-01-27" "2021-01-28" "2021-01-29"
+##  [26] "2021-01-30" "2021-01-31" "2021-02-01" "2021-02-02" "2021-02-03"
+##  [31] "2021-02-04" "2021-02-05" "2021-02-06" "2021-02-07" "2021-02-08"
+##  [36] "2021-02-09" "2021-02-10" "2021-02-11" "2021-02-12" "2021-02-13"
+##  [41] "2021-02-14" "2021-02-15" "2021-02-16" "2021-02-17" "2021-02-18"
+##  [46] "2021-02-19" "2021-02-20" "2021-02-21" "2021-02-22" "2021-02-23"
+##  [51] "2021-02-24" "2021-02-25" "2021-02-26" "2021-02-27" "2021-02-28"
+##  [56] "2021-03-01" "2021-03-02" "2021-03-03" "2021-03-04" "2021-03-05"
+##  [61] "2021-03-06" "2021-03-07" "2021-03-08" "2021-03-09" "2021-03-10"
+##  [66] "2021-03-11" "2021-03-12" "2021-03-13" "2021-03-14" "2021-03-15"
+##  [71] "2021-03-16" "2021-03-17" "2021-03-18" "2021-03-19" "2021-03-20"
+##  [76] "2021-03-21" "2021-03-22" "2021-03-23" "2021-03-24" "2021-03-25"
+##  [81] "2021-03-26" "2021-03-27" "2021-03-28" "2021-03-29" "2021-03-30"
+##  [86] "2021-03-31" "2021-04-01" "2021-04-02" "2021-04-03" "2021-04-04"
+##  [91] "2021-04-05" "2021-04-06" "2021-04-07" "2021-04-08" "2021-04-09"
+##  [96] "2021-04-10" "2021-04-11" "2021-04-12" "2021-04-13" "2021-04-14"
+## [101] "2021-04-15" "2021-04-16" "2021-04-17" "2021-04-18" "2021-04-19"
+## [106] "2021-04-20" "2021-04-21" "2021-04-22" "2021-04-23"</code></pre>
+<div class="sourceCode" id="cb457"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">panel_vacunas_fecha</span><span class="op">$</span><span class="va">`2021-04-23`</span><span class="op">)</span></code></pre></div>
+<pre><code>##  [1] "ccaa"                                
+##  [2] "fechas"                              
+##  [3] "ISO"                                 
+##  [4] "poblacion"                           
+##  [5] "porc_pobl_total"                     
+##  [6] "poblacion_mayor_16a"                 
+##  [7] "porc_pobl_total_mayor_16a"           
+##  [8] "dosis_entrega_pfizer"                
+##  [9] "dosis_entrega_astra"                 
+## [10] "dosis_entrega_moderna"               
+## [11] "dosis_entrega_janssen"               
+## [12] "dosis_entrega"                       
+## [13] "dosis_entrega_100hab"                
+## [14] "porc_entregadas_sobre_total"         
+## [15] "dosis_diarias_entrega_pfizer"        
+## [16] "dosis_diarias_entrega_astra"         
+## [17] "dosis_diarias_entrega_moderna"       
+## [18] "dosis_diarias_entrega"               
+## [19] "dosis_7D_entrega_pfizer"             
+## [20] "dosis_7D_entrega_astra"              
+## [21] "dosis_7D_entrega_moderna"            
+## [22] "dosis_7D_entrega"                    
+## [23] "dosis_7D_entrega_100hab"             
+## [24] "dosis_admin"                         
+## [25] "dosis_primera"                       
+## [26] "dosis_pauta_completa"                
+## [27] "dosis_admin_100hab"                  
+## [28] "porc_admin_sobre_ccaa"               
+## [29] "porc_admin_vs_total"                 
+## [30] "dosis_diarias_admin"                 
+## [31] "dosis_diarias_admin_100hab"          
+## [32] "crec_diario_dosis_admin"             
+## [33] "dosis_diarias_primera"               
+## [34] "dosis_diarias_segunda"               
+## [35] "dosis_7D_admin"                      
+## [36] "dosis_7D_admin_100hab"               
+## [37] "crec_7D_dosis_admin"                 
+## [38] "porc_admin_vs_total_7D"              
+## [39] "personas_vacunadas"                  
+## [40] "personas_pauta_completa"             
+## [41] "personas_1dosis"                     
+## [42] "porc_personas_vacunadas"             
+## [43] "porc_personas_pauta_completa"        
+## [44] "porc_personas_vacunadas_16a"         
+## [45] "porc_personas_pauta_completa_16a"    
+## [46] "personas_vacunadas_diarias"          
+## [47] "personas_pauta_completa_diarias"     
+## [48] "porc_personas_vacunadas_diarias"     
+## [49] "porc_personas_pauta_completa_diarias"
+## [50] "personas_vacunadas_7D"               
+## [51] "personas_pauta_completa_7D"          
+## [52] "porc_personas_vacunadas_7D"          
+## [53] "porc_personas_pauta_completa_7D"     
+## [54] "porc_personas_vacunadas_16a_7D"      
+## [55] "porc_personas_pauta_completa_16a_7D" 
+## [56] "crec_diario_personas_vacunadas"      
+## [57] "crec_7D_personas_vacunadas"          
+## [58] "crec_diario_personas_pauta_completa" 
+## [59] "crec_7D_personas_pauta_completa"     
+## [60] "desv_porc_admin_vs_total"            
+## [61] "desv_dosis_entrega"                  
+## [62] "desv_porc_personas_vacunadas"        
+## [63] "desv_porc_personas_pauta_completa"   
+## [64] "fecha_30vacunados_ritmo7D"           
+## [65] "fecha_50vacunados_ritmo7D"           
+## [66] "fecha_70vacunados_ritmo7D"           
+## [67] "fecha_30inmunizados_ritmo7D"         
+## [68] "fecha_50inmunizados_ritmo7D"         
+## [69] "fecha_70inmunizados_ritmo7D"         
+## [70] "fecha_30inmunizados_16a_ritmo7D"     
+## [71] "fecha_50inmunizados_16a_ritmo7D"     
+## [72] "fecha_70inmunizados_16a_ritmo7D"</code></pre>
+<div class="sourceCode" id="cb459"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">panel_vacunas_fecha</span><span class="op">$</span><span class="va">`2021-04-23`</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">7</span><span class="op">]</span><span class="op">)</span></code></pre></div>
+<pre><code>##     ccaa     fechas ISO poblacion porc_pobl_total poblacion_mayor_16a
+## 77    AN 2021-04-23  AN   8464411          17.838             7062213
+## 771   AR 2021-04-23  AR   1329391           2.802             1132764
+## 772   AS 2021-04-23  AS   1018784           2.147              901209
+## 773   IB 2021-04-23  IB   1171543           2.469              986279
+## 774   CN 2021-04-23  CN   2175952           4.586             1871033
+## 775   CB 2021-04-23  CB    582905           1.228              501384
+##     porc_pobl_total_mayor_16a
+## 77                     17.598
+## 771                     2.823
+## 772                     2.246
+## 773                     2.458
+## 774                     4.662
+## 775                     1.249</code></pre>
+<div class="rmdcaution">
+<p><strong><span style="color: #dc3545;">Operaciones aritméticas con listas</span></strong></p>
+<p>Una <strong>lista no se puede vectorizar de forma inmediata</strong>, por lo cualquier operación aritmética aplicada a una lista dará error (para ello está disponible la función <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code>, cuyo uso corresponde a otros cursos más avanzados).</p>
+<div class="sourceCode" id="cb461"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">datos</span> <span class="op">/</span> <span class="fl">2</span></code></pre></div>
+<pre><code>## Error in datos/2: argumento no-numérico para operador binario</code></pre>
+</div>
+</div>
+<div id="factores" class="section level2">
+<h2>
+<span class="header-section-number">8.2</span> Factores<a class="anchor" aria-label="anchor" href="#factores"><i class="fas fa-link"></i></a>
+</h2>
+<p>Los <strong>factores son el tipo de dato que tiene <code>R</code> para definir variables categóricas</strong>, variables que aunque puedan ser números, en realidad representa <strong>categorías (categoría 1, 2, 3…)</strong>. Internamente los factores se guardan como variable numéricas enteras (enumerando las categorías) pero se nos mostarán con el nombre asignada a dicha categoría. Para convertir una variable a factor basta con ejecutar la función <code><a href="https://rdrr.io/r/base/factor.html">factor()</a></code>, que nos convierte cada valor diferente en una categoría (para ver valores diferentes de un vector, usar la función <code><a href="https://rdrr.io/r/base/unique.html">unique()</a></code>).</p>
+<div class="sourceCode" id="cb463"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">datos</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">3</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">3</span>, <span class="fl">1</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">datos</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 1 2 3</code></pre>
+<div class="sourceCode" id="cb465"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">datos</span></code></pre></div>
+<pre><code>##  [1] 1 2 2 3 1 2 3 3 1 2 3 3 1</code></pre>
+<div class="sourceCode" id="cb467"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">datos_factor</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">datos</span><span class="op">)</span> <span class="co"># Convertimos a factor</span>
+<span class="va">datos_factor</span> </code></pre></div>
+<pre><code>##  [1] 1 2 2 3 1 2 3 3 1 2 3 3 1
+## Levels: 1 2 3</code></pre>
+<div class="rmdwarning">
+<p><strong><span style="color: #ffc107;">Un factor es una CATEGORÍA</span></strong></p>
+<p>Es importante entender que un <strong>factor es una CATEGORÍA</strong>, como rojo/blanco/negro, por lo que desde el momento en el que lo convertimos en factor, ya no podemos hacer operaciones aritméticas (no podemos sumar categorías, solo números).</p>
+<div class="sourceCode" id="cb469"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">datos</span> <span class="op">+</span> <span class="fl">1</span></code></pre></div>
+<pre><code>##  [1] 2 3 3 4 2 3 4 4 2 3 4 4 2</code></pre>
+<div class="sourceCode" id="cb471"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">datos_factor</span> <span class="op">+</span> <span class="fl">1</span></code></pre></div>
+<pre><code>##  [1] NA NA NA NA NA NA NA NA NA NA NA NA NA</code></pre>
+</div>
+<p>Como puedes observar, al tenerlo en factor, además de la variable en sí se nos <strong>muestra debajo los <code>levels</code>, los nombres de las categorías</strong>. Si no le indicamos que nombres queremos, nos convierte los valores a texto y lo toma como nombre de categoría. Con el <strong>argumento <code>labels</code> podemos configurarlo</strong> a nuestro gusto. Con la función <code>levels</code> podemos reasignarle nombres tras su generación.</p>
+<div class="sourceCode" id="cb473"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">datos_factor</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">datos</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"Categoría"</span>, <span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">datos</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="co"># damos nombre de categoría 1, 2, 3...</span>
+<span class="va">datos_factor</span> </code></pre></div>
+<pre><code>##  [1] Categoría 1 Categoría 2 Categoría 2 Categoría 3 Categoría 1 Categoría 2
+##  [7] Categoría 3 Categoría 3 Categoría 1 Categoría 2 Categoría 3 Categoría 3
+## [13] Categoría 1
+## Levels: Categoría 1 Categoría 2 Categoría 3</code></pre>
+<div class="sourceCode" id="cb475"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">datos_factor</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"C1"</span>, <span class="st">"C2"</span>, <span class="st">"C3"</span><span class="op">)</span>
+<span class="va">datos_factor</span></code></pre></div>
+<pre><code>##  [1] C1 C2 C2 C3 C1 C2 C3 C3 C1 C2 C3 C3 C1
+## Levels: C1 C2 C3</code></pre>
+<p>Aunque sirve también para variables numéricas, la función <strong><code><a href="https://rdrr.io/r/base/table.html">table()</a></code> nos calcula las frecuencias de cada una de las categorías</strong>, las veces que se repiten en nuestro conjunto (es una forma eficiente de guardar categorías ya que solo se guardan los valores únicos y el número de veces que se repiten, así como su lugar).</p>
+<div class="sourceCode" id="cb477"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">datos_factor</span><span class="op">)</span></code></pre></div>
+<pre><code>## datos_factor
+## C1 C2 C3 
+##  4  4  5</code></pre>
+<p>Una ventaja de los factores es que le podemos <strong>indicar que considere que las categorías son ordinales</strong>: tiene una jerarquía de orden, con el argumento <code>ordered = TRUE</code>.</p>
+<div class="sourceCode" id="cb479"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">notas</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">7</span>, <span class="fl">2</span>, <span class="fl">10</span>, <span class="fl">5</span>, <span class="fl">7</span>, <span class="fl">8</span>, <span class="fl">10</span>, <span class="fl">8</span>, <span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">10</span><span class="op">)</span> <span class="co"># notas de clase: tienen un orden</span>
+<span class="va">notas_factor</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">notas</span><span class="op">)</span>
+<span class="va">notas_factor</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">&lt;</span> <span class="va">notas_factor</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span></code></pre></div>
+<pre><code>## [1] NA</code></pre>
+<div class="sourceCode" id="cb481"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">notas_factor_ordenados</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">notas</span>, ordered <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="va">notas_factor_ordenados</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">&lt;</span> <span class="va">notas_factor_ordenados</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="co"># nos dice que la categoría 7 no es menor que la categoría 2</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb483"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">notas_factor_ordenados</span></code></pre></div>
+<pre><code>##  [1] 7  2  10 5  7  8  10 8  2  2  5  5  5  10
+## Levels: 2 &lt; 5 &lt; 7 &lt; 8 &lt; 10</code></pre>
+<p>Para pasar de factor a variable numérica (y poder operar con ellos), basta usar la función <code><a href="https://rdrr.io/r/base/numeric.html">as.numeric()</a></code>.</p>
+<div class="sourceCode" id="cb485"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">notas_factor_ordenados</span> <span class="op">+</span> <span class="fl">1</span></code></pre></div>
+<pre><code>##  [1] NA NA NA NA NA NA NA NA NA NA NA NA NA NA</code></pre>
+<div class="sourceCode" id="cb487"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">notas_factor_ordenados</span><span class="op">)</span> <span class="op">+</span> <span class="fl">1</span></code></pre></div>
+<pre><code>##  [1] 4 2 6 3 4 5 6 5 2 2 3 3 3 6</code></pre>
+<div class="sourceCode" id="cb489"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">notas_factor_ordenados</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 2.857143</code></pre>
+<p>También podemos <strong>convertir variables continuas (o discretas) a factores indicando los rangos de las categorías</strong> que queremos asignar con la función <code><a href="https://rdrr.io/r/base/cut.html">cut()</a></code>. Por ejemplo, supongamos que tenemos notas numéricas de clase y queremos asignar una nota categórica. En el argumento <code>breaks</code> debemos indicarle los cortes que queremos en los datos, teniendo <code>n+1</code> valores, siendo <code>n</code> el número de categorías. Con <code>right = FALSE</code> le vamos a indicar que los intervalos son abiertos por la derecha.</p>
+<div class="sourceCode" id="cb491"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">notas</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">7.4</span>, <span class="fl">1.1</span>, <span class="fl">2.9</span>, <span class="fl">10</span>, <span class="fl">5.2</span>, <span class="fl">7.7</span>, <span class="fl">8.9</span>, <span class="fl">10</span>, <span class="fl">8.1</span>, <span class="fl">2.6</span>, <span class="fl">2.4</span>, <span class="fl">5.5</span>, <span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">10</span>, <span class="fl">6.3</span>, <span class="fl">9.4</span><span class="op">)</span> <span class="co"># notas de clase</span>
+<span class="va">notas_categoricas</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span><span class="op">(</span><span class="va">notas</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">5</span>, <span class="fl">7</span>, <span class="fl">9</span>, <span class="fl">10</span>, <span class="fl">10.1</span><span class="op">)</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"suspenso"</span>, <span class="st">"aprobado"</span>, <span class="st">"notable"</span>, <span class="st">"sobresaliente"</span>, <span class="st">"mh"</span><span class="op">)</span>, right <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+<span class="va">notas_categoricas</span></code></pre></div>
+<pre><code>##  [1] notable       suspenso      suspenso      mh            aprobado     
+##  [6] notable       notable       mh            notable       suspenso     
+## [11] suspenso      aprobado      aprobado      aprobado      mh           
+## [16] aprobado      sobresaliente
+## Levels: suspenso aprobado notable sobresaliente mh</code></pre>
+<p>Además, la función <code><a href="https://rdrr.io/r/base/cut.html">cut()</a></code> identifica los datos de tipo fecha, pudiendo hacer <strong>cortes por unidades temporales</strong>.</p>
+<div class="sourceCode" id="cb493"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">fechas</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"2021-04-10"</span>, <span class="st">"2021-03-10"</span>, <span class="st">"2021-01-01"</span>, <span class="st">"2020-01-15"</span>, <span class="st">"2020-09-10"</span>, <span class="st">"2020-09-15"</span>, <span class="st">"2020-07-08"</span><span class="op">)</span><span class="op">)</span>
+<span class="va">fechas_cortes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span><span class="op">(</span><span class="va">fechas</span>, breaks <span class="op">=</span> <span class="st">"year"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">fechas_cortes</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"2020"</span>, <span class="st">"2021"</span><span class="op">)</span>
+<span class="va">fechas_cortes</span></code></pre></div>
+<pre><code>## [1] 2021 2021 2021 2020 2020 2020 2020
+## Levels: 2020 2021</code></pre>
+<div class="rmdnote">
+<p><strong><span style="color: #4197D2;">Paquete forcats</span></strong></p>
+<p>En dicho paquete tienes muchas <strong>funcionalidades para trabajar con factores</strong>. Ver <a href="https://forcats.tidyverse.org/" class="uri">https://forcats.tidyverse.org/</a>.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:forcats"></span>
+<img src="img/forcats.png" alt="Paquete lubridate." width="95%"><p class="caption">
+Imagen/gráfica 8.1: Paquete lubridate.
+</p>
+</div>
+</div>
+</div>
+<div id="fechas-y-horas" class="section level2">
+<h2>
+<span class="header-section-number">8.3</span> Fechas y horas<a class="anchor" aria-label="anchor" href="#fechas-y-horas"><i class="fas fa-link"></i></a>
+</h2>
+<p>Como ya hemos dicho, <strong>las fechas y momentos temporales no serán meras cadenas de caracter sino que tienen clases especiales asociadas</strong> y algunas funciones especiales que pueden sernos útiles: las fechas serán de tipo <code>dates</code> mientras que las horas será de tipo <code>POSIXct</code> o <code>POSIXlt</code>. En el primer caso, las fechas serán guardadas internamente como el <strong>número de días transcurridos desde el 1 de enero de 1970</strong>, y las horas como <strong>número de segundos desde el 1 de enero de 1970</strong> (para la clase <code>POSIXct</code>) o una lista de segundos, minutos y horas (para la clase <code>POSIXlt</code>).</p>
+<p><strong>¿Cómo obtener automáticamente la fecha de hoy, por ejemplo?</strong> La función <code><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date()</a></code> nos devuelve directamente la fecha y hora en el momento de la ejecución de la orden.</p>
+<div class="sourceCode" id="cb495"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">fecha</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span><span class="op">(</span><span class="op">)</span>
+<span class="va">fecha</span></code></pre></div>
+<pre><code>## [1] "2021-09-21"</code></pre>
+<div class="sourceCode" id="cb497"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">fecha</span> <span class="op">-</span> <span class="fl">7</span> <span class="co"># una semana antes</span></code></pre></div>
+<pre><code>## [1] "2021-09-14"</code></pre>
+<div class="sourceCode" id="cb499"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span> <span class="co"># de clase fecha</span></code></pre></div>
+<pre><code>## [1] "Date"</code></pre>
+<p>Para <strong>convertir una cadena de texto a fecha</strong>, basta usar la función <code><a href="https://rdrr.io/r/base/as.Date.html">as.Date()</a></code> del paquete <code>{base}</code>, pasándole como argumento la fecha en formato <code>"yyyy-mm-dd"</code> por defecto.</p>
+<div class="sourceCode" id="cb501"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"2021-03-10"</span><span class="op">)</span> <span class="co"># formato por defecto</span></code></pre></div>
+<pre><code>## [1] "2021-03-10"</code></pre>
+<p>Si <strong>introducimos otro tipo de formato</strong>, debemos especificárselo en un segundo argumento, para <code>R</code> sepa el formato de fecha que le estamos pasando</p>
+<div class="sourceCode" id="cb503"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"10-03-2020"</span>, <span class="st">"%d-%m-%Y"</span><span class="op">)</span> <span class="co"># con día-mes-año (4 cifras)</span></code></pre></div>
+<pre><code>## [1] "2020-03-10"</code></pre>
+<div class="sourceCode" id="cb505"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"10-03-20"</span>, <span class="st">"%d-%m-%y"</span><span class="op">)</span>  <span class="co"># con día-mes-año (2 cifras)</span></code></pre></div>
+<pre><code>## [1] "2020-03-10"</code></pre>
+<div class="sourceCode" id="cb507"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"03-10-2020"</span>, <span class="st">"%m-%d-%Y"</span><span class="op">)</span> <span class="co"># con mes-día-año (4 cifras)</span></code></pre></div>
+<pre><code>## [1] "2020-03-10"</code></pre>
+<div class="sourceCode" id="cb509"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"Octubre 21, 1995 21:24"</span>, <span class="st">"%B %d, %Y %H:%M"</span><span class="op">)</span> <span class="co"># fecha escrita</span></code></pre></div>
+<pre><code>## [1] NA</code></pre>
+<div class="rmdcaution">
+<p><strong><span style="color: #dc3545;">Sin pasar a fecha no se puede operar</span></strong></p>
+<p>Si tenemos una fecha como caracter, nunca podremos hacer operaciones (por ejemplo, restarle una unidad temporal, en este caso un día).</p>
+<div class="sourceCode" id="cb511"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="st">"2021-03-10"</span> <span class="op">-</span> <span class="fl">1</span> <span class="co"># error</span></code></pre></div>
+<pre><code>## Error in "2021-03-10" - 1: argumento no-numérico para operador binario</code></pre>
+<p>Fíjate la diferencia cuando lo convertimos en fecha</p>
+<div class="sourceCode" id="cb513"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">fecha</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"2021-03-10"</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span> <span class="co"># día previo</span>
+<span class="va">fecha</span></code></pre></div>
+<pre><code>## [1] "2021-03-09"</code></pre>
+<p>Aunque aparentemente parezca una cadena de texto, prueba a ejecutar <code><a href="https://rdrr.io/r/base/class.html">unclass(fecha)</a></code> para comprobar que tiene internamente guardado.</p>
+<div class="sourceCode" id="cb515"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">unclass</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 18695</code></pre>
+<div class="sourceCode" id="cb517"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">unclass</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"1969-01-01"</span><span class="op">)</span><span class="op">)</span> <span class="co"># un año antes de la referencia a partir de la cual cuenta días</span></code></pre></div>
+<pre><code>## [1] -365</code></pre>
+</div>
+<div class="rmdimportant">
+<p><strong><span style="color: #20935E;">Paquete lubridate</span></strong></p>
+<p>Dentro del entorno <a href="https://tidyverse.tidyverse.org">tidyverse</a>, el paquete <a href="https://lubridate.tidyverse.org">lubridate</a> nos permite una gestión mucho más intuitiva de las fechas</p>
+<div class="sourceCode" id="cb519"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"lubridate"</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://lubridate.tidyverse.org">lubridate</a></span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb520"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="http://lubridate.tidyverse.org/reference/ymd_hms.html">ymd_hms</a></span><span class="op">(</span><span class="st">"2017-11-28T14:02:00"</span><span class="op">)</span> <span class="co"># convertir a fecha una cadena año-mes-día + hora</span></code></pre></div>
+<pre><code>## [1] "2017-11-28 14:02:00 UTC"</code></pre>
+<div class="sourceCode" id="cb522"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="http://lubridate.tidyverse.org/reference/ymd_hms.html">ydm_hms</a></span><span class="op">(</span><span class="st">"2017-22-12 10:00:00"</span><span class="op">)</span> <span class="co"># convertir a fecha una cadena año-día-mes + hora</span></code></pre></div>
+<pre><code>## [1] "2017-12-22 10:00:00 UTC"</code></pre>
+<div class="sourceCode" id="cb524"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="http://lubridate.tidyverse.org/reference/ymd_hms.html">dmy_hms</a></span><span class="op">(</span><span class="st">"1 Jan 2017 23:59:59"</span><span class="op">)</span> <span class="co"># convertir a fecha una cadena textual de fecha + hora</span></code></pre></div>
+<pre><code>## [1] "2017-01-01 23:59:59 UTC"</code></pre>
+<div class="sourceCode" id="cb526"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="http://lubridate.tidyverse.org/reference/ymd.html">mdy</a></span><span class="op">(</span><span class="st">"July 4th, 2000"</span><span class="op">)</span> <span class="co"># convertir a fecha una cadena textual de fecha</span></code></pre></div>
+<pre><code>## [1] "2000-07-04"</code></pre>
+<div class="sourceCode" id="cb528"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="http://lubridate.tidyverse.org/reference/ymd.html">ymd</a></span><span class="op">(</span><span class="fl">20170131</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "2017-01-31"</code></pre>
+</div>
+<p>En dicho paquete tienes muchas <strong>funcionalidades para trabajar con fechas</strong>. Ver <a href="https://lubridate.tidyverse.org/" class="uri">https://lubridate.tidyverse.org/</a>.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:lubridate"></span>
+<img src="img/lubridate.png" alt="Paquete lubridate." width="95%"><p class="caption">
+Imagen/gráfica 8.2: Paquete lubridate.
+</p>
+</div>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:unnamed-chunk-193">Tabla 8.2: </span>Paquetes mencionados hasta ahora</caption>
+<thead><tr class="header">
+<th align="left">paquetes</th>
+<th align="left">descripción</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">{base}</td>
+<td align="left">utilidades básicas</td>
+</tr>
+<tr class="even">
+<td align="left">{bookdown}</td>
+<td align="left">creación de libros, manuales e informes en R</td>
+</tr>
+<tr class="odd">
+<td align="left">{glue}</td>
+<td align="left">manejo de texto literal</td>
+</tr>
+<tr class="even">
+<td align="left">{stringr}</td>
+<td align="left">manejo complejo de cadenas de texto</td>
+</tr>
+<tr class="odd">
+<td align="left">{lubridate}</td>
+<td align="left">manejo de fechas</td>
+</tr>
+<tr class="even">
+<td align="left">{microbenchmark}</td>
+<td align="left">comparativa de tiempos de ejecución</td>
+</tr>
+<tr class="odd">
+<td align="left">{tibble}</td>
+<td align="left">data.frames eficientes</td>
+</tr>
+<tr class="even">
+<td align="left">{datasets}</td>
+<td align="left">conjuntos de datos</td>
+</tr>
+<tr class="odd">
+<td align="left">{readr}</td>
+<td align="left">lectura de datos rectangulares (tablas)</td>
+</tr>
+<tr class="even">
+<td align="left">{tidyverse}</td>
+<td align="left">entorno de paquetes para el manejo de datos</td>
+</tr>
+<tr class="odd">
+<td align="left">{readxl}</td>
+<td align="left">lectura de datos en formato excel</td>
+</tr>
+<tr class="even">
+<td align="left">{rvest}</td>
+<td align="left">lectura de datos web</td>
+</tr>
+</tbody>
+</table></div>
+<p>El paquete <a href="https://lubridate.tidyverse.org">lubridate</a> nos proporciona <strong>herramientas para extraer la fecha y hora actuales</strong> con las funciones <code><a href="http://lubridate.tidyverse.org/reference/now.html">today()</a></code> y <code><a href="http://lubridate.tidyverse.org/reference/now.html">now()</a></code></p>
+<div class="sourceCode" id="cb530"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="http://lubridate.tidyverse.org/reference/now.html">today</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "2021-09-21"</code></pre>
+<div class="sourceCode" id="cb532"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="http://lubridate.tidyverse.org/reference/now.html">now</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "2021-09-21 13:41:21 CEST"</code></pre>
+<p>Además tenemos disponibles en dicho paquete funciones para extraer facilmente algunas variables temporales como el día de la semana, el mes o el cuatrimestre, con las funciones <code><a href="http://lubridate.tidyverse.org/reference/year.html">year()</a></code>, <code><a href="https://rdrr.io/r/base/weekday.POSIXt.html">months()</a></code>, <code><a href="http://lubridate.tidyverse.org/reference/day.html">day()</a></code> o <code><a href="http://lubridate.tidyverse.org/reference/day.html">wday()</a></code> (día de la semana).</p>
+<div class="sourceCode" id="cb534"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">fecha</span> <span class="op">&lt;-</span> <span class="fu"><a href="http://lubridate.tidyverse.org/reference/now.html">now</a></span><span class="op">(</span><span class="op">)</span>
+<span class="fu"><a href="http://lubridate.tidyverse.org/reference/year.html">year</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 2021</code></pre>
+<div class="sourceCode" id="cb536"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="http://lubridate.tidyverse.org/reference/month.html">month</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 9</code></pre>
+<div class="sourceCode" id="cb538"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="http://lubridate.tidyverse.org/reference/day.html">day</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 21</code></pre>
+<div class="sourceCode" id="cb540"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="http://lubridate.tidyverse.org/reference/day.html">wday</a></span><span class="op">(</span><span class="va">fecha</span>, week_start <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="co"># Día de la semana (empezando por el lunes)</span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<div class="sourceCode" id="cb542"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="http://lubridate.tidyverse.org/reference/hour.html">hour</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 13</code></pre>
+<div class="sourceCode" id="cb544"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="http://lubridate.tidyverse.org/reference/minute.html">minute</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 41</code></pre>
+<div class="sourceCode" id="cb546"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="http://lubridate.tidyverse.org/reference/second.html">second</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 21.78808</code></pre>
+<div class="sourceCode" id="cb548"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="http://lubridate.tidyverse.org/reference/week.html">week</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span> <span class="co"># Número de semana (del año)</span></code></pre></div>
+<pre><code>## [1] 38</code></pre>
+<p>Al igual que podemos realizar operaciones aritméticas sencillas con las fechas, también podemos <strong>realizar comparaciones</strong>, por ejemplo, si el día actual es menor o mayor que otra fecha dada.</p>
+<div class="sourceCode" id="cb550"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">fecha_actual</span> <span class="op">&lt;-</span> <span class="fu"><a href="http://lubridate.tidyverse.org/reference/now.html">now</a></span><span class="op">(</span><span class="op">)</span>
+<span class="va">fecha_actual</span> <span class="op">&gt;</span> <span class="fu"><a href="http://lubridate.tidyverse.org/reference/ymd.html">ymd</a></span><span class="op">(</span><span class="fl">20170131</span><span class="op">)</span> <span class="co"># Actual vs 2017-01-31</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb552"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">fecha_actual</span> <span class="op">&gt;</span> <span class="fu"><a href="http://lubridate.tidyverse.org/reference/ymd.html">ymd</a></span><span class="op">(</span><span class="fl">21000131</span><span class="op">)</span> <span class="co"># Actual vs 2100-01-31</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+</div>
+<div id="ejercicios-3" class="section level2">
+<h2>
+<span class="header-section-number">8.4</span> 📝 Ejercicios<a class="anchor" aria-label="anchor" href="#ejercicios-3"><i class="fas fa-link"></i></a>
+</h2>
+<details><p><summary><strong>Ejercicio 1</strong>: define una lista de 4 elementos de tipos distintos y accede al segundo de ellos (yo incluiré uno que sea un <code>data.frame</code> para que veas que en una lista cabe de todo).</summary></p>
+<!-- toc -->
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb554"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Ejemplo: lista con texto, numérico, lógico y un data.frame</span>
+<span class="va">lista_ejemplo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"nombre"</span> <span class="op">=</span> <span class="st">"Javier"</span>, <span class="st">"cp"</span> <span class="op">=</span> <span class="fl">28019</span>,
+                      <span class="st">"soltero"</span> <span class="op">=</span> <span class="cn">TRUE</span>,
+                      <span class="st">"notas"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="st">"mates"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">7.5</span>, <span class="fl">8</span>, <span class="fl">9</span><span class="op">)</span>,
+                                           <span class="st">"lengua"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">5</span>, <span class="fl">6</span><span class="op">)</span>,
+                                           <span class="st">"gimnasia"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">8</span>, <span class="fl">6</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<span class="va">lista_ejemplo</span></code></pre></div>
+<pre><code>## $nombre
+## [1] "Javier"
+## 
+## $cp
+## [1] 28019
+## 
+## $soltero
+## [1] TRUE
+## 
+## $notas
+##   mates lengua gimnasia
+## 1   7.5     10        4
+## 2   8.0      5        8
+## 3   9.0      6        6</code></pre>
+<div class="sourceCode" id="cb556"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Longitud</span>
+<span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">lista_ejemplo</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<div class="sourceCode" id="cb558"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Accedemos al elemento dos</span>
+<span class="va">lista_ejemplo</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span></code></pre></div>
+<pre><code>## [1] 28019</code></pre>
+</details><p> </p>
+<details><p><summary><strong>Ejercicio 2</strong>: accede a los elementos que ocupan los lugares 1 y 4 de la lista definida anteriormente.</summary></p>
+<!-- toc -->
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb560"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Accedemos al 1 y al 4</span>
+<span class="va">lista_ejemplo</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">4</span><span class="op">)</span><span class="op">]</span></code></pre></div>
+<pre><code>## $nombre
+## [1] "Javier"
+## 
+## $notas
+##   mates lengua gimnasia
+## 1   7.5     10        4
+## 2   8.0      5        8
+## 3   9.0      6        6</code></pre>
+<p>Otra opción es acceder con los nombres</p>
+<div class="sourceCode" id="cb562"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Accedemos al 1 y al 4</span>
+<span class="va">lista_ejemplo</span><span class="op">$</span><span class="va">nombre</span></code></pre></div>
+<pre><code>## [1] "Javier"</code></pre>
+<div class="sourceCode" id="cb564"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">lista_ejemplo</span><span class="op">$</span><span class="va">notas</span></code></pre></div>
+<pre><code>##   mates lengua gimnasia
+## 1   7.5     10        4
+## 2   8.0      5        8
+## 3   9.0      6        6</code></pre>
+</details><p> </p>
+<details><p><summary><strong>Ejercicio 3</strong>: define una lista de 4 elementos que contenga, en una sola variable, tu nombre, apellido, edad (como dato numérico) y si estás soltero/a.</summary></p>
+<!-- toc -->
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb566"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://lubridate.tidyverse.org">lubridate</a></span><span class="op">)</span>
+<span class="co"># Creamos lista: con lubridate calculamos la diferencia de años desde la fecha de nuestro nacimiento hasta hoy (sea cuando sea hoy)</span>
+<span class="va">lista_personal</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"nombre"</span> <span class="op">=</span> <span class="st">"Javier"</span>,
+                       <span class="st">"apellidos"</span> <span class="op">=</span> <span class="st">"Álvarez Liébana"</span>,
+                       <span class="st">"edad"</span> <span class="op">=</span> <span class="fu"><a href="http://lubridate.tidyverse.org/reference/time_length.html">time_length</a></span><span class="op">(</span><span class="fu"><a href="http://lubridate.tidyverse.org/reference/interval.html">interval</a></span><span class="op">(</span><span class="fu"><a href="http://lubridate.tidyverse.org/reference/ymd.html">ymd</a></span><span class="op">(</span><span class="st">"1989-09-10"</span><span class="op">)</span>, <span class="fu"><a href="http://lubridate.tidyverse.org/reference/ymd.html">ymd</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>, unit <span class="op">=</span> <span class="st">"years"</span><span class="op">)</span>,
+                       <span class="st">"soltero"</span> <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="va">lista_personal</span></code></pre></div>
+<pre><code>## $nombre
+## [1] "Javier"
+## 
+## $apellidos
+## [1] "Álvarez Liébana"
+## 
+## $edad
+## [1] 32.03014
+## 
+## $soltero
+## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb568"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Otra opción: la edad calculada con floor (quita decimales y se queda con la parte entera)</span>
+<span class="va">lista_personal</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"nombre"</span> <span class="op">=</span> <span class="st">"Javier"</span>,
+                       <span class="st">"apellidos"</span> <span class="op">=</span> <span class="st">"Álvarez Liébana"</span>,
+                       <span class="st">"edad"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">floor</a></span><span class="op">(</span><span class="fu"><a href="http://lubridate.tidyverse.org/reference/time_length.html">time_length</a></span><span class="op">(</span><span class="fu"><a href="http://lubridate.tidyverse.org/reference/interval.html">interval</a></span><span class="op">(</span><span class="fu"><a href="http://lubridate.tidyverse.org/reference/ymd.html">ymd</a></span><span class="op">(</span><span class="st">"1989-09-10"</span><span class="op">)</span>, <span class="fu"><a href="http://lubridate.tidyverse.org/reference/ymd.html">ymd</a></span><span class="op">(</span><span class="fu"><a href="http://lubridate.tidyverse.org/reference/now.html">today</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>, unit <span class="op">=</span> <span class="st">"years"</span><span class="op">)</span><span class="op">)</span>,
+                       <span class="st">"soltero"</span> <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="va">lista_personal</span></code></pre></div>
+<pre><code>## $nombre
+## [1] "Javier"
+## 
+## $apellidos
+## [1] "Álvarez Liébana"
+## 
+## $edad
+## [1] 32
+## 
+## $soltero
+## [1] TRUE</code></pre>
+</details>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="importar_exportar.html"><span class="header-section-number">7</span> Importando/exportando</a></div>
+<div class="next"><a href="FUNCIONES.html"><span class="header-section-number">9</span> Creación de funciones</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#otros_datos"><span class="header-section-number">8</span> Listas y factores</a></li>
+<li><a class="nav-link" href="#listas"><span class="header-section-number">8.1</span> Listas</a></li>
+<li><a class="nav-link" href="#factores"><span class="header-section-number">8.2</span> Factores</a></li>
+<li><a class="nav-link" href="#fechas-y-horas"><span class="header-section-number">8.3</span> Fechas y horas</a></li>
+<li><a class="nav-link" href="#ejercicios-3"><span class="header-section-number">8.4</span> 📝 Ejercicios</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/dadosdelaplace/cursoR_intro_2021_2022/blob/master/08-otro_tipo_datos.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/dadosdelaplace/cursoR_intro_2021_2022/edit/master/08-otro_tipo_datos.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 21-09-2021.</p>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
-<script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": {
-"github": true,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["Intro_R_2021_2022.pdf"],
-"search": {
-"engine": "lunr",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
-});
-});
-</script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -336,7 +870,22 @@ gitbook.start({
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
 </script>
 </body>
-
 </html>

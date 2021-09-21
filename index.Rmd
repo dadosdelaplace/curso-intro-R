@@ -25,11 +25,18 @@ header-includes:
 - \usepackage{multicol}
 - \usepackage{threeparttable}
 - \usepackage{caption}
-description: "Manual básico e introductorio de R diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM), elaborado por Javier Álvarez Liébana"
+description: "Introducción a R desde cero. Curos elaborado por Javier Álvarez Liébana"
 cover-image: img/logo_R.png
 ---
 
-```{r knitr-package, echo = FALSE}
+```{r settings, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, 
+                      dev = "ragg_png", res = 600, retina = 2,
+                      fig.width = 15, fig.height = 8.5)
+Sys.setlocale("LC_TIME", "C")
+```
+
+```{r color, echo = FALSE}
 library(knitr)
 
 # Color text
@@ -49,11 +56,9 @@ colorize <- function(x, color) {
 
 # Prefacio {-}
 
-Este manual ha sido diseñado para la asignatura de Descripción y Exploración de Datos del grado de Estadística Aplicada (UCM), y está elaborado por [Javier Álvarez Liébana](twitter.com/dadosdelaplace).
+Este curso ha sido diseñado por [Javier Álvarez Liébana](https://dadosdelaplace.com) y pensado para introducir en el lenguaje `R` a todas aquellas personas que nunca hayan programado en él y/o en ningún otro lenguaje. Dicho manual ha sido elaborado a su vez en `R` con [{bookdown}](https://github.com/rstudio/bookdown). Puedes ver un resumen de las funcionalidades algunos paquetes documentados por el equipo de [R Studio](https://www.rstudio.com/) en sus [esquemas resumen](https://www.rstudio.com/resources/cheatsheets/). El **código** de dicho manual se encuentra en GitHub (https://github.com/dadosdelaplace/cursoR_intro_2021_2022).
 
-Dicho manual ha sido elaborado a su vez en `R` con [{bookdown}](https://github.com/rstudio/bookdown). Puedes ver un resumen de las funcionalidades algunos paquetes documentados por el equipo de [R Studio](https://www.rstudio.com/) en sus [esquemas resumen](https://www.rstudio.com/resources/cheatsheets/). El **código** de dicho manual se encuentra en GitHub (https://github.com/dadosdelaplace/cursoR_intro_2021_2022).
-
-```{r me-github, echo = FALSE, fig.align = 'center',  include = identical(knitr:::pandoc_to(), 'html'), fig.link = 'https://github.com/dadosdelaplace/cursoR_intro_2021_2022', out.width = '80%'}
+```{r me-github, echo = FALSE, fig.align = 'center',  include = identical(knitr:::pandoc_to(), 'html'), fig.link = 'https://github.com/dadosdelaplace/cursoR_intro_2021_2022', out.width = '70%'}
 knitr::include_graphics('img/me_github.jpg')
 ```
 
@@ -68,7 +73,7 @@ install.packages("bookdown")
 ```
 
 
-```{r hex-rmarkdown, echo = FALSE, fig.align = 'center',  include = identical(knitr:::pandoc_to(), 'html'), fig.link = 'https://github.com/rstudio/rmarkdown', out.width = '30%'}
+```{r hex-rmarkdown, echo = FALSE, fig.align = 'center',  include = identical(knitr:::pandoc_to(), 'html'), fig.link = 'https://github.com/rstudio/rmarkdown', out.width = '20%'}
 knitr::include_graphics('img/hex-rmarkdown.png')
 ```
 
@@ -76,15 +81,11 @@ knitr::include_graphics('img/hex-rmarkdown.png')
 
 ## Propósito {-}
 
-El **objetivo** de este tutorial es introducir a la programación y análisis estadístico en `R` a toda aquella persona que nunca se haya iniciado en él, **sin necesitar conocimientos previos** de programación (aunque siempre ayuda, obviamente). Con este manual no se pretende que adquieras un vasto y experto conocimiento de `R`, pero si lo suficiente como para lograr **5 objetivos**:
+El **objetivo** de este tutorial es introducir a la programación y análisis estadístico en `R` a toda aquella persona que nunca se haya iniciado en él, **sin necesitar conocimientos previos** de programación (aunque siempre ayuda, obviamente). Con este manual no se pretende que adquieras un vasto y experto conocimiento de `R`, pero si lo suficiente como para lograr **3 objetivos**:
 
 * **No tener miedo** a programar.
-* Ser capaces de abordar desde la programación (ya sea en `R` o en otro lenguaje) pequeños problemas, con el fin de saber **conceptualizarlos**.
-* Entender los **usos y costumbres del lenguaje `R`**
-* Darte pinceladas de sus posibilidades que te sirvan de trampolín para ir investigando por tu cuenta en el campo en el que lo vayas a aplicar.
+* Entender los **conceptos básicos de `R`** y dotarte de una autonomía muy básica para pdoer trabajar con datos.
 * Algunos **trucos sencillos** para que el trabajo sea más rápido, tanto en tiempo de escritura como de ejecución.
-* Hacer **enfásis en la importancia de la visualización de datos** en estadística.
-
 
 ## Requisitos {-}
 
@@ -92,30 +93,52 @@ El **objetivo** de este tutorial es introducir a la programación y análisis es
 
 * **Instalar R** (ver \@ref(instalacionR)). **`R` será nuestro lenguaje**, nuestro diccionario, nuestro castellano, nuestra ortografía para poder «comunicarnos» con el ordenador. <https://cran.r-project.org/>
 
-* **Instalar RStudio** (ver \@ref(instalacionRStudio)). De la misma manera que podemos escribir el mismo texto en castellano en una tablet, en un ordenador, en un Word, en un papel o en un tuit, en programación podemos usar distintos IDE (**entornos de desarrollo integrados**, nuestro Office), para que el trabajo sea más cómodo. Nosotros trabajaremos con `RStudio`.
+* **Instalar `R Studio`** (ver \@ref(instalacionRStudio)). De la misma manera que podemos escribir el mismo texto en castellano en una tablet, en un ordenador, en un Word, en un papel o en un tuit, en programación podemos usar distintos **IDE (entornos de desarrollo integrados, nuestro Office)**, para que el trabajo sea más cómodo. Nosotros trabajaremos con `RStudio`.
 
-```{r rstudio-ide, echo = FALSE, fig.align = 'center',  include = identical(knitr:::pandoc_to(), 'html'), fig.link = 'https://www.rstudio.com/products/rstudio/download/#download', out.width = '90%'}
+```{r rstudio-ide, echo = FALSE, fig.align = 'center',  include = identical(knitr:::pandoc_to(), 'html'), fig.link = 'https://www.rstudio.com/products/rstudio/download/#download', out.width = '75%'}
 knitr::include_graphics('img/rstudio_cheetsheet.jpg')
 ```
 
 Todo lo necesario para seguir este curso es de **descarga gratuita**: viva el software libre, abajo Excel.
 
 
-## Emojis {-} 
+## Código de colores {-} 
 
-![](img/logo_info.png){width=4%}  **Info**: siempre que veas el **icono de la bombilla** encontrarás consejos o tips para ampliar y facilitar tu programación. Además en cada **cajita de código**, si pasas el ratón, encontrarás un botón en la esquina superior derecha de la caja para copiar el código directamente a tu consola.
 
-&nbsp;  
+::: {.rmdcaution}
 
-📝 **Ejercicios**: siempre que veas el **icono de un documento escrito** encontrarás ejercicios con soluciones para que vayas afianzando conceptos (una de las soluciones, normalmente siempre habrá muchas formas distintas de realizar la misma tarea, prioriza la más sencilla y limpia).
+En los **`r colorize("recuadros rojos", "#dc3545")`** encontrarás **errores comunes** o prácticas que no deberías hacer.
 
-&nbsp;  
+:::
 
-📄📄 **Copiar código**: siempre que veas el **icono de dos documentos** en las **cajas de código** (aparecen al pasar el ratón), podrás hacer click para copiar directamente el código que haya dentro.
+::: {.rmdwarning}
 
-&nbsp;
+En los **`r colorize("recuadros naranjas", "#ffc107")`** encontrarás **warnings o advertencias** sobre cosas a tener en cuenta para evitar problemas.
 
-📚 **Glosario**: siempre que veas la pila de libros encontrarás una **sección de glosario con algunos términos estadísticos y conceptos básicos**.
+:::
+
+::: {.rmdwarning}
+
+**`r colorize("Anular warnings", "#ffc107")`**
+
+Algunas funciones pueden arrojarse ciertas advertencias que nunca está de más leer. Pero si dichos mensajes de alerta los tenemos controlados y no queremos que nos ensucie la ejecución en la consola, podemos poner al inicio del código ` assign("last.warning", NULL, envir = baseenv())` para limpiar los warnings antiguos y `options(warn = -1)` para desactivarlos.
+
+:::
+
+
+::: {.rmdimportant}
+
+En los **`r colorize("recuadros verdes", "#20935E")`** encontrarás consejos o tips para ampliar y facilitar tu programación. Además en cada **cajita de código**, si pasas el ratón, encontrarás un botón 📄📄 en la esquina superior derecha de la caja para copiar el código directamente a tu consola. **Puedes encontrarlos todos escribiendo «consejo» en el buscador**.
+
+:::
+
+
+::: {.rmdnote}
+
+En los **`r colorize("recuadros azules", "#4197D2")`** encontrarás un 📚 **glosario** con algunos términos estadísticos y conceptos básicos.
+::: 
+
+
  
 ## Sobre el autor {-}
 
@@ -123,12 +146,10 @@ Esto de presentarse a sí mismo es siempre un poco raro pero vamos a intentarlo.
 
 Además de **investigador** (con plaza y acreditación de Ayudante Doctor en la Facultad de Estudios Estadísticos de la Universidad Complutense de Madrid, tras ocupar dicha plaza en la Universidad de Oviedo), soy **docente** en dicha facultad y ando intentando eso de la **divulgación en estadística y dataviz** (visualización de datos) en redes sociales
 
-🐦 [Twitter](twitter.com/dadosdelaplace)  
-📸 [Instagram](instagram.com/javieralvarezliebana)  
+🎲 [Web](https://dadosdelaplace.com)  
+🐦 [Twitter](https://twitter.com/dadosdelaplace)  
+📸 [Instagram](https://instagram.com/javieralvarezliebana)  
 
-```{r me, echo = FALSE, fig.align = 'center',  include = identical(knitr:::pandoc_to(), 'html'), fig.link = 'https://instagram.com/javieralvarezliebana', out.width = '50%'}
-knitr::include_graphics('img/me.jpeg')
-```
 
 ## Licencia {-}
 

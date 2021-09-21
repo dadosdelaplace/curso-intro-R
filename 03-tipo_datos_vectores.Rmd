@@ -1,6 +1,30 @@
+```{r echo = FALSE}
+library(knitr)
+
+# Color text
+colorize <- function(x, color) {
+  
+  if (knitr::is_latex_output()) {
+    
+    sprintf("\\textcolor{%s}{%s}", color, x)
+    
+  } else if (knitr::is_html_output()) {
+    
+    sprintf("<span style='color: %s;'>%s</span>", color, x)
+    
+  } else { x }
+}
+```
+
 # (PART) Conceptos básicos {-}
 
 # Tipos de datos I: vectores
+
+::: {.rmdimportant}
+**`r colorize("CONSEJO: recuperar un comando y autocompletar", "#20935E")`**
+
+Si haces click con el ratón en la consola y pulsas la flecha «arriba» del teclado, te irá apareciendo todo el **historial de órdenes ejecutadas**. Es una manera de ahorrar tiempo para ejecutar órdenes similares. Si empiezas a escribir el nombre de una variable pero no te acuerdas exactamente de su nombre, si pulsas **tabulador**, `R` te **autocompletará** solo (prueba a escribir solo `variab` y pulsa tabulador)
+:::
 
 Bien, ya controlamos la calculadora. Vamos a ir más allá: ¿y si en lugar de tener un solo número tenemos un **CONJUNTO de elementos**? En este capítulo vamos a ver un clásico de cualquier lenguaje de programación: los **vectores o arrays**.
 
@@ -8,7 +32,9 @@ Bien, ya controlamos la calculadora. Vamos a ir más allá: ¿y si en lugar de t
 
 ## Vectores numéricos
 
-Un conjunto de elementos del mismo tipo se llama **vector** (en este caso de números), y de hecho un número individual (por ejemplo, `1`) es en realidad un vector de longitud uno (un solo elemento).
+::: {.rmdnote}
+Un conjunto de elementos del mismo tipo se llama **`r colorize("vector", "#4197D2")`** (en este caso de números), y de hecho un número individual (por ejemplo, `1`) es en realidad un vector de longitud uno (un solo elemento).
+:::
 
 La forma más sencilla de **crear un vector** en `R` es con el comando `c()` (de **concatenar elementos**), y basta con introducir sus elementos entre paréntesis, y separados por comas. Vamos a crear el vector con los tres primeros números naturales pares (el 0 no es natural, no seas bárbaro/a).
 
@@ -17,7 +43,7 @@ z <- c(2, 4, 6)
 z
 ```
 
-Como ves ahora en el **environment tenemos una colección de elementos**, tres en concreto, guardados en una misma variable. La longitud de un vector se puede calcular con el comando `length()`.
+Como ves ahora en el **environment tenemos una colección de elementos**, tres en concreto, guardados en una misma variable `z`. La longitud de un vector se puede calcular con el comando `length()` (nos devolverá el número de elementos de la variable que le pasemos como argumento).
 
 ```{r}
 length(z)
@@ -29,14 +55,14 @@ Además podemos **concatenar a su vez vectores**: vamos a concatenar el vector `
 c(z, z, 8)
 ```
 
-La última concatenación lo que nos ha dado son los tres primeros pares, después de nuevo los tres primeros pares, y por último un 8.
+Esta última concatenación lo que nos ha dado son, primero, los tres pares que ya teníamos en `z`, después de nuevo los tres primeros pares, y por último un 8.
 
 
-### Secuencias con un patrón
+## Secuencias con un patrón
 
-Muchas veces nos gustaría **crear vectores de una forma mucho más rápida**, por ejemplo, para tener un vector de índices que queramos recorrer. Supongamos que queremos el vector de los primeros 21 números naturales. Si construyéramos el vector como antes, tendríamos ejecutar el comando `c(1, 2, 3, 4, 5, ...)` hasta el número 21. ¿Un poco largo, no?
+Muchas veces nos gustaría **crear vectores de una forma mucho más rápida**. Supongamos que queremos el vector de los primeros 21 números naturales. Si construyéramos el vector como antes, tendríamos que ejecutar el comando `c(1, 2, 3, 4, 5, ...)` hasta llegar al número 21. ¿Un poco largo, no?
 
-El comando `seq()` nos permite crear una **secuencia desde un elemento inicial hasta un elemento final, avanzando de uno en uno**.
+Hay un atajo: el comando `seq()` nos permite crear una **secuencia desde un elemento inicial hasta un elemento final, avanzando de uno en uno**.
 
 ```{r}
 seq(1, 21) # secuencia desde 1 hasta 21 de uno en uno
@@ -47,25 +73,27 @@ Es importante que no perdamos el foco de que **programar es similar a escribir e
 ```{r}
 n <- 21
 1:n # secuencia desde 1 hasta n (21) de uno en uno
-17:1 # secuencia decreciente de 17 a 1
+n:1 # secuencia decreciente
 ```
 
 
 &nbsp;
 
-También podemos definir **otro tipo de distancia entre dos elementos consecutivos** (conocido como **paso de discretización**), por ejemplo de 0.5 en 0.5, o bien definir una secuencia entre un valor inicial y un valor final con un número de elementos fijo (y que sea `R` el que decida la distancia entre elementos consecutivos).
+También podemos definir **otro tipo de distancia entre dos elementos consecutivos** (conocido como **paso de discretización**), por ejemplo de 0.5 en 0.5.
 
 ```{r}
 seq(1, 10, by = 0.5) # secuencia desde 1 a 10 de 0.5 en 0.5
 ```
 
+Otras veces nos interesará definir una secuencia entre un valor inicial y un valor final, pero nos da igual la distancia entre cada elemento: solo nos importa que tenga un número concreto de elementos (y que sea `R` el que decida la distancia entre elementos consecutivos para conseguirlo).
+
 ```{r}
-seq(1, 50, l = 11) # secuencia desde 1 a 100 de longitud 11
+seq(1, 50, l = 11) # secuencia desde 1 a 50 de longitud 11
 ```
 
 &nbsp;
 
-Otro atajo que podemos usar para definir secuencias de números con un patrón es definir **vectores repetidos**, por ejemplo un vector lleno de 0, para luego ser rellenado (pero ya tenerlo definido). La función `rep()` nos permite repetir un elemento un número fijado de veces.
+Otro atajo que podemos usar para definir secuencias de números con un patrón es definir **vectores repetidos**, por ejemplo un vector lleno de ceros. La función `rep()` nos permite repetir un elemento un número fijado de veces.
 
 ```{r}
 rep(0, 7) # vector de 7 ceros
@@ -86,39 +114,61 @@ rep(c(0, 1, 2), each = 4) # cuatro 0, luego cuatro 1, luego cuatro 2
 
 ## Operaciones aritméticas con vectores numéricos
 
-Hemos dicho que un número es un vector de longitud 1, así que **toda operación aritmética** que podamos hacer con un número la vamos a poder a hacer con un vector de números, de forma que si hacemos por ejemplo la operación `2 * z`, lo que sucederá es **CADA ELEMENTO del vector** será multiplicado 2. De la misma manera se pueden definir sumas `z + x`, raíces cuadradas `sqrt(z)` o elevar cada elemento al cuadrado `z^2`.
+Hemos dicho que un número es un vector de longitud 1, así que **toda operación aritmética** que podamos hacer con un número la vamos a poder a hacer con un vector de números, de forma que si hacemos por ejemplo la operación `2 * z`, lo que sucederá es que **CADA ELEMENTO del vector** será multiplicado por 2. De la misma manera se pueden definir sumas `z + x`, raíces cuadradas `sqrt(z)` o elevar cada elemento al cuadrado `z^2`.
 
 
 ```{r}
+# Multiplicamos por 2 a CADA ELEMENTO del vector
 z <- c(2, 4, 6)
 2 * z
 ```
 
 
 ```{r}
-x <- 1 + 2
-z + x
+# Sumamos 3 a CADA ELEMENTO DEL VECTOR
+z + 3
 ```
 
 ```{r}
+# Hacemos la raíz cuadrada de CADA ELEMENTO DEL VECTOR
 sqrt(z)
 ```
 
 ```{r}
+# Elevamos al cuadrado CADA ELEMENTO DEL VECTOR
 z^2
 ```
 
-Dado que la operación (por ejemplo, una suma) se realiza elemento a elemento, **¿qué sucederá si sumamos dos vectores de distinta longitud?** Prueba a definir un vector con los 4 primeros imparos y súmale a z.
+::: {.rmdimportant}
+**`r colorize("CONSEJO", "#20935E")`**
+
+Esto último, aunque parezca banal, es bastante importante que no se te olvide ya que en otros lenguajes no siempre es así. En `R`, salvo que especifiquemos lo contrario, **toda operación ARITMÉTICA que hagas a un vector será elemento a elemento**: si multiplicas dos matrices, la operación la realizará elemento a elemento, no como la multiplicación matricial que quizás te enseñaran en matemáticas (once upon a time...)
+:::
+
+Dado que la operación (por ejemplo, una suma) se realiza elemento a elemento, **¿qué sucederá si sumamos dos vectores de distinta longitud?** Prueba a definir un vector con los 4 primeros impares, e intentar hacer la suma `z + y` (un vector de longitud 3 más un vector de longitud 4).
 
 
 ```{r}
 y <- c(1, 3, 5, 7)
-variable_suma <- z + y
-variable_suma
+z + y
 ```
 
-Como ves, `R` intenta molestarte lo menos posible, así que lo hace es reciclar: si tiene un vector de 4 elementos y le intentas sumar uno de 3 elementos, lo que hará será **reciclar** elementos del vector con menor longitud: hará `1+2`, `3+4`, `5+6` pero... `7+2` (vuelve al primer par).   
+`R` intenta molestarte lo menos posible, así que lo que hace es reciclar: si tiene un vector de 4 elementos y le intentas sumar uno de 3 elementos, lo que hará será **reciclar** elementos del vector con menor longitud: hará `1+2`, `3+4`, `5+6` pero... `7+2` (vuelve al primero).   
 
+
+::: {.rmdimportant}
+
+**`r colorize("CONSEJO: diferencia de conjuntos", "#20935E")`**
+
+Una función muy útil para ver las **diferencias entre dos conjuntos** es `setdiff()`, una función que nos devuelve los elementos distintos entre dos conjuntos.
+
+```{r}
+y <- 1:10
+z <- c(1, 3, 7, 10)
+setdiff(y, z) # Elementos en y que no están en z 
+```
+
+:::
 
 ## Operaciones estadísticas con vectores numéricos
 
@@ -147,7 +197,33 @@ y <- c(1, 2, 5, 5, 8, 9, 10, 10, 10, 11, 13, 15, 20, 23, 24, 29)
 quantile(y, probs = c(0.15, 0.3, 0.7, 0.9)) # Percentiles p15, p30, p70 y p90
 ```
 
-Ver conceptos básicos en \@ref(glosario3).
+::: {.rmdimportant}
+
+**`r colorize("CONSEJO", "#20935E")`**
+
+Como has podido comprobar, este otro tipo de **operaciones ESTADÍSTICAS no se realizan elemento a elemento**: la media o la suma las realiza tomando todos los elementos del vector.
+:::
+
+
+::: {.rmdnote}
+* **`r colorize("Media", "#4197D2")`**: medida de centralización que consiste en sumar todos los elementos y dividirlos entre la cantidad de elementos sumados. A pesar de ser la más conocida, la media es **muy poco robusta**: dado un conjunto, si se introducen **valores atípicos o outliers** (valores muy grandes o muy pequeños), la media se perturbar con mucha facilidad. Dado un vector de valores $x = (x_1, \ldots, x_n)$, se denota como $\overline{x}$.
+
+$$\overline{x} = \frac{\displaystyle \sum_{i=1}^{n}x_i}{n}$$
+:::
+
+::: {.rmdnote}
+* **`r colorize("Mediana", "#4197D2")`**: medida de centralización que consiste en, tras ordenar los datos de menor a mayor, quedarnos con el valor que ocupa el medio (deja tantos números por debajo como por encima). Más robusta que la media aunque menos la moda. Dado un vector de valores $x = (x_1, \ldots, x_n)$, se denota como $Me_x$.
+
+$$Me_x = \displaystyle \arg \min_{x_i} \left\lbrace F_i > 0.5 \right\rbrace, \quad F_i = \frac{\#\left\lbrace x_j \leq x_i \right\rbrace}{n}$$
+:::
+
+::: {.rmdnote}
+* **`r colorize("Moda", "#4197D2")`**: medida de centralización que consiste en encontrar el valor más repetido (el valor _trending_). Es la medida de centralización más robusta. Dado un vector de valores $x = (x_1, \ldots, x_n)$, se denota como $Mo_x$.
+
+
+$$Mo_x = \displaystyle \arg \max_{x_i} f_i  , \quad f_i = \frac{\#\left\lbrace x_j = x_i \right\rbrace}{n}$$
+
+:::
 
 ## Vectores de caracteres (texto)
 
@@ -184,11 +260,15 @@ paste("variable", 1:7, sep = "_") # separado por una barra baja
 
 &nbsp;
 
+  
 Otra **forma más intuitiva de trabajar con textos y variables numéricas** es usar el paquete `{glue}`, que nos permite pegar cadenas de texto a variables numéricas de **forma simbólica**.
 
 ```{r eval = FALSE}
 install.packages("glue")
 library(glue)
+```
+
+```{r eval = FALSE}
 edad <- 10:15 # edades
 glue("La edad es de {edad} años")
 ```
@@ -199,33 +279,47 @@ edad <- 10:15 # edades
 glue("La edad es de {edad} años")
 ```
 
+También podemos hacer uso de dicha función sin tener los valores numéricos previamente guardados en variables.
 
 ```{r}
 # Otra forma sin definir variables a priori
 glue("La edad es de {10:15} años")
 ```
 
-
-&nbsp;
-
 Ya sabemos trabajar con textos :) 
 
-¿Y si queremos **pasar todo a mayúscula**? ¿O **todo a minúscula**? ¿Y si queremos **sustituir un caracter (por ejemplo `.`) por otro en todos los elementos**? `R` también nos proporciona algunas funciones muy sencillas de usar para dichas tareas. Aquí un ejemplo de algunas de ellas.
+¿Y si queremos **pasar todo a mayúscula**? ¿O **todo a minúscula**? ¿Y si queremos **sustituir un caracter (por ejemplo `.`) por otro en todos los elementos**? `R` también nos proporciona algunas funciones muy sencillas (del paquete `{base}`) de usar para dichas tareas. Aquí un ejemplo de algunas de ellas.
 
 ```{r}
 texto <- c("Hola.", "qué", "ase?", "todo", "bien.", "y yo",
            "que", "ME", "ALEGRO")
 toupper(texto) # todo a mayúscula
 tolower(texto) # todo a minúscula
+```
+
+El paquete `{base}` también nos permite buscar y reemplazar patrones concretos en cadenas de texta (por ejemplo, sustituir toda letra «o» por el caracter «*»).
+
+```{r}
 gsub("o", "*", texto) # toda "o" en el texto será sustituida por *
 ```
 
-&nbsp;
+Dentro del entorno de paquetes `{tidyverse}`, el paquete `{stringr}` permite un manejo más complejo de cadenas de texo (como el uso de expresiones regulares).
 
 ```{r stringr2, echo = FALSE, fig.cap = "Paquete stringr para manejar cadenas de texto más complejas"}
 knitr::include_graphics("./img/stringr.png")
 ```
 
+
+```{r echo = FALSE}
+paquetes <-
+  data.frame("paquetes" = c("{base}", "{bookdown}", "{glue}", "{stringr}"),
+             "descripción" = c("utilidades básicas",
+                               "creación de libros, manuales e informes en R",
+                               "manejo de texto literal",
+                               "manejo complejo de cadenas de texto"))
+kable(paquetes, col.names = c("paquetes", "descripción"), align = "ll",
+      caption = "Paquetes mencionados hasta ahora")
+``` 
 
 ## Vectores lógicos (TRUE/FALSE)
 
@@ -234,9 +328,13 @@ knitr::include_graphics("./img/stringr.png")
 - [X] Vectores de caracteres
 - [ ] Vectores lógicos
 
-Veamos un último tipo de vectores importante en todo lenguaje de programación: los **vectores lógicos**. Un **valor lógico** puede tomar tres valores: `TRUE` (guardado internamente como un `1`), `FALSE` (guardado internamente como un `0`) o `NA` (dato ausente, son las siglas de _not available_). Estos valores son resultado de evaluar **condiciones lógicas**.
+Veamos un último tipo de vectores importante en todo lenguaje de programación: los **vectores lógicos**. Un **valor lógico** puede tomar tres valores:
 
-Por ejemplo, imaginemos que definimos un vector de números `x <- c(1.5, -1, 2, 4, 3, -4)`. ¿Qué numeros del vector son menores que 2? Basta con que ejecutemos la orden `x < 2`, que nos devolverá `TRUE/FALSE` en cada hueco, en función de si cumple (`TRUE`) o no (`FALSE`) la condición pedida.
+* `TRUE` (guardado internamente como un `1`).
+* `FALSE` (guardado internamente como un `0`).
+* `NA` (dato ausente, son las siglas de _not available_).
+
+Estos valores son resultado de evaluar **condiciones lógicas**. Por ejemplo, imaginemos que definimos un vector de números `x <- c(1.5, -1, 2, 4, 3, -4)`. ¿Qué numeros del vector son menores que 2? Basta con que ejecutemos la orden `x < 2`, que nos devolverá `TRUE/FALSE` en cada hueco, en función de si cumple (`TRUE`) o no (`FALSE`) la condición pedida.
 
 ```{r}
 x <- c(1.5, -1, 2, 4, 3, -4)
@@ -261,7 +359,7 @@ x >= 2
 
 &nbsp;
 
-También podemos **comparar si es igual a otro elemento**, para lo que usaremos el operador `==`, pudiendo usar también su opuesto `!=` (distinto de).
+También podemos **comparar si es igual a otro elemento**, para lo que usaremos el operador `==`, pudiendo usar también su opuesto `!=` («distinto de»).
 
 ```{r}
 x == 2
@@ -295,7 +393,7 @@ sum(x < 2) # sumamos el vector de TRUE/FALSE --> número de TRUE
 
 ## Datos ausentes: NA y NaN {#ausentes}
 
-La vida no siempre es perfecta así en muchas ocasiones nos encontraremos con lo que llamamos en estadística un **dato ausente o _missing value_**, un **valor que no tenemos en nuestra variable**, y un ejemplo práctico lo tenemos con los datos de vacunación de covid del Ministerio de Sanidad. Cada día se publicaba un PDF (ya...mal) con los datos de vacunación PERO...no se publican datos los fines de semana: en dichas fechas hay datos que no tenemos, y en `R` se representan por `NA` (significa _not available_). Vamos a crear un vector de números con datos ausentes con la orden `x <- c(1, NA, 3, NA, NA, 5, 6)`: el vector tendrá longitud 7 pero en el segundo, cuarto y quinto elemento tendremos un dato faltante, un lugar que no tenemos relleno (pero que no eliminamos).
+La vida no siempre es perfecta así que en muchas ocasiones nos encontraremos con lo que llamamos en estadística un **dato ausente o _missing value_**, un **valor que no tenemos en nuestra variable**, y un ejemplo práctico lo tenemos con los datos de vacunación de covid del Ministerio de Sanidad. Cada día se publicaba un PDF (ya...mal) con los datos de vacunación PERO...no se publican datos los fines de semana: en dichas fechas hay datos que no tenemos, y en `R` se representan por `NA` (significa _not available_). Vamos a crear un vector de números con datos ausentes con la orden `x <- c(1, NA, 3, NA, NA, 5, 6)`: el vector tendrá longitud 7 pero en el segundo, cuarto y quinto elemento tendremos un dato faltante, un lugar que no tenemos relleno (pero que no eliminamos).
 
 ```{r}
 x <- c(1, NA, 3, NA, NA, 5, 6) # Vector numérico con datos faltante
@@ -303,17 +401,21 @@ length(x) # longitud del vector
 x
 ``` 
 
+
 **¿Puedes aventurar que sucede cuando multiplicamos ese vector por 2 por ejemplo?**
 
 ```{r}
 2 * x # operación aritmética con un vector con NA
 ``` 
 
-Efectivamente: un dato que no tenemos, multiplicado por 2, sigue siendo un dato ausente. Es muy importante para evitar resultados erróneos que entendamos que un **dato ausente no computa en una operación aritmética, es un hueco vacío**. Si hacemos la suma del vector, estamos sumando números más datos ausentes, por lo que el resultado final será también un dato ausente. Si tenemos algún dato ausente en nuestro vector, la suma final está a su vez ausente, ¡no podemos saber cuánto vale!
+::: {.rmdwarning}
+Un dato que no tenemos, multiplicado por 2, sigue siendo un dato ausente. Es muy importante para evitar resultados erróneos que entendamos que un **dato ausente no computa en una operación aritmética, es un hueco vacío**. Si hacemos la suma del vector, estamos sumando números más datos ausentes, por lo que el resultado final será también un dato ausente. Si tenemos algún dato ausente en nuestro vector, la suma final está a su vez ausente, ¡no podemos saber cuánto vale!
+
 
 ```{r}
 sum(x) # suma de un vector que contiene NA
 ``` 
+:::
 
 Para evitar que un dato ausente en nuestros datos nos impida hacer ciertas operaciones, en muchas funciones de `R` podemos añadir el argumento `na.rm = TRUE`: **primero elimina los datos ausentes**, y luego ejecuta la función.
 
@@ -333,14 +435,13 @@ Dichos **datos ausentes se pueden eliminar** (sin necesidad de sumarlos) con la 
 na.omit(x)
 ``` 
 
-&nbsp;
+### NaN: not a number
 
-Hay un **tipo de dato muy particular, como resultado de operaciones no permitidas o cuyo resultado es indeterminado**, que en `R` lo veremos como `NaN`: _not a number_, un resultado fruto de una indeterminación, como por ejemplo la operación `0/0` (cuyo límite no está definido). Importante saber que también existe una forma de denotar al infinito como `Inf`, siendo el resultado de algunas operaciones como `1/0` (cuyo límite si existe).
+Hay un **tipo de dato muy particular, como resultado de operaciones no permitidas o cuyo resultado es indeterminado**, que en `R` lo veremos como `NaN`: _not a number_, un resultado fruto de una indeterminación, como por ejemplo la operación `0/0` (cuyo límite no está definido). Importante saber que también existe una forma de denotar al infinito como `Inf`, siendo el resultado de algunas operaciones como `1/0`.
 
 ```{r}
 1/0
 0/0
-sqrt(-1)
 ``` 
 
 De la misma manera que podemos localizar valores `NA`, tenemos a nuestra disposición las funciones `is.infinte()` y `is.nan()` para detectar que elementos de nuestro vector son `Inf` o `NaN`, respectivamente.
@@ -355,9 +456,7 @@ is.infinite(x)
 
 ## Seleccionar elementos de un vector
 
-Ya sabemos definir variables que sean vectores (recuerda: colección de valores del mismo tipo).
-
-**¿Y si del vector original queremos EXTRAER UN SUBCONJUNTO del mismo, por ejemplo, los primeros 10 elementos?**
+Ya sabemos definir variables que sean vectores (recuerda: colección de valores del mismo tipo). ¿Y si del **vector original queremos EXTRAER UN SUBCONJUNTO del mismo**, por ejemplo, los primeros 10 elementos?
 
 `R` tiene varias formas de hacer esto pero la más sencilla es entendiendo que si yo quiero **acceder al elemento i** de un vector, deberé usar el **operador de selección `[i]`**. Veamos un ejemplo
 
@@ -387,7 +486,7 @@ z
 
 &nbsp;
 
-Sin embargo, **lo habitual es que dicho filtro que hagamos de una variable lo hagamos en base a una condición lógica**. Supongamos que `x <- c(7, 20, 18, 3, 19, 9, 13, 3, 45)` y `y <- c(17, 21, 58, 33, 15, 59, 13, 1, 45)` son las edades de dos grupos de personas y que queremos quedarnos solo con los mayores edad. ¿Tenemos que andar averiguando en que posición se encuentran para luego seleccionarlos? No, vamos a **seleccionar los elementos que cumplen una condición dada**.
+Sin embargo, **lo habitual es que dicho filtro lo hagamos en base a una condición lógica**. Supongamos que `x <- c(7, 20, 18, 3, 19, 9, 13, 3, 45)` y `y <- c(17, 21, 58, 33, 15, 59, 13, 1, 45)` son las edades de dos grupos de personas y que queremos quedarnos solo con los mayores edad. ¿Tenemos que andar averiguando en que posición se encuentran para luego seleccionarlos? No, vamos a **seleccionar los elementos que cumplen una condición dada**.
 
 ```{r}
 x <- c(7, 20, 18, 3, 19, 9, 13, 3, 45)
@@ -407,7 +506,8 @@ x[!is.na(x)] # sin valores ausentes: ! es el símbolo de la negación
 x[x >= 18 & x <= 25] # los valores que cumplen ambas (&): entre 18 y 25 años
 ```
 
-Como ves si un valor es `NA`, la evaluación de una condición lógica sobre él (mayor o menor de 18 años) nos seguirá devolviendo `NA`. Por último, `R` nos permite **dar significado léxico** a nuestros valores (significan algo, no solo números), pudiendo poner nombres a los elementos de un vector, permitiendo su selección por dichos nombres
+Como ves si un valor es `NA`, la evaluación de una condición lógica sobre él (mayor o menor de 18 años) nos seguirá devolviendo `NA`. Por último, `R` nos permite **dar significado léxico** a nuestros valores (significan algo, no solo números), pudiendo poner nombres a los elementos de un vector, permitiendo su selección por dichos nombres.
+
 ```{r}
 x <- c("edad" = 31, "tlf" = 613910687, "cp" = 33007) # cada número tiene un significado distinto
 x
@@ -422,6 +522,24 @@ names(x) <- c("años", "móvil", "dirección") # Cambiamos nombres
 names(x) # Consultamos nuevos nombres
 x
 ```
+
+
+::: {.rmdimportant}
+
+**`r colorize("CONSEJO: all, any", "#20935E")`**
+ 
+Existen dos funciones muy útiles en `R` para saber si **TODOS** o **ALGUNO** de los elementos de un vector cumple una condición. Las funciones `all()` y `any()` nos devolverá un único valor lógico. Estas funciones son muy útiles al final de los códigos para comprobar que las condiciones que tienen que verificar los datos se cumplen, y asegurarnos que el proceso se ha ejecutado correctamente (por ejemplo, que todos los datos sean positivos o no haya datos ausentes).
+
+```{r}
+x <- c(1, 2, 3, 4, 5, NA, 7)
+all(x < 3)
+any(x < 3)
+all(x > 0)
+all(na.omit(x) > 0)
+all(is.na(x))
+any(is.na(x))
+```
+:::
 
 
 ### which
@@ -479,6 +597,12 @@ x[order(x)] # accedemos a los índices ordenados, equivalente al sort(x)
 
 ## Fechas
 
+::: {.rmdnote}
+* `numeric`: variables de tipo numéricas (algunas veces vendrán indicados como `int` o integer para enteros, y `dbl` o `double` para números con decimales).
+* `character`: variables de tipo caracter.
+* `Date`: variables de tipo fecha.
+:::
+
 Hay un tipo muy especial de datos que son los **datos tipo fecha**. Una fecha podría ser a priori una simple cadena de texto `"2021-04-21"` pero podemos usar la función `as.Date()` para que `R` entienda que esa cadena de texto representa un instante temporal. Fíjate la diferencia entre una fecha en texto y una fecha con `as.Date()`.
 
 ```{r error = TRUE}
@@ -488,126 +612,39 @@ fecha_char + 1
 fecha_date + 1
 ```
 
-En el momento en que el convertimos la cadena de texto a fecha, aunque se visualice como tal, internamente es un número, por lo que podemos restar fechas (días entre ambas), **podemos sumar números a fechas (fecha días después)**, etc.
+En el momento en que convertimos la cadena de texto a fecha, aunque se visualice como tal, internamente es un número, por lo que podemos restar fechas (días entre ambas), **podemos sumar números a fechas (fecha días después)**, etc. Dentro del entorno `{tidyverse}`, el paquete `{lubridate}` tiene implementadas **múltiples funciones para poder operar con fechas de forma sencilla e intuitiva**.
 
 
-&nbsp;
+```{r echo = FALSE}
+paquetes <-
+  data.frame("paquetes" = c("{base}", "{bookdown}", "{glue}",
+                            "{stringr}", "{lubridate}"),
+             "descripción" = c("utilidades básicas",
+                               "creación de libros, manuales e informes en R",
+                               "manejo de texto literal",
+                               "manejo complejo de cadenas de texto",
+                               "manejo de fechas"))
+kable(paquetes, col.names = c("paquetes", "descripción"), align = "ll",
+      caption = "Paquetes mencionados hasta ahora")
+``` 
 
-Dentro del entorno `{tidyverse}`, el paquete `{lubridate}` tiene implementadas **múltiples funciones para poder operar con fechas de forma sencilla e intuitiva**.
 
 ```{r lubridate-package, echo = FALSE, fig.align = 'center',  include = identical(knitr:::pandoc_to(), 'html'), fig.link = 'https://lubridate.tidyverse.org/', out.width = '100%'}
 knitr::include_graphics('img/lubridate.png')
 ```
 
+::: {.rmdimportant}
 
-## 📚 Glosario {#glosario3}
-
-* `numeric`: variables de tipo numéricas (algunas veces vendrán indicados como `int` o integer para enteros, y `dbl` o `double` para números con decimales).
-* `character`: variables de tipo caracter.
-* `Date`: variables de tipo fecha.
-
-
-* **Media**: medida de centralización que consiste en sumar todos los elementos y dividirlos entre la cantidad de elementos sumados. A pesar de ser la más conocida, la media es **muy poco robusta**: dado un conjunto, si se introducen **valores atípicos o outliers** (valores muy grandes o muy pequeños), la media se perturbar con mucha facilidad. Dado un vector de valores $x = (x_1, \ldots, x_n)$, se denota como $\overline{x}$.
-
-$$\overline{x} = \frac{\displaystyle \sum_{i=1}^{n}x_i}{n}$$
-
-* **Mediana**: medida de centralización que consiste en, tras ordenar los datos de menor a mayor, quedarnos con el valor que ocupa el medio (deja tantos números por debajo como por encima). Más robusta que la media aunque menos la moda. Dado un vector de valores $x = (x_1, \ldots, x_n)$, se denota como $Me_x$.
-
-$$Me_x = \displaystyle \arg \min_{x_i} \left\lbrace F_i > 0.5 \right\rbrace, \quad F_i = \frac{\#\left\lbrace x_j \leq x_i \right\rbrace}{n}$$
-
-* **Moda**: medida de centralización que consiste en encontrar el valor más repetido (el valor _trending_). Es la medida de centralización más robusta. Dado un vector de valores $x = (x_1, \ldots, x_n)$, se denota como $Mo_x$.
-
-$$Mo_x = \displaystyle \arg \max_{x_i} f_i  , \quad f_i = \frac{\#\left\lbrace x_j = x_i \right\rbrace}{n}$$
-
-
-## ![](img/logo_info.png){width=4%} Consejos y tips
-
-
-<details>
-  <summary><strong>Operaciones elemento a elemento (vectorial)</strong></summary>
-
-Es importante recordar que cada operación con un vector es una **operación realizada en CADA elemento del vector, devolviéndonos a su vez un vector** de salida de igual longitud que la variable con la que hemos operado.
-
-</details>
-
-&nbsp;
-
-<details>
-  <summary><strong>Diferencia de conjuntos</strong></summary>
-
-Una función muy útil para ver las **diferencias entre dos conjuntos** es `setdiff()`, una función que nos devuelve los elementos distintos entre dos conjuntos.
-
-```{r}
-y <- 1:10
-z <- c(1, 3, 7, 10)
-setdiff(y, z) # Elementos en y que no están en z 
-```
-
-</details>
-
-&nbsp; 
-
-<details>
-  <summary><strong>Argumentos por defecto</strong></summary>
+**`r colorize("CONSEJO: argumentos por defecto", "#20935E")`**
 
 La función `sort()` es un buen ejemplo de que las **funciones traen definidos argumentos por defecto** (aunque no los veamos a priori). La orden `sort(x)` en realidad está ejecutando `sort(x, decreasing = TRUE)`, pero como es su valor por defecto, nos podemos ahorrar incluirlo. Escribe `? help sort()` en la consola y verás como en la cabecera de la función ya hay preasignado un `decreasing = TRUE`.
 
-</details>
-
-&nbsp; 
-
-<details>
-  <summary><strong>Recuperar un comando y autocompletar</strong></summary>
-
-Si haces click con el ratón en la consola y pulsas la flecha «arriba» del teclado, te irá apareciendo todo el **historial de órdenes ejecutadas**. Es una manera de ahorrar tiempo para ejecutar órdenes similares.
+:::
 
 
-&nbsp; 
+::: {.rmdcaution}
 
-Si empiezas a escribir el nombre de una variable pero no te acuerdas exactamente de su nombre, si pulsas **tabulador**, `R` te **autocompletará** solo (prueba a escribir solo `variab` y pulsa tabulador)
-
-</details>  
-
-
-&nbsp; 
-
-<details>
-  <summary><strong>all, any</strong></summary>
- 
-
-Existen dos funciones muy útiles en `R` para saber si **TODOS** o **ALGUNO** de los elementos de un vector cumple una condición. Las funciones `all()` y `any()` nos devolverá un único valor lógico. Estas funciones son muy útiles al final de los códigos para comprobar que las condiciones que tienen que verificar los datos se cumplen, y asegurarnos que el proceso se ha ejecutado correctamente (por ejemplo, que todos los datos sean positivos o no haya datos ausentes).
-
-```{r}
-x <- c(1, 2, 3, 4, 5, NA, 7)
-all(x < 3)
-any(x < 3)
-all(x > 0)
-all(na.omit(x) > 0)
-all(is.na(x))
-any(is.na(x))
-```
-
-</details>
-
-&nbsp; 
-
-<details>
-  <summary><strong>Constantes: número pi</strong></summary>
-
-`R` tiene una variable reservada al número $\pi$, lista para ser usada, por lo que se **recomienda no nombrar a ninguna variable con dicho nombre**.
-
-```{r}
-pi
-```
-
-</details>
-
-
-&nbsp; 
-
-<details>
-  <summary><strong>Convertir tipos de datos</strong></summary>
- 
+**`r colorize("Convertir tipos de datos", "#dc3545")`**
 
 A veces la lectura de variables numéricas de nuestros archivos puede hacer que un número, por ejemplo `1`, sea leído como la cadena de texto `"1"`, con la que no podemos operar como un número. Las funciones `as.numeric()`, `as.character()` y `as.logical()` nos permiten convertir una variable en tipo numérico, caracter o lógico, respectivamente.
 
@@ -618,15 +655,13 @@ as.character(1)
 as.logical(c(0, 1))
 ```
 
+:::
 
-</details> 
 
 
-&nbsp; 
+::: {.rmdimportant}
 
-<details>
-  <summary><strong>Optimizar nuestro código: eficiencia en tiempo de ejecución</strong></summary>
- 
+**`r colorize("CONSEJO: optimizar nuestro código", "#20935E")`**
 
 Aunque parezca un tema menor, si tu código tarda 1 milisegundo más de lo que podría tardar de otra forma, si esa orden se repite muchas veces, ese milisegundo extra puede ser 5, 10 o 20 minutos más que tu código tardará en ejecutarse. Hay un paquete muy útil en `R` para medir tiempos de distintas órdenes que hacen lo mismo (el paquete `{microbenchmark}`), vamos a instalarlo.
 
@@ -650,13 +685,29 @@ microbenchmark(sort(x), # primera forma
 ```
 
 Sí, estás viendo bien: aunque a priori parezca contraintuitivo, es más corto obtener los índices ordenados de un vector, y luego reordenarlo en base a esos índices, que la ordenación directa a través del comando `sort()` (ya que usan algoritmos de ordenación distintos).
+:::
 
-</details>
+```{r echo = FALSE}
+paquetes <-
+  data.frame("paquetes" = c("{base}", "{bookdown}", "{glue}",
+                            "{stringr}", "{lubridate}", "{microbenchmark}"),
+             "descripción" = c("utilidades básicas",
+                               "creación de libros, manuales e informes en R",
+                               "manejo de texto literal",
+                               "manejo complejo de cadenas de texto",
+                               "manejo de fechas",
+                               "comparativa de tiempos de ejecución"))
+kable(paquetes, col.names = c("paquetes", "descripción"), align = "ll",
+      caption = "Paquetes mencionados hasta ahora")
+``` 
+
+
+
 
 ## 📝 Ejercicios
 
 <details>
-  <summary>📝<strong>Ejercicio 1</strong>: define un vector que contenga los números 1, 10, -1 y 2, y guárdalo en una variable llamada `vector_num`. Tras definirlo, calcula su suma y la versión ordenada del vector definido como sumar 1 a cada elemento de `vector_num` (**haz click** en la flecha para la solución propuesta). </summary>
+  <summary>📝<strong>Ejercicio 1</strong>: define un vector que contenga los números 1, 10, -1 y 2, y guárdalo en una variable llamada `vector_num`. Tras definirlo, calcula su suma (**haz click** en la flecha para la solución propuesta). </summary>
   
 <!-- toc -->
 - Solución:
@@ -667,7 +718,20 @@ vector_num <- c(1, 10, -1, 2)
 
 # Suma
 sum(vector_num)
+```
 
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 2</strong>: calcula la versión ordenada del vector anterior `vector_num` (**haz click** en la flecha para la solución propuesta). </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
 # Ordenamos el vector + 1 (con sort)
 sort(vector_num + 1)
 
@@ -681,8 +745,10 @@ vector_num2[order(vector_num2)]
 
 &nbsp;
 
+
+
 <details>
-  <summary>📝<strong>Ejercicio 2</strong>: encuentra del vector `vector_num` original el lugar (el índice) que ocupa su mínimo y su máximo. Devuelve un vector lógico con los elementos que son mayores 1 y menores que 7. Piensa una manera de encontrar si todos son positivos (**haz click** en la flecha para la solución propuesta). </summary>
+  <summary>📝<strong>Ejercicio 3</strong>: encuentra del vector `vector_num` original el lugar (el índice) que ocupa su mínimo y su máximo (**haz click** en la flecha para la solución propuesta). </summary>
   
 <!-- toc -->
 - Solución:
@@ -707,7 +773,26 @@ all(vector_num > 0)
 &nbsp;
 
 <details>
-  <summary>📝<strong>Ejercicio 3</strong>: crea un vector con las palabras "Hola", "me", "llamo" (y tu nombre y apellidos), y pega luego sus elementos de forma que la frase esté correctamente escrita en castellano. Tras hacerlo, añade "y tengo 30 años" (**haz click** en la flecha para la solución propuesta). </summary>
+  <summary>📝<strong>Ejercicio 4</strong>: encuentra del vector `vector_num` los elementos mayores que 1 y menores que 7. Encuentra una forma de averiguar si todos los elementos son o no positivos (**haz click** en la flecha para la solución propuesta). </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Vector lógico: mayores que 1 y menores que 7
+vector_num > 1 & vector_num < 7
+
+# ¿Son todos positivos?
+all(vector_num > 0)
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 5</strong>: crea un vector con las palabras "Hola", "me", "llamo" (y tu nombre y apellidos), y pega luego sus elementos de forma que la frase esté correctamente escrita en castellano. Tras hacerlo, añade "y tengo 30 años" (**haz click** en la flecha para la solución propuesta). </summary>
   
 <!-- toc -->
 - Solución:
@@ -730,7 +815,7 @@ paste0(paste(vector_char, collapse = " "), " y tengo 30 años.")
 &nbsp;
 
 <details>
-  <summary>📝<strong>Ejercicio 4</strong>: obten la fecha de hoy, define la fecha de tu cumpleaños, y calcula la diferencia de días (**haz click** en la flecha para la solución propuesta).</summary>
+  <summary>📝<strong>Ejercicio 6</strong>: obten la fecha de hoy, define la fecha de tu cumpleaños, y calcula la diferencia de días (**haz click** en la flecha para la solución propuesta).</summary>
   
 <!-- toc -->
 - Solución:
