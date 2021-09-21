@@ -1,4 +1,4 @@
-Curso introductorio de R
+Curso introductorio de R (desde cero)
 ======
 
 [![License:
@@ -20,10 +20,12 @@ GPLv3](https://img.shields.io/badge/license-GPLv3-blue.svg)](https://www.gnu.org
 
             
 
-### ¿Cómo contribuir al proyecto?
+### ¿Cómo contribuir como mecenas?
+     
+  Si quieres contribuir para mantener el proyecto de divulgación estadística que realizo en las distintas redes puedes contribuir en la comunidad [Patreon](https://patreon.com/dadosdelaplace)
             
- <a href="https://patreon.com/dadosdelaplace"><img border="0" alt="Patreon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Patreon_logomark.svg/1024px-Patreon_logomark.svg.png" width="70" height="70"></a>  
-            
+ <a href="https://patreon.com/dadosdelaplace"><img border="0" alt="Patreon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Patreon_logomark.svg/1024px-Patreon_logomark.svg.png" width="70" height="70"></a>      
+     
 ### ✨ Algunas redes donde puedes encontrarme :man_technologist:👀👇🏻
  
 <a href="https://twitter.com/dadosdelaplace"><img border="0" alt="Twitter" src="https://assets.dryicons.com/uploads/icon/svg/8385/c23f7ffc-ca8d-4246-8978-ce9f6d5bcc99.svg" width="40" height="40"></a>
