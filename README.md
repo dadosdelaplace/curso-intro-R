@@ -34,5 +34,5 @@ install.packages("bookdown")
 # devtools::install_github("rstudio/bookdown")
 ```
 
-<img src="https://github.com/dadosdelaplace/cursoR_intro_2021_2022/blob/main/img/hex-rmarkdown.png" width="30%" />
+<img src="https://github.com/dadosdelaplace/cursoR_intro_2021_2022/blob/main/img/hex-rmarkdown.png" width="20%" />
 
