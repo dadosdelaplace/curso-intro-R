@@ -541,10 +541,10 @@ Imagen/gráfica 8.1: Paquete lubridate.
 <div class="sourceCode" id="cb495"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fecha</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span><span class="op">(</span><span class="op">)</span>
 <span class="va">fecha</span></code></pre></div>
-<pre><code>## [1] "2021-09-21"</code></pre>
+<pre><code>## [1] "2021-09-24"</code></pre>
 <div class="sourceCode" id="cb497"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fecha</span> <span class="op">-</span> <span class="fl">7</span> <span class="co"># una semana antes</span></code></pre></div>
-<pre><code>## [1] "2021-09-14"</code></pre>
+<pre><code>## [1] "2021-09-17"</code></pre>
 <div class="sourceCode" id="cb499"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span> <span class="co"># de clase fecha</span></code></pre></div>
 <pre><code>## [1] "Date"</code></pre>
@@ -674,10 +674,10 @@ Imagen/gráfica 8.2: Paquete lubridate.
 <p>El paquete <a href="https://lubridate.tidyverse.org">lubridate</a> nos proporciona <strong>herramientas para extraer la fecha y hora actuales</strong> con las funciones <code><a href="http://lubridate.tidyverse.org/reference/now.html">today()</a></code> y <code><a href="http://lubridate.tidyverse.org/reference/now.html">now()</a></code></p>
 <div class="sourceCode" id="cb530"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="http://lubridate.tidyverse.org/reference/now.html">today</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "2021-09-21"</code></pre>
+<pre><code>## [1] "2021-09-24"</code></pre>
 <div class="sourceCode" id="cb532"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="http://lubridate.tidyverse.org/reference/now.html">now</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "2021-09-21 14:02:47 CEST"</code></pre>
+<pre><code>## [1] "2021-09-24 10:27:35 CEST"</code></pre>
 <p>Además tenemos disponibles en dicho paquete funciones para extraer facilmente algunas variables temporales como el día de la semana, el mes o el cuatrimestre, con las funciones <code><a href="http://lubridate.tidyverse.org/reference/year.html">year()</a></code>, <code><a href="https://rdrr.io/r/base/weekday.POSIXt.html">months()</a></code>, <code><a href="http://lubridate.tidyverse.org/reference/day.html">day()</a></code> o <code><a href="http://lubridate.tidyverse.org/reference/day.html">wday()</a></code> (día de la semana).</p>
 <div class="sourceCode" id="cb534"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fecha</span> <span class="op">&lt;-</span> <span class="fu"><a href="http://lubridate.tidyverse.org/reference/now.html">now</a></span><span class="op">(</span><span class="op">)</span>
@@ -688,22 +688,22 @@ Imagen/gráfica 8.2: Paquete lubridate.
 <pre><code>## [1] 9</code></pre>
 <div class="sourceCode" id="cb538"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="http://lubridate.tidyverse.org/reference/day.html">day</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 21</code></pre>
+<pre><code>## [1] 24</code></pre>
 <div class="sourceCode" id="cb540"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="http://lubridate.tidyverse.org/reference/day.html">wday</a></span><span class="op">(</span><span class="va">fecha</span>, week_start <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="co"># Día de la semana (empezando por el lunes)</span></code></pre></div>
-<pre><code>## [1] 2</code></pre>
+<pre><code>## [1] 5</code></pre>
 <div class="sourceCode" id="cb542"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="http://lubridate.tidyverse.org/reference/hour.html">hour</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 14</code></pre>
+<pre><code>## [1] 10</code></pre>
 <div class="sourceCode" id="cb544"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="http://lubridate.tidyverse.org/reference/minute.html">minute</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 2</code></pre>
+<pre><code>## [1] 27</code></pre>
 <div class="sourceCode" id="cb546"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="http://lubridate.tidyverse.org/reference/second.html">second</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 48.00613</code></pre>
+<pre><code>## [1] 35.79531</code></pre>
 <div class="sourceCode" id="cb548"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="http://lubridate.tidyverse.org/reference/week.html">week</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span> <span class="co"># Número de semana (del año)</span></code></pre></div>
-<pre><code>## [1] 38</code></pre>
+<pre><code>## [1] 39</code></pre>
 <p>Al igual que podemos realizar operaciones aritméticas sencillas con las fechas, también podemos <strong>realizar comparaciones</strong>, por ejemplo, si el día actual es menor o mayor que otra fecha dada.</p>
 <div class="sourceCode" id="cb550"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fecha_actual</span> <span class="op">&lt;-</span> <span class="fu"><a href="http://lubridate.tidyverse.org/reference/now.html">now</a></span><span class="op">(</span><span class="op">)</span>
@@ -801,7 +801,7 @@ Imagen/gráfica 8.2: Paquete lubridate.
 ## [1] "Álvarez Liébana"
 ## 
 ## $edad
-## [1] 32.03014
+## [1] 32.03836
 ## 
 ## $soltero
 ## [1] TRUE</code></pre>
@@ -854,7 +854,7 @@ Imagen/gráfica 8.2: Paquete lubridate.
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 21-09-2021.</p>
+    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 24-09-2021.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

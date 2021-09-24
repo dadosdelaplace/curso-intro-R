@@ -25,7 +25,7 @@ header-includes:
 - \usepackage{multicol}
 - \usepackage{threeparttable}
 - \usepackage{caption}
-description: "Introducción a R desde cero. Curos elaborado por Javier Álvarez Liébana"
+description: "Introducción a R desde cero. Curso elaborado por Javier Álvarez Liébana"
 cover-image: img/logo_R.png
 ---
 

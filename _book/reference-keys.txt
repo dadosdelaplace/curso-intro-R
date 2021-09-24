@@ -75,7 +75,6 @@ primeros-pasos
 excel-no-es-tu-amigo
 primeros-pasos-calculadora
 tipos_errores
-consejos-y-tips
 ejercicios
 tipos-de-datos-i-vectores
 vectores-numéricos

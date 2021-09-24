@@ -722,8 +722,8 @@ Imagen/gráfica 3.1: Paquete stringr para manejar cadenas de texto más compleja
                times <span class="op">=</span> <span class="fl">1e3</span><span class="op">)</span> <span class="co"># se repetirá 1000 veces</span></code></pre></div>
 <pre><code>## Unit: microseconds
 ##         expr    min      lq     mean  median      uq      max neval cld
-##      sort(x) 40.006 46.1060 53.22738 47.6600 53.6055 3247.586  1000   b
-##  x[order(x)] 28.341 33.9955 36.73004 35.2115 38.2125   96.915  1000  a</code></pre>
+##      sort(x) 42.072 48.5820 59.78079 50.0890 55.5860 3345.938  1000   b
+##  x[order(x)] 29.523 35.4535 41.44343 36.4305 39.1205  819.344  1000  a</code></pre>
 <p>Sí, estás viendo bien: aunque a priori parezca contraintuitivo, es más corto obtener los índices ordenados de un vector, y luego reordenarlo en base a esos índices, que la ordenación directa a través del comando <code><a href="https://rdrr.io/r/base/sort.html">sort()</a></code> (ya que usan algoritmos de ordenación distintos).</p>
 </div>
 <div class="inline-table"><table class="table table-sm">
@@ -868,7 +868,7 @@ Imagen/gráfica 3.1: Paquete stringr para manejar cadenas de texto más compleja
 
 <span class="co"># Diferencia</span>
 <span class="va">hoy</span> <span class="op">-</span> <span class="va">cumple</span></code></pre></div>
-<pre><code>## Time difference of 11699 days</code></pre>
+<pre><code>## Time difference of 11702 days</code></pre>
 <!-- tocstop -->
 </details>
 </div>
@@ -915,7 +915,7 @@ Imagen/gráfica 3.1: Paquete stringr para manejar cadenas de texto más compleja
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 21-09-2021.</p>
+    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 24-09-2021.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

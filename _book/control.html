@@ -200,12 +200,12 @@
                                <span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="va">idx</span><span class="op">)</span> <span class="op">{</span>  <span class="va">y</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">idx</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">^</span><span class="fl">2</span><span class="op">}</span>,
                                times <span class="op">=</span> <span class="fl">1e3</span><span class="op">)</span></code></pre></div>
 <pre><code>## Unit: microseconds
-##                                     expr      min       lq       mean    median
-##                               x &lt;- idx^2   18.205   48.346   50.62247   52.0595
-##  for (i in idx) {     y[i] &lt;- idx[i]^2 } 1788.931 1855.546 2013.82823 1891.1065
-##         uq      max neval cld
-##    55.6405  143.835  1000  a 
-##  1972.3315 6687.018  1000   b</code></pre>
+##                                     expr      min        lq       mean   median
+##                               x &lt;- idx^2   17.707   48.7125   53.65866   53.580
+##  for (i in idx) {     y[i] &lt;- idx[i]^2 } 1798.169 1918.0705 2169.71548 2010.879
+##        uq       max neval cld
+##    59.845   213.828  1000  a 
+##  2225.641 24470.907  1000   b</code></pre>
 <p>Una tarea tan sencilla, <strong>programada en un bucle (segunda fila), tarda 40 veces más que hacerlo de forma vectorial (primera fila)</strong> (elevando cada elemento al cuadrado, iterando internamente, sin necesidad de implementar un bucle).</p>
 <p> </p>
 <p>Otra manera de diseñar un bucle es con la <strong>estructura <code>while{}</code></strong>, que ejecutará el <strong>bucle un número de veces a priori desconocido</strong> hasta que la condición impuesta deje de ser <code>TRUE</code>.</p>
@@ -335,7 +335,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 21-09-2021.</p>
+    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 24-09-2021.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -178,12 +178,8 @@ Los **`r colorize("mensajes de control", "#20935E")`** serán aquellos que apare
 :::
 
 
-## ![](img/logo_info.png){width=4%}  Consejos y tips
-
-
-&nbsp;  
-<details>
-  <summary><strong>Panel de ayuda</strong></summary>
+::: {.rmdimportant}
+**`r colorize("CONSEJO: panel de ayuda", "#20935E")`**
 
 Si escribes en la consola `? nombre_funcion` (por ejemplo, escribe en la consola `? sqrt`), en el panel inferior derecho te aparecerá una **documentación de ayuda** de la función para saber que argumentos necesita, como puedes usar la función, qué es lo que te devuelve, ejemplos de uso, etc.
 
@@ -195,7 +191,7 @@ Si escribes en la consola `? nombre_funcion` (por ejemplo, escribe en la consola
 knitr::include_graphics("./img/panel_ayuda.jpg")
 
 ```
-</details> 
+:::
 
 
 ## 📝 Ejercicios
