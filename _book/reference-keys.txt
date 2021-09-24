@@ -36,7 +36,6 @@ fig:crear-proyecto7
 fig:crear-proyecto8
 fig:crear-proyecto9
 fig:carpeta-codigos
-fig:carpeta-codigos1
 fig:carpeta-codigos2
 fig:getwd
 fig:setwd

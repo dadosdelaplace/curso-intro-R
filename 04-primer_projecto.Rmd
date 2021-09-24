@@ -121,18 +121,14 @@ knitr::include_graphics("./img/crear_proyecto9.jpg")
 
 ## Directorios de trabajo y cabecera
 
-Como luego veremos en la \@ref(datos), es altamente recomendable que **todos los archivos (códigos, datos, imágenes, recursos, etc)** los tengamos dentro de la misma carpeta del proyecto (aunque podamos crear subdirectorios), para que trabajar en el proyecto sea más sencillo e intuitivo. Vamos a crearnos dentro de la carpeta del proyecto, una subcarpeta que se llame `CODIGOS`, y creamos un script llamado `variables.R` dentro de esa carpeta.
+Como luego veremos en la Sección \@ref(datos), es altamente recomendable que **todos los archivos (códigos, datos, imágenes, recursos, etc)** los tengamos dentro de la misma carpeta del proyecto (aunque podamos crear subdirectorios), para que trabajar en el proyecto sea más sencillo e intuitivo. Vamos a crearnos dentro de la carpeta del proyecto, una subcarpeta que se llame `DATOS`, en donde **debemos descargar todos los ficheros que hay en <https://github.com/dadosdelaplace/cursoR_intro/tree/main/DATOS>**, y otra llamada `CODIGOS`, donde guardar nuestros archivos `.R` (por eso de ser ordenadicos.)
+
 
 ```{r carpeta-codigos, echo = FALSE, out.width = "50%", fig.align = "center", fig.cap = "Subcarpeta «CODIGOS»."}
 knitr::include_graphics("./img/carpeta_codigos.jpg")
 ```
 
-```{r carpeta-codigos1, echo = FALSE, out.width = "50%", fig.align = "center", fig.cap = "Creamos un fichero «variables.R»."}
-knitr::include_graphics("./img/carpeta_codigos1.jpg")
-```
-
-
-En ese código de prueba vamos a **definir algunas variables fijas** que luego usaremos en el código principal (suele suceder con variables que van a ser fijas como nombres, fechas o codificaciones de variables).
+En esa carpeta de códigos vamos a crear de prueba el código llamado `variables.R` donde vamos a **definir algunas variables** que luego usaremos en el código principal (suele suceder con variables que van a ser fijas como nombres, fechas o codificaciones de variables).
 
 ```{r}
 # Descripción: script de prueba con variables

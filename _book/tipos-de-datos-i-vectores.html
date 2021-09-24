@@ -722,8 +722,8 @@ Imagen/gráfica 3.1: Paquete stringr para manejar cadenas de texto más compleja
                times <span class="op">=</span> <span class="fl">1e3</span><span class="op">)</span> <span class="co"># se repetirá 1000 veces</span></code></pre></div>
 <pre><code>## Unit: microseconds
 ##         expr    min      lq     mean  median      uq      max neval cld
-##      sort(x) 42.072 48.5820 59.78079 50.0890 55.5860 3345.938  1000   b
-##  x[order(x)] 29.523 35.4535 41.44343 36.4305 39.1205  819.344  1000  a</code></pre>
+##      sort(x) 43.121 49.0095 63.43935 52.3275 67.8190  456.070  1000   b
+##  x[order(x)] 30.078 35.3965 48.33256 37.1710 46.2485 4125.593  1000  a</code></pre>
 <p>Sí, estás viendo bien: aunque a priori parezca contraintuitivo, es más corto obtener los índices ordenados de un vector, y luego reordenarlo en base a esos índices, que la ordenación directa a través del comando <code><a href="https://rdrr.io/r/base/sort.html">sort()</a></code> (ya que usan algoritmos de ordenación distintos).</p>
 </div>
 <div class="inline-table"><table class="table table-sm">

@@ -192,20 +192,14 @@ Imagen/gráfica 4.9: Saltar de proyecto en proyecto.
 <h2>
 <span class="header-section-number">4.2</span> Directorios de trabajo y cabecera<a class="anchor" aria-label="anchor" href="#directorios-de-trabajo-y-cabecera"><i class="fas fa-link"></i></a>
 </h2>
-<p>Como luego veremos en la <a href="datos.html#datos">6</a>, es altamente recomendable que <strong>todos los archivos (códigos, datos, imágenes, recursos, etc)</strong> los tengamos dentro de la misma carpeta del proyecto (aunque podamos crear subdirectorios), para que trabajar en el proyecto sea más sencillo e intuitivo. Vamos a crearnos dentro de la carpeta del proyecto, una subcarpeta que se llame <code>CODIGOS</code>, y creamos un script llamado <code>variables.R</code> dentro de esa carpeta.</p>
+<p>Como luego veremos en la Sección <a href="datos.html#datos">6</a>, es altamente recomendable que <strong>todos los archivos (códigos, datos, imágenes, recursos, etc)</strong> los tengamos dentro de la misma carpeta del proyecto (aunque podamos crear subdirectorios), para que trabajar en el proyecto sea más sencillo e intuitivo. Vamos a crearnos dentro de la carpeta del proyecto, una subcarpeta que se llame <code>DATOS</code>, en donde <strong>debemos descargar todos los ficheros que hay en <a href="https://github.com/dadosdelaplace/cursoR_intro/tree/main/DATOS" class="uri">https://github.com/dadosdelaplace/cursoR_intro/tree/main/DATOS</a></strong>, y otra llamada <code>CODIGOS</code>, donde guardar nuestros archivos <code>.R</code> (por eso de ser ordenadicos.)</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:carpeta-codigos"></span>
 <img src="img/carpeta_codigos.jpg" alt="Subcarpeta «CODIGOS»." width="50%"><p class="caption">
 Imagen/gráfica 4.10: Subcarpeta «CODIGOS».
 </p>
 </div>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:carpeta-codigos1"></span>
-<img src="img/carpeta_codigos1.jpg" alt="Creamos un fichero «variables.R»." width="50%"><p class="caption">
-Imagen/gráfica 4.11: Creamos un fichero «variables.R».
-</p>
-</div>
-<p>En ese código de prueba vamos a <strong>definir algunas variables fijas</strong> que luego usaremos en el código principal (suele suceder con variables que van a ser fijas como nombres, fechas o codificaciones de variables).</p>
+<p>En esa carpeta de códigos vamos a crear de prueba el código llamado <code>variables.R</code> donde vamos a <strong>definir algunas variables</strong> que luego usaremos en el código principal (suele suceder con variables que van a ser fijas como nombres, fechas o codificaciones de variables).</p>
 <div class="sourceCode" id="cb259"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Descripción: script de prueba con variables</span>
 
@@ -220,7 +214,7 @@ Imagen/gráfica 4.11: Creamos un fichero «variables.R».
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:carpeta-codigos2"></span>
 <img src="img/carpeta_codigos2.jpg" alt="Escribimos una serie de variables fijas para luego ser usadas." width="50%"><p class="caption">
-Imagen/gráfica 4.12: Escribimos una serie de variables fijas para luego ser usadas.
+Imagen/gráfica 4.11: Escribimos una serie de variables fijas para luego ser usadas.
 </p>
 </div>
 <p>No es obligatorio pero es <strong>altamente recomendable</strong> tener muy estructurado nuestros códigos, de forma que el archivo <code>.R</code> haga una <strong>tarea concreta y definida</strong> (uno carga archivos, otro preprocesa, otro hace un modelo, otro hace las gráficas), y sea el <strong>código principal el que haga una llamada limpia a todos ellos</strong>, para que en caso de error, la detección del mismo sea más sencilla.</p>
@@ -233,7 +227,7 @@ Imagen/gráfica 4.12: Escribimos una serie de variables fijas para luego ser usa
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:getwd"></span>
 <img src="img/getwd.jpg" alt="Consultar directorio de trabajo predeterminado y archivos contenidos en él." width="50%"><p class="caption">
-Imagen/gráfica 4.13: Consultar directorio de trabajo predeterminado y archivos contenidos en él.
+Imagen/gráfica 4.12: Consultar directorio de trabajo predeterminado y archivos contenidos en él.
 </p>
 </div>
 <p>Lo ideal es empezar el código <strong>fijando como directorio de trabajo el directorio donde tengamos nuestro archivo principal</strong> <code>main.R</code> y para ello usaremos la función <code><a href="https://rdrr.io/r/base/getwd.html">setwd()</a></code>, cuyo argumento será la ruta donde queremos fijarlo. Para hacerlo de forma automática (y que el código pueda ser abierto por ti pero también por otros que no tengan tu misma estructura de carpetas), obtendremos de forma automática la ruta del archivo <code>main.R</code> o del proyecto con la orden <code>rstudioapi::getSourceEditorContext()$path</code>, y después usaremos <code><a href="https://rdrr.io/r/base/basename.html">dirname()</a></code> para quedarnos solo con la ruta de carpetas (eliminando el nombre del fichero al final). Esa será la ruta que le pasaremos a <code><a href="https://rdrr.io/r/base/getwd.html">setwd()</a></code>, quedando nuestro directorio de trabajo automáticamente fijado, sin preocuparnos de la ruta</p>
@@ -243,7 +237,7 @@ Imagen/gráfica 4.13: Consultar directorio de trabajo predeterminado y archivos 
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:setwd"></span>
 <img src="img/setwd.jpg" alt="Fijamos de forma automático el directorio de trabajo." width="50%"><p class="caption">
-Imagen/gráfica 4.14: Fijamos de forma automático el directorio de trabajo.
+Imagen/gráfica 4.13: Fijamos de forma automático el directorio de trabajo.
 </p>
 </div>
 <p>Una vez que hemos fijado nuestro directorio, para cargar código <code>.R</code>, basta que usemos la función <code><a href="https://rdrr.io/r/base/source.html">source()</a></code>, cuyo argumento será la ruta del archivo. Como tenemos de directorio base el directorio en el que tenemos nuestro archivo principal (<code>./</code>), bastará que empecemos a escribir <code><a href="https://rdrr.io/r/base/source.html">source("./")</a></code>, presionar el tabulador, y se nos abrirá el menú de archivos de nuestro directorio de trabajo, pudiendo ir seleccionando de forma sencilla la ruta de nuestro archivo.</p>
@@ -253,13 +247,13 @@ Imagen/gráfica 4.14: Fijamos de forma automático el directorio de trabajo.
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:menu-carpetas"></span>
 <img src="img/menu_carpetas.jpg" alt="Cargar archivos de nuestro directorio de trabajo." width="50%"><p class="caption">
-Imagen/gráfica 4.15: Cargar archivos de nuestro directorio de trabajo.
+Imagen/gráfica 4.14: Cargar archivos de nuestro directorio de trabajo.
 </p>
 </div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:menu-carpetas1"></span>
 <img src="img/menu_carpetas1.jpg" alt="Cargar archivos de nuestro directorio de trabajo." width="50%"><p class="caption">
-Imagen/gráfica 4.16: Cargar archivos de nuestro directorio de trabajo.
+Imagen/gráfica 4.15: Cargar archivos de nuestro directorio de trabajo.
 </p>
 </div>
 </div>
@@ -271,10 +265,10 @@ Imagen/gráfica 4.16: Cargar archivos de nuestro directorio de trabajo.
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:source-on-save"></span>
 <img src="img/source_on_save.jpg" alt="Guardamos con la casilla «source on save» activada para que además de guardar se ejecute el código." width="50%"><p class="caption">
-Imagen/gráfica 4.17: Guardamos con la casilla «source on save» activada para que además de guardar se ejecute el código.
+Imagen/gráfica 4.16: Guardamos con la casilla «source on save» activada para que además de guardar se ejecute el código.
 </p>
 </div>
-<p>Como vemos en la imagen <a href="flujo-de-trabajo-proyecto.html#fig:source-on-save">4.17</a>, una vez ejecutado, tenemos en nuestro panel de entorno (parte superior derecha) las variables ya cargadas que teníamos definidas en nuestro fichero <code>variables.R</code>.</p>
+<p>Como vemos en la imagen <a href="flujo-de-trabajo-proyecto.html#fig:source-on-save">4.16</a>, una vez ejecutado, tenemos en nuestro panel de entorno (parte superior derecha) las variables ya cargadas que teníamos definidas en nuestro fichero <code>variables.R</code>.</p>
 <p>Prueba a escribir algunas funciones que hemos aprendido con dichas variables y vuelve a hacer click en «guardar» con <em>source on save</em> activado.</p>
 <div class="sourceCode" id="cb263"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Sumamos 3 a cada elemento de x</span>
@@ -295,7 +289,7 @@ Imagen/gráfica 4.17: Guardamos con la casilla «source on save» activada para 
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:codigo-1"></span>
 <img src="img/codigo_1.jpg" alt="Cálculos con la variables definidas: suma, concatenación de texto y diferencia de fechas." width="50%"><p class="caption">
-Imagen/gráfica 4.18: Cálculos con la variables definidas: suma, concatenación de texto y diferencia de fechas.
+Imagen/gráfica 4.17: Cálculos con la variables definidas: suma, concatenación de texto y diferencia de fechas.
 </p>
 </div>
 <p>Ya hemos ejecutado nuestro primer proyecto en <code>.R</code> :)</p>
@@ -312,7 +306,7 @@ Imagen/gráfica 4.18: Cálculos con la variables definidas: suma, concatenación
 <p>La función <code><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time()</a></code> accede al sistema de nuestro ordenador para decirnos la <strong>fecha y hora del momento de la ejecución</strong> de dicha función.</p>
 <div class="sourceCode" id="cb269"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "2021-09-24 10:27:09 CEST"</code></pre>
+<pre><code>## [1] "2021-09-24 11:06:06 CEST"</code></pre>
 </div>
 
 </div>
