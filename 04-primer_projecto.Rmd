@@ -17,7 +17,7 @@ colorize <- function(x, color) {
 ```
 
 
-# Flujo de trabajo: proyecto
+# Flujo de trabajo: primer proyecto {#proyecto}
 
 ```{r echo = FALSE}
 library(knitr)

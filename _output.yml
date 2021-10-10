@@ -20,6 +20,7 @@ bookdown::bs4_book:
   repo: "https://github.com/dadosdelaplace/cursoR_intro_2021_2022"
   search:
     engine: lunr
+  toc_depth: 4
 bookdown::gitbook:
   css: css/style.css
   split_by: section
@@ -42,7 +43,7 @@ bookdown::pdf_book:
   citation_package: natbib
   keep_tex: yes
   pandoc_args: [--top-level-division=chapter, --wrap=none]
-  toc_depth: 3
+  toc_depth: 4
   toc_unnumbered: no
   toc_appendix: yes
   highlight_bw: yes

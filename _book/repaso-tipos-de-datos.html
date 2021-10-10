@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Repaso: tipos de datos | Aprendiendo R sin morir en el intento</title>
+<meta name="author" content="Javier Álvarez Liébana">
+<meta name="description" content="d ¿Qué datos hemos aprendido a manejar? Tabla 10.1: Tipos de datos mencionados hasta ahora paquetes descripción x &lt;- 1 (dato numérico) vector de longitud 1 x &lt;- c(1, 2, 3) (vector de números)...">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="Repaso: tipos de datos | Aprendiendo R sin morir en el intento">
+<meta property="og:type" content="book">
+<meta property="og:image" content="/img/logo_R.png">
+<meta property="og:description" content="d ¿Qué datos hemos aprendido a manejar? Tabla 10.1: Tipos de datos mencionados hasta ahora paquetes descripción x &lt;- 1 (dato numérico) vector de longitud 1 x &lt;- c(1, 2, 3) (vector de números)...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Repaso: tipos de datos | Aprendiendo R sin morir en el intento">
+<meta name="twitter:description" content="d ¿Qué datos hemos aprendido a manejar? Tabla 10.1: Tipos de datos mencionados hasta ahora paquetes descripción x &lt;- 1 (dato numérico) vector de longitud 1 x &lt;- c(1, 2, 3) (vector de números)...">
+<meta name="twitter:image" content="/img/logo_R.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/_Sen-0.4.0/font.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM%20Mono&amp;display=swap" rel="stylesheet">
+<link href="libs/_Bitter-0.4.0/font.css" rel="stylesheet">
+<script src="libs/bs3compat-0.3.0/transition.js"></script><script src="libs/bs3compat-0.3.0/tabs.js"></script><script src="libs/bs3compat-0.3.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS -->
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Aprendiendo R sin morir en el intento</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled"><li><a class="" href="index.html">Repaso: tipos de datos</a></li></ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/dadosdelaplace/cursoR_intro_2021_2022">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="repaso-tipos-de-datos" class="section level1 unnumbered">
+<h1>Repaso: tipos de datos<a class="anchor" aria-label="anchor" href="#repaso-tipos-de-datos"><i class="fas fa-link"></i></a>
+</h1>
+<p>d</p>
+<div class="rmdnote">
+<p><strong><span style="color: #4197D2;">¿Qué datos hemos aprendido a manejar?</span></strong></p>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:unnamed-chunk-2">Tabla 10.1: </span>Tipos de datos mencionados hasta ahora</caption>
+<colgroup>
+<col width="64%">
+<col width="35%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">paquetes</th>
+<th align="left">descripción</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">x &lt;- 1 (dato numérico)</td>
+<td align="left">vector de longitud 1</td>
+</tr>
+<tr class="even">
+<td align="left">x &lt;- c(1, 2, 3) (vector de números)</td>
+<td align="left">vector (mismo tipo)</td>
+</tr>
+<tr class="odd">
+<td align="left">x &lt;- c(‘a’, ‘b’, ‘c’) (vector de caracteres)</td>
+<td align="left">vector (mismo tipo)</td>
+</tr>
+<tr class="even">
+<td align="left">x &lt;- matrix(1:6, nrow = 2)</td>
+<td align="left">matriz (mismo tipo, misma longitud)</td>
+</tr>
+<tr class="odd">
+<td align="left">x &lt;- data.frame(‘a’ = 1:3, ‘b’ = c(‘a’, ‘b’, ‘c’), ‘c’ = c(TRUE, TRUE, FALSE))</td>
+<td align="left">data.frame (distinto tipo, misma longitud)</td>
+</tr>
+<tr class="even">
+<td align="left">x &lt;- list(1:3, c(‘a’), c(TRUE, FALSE))</td>
+<td align="left">lista (distinto tipo, distinta longitud)</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+
+</div>
+  <div class="chapter-nav">
+<div class="empty"></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <div id="book-on-this-page"></div>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 10-10-2021.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

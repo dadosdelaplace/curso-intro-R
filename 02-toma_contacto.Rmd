@@ -16,7 +16,7 @@ colorize <- function(x, color) {
 }
 ```
 
-# Primeros pasos
+# Primeros pasos {#primeros-pasos}
 
 **¿Empezamos?**
 
@@ -75,7 +75,7 @@ Por su arquitectura, `R` es un lenguaje que puede ser usado para un propósito g
 
 ```{r excel-genes, echo = FALSE,  out.width = "50%", fig.align = "center", fig.cap = "Excel en una noche loca."}
 knitr::include_graphics("./img/excel_genes.jpg")
-```
+``` 
 
 ::: {.rmdcaution}
 * **Problemas de memoria**: un Excel permite por defecto una cantidad máxima de filas. Aunque dicha cantidad se puede ampliar, sigue siendo finita, por lo que cuando superas el umbral de filas, al añadir filas Excel te borra registros **sin avisarte de que lo está haciendo**. Esto es lo que sucedió con los [registros de casos covid en Reino Unido](https://www.redaccionmedica.com/secciones/sanidad-hoy/covid-reino-unido-pierden-16000-positivos-9989).

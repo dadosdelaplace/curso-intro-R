@@ -49,19 +49,19 @@
 <li><a class="" href="instalacionR.html"><span class="header-section-number">1</span> Instalación</a></li>
 <li><a class="" href="primeros-pasos.html"><span class="header-section-number">2</span> Primeros pasos</a></li>
 <li class="book-part">Conceptos básicos</li>
-<li><a class="active" href="tipos-de-datos-i-vectores.html"><span class="header-section-number">3</span> Tipos de datos I: vectores</a></li>
-<li><a class="" href="flujo-de-trabajo-proyecto.html"><span class="header-section-number">4</span> Flujo de trabajo: proyecto</a></li>
+<li><a class="active" href="vectores.html"><span class="header-section-number">3</span> Tipos de datos I: vectores</a></li>
+<li><a class="" href="proyecto.html"><span class="header-section-number">4</span> Flujo de trabajo: primer proyecto</a></li>
 <li><a class="" href="control.html"><span class="header-section-number">5</span> Estructuras de control</a></li>
 <li><a class="" href="datos.html"><span class="header-section-number">6</span> Tipos de datos II: datos estructurados</a></li>
-<li><a class="" href="importar_exportar.html"><span class="header-section-number">7</span> Importando/exportando</a></li>
+<li><a class="" href="importar-exportar.html"><span class="header-section-number">7</span> Importando/exportando</a></li>
 <li class="book-part">Listas y funciones</li>
-<li><a class="" href="otros_datos.html"><span class="header-section-number">8</span> Listas y factores</a></li>
-<li><a class="" href="FUNCIONES.html"><span class="header-section-number">9</span> Creación de funciones</a></li>
+<li><a class="" href="otros-datos.html"><span class="header-section-number">8</span> Listas y factores</a></li>
+<li><a class="" href="funciones.html"><span class="header-section-number">9</span> Creación de funciones</a></li>
 <li class="book-part">Alto en el camino</li>
-<li><a class="" href="qu%C3%A9-sabemos-hacer.html"><span class="header-section-number">10</span> ¿Qué sabemos hacer?</a></li>
-<li><a class="" href="aleatorio_1.html"><span class="header-section-number">11</span> Incursión aleatoria</a></li>
+<li><a class="" href="resumen-1.html"><span class="header-section-number">10</span> ¿Qué sabemos hacer?</a></li>
 <li class="book-part">DATAVIZ: introducción a la visualización</li>
-<li><a class="" href="procesamiento.html"><span class="header-section-number">12</span> Introducción al procesamiento de datos</a></li>
+<li><a class="" href="procesamiento.html"><span class="header-section-number">11</span> Tidy data: ordenando datos</a></li>
+<li><a class="" href="tidyverse.html"><span class="header-section-number">12</span> Transformando los datos: incursión al universo tidyverse</a></li>
 <li><a class="" href="modelos_lineales.html"><span class="header-section-number">13</span> Introducción a los modelos lineales</a></li>
 <li><a class="" href="ggplot2.html"><span class="header-section-number">14</span> Visualizando datos: incursión a ggplot2</a></li>
 <li class="book-part">Epílogo</li>
@@ -75,9 +75,9 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="tipos-de-datos-i-vectores" class="section level1">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="vectores" class="section level1">
 <h1>
-<span class="header-section-number">Capítulo 3</span> Tipos de datos I: vectores<a class="anchor" aria-label="anchor" href="#tipos-de-datos-i-vectores"><i class="fas fa-link"></i></a>
+<span class="header-section-number">Capítulo 3</span> Tipos de datos I: vectores<a class="anchor" aria-label="anchor" href="#vectores"><i class="fas fa-link"></i></a>
 </h1>
 <div class="rmdimportant">
 <p><strong><span style="color: #20935E;">CONSEJO: recuperar un comando y autocompletar</span></strong></p>
@@ -727,9 +727,9 @@ Imagen/gráfica 3.1: Paquete stringr para manejar cadenas de texto más compleja
                <span class="va">x</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/order.html">order</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">]</span>, <span class="co"># segunda forma</span>
                times <span class="op">=</span> <span class="fl">1e3</span><span class="op">)</span> <span class="co"># se repetirá 1000 veces</span></code></pre></div>
 <pre><code>## Unit: microseconds
-##         expr    min      lq     mean median     uq      max neval cld
-##      sort(x) 50.417 57.3890 62.49549 59.082 62.538  185.212  1000   a
-##  x[order(x)] 35.593 41.8375 52.58659 43.354 45.697 6692.655  1000   a</code></pre>
+##         expr    min      lq     mean median      uq      max neval cld
+##      sort(x) 41.623 46.0515 60.00767 47.120 51.6030 6806.577  1000   b
+##  x[order(x)] 29.540 33.7035 38.78775 34.556 37.9955  250.027  1000  a</code></pre>
 <p>Sí, estás viendo bien: aunque a priori parezca contraintuitivo, es más corto obtener los índices ordenados de un vector, y luego reordenarlo en base a esos índices, que la ordenación directa a través del comando <code><a href="https://rdrr.io/r/base/sort.html">sort()</a></code> (ya que usan algoritmos de ordenación distintos).</p>
 </div>
 <div class="inline-table"><table class="table table-sm">
@@ -771,7 +771,8 @@ Imagen/gráfica 3.1: Paquete stringr para manejar cadenas de texto más compleja
 <h2>
 <span class="header-section-number">3.11</span> 📝 Ejercicios<a class="anchor" aria-label="anchor" href="#ejercicios-1"><i class="fas fa-link"></i></a>
 </h2>
-<details><p><summary>📝<strong>Ejercicio 1</strong>: define un vector que contenga los números 1, 10, -1 y 2, y guárdalo en una variable llamada <code>vector_num</code>. Tras definirlo, calcula su suma (<strong>haz click</strong> en la flecha para la solución propuesta). </summary></p>
+<p>(haz click en las flechas para ver soluciones)</p>
+<details><p><summary>📝<strong>Ejercicio 1</strong>: define un vector que contenga los números 1, 10, -1 y 2, y guárdalo en una variable llamada <code>vector_num</code>. Tras definirlo, calcula su suma. </summary></p>
 <!-- toc -->
 <ul>
 <li>Solución:</li>
@@ -785,7 +786,7 @@ Imagen/gráfica 3.1: Paquete stringr para manejar cadenas de texto más compleja
 <pre><code>## [1] 12</code></pre>
 <!-- tocstop -->
 </details><p> </p>
-<details><p><summary>📝<strong>Ejercicio 2</strong>: calcula la versión ordenada del vector anterior <code>vector_num</code> (<strong>haz click</strong> en la flecha para la solución propuesta). </summary></p>
+<details><p><summary>📝<strong>Ejercicio 2</strong>: calcula la versión ordenada del vector anterior <code>vector_num</code>. </summary></p>
 <!-- toc -->
 <ul>
 <li>Solución:</li>
@@ -801,7 +802,7 @@ Imagen/gráfica 3.1: Paquete stringr para manejar cadenas de texto más compleja
 <pre><code>## [1]  0  2  3 11</code></pre>
 <!-- tocstop -->
 </details><p> </p>
-<details><p><summary>📝<strong>Ejercicio 3</strong>: encuentra del vector <code>vector_num</code> original el lugar (el índice) que ocupa su mínimo y su máximo (<strong>haz click</strong> en la flecha para la solución propuesta). </summary></p>
+<details><p><summary>📝<strong>Ejercicio 3</strong>: encuentra del vector <code>vector_num</code> original el lugar (el índice) que ocupa su mínimo y su máximo. </summary></p>
 <!-- toc -->
 <ul>
 <li>Solución:</li>
@@ -825,7 +826,7 @@ Imagen/gráfica 3.1: Paquete stringr para manejar cadenas de texto más compleja
 <pre><code>## [1] FALSE</code></pre>
 <!-- tocstop -->
 </details><p> </p>
-<details><p><summary>📝<strong>Ejercicio 4</strong>: encuentra del vector <code>vector_num</code> los elementos mayores que 1 y menores que 7. Encuentra una forma de averiguar si todos los elementos son o no positivos (<strong>haz click</strong> en la flecha para la solución propuesta). </summary></p>
+<details><p><summary>📝<strong>Ejercicio 4</strong>: encuentra del vector <code>vector_num</code> los elementos mayores que 1 y menores que 7. Encuentra una forma de averiguar si todos los elementos son o no positivos. </summary></p>
 <!-- toc -->
 <ul>
 <li>Solución:</li>
@@ -840,7 +841,7 @@ Imagen/gráfica 3.1: Paquete stringr para manejar cadenas de texto más compleja
 <pre><code>## [1] FALSE</code></pre>
 <!-- tocstop -->
 </details><p> </p>
-<details><p><summary>📝<strong>Ejercicio 5</strong>: crea un vector con las palabras “Hola”, “me”, “llamo” (y tu nombre y apellidos), y pega luego sus elementos de forma que la frase esté correctamente escrita en castellano. Tras hacerlo, añade “y tengo 30 años” (<strong>haz click</strong> en la flecha para la solución propuesta). </summary></p>
+<details><p><summary>📝<strong>Ejercicio 5</strong>: crea un vector con las palabras “Hola”, “me”, “llamo” (y tu nombre y apellidos), y pega luego sus elementos de forma que la frase esté correctamente escrita en castellano. Tras hacerlo, añade “y tengo 30 años”. </summary></p>
 <!-- toc -->
 <ul>
 <li>Solución:</li>
@@ -859,7 +860,7 @@ Imagen/gráfica 3.1: Paquete stringr para manejar cadenas de texto más compleja
 <pre><code>## [1] "Hola me llamo Javier Álvarez Liébana y tengo 30 años."</code></pre>
 <!-- tocstop -->
 </details><p> </p>
-<details><p><summary>📝<strong>Ejercicio 6</strong>: obten la fecha de hoy, define la fecha de tu cumpleaños, y calcula la diferencia de días (<strong>haz click</strong> en la flecha para la solución propuesta).</summary></p>
+<details><p><summary>📝<strong>Ejercicio 6</strong>: obten la fecha de hoy, define la fecha de tu cumpleaños, y calcula la diferencia de días</summary></p>
 <!-- toc -->
 <ul>
 <li>Solución:</li>
@@ -874,18 +875,18 @@ Imagen/gráfica 3.1: Paquete stringr para manejar cadenas de texto más compleja
 
 <span class="co"># Diferencia</span>
 <span class="va">hoy</span> <span class="op">-</span> <span class="va">cumple</span></code></pre></div>
-<pre><code>## Time difference of 11718 days</code></pre>
+<pre><code>## Time difference of 11719 days</code></pre>
 <!-- tocstop -->
 </details>
 </div>
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="primeros-pasos.html"><span class="header-section-number">2</span> Primeros pasos</a></div>
-<div class="next"><a href="flujo-de-trabajo-proyecto.html"><span class="header-section-number">4</span> Flujo de trabajo: proyecto</a></div>
+<div class="next"><a href="proyecto.html"><span class="header-section-number">4</span> Flujo de trabajo: primer proyecto</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#tipos-de-datos-i-vectores"><span class="header-section-number">3</span> Tipos de datos I: vectores</a></li>
+<li><a class="nav-link" href="#vectores"><span class="header-section-number">3</span> Tipos de datos I: vectores</a></li>
 <li><a class="nav-link" href="#vectores-num%C3%A9ricos"><span class="header-section-number">3.1</span> Vectores numéricos</a></li>
 <li><a class="nav-link" href="#secuencias-con-un-patr%C3%B3n"><span class="header-section-number">3.2</span> Secuencias con un patrón</a></li>
 <li><a class="nav-link" href="#operaciones-aritm%C3%A9ticas-con-vectores-num%C3%A9ricos"><span class="header-section-number">3.3</span> Operaciones aritméticas con vectores numéricos</a></li>
@@ -921,7 +922,7 @@ Imagen/gráfica 3.1: Paquete stringr para manejar cadenas de texto más compleja
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 10-10-2021.</p>
+    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 11-10-2021.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

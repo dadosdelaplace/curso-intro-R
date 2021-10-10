@@ -47,21 +47,21 @@
 <li><a class="" href="index.html">Prefacio</a></li>
 <li class="book-part">Toma de contacto</li>
 <li><a class="" href="instalacionR.html"><span class="header-section-number">1</span> Instalación</a></li>
-<li><a class="" href="primeros_pasos.html"><span class="header-section-number">2</span> Primeros pasos</a></li>
+<li><a class="" href="primeros-pasos.html"><span class="header-section-number">2</span> Primeros pasos</a></li>
 <li class="book-part">Conceptos básicos</li>
 <li><a class="" href="vectores.html"><span class="header-section-number">3</span> Tipos de datos I: vectores</a></li>
 <li><a class="" href="proyecto.html"><span class="header-section-number">4</span> Flujo de trabajo: primer proyecto</a></li>
 <li><a class="" href="control.html"><span class="header-section-number">5</span> Estructuras de control</a></li>
 <li><a class="" href="datos.html"><span class="header-section-number">6</span> Tipos de datos II: datos estructurados</a></li>
-<li><a class="" href="importar_exportar.html"><span class="header-section-number">7</span> Importando/exportando</a></li>
+<li><a class="" href="importar-exportar.html"><span class="header-section-number">7</span> Importando/exportando</a></li>
 <li class="book-part">Listas y funciones</li>
-<li><a class="active" href="otros_datos.html"><span class="header-section-number">8</span> Listas y factores</a></li>
+<li><a class="active" href="otros-datos.html"><span class="header-section-number">8</span> Listas y factores</a></li>
 <li><a class="" href="funciones.html"><span class="header-section-number">9</span> Creación de funciones</a></li>
 <li class="book-part">Alto en el camino</li>
-<li><a class="" href="resumen_1.html"><span class="header-section-number">10</span> ¿Qué sabemos hacer?</a></li>
-<li><a class="" href="aleatorio_1.html"><span class="header-section-number">11</span> Incursión aleatoria</a></li>
+<li><a class="" href="resumen-1.html"><span class="header-section-number">10</span> ¿Qué sabemos hacer?</a></li>
 <li class="book-part">DATAVIZ: introducción a la visualización</li>
-<li><a class="" href="procesamiento.html"><span class="header-section-number">12</span> Introducción al procesamiento de datos</a></li>
+<li><a class="" href="procesamiento.html"><span class="header-section-number">11</span> Tidy data: ordenando datos</a></li>
+<li><a class="" href="tidyverse.html"><span class="header-section-number">12</span> Transformando los datos: incursión al universo tidyverse</a></li>
 <li><a class="" href="modelos_lineales.html"><span class="header-section-number">13</span> Introducción a los modelos lineales</a></li>
 <li><a class="" href="ggplot2.html"><span class="header-section-number">14</span> Visualizando datos: incursión a ggplot2</a></li>
 <li class="book-part">Epílogo</li>
@@ -75,9 +75,9 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="otros_datos" class="section level1">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="otros-datos" class="section level1">
 <h1>
-<span class="header-section-number">Capítulo 8</span> Listas y factores<a class="anchor" aria-label="anchor" href="#otros_datos"><i class="fas fa-link"></i></a>
+<span class="header-section-number">Capítulo 8</span> Listas y factores<a class="anchor" aria-label="anchor" href="#otros-datos"><i class="fas fa-link"></i></a>
 </h1>
 <p>Veamos dos tipos de datos muy particulares más allá de vectores, matrices y <code>data.frames</code>.</p>
 <div id="listas" class="section level2">
@@ -547,10 +547,10 @@ Imagen/gráfica 8.1: Paquete lubridate.
 <div class="sourceCode" id="cb495"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fecha</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span><span class="op">(</span><span class="op">)</span>
 <span class="va">fecha</span></code></pre></div>
-<pre><code>## [1] "2021-10-10"</code></pre>
+<pre><code>## [1] "2021-10-11"</code></pre>
 <div class="sourceCode" id="cb497"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fecha</span> <span class="op">-</span> <span class="fl">7</span> <span class="co"># una semana antes</span></code></pre></div>
-<pre><code>## [1] "2021-10-03"</code></pre>
+<pre><code>## [1] "2021-10-04"</code></pre>
 <div class="sourceCode" id="cb499"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span> <span class="co"># de clase fecha</span></code></pre></div>
 <pre><code>## [1] "Date"</code></pre>
@@ -680,10 +680,10 @@ Imagen/gráfica 8.2: Paquete lubridate.
 <p>El paquete <a href="https://lubridate.tidyverse.org">lubridate</a> nos proporciona <strong>herramientas para extraer la fecha y hora actuales</strong> con las funciones <code><a href="https://rdrr.io/pkg/lubridate/man/now.html">today()</a></code> y <code><a href="https://rdrr.io/pkg/lubridate/man/now.html">now()</a></code></p>
 <div class="sourceCode" id="cb530"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/now.html">today</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "2021-10-10"</code></pre>
+<pre><code>## [1] "2021-10-11"</code></pre>
 <div class="sourceCode" id="cb532"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/now.html">now</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "2021-10-10 13:17:33 CEST"</code></pre>
+<pre><code>## [1] "2021-10-11 00:46:50 CEST"</code></pre>
 <p>Además tenemos disponibles en dicho paquete funciones para extraer facilmente algunas variables temporales como el día de la semana, el mes o el cuatrimestre, con las funciones <code><a href="https://rdrr.io/pkg/lubridate/man/year.html">year()</a></code>, <code><a href="https://rdrr.io/r/base/weekday.POSIXt.html">months()</a></code>, <code><a href="https://rdrr.io/pkg/lubridate/man/day.html">day()</a></code> o <code><a href="https://rdrr.io/pkg/lubridate/man/day.html">wday()</a></code> (día de la semana).</p>
 <div class="sourceCode" id="cb534"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fecha</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/now.html">now</a></span><span class="op">(</span><span class="op">)</span>
@@ -694,19 +694,19 @@ Imagen/gráfica 8.2: Paquete lubridate.
 <pre><code>## [1] 10</code></pre>
 <div class="sourceCode" id="cb538"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/day.html">day</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 10</code></pre>
+<pre><code>## [1] 11</code></pre>
 <div class="sourceCode" id="cb540"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/day.html">wday</a></span><span class="op">(</span><span class="va">fecha</span>, week_start <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="co"># Día de la semana (empezando por el lunes)</span></code></pre></div>
-<pre><code>## [1] 7</code></pre>
+<pre><code>## [1] 1</code></pre>
 <div class="sourceCode" id="cb542"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/hour.html">hour</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 13</code></pre>
+<pre><code>## [1] 0</code></pre>
 <div class="sourceCode" id="cb544"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/minute.html">minute</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 17</code></pre>
+<pre><code>## [1] 46</code></pre>
 <div class="sourceCode" id="cb546"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/second.html">second</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 33.87218</code></pre>
+<pre><code>## [1] 50.90311</code></pre>
 <div class="sourceCode" id="cb548"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/week.html">week</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span> <span class="co"># Número de semana (del año)</span></code></pre></div>
 <pre><code>## [1] 41</code></pre>
@@ -807,7 +807,7 @@ Imagen/gráfica 8.2: Paquete lubridate.
 ## [1] "Álvarez Liébana"
 ## 
 ## $edad
-## [1] 32.08219
+## [1] 32.08493
 ## 
 ## $soltero
 ## [1] TRUE</code></pre>
@@ -833,12 +833,12 @@ Imagen/gráfica 8.2: Paquete lubridate.
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="importar_exportar.html"><span class="header-section-number">7</span> Importando/exportando</a></div>
+<div class="prev"><a href="importar-exportar.html"><span class="header-section-number">7</span> Importando/exportando</a></div>
 <div class="next"><a href="funciones.html"><span class="header-section-number">9</span> Creación de funciones</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#otros_datos"><span class="header-section-number">8</span> Listas y factores</a></li>
+<li><a class="nav-link" href="#otros-datos"><span class="header-section-number">8</span> Listas y factores</a></li>
 <li><a class="nav-link" href="#listas"><span class="header-section-number">8.1</span> Listas</a></li>
 <li><a class="nav-link" href="#factores"><span class="header-section-number">8.2</span> Factores</a></li>
 <li><a class="nav-link" href="#fechas-y-horas"><span class="header-section-number">8.3</span> Fechas y horas</a></li>
@@ -860,7 +860,7 @@ Imagen/gráfica 8.2: Paquete lubridate.
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 10-10-2021.</p>
+    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 11-10-2021.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

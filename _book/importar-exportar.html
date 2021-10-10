@@ -47,21 +47,21 @@
 <li><a class="" href="index.html">Prefacio</a></li>
 <li class="book-part">Toma de contacto</li>
 <li><a class="" href="instalacionR.html"><span class="header-section-number">1</span> Instalación</a></li>
-<li><a class="" href="primeros_pasos.html"><span class="header-section-number">2</span> Primeros pasos</a></li>
+<li><a class="" href="primeros-pasos.html"><span class="header-section-number">2</span> Primeros pasos</a></li>
 <li class="book-part">Conceptos básicos</li>
 <li><a class="" href="vectores.html"><span class="header-section-number">3</span> Tipos de datos I: vectores</a></li>
 <li><a class="" href="proyecto.html"><span class="header-section-number">4</span> Flujo de trabajo: primer proyecto</a></li>
 <li><a class="" href="control.html"><span class="header-section-number">5</span> Estructuras de control</a></li>
 <li><a class="" href="datos.html"><span class="header-section-number">6</span> Tipos de datos II: datos estructurados</a></li>
-<li><a class="active" href="importar_exportar.html"><span class="header-section-number">7</span> Importando/exportando</a></li>
+<li><a class="active" href="importar-exportar.html"><span class="header-section-number">7</span> Importando/exportando</a></li>
 <li class="book-part">Listas y funciones</li>
-<li><a class="" href="otros_datos.html"><span class="header-section-number">8</span> Listas y factores</a></li>
+<li><a class="" href="otros-datos.html"><span class="header-section-number">8</span> Listas y factores</a></li>
 <li><a class="" href="funciones.html"><span class="header-section-number">9</span> Creación de funciones</a></li>
 <li class="book-part">Alto en el camino</li>
-<li><a class="" href="resumen_1.html"><span class="header-section-number">10</span> ¿Qué sabemos hacer?</a></li>
-<li><a class="" href="aleatorio_1.html"><span class="header-section-number">11</span> Incursión aleatoria</a></li>
+<li><a class="" href="resumen-1.html"><span class="header-section-number">10</span> ¿Qué sabemos hacer?</a></li>
 <li class="book-part">DATAVIZ: introducción a la visualización</li>
-<li><a class="" href="procesamiento.html"><span class="header-section-number">12</span> Introducción al procesamiento de datos</a></li>
+<li><a class="" href="procesamiento.html"><span class="header-section-number">11</span> Tidy data: ordenando datos</a></li>
+<li><a class="" href="tidyverse.html"><span class="header-section-number">12</span> Transformando los datos: incursión al universo tidyverse</a></li>
 <li><a class="" href="modelos_lineales.html"><span class="header-section-number">13</span> Introducción a los modelos lineales</a></li>
 <li><a class="" href="ggplot2.html"><span class="header-section-number">14</span> Visualizando datos: incursión a ggplot2</a></li>
 <li class="book-part">Epílogo</li>
@@ -75,9 +75,9 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="importar_exportar" class="section level1">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="importar-exportar" class="section level1">
 <h1>
-<span class="header-section-number">Capítulo 7</span> Importando/exportando<a class="anchor" aria-label="anchor" href="#importar_exportar"><i class="fas fa-link"></i></a>
+<span class="header-section-number">Capítulo 7</span> Importando/exportando<a class="anchor" aria-label="anchor" href="#importar-exportar"><i class="fas fa-link"></i></a>
 </h1>
 <p>Hemos aprendido a <strong>crear nuestros propios datos</strong> pero la mayoría de veces los cargaremos de distintos archivos, fuentes, etc. Vamos a ver las <strong>4 formas más comunes de importar (cargar) datos</strong></p>
 <div id="importación-de-datos" class="section level2">
@@ -112,7 +112,7 @@
 Imagen/gráfica 7.1: Importación de ficheros de extensión .RData.
 </p>
 </div>
-<p>Como ves en la imagen <a href="importar_exportar.html#fig:carga-RDATA">7.1</a>, en el panel de entorno de la parte superior derecha ahora tendremos 4 <code>data.frames</code> que antes no teníamos. Un función muy útil es <code><a href="https://rdrr.io/r/utils/head.html">head()</a></code>, con argumento el nombre de un <code>data.frame</code>, que nos permite visualizar las primeras columnas.</p>
+<p>Como ves en la imagen <a href="importar-exportar.html#fig:carga-RDATA">7.1</a>, en el panel de entorno de la parte superior derecha ahora tendremos 4 <code>data.frames</code> que antes no teníamos. Un función muy útil es <code><a href="https://rdrr.io/r/utils/head.html">head()</a></code>, con argumento el nombre de un <code>data.frame</code>, que nos permite visualizar las primeras columnas.</p>
 <div class="sourceCode" id="cb404"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Ver las primeras filas de la tabla que guarda distintos modelos de coche y características</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">coches</span><span class="op">)</span></code></pre></div>
@@ -195,33 +195,33 @@ Imagen/gráfica 7.2: Paquete readr.
 <span class="va">vacunas_esp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/readr/man/read_delim.html">read_csv</a></span><span class="op">(</span>file <span class="op">=</span> <span class="st">"./DATOS/datos_ES.csv"</span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb407"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">vacunas_esp</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 6 × 71
-##   fechas     ISO   poblacion porc_pobl_total poblacion_mayor_… porc_pobl_total_…
-##   &lt;date&gt;     &lt;chr&gt;     &lt;dbl&gt;           &lt;dbl&gt;             &lt;dbl&gt;             &lt;dbl&gt;
-## 1 2021-01-05 ES     47450795             100          40129822               100
-## 2 2021-01-06 ES     47450795             100          40129822               100
-## 3 2021-01-07 ES     47450795             100          40129822               100
-## 4 2021-01-08 ES     47450795             100          40129822               100
-## 5 2021-01-09 ES     47450795             100          40129822               100
-## 6 2021-01-10 ES     47450795             100          40129822               100
-## # … with 65 more variables: dosis_entrega_pfizer &lt;dbl&gt;,
-## #   dosis_entrega_astra &lt;dbl&gt;, dosis_entrega_moderna &lt;dbl&gt;,
-## #   dosis_entrega_janssen &lt;dbl&gt;, dosis_entrega &lt;dbl&gt;,
-## #   dosis_entrega_100hab &lt;dbl&gt;, porc_entregadas_sobre_total &lt;dbl&gt;,
-## #   dosis_diarias_entrega_pfizer &lt;dbl&gt;, dosis_diarias_entrega_astra &lt;dbl&gt;,
-## #   dosis_diarias_entrega_moderna &lt;dbl&gt;, dosis_diarias_entrega &lt;dbl&gt;,
-## #   dosis_7D_entrega_pfizer &lt;dbl&gt;, dosis_7D_entrega_astra &lt;dbl&gt;, …</code></pre>
+<pre><code>##  [90m# A tibble: 6 × 71 [39m
+##    [1mfechas [22m      [1mISO [22m    [1mpoblacion [22m  [1mporc_pobl_total [22m  [1mpoblacion_mayor_… [22m  [1mporc_pobl_total_… [22m
+##    [3m [90m&lt;date&gt; [39m [23m      [3m [90m&lt;chr&gt; [39m [23m      [3m [90m&lt;dbl&gt; [39m [23m            [3m [90m&lt;dbl&gt; [39m [23m              [3m [90m&lt;dbl&gt; [39m [23m              [3m [90m&lt;dbl&gt; [39m [23m
+##  [90m1 [39m 2021-01-05 ES     47 [4m4 [24m [4m5 [24m [4m0 [24m795             100          40 [4m1 [24m [4m2 [24m [4m9 [24m822               100
+##  [90m2 [39m 2021-01-06 ES     47 [4m4 [24m [4m5 [24m [4m0 [24m795             100          40 [4m1 [24m [4m2 [24m [4m9 [24m822               100
+##  [90m3 [39m 2021-01-07 ES     47 [4m4 [24m [4m5 [24m [4m0 [24m795             100          40 [4m1 [24m [4m2 [24m [4m9 [24m822               100
+##  [90m4 [39m 2021-01-08 ES     47 [4m4 [24m [4m5 [24m [4m0 [24m795             100          40 [4m1 [24m [4m2 [24m [4m9 [24m822               100
+##  [90m5 [39m 2021-01-09 ES     47 [4m4 [24m [4m5 [24m [4m0 [24m795             100          40 [4m1 [24m [4m2 [24m [4m9 [24m822               100
+##  [90m6 [39m 2021-01-10 ES     47 [4m4 [24m [4m5 [24m [4m0 [24m795             100          40 [4m1 [24m [4m2 [24m [4m9 [24m822               100
+##  [90m# … with 65 more variables:  [1mdosis_entrega_pfizer [22m &lt;dbl&gt;, [39m
+##  [90m#    [1mdosis_entrega_astra [22m &lt;dbl&gt;,  [1mdosis_entrega_moderna [22m &lt;dbl&gt;, [39m
+##  [90m#    [1mdosis_entrega_janssen [22m &lt;dbl&gt;,  [1mdosis_entrega [22m &lt;dbl&gt;, [39m
+##  [90m#    [1mdosis_entrega_100hab [22m &lt;dbl&gt;,  [1mporc_entregadas_sobre_total [22m &lt;dbl&gt;, [39m
+##  [90m#    [1mdosis_diarias_entrega_pfizer [22m &lt;dbl&gt;,  [1mdosis_diarias_entrega_astra [22m &lt;dbl&gt;, [39m
+##  [90m#    [1mdosis_diarias_entrega_moderna [22m &lt;dbl&gt;,  [1mdosis_diarias_entrega [22m &lt;dbl&gt;, [39m
+##  [90m#    [1mdosis_7D_entrega_pfizer [22m &lt;dbl&gt;,  [1mdosis_7D_entrega_astra [22m &lt;dbl&gt;, … [39m</code></pre>
 <div class="sourceCode" id="cb409"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">vacunas_esp</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">7</span><span class="op">]</span> <span class="co"># Primeras filas y columnas</span></code></pre></div>
-<pre><code>## # A tibble: 5 × 7
-##   fechas     ISO   poblacion porc_pobl_total poblacion_mayor_… porc_pobl_total_…
-##   &lt;date&gt;     &lt;chr&gt;     &lt;dbl&gt;           &lt;dbl&gt;             &lt;dbl&gt;             &lt;dbl&gt;
-## 1 2021-01-05 ES     47450795             100          40129822               100
-## 2 2021-01-06 ES     47450795             100          40129822               100
-## 3 2021-01-07 ES     47450795             100          40129822               100
-## 4 2021-01-08 ES     47450795             100          40129822               100
-## 5 2021-01-09 ES     47450795             100          40129822               100
-## # … with 1 more variable: dosis_entrega_pfizer &lt;dbl&gt;</code></pre>
+<pre><code>##  [90m# A tibble: 5 × 7 [39m
+##    [1mfechas [22m      [1mISO [22m    [1mpoblacion [22m  [1mporc_pobl_total [22m  [1mpoblacion_mayor_… [22m  [1mporc_pobl_total_… [22m
+##    [3m [90m&lt;date&gt; [39m [23m      [3m [90m&lt;chr&gt; [39m [23m      [3m [90m&lt;dbl&gt; [39m [23m            [3m [90m&lt;dbl&gt; [39m [23m              [3m [90m&lt;dbl&gt; [39m [23m              [3m [90m&lt;dbl&gt; [39m [23m
+##  [90m1 [39m 2021-01-05 ES     47 [4m4 [24m [4m5 [24m [4m0 [24m795             100          40 [4m1 [24m [4m2 [24m [4m9 [24m822               100
+##  [90m2 [39m 2021-01-06 ES     47 [4m4 [24m [4m5 [24m [4m0 [24m795             100          40 [4m1 [24m [4m2 [24m [4m9 [24m822               100
+##  [90m3 [39m 2021-01-07 ES     47 [4m4 [24m [4m5 [24m [4m0 [24m795             100          40 [4m1 [24m [4m2 [24m [4m9 [24m822               100
+##  [90m4 [39m 2021-01-08 ES     47 [4m4 [24m [4m5 [24m [4m0 [24m795             100          40 [4m1 [24m [4m2 [24m [4m9 [24m822               100
+##  [90m5 [39m 2021-01-09 ES     47 [4m4 [24m [4m5 [24m [4m0 [24m795             100          40 [4m1 [24m [4m2 [24m [4m9 [24m822               100
+##  [90m# … with 1 more variable:  [1mdosis_entrega_pfizer [22m &lt;dbl&gt; [39m</code></pre>
 <p>Ya tenemos nuestro archivo <code>.csv</code> cargado y además en formato <code>tibble</code>. Como hemos mentado anteriormente, las tablas en formato <code>tibble</code> son una especie particular de tablas <code>data.frame</code> con una gestión más eficiente.</p>
 </div>
 <div id="archivo-.xlsx" class="section level3">
@@ -235,16 +235,16 @@ Imagen/gráfica 7.2: Paquete readr.
 <span class="va">boston</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/readxl/man/read_excel.html">read_xlsx</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"./DATOS/Boston.xlsx"</span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb412"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">boston</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 6 × 14
-##      crim    zn indus  chas   nox    rm   age   dis   rad   tax ptratio black
-##     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
-## 1 0.00632    18  2.31     0 0.538  6.58  65.2  4.09     1   296    15.3  397.
-## 2 0.0273      0  7.07     0 0.469  6.42  78.9  4.97     2   242    17.8  397.
-## 3 0.0273      0  7.07     0 0.469  7.18  61.1  4.97     2   242    17.8  393.
-## 4 0.0324      0  2.18     0 0.458  7.00  45.8  6.06     3   222    18.7  395.
-## 5 0.0690      0  2.18     0 0.458  7.15  54.2  6.06     3   222    18.7  397.
-## 6 0.0298      0  2.18     0 0.458  6.43  58.7  6.06     3   222    18.7  394.
-## # … with 2 more variables: lstat &lt;dbl&gt;, medv &lt;dbl&gt;</code></pre>
+<pre><code>##  [90m# A tibble: 6 × 14 [39m
+##       [1mcrim [22m     [1mzn [22m  [1mindus [22m   [1mchas [22m    [1mnox [22m     [1mrm [22m    [1mage [22m    [1mdis [22m    [1mrad [22m    [1mtax [22m  [1mptratio [22m  [1mblack [22m
+##      [3m [90m&lt;dbl&gt; [39m [23m  [3m [90m&lt;dbl&gt; [39m [23m  [3m [90m&lt;dbl&gt; [39m [23m  [3m [90m&lt;dbl&gt; [39m [23m  [3m [90m&lt;dbl&gt; [39m [23m  [3m [90m&lt;dbl&gt; [39m [23m  [3m [90m&lt;dbl&gt; [39m [23m  [3m [90m&lt;dbl&gt; [39m [23m  [3m [90m&lt;dbl&gt; [39m [23m  [3m [90m&lt;dbl&gt; [39m [23m    [3m [90m&lt;dbl&gt; [39m [23m  [3m [90m&lt;dbl&gt; [39m [23m
+##  [90m1 [39m 0.006 [4m3 [24m [4m2 [24m    18  2.31     0 0.538  6.58  65.2  4.09     1   296    15.3  397.
+##  [90m2 [39m 0.027 [4m3 [24m      0  7.07     0 0.469  6.42  78.9  4.97     2   242    17.8  397.
+##  [90m3 [39m 0.027 [4m3 [24m      0  7.07     0 0.469  7.18  61.1  4.97     2   242    17.8  393.
+##  [90m4 [39m 0.032 [4m4 [24m      0  2.18     0 0.458  7.00  45.8  6.06     3   222    18.7  395.
+##  [90m5 [39m 0.069 [4m0 [24m      0  2.18     0 0.458  7.15  54.2  6.06     3   222    18.7  397.
+##  [90m6 [39m 0.029 [4m8 [24m      0  2.18     0 0.458  6.43  58.7  6.06     3   222    18.7  394.
+##  [90m# … with 2 more variables:  [1mlstat [22m &lt;dbl&gt;,  [1mmedv [22m &lt;dbl&gt; [39m</code></pre>
 <div class="rmdimportant">
 <p><strong><span style="color: #20935E;">CONSEJO: entorno tidyverse</span></strong></p>
 <p>Una de las <strong>herramientas más potentes en <code>R</code></strong> es el conjunto de paquetes <a href="https://tidyverse.tidyverse.org">tidyverse</a>: un entorno de paquetes que nos permite una gestión ágil y eficiente de nuestros conjuntos de datos. Aunque su uso profundo corresponde a un futuro curso, veamos una función muy útil del paquete <a href="https://dplyr.tidyverse.org">dplyr</a> (incluido en <a href="https://tidyverse.tidyverse.org">tidyverse</a>) para visualizar un resumen de nuestros datos.</p>
@@ -255,20 +255,20 @@ Imagen/gráfica 7.2: Paquete readr.
 <code class="sourceCode R"><span class="fu">glimpse</span><span class="op">(</span><span class="va">boston</span><span class="op">)</span><span class="co"># Resumen por columnas</span></code></pre></div>
 <pre><code>## Rows: 506
 ## Columns: 14
-## $ crim    &lt;dbl&gt; 0.00632, 0.02731, 0.02729, 0.03237, 0.06905, 0.02985, 0.08829,…
-## $ zn      &lt;dbl&gt; 18.0, 0.0, 0.0, 0.0, 0.0, 0.0, 12.5, 12.5, 12.5, 12.5, 12.5, 1…
-## $ indus   &lt;dbl&gt; 2.31, 7.07, 7.07, 2.18, 2.18, 2.18, 7.87, 7.87, 7.87, 7.87, 7.…
-## $ chas    &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
-## $ nox     &lt;dbl&gt; 0.538, 0.469, 0.469, 0.458, 0.458, 0.458, 0.524, 0.524, 0.524,…
-## $ rm      &lt;dbl&gt; 6.575, 6.421, 7.185, 6.998, 7.147, 6.430, 6.012, 6.172, 5.631,…
-## $ age     &lt;dbl&gt; 65.2, 78.9, 61.1, 45.8, 54.2, 58.7, 66.6, 96.1, 100.0, 85.9, 9…
-## $ dis     &lt;dbl&gt; 4.0900, 4.9671, 4.9671, 6.0622, 6.0622, 6.0622, 5.5605, 5.9505…
-## $ rad     &lt;dbl&gt; 1, 2, 2, 3, 3, 3, 5, 5, 5, 5, 5, 5, 5, 4, 4, 4, 4, 4, 4, 4, 4,…
-## $ tax     &lt;dbl&gt; 296, 242, 242, 222, 222, 222, 311, 311, 311, 311, 311, 311, 31…
-## $ ptratio &lt;dbl&gt; 15.3, 17.8, 17.8, 18.7, 18.7, 18.7, 15.2, 15.2, 15.2, 15.2, 15…
-## $ black   &lt;dbl&gt; 396.90, 396.90, 392.83, 394.63, 396.90, 394.12, 395.60, 396.90…
-## $ lstat   &lt;dbl&gt; 4.98, 9.14, 4.03, 2.94, 5.33, 5.21, 12.43, 19.15, 29.93, 17.10…
-## $ medv    &lt;dbl&gt; 24.0, 21.6, 34.7, 33.4, 36.2, 28.7, 22.9, 27.1, 16.5, 18.9, 15…</code></pre>
+## $  [1mcrim    [22m  [3m [90m&lt;dbl&gt; [39m [23m 0.00632, 0.02731, 0.02729, 0.03237, 0.06905, 0.02985, 0.08829,…
+## $  [1mzn      [22m  [3m [90m&lt;dbl&gt; [39m [23m 18.0, 0.0, 0.0, 0.0, 0.0, 0.0, 12.5, 12.5, 12.5, 12.5, 12.5, 1…
+## $  [1mindus   [22m  [3m [90m&lt;dbl&gt; [39m [23m 2.31, 7.07, 7.07, 2.18, 2.18, 2.18, 7.87, 7.87, 7.87, 7.87, 7.…
+## $  [1mchas    [22m  [3m [90m&lt;dbl&gt; [39m [23m 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+## $  [1mnox     [22m  [3m [90m&lt;dbl&gt; [39m [23m 0.538, 0.469, 0.469, 0.458, 0.458, 0.458, 0.524, 0.524, 0.524,…
+## $  [1mrm      [22m  [3m [90m&lt;dbl&gt; [39m [23m 6.575, 6.421, 7.185, 6.998, 7.147, 6.430, 6.012, 6.172, 5.631,…
+## $  [1mage     [22m  [3m [90m&lt;dbl&gt; [39m [23m 65.2, 78.9, 61.1, 45.8, 54.2, 58.7, 66.6, 96.1, 100.0, 85.9, 9…
+## $  [1mdis     [22m  [3m [90m&lt;dbl&gt; [39m [23m 4.0900, 4.9671, 4.9671, 6.0622, 6.0622, 6.0622, 5.5605, 5.9505…
+## $  [1mrad     [22m  [3m [90m&lt;dbl&gt; [39m [23m 1, 2, 2, 3, 3, 3, 5, 5, 5, 5, 5, 5, 5, 4, 4, 4, 4, 4, 4, 4, 4,…
+## $  [1mtax     [22m  [3m [90m&lt;dbl&gt; [39m [23m 296, 242, 242, 222, 222, 222, 311, 311, 311, 311, 311, 311, 31…
+## $  [1mptratio [22m  [3m [90m&lt;dbl&gt; [39m [23m 15.3, 17.8, 17.8, 18.7, 18.7, 18.7, 15.2, 15.2, 15.2, 15.2, 15…
+## $  [1mblack   [22m  [3m [90m&lt;dbl&gt; [39m [23m 396.90, 396.90, 392.83, 394.63, 396.90, 394.12, 395.60, 396.90…
+## $  [1mlstat   [22m  [3m [90m&lt;dbl&gt; [39m [23m 4.98, 9.14, 4.03, 2.94, 5.33, 5.21, 12.43, 19.15, 29.93, 17.10…
+## $  [1mmedv    [22m  [3m [90m&lt;dbl&gt; [39m [23m 24.0, 21.6, 34.7, 33.4, 36.2, 28.7, 22.9, 27.1, 16.5, 18.9, 15…</code></pre>
 </div>
 <div class="inline-table"><table class="table table-sm">
 <caption>
@@ -341,15 +341,15 @@ Imagen/gráfica 7.3: Archivos de la pandemia en el ISCIII.
 <div class="sourceCode" id="cb417"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">datos_ISCIII</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/readr/man/read_delim.html">read_csv</a></span><span class="op">(</span>file <span class="op">=</span> <span class="st">"https://cnecovid.isciii.es/covid19/resources/casos_hosp_uci_def_sexo_edad_provres.csv"</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">datos_ISCIII</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 6 × 8
-##   provincia_iso sexo  grupo_edad fecha      num_casos num_hosp num_uci num_def
-##   &lt;chr&gt;         &lt;chr&gt; &lt;chr&gt;      &lt;date&gt;         &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
-## 1 A             H     0-9        2020-01-01         0        0       0       0
-## 2 A             H     10-19      2020-01-01         0        0       0       0
-## 3 A             H     20-29      2020-01-01         0        0       0       0
-## 4 A             H     30-39      2020-01-01         0        0       0       0
-## 5 A             H     40-49      2020-01-01         0        0       0       0
-## 6 A             H     50-59      2020-01-01         0        0       0       0</code></pre>
+<pre><code>##  [90m# A tibble: 6 × 8 [39m
+##    [1mprovincia_iso [22m  [1msexo [22m   [1mgrupo_edad [22m  [1mfecha [22m       [1mnum_casos [22m  [1mnum_hosp [22m  [1mnum_uci [22m  [1mnum_def [22m
+##    [3m [90m&lt;chr&gt; [39m [23m          [3m [90m&lt;chr&gt; [39m [23m  [3m [90m&lt;chr&gt; [39m [23m       [3m [90m&lt;date&gt; [39m [23m          [3m [90m&lt;dbl&gt; [39m [23m     [3m [90m&lt;dbl&gt; [39m [23m    [3m [90m&lt;dbl&gt; [39m [23m    [3m [90m&lt;dbl&gt; [39m [23m
+##  [90m1 [39m A             H     0-9        2020-01-01         0        0       0       0
+##  [90m2 [39m A             H     10-19      2020-01-01         0        0       0       0
+##  [90m3 [39m A             H     20-29      2020-01-01         0        0       0       0
+##  [90m4 [39m A             H     30-39      2020-01-01         0        0       0       0
+##  [90m5 [39m A             H     40-49      2020-01-01         0        0       0       0
+##  [90m6 [39m A             H     50-59      2020-01-01         0        0       0       0</code></pre>
 <p>Mientras el enlace web no cambie, cada vez que ejecutemos esa orden en nuestro código tendremos en <code>datos_ISCIII</code> el último archivo actualizado que haya, sea el que sea, sin tener que descargarlo de forma manual, ¡y sin necesidad de guardarlo en nuestro local, solo en la memoria virtual de nuestra sesión de <code>R</code>!</p>
 </div>
 </div>
@@ -482,11 +482,11 @@ Imagen/gráfica 7.6: Margen derecho.
 
   <div class="chapter-nav">
 <div class="prev"><a href="datos.html"><span class="header-section-number">6</span> Tipos de datos II: datos estructurados</a></div>
-<div class="next"><a href="otros_datos.html"><span class="header-section-number">8</span> Listas y factores</a></div>
+<div class="next"><a href="otros-datos.html"><span class="header-section-number">8</span> Listas y factores</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#importar_exportar"><span class="header-section-number">7</span> Importando/exportando</a></li>
+<li><a class="nav-link" href="#importar-exportar"><span class="header-section-number">7</span> Importando/exportando</a></li>
 <li>
 <a class="nav-link" href="#importaci%C3%B3n-de-datos"><span class="header-section-number">7.1</span> Importación de datos</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#archivo-.rdata"><span class="header-section-number">7.1.1</span> Archivo .RData</a></li>
@@ -518,7 +518,7 @@ Imagen/gráfica 7.6: Margen derecho.
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 10-10-2021.</p>
+    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 11-10-2021.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

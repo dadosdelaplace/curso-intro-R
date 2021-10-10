@@ -17,10 +17,10 @@ colorize <- function(x, color) {
 ```
 
 
-# (PART) Epílogo {-}
+# (PART) Alto en el camino {-}
 
 
-# ¿Qué sabemos hacer?
+# ¿Qué sabemos hacer? {#resumen-1}
 
 **Hasta aquí el aperitivo**
 
@@ -147,7 +147,7 @@ knitr::include_graphics('img/tidyverse.jpg')
 
 
 
-# Incursión aleatoria {#aleatorio_1}
+## Incursión aleatoria {#aleatorio-1}
 
 Antes de acabar esta breve introducción a `R` merece la pena hablar de **«lo aleatorio»** y su generación en `R`.
 
@@ -295,21 +295,8 @@ sample(0:1, size = 20, replace = TRUE)
 
 
 
-# Contribuye al proyecto
 
-```{r me-photo, echo = FALSE, out.width = "35%", fig.align = "center", fig.cap = "Holi."}
-knitr::include_graphics("./img/me.jpeg")
-```
 
-Espero que te haya servido de ayuda este manual, no para ser un experto en `R` (ya que el manual no pretendía dicho objetivo) sino ser capaz de **ENTENDER** cómo funciona `R` y quitarte el miedo a empezar tus análisis.
 
-La idea es que haya otros manuales más avanzados, que partan de lo aprendido en este, pero si quieres (y te ha servido) puedes dejarme tu feedback y/o difundir dicho material por **redes**. Te dejo por aquí las mías:
 
-* [Twitter](https://twitter.com/dadosdelaplace)
-* [Instagram](https://instagram.com/javieralvarezliebana)
-* [Web](https://dadosdelaplace.com)
-* [Newsletter](https://cartasdelaplace.substack.com)
 
-Si además crees que este trabajo lo merece, así como mi divulgación en dichas redes, puedes dejar una **pequeña contribución económica en el Patreon** y poder interaccionar con la comunidad.
-
-[Patreon](https://patreon.com/dadosdelaplace)

@@ -16,7 +16,7 @@ colorize <- function(x, color) {
 }
 ```
 
-# Importando/exportando {#importar_exportar}
+# Importando/exportando {#importar-exportar}
 
 Hemos aprendido a **crear nuestros propios datos** pero la mayoría de veces los cargaremos de distintos archivos, fuentes, etc. Vamos a ver las **4 formas más comunes de importar (cargar) datos**
 

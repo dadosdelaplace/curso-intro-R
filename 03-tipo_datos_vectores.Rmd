@@ -18,7 +18,7 @@ colorize <- function(x, color) {
 
 # (PART) Conceptos básicos {-}
 
-# Tipos de datos I: vectores
+# Tipos de datos I: vectores {#vectores}
 
 ::: {.rmdimportant}
 **`r colorize("CONSEJO: recuperar un comando y autocompletar", "#20935E")`**
@@ -706,8 +706,10 @@ kable(paquetes, col.names = c("paquetes", "descripción"), align = "ll",
 
 ## 📝 Ejercicios
 
+(haz click en las flechas para ver soluciones)
+
 <details>
-  <summary>📝<strong>Ejercicio 1</strong>: define un vector que contenga los números 1, 10, -1 y 2, y guárdalo en una variable llamada `vector_num`. Tras definirlo, calcula su suma (**haz click** en la flecha para la solución propuesta). </summary>
+  <summary>📝<strong>Ejercicio 1</strong>: define un vector que contenga los números 1, 10, -1 y 2, y guárdalo en una variable llamada `vector_num`. Tras definirlo, calcula su suma. </summary>
   
 <!-- toc -->
 - Solución:
@@ -726,7 +728,7 @@ sum(vector_num)
 &nbsp;
 
 <details>
-  <summary>📝<strong>Ejercicio 2</strong>: calcula la versión ordenada del vector anterior `vector_num` (**haz click** en la flecha para la solución propuesta). </summary>
+  <summary>📝<strong>Ejercicio 2</strong>: calcula la versión ordenada del vector anterior `vector_num`. </summary>
   
 <!-- toc -->
 - Solución:
@@ -748,7 +750,7 @@ vector_num2[order(vector_num2)]
 
 
 <details>
-  <summary>📝<strong>Ejercicio 3</strong>: encuentra del vector `vector_num` original el lugar (el índice) que ocupa su mínimo y su máximo (**haz click** en la flecha para la solución propuesta). </summary>
+  <summary>📝<strong>Ejercicio 3</strong>: encuentra del vector `vector_num` original el lugar (el índice) que ocupa su mínimo y su máximo. </summary>
   
 <!-- toc -->
 - Solución:
@@ -773,7 +775,7 @@ all(vector_num > 0)
 &nbsp;
 
 <details>
-  <summary>📝<strong>Ejercicio 4</strong>: encuentra del vector `vector_num` los elementos mayores que 1 y menores que 7. Encuentra una forma de averiguar si todos los elementos son o no positivos (**haz click** en la flecha para la solución propuesta). </summary>
+  <summary>📝<strong>Ejercicio 4</strong>: encuentra del vector `vector_num` los elementos mayores que 1 y menores que 7. Encuentra una forma de averiguar si todos los elementos son o no positivos. </summary>
   
 <!-- toc -->
 - Solución:
@@ -792,7 +794,7 @@ all(vector_num > 0)
 &nbsp;
 
 <details>
-  <summary>📝<strong>Ejercicio 5</strong>: crea un vector con las palabras "Hola", "me", "llamo" (y tu nombre y apellidos), y pega luego sus elementos de forma que la frase esté correctamente escrita en castellano. Tras hacerlo, añade "y tengo 30 años" (**haz click** en la flecha para la solución propuesta). </summary>
+  <summary>📝<strong>Ejercicio 5</strong>: crea un vector con las palabras "Hola", "me", "llamo" (y tu nombre y apellidos), y pega luego sus elementos de forma que la frase esté correctamente escrita en castellano. Tras hacerlo, añade "y tengo 30 años". </summary>
   
 <!-- toc -->
 - Solución:
@@ -815,7 +817,7 @@ paste0(paste(vector_char, collapse = " "), " y tengo 30 años.")
 &nbsp;
 
 <details>
-  <summary>📝<strong>Ejercicio 6</strong>: obten la fecha de hoy, define la fecha de tu cumpleaños, y calcula la diferencia de días (**haz click** en la flecha para la solución propuesta).</summary>
+  <summary>📝<strong>Ejercicio 6</strong>: obten la fecha de hoy, define la fecha de tu cumpleaños, y calcula la diferencia de días</summary>
   
 <!-- toc -->
 - Solución:

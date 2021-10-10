@@ -18,7 +18,7 @@ colorize <- function(x, color) {
 
 # (PART) Listas y funciones {-}
 
-# Listas y factores {#otros_datos}
+# Listas y factores {#otros-datos}
 
 Veamos dos tipos de datos muy particulares más allá de vectores, matrices y `data.frames`.
 

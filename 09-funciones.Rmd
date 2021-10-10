@@ -1,4 +1,4 @@
-# Creación de funciones {#FUNCIONES}
+# Creación de funciones {#funciones}
 
 En `R` no solo podemos usar las funciones predeterminadas que vienen ya cargadas, o las de los paquetes que instalamos, sino que además podemos **crear nuestras propias funciones**, para automatizar tareas que vayamos a repetir a lo largo de nuestro código.
 

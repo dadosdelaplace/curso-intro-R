@@ -1,0 +1,34 @@
+# (PART) Epílogo {-}
+# Ejercicio de repaso: la paradoja de Parrondo {#parrondo}
+
+```{r}
+bote_inicial <- 100
+rondas <- 1000
+intentos <- sample(x = c("perder", "ganar"), size = rondas,
+                   prob = c(0.51, 0.49), replace = TRUE)
+ganancia <- bote_inicial + sum(intentos == "ganar") -
+  sum(intentos == "perder")
+ganancia
+```
+# Contribuye al proyecto {#contribuye}
+
+```{r me-photo, echo = FALSE, out.width = "35%", fig.align = "center", fig.cap = "Holi."}
+knitr::include_graphics("./img/me.jpeg")
+```
+
+Espero que te haya servido de ayuda este manual, no para ser un experto en `R` (ya que el manual no pretendía dicho objetivo) sino ser capaz de **ENTENDER** cómo funciona `R` y quitarte el miedo a empezar tus análisis.
+
+La idea es que haya otros manuales más avanzados, que partan de lo aprendido en este, pero si quieres (y te ha servido) puedes dejarme tu feedback y/o difundir dicho material por **redes**. Te dejo por aquí las mías:
+
+* [Twitter](https://twitter.com/dadosdelaplace)
+* [Instagram](https://instagram.com/javieralvarezliebana)
+* [Web](https://dadosdelaplace.com)
+* [Newsletter](https://cartasdelaplace.substack.com)
+
+Si además crees que este trabajo lo merece, así como mi divulgación en dichas redes, puedes dejar una **pequeña contribución económica en el Patreon** y poder interaccionar con la comunidad.
+
+[Patreon](https://patreon.com/dadosdelaplace)
+
+
+
+

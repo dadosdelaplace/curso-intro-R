@@ -34,6 +34,8 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE,
                       dev = "ragg_png", res = 600, retina = 2,
                       fig.width = 15, fig.height = 8.5)
 Sys.setlocale("LC_TIME", "C")
+options(crayon.enabled = TRUE, pillar.bold = TRUE,
+        stringr.html = FALSE)
 ```
 
 ```{r color, echo = FALSE}
@@ -101,6 +103,21 @@ knitr::include_graphics('img/rstudio_cheetsheet.jpg')
 
 Todo lo necesario para seguir este curso es de **descarga gratuita**: viva el software libre, abajo Excel.
 
+
+
+## Contenidos {-}
+
+* \@ref(instalacionR) [Instalacion de R y RStudio](#instalacionR) 
+* \@ref(primeros-pasos) [Primeros pasos en R](#primeros-pasos) 
+* \@ref(vectores) [Tipos de datos I: vectores](#vectores) 
+* \@ref(proyecto) [Flujo de trabajo: primer proyecto](#proyecto)
+* \@ref(control) [Estructuras de control](#control)
+* \@ref(datos) [Tipos de datos II: datos estructurados](#datos)
+* \@ref(importar-exportar) [Importar/exportar datos](#importar-exportar)
+* \@ref(otros-datos) [Otros datos: listas y factores](#otros-datos)
+* \@ref(funciones) [Creación de funciones](#funciones)
+* \@ref(resumen-1) [Alto en el camino: ¿qué sabemos hacer?](#resumen-1)
+* \@ref(procesamiento) [Introducción al procesamiento de datos](#procesamiento)
 
 ## Código de colores {-} 
 

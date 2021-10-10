@@ -4,17 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Bibliografía | Aprendiendo R sin morir en el intento</title>
+<title>Capítulo 12 Transformando los datos: incursión al universo tidyverse | Aprendiendo R sin morir en el intento</title>
 <meta name="author" content="Javier Álvarez Liébana">
-<meta name="description" content="Dasu, T., and T. Johnson. 2003. Exploratory Data Mining and Data Cleaning. John Wiley &amp; Sons.  Wickham, H. 2014. “Journal of Statistical Software.” Tidy Data 59 (10).  Xie, Yihui. 2015. Dynamic...">
+<meta name="description" content="en breve  12.1 Filtrar filas (filter) en breve  12.2 Seleccionar columnas (select) en breve  12.3 Crear nuevas variables (mutate) en breve  12.4 Resúmenes numéricos (summary) en breve  12.4.1...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
-<meta property="og:title" content="Bibliografía | Aprendiendo R sin morir en el intento">
+<meta property="og:title" content="Capítulo 12 Transformando los datos: incursión al universo tidyverse | Aprendiendo R sin morir en el intento">
 <meta property="og:type" content="book">
 <meta property="og:image" content="/img/logo_R.png">
-<meta property="og:description" content="Dasu, T., and T. Johnson. 2003. Exploratory Data Mining and Data Cleaning. John Wiley &amp; Sons.  Wickham, H. 2014. “Journal of Statistical Software.” Tidy Data 59 (10).  Xie, Yihui. 2015. Dynamic...">
+<meta property="og:description" content="en breve  12.1 Filtrar filas (filter) en breve  12.2 Seleccionar columnas (select) en breve  12.3 Crear nuevas variables (mutate) en breve  12.4 Resúmenes numéricos (summary) en breve  12.4.1...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Bibliografía | Aprendiendo R sin morir en el intento">
-<meta name="twitter:description" content="Dasu, T., and T. Johnson. 2003. Exploratory Data Mining and Data Cleaning. John Wiley &amp; Sons.  Wickham, H. 2014. “Journal of Statistical Software.” Tidy Data 59 (10).  Xie, Yihui. 2015. Dynamic...">
+<meta name="twitter:title" content="Capítulo 12 Transformando los datos: incursión al universo tidyverse | Aprendiendo R sin morir en el intento">
+<meta name="twitter:description" content="en breve  12.1 Filtrar filas (filter) en breve  12.2 Seleccionar columnas (select) en breve  12.3 Crear nuevas variables (mutate) en breve  12.4 Resúmenes numéricos (summary) en breve  12.4.1...">
 <meta name="twitter:image" content="/img/logo_R.png">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -61,13 +61,13 @@
 <li><a class="" href="resumen-1.html"><span class="header-section-number">10</span> ¿Qué sabemos hacer?</a></li>
 <li class="book-part">DATAVIZ: introducción a la visualización</li>
 <li><a class="" href="procesamiento.html"><span class="header-section-number">11</span> Tidy data: ordenando datos</a></li>
-<li><a class="" href="tidyverse.html"><span class="header-section-number">12</span> Transformando los datos: incursión al universo tidyverse</a></li>
+<li><a class="active" href="tidyverse.html"><span class="header-section-number">12</span> Transformando los datos: incursión al universo tidyverse</a></li>
 <li><a class="" href="modelos_lineales.html"><span class="header-section-number">13</span> Introducción a los modelos lineales</a></li>
 <li><a class="" href="ggplot2.html"><span class="header-section-number">14</span> Visualizando datos: incursión a ggplot2</a></li>
 <li class="book-part">Epílogo</li>
 <li><a class="" href="parrondo.html"><span class="header-section-number">15</span> Ejercicio de repaso: la paradoja de Parrondo</a></li>
 <li><a class="" href="contribuye.html"><span class="header-section-number">16</span> Contribuye al proyecto</a></li>
-<li><a class="active" href="bibliograf%C3%ADa.html">Bibliografía</a></li>
+<li><a class="" href="bibliograf%C3%ADa.html">Bibliografía</a></li>
 </ul>
 
         <div class="book-extra">
@@ -75,36 +75,78 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="bibliografía" class="section level1 unnumbered">
-<h1>Bibliografía<a class="anchor" aria-label="anchor" href="#bibliograf%C3%ADa"><i class="fas fa-link"></i></a>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="tidyverse" class="section level1">
+<h1>
+<span class="header-section-number">Capítulo 12</span> Transformando los datos: incursión al universo tidyverse<a class="anchor" aria-label="anchor" href="#tidyverse"><i class="fas fa-link"></i></a>
 </h1>
+<p>en breve</p>
+<div id="filtrar-filas-filter" class="section level2">
+<h2>
+<span class="header-section-number">12.1</span> Filtrar filas (filter)<a class="anchor" aria-label="anchor" href="#filtrar-filas-filter"><i class="fas fa-link"></i></a>
+</h2>
+<p>en breve</p>
+</div>
+<div id="seleccionar-columnas-select" class="section level2">
+<h2>
+<span class="header-section-number">12.2</span> Seleccionar columnas (select)<a class="anchor" aria-label="anchor" href="#seleccionar-columnas-select"><i class="fas fa-link"></i></a>
+</h2>
+<p>en breve</p>
+</div>
+<div id="crear-nuevas-variables-mutate" class="section level2">
+<h2>
+<span class="header-section-number">12.3</span> Crear nuevas variables (mutate)<a class="anchor" aria-label="anchor" href="#crear-nuevas-variables-mutate"><i class="fas fa-link"></i></a>
+</h2>
+<p>en breve</p>
+</div>
+<div id="resúmenes-numéricos-summary" class="section level2">
+<h2>
+<span class="header-section-number">12.4</span> Resúmenes numéricos (summary)<a class="anchor" aria-label="anchor" href="#res%C3%BAmenes-num%C3%A9ricos-summary"><i class="fas fa-link"></i></a>
+</h2>
+<p>en breve</p>
+<div id="medidas-de-centralización-dispersión-posición-y-forma" class="section level3">
+<h3>
+<span class="header-section-number">12.4.1</span> Medidas de centralización, dispersión, posición y forma<a class="anchor" aria-label="anchor" href="#medidas-de-centralizaci%C3%B3n-dispersi%C3%B3n-posici%C3%B3n-y-forma"><i class="fas fa-link"></i></a>
+</h3>
+<p>en breve</p>
+</div>
+<div id="datos-ausentes" class="section level3">
+<h3>
+<span class="header-section-number">12.4.2</span> Datos ausentes<a class="anchor" aria-label="anchor" href="#datos-ausentes"><i class="fas fa-link"></i></a>
+</h3>
+<p>en breve</p>
+</div>
+</div>
+<div id="análisis-bidimensional" class="section level2">
+<h2>
+<span class="header-section-number">12.5</span> Análisis bidimensional<a class="anchor" aria-label="anchor" href="#an%C3%A1lisis-bidimensional"><i class="fas fa-link"></i></a>
+</h2>
+<p>en breve</p>
 
-<div id="refs" class="references">
-<div id="ref-DasuJohnson03">
-<p>Dasu, T., and T. Johnson. 2003. <em>Exploratory Data Mining and Data Cleaning</em>. John Wiley &amp; Sons.</p>
-</div>
-<div id="ref-Wickham14">
-<p>Wickham, H. 2014. “Journal of Statistical Software.” <em>Tidy Data</em> 59 (10).</p>
-</div>
-<div id="ref-xie2015">
-<p>Xie, Yihui. 2015. <em>Dynamic Documents with R and Knitr</em>. 2nd ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="http://yihui.org/knitr/">http://yihui.org/knitr/</a>.</p>
-</div>
-<div id="ref-Ziemannetal16">
-<p>Ziemann, M., Y. Eren, and A. El-Osta. 2016. “Gene Name Errors Are Widespread in the Scientific Literature.” <em>Genome Biology</em> 17 (177).</p>
-</div>
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="contribuye.html"><span class="header-section-number">16</span> Contribuye al proyecto</a></div>
-<div class="empty"></div>
+<div class="prev"><a href="procesamiento.html"><span class="header-section-number">11</span> Tidy data: ordenando datos</a></div>
+<div class="next"><a href="modelos_lineales.html"><span class="header-section-number">13</span> Introducción a los modelos lineales</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav"><li><a class="nav-link" href="#bibliograf%C3%ADa">Bibliografía</a></li></ul>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#tidyverse"><span class="header-section-number">12</span> Transformando los datos: incursión al universo tidyverse</a></li>
+<li><a class="nav-link" href="#filtrar-filas-filter"><span class="header-section-number">12.1</span> Filtrar filas (filter)</a></li>
+<li><a class="nav-link" href="#seleccionar-columnas-select"><span class="header-section-number">12.2</span> Seleccionar columnas (select)</a></li>
+<li><a class="nav-link" href="#crear-nuevas-variables-mutate"><span class="header-section-number">12.3</span> Crear nuevas variables (mutate)</a></li>
+<li>
+<a class="nav-link" href="#res%C3%BAmenes-num%C3%A9ricos-summary"><span class="header-section-number">12.4</span> Resúmenes numéricos (summary)</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#medidas-de-centralizaci%C3%B3n-dispersi%C3%B3n-posici%C3%B3n-y-forma"><span class="header-section-number">12.4.1</span> Medidas de centralización, dispersión, posición y forma</a></li>
+<li><a class="nav-link" href="#datos-ausentes"><span class="header-section-number">12.4.2</span> Datos ausentes</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#an%C3%A1lisis-bidimensional"><span class="header-section-number">12.5</span> Análisis bidimensional</a></li>
+</ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/dadosdelaplace/cursoR_intro_2021_2022/blob/master/20-biblio.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/dadosdelaplace/cursoR_intro_2021_2022/edit/master/20-biblio.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/dadosdelaplace/cursoR_intro_2021_2022/blob/master/12-tidyverse.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/dadosdelaplace/cursoR_intro_2021_2022/edit/master/12-tidyverse.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>

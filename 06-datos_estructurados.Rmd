@@ -16,7 +16,7 @@ colorize <- function(x, color) {
 }
 ```
 
-# Datos estructurados: matrices y tablas {#datos}
+# Tipos de datos II: datos estructurados {#datos}
 
 ::: {.rmdimportant}
 
@@ -447,9 +447,10 @@ tabla
 
 
 
+
 ## 📝 Ejercicios
 
-
+(haz click en las flechas para ver soluciones)
 
 <details>
   <summary><strong>Ejercicio 1</strong>: define una matriz `x` de ceros de 3 filas y 7 columnas.</summary>
