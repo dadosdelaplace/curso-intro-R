@@ -65,8 +65,7 @@
 <li><a class="" href="modelos_lineales.html"><span class="header-section-number">13</span> Introducción a los modelos lineales</a></li>
 <li><a class="" href="ggplot2.html"><span class="header-section-number">14</span> Visualizando datos: incursión a ggplot2</a></li>
 <li class="book-part">Epílogo</li>
-<li><a class="" href="parrondo.html"><span class="header-section-number">15</span> Ejercicio de repaso: la paradoja de Parrondo</a></li>
-<li><a class="" href="contribuye.html"><span class="header-section-number">16</span> Contribuye al proyecto</a></li>
+<li><a class="" href="contribuye.html"><span class="header-section-number">15</span> Contribuye al proyecto</a></li>
 <li><a class="" href="bibliograf%C3%ADa.html">Bibliografía</a></li>
 </ul>
 
@@ -206,12 +205,12 @@
                                <span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="va">idx</span><span class="op">)</span> <span class="op">{</span>  <span class="va">y</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">idx</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">^</span><span class="fl">2</span><span class="op">}</span>,
                                times <span class="op">=</span> <span class="fl">1e3</span><span class="op">)</span></code></pre></div>
 <pre><code>## Unit: microseconds
-##                                     expr      min       lq       mean   median
-##                               x &lt;- idx^2   19.302   50.658   68.88362   59.267
-##  for (i in idx) {     y[i] &lt;- idx[i]^2 } 1985.585 2190.673 3244.55104 2355.761
+##                                     expr      min        lq       mean   median
+##                               x &lt;- idx^2   18.818   47.1785   51.28745   52.543
+##  for (i in idx) {     y[i] &lt;- idx[i]^2 } 1806.231 1921.0765 2118.36843 2019.466
 ##         uq      max neval cld
-##    67.8015  5857.54  1000  a 
-##  2830.2260 61280.21  1000   b</code></pre>
+##    58.4895  154.864  1000  a 
+##  2168.0300 7382.026  1000   b</code></pre>
 <p>Una tarea tan sencilla, <strong>programada en un bucle (segunda fila), tarda 40 veces más que hacerlo de forma vectorial (primera fila)</strong> (elevando cada elemento al cuadrado, iterando internamente, sin necesidad de implementar un bucle).</p>
 <p> </p>
 <p>Otra manera de diseñar un bucle es con la <strong>estructura <code>while{}</code></strong>, que ejecutará el <strong>bucle un número de veces a priori desconocido</strong> hasta que la condición impuesta deje de ser <code>TRUE</code>.</p>

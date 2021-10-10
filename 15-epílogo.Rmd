@@ -1,15 +1,5 @@
 # (PART) Epílogo {-}
-# Ejercicio de repaso: la paradoja de Parrondo {#parrondo}
 
-```{r}
-bote_inicial <- 100
-rondas <- 1000
-intentos <- sample(x = c("perder", "ganar"), size = rondas,
-                   prob = c(0.51, 0.49), replace = TRUE)
-ganancia <- bote_inicial + sum(intentos == "ganar") -
-  sum(intentos == "perder")
-ganancia
-```
 # Contribuye al proyecto {#contribuye}
 
 ```{r me-photo, echo = FALSE, out.width = "35%", fig.align = "center", fig.cap = "Holi."}

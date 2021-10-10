@@ -65,8 +65,7 @@
 <li><a class="" href="modelos_lineales.html"><span class="header-section-number">13</span> Introducción a los modelos lineales</a></li>
 <li><a class="" href="ggplot2.html"><span class="header-section-number">14</span> Visualizando datos: incursión a ggplot2</a></li>
 <li class="book-part">Epílogo</li>
-<li><a class="" href="parrondo.html"><span class="header-section-number">15</span> Ejercicio de repaso: la paradoja de Parrondo</a></li>
-<li><a class="" href="contribuye.html"><span class="header-section-number">16</span> Contribuye al proyecto</a></li>
+<li><a class="" href="contribuye.html"><span class="header-section-number">15</span> Contribuye al proyecto</a></li>
 <li><a class="" href="bibliograf%C3%ADa.html">Bibliografía</a></li>
 </ul>
 
@@ -727,9 +726,9 @@ Imagen/gráfica 3.1: Paquete stringr para manejar cadenas de texto más compleja
                <span class="va">x</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/order.html">order</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">]</span>, <span class="co"># segunda forma</span>
                times <span class="op">=</span> <span class="fl">1e3</span><span class="op">)</span> <span class="co"># se repetirá 1000 veces</span></code></pre></div>
 <pre><code>## Unit: microseconds
-##         expr    min      lq     mean median      uq      max neval cld
-##      sort(x) 41.623 46.0515 60.00767 47.120 51.6030 6806.577  1000   b
-##  x[order(x)] 29.540 33.7035 38.78775 34.556 37.9955  250.027  1000  a</code></pre>
+##         expr    min      lq     mean  median     uq      max neval cld
+##      sort(x) 40.667 46.4645 51.95769 47.8430 55.334  153.408  1000   a
+##  x[order(x)] 28.530 34.2180 43.45384 35.2145 39.615 6044.074  1000   a</code></pre>
 <p>Sí, estás viendo bien: aunque a priori parezca contraintuitivo, es más corto obtener los índices ordenados de un vector, y luego reordenarlo en base a esos índices, que la ordenación directa a través del comando <code><a href="https://rdrr.io/r/base/sort.html">sort()</a></code> (ya que usan algoritmos de ordenación distintos).</p>
 </div>
 <div class="inline-table"><table class="table table-sm">

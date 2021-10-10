@@ -149,5 +149,4 @@ datos-ausentes
 análisis-bidimensional
 modelos_lineales
 ggplot2
-parrondo
 contribuye
