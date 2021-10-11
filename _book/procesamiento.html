@@ -246,40 +246,40 @@ Imagen/gráfica 11.1: Flujo deseable de datos según Hadley Wickham, extraída d
              <span class="st">"z"</span> <span class="op">=</span> <span class="fl">11</span><span class="op">:</span><span class="fl">60</span>,
              <span class="st">"logica"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span><span class="op">)</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span>
 <span class="va">tabla_tb</span></code></pre></div>
-<pre><code>##  [90m# A tibble: 50 × 4 [39m
-##         [1mx [22m  [1my [22m          [1mz [22m  [1mlogica [22m
-##     [3m [90m&lt;int&gt; [39m [23m  [3m [90m&lt;chr&gt; [39m [23m  [3m [90m&lt;int&gt; [39m [23m  [3m [90m&lt;lgl&gt; [39m [23m 
-##  [90m 1 [39m     1 a        11 TRUE  
-##  [90m 2 [39m     2 b        12 TRUE  
-##  [90m 3 [39m     3 c        13 FALSE 
-##  [90m 4 [39m     4 d        14 TRUE  
-##  [90m 5 [39m     5 e        15 FALSE 
-##  [90m 6 [39m     6 a        16 TRUE  
-##  [90m 7 [39m     7 b        17 TRUE  
-##  [90m 8 [39m     8 c        18 FALSE 
-##  [90m 9 [39m     9 d        19 TRUE  
-##  [90m10 [39m    10 e        20 FALSE 
-##  [90m# … with 40 more rows [39m</code></pre>
+<pre><code>## # A tibble: 50 × 4
+##        x y         z logica
+##    &lt;int&gt; &lt;chr&gt; &lt;int&gt; &lt;lgl&gt; 
+##  1     1 a        11 TRUE  
+##  2     2 b        12 TRUE  
+##  3     3 c        13 FALSE 
+##  4     4 d        14 TRUE  
+##  5     5 e        15 FALSE 
+##  6     6 a        16 TRUE  
+##  7     7 b        17 TRUE  
+##  8     8 c        18 FALSE 
+##  9     9 d        19 TRUE  
+## 10    10 e        20 FALSE 
+## # … with 40 more rows</code></pre>
 <p>Puedes imprimir las filas y columnas que quieras con <code><a href="https://rdrr.io/r/base/print.html">print()</a></code>, pero por defecto te aseguras de <strong>no saturar la consola</strong>.</p>
 <div class="sourceCode" id="cb676"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">tabla_tb</span>, n <span class="op">=</span> <span class="fl">13</span>, width <span class="op">=</span> <span class="cn">Inf</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [90m# A tibble: 50 × 4 [39m
-##         [1mx [22m  [1my [22m          [1mz [22m  [1mlogica [22m
-##     [3m [90m&lt;int&gt; [39m [23m  [3m [90m&lt;chr&gt; [39m [23m  [3m [90m&lt;int&gt; [39m [23m  [3m [90m&lt;lgl&gt; [39m [23m 
-##  [90m 1 [39m     1 a        11 TRUE  
-##  [90m 2 [39m     2 b        12 TRUE  
-##  [90m 3 [39m     3 c        13 FALSE 
-##  [90m 4 [39m     4 d        14 TRUE  
-##  [90m 5 [39m     5 e        15 FALSE 
-##  [90m 6 [39m     6 a        16 TRUE  
-##  [90m 7 [39m     7 b        17 TRUE  
-##  [90m 8 [39m     8 c        18 FALSE 
-##  [90m 9 [39m     9 d        19 TRUE  
-##  [90m10 [39m    10 e        20 FALSE 
-##  [90m11 [39m    11 a        21 TRUE  
-##  [90m12 [39m    12 b        22 TRUE  
-##  [90m13 [39m    13 c        23 FALSE 
-##  [90m# … with 37 more rows [39m</code></pre>
+<pre><code>## # A tibble: 50 × 4
+##        x y         z logica
+##    &lt;int&gt; &lt;chr&gt; &lt;int&gt; &lt;lgl&gt; 
+##  1     1 a        11 TRUE  
+##  2     2 b        12 TRUE  
+##  3     3 c        13 FALSE 
+##  4     4 d        14 TRUE  
+##  5     5 e        15 FALSE 
+##  6     6 a        16 TRUE  
+##  7     7 b        17 TRUE  
+##  8     8 c        18 FALSE 
+##  9     9 d        19 TRUE  
+## 10    10 e        20 FALSE 
+## 11    11 a        21 TRUE  
+## 12    12 b        22 TRUE  
+## 13    13 c        23 FALSE 
+## # … with 37 more rows</code></pre>
 <ul>
 <li>Los <strong>datos de tipo caracter (cadenas de texto) son guardados como tal</strong> (y no como factores).</li>
 </ul>
@@ -313,14 +313,14 @@ Imagen/gráfica 11.1: Flujo deseable de datos según Hadley Wickham, extraída d
        <span class="st">"z"</span> <span class="op">=</span> <span class="fl">11</span><span class="op">:</span><span class="fl">15</span>,
        <span class="st">"logica"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span><span class="op">)</span>,
        <span class="st">"x*z"</span> <span class="op">=</span> <span class="va">x</span> <span class="op">*</span> <span class="va">z</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [90m# A tibble: 5 × 5 [39m
-##        [1mx [22m  [1my [22m          [1mz [22m  [1mlogica [22m  [1m`x*z` [22m
-##    [3m [90m&lt;int&gt; [39m [23m  [3m [90m&lt;chr&gt; [39m [23m  [3m [90m&lt;int&gt; [39m [23m  [3m [90m&lt;lgl&gt; [39m [23m   [3m [90m&lt;int&gt; [39m [23m
-##  [90m1 [39m     1 a        11 TRUE      11
-##  [90m2 [39m     2 b        12 TRUE      24
-##  [90m3 [39m     3 c        13 FALSE     39
-##  [90m4 [39m     4 d        14 TRUE      56
-##  [90m5 [39m     5 e        15 FALSE     75</code></pre>
+<pre><code>## # A tibble: 5 × 5
+##       x y         z logica `x*z`
+##   &lt;int&gt; &lt;chr&gt; &lt;int&gt; &lt;lgl&gt;  &lt;int&gt;
+## 1     1 a        11 TRUE      11
+## 2     2 b        12 TRUE      24
+## 3     3 c        13 FALSE     39
+## 4     4 d        14 TRUE      56
+## 5     5 e        15 FALSE     75</code></pre>
 <ul>
 <li>Si <strong>accedes a una columna que no existe avisa</strong> con un warning.</li>
 </ul>
@@ -344,29 +344,29 @@ Imagen/gráfica 11.1: Flujo deseable de datos según Hadley Wickham, extraída d
 <div class="sourceCode" id="cb693"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># tibble</span>
 <span class="fu"><a href="https://rdrr.io/pkg/tibble/man/tibble.html">tibble</a></span><span class="op">(</span><span class="st">":)"</span> <span class="op">=</span> <span class="st">"emoticono"</span>, <span class="st">" "</span> <span class="op">=</span> <span class="st">"en blanco"</span>, <span class="st">"2000"</span> <span class="op">=</span> <span class="st">"número"</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [90m# A tibble: 1 × 3 [39m
-##    [1m`:)` [22m       [1m` ` [22m        [1m`2000` [22m
-##    [3m [90m&lt;chr&gt; [39m [23m      [3m [90m&lt;chr&gt; [39m [23m      [3m [90m&lt;chr&gt; [39m [23m 
-##  [90m1 [39m emoticono en blanco número</code></pre>
+<pre><code>## # A tibble: 1 × 3
+##   `:)`      ` `       `2000`
+##   &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
+## 1 emoticono en blanco número</code></pre>
 <div class="rmdimportant">
 <p><strong><span style="color: #20935E;">CONSEJO: convertir a tibble</span></strong></p>
 <p>Si ya tienes un <code>data.frame</code> es altamente recomendable convertirlo a tibble con <code><a href="https://rdrr.io/pkg/tibble/man/as_tibble.html">as_tibble()</a></code></p>
 <div class="sourceCode" id="cb695"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/tibble/man/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="va">tabla_df</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [90m# A tibble: 50 × 4 [39m
-##         [1mx [22m  [1my [22m          [1mz [22m  [1mlogica [22m
-##     [3m [90m&lt;int&gt; [39m [23m  [3m [90m&lt;fct&gt; [39m [23m  [3m [90m&lt;int&gt; [39m [23m  [3m [90m&lt;lgl&gt; [39m [23m 
-##  [90m 1 [39m     1 a        11 TRUE  
-##  [90m 2 [39m     2 b        12 TRUE  
-##  [90m 3 [39m     3 c        13 FALSE 
-##  [90m 4 [39m     4 d        14 TRUE  
-##  [90m 5 [39m     5 e        15 FALSE 
-##  [90m 6 [39m     6 a        16 TRUE  
-##  [90m 7 [39m     7 b        17 TRUE  
-##  [90m 8 [39m     8 c        18 FALSE 
-##  [90m 9 [39m     9 d        19 TRUE  
-##  [90m10 [39m    10 e        20 FALSE 
-##  [90m# … with 40 more rows [39m</code></pre>
+<pre><code>## # A tibble: 50 × 4
+##        x y         z logica
+##    &lt;int&gt; &lt;fct&gt; &lt;int&gt; &lt;lgl&gt; 
+##  1     1 a        11 TRUE  
+##  2     2 b        12 TRUE  
+##  3     3 c        13 FALSE 
+##  4     4 d        14 TRUE  
+##  5     5 e        15 FALSE 
+##  6     6 a        16 TRUE  
+##  7     7 b        17 TRUE  
+##  8     8 c        18 FALSE 
+##  9     9 d        19 TRUE  
+## 10    10 e        20 FALSE 
+## # … with 40 more rows</code></pre>
 </div>
 <p>Puedes consultar más funcionalidades en <a href="https://tibble.tidyverse.org/" class="uri">https://tibble.tidyverse.org/</a>.</p>
 </div>
@@ -412,12 +412,12 @@ Imagen/gráfica 11.2: Infografía con datos ordenados (tidy data) extraída de <
 <p>Vamos a visualizar la tabla <code>table4a</code> del paquete <a href="https://tidyr.tidyverse.org">tidyr</a> (que ya lo tenemos cargado del entorno <a href="https://tidyverse.tidyverse.org">tidyverse</a>).</p>
 <div class="sourceCode" id="cb699"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">table4a</span></code></pre></div>
-<pre><code>##  [90m# A tibble: 3 × 3 [39m
-##    [1mcountry [22m      [1m`1999` [22m  [1m`2000` [22m
-##  [90m* [39m  [3m [90m&lt;chr&gt; [39m [23m         [3m [90m&lt;int&gt; [39m [23m   [3m [90m&lt;int&gt; [39m [23m
-##  [90m1 [39m Afghanistan    745    [4m2 [24m666
-##  [90m2 [39m Brazil        [4m3 [24m [4m7 [24m737   [4m8 [24m [4m0 [24m488
-##  [90m3 [39m China        [4m2 [24m [4m1 [24m [4m2 [24m258  [4m2 [24m [4m1 [24m [4m3 [24m766</code></pre>
+<pre><code>## # A tibble: 3 × 3
+##   country     `1999` `2000`
+## * &lt;chr&gt;        &lt;int&gt;  &lt;int&gt;
+## 1 Afghanistan    745   2666
+## 2 Brazil       37737  80488
+## 3 China       212258 213766</code></pre>
 <p>Si te fijas, tenemos una columna <code>country</code>, representando una variable con el nombre de los países, <strong>¡pero las otras columnas no representan cada una a una variables!</strong> Ambas son la misma variable, solo que medida en años distintos (que debería ser a su vez otra variable): <strong>cada fila está representando dos observaciones</strong> (1999, 2000) en lugar de un solo registro. Lo que haremos será incluir una nueva columna llamada <code>year</code> que nos marque el año y otra <code>values</code> que nos diga el valor de la variable de interés en cada uno de esos años.</p>
 <p>Con la función <code>pivot_longer</code> del mencionada paquete le indicaremos lo siguiente:</p>
 <ul>
@@ -432,60 +432,60 @@ Imagen/gráfica 11.2: Infografía con datos ordenados (tidy data) extraída de <
 <code class="sourceCode R"><span class="va">table4a</span> <span class="op">%&gt;%</span> <span class="fu">pivot_longer</span><span class="op">(</span>cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"1999"</span>, <span class="st">"2000"</span><span class="op">)</span>,
                          names_to <span class="op">=</span> <span class="st">"year"</span>,
                          values_to <span class="op">=</span> <span class="st">"values"</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [90m# A tibble: 6 × 3 [39m
-##    [1mcountry [22m      [1myear [22m   [1mvalues [22m
-##    [3m [90m&lt;chr&gt; [39m [23m        [3m [90m&lt;chr&gt; [39m [23m   [3m [90m&lt;int&gt; [39m [23m
-##  [90m1 [39m Afghanistan 1999     745
-##  [90m2 [39m Afghanistan 2000     [4m2 [24m666
-##  [90m3 [39m Brazil      1999    [4m3 [24m [4m7 [24m737
-##  [90m4 [39m Brazil      2000    [4m8 [24m [4m0 [24m488
-##  [90m5 [39m China       1999   [4m2 [24m [4m1 [24m [4m2 [24m258
-##  [90m6 [39m China       2000   [4m2 [24m [4m1 [24m [4m3 [24m766</code></pre>
+<pre><code>## # A tibble: 6 × 3
+##   country     year  values
+##   &lt;chr&gt;       &lt;chr&gt;  &lt;int&gt;
+## 1 Afghanistan 1999     745
+## 2 Afghanistan 2000    2666
+## 3 Brazil      1999   37737
+## 4 Brazil      2000   80488
+## 5 China       1999  212258
+## 6 China       2000  213766</code></pre>
 <p>Ahora tenemos un <strong>registro por fila, una variable por columna y cada celda representa un único valor</strong>. Este ejemplo de <em>messy data</em> lo podemos encontrar muy a menudo cuando <strong>construimos rangos de variables</strong> pensando que es mejor tener una tabla más compacta (alargar la tabla a lo ancho en lugar de a lo largo). Es el caso de la tabla <code>relig_income</code>.</p>
 <div class="sourceCode" id="cb703"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">relig_income</span></code></pre></div>
-<pre><code>##  [90m# A tibble: 18 × 11 [39m
-##     [1mreligion [22m  [1m`&lt;$10k` [22m  [1m`$10-20k` [22m  [1m`$20-30k` [22m  [1m`$30-40k` [22m  [1m`$40-50k` [22m  [1m`$50-75k` [22m  [1m`$75-100k` [22m
-##     [3m [90m&lt;chr&gt; [39m [23m       [3m [90m&lt;dbl&gt; [39m [23m      [3m [90m&lt;dbl&gt; [39m [23m      [3m [90m&lt;dbl&gt; [39m [23m      [3m [90m&lt;dbl&gt; [39m [23m      [3m [90m&lt;dbl&gt; [39m [23m      [3m [90m&lt;dbl&gt; [39m [23m       [3m [90m&lt;dbl&gt; [39m [23m
-##  [90m 1 [39m Agnostic      27        34        60        81        76       137        122
-##  [90m 2 [39m Atheist       12        27        37        52        35        70         73
-##  [90m 3 [39m Buddhist      27        21        30        34        33        58         62
-##  [90m 4 [39m Catholic     418       617       732       670       638       [4m1 [24m116        949
-##  [90m 5 [39m Don’t k…      15        14        15        11        10        35         21
-##  [90m 6 [39m Evangel…     575       869       [4m1 [24m064       982       881       [4m1 [24m486        949
-##  [90m 7 [39m Hindu          1         9         7         9        11        34         47
-##  [90m 8 [39m Histori…     228       244       236       238       197       223        131
-##  [90m 9 [39m Jehovah…      20        27        24        24        21        30         15
-##  [90m10 [39m Jewish        19        19        25        25        30        95         69
-##  [90m11 [39m Mainlin…     289       495       619       655       651       [4m1 [24m107        939
-##  [90m12 [39m Mormon        29        40        48        51        56       112         85
-##  [90m13 [39m Muslim         6         7         9        10         9        23         16
-##  [90m14 [39m Orthodox      13        17        23        32        32        47         38
-##  [90m15 [39m Other C…       9         7        11        13        13        14         18
-##  [90m16 [39m Other F…      20        33        40        46        49        63         46
-##  [90m17 [39m Other W…       5         2         3         4         2         7          3
-##  [90m18 [39m Unaffil…     217       299       374       365       341       528        407
-##  [90m# … with 3 more variables:  [1m$100-150k [22m &lt;dbl&gt;,  [1m&gt;150k [22m &lt;dbl&gt;, [39m
-##  [90m#    [1mDon't know/refused [22m &lt;dbl&gt; [39m</code></pre>
+<pre><code>## # A tibble: 18 × 11
+##    religion `&lt;$10k` `$10-20k` `$20-30k` `$30-40k` `$40-50k` `$50-75k` `$75-100k`
+##    &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;
+##  1 Agnostic      27        34        60        81        76       137        122
+##  2 Atheist       12        27        37        52        35        70         73
+##  3 Buddhist      27        21        30        34        33        58         62
+##  4 Catholic     418       617       732       670       638      1116        949
+##  5 Don’t k…      15        14        15        11        10        35         21
+##  6 Evangel…     575       869      1064       982       881      1486        949
+##  7 Hindu          1         9         7         9        11        34         47
+##  8 Histori…     228       244       236       238       197       223        131
+##  9 Jehovah…      20        27        24        24        21        30         15
+## 10 Jewish        19        19        25        25        30        95         69
+## 11 Mainlin…     289       495       619       655       651      1107        939
+## 12 Mormon        29        40        48        51        56       112         85
+## 13 Muslim         6         7         9        10         9        23         16
+## 14 Orthodox      13        17        23        32        32        47         38
+## 15 Other C…       9         7        11        13        13        14         18
+## 16 Other F…      20        33        40        46        49        63         46
+## 17 Other W…       5         2         3         4         2         7          3
+## 18 Unaffil…     217       299       374       365       341       528        407
+## # … with 3 more variables: $100-150k &lt;dbl&gt;, &gt;150k &lt;dbl&gt;,
+## #   Don't know/refused &lt;dbl&gt;</code></pre>
 <p>Salvo la primera, el resto de columnas tienen como <strong>nombre los valores de una variable en sí misma</strong> (ingresos). Para ordenar los datos vamos a razonar de la misma manera solo que ahora, en lugar de indicarle el nombre de todas las columnas que queremos usar de entrada, vamos a <strong>indicarle de forma más corta la columna que NO queremos seleccionar</strong>.</p>
 <div class="sourceCode" id="cb705"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># No necesitamos las comillas en el nombre de columnas salvo que tengan caracteres que no sean letras</span>
 <span class="va">relig_income</span> <span class="op">%&gt;%</span> <span class="fu">pivot_longer</span><span class="op">(</span><span class="op">-</span><span class="va">religion</span>, names_to <span class="op">=</span> <span class="st">"ingresos"</span>,
                               values_to <span class="op">=</span> <span class="st">"frecuencia"</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [90m# A tibble: 180 × 3 [39m
-##     [1mreligion [22m  [1mingresos [22m            [1mfrecuencia [22m
-##     [3m [90m&lt;chr&gt; [39m [23m     [3m [90m&lt;chr&gt; [39m [23m                    [3m [90m&lt;dbl&gt; [39m [23m
-##  [90m 1 [39m Agnostic &lt;$10k                      27
-##  [90m 2 [39m Agnostic $10-20k                    34
-##  [90m 3 [39m Agnostic $20-30k                    60
-##  [90m 4 [39m Agnostic $30-40k                    81
-##  [90m 5 [39m Agnostic $40-50k                    76
-##  [90m 6 [39m Agnostic $50-75k                   137
-##  [90m 7 [39m Agnostic $75-100k                  122
-##  [90m 8 [39m Agnostic $100-150k                 109
-##  [90m 9 [39m Agnostic &gt;150k                      84
-##  [90m10 [39m Agnostic Don't know/refused         96
-##  [90m# … with 170 more rows [39m</code></pre>
+<pre><code>## # A tibble: 180 × 3
+##    religion ingresos           frecuencia
+##    &lt;chr&gt;    &lt;chr&gt;                   &lt;dbl&gt;
+##  1 Agnostic &lt;$10k                      27
+##  2 Agnostic $10-20k                    34
+##  3 Agnostic $20-30k                    60
+##  4 Agnostic $30-40k                    81
+##  5 Agnostic $40-50k                    76
+##  6 Agnostic $50-75k                   137
+##  7 Agnostic $75-100k                  122
+##  8 Agnostic $100-150k                 109
+##  9 Agnostic &gt;150k                      84
+## 10 Agnostic Don't know/refused         96
+## # … with 170 more rows</code></pre>
 <p>Lo que hacemos con <code>pivot_longer()</code> es <strong>«ampliar» la tabla, haciéndola más larga (más filas) pero con menos columnas</strong>.</p>
 </div>
 <div id="messy-data-una-observación-guardada-en-varias-filas" class="section level3">
@@ -495,21 +495,21 @@ Imagen/gráfica 11.2: Infografía con datos ordenados (tidy data) extraída de <
 <p>Vamos a visualizar la tabla <code>table2</code> del paquete <a href="https://tidyr.tidyverse.org">tidyr</a>.</p>
 <div class="sourceCode" id="cb707"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">table2</span></code></pre></div>
-<pre><code>##  [90m# A tibble: 12 × 4 [39m
-##     [1mcountry [22m       [1myear [22m  [1mtype [22m             [1mcount [22m
-##     [3m [90m&lt;chr&gt; [39m [23m        [3m [90m&lt;int&gt; [39m [23m  [3m [90m&lt;chr&gt; [39m [23m            [3m [90m&lt;int&gt; [39m [23m
-##  [90m 1 [39m Afghanistan   [4m1 [24m999 cases             745
-##  [90m 2 [39m Afghanistan   [4m1 [24m999 population   19 [4m9 [24m [4m8 [24m [4m7 [24m071
-##  [90m 3 [39m Afghanistan   [4m2 [24m000 cases             [4m2 [24m666
-##  [90m 4 [39m Afghanistan   [4m2 [24m000 population   20 [4m5 [24m [4m9 [24m [4m5 [24m360
-##  [90m 5 [39m Brazil        [4m1 [24m999 cases            [4m3 [24m [4m7 [24m737
-##  [90m 6 [39m Brazil        [4m1 [24m999 population  172 [4m0 [24m [4m0 [24m [4m6 [24m362
-##  [90m 7 [39m Brazil        [4m2 [24m000 cases            [4m8 [24m [4m0 [24m488
-##  [90m 8 [39m Brazil        [4m2 [24m000 population  174 [4m5 [24m [4m0 [24m [4m4 [24m898
-##  [90m 9 [39m China         [4m1 [24m999 cases           [4m2 [24m [4m1 [24m [4m2 [24m258
-##  [90m10 [39m China         [4m1 [24m999 population  [4m1 [24m272 [4m9 [24m [4m1 [24m [4m5 [24m272
-##  [90m11 [39m China         [4m2 [24m000 cases           [4m2 [24m [4m1 [24m [4m3 [24m766
-##  [90m12 [39m China         [4m2 [24m000 population  [4m1 [24m280 [4m4 [24m [4m2 [24m [4m8 [24m583</code></pre>
+<pre><code>## # A tibble: 12 × 4
+##    country      year type            count
+##    &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;           &lt;int&gt;
+##  1 Afghanistan  1999 cases             745
+##  2 Afghanistan  1999 population   19987071
+##  3 Afghanistan  2000 cases            2666
+##  4 Afghanistan  2000 population   20595360
+##  5 Brazil       1999 cases           37737
+##  6 Brazil       1999 population  172006362
+##  7 Brazil       2000 cases           80488
+##  8 Brazil       2000 population  174504898
+##  9 China        1999 cases          212258
+## 10 China        1999 population 1272915272
+## 11 China        2000 cases          213766
+## 12 China        2000 population 1280428583</code></pre>
 <p>Fíjate en las cuatro primeras filas: los registros con el mismo año deberían ser el mismo, es la misma información, debería estar en la misma fila, pero está dividada en dos. Por un lado una fila para la variable <code>cases</code> y otra para <code>population</code>. Lo que haremos será lo opuesto a antes: con <code>pivot_wider()</code> <strong>«ampliaremos» la tabla a lo ancho, haciéndola menos (menos filas) pero con más columnas</strong>.</p>
 <ul>
 <li>
@@ -519,15 +519,15 @@ Imagen/gráfica 11.2: Infografía con datos ordenados (tidy data) extraída de <
 </ul>
 <div class="sourceCode" id="cb709"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">table2</span> <span class="op">%&gt;%</span> <span class="fu">pivot_wider</span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">type</span>, values_from <span class="op">=</span> <span class="va">count</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [90m# A tibble: 6 × 4 [39m
-##    [1mcountry [22m       [1myear [22m   [1mcases [22m  [1mpopulation [22m
-##    [3m [90m&lt;chr&gt; [39m [23m        [3m [90m&lt;int&gt; [39m [23m   [3m [90m&lt;int&gt; [39m [23m       [3m [90m&lt;int&gt; [39m [23m
-##  [90m1 [39m Afghanistan   [4m1 [24m999    745   19 [4m9 [24m [4m8 [24m [4m7 [24m071
-##  [90m2 [39m Afghanistan   [4m2 [24m000    [4m2 [24m666   20 [4m5 [24m [4m9 [24m [4m5 [24m360
-##  [90m3 [39m Brazil        [4m1 [24m999   [4m3 [24m [4m7 [24m737  172 [4m0 [24m [4m0 [24m [4m6 [24m362
-##  [90m4 [39m Brazil        [4m2 [24m000   [4m8 [24m [4m0 [24m488  174 [4m5 [24m [4m0 [24m [4m4 [24m898
-##  [90m5 [39m China         [4m1 [24m999  [4m2 [24m [4m1 [24m [4m2 [24m258  [4m1 [24m272 [4m9 [24m [4m1 [24m [4m5 [24m272
-##  [90m6 [39m China         [4m2 [24m000  [4m2 [24m [4m1 [24m [4m3 [24m766  [4m1 [24m280 [4m4 [24m [4m2 [24m [4m8 [24m583</code></pre>
+<pre><code>## # A tibble: 6 × 4
+##   country      year  cases population
+##   &lt;chr&gt;       &lt;int&gt;  &lt;int&gt;      &lt;int&gt;
+## 1 Afghanistan  1999    745   19987071
+## 2 Afghanistan  2000   2666   20595360
+## 3 Brazil       1999  37737  172006362
+## 4 Brazil       2000  80488  174504898
+## 5 China        1999 212258 1272915272
+## 6 China        2000 213766 1280428583</code></pre>
 <p>Ahora tenemos <strong>cada registro en una fila</strong>, que nos indica país-año-casos-población.</p>
 </div>
 <div id="messy-data-una-celda-con-múltiples-valores" class="section level3">
@@ -537,108 +537,108 @@ Imagen/gráfica 11.2: Infografía con datos ordenados (tidy data) extraída de <
 <p>Por último vamos a visualizar la tabla <code>table3</code> del paquete <a href="https://tidyr.tidyverse.org">tidyr</a>.</p>
 <div class="sourceCode" id="cb711"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">table3</span></code></pre></div>
-<pre><code>##  [90m# A tibble: 6 × 3 [39m
-##    [1mcountry [22m       [1myear [22m  [1mrate [22m             
-##  [90m* [39m  [3m [90m&lt;chr&gt; [39m [23m        [3m [90m&lt;int&gt; [39m [23m  [3m [90m&lt;chr&gt; [39m [23m            
-##  [90m1 [39m Afghanistan   [4m1 [24m999 745/19987071     
-##  [90m2 [39m Afghanistan   [4m2 [24m000 2666/20595360    
-##  [90m3 [39m Brazil        [4m1 [24m999 37737/172006362  
-##  [90m4 [39m Brazil        [4m2 [24m000 80488/174504898  
-##  [90m5 [39m China         [4m1 [24m999 212258/1272915272
-##  [90m6 [39m China         [4m2 [24m000 213766/1280428583</code></pre>
+<pre><code>## # A tibble: 6 × 3
+##   country      year rate             
+## * &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;            
+## 1 Afghanistan  1999 745/19987071     
+## 2 Afghanistan  2000 2666/20595360    
+## 3 Brazil       1999 37737/172006362  
+## 4 Brazil       2000 80488/174504898  
+## 5 China        1999 212258/1272915272
+## 6 China        2000 213766/1280428583</code></pre>
 <p>En la variable <code>rate</code> hay guardados dos valores, separados por <code><a href="https://rdrr.io/r/base/Arithmetic.html">/</a></code>, lo que hace que en <strong>una celda no tiene un único valor sino dos</strong>. La función <code>separate()</code> del paquete <a href="https://tidyr.tidyverse.org">tidyr</a> nos permitirá <strong>separar los múltiples valores de la columna</strong> <code>rate</code> simplemente indicándole el nombre de las nuevas columnas en el argumento <code>into = ...</code>, creando una nueva columna para cada uno de ellos.</p>
 <div class="sourceCode" id="cb713"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">table3</span> <span class="op">%&gt;%</span> <span class="fu">separate</span><span class="op">(</span><span class="va">rate</span>, into <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"cases"</span>, <span class="st">"population"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [90m# A tibble: 6 × 4 [39m
-##    [1mcountry [22m       [1myear [22m  [1mcases [22m   [1mpopulation [22m
-##    [3m [90m&lt;chr&gt; [39m [23m        [3m [90m&lt;int&gt; [39m [23m  [3m [90m&lt;chr&gt; [39m [23m   [3m [90m&lt;chr&gt; [39m [23m     
-##  [90m1 [39m Afghanistan   [4m1 [24m999 745    19987071  
-##  [90m2 [39m Afghanistan   [4m2 [24m000 2666   20595360  
-##  [90m3 [39m Brazil        [4m1 [24m999 37737  172006362 
-##  [90m4 [39m Brazil        [4m2 [24m000 80488  174504898 
-##  [90m5 [39m China         [4m1 [24m999 212258 1272915272
-##  [90m6 [39m China         [4m2 [24m000 213766 1280428583</code></pre>
+<pre><code>## # A tibble: 6 × 4
+##   country      year cases  population
+##   &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;     
+## 1 Afghanistan  1999 745    19987071  
+## 2 Afghanistan  2000 2666   20595360  
+## 3 Brazil       1999 37737  172006362 
+## 4 Brazil       2000 80488  174504898 
+## 5 China        1999 212258 1272915272
+## 6 China        2000 213766 1280428583</code></pre>
 <p>Por defecto lo que hace es <strong>localizar como separador cualquier caracter que no sea alfa-numérico</strong>. Si queremos un caracter concreto para dividir podemos indicárselo explícitamente</p>
 <div class="sourceCode" id="cb715"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">table3</span> <span class="op">%&gt;%</span> <span class="fu">separate</span><span class="op">(</span><span class="va">rate</span>, into <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"cases"</span>, <span class="st">"population"</span><span class="op">)</span>, sep <span class="op">=</span> <span class="st">"/"</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [90m# A tibble: 6 × 4 [39m
-##    [1mcountry [22m       [1myear [22m  [1mcases [22m   [1mpopulation [22m
-##    [3m [90m&lt;chr&gt; [39m [23m        [3m [90m&lt;int&gt; [39m [23m  [3m [90m&lt;chr&gt; [39m [23m   [3m [90m&lt;chr&gt; [39m [23m     
-##  [90m1 [39m Afghanistan   [4m1 [24m999 745    19987071  
-##  [90m2 [39m Afghanistan   [4m2 [24m000 2666   20595360  
-##  [90m3 [39m Brazil        [4m1 [24m999 37737  172006362 
-##  [90m4 [39m Brazil        [4m2 [24m000 80488  174504898 
-##  [90m5 [39m China         [4m1 [24m999 212258 1272915272
-##  [90m6 [39m China         [4m2 [24m000 213766 1280428583</code></pre>
+<pre><code>## # A tibble: 6 × 4
+##   country      year cases  population
+##   &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;     
+## 1 Afghanistan  1999 745    19987071  
+## 2 Afghanistan  2000 2666   20595360  
+## 3 Brazil       1999 37737  172006362 
+## 4 Brazil       2000 80488  174504898 
+## 5 China        1999 212258 1272915272
+## 6 China        2000 213766 1280428583</code></pre>
 <p>Si <strong>usas un separador que no está en los datos</strong> te devolverá dichas columnas vacías ya que no ha podido dividirlas.</p>
 <div class="sourceCode" id="cb717"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">table3</span> <span class="op">%&gt;%</span> <span class="fu">separate</span><span class="op">(</span><span class="va">rate</span>, into <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"cases"</span>, <span class="st">"population"</span><span class="op">)</span>, sep <span class="op">=</span> <span class="st">"."</span><span class="op">)</span></code></pre></div>
 <pre><code>## Warning: Expected 2 pieces. Additional pieces discarded in 6 rows [1, 2, 3, 4,
 ## 5, 6].</code></pre>
-<pre><code>##  [90m# A tibble: 6 × 4 [39m
-##    [1mcountry [22m       [1myear [22m  [1mcases [22m  [1mpopulation [22m
-##    [3m [90m&lt;chr&gt; [39m [23m        [3m [90m&lt;int&gt; [39m [23m  [3m [90m&lt;chr&gt; [39m [23m  [3m [90m&lt;chr&gt; [39m [23m     
-##  [90m1 [39m Afghanistan   [4m1 [24m999  [90m" [39m [90m" [39m     [90m" [39m [90m" [39m        
-##  [90m2 [39m Afghanistan   [4m2 [24m000  [90m" [39m [90m" [39m     [90m" [39m [90m" [39m        
-##  [90m3 [39m Brazil        [4m1 [24m999  [90m" [39m [90m" [39m     [90m" [39m [90m" [39m        
-##  [90m4 [39m Brazil        [4m2 [24m000  [90m" [39m [90m" [39m     [90m" [39m [90m" [39m        
-##  [90m5 [39m China         [4m1 [24m999  [90m" [39m [90m" [39m     [90m" [39m [90m" [39m        
-##  [90m6 [39m China         [4m2 [24m000  [90m" [39m [90m" [39m     [90m" [39m [90m" [39m</code></pre>
+<pre><code>## # A tibble: 6 × 4
+##   country      year cases population
+##   &lt;chr&gt;       &lt;int&gt; &lt;chr&gt; &lt;chr&gt;     
+## 1 Afghanistan  1999 ""    ""        
+## 2 Afghanistan  2000 ""    ""        
+## 3 Brazil       1999 ""    ""        
+## 4 Brazil       2000 ""    ""        
+## 5 China        1999 ""    ""        
+## 6 China        2000 ""    ""</code></pre>
 <div class="rmdimportant">
 <p><strong><span style="color: #20935E;">CONSEJO: convertir los datos</span></strong></p>
 <p>Una opción muy útil que podemos usar al aplicar la separación de los múltiples valores es <strong>convertir los datos al tipo adecuado</strong>. Los datos unidos en <code>rate</code> eran caracteres ya que tenía el separador <code><a href="https://rdrr.io/r/base/Arithmetic.html">/</a></code> (no podían ser numéricos). Al separarlos, por defecto, aunque ahora ya son solo números, los separa como si fueran textos. Con <code>convert = TRUE</code> podemos indicarle que identifique el tipo de dato y lo convierta (fíjate en la cabecera de las columnas ahora).</p>
 <div class="sourceCode" id="cb720"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">table3</span> <span class="op">%&gt;%</span> 
   <span class="fu">separate</span><span class="op">(</span><span class="va">rate</span>, into <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"cases"</span>, <span class="st">"population"</span><span class="op">)</span>, convert <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [90m# A tibble: 6 × 4 [39m
-##    [1mcountry [22m       [1myear [22m   [1mcases [22m  [1mpopulation [22m
-##    [3m [90m&lt;chr&gt; [39m [23m        [3m [90m&lt;int&gt; [39m [23m   [3m [90m&lt;int&gt; [39m [23m       [3m [90m&lt;int&gt; [39m [23m
-##  [90m1 [39m Afghanistan   [4m1 [24m999    745   19 [4m9 [24m [4m8 [24m [4m7 [24m071
-##  [90m2 [39m Afghanistan   [4m2 [24m000    [4m2 [24m666   20 [4m5 [24m [4m9 [24m [4m5 [24m360
-##  [90m3 [39m Brazil        [4m1 [24m999   [4m3 [24m [4m7 [24m737  172 [4m0 [24m [4m0 [24m [4m6 [24m362
-##  [90m4 [39m Brazil        [4m2 [24m000   [4m8 [24m [4m0 [24m488  174 [4m5 [24m [4m0 [24m [4m4 [24m898
-##  [90m5 [39m China         [4m1 [24m999  [4m2 [24m [4m1 [24m [4m2 [24m258  [4m1 [24m272 [4m9 [24m [4m1 [24m [4m5 [24m272
-##  [90m6 [39m China         [4m2 [24m000  [4m2 [24m [4m1 [24m [4m3 [24m766  [4m1 [24m280 [4m4 [24m [4m2 [24m [4m8 [24m583</code></pre>
+<pre><code>## # A tibble: 6 × 4
+##   country      year  cases population
+##   &lt;chr&gt;       &lt;int&gt;  &lt;int&gt;      &lt;int&gt;
+## 1 Afghanistan  1999    745   19987071
+## 2 Afghanistan  2000   2666   20595360
+## 3 Brazil       1999  37737  172006362
+## 4 Brazil       2000  80488  174504898
+## 5 China        1999 212258 1272915272
+## 6 China        2000 213766 1280428583</code></pre>
 </div>
 <p>Dicha función también puede ser usada para <strong>dividir cifras, como por ejemplo el año</strong></p>
 <div class="sourceCode" id="cb722"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">table3</span> <span class="op">%&gt;%</span> <span class="fu">separate</span><span class="op">(</span><span class="va">year</span>,
                     into <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"siglo"</span>, <span class="st">"año"</span><span class="op">)</span>,
                     sep <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [90m# A tibble: 6 × 4 [39m
-##    [1mcountry [22m      [1msiglo [22m  [1maño [22m    [1mrate [22m             
-##    [3m [90m&lt;chr&gt; [39m [23m        [3m [90m&lt;chr&gt; [39m [23m  [3m [90m&lt;chr&gt; [39m [23m  [3m [90m&lt;chr&gt; [39m [23m            
-##  [90m1 [39m Afghanistan 19    99    745/19987071     
-##  [90m2 [39m Afghanistan 20    00    2666/20595360    
-##  [90m3 [39m Brazil      19    99    37737/172006362  
-##  [90m4 [39m Brazil      20    00    80488/174504898  
-##  [90m5 [39m China       19    99    212258/1272915272
-##  [90m6 [39m China       20    00    213766/1280428583</code></pre>
+<pre><code>## # A tibble: 6 × 4
+##   country     siglo año   rate             
+##   &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;            
+## 1 Afghanistan 19    99    745/19987071     
+## 2 Afghanistan 20    00    2666/20595360    
+## 3 Brazil      19    99    37737/172006362  
+## 4 Brazil      20    00    80488/174504898  
+## 5 China       19    99    212258/1272915272
+## 6 China       20    00    213766/1280428583</code></pre>
 <p>De la misma manera que podemos separar columnas <strong>también podemos unirlas</strong>. Para ello vamos a usar la tabla <code>table5</code> del ya mencionado paquete. Con la función <code>unite()</code> vamos a unir el siglo (en <code>century</code>) y el año (en <code>year</code>), y al inicio le indicaremos como se llamará la nueva variable (<code>año_completo</code>).</p>
 <div class="sourceCode" id="cb724"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">table5</span> <span class="op">%&gt;%</span> <span class="fu">unite</span><span class="op">(</span><span class="va">año_completo</span>, <span class="va">century</span>, <span class="va">year</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [90m# A tibble: 6 × 3 [39m
-##    [1mcountry [22m      [1maño_completo [22m  [1mrate [22m             
-##    [3m [90m&lt;chr&gt; [39m [23m        [3m [90m&lt;chr&gt; [39m [23m         [3m [90m&lt;chr&gt; [39m [23m            
-##  [90m1 [39m Afghanistan 19_99        745/19987071     
-##  [90m2 [39m Afghanistan 20_00        2666/20595360    
-##  [90m3 [39m Brazil      19_99        37737/172006362  
-##  [90m4 [39m Brazil      20_00        80488/174504898  
-##  [90m5 [39m China       19_99        212258/1272915272
-##  [90m6 [39m China       20_00        213766/1280428583</code></pre>
+<pre><code>## # A tibble: 6 × 3
+##   country     año_completo rate             
+##   &lt;chr&gt;       &lt;chr&gt;        &lt;chr&gt;            
+## 1 Afghanistan 19_99        745/19987071     
+## 2 Afghanistan 20_00        2666/20595360    
+## 3 Brazil      19_99        37737/172006362  
+## 4 Brazil      20_00        80488/174504898  
+## 5 China       19_99        212258/1272915272
+## 6 China       20_00        213766/1280428583</code></pre>
 <p>Como pasaba en <code>separate()</code>, tiene un argumento de separador por defecto, en este caso <code>sep = "_"</code>. <strong>Si queremos cambiarlo podemos hacerlo indicándoselo explícitamente</strong>.</p>
 <div class="sourceCode" id="cb726"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">table5</span> <span class="op">%&gt;%</span>
   <span class="fu">unite</span><span class="op">(</span><span class="va">año_completo</span>, <span class="va">century</span>, <span class="va">year</span>, sep <span class="op">=</span> <span class="st">""</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [90m# A tibble: 6 × 3 [39m
-##    [1mcountry [22m      [1maño_completo [22m  [1mrate [22m             
-##    [3m [90m&lt;chr&gt; [39m [23m        [3m [90m&lt;chr&gt; [39m [23m         [3m [90m&lt;chr&gt; [39m [23m            
-##  [90m1 [39m Afghanistan 1999         745/19987071     
-##  [90m2 [39m Afghanistan 2000         2666/20595360    
-##  [90m3 [39m Brazil      1999         37737/172006362  
-##  [90m4 [39m Brazil      2000         80488/174504898  
-##  [90m5 [39m China       1999         212258/1272915272
-##  [90m6 [39m China       2000         213766/1280428583</code></pre>
+<pre><code>## # A tibble: 6 × 3
+##   country     año_completo rate             
+##   &lt;chr&gt;       &lt;chr&gt;        &lt;chr&gt;            
+## 1 Afghanistan 1999         745/19987071     
+## 2 Afghanistan 2000         2666/20595360    
+## 3 Brazil      1999         37737/172006362  
+## 4 Brazil      2000         80488/174504898  
+## 5 China       1999         212258/1272915272
+## 6 China       2000         213766/1280428583</code></pre>
 </div>
 </div>
 <div id="ejercicios-5" class="section level2">
@@ -697,20 +697,20 @@ Imagen/gráfica 11.2: Infografía con datos ordenados (tidy data) extraída de <
 <p>Así debería de salir si fuera <code>tibble</code>.</p>
 <div class="sourceCode" id="cb730"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/tibble/man/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [90m# A tibble: 32 × 11 [39m
-##       [1mmpg [22m    [1mcyl [22m   [1mdisp [22m     [1mhp [22m   [1mdrat [22m     [1mwt [22m   [1mqsec [22m     [1mvs [22m     [1mam [22m   [1mgear [22m   [1mcarb [22m
-##     [3m [90m&lt;dbl&gt; [39m [23m  [3m [90m&lt;dbl&gt; [39m [23m  [3m [90m&lt;dbl&gt; [39m [23m  [3m [90m&lt;dbl&gt; [39m [23m  [3m [90m&lt;dbl&gt; [39m [23m  [3m [90m&lt;dbl&gt; [39m [23m  [3m [90m&lt;dbl&gt; [39m [23m  [3m [90m&lt;dbl&gt; [39m [23m  [3m [90m&lt;dbl&gt; [39m [23m  [3m [90m&lt;dbl&gt; [39m [23m  [3m [90m&lt;dbl&gt; [39m [23m
-##  [90m 1 [39m  21       6  160    110  3.9   2.62  16.5     0     1     4     4
-##  [90m 2 [39m  21       6  160    110  3.9   2.88  17.0     0     1     4     4
-##  [90m 3 [39m  22.8     4  108     93  3.85  2.32  18.6     1     1     4     1
-##  [90m 4 [39m  21.4     6  258    110  3.08  3.22  19.4     1     0     3     1
-##  [90m 5 [39m  18.7     8  360    175  3.15  3.44  17.0     0     0     3     2
-##  [90m 6 [39m  18.1     6  225    105  2.76  3.46  20.2     1     0     3     1
-##  [90m 7 [39m  14.3     8  360    245  3.21  3.57  15.8     0     0     3     4
-##  [90m 8 [39m  24.4     4  147.    62  3.69  3.19  20       1     0     4     2
-##  [90m 9 [39m  22.8     4  141.    95  3.92  3.15  22.9     1     0     4     2
-##  [90m10 [39m  19.2     6  168.   123  3.92  3.44  18.3     1     0     4     4
-##  [90m# … with 22 more rows [39m</code></pre>
+<pre><code>## # A tibble: 32 × 11
+##      mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+##  1  21       6  160    110  3.9   2.62  16.5     0     1     4     4
+##  2  21       6  160    110  3.9   2.88  17.0     0     1     4     4
+##  3  22.8     4  108     93  3.85  2.32  18.6     1     1     4     1
+##  4  21.4     6  258    110  3.08  3.22  19.4     1     0     3     1
+##  5  18.7     8  360    175  3.15  3.44  17.0     0     0     3     2
+##  6  18.1     6  225    105  2.76  3.46  20.2     1     0     3     1
+##  7  14.3     8  360    245  3.21  3.57  15.8     0     0     3     4
+##  8  24.4     4  147.    62  3.69  3.19  20       1     0     4     2
+##  9  22.8     4  141.    95  3.92  3.15  22.9     1     0     4     2
+## 10  19.2     6  168.   123  3.92  3.44  18.3     1     0     4     4
+## # … with 22 more rows</code></pre>
 <!-- tocstop -->
 </details><p> </p>
 <details><p><summary>📝<strong>Ejercicio 2</strong>: define un <code>tibble</code> con tres variables numéricas, tal que la tercera sea el producto de las dos primeras. Inténtalo hacer con un <code>data.frame</code></summary></p>
@@ -721,16 +721,16 @@ Imagen/gráfica 11.2: Infografía con datos ordenados (tidy data) extraída de <
 <p>Un ejemplo:</p>
 <div class="sourceCode" id="cb732"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/tibble/man/tibble.html">tibble</a></span><span class="op">(</span><span class="st">"a"</span> <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">7</span>, <span class="st">"b"</span> <span class="op">=</span> <span class="fl">11</span><span class="op">:</span><span class="fl">17</span>, <span class="st">"c"</span> <span class="op">=</span> <span class="va">a</span> <span class="op">*</span> <span class="va">b</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [90m# A tibble: 7 × 3 [39m
-##        [1ma [22m      [1mb [22m      [1mc [22m
-##    [3m [90m&lt;int&gt; [39m [23m  [3m [90m&lt;int&gt; [39m [23m  [3m [90m&lt;int&gt; [39m [23m
-##  [90m1 [39m     1    11    11
-##  [90m2 [39m     2    12    24
-##  [90m3 [39m     3    13    39
-##  [90m4 [39m     4    14    56
-##  [90m5 [39m     5    15    75
-##  [90m6 [39m     6    16    96
-##  [90m7 [39m     7    17   119</code></pre>
+<pre><code>## # A tibble: 7 × 3
+##       a     b     c
+##   &lt;int&gt; &lt;int&gt; &lt;int&gt;
+## 1     1    11    11
+## 2     2    12    24
+## 3     3    13    39
+## 4     4    14    56
+## 5     5    15    75
+## 6     6    16    96
+## 7     7    17   119</code></pre>
 <p>Si lo intentamos con un <code>data.frame</code>, intentará buscar una variable real que tengamos guardada que se llame <code>a</code> y <code>b</code>, sin encontrarlas.</p>
 <div class="sourceCode" id="cb734"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="st">"a"</span> <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">7</span>, <span class="st">"b"</span> <span class="op">=</span> <span class="fl">11</span><span class="op">:</span><span class="fl">17</span>, <span class="st">"c"</span> <span class="op">=</span> <span class="va">a</span> <span class="op">*</span> <span class="va">b</span><span class="op">)</span></code></pre></div>
@@ -767,80 +767,80 @@ Imagen/gráfica 11.2: Infografía con datos ordenados (tidy data) extraída de <
 <p>También se puede acceder por el orden que ocupan:</p>
 <div class="sourceCode" id="cb742"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">datos_tb</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></code></pre></div>
-<pre><code>##  [90m# A tibble: 7 × 1 [39m
-##    [1mvariable [22m
-##       [3m [90m&lt;int&gt; [39m [23m
-##  [90m1 [39m        1
-##  [90m2 [39m        2
-##  [90m3 [39m        3
-##  [90m4 [39m        4
-##  [90m5 [39m        5
-##  [90m6 [39m        6
-##  [90m7 [39m        7</code></pre>
+<pre><code>## # A tibble: 7 × 1
+##   variable
+##      &lt;int&gt;
+## 1        1
+## 2        2
+## 3        3
+## 4        4
+## 5        5
+## 6        6
+## 7        7</code></pre>
 <div class="sourceCode" id="cb744"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">datos_tb</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span></code></pre></div>
-<pre><code>##  [90m# A tibble: 7 × 1 [39m
-##    [1m`tercera falsa :)` [22m
-##                 [3m [90m&lt;dbl&gt; [39m [23m
-##  [90m1 [39m                  0
-##  [90m2 [39m                  0
-##  [90m3 [39m                  0
-##  [90m4 [39m                  0
-##  [90m5 [39m                  0
-##  [90m6 [39m                  0
-##  [90m7 [39m                  0</code></pre>
+<pre><code>## # A tibble: 7 × 1
+##   `tercera falsa :)`
+##                &lt;dbl&gt;
+## 1                  0
+## 2                  0
+## 3                  0
+## 4                  0
+## 5                  0
+## 6                  0
+## 7                  0</code></pre>
 <div class="sourceCode" id="cb746"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">datos_tb</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></code></pre></div>
-<pre><code>##  [90m# A tibble: 7 × 1 [39m
-##      [1m`2` [22m
-##    [3m [90m&lt;int&gt; [39m [23m
-##  [90m1 [39m    11
-##  [90m2 [39m    12
-##  [90m3 [39m    13
-##  [90m4 [39m    14
-##  [90m5 [39m    15
-##  [90m6 [39m    16
-##  [90m7 [39m    17</code></pre>
+<pre><code>## # A tibble: 7 × 1
+##     `2`
+##   &lt;int&gt;
+## 1    11
+## 2    12
+## 3    13
+## 4    14
+## 5    15
+## 6    16
+## 7    17</code></pre>
 <p>Y también por el nombre entre corchetes (doble corchete extrae la variable fuera del tibble, corchete simple en formato tibble):</p>
 <div class="sourceCode" id="cb748"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">datos_tb</span><span class="op">[</span><span class="st">"variable"</span><span class="op">]</span></code></pre></div>
-<pre><code>##  [90m# A tibble: 7 × 1 [39m
-##    [1mvariable [22m
-##       [3m [90m&lt;int&gt; [39m [23m
-##  [90m1 [39m        1
-##  [90m2 [39m        2
-##  [90m3 [39m        3
-##  [90m4 [39m        4
-##  [90m5 [39m        5
-##  [90m6 [39m        6
-##  [90m7 [39m        7</code></pre>
+<pre><code>## # A tibble: 7 × 1
+##   variable
+##      &lt;int&gt;
+## 1        1
+## 2        2
+## 3        3
+## 4        4
+## 5        5
+## 6        6
+## 7        7</code></pre>
 <div class="sourceCode" id="cb750"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">datos_tb</span><span class="op">[[</span><span class="st">"variable"</span><span class="op">]</span><span class="op">]</span></code></pre></div>
 <pre><code>## [1] 1 2 3 4 5 6 7</code></pre>
 <div class="sourceCode" id="cb752"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">datos_tb</span><span class="op">[</span><span class="st">"tercera falsa :)"</span><span class="op">]</span></code></pre></div>
-<pre><code>##  [90m# A tibble: 7 × 1 [39m
-##    [1m`tercera falsa :)` [22m
-##                 [3m [90m&lt;dbl&gt; [39m [23m
-##  [90m1 [39m                  0
-##  [90m2 [39m                  0
-##  [90m3 [39m                  0
-##  [90m4 [39m                  0
-##  [90m5 [39m                  0
-##  [90m6 [39m                  0
-##  [90m7 [39m                  0</code></pre>
+<pre><code>## # A tibble: 7 × 1
+##   `tercera falsa :)`
+##                &lt;dbl&gt;
+## 1                  0
+## 2                  0
+## 3                  0
+## 4                  0
+## 5                  0
+## 6                  0
+## 7                  0</code></pre>
 <div class="sourceCode" id="cb754"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">datos_tb</span><span class="op">[</span><span class="st">"2"</span><span class="op">]</span></code></pre></div>
-<pre><code>##  [90m# A tibble: 7 × 1 [39m
-##      [1m`2` [22m
-##    [3m [90m&lt;int&gt; [39m [23m
-##  [90m1 [39m    11
-##  [90m2 [39m    12
-##  [90m3 [39m    13
-##  [90m4 [39m    14
-##  [90m5 [39m    15
-##  [90m6 [39m    16
-##  [90m7 [39m    17</code></pre>
+<pre><code>## # A tibble: 7 × 1
+##     `2`
+##   &lt;int&gt;
+## 1    11
+## 2    12
+## 3    13
+## 4    14
+## 5    15
+## 6    16
+## 7    17</code></pre>
 <!-- tocstop -->
 </details><p> </p>
 <details><p><summary>📝<strong>Ejercicio 4</strong>: convierte en <em>tidy data</em> el siguiente <code>data.frame</code>.</summary></p>
@@ -857,15 +857,15 @@ Imagen/gráfica 11.2: Infografía con datos ordenados (tidy data) extraída de <
 <code class="sourceCode R"><span class="co"># Aplicamos pivot_longer</span>
 <span class="va">tabla_tb</span> <span class="op">%&gt;%</span> <span class="fu">pivot_longer</span><span class="op">(</span>cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"2020"</span>, <span class="st">"2021"</span><span class="op">)</span>,
                           names_to <span class="op">=</span> <span class="st">"año"</span>, values_to <span class="op">=</span> <span class="st">"valores"</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [90m# A tibble: 6 × 3 [39m
-##    [1mtrimestre [22m  [1maño [22m    [1mvalores [22m
-##    [3m [90m&lt;chr&gt; [39m [23m      [3m [90m&lt;chr&gt; [39m [23m    [3m [90m&lt;dbl&gt; [39m [23m
-##  [90m1 [39m T1        2020     10  
-##  [90m2 [39m T1        2021      8  
-##  [90m3 [39m T2        2020     12  
-##  [90m4 [39m T2        2021      0  
-##  [90m5 [39m T3        2020      7.5
-##  [90m6 [39m T3        2021      9</code></pre>
+<pre><code>## # A tibble: 6 × 3
+##   trimestre año   valores
+##   &lt;chr&gt;     &lt;chr&gt;   &lt;dbl&gt;
+## 1 T1        2020     10  
+## 2 T1        2021      8  
+## 3 T2        2020     12  
+## 4 T2        2021      0  
+## 5 T3        2020      7.5
+## 6 T3        2021      9</code></pre>
 <!-- tocstop -->
 </details><p> </p>
 <details><p><summary>📝<strong>Ejercicio 5</strong>: convierte en <em>tidy data</em> el siguiente <code>data.frame</code>.</summary></p>
@@ -881,12 +881,12 @@ Imagen/gráfica 11.2: Infografía con datos ordenados (tidy data) extraída de <
 <div class="sourceCode" id="cb760"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Aplicamos pivot_wider</span>
 <span class="va">tabla_tb</span> <span class="op">%&gt;%</span> <span class="fu">pivot_wider</span><span class="op">(</span>names_from <span class="op">=</span> <span class="st">"variable"</span>, values_from <span class="op">=</span> <span class="st">"valor"</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [90m# A tibble: 3 × 3 [39m
-##      [1maño [22m      [1mA [22m      [1mB [22m
-##    [3m [90m&lt;dbl&gt; [39m [23m  [3m [90m&lt;dbl&gt; [39m [23m  [3m [90m&lt;dbl&gt; [39m [23m
-##  [90m1 [39m   [4m2 [24m019 10      [4m9 [24m383
-##  [90m2 [39m   [4m2 [24m020  7.58  [4m1 [24m [4m0 [24m839
-##  [90m3 [39m   [4m2 [24m021  9     [4m3 [24m [4m2 [24m949</code></pre>
+<pre><code>## # A tibble: 3 × 3
+##     año     A     B
+##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1  2019 10     9383
+## 2  2020  7.58 10839
+## 3  2021  9    32949</code></pre>
 <!-- tocstop -->
 </details><p> </p>
 <details><p><summary>📝<strong>Ejercicio 6</strong>: convierte en <em>tidy data</em> la tabla <code>table5</code> del paquete <a href="https://tidyr.tidyverse.org">tidyr</a>.</summary></p>
@@ -898,29 +898,29 @@ Imagen/gráfica 11.2: Infografía con datos ordenados (tidy data) extraída de <
 <div class="sourceCode" id="cb762"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">table5</span> <span class="op">%&gt;%</span>
   <span class="fu">unite</span><span class="op">(</span><span class="va">año</span>, <span class="va">century</span>, <span class="va">year</span>, sep <span class="op">=</span> <span class="st">""</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [90m# A tibble: 6 × 3 [39m
-##    [1mcountry [22m      [1maño [22m    [1mrate [22m             
-##    [3m [90m&lt;chr&gt; [39m [23m        [3m [90m&lt;chr&gt; [39m [23m  [3m [90m&lt;chr&gt; [39m [23m            
-##  [90m1 [39m Afghanistan 1999  745/19987071     
-##  [90m2 [39m Afghanistan 2000  2666/20595360    
-##  [90m3 [39m Brazil      1999  37737/172006362  
-##  [90m4 [39m Brazil      2000  80488/174504898  
-##  [90m5 [39m China       1999  212258/1272915272
-##  [90m6 [39m China       2000  213766/1280428583</code></pre>
+<pre><code>## # A tibble: 6 × 3
+##   country     año   rate             
+##   &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt;            
+## 1 Afghanistan 1999  745/19987071     
+## 2 Afghanistan 2000  2666/20595360    
+## 3 Brazil      1999  37737/172006362  
+## 4 Brazil      2000  80488/174504898  
+## 5 China       1999  212258/1272915272
+## 6 China       2000  213766/1280428583</code></pre>
 <p>Tras ello deberemos separar el valor del ratio en denominador y numerador (ya que ahora hay dos valores en una celda), y convertiremos el tipo de dato en la salida para que sea número.</p>
 <div class="sourceCode" id="cb764"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">table5</span> <span class="op">%&gt;%</span>
   <span class="fu">unite</span><span class="op">(</span><span class="va">año</span>, <span class="va">century</span>, <span class="va">year</span>, sep <span class="op">=</span> <span class="st">""</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">separate</span><span class="op">(</span><span class="va">rate</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"numerador"</span>, <span class="st">"denominador"</span><span class="op">)</span>, convert <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [90m# A tibble: 6 × 4 [39m
-##    [1mcountry [22m      [1maño [22m    [1mnumerador [22m  [1mdenominador [22m
-##    [3m [90m&lt;chr&gt; [39m [23m        [3m [90m&lt;chr&gt; [39m [23m      [3m [90m&lt;int&gt; [39m [23m        [3m [90m&lt;int&gt; [39m [23m
-##  [90m1 [39m Afghanistan 1999        745    19 [4m9 [24m [4m8 [24m [4m7 [24m071
-##  [90m2 [39m Afghanistan 2000        [4m2 [24m666    20 [4m5 [24m [4m9 [24m [4m5 [24m360
-##  [90m3 [39m Brazil      1999       [4m3 [24m [4m7 [24m737   172 [4m0 [24m [4m0 [24m [4m6 [24m362
-##  [90m4 [39m Brazil      2000       [4m8 [24m [4m0 [24m488   174 [4m5 [24m [4m0 [24m [4m4 [24m898
-##  [90m5 [39m China       1999      [4m2 [24m [4m1 [24m [4m2 [24m258   [4m1 [24m272 [4m9 [24m [4m1 [24m [4m5 [24m272
-##  [90m6 [39m China       2000      [4m2 [24m [4m1 [24m [4m3 [24m766   [4m1 [24m280 [4m4 [24m [4m2 [24m [4m8 [24m583</code></pre>
+<pre><code>## # A tibble: 6 × 4
+##   country     año   numerador denominador
+##   &lt;chr&gt;       &lt;chr&gt;     &lt;int&gt;       &lt;int&gt;
+## 1 Afghanistan 1999        745    19987071
+## 2 Afghanistan 2000       2666    20595360
+## 3 Brazil      1999      37737   172006362
+## 4 Brazil      2000      80488   174504898
+## 5 China       1999     212258  1272915272
+## 6 China       2000     213766  1280428583</code></pre>
 <!-- tocstop -->
 </details>
 </div>
