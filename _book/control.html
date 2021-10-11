@@ -205,12 +205,12 @@
                                <span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="va">idx</span><span class="op">)</span> <span class="op">{</span>  <span class="va">y</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">idx</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">^</span><span class="fl">2</span><span class="op">}</span>,
                                times <span class="op">=</span> <span class="fl">1e3</span><span class="op">)</span></code></pre></div>
 <pre><code>## Unit: microseconds
-##                                     expr      min        lq       mean
-##                               x &lt;- idx^2   18.160   47.1845   52.02457
-##  for (i in idx) {     y[i] &lt;- idx[i]^2 } 1792.227 1870.5060 2087.80593
-##     median       uq      max neval cld
-##    52.2135   58.468  141.829  1000  a 
-##  1965.1880 2146.309 6680.484  1000   b</code></pre>
+##                                     expr      min       lq       mean   median
+##                               x &lt;- idx^2   18.012   47.395   51.32536   51.717
+##  for (i in idx) {     y[i] &lt;- idx[i]^2 } 1795.060 1914.059 2114.09440 2008.385
+##        uq      max neval cld
+##    57.430  192.245  1000  a 
+##  2159.553 7829.826  1000   b</code></pre>
 <p>Una tarea tan sencilla, <strong>programada en un bucle (segunda fila), tarda 40 veces más que hacerlo de forma vectorial (primera fila)</strong> (elevando cada elemento al cuadrado, iterando internamente, sin necesidad de implementar un bucle).</p>
 <p> </p>
 <p>Otra manera de diseñar un bucle es con la <strong>estructura <code>while{}</code></strong>, que ejecutará el <strong>bucle un número de veces a priori desconocido</strong> hasta que la condición impuesta deje de ser <code>TRUE</code>.</p>

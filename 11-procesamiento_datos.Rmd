@@ -104,7 +104,7 @@ map_dbl(x, function(x) { sum(x) })
 
 Antes de ordenar, limpiar y procesar nuestros datos, vamos a ver un tipo de dato que mencionamos por encima en su momento: las tablas `tibble`. Los datos en formato `tibble` (del paquete `{tibble}`) son un **tipo de `data.frame` mejorado, para una gestión más ágil, eficiente y coherente**. Las **tablas en formato tibble (su clase será tbl_df)** tiene 4 ventajas principales frente a los ya vistos `data.frame`:
 
-* Permite **imprimir por consola la tabla con mayor información** de las variables, y **solo imprime por defecto las primeras filas**.
+* Permite **imprimir por consola la tabla con mayor información** de las variables, y **solo imprime por defecto las primeras filas** (todas si son 20 o menos, 10 si son más de 20 filas).
 
 ```{r}
 library(tibble)
@@ -371,7 +371,7 @@ La respuesta: NO. Tienes muchas formas de comprobarlo si imprimes el conjunto po
 mtcars
 ```
 
-- Imprime por defecto todas las filas.
+- Imprime por defecto todas las filas (tiene 32 filas, debería imprimir solo 10 si fuese un tibble, para no saturar consola).
 - No especifica al imprimir que es de tipo `tibble`.
 - No especifica al imprimir el tipo de dato de las columnas.
 - Imprime el nombre de las filas (el nombre de los modelos) como si fuera una variable (¡que no existe!).

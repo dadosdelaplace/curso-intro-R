@@ -176,7 +176,7 @@ Imagen/gráfica 11.1: Flujo deseable de datos según Hadley Wickham, extraída d
 </h2>
 <p>Antes de ordenar, limpiar y procesar nuestros datos, vamos a ver un tipo de dato que mencionamos por encima en su momento: las tablas <code>tibble</code>. Los datos en formato <code>tibble</code> (del paquete <a href="https://tibble.tidyverse.org/">tibble</a>) son un <strong>tipo de <code>data.frame</code> mejorado, para una gestión más ágil, eficiente y coherente</strong>. Las <strong>tablas en formato tibble (su clase será tbl_df)</strong> tiene 4 ventajas principales frente a los ya vistos <code>data.frame</code>:</p>
 <ul>
-<li>Permite <strong>imprimir por consola la tabla con mayor información</strong> de las variables, y <strong>solo imprime por defecto las primeras filas</strong>.</li>
+<li>Permite <strong>imprimir por consola la tabla con mayor información</strong> de las variables, y <strong>solo imprime por defecto las primeras filas</strong> (todas si son 20 o menos, 10 si son más de 20 filas).</li>
 </ul>
 <div class="sourceCode" id="cb672"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/">tibble</a></span><span class="op">)</span>
@@ -689,7 +689,7 @@ Imagen/gráfica 11.2: Infografía con datos ordenados (tidy data) extraída de <
 ## Maserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8
 ## Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</code></pre>
 <ul>
-<li>Imprime por defecto todas las filas.</li>
+<li>Imprime por defecto todas las filas (tiene 32 filas, debería imprimir solo 10 si fuese un tibble, para no saturar consola).</li>
 <li>No especifica al imprimir que es de tipo <code>tibble</code>.</li>
 <li>No especifica al imprimir el tipo de dato de las columnas.</li>
 <li>Imprime el nombre de las filas (el nombre de los modelos) como si fuera una variable (¡que no existe!).</li>
