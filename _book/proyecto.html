@@ -6,15 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Capítulo 4 Flujo de trabajo: primer proyecto | Aprendiendo R sin morir en el intento</title>
 <meta name="author" content="Javier Álvarez Liébana">
-<meta name="description" content="Tabla 4.1: Paquetes mencionados hasta ahora paquetes descripción {base} utilidades básicas {bookdown} creación de libros, manuales e informes en R {glue} manejo de texto literal {stringr} manejo...">
+<meta name="description" content="CONSEJO: cambiar la notación exponencial Por defecto, R muestra los números en formato de notación exponencial. Por ejemplo, el número 1000000 nos lo mostrará por defecto como 1e+06. A veces...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
 <meta property="og:title" content="Capítulo 4 Flujo de trabajo: primer proyecto | Aprendiendo R sin morir en el intento">
 <meta property="og:type" content="book">
 <meta property="og:image" content="/img/logo_R.png">
-<meta property="og:description" content="Tabla 4.1: Paquetes mencionados hasta ahora paquetes descripción {base} utilidades básicas {bookdown} creación de libros, manuales e informes en R {glue} manejo de texto literal {stringr} manejo...">
+<meta property="og:description" content="CONSEJO: cambiar la notación exponencial Por defecto, R muestra los números en formato de notación exponencial. Por ejemplo, el número 1000000 nos lo mostrará por defecto como 1e+06. A veces...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Capítulo 4 Flujo de trabajo: primer proyecto | Aprendiendo R sin morir en el intento">
-<meta name="twitter:description" content="Tabla 4.1: Paquetes mencionados hasta ahora paquetes descripción {base} utilidades básicas {bookdown} creación de libros, manuales e informes en R {glue} manejo de texto literal {stringr} manejo...">
+<meta name="twitter:description" content="CONSEJO: cambiar la notación exponencial Por defecto, R muestra los números en formato de notación exponencial. Por ejemplo, el número 1000000 nos lo mostrará por defecto como 1e+06. A veces...">
 <meta name="twitter:image" content="/img/logo_R.png">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -78,40 +78,6 @@
 <h1>
 <span class="header-section-number">Capítulo 4</span> Flujo de trabajo: primer proyecto<a class="anchor" aria-label="anchor" href="#proyecto"><i class="fas fa-link"></i></a>
 </h1>
-<div class="inline-table"><table class="table table-sm">
-<caption>
-<span id="tab:unnamed-chunk-91">Tabla 4.1: </span>Paquetes mencionados hasta ahora</caption>
-<thead><tr class="header">
-<th align="left">paquetes</th>
-<th align="left">descripción</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td align="left">{base}</td>
-<td align="left">utilidades básicas</td>
-</tr>
-<tr class="even">
-<td align="left">{bookdown}</td>
-<td align="left">creación de libros, manuales e informes en R</td>
-</tr>
-<tr class="odd">
-<td align="left">{glue}</td>
-<td align="left">manejo de texto literal</td>
-</tr>
-<tr class="even">
-<td align="left">{stringr}</td>
-<td align="left">manejo complejo de cadenas de texto</td>
-</tr>
-<tr class="odd">
-<td align="left">{lubridate}</td>
-<td align="left">manejo de fechas</td>
-</tr>
-<tr class="even">
-<td align="left">{microbenchmark}</td>
-<td align="left">comparativa de tiempos de ejecución</td>
-</tr>
-</tbody>
-</table></div>
 <div class="rmdimportant">
 <p><strong><span style="color: #20935E;">CONSEJO: cambiar la notación exponencial</span></strong></p>
 <p>Por defecto, <code>R</code> muestra los números en formato de notación exponencial. Por ejemplo, el número <code>1000000</code> nos lo mostrará por defecto como <code>1e+06</code>. A veces podemos querer que se muestre con todas sus cifras (por ejemplo, en el título o leyenda de una gráfica): para anular la notación exponencial, escribe al inicio del código <code><a href="https://rdrr.io/r/base/options.html">options("scipen" = 10)</a></code>.</p>
@@ -205,7 +171,7 @@ Imagen/gráfica 4.10: Subcarpeta «CODIGOS».
 </p>
 </div>
 <p>En esa carpeta de códigos vamos a crear de prueba el código llamado <code>variables.R</code> donde vamos a <strong>definir algunas variables</strong> que luego usaremos en el código principal (suele suceder con variables que van a ser fijas como nombres, fechas o codificaciones de variables).</p>
-<div class="sourceCode" id="cb259"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb261"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Descripción: script de prueba con variables</span>
 
 <span class="co"># Variables</span>
@@ -226,7 +192,7 @@ Imagen/gráfica 4.11: Escribimos una serie de variables fijas para luego ser usa
 <p>Así que eso haremos: desde nuestro archivo principal <code>main.R</code> llamaremos a ese archivo <code>variables.R</code>, para luego usar las variables definidas en él.</p>
 <p><strong>¿Cómo indicarle a <code>R</code> donde está nuestro fichero?</strong></p>
 <p>En <code>R</code>, como en todo lenguaje de programación, podemos consultar lo que el ordenador llama <em>directorio de trabajo</em>: la carpeta «base» desde donde está ejecutando tu código. Dicha ruta de directorio se puede consultar con la función <code><a href="https://rdrr.io/r/base/getwd.html">getwd()</a></code>, pudiendo ver los archivos y carpetas que hay dentro del mismo con el comando <code><a href="https://rdrr.io/r/base/list.files.html">dir()</a></code></p>
-<div class="sourceCode" id="cb260"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb262"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/getwd.html">getwd</a></span><span class="op">(</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/list.files.html">dir</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="figure" style="text-align: center">
@@ -236,7 +202,7 @@ Imagen/gráfica 4.12: Consultar directorio de trabajo predeterminado y archivos 
 </p>
 </div>
 <p>Lo ideal es empezar el código <strong>fijando como directorio de trabajo el directorio donde tengamos nuestro archivo principal</strong> <code>main.R</code> y para ello usaremos la función <code><a href="https://rdrr.io/r/base/getwd.html">setwd()</a></code>, cuyo argumento será la ruta donde queremos fijarlo. Para hacerlo de forma automática (y que el código pueda ser abierto por ti pero también por otros que no tengan tu misma estructura de carpetas), obtendremos de forma automática la ruta del archivo <code>main.R</code> o del proyecto con la orden <code>rstudioapi::getSourceEditorContext()$path</code>, y después usaremos <code><a href="https://rdrr.io/r/base/basename.html">dirname()</a></code> para quedarnos solo con la ruta de carpetas (eliminando el nombre del fichero al final). Esa será la ruta que le pasaremos a <code><a href="https://rdrr.io/r/base/getwd.html">setwd()</a></code>, quedando nuestro directorio de trabajo automáticamente fijado, sin preocuparnos de la ruta</p>
-<div class="sourceCode" id="cb261"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb263"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Fijamos directorio de trabajo automáticamente</span>
 <span class="fu"><a href="https://rdrr.io/r/base/getwd.html">setwd</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/basename.html">dirname</a></span><span class="op">(</span><span class="fu">rstudioapi</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rstudioapi/man/rstudio-editors.html">getSourceEditorContext</a></span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">path</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <div class="figure" style="text-align: center">
@@ -246,7 +212,7 @@ Imagen/gráfica 4.13: Fijamos de forma automático el directorio de trabajo.
 </p>
 </div>
 <p>Una vez que hemos fijado nuestro directorio, para cargar código <code>.R</code>, basta que usemos la función <code><a href="https://rdrr.io/r/base/source.html">source()</a></code>, cuyo argumento será la ruta del archivo. Como tenemos de directorio base el directorio en el que tenemos nuestro archivo principal (<code>./</code>), bastará que empecemos a escribir <code><a href="https://rdrr.io/r/base/source.html">source("./")</a></code>, presionar el tabulador, y se nos abrirá el menú de archivos de nuestro directorio de trabajo, pudiendo ir seleccionando de forma sencilla la ruta de nuestro archivo.</p>
-<div class="sourceCode" id="cb262"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb264"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Cargamos fichero variable.R</span>
 <span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="st">"./CODIGOS/variables.R"</span><span class="op">)</span></code></pre></div>
 <div class="figure" style="text-align: center">
@@ -275,21 +241,21 @@ Imagen/gráfica 4.16: Guardamos con la casilla «source on save» activada para 
 </div>
 <p>Como vemos en la imagen <a href="proyecto.html#fig:source-on-save">4.16</a>, una vez ejecutado, tenemos en nuestro panel de entorno (parte superior derecha) las variables ya cargadas que teníamos definidas en nuestro fichero <code>variables.R</code>.</p>
 <p>Prueba a escribir algunas funciones que hemos aprendido con dichas variables y vuelve a hacer click en «guardar» con <em>source on save</em> activado.</p>
-<div class="sourceCode" id="cb263"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb265"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Sumamos 3 a cada elemento de x</span>
 <span class="va">z</span> <span class="op">&lt;-</span> <span class="va">x</span> <span class="op">+</span> <span class="fl">3</span>
 <span class="va">z</span></code></pre></div>
 <pre><code>## [1]  4  5  3  2 74</code></pre>
-<div class="sourceCode" id="cb265"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb267"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Imprimimos por pantalla la frase unida, y a dicha frase</span>
 <span class="co"># le pegamos nuestro apellido</span>
 <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">y</span>, collapse <span class="op">=</span> <span class="st">" "</span><span class="op">)</span>, <span class="va">apellido</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## hola me llamo Javier Álvarez</code></pre>
-<div class="sourceCode" id="cb267"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb269"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Días que han pasado desde el inicio de año</span>
 <span class="va">dias</span> <span class="op">&lt;-</span> <span class="va">hoy</span> <span class="op">-</span> <span class="va">fecha_origen</span>
 <span class="va">dias</span></code></pre></div>
-<pre><code>## Time difference of 283 days</code></pre>
+<pre><code>## Time difference of 288 days</code></pre>
 <p>La función <code><a href="https://rdrr.io/r/base/cat.html">cat()</a></code> nos muestra por consola el texto que le pasemos de argumento (<strong>función especial para mensajes de alerta</strong> por consola)</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:codigo-1"></span>
@@ -309,9 +275,9 @@ Imagen/gráfica 4.17: Cálculos con la variables definidas: suma, concatenación
 <div class="rmdimportant">
 <p><strong><span style="color: #20935E;">CONSEJO: extraer fecha y hora de hoy</span></strong></p>
 <p>La función <code><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time()</a></code> accede al sistema de nuestro ordenador para decirnos la <strong>fecha y hora del momento de la ejecución</strong> de dicha función.</p>
-<div class="sourceCode" id="cb269"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb271"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "2021-10-11 13:22:46 CEST"</code></pre>
+<pre><code>## [1] "2021-10-16 21:15:12 CEST"</code></pre>
 </div>
 
 </div>
@@ -343,7 +309,7 @@ Imagen/gráfica 4.17: Cálculos con la variables definidas: suma, concatenación
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 11-10-2021.</p>
+    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 16-10-2021.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -53,7 +53,7 @@ knitr::include_graphics("./img/pantalla_windows_2.jpg")
 knitr::include_graphics("./img/cranR.jpg")
 ```
 
-Para comprobar que está correctamente instalado, **prueba a escribir en la consola** el siguiente código (**recuerda**: los códigos puedes copiarlos directamente de la cajita en la que está haciendo click en el botón de la esquina superior derecha)
+Para comprobar que está correctamente instalado, **prueba a escribir en la consola** el siguiente código (**recuerda**: los códigos puedes copiarlos directamente de la cajita haciendo click en el botón de la esquina superior derecha)
 
 ```{r codigo-prueba-1}
 a <- 1
@@ -70,12 +70,20 @@ knitr::include_graphics("./img/primera_suma.jpg")
 
 **¡Enhorabuena!** Si te ha devuelto `[1] 3`, ya has hecho más de lo que parece: has definido dos variables `a` y `b`, has **asignado un valor numérico a cada variable** y las hemos usado. **Ya sabemos usar `R` como calculadora**.
 
+El valor `[1]` antes del resultado en realidad nos numera las líneas de la consola usadas.
+
 :::
  
 
 ::: {.rmdwarning}
 
-Como habrás advertido, en `R` usaremos `<-` para **asignar valores** en lugar de `=`, como una flecha.
+**`r colorize("WARNING", "#ffc107")`**
+
+Como habrás advertido, en `R` usaremos `<-` para **asignar valores** en lugar de `=`, como una flecha. Usaremos `=` para indicarle el valor a los argumentos que usemos en funciones y `==` como operador de comparación: si escribimos `2 == 3`, le estamos preguntando si 2 es igual a 3.
+
+```{r}
+2 == 3
+```
 
 ::: 
 
@@ -153,7 +161,7 @@ knitr::include_graphics("./img/inicio_rstudio_6.jpg")
 
 ```
 
-Ese código no se ejecuta salvo que se lo digamos. Tenemos dos opciones para ello: o copiamos el trozo de código que queramos y lo pegamos en la consola (como hemos hecho al principio), o **activamos el cuadrado `Source on save` a la derecha del botón de guardar** y volvemos a hacer click en el botón de guardar: siempre que esa opción esté activada, al guardar no solo es nos guarda el archivo `.R` sino que además se ejecuta solo y nos devuelve los resultados por consola.
+Ese código no se ejecuta salvo que se lo digamos. Tenemos principalmente dos opciones para ello: o copiamos el trozo de código que queramos y lo pegamos en la consola (como hemos hecho al principio), o **activamos el cuadrado `Source on save` a la derecha del botón de guardar** y volvemos a hacer click en el botón de guardar: siempre que esa opción esté activada, al guardar no solo es nos guarda el archivo `.R` sino que además se ejecuta solo y nos devuelve los resultados por consola.
 
 Listo, tienes instalado (casi) todo correctamente.
 
@@ -163,28 +171,29 @@ Listo, tienes instalado (casi) todo correctamente.
 
 El lenguaje `R` tiene 3 ventajas principales:
 
-* Es un **lenguaje creado por y para estadísticos/as**, por lo que está pensado para optimizar al máximo los recursos, y poder hacer un análisis estadístico de calidad
+* Es un **lenguaje creado por y para estadísticos/as**.
 
-* Es **software libre** (como C, C++, Python, Fortran, y otros tantos lenguajes). El software libre no solo tiene una ventaja evidente (es gratis, ok) en su instalación sino que permite acceder al código en el que están programados los comandos y permite hacer uso de trozos de código de otras personas.
+* Es **software libre** (como C, C++, Python, Fortran, y otros tantos lenguajes). El software libre no solo tiene una ventaja evidente (es gratis, ok) sino que permite acceder a código ajeno.
 
-* Es un **lenguaje modular**: en la instalación no se instalan todas las funcionalidades sino que instala un mínimo para poder funcionar, de forma que se ahorra espacio en disco y en memoria. Al ser software libre, existen trozos de código hechos por otras personas llamados **paquetes**, que podemos ir instalando a nuestro gusto según los vayamos necesitando. Esto es una ventaja enorme ya que `R` tiene una comunidad de usuarios gigante, con **más de 17 000 paquetes**: ¡hay más de 17 000  trozos de código validados por la comunidad y la plataforma, de forma gratuita!
+* Es un **lenguaje modular**: en la instalación no se instalan todas las funcionalidades salvo un mínimo para poder funcionar, de forma que se ahorra espacio en disco y en memoria. Al ser software libre, existen trozos de código hechos por otras personas llamados **paquetes**, que podemos ir instalando a nuestro gusto según los vayamos necesitando. Esto es una ventaja enorme ya que `R` tiene una comunidad de usuarios gigante, con **más de 17 000 paquetes**: ¡hay más de 17 000  trozos de código validados por la comunidad y la plataforma, de forma gratuita!
 
 ```{r paquetes-R, echo = FALSE, out.width = "75%", fig.align = "center", fig.cap = "Paquetes disponibles en R."}
 knitr::include_graphics("./img/paquetes_R.jpg")
 
 ```
 
-Esto nos ahorra muchísimo tiempo ya el **90% de lo que querramos hacer ya lo habrá querido hacer otra persona y podemos usar o adaptar su código** para no empezar de cero. Vamos a instalar un paquete gráfico (`{ggplot2}`) que necesitaremos. Para ello, escribe en tu consola el siguiente código y pulsa enter.
+Esto nos ahorra muchísimo tiempo ya que **casi todo lo que querramos hacer ya lo habrá querido hacer otra persona** para no empezar de cero. Vamos a instalar, por ejemplo, un paquete gráfico (`{ggplot2}`) que necesitaremos. Para ello, escribe en tu consola el siguiente código y pulsa enter.
 
 ```{r instalar-paquete, eval = FALSE}
 install.packages("ggplot2")
 ```
 
-Dicha orden (puede tardar un poco la primera vez, depende de tu conexión a internet) lo que hará será acceder a la web de R, bajarse a tu ordenador los trozos de código incluidos en el paquete llamado `{ggplot2}`, y dejarlos para siempre en él.
+Dicha orden (puede tardar un poco la primera vez, depende de tu conexión a internet) lo que hará será **acceder a la web de R**, **bajarse a tu ordenador los trozos de código** incluidos en el paquete llamado `{ggplot2}`, y dejarlos para siempre en él.
 
 ::: {.rmdwarning}
+**`r colorize("WARNING", "#ffc107")`**
 
-La **instalación de paquetes SOLO ES NECESARIO la primera vez** que se usa dicho paquete en la vida del ordenador, no hace falta hacerlo cada vez que lo usas.
+La **instalación de paquetes SOLO ES NECESARIA la primera vez** que se usa dicho paquete en la vida del ordenador, no hace falta hacerlo cada vez que lo usas.
 :::
 
 Una vez que tenemos los trozos de código (el paquete) en nuestro ordenador, en cada sesión de `R` que abramos (cada vez que cierres y abras `RStudio`) deberemos (si queremos) llamar a ese paquete que tenemos instalado, escribiendo el siguiente comando en consola

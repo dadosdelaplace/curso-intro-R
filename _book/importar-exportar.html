@@ -99,7 +99,7 @@
 <p>La forma más sencilla de guardar datos y variables en <code>R</code>, y que además ocupa menos espacio en nuestro disco duro, es guardarlo en archivos propios que tiene <code>R</code> como son los archivos con extensiones <code>.rda</code> y <code>.RData</code>.</p>
 <p>Es <strong>recomendable</strong> tener los datos en la misma carpeta del proyecto pero una carpeta separada, ya que podemos tener muchos archivos y así no mezclamos dichos ficheros con los códigos que escirbamos. En la carpeta <code>DATOS</code> del proyecto tenemos 4 archivos <code>.RData</code>: <code>coches.RData</code>, <code>panel_vacunas_ccaa.RData</code>, <code>panel_vacunas_fecha.RData</code> y <code>panel_variables.RData</code>. <strong>¿Cómo cargar archivos <code>.RData</code>?</strong></p>
 <p>Muy sencillo: como son ficheros nativos de <code>R</code>, basta con usar la función de carga <code><a href="https://rdrr.io/r/base/load.html">load()</a></code>, y dentro la ruta de los archivos.</p>
-<div class="sourceCode" id="cb403"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb415"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Al fijar directorio de trabajo, no necesitamos toda la ruta, solo "./" y la ruta dentro de la carpeta del proyecto</span>
 <span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="st">"./DATOS/coches.RData"</span><span class="op">)</span> 
 <span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="st">"./DATOS/panel_vacunas_ccaa.RData"</span><span class="op">)</span>
@@ -112,7 +112,7 @@ Imagen/gráfica 7.1: Importación de ficheros de extensión .RData.
 </p>
 </div>
 <p>Como ves en la imagen <a href="importar-exportar.html#fig:carga-RDATA">7.1</a>, en el panel de entorno de la parte superior derecha ahora tendremos 4 <code>data.frames</code> que antes no teníamos. Un función muy útil es <code><a href="https://rdrr.io/r/utils/head.html">head()</a></code>, con argumento el nombre de un <code>data.frame</code>, que nos permite visualizar las primeras columnas.</p>
-<div class="sourceCode" id="cb404"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb416"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Ver las primeras filas de la tabla que guarda distintos modelos de coche y características</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">coches</span><span class="op">)</span></code></pre></div>
 <pre><code>##                    consumo cilindrada     peso  potencia   tiempo
@@ -138,7 +138,7 @@ Imagen/gráfica 7.1: Importación de ficheros de extensión .RData.
 <p>Para leer un archivo <code>.csv</code> basta con usar la función <code><a href="https://rdrr.io/pkg/readr/man/read_delim.html">read_csv()</a></code> del paquete <a href="https://readr.tidyverse.org">readr</a> y la mayoría de las veces basta indicarle la ruta del archivo para su lectura (argumento <code>file</code>).</p>
 <div class="inline-table"><table class="table table-sm">
 <caption>
-<span id="tab:unnamed-chunk-149">Tabla 7.1: </span>Paquetes mencionados hasta ahora</caption>
+<span id="tab:unnamed-chunk-154">Tabla 7.1: </span>Paquetes mencionados hasta ahora</caption>
 <thead><tr class="header">
 <th align="left">paquetes</th>
 <th align="left">descripción</th>
@@ -188,11 +188,11 @@ Imagen/gráfica 7.1: Importación de ficheros de extensión .RData.
 Imagen/gráfica 7.2: Paquete readr.
 </p>
 </div>
-<div class="sourceCode" id="cb406"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb418"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"readr"</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span>
 <span class="va">vacunas_esp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/readr/man/read_delim.html">read_csv</a></span><span class="op">(</span>file <span class="op">=</span> <span class="st">"./DATOS/datos_ES.csv"</span><span class="op">)</span></code></pre></div>
-<div class="sourceCode" id="cb407"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb419"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">vacunas_esp</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 71
 ##   fechas     ISO   poblacion porc_pobl_total poblacion_mayor_… porc_pobl_total_…
@@ -210,7 +210,7 @@ Imagen/gráfica 7.2: Paquete readr.
 ## #   dosis_diarias_entrega_pfizer &lt;dbl&gt;, dosis_diarias_entrega_astra &lt;dbl&gt;,
 ## #   dosis_diarias_entrega_moderna &lt;dbl&gt;, dosis_diarias_entrega &lt;dbl&gt;,
 ## #   dosis_7D_entrega_pfizer &lt;dbl&gt;, dosis_7D_entrega_astra &lt;dbl&gt;, …</code></pre>
-<div class="sourceCode" id="cb409"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb421"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">vacunas_esp</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">7</span><span class="op">]</span> <span class="co"># Primeras filas y columnas</span></code></pre></div>
 <pre><code>## # A tibble: 5 × 7
 ##   fechas     ISO   poblacion porc_pobl_total poblacion_mayor_… porc_pobl_total_…
@@ -228,11 +228,11 @@ Imagen/gráfica 7.2: Paquete readr.
 <span class="header-section-number">7.1.3</span> Archivo .xlsx<a class="anchor" aria-label="anchor" href="#archivo-.xlsx"><i class="fas fa-link"></i></a>
 </h3>
 <p>Muchas veces no tendremos un <code>.csv</code> (por desgracia) y nos tocará leer desde un excel. Para ello deberemos instalar (la primera vez) y cargar el paquete <a href="https://readxl.tidyverse.org">readxl</a> que nos permitirá usar funciones para cargar archivos <code>.xls</code> (la función <code><a href="https://rdrr.io/pkg/readxl/man/read_excel.html">read_xls()</a></code>) y archivos <code>.xlsx</code> (la función <code><a href="https://rdrr.io/pkg/readxl/man/read_excel.html">read_xlsx()</a></code>). Además del argumento <code>path</code> con la ruta del archivo, podemos en el argumento <code>sheet</code> indicarle la hoja de Excel a leer (en caso de tener varias).</p>
-<div class="sourceCode" id="cb411"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb423"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"readxl"</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readxl.tidyverse.org">readxl</a></span><span class="op">)</span>
 <span class="va">boston</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/readxl/man/read_excel.html">read_xlsx</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"./DATOS/Boston.xlsx"</span><span class="op">)</span></code></pre></div>
-<div class="sourceCode" id="cb412"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb424"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">boston</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 14
 ##      crim    zn indus  chas   nox    rm   age   dis   rad   tax ptratio black
@@ -247,10 +247,10 @@ Imagen/gráfica 7.2: Paquete readr.
 <div class="rmdimportant">
 <p><strong><span style="color: #20935E;">CONSEJO: entorno tidyverse</span></strong></p>
 <p>Una de las <strong>herramientas más potentes en <code>R</code></strong> es el conjunto de paquetes <a href="https://tidyverse.tidyverse.org">tidyverse</a>: un entorno de paquetes que nos permite una gestión ágil y eficiente de nuestros conjuntos de datos. Aunque su uso profundo corresponde a un futuro curso, veamos una función muy útil del paquete <a href="https://dplyr.tidyverse.org">dplyr</a> (incluido en <a href="https://tidyverse.tidyverse.org">tidyverse</a>) para visualizar un resumen de nuestros datos.</p>
-<div class="sourceCode" id="cb414"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb426"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"tidyverse"</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></code></pre></div>
-<div class="sourceCode" id="cb415"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb427"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">glimpse</span><span class="op">(</span><span class="va">boston</span><span class="op">)</span><span class="co"># Resumen por columnas</span></code></pre></div>
 <pre><code>## Rows: 506
 ## Columns: 14
@@ -271,7 +271,7 @@ Imagen/gráfica 7.2: Paquete readr.
 </div>
 <div class="inline-table"><table class="table table-sm">
 <caption>
-<span id="tab:unnamed-chunk-159">Tabla 7.2: </span>Paquetes mencionados hasta ahora</caption>
+<span id="tab:unnamed-chunk-164">Tabla 7.2: </span>Paquetes mencionados hasta ahora</caption>
 <thead><tr class="header">
 <th align="left">paquetes</th>
 <th align="left">descripción</th>
@@ -337,7 +337,7 @@ Imagen/gráfica 7.3: Archivos de la pandemia en el ISCIII.
 </div>
 <p>Esos archivos cambian cada día, por lo que para visualizarlos, analizarlos o guardarlos cada día, tendríamos que, cada día, entrar de forma manual a la página y bajarnos el archivo. O no…</p>
 <p><code>R</code> nos permite <strong>leer archivos subidos en una web, dándole a la función de lectura el enlace del archivo en lugar de la ruta local de nuestro ordenador</strong> (para averiguar el enlace, basta con clickar botón derecho en la web y seleccionar «copiar dirección de enlace»)</p>
-<div class="sourceCode" id="cb417"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb429"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">datos_ISCIII</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/readr/man/read_delim.html">read_csv</a></span><span class="op">(</span>file <span class="op">=</span> <span class="st">"https://cnecovid.isciii.es/covid19/resources/casos_hosp_uci_def_sexo_edad_provres.csv"</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">datos_ISCIII</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 8
@@ -367,7 +367,7 @@ Imagen/gráfica 7.3: Archivos de la pandemia en el ISCIII.
 </h3>
 <p>La exportación en fichero <code>.RData</code> es la opción <strong>más recomendable si tú o tu equipo solo trabajáis con <code>R</code></strong>, es la opción nativa de fichero, para que su importación sea tan sencilla como una función <code><a href="https://rdrr.io/r/base/load.html">load()</a></code>. Para exportar en <code>R.Data</code> basta con uses la función <code><a href="https://rdrr.io/r/base/save.html">save()</a></code>, indícandole lo que quieres guardar y la ruta donde quieres guardarlo.</p>
 <p>Es <strong>importante</strong> entender que la principal ventaja de exportar un fichero <code>.RData</code> es que no se está portando una tabla, o un fichero tabulado con un formato de filas y columnas: estás exportando <strong>cualquier cosa</strong>, cualquier variable de <code>R</code>, con la naturaleza de esa variable intacta, sin necesidad de pasarlo otro formato.</p>
-<div class="sourceCode" id="cb419"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb431"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Exportamos en .RData la variable nombres </span>
 <span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">nombres</span>, file <span class="op">=</span> <span class="st">"./EXPORTAR/nombres.RData"</span><span class="op">)</span></code></pre></div>
 <p>Para tenerlo organizado, la orden anterior está hecha habiendo creado en nuestra carpeta del proyecto una carpeta <code>EXPORTAR</code> para guardar lo que vayamos exportando. Ese fichero solo podrá ser abierto por <code>R</code>, pero cuando lo cargemos, tendremos la variable <code>nombres</code> tal cual la hemos guardado.</p>
@@ -377,7 +377,7 @@ Imagen/gráfica 7.3: Archivos de la pandemia en el ISCIII.
 <span class="header-section-number">7.2.2</span> Guardar en .csv<a class="anchor" aria-label="anchor" href="#guardar-en-.csv"><i class="fas fa-link"></i></a>
 </h3>
 <p>No siempre trabajamos en <code>R</code> y a veces necesitamos una exportación de un <code>data.frame</code> o una tabla que podamos abrir en nuestra ordenador, ya sea para explicársela a alguien o para enviársela a otra persona. Para ello exportaremos en <code>.csv</code>, un fichero sin formato, y que es capaz de ser abierto por todo tipo de hojas de cálculo: basta que usemos la función <code><a href="https://rdrr.io/r/utils/write.table.html">write.csv()</a></code> del paquete <a href="https://readr.tidyverse.org">readr</a>.</p>
-<div class="sourceCode" id="cb420"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb432"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Exportamos en .csv el data.frame tabla</span>
 <span class="fu"><a href="https://rdrr.io/pkg/readr/man/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">tabla</span>, file <span class="op">=</span> <span class="st">"./EXPORTAR/tabla.csv"</span><span class="op">)</span></code></pre></div>
 <div class="rmdnote">
@@ -386,7 +386,7 @@ Imagen/gráfica 7.3: Archivos de la pandemia en el ISCIII.
 </div>
 <div class="inline-table"><table class="table table-sm">
 <caption>
-<span id="tab:unnamed-chunk-163">Tabla 7.3: </span>Paquetes mencionados hasta ahora</caption>
+<span id="tab:unnamed-chunk-168">Tabla 7.3: </span>Paquetes mencionados hasta ahora</caption>
 <thead><tr class="header">
 <th align="left">paquetes</th>
 <th align="left">descripción</th>
@@ -517,7 +517,7 @@ Imagen/gráfica 7.6: Margen derecho.
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 11-10-2021.</p>
+    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 16-10-2021.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

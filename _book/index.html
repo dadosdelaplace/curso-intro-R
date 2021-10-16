@@ -77,10 +77,10 @@
   </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><!--bookdown:title:end--><!--bookdown:title:start--><div id="prefacio" class="section level1 unnumbered">
 <h1>Prefacio<a class="anchor" aria-label="anchor" href="#prefacio"><i class="fas fa-link"></i></a>
 </h1>
-<p>Este curso ha sido diseñado por <a href="https://dadosdelaplace.com">Javier Álvarez Liébana</a> y pensado para introducir en el lenguaje <code>R</code> a todas aquellas personas que nunca hayan programado en él y/o en ningún otro lenguaje. Dicho manual ha sido elaborado a su vez en <code>R</code> con <a href="https://github.com/rstudio/bookdown">{bookdown}</a>. Puedes ver un resumen de las funcionalidades algunos paquetes documentados por el equipo de <a href="https://www.rstudio.com/">R Studio</a> en sus <a href="https://www.rstudio.com/resources/cheatsheets/">esquemas resumen</a>. El <strong>código</strong> de dicho manual se encuentra en GitHub (<a href="https://github.com/dadosdelaplace/cursoR_intro_2021_2022" class="uri">https://github.com/dadosdelaplace/cursoR_intro_2021_2022</a>).</p>
+<p>Este curso ha sido diseñado por <a href="https://dadosdelaplace.com">Javier Álvarez Liébana</a> y pensado para introducir en el lenguaje <code>R</code> a todas aquellas personas que quieran aprender desde cero. Dicho manual ha sido elaborado a su vez en <code>R</code> con <a href="https://github.com/rstudio/bookdown">{bookdown}</a>. Puedes ver un resumen de las funcionalidades de algunos paquetes documentados por el equipo de <a href="https://www.rstudio.com/">R Studio</a> en sus <a href="https://www.rstudio.com/resources/cheatsheets/">esquemas resumen</a>. El <strong>código</strong> de dicho manual se encuentra en <a href="https://github.com/dadosdelaplace/cursoR_intro_2021_2022">GitHub</a>.</p>
 <p><a href="https://github.com/dadosdelaplace/cursoR_intro_2021_2022" target="_blank"><img src="img/me_github.jpg" width="70%" style="display: block; margin: auto;"></a></p>
 <p> </p>
-<p>Para <strong>elaborar informes o libros</strong> con una estructura similar, de forma nativa en <code>R</code>, el paquete <a href="https://github.com/rstudio/bookdown">bookdown</a> puede ser instalado desde la plataforma CRAN o desde su versión en desarrollo actualizada en Github:</p>
+<p>Para <strong>elaborar informes o libros</strong> con una estructura similar (de forma nativa en <code>R</code>) el paquete <a href="https://github.com/rstudio/bookdown">bookdown</a> puede ser instalado desde la plataforma CRAN o desde su versión en desarrollo actualizada en Github:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"bookdown"</span><span class="op">)</span>
 <span class="co"># o desde su versión en desarrollo actualizada</span>
@@ -89,11 +89,13 @@
 <div id="propósito" class="section level2 unnumbered">
 <h2>Propósito<a class="anchor" aria-label="anchor" href="#prop%C3%B3sito"><i class="fas fa-link"></i></a>
 </h2>
-<p>El <strong>objetivo</strong> de este tutorial es introducir a la programación y análisis estadístico en <code>R</code> a toda aquella persona que nunca se haya iniciado en él, <strong>sin necesitar conocimientos previos</strong> de programación (aunque siempre ayuda, obviamente). Con este manual no se pretende que adquieras un vasto y experto conocimiento de <code>R</code>, pero si lo suficiente como para lograr <strong>3 objetivos</strong>:</p>
+<p>El <strong>objetivo</strong> de este tutorial es introducir a la programación y análisis estadístico en <code>R</code> a toda aquella persona que nunca se haya iniciado en él, <strong>sin necesitar conocimientos previos</strong> de programación (aunque siempre ayuda, obviamente). Con este manual no se pretende que adquieras un vasto y experto conocimiento de <code>R</code>, pero si lo suficiente como para lograr <strong>5 objetivos</strong>:</p>
 <ul>
 <li>
 <strong>No tener miedo</strong> a programar.</li>
-<li>Entender los <strong>conceptos básicos de <code>R</code></strong> y dotarte de una autonomía muy básica para pdoer trabajar con datos.</li>
+<li>Entender los <strong>conceptos básicos de <code>R</code></strong>.</li>
+<li>Dotarte de una <strong>autonomía</strong> muy básica para pdoer trabajar con datos.</li>
+<li>Introducirte en el <strong>análisis estadístico</strong>.</li>
 <li>Algunos <strong>trucos sencillos</strong> para que el trabajo sea más rápido, tanto en tiempo de escritura como de ejecución.</li>
 </ul>
 </div>
@@ -101,12 +103,11 @@
 <h2>Requisitos<a class="anchor" aria-label="anchor" href="#requisitos"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
-<li><p><strong>Conexión a internet</strong>: se necesitará tener una conexión a internet disponible para la descarga de algunos datos y paquetes.</p></li>
+<li><p><strong>Conexión a internet</strong> (para la descarga de algunos datos y paquetes).</p></li>
 <li><p><strong>Instalar R</strong> (ver <a href="instalacionR.html#instalacionR">1</a>). <strong><code>R</code> será nuestro lenguaje</strong>, nuestro diccionario, nuestro castellano, nuestra ortografía para poder «comunicarnos» con el ordenador. <a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a></p></li>
 <li><p><strong>Instalar <code>R Studio</code></strong> (ver <a href="instalacionR.html#instalacionRStudio">1.1</a>). De la misma manera que podemos escribir el mismo texto en castellano en una tablet, en un ordenador, en un Word, en un papel o en un tuit, en programación podemos usar distintos <strong>IDE (entornos de desarrollo integrados, nuestro Office)</strong>, para que el trabajo sea más cómodo. Nosotros trabajaremos con <code>RStudio</code>.</p></li>
 </ul>
-<p><a href="https://www.rstudio.com/products/rstudio/download/#download" target="_blank"><img src="img/rstudio_cheetsheet.jpg" width="75%" style="display: block; margin: auto;"></a></p>
-<p>Todo lo necesario para seguir este curso es de <strong>descarga gratuita</strong>: viva el software libre, abajo Excel.</p>
+<p>Todo lo necesario para seguir este curso es de <strong>descarga gratuita</strong>: viva el software libre.</p>
 </div>
 <div id="contenidos" class="section level2 unnumbered">
 <h2>Contenidos<a class="anchor" aria-label="anchor" href="#contenidos"><i class="fas fa-link"></i></a>
@@ -151,14 +152,11 @@
 <h2>Código de colores<a class="anchor" aria-label="anchor" href="#c%C3%B3digo-de-colores"><i class="fas fa-link"></i></a>
 </h2>
 <div class="rmdcaution">
-<p>En los <strong><span style="color: #dc3545;">recuadros rojos</span></strong> encontrarás <strong>errores comunes</strong> o prácticas que no deberías hacer.</p>
+<p>En los <strong><span style="color: #dc3545;">recuadros rojos</span></strong> encontrarás <strong>errores comunes</strong> o prácticas a evitar.</p>
 </div>
 <div class="rmdwarning">
 <p>En los <strong><span style="color: #ffc107;">recuadros naranjas</span></strong> encontrarás <strong>warnings o advertencias</strong> sobre cosas a tener en cuenta para evitar problemas.</p>
-</div>
-<div class="rmdwarning">
-<p><strong><span style="color: #ffc107;">Anular warnings</span></strong></p>
-<p>Algunas funciones pueden arrojarse ciertas advertencias que nunca está de más leer. Pero si dichos mensajes de alerta los tenemos controlados y no queremos que nos ensucie la ejecución en la consola, podemos poner al inicio del código <code><a href="https://rdrr.io/r/base/assign.html">assign("last.warning", NULL, envir = baseenv())</a></code> para limpiar los warnings antiguos y <code><a href="https://rdrr.io/r/base/options.html">options(warn = -1)</a></code> para desactivarlos.</p>
+<p>Algunas funciones pueden arrojar ciertas advertencias que nunca está de más leer. Pero si dichos mensajes de alerta los tenemos controlados, y no queremos que nos ensucie la ejecución en la consola, podemos poner al inicio del código <code><a href="https://rdrr.io/r/base/assign.html">assign("last.warning", NULL, envir = baseenv())</a></code> para limpiar los warnings antiguos y <code><a href="https://rdrr.io/r/base/options.html">options(warn = -1)</a></code> para desactivarlos.</p>
 </div>
 <div class="rmdimportant">
 <p>En los <strong><span style="color: #20935E;">recuadros verdes</span></strong> encontrarás consejos o tips para ampliar y facilitar tu programación. Además en cada <strong>cajita de código</strong>, si pasas el ratón, encontrarás un botón 📄📄 en la esquina superior derecha de la caja para copiar el código directamente a tu consola. <strong>Puedes encontrarlos todos escribiendo «consejo» en el buscador</strong>.</p>
@@ -171,10 +169,60 @@
 <h2>Sobre el autor<a class="anchor" aria-label="anchor" href="#sobre-el-autor"><i class="fas fa-link"></i></a>
 </h2>
 <p>Esto de presentarse a sí mismo es siempre un poco raro pero vamos a intentarlo. Mi nombre es <strong>Javier Álvarez Liébana</strong>, soy <strong>matemático</strong>, nacido en 1989 en <strong>Carabanchel (Madrid)</strong>, pasando por Bologna (Italia). Tras terminar licenciatura y Máster en Ingeniería Matemática, recibí en julio de 2018 el título de <strong>Doctor en Estadística</strong> (por la Universidad de Granada, con dos estancias en Université Pierre et Marie Curie)</p>
-<p>Además de <strong>investigador</strong> (con plaza y acreditación de Ayudante Doctor en la Facultad de Estudios Estadísticos de la Universidad Complutense de Madrid, tras ocupar dicha plaza en la Universidad de Oviedo), soy <strong>docente</strong> en dicha facultad y ando intentando eso de la <strong>divulgación en estadística y dataviz</strong> (visualización de datos) en redes sociales</p>
+<p>Además de <strong>investigador</strong> (con plaza y acreditación de Ayudante Doctor en la Facultad de Estudios Estadísticos de la Universidad Complutense de Madrid, tras ocupar dicha plaza en la Universidad de Oviedo), soy <a href="index.html#docencia-impartida"><strong>docente</strong> en dicha facultad</a> y ando intentando eso de la <strong>divulgación en estadística y dataviz</strong> (visualización de datos) en redes sociales</p>
 <p>🎲 <a href="https://dadosdelaplace.com">Web</a><br>
+💌 <a href="https://cartasdelaplace.substack.com">Newsletter</a><br>
 🐦 <a href="https://twitter.com/dadosdelaplace">Twitter</a><br>
 📸 <a href="https://instagram.com/javieralvarezliebana">Instagram</a></p>
+</div>
+<div id="docencia-impartida" class="section level2 unnumbered">
+<h2>Docencia impartida<a class="anchor" aria-label="anchor" href="#docencia-impartida"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>
+<strong>2021-2022 (UCM)</strong>:
+<ul>
+<li>estadística descriptiva y exploración de datos (Grado en Estadística Aplicada)</li>
+<li>minería de datos (Máster en Minería de Datos e Inteligencia de Negocio)</li>
+</ul>
+</li>
+<li>
+<strong>2020-2021 (UNIOVI)</strong>:
+<ul>
+<li>estadística (Grado en Informática, Grado en Ingeniería Química)</li>
+</ul>
+</li>
+<li>
+<strong>2019-2020 (UNIOVI)</strong>:
+<ul>
+<li>estadística (Grado en Informática, Grado en Ingeniería Química)</li>
+<li>modelos lineales generalizados (Máster en Análisis de Datos para la Inteligencia de Negocios)</li>
+</ul>
+</li>
+<li>
+<strong>2018-2019 (UNIOVI)</strong>:
+<ul>
+<li>estadística (Grado en Informática, Grado en Ingeniería Química).</li>
+<li>bioestadística y epidemiología (Grado en Fisioterapia)</li>
+<li>programación matemática (Grado en Matemáticas y Doble Grado en Matemátias y Física)</li>
+</ul>
+</li>
+<li>
+<strong>2016-2017 (UGR)</strong>:
+<ul>
+<li>estadística (Grado en Ciencias Ambientales)</li>
+<li>matemáticas III (Grado en Ingeniería Civil)</li>
+</ul>
+</li>
+<li>
+<strong>2015-2016 (UGR)</strong>:
+<ul>
+<li>probabilidad (Grado en Matemáticas)</li>
+<li>estadística (Grado en Ciencias Ambientales y Grado en Informática)</li>
+<li>matemáticas III (Grado en Ingeniería Civil)</li>
+</ul>
+</li>
+</ul>
 </div>
 <div id="licencia" class="section level2 unnumbered">
 <h2>Licencia<a class="anchor" aria-label="anchor" href="#licencia"><i class="fas fa-link"></i></a>
@@ -200,6 +248,7 @@ una licencia libre de copyleft que garantiza a los usuarios finales (personas, o
 <li><a class="nav-link" href="#contenidos">Contenidos</a></li>
 <li><a class="nav-link" href="#c%C3%B3digo-de-colores">Código de colores</a></li>
 <li><a class="nav-link" href="#sobre-el-autor">Sobre el autor</a></li>
+<li><a class="nav-link" href="#docencia-impartida">Docencia impartida</a></li>
 <li><a class="nav-link" href="#licencia">Licencia</a></li>
 </ul>
 
@@ -218,7 +267,7 @@ una licencia libre de copyleft que garantiza a los usuarios finales (personas, o
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 11-10-2021.</p>
+    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 16-10-2021.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

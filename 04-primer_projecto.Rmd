@@ -19,21 +19,6 @@ colorize <- function(x, color) {
 
 # Flujo de trabajo: primer proyecto {#proyecto}
 
-```{r echo = FALSE}
-library(knitr)
-paquetes <-
-  data.frame("paquetes" = c("{base}", "{bookdown}", "{glue}",
-                            "{stringr}", "{lubridate}", "{microbenchmark}"),
-             "descripción" = c("utilidades básicas",
-                               "creación de libros, manuales e informes en R",
-                               "manejo de texto literal",
-                               "manejo complejo de cadenas de texto",
-                               "manejo de fechas",
-                               "comparativa de tiempos de ejecución"))
-kable(paquetes, col.names = c("paquetes", "descripción"), align = "ll",
-      caption = "Paquetes mencionados hasta ahora")
-``` 
-
 
 ::: {.rmdimportant}
 

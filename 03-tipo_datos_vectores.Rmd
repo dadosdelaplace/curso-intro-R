@@ -23,7 +23,7 @@ colorize <- function(x, color) {
 ::: {.rmdimportant}
 **`r colorize("CONSEJO: recuperar un comando y autocompletar", "#20935E")`**
 
-Si haces click con el ratón en la consola y pulsas la flecha «arriba» del teclado, te irá apareciendo todo el **historial de órdenes ejecutadas**. Es una manera de ahorrar tiempo para ejecutar órdenes similares. Si empiezas a escribir el nombre de una variable pero no te acuerdas exactamente de su nombre, si pulsas **tabulador**, `R` te **autocompletará** solo (prueba a escribir solo `variab` y pulsa tabulador)
+Si haces click con el ratón en la consola y pulsas la flecha «arriba» del teclado, te irá apareciendo todo el **historial de órdenes ejecutadas**. Es una manera de ahorrar tiempo para ejecutar órdenes similares a las ya ejecutadas. Si empiezas a escribir el nombre de una variable pero no te acuerdas exactamente de su nombre, pulsando **tabulador** te **autocompletará** solo.
 :::
 
 Bien, ya controlamos la calculadora. Vamos a ir más allá: ¿y si en lugar de tener un solo número tenemos un **CONJUNTO de elementos**? En este capítulo vamos a ver un clásico de cualquier lenguaje de programación: los **vectores o arrays**.
@@ -114,7 +114,9 @@ rep(c(0, 1, 2), each = 4) # cuatro 0, luego cuatro 1, luego cuatro 2
 
 ## Operaciones aritméticas con vectores numéricos
 
-Hemos dicho que un número es un vector de longitud 1, así que **toda operación aritmética** que podamos hacer con un número la vamos a poder a hacer con un vector de números, de forma que si hacemos por ejemplo la operación `2 * z`, lo que sucederá es que **CADA ELEMENTO del vector** será multiplicado por 2. De la misma manera se pueden definir sumas `z + x`, raíces cuadradas `sqrt(z)` o elevar cada elemento al cuadrado `z^2`.
+Hemos dicho que un número es un vector de longitud 1, así que **toda operación aritmética** que podamos hacer con un número la vamos a poder a hacer con un vector de números, de forma que si hacemos por ejemplo la operación `2 * z`, lo que sucederá es que **CADA ELEMENTO del vector** será multiplicado por 2.
+
+De la misma manera se pueden definir sumas `z + x`, raíces cuadradas `sqrt(z)` o elevar cada elemento al cuadrado `z^2`.
 
 
 ```{r}
@@ -142,7 +144,7 @@ z^2
 ::: {.rmdimportant}
 **`r colorize("CONSEJO", "#20935E")`**
 
-Esto último, aunque parezca banal, es bastante importante que no se te olvide ya que en otros lenguajes no siempre es así. En `R`, salvo que especifiquemos lo contrario, **toda operación ARITMÉTICA que hagas a un vector será elemento a elemento**: si multiplicas dos matrices, la operación la realizará elemento a elemento, no como la multiplicación matricial que quizás te enseñaran en matemáticas (once upon a time...)
+Esto último es bastante importante que no se te olvide ya que en otros lenguajes no siempre es así. En `R`, salvo que especifiquemos lo contrario, **toda operación ARITMÉTICA que hagas a un vector será elemento a elemento**: si multiplicas dos matrices, la operación la realizará elemento a elemento, no como una multiplicación matricial.
 :::
 
 Dado que la operación (por ejemplo, una suma) se realiza elemento a elemento, **¿qué sucederá si sumamos dos vectores de distinta longitud?** Prueba a definir un vector con los 4 primeros impares, e intentar hacer la suma `z + y` (un vector de longitud 3 más un vector de longitud 4).
@@ -258,7 +260,7 @@ paste0("variable", 1:7) # a la palabra «variable» le pegamos los números del 
 paste("variable", 1:7, sep = "_") # separado por una barra baja
 ```
 
-&nbsp;
+### Paquete glue
 
   
 Otra **forma más intuitiva de trabajar con textos y variables numéricas** es usar el paquete `{glue}`, que nos permite pegar cadenas de texto a variables numéricas de **forma simbólica**.
@@ -332,7 +334,7 @@ Veamos un último tipo de vectores importante en todo lenguaje de programación:
 
 * `TRUE` (guardado internamente como un `1`).
 * `FALSE` (guardado internamente como un `0`).
-* `NA` (dato ausente, son las siglas de _not available_).
+* `NA` (dato ausente, son las siglas de _not available_, cuando pretendemos aplicar una comparación a un dato ya de por si ausente).
 
 Estos valores son resultado de evaluar **condiciones lógicas**. Por ejemplo, imaginemos que definimos un vector de números `x <- c(1.5, -1, 2, 4, 3, -4)`. ¿Qué numeros del vector son menores que 2? Basta con que ejecutemos la orden `x < 2`, que nos devolverá `TRUE/FALSE` en cada hueco, en función de si cumple (`TRUE`) o no (`FALSE`) la condición pedida.
 
@@ -393,7 +395,11 @@ sum(x < 2) # sumamos el vector de TRUE/FALSE --> número de TRUE
 
 ## Datos ausentes: NA y NaN {#ausentes}
 
-La vida no siempre es perfecta así que en muchas ocasiones nos encontraremos con lo que llamamos en estadística un **dato ausente o _missing value_**, un **valor que no tenemos en nuestra variable**, y un ejemplo práctico lo tenemos con los datos de vacunación de covid del Ministerio de Sanidad. Cada día se publicaba un PDF (ya...mal) con los datos de vacunación PERO...no se publican datos los fines de semana: en dichas fechas hay datos que no tenemos, y en `R` se representan por `NA` (significa _not available_). Vamos a crear un vector de números con datos ausentes con la orden `x <- c(1, NA, 3, NA, NA, 5, 6)`: el vector tendrá longitud 7 pero en el segundo, cuarto y quinto elemento tendremos un dato faltante, un lugar que no tenemos relleno (pero que no eliminamos).
+La vida no siempre es perfecta así que en muchas ocasiones nos encontraremos con lo que llamamos en estadística un **dato ausente o _missing value_**, un **valor que no tenemos en nuestra variable**, y un ejemplo práctico lo tenemos con los datos de vacunación de covid del Ministerio de Sanidad que hemos tenido en 2020-2021. Cada día se publicaba un PDF (ya...mal) con los datos de vacunación PERO...no se publican datos los fines de semana: en dichas fechas hay datos que no tenemos, y en `R` se representan por `NA` (significa _not available_).
+
+### NA: not available
+
+Vamos a crear un vector de números con datos ausentes con la orden `x <- c(1, NA, 3, NA, NA, 5, 6)`: el vector tendrá longitud 7 pero en el segundo, cuarto y quinto elemento tendremos un dato faltante, un lugar que no tenemos relleno (pero que no eliminamos).
 
 ```{r}
 x <- c(1, NA, 3, NA, NA, 5, 6) # Vector numérico con datos faltante

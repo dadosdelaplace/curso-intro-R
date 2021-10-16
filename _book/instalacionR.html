@@ -122,7 +122,7 @@ Imagen/gráfica 1.4: Pantalla final de instalación de R en Windows.
 Imagen/gráfica 1.5: Primera pantalla al abrir el ejecutable de R.
 </p>
 </div>
-<p>Para comprobar que está correctamente instalado, <strong>prueba a escribir en la consola</strong> el siguiente código (<strong>recuerda</strong>: los códigos puedes copiarlos directamente de la cajita en la que está haciendo click en el botón de la esquina superior derecha)</p>
+<p>Para comprobar que está correctamente instalado, <strong>prueba a escribir en la consola</strong> el siguiente código (<strong>recuerda</strong>: los códigos puedes copiarlos directamente de la cajita haciendo click en el botón de la esquina superior derecha)</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">a</span> <span class="op">&lt;-</span> <span class="fl">1</span>
 <span class="va">b</span> <span class="op">&lt;-</span> <span class="fl">2</span>
@@ -136,9 +136,14 @@ Imagen/gráfica 1.6: Primera suma en la consola de R.
 </div>
 <div class="rmdimportant">
 <p><strong>¡Enhorabuena!</strong> Si te ha devuelto <code>[1] 3</code>, ya has hecho más de lo que parece: has definido dos variables <code>a</code> y <code>b</code>, has <strong>asignado un valor numérico a cada variable</strong> y las hemos usado. <strong>Ya sabemos usar <code>R</code> como calculadora</strong>.</p>
+<p>El valor <code>[1]</code> antes del resultado en realidad nos numera las líneas de la consola usadas.</p>
 </div>
 <div class="rmdwarning">
-<p>Como habrás advertido, en <code>R</code> usaremos <code><a href="https://rdrr.io/r/base/assignOps.html">&lt;-</a></code> para <strong>asignar valores</strong> en lugar de <code><a href="https://rdrr.io/r/base/assignOps.html">=</a></code>, como una flecha.</p>
+<p><strong><span style="color: #ffc107;">WARNING</span></strong></p>
+<p>Como habrás advertido, en <code>R</code> usaremos <code><a href="https://rdrr.io/r/base/assignOps.html">&lt;-</a></code> para <strong>asignar valores</strong> en lugar de <code><a href="https://rdrr.io/r/base/assignOps.html">=</a></code>, como una flecha. Usaremos <code><a href="https://rdrr.io/r/base/assignOps.html">=</a></code> para indicarle el valor a los argumentos que usemos en funciones y <code><a href="https://rdrr.io/r/base/Comparison.html">==</a></code> como operador de comparación: si escribimos <code>2 == 3</code>, le estamos preguntando si 2 es igual a 3.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fl">2</span> <span class="op">==</span> <span class="fl">3</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
 </div>
 <p>Bonita esta interfaz no es, así que la cerraremos y no la abriremos más. Tenemos nuestro lenguaje instalado, vamos a <strong>instalar nuestro Word</strong> para poder programar de forma cómoda.</p>
 <div id="instalacionRStudio" class="section level2">
@@ -165,7 +170,7 @@ Imagen/gráfica 1.8: Primer recibimiento de nuestro mejor amigo RStudio.
 <strong>Consola</strong>: es el nombre para llamar a esa ventana grande que te ocupa la mayor parte de tu pantalla. Prueba a escribir el mismo código que antes en ella (es el equivalente a la consola de R que hemos abierto al principio).</li>
 </ul>
 </div>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">a</span> <span class="op">&lt;-</span> <span class="fl">1</span>
 <span class="va">b</span> <span class="op">&lt;-</span> <span class="fl">2</span>
 <span class="va">a</span> <span class="op">+</span> <span class="va">b</span></code></pre></div>
@@ -216,7 +221,7 @@ Imagen/gráfica 1.12: Abriendo nuestro primer script de R.
 Imagen/gráfica 1.13: Escribiendo y guardando nuestro primer script.
 </p>
 </div>
-<p>Ese código no se ejecuta salvo que se lo digamos. Tenemos dos opciones para ello: o copiamos el trozo de código que queramos y lo pegamos en la consola (como hemos hecho al principio), o <strong>activamos el cuadrado <code>Source on save</code> a la derecha del botón de guardar</strong> y volvemos a hacer click en el botón de guardar: siempre que esa opción esté activada, al guardar no solo es nos guarda el archivo <code>.R</code> sino que además se ejecuta solo y nos devuelve los resultados por consola.</p>
+<p>Ese código no se ejecuta salvo que se lo digamos. Tenemos principalmente dos opciones para ello: o copiamos el trozo de código que queramos y lo pegamos en la consola (como hemos hecho al principio), o <strong>activamos el cuadrado <code>Source on save</code> a la derecha del botón de guardar</strong> y volvemos a hacer click en el botón de guardar: siempre que esa opción esté activada, al guardar no solo es nos guarda el archivo <code>.R</code> sino que además se ejecuta solo y nos devuelve los resultados por consola.</p>
 <p>Listo, tienes instalado (casi) todo correctamente.</p>
 </div>
 <div id="instalacionpaquetes" class="section level2">
@@ -225,9 +230,9 @@ Imagen/gráfica 1.13: Escribiendo y guardando nuestro primer script.
 </h2>
 <p>El lenguaje <code>R</code> tiene 3 ventajas principales:</p>
 <ul>
-<li><p>Es un <strong>lenguaje creado por y para estadísticos/as</strong>, por lo que está pensado para optimizar al máximo los recursos, y poder hacer un análisis estadístico de calidad</p></li>
-<li><p>Es <strong>software libre</strong> (como C, C++, Python, Fortran, y otros tantos lenguajes). El software libre no solo tiene una ventaja evidente (es gratis, ok) en su instalación sino que permite acceder al código en el que están programados los comandos y permite hacer uso de trozos de código de otras personas.</p></li>
-<li><p>Es un <strong>lenguaje modular</strong>: en la instalación no se instalan todas las funcionalidades sino que instala un mínimo para poder funcionar, de forma que se ahorra espacio en disco y en memoria. Al ser software libre, existen trozos de código hechos por otras personas llamados <strong>paquetes</strong>, que podemos ir instalando a nuestro gusto según los vayamos necesitando. Esto es una ventaja enorme ya que <code>R</code> tiene una comunidad de usuarios gigante, con <strong>más de 17 000 paquetes</strong>: ¡hay más de 17 000 trozos de código validados por la comunidad y la plataforma, de forma gratuita!</p></li>
+<li><p>Es un <strong>lenguaje creado por y para estadísticos/as</strong>.</p></li>
+<li><p>Es <strong>software libre</strong> (como C, C++, Python, Fortran, y otros tantos lenguajes). El software libre no solo tiene una ventaja evidente (es gratis, ok) sino que permite acceder a código ajeno.</p></li>
+<li><p>Es un <strong>lenguaje modular</strong>: en la instalación no se instalan todas las funcionalidades salvo un mínimo para poder funcionar, de forma que se ahorra espacio en disco y en memoria. Al ser software libre, existen trozos de código hechos por otras personas llamados <strong>paquetes</strong>, que podemos ir instalando a nuestro gusto según los vayamos necesitando. Esto es una ventaja enorme ya que <code>R</code> tiene una comunidad de usuarios gigante, con <strong>más de 17 000 paquetes</strong>: ¡hay más de 17 000 trozos de código validados por la comunidad y la plataforma, de forma gratuita!</p></li>
 </ul>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:paquetes-R"></span>
@@ -235,15 +240,16 @@ Imagen/gráfica 1.13: Escribiendo y guardando nuestro primer script.
 Imagen/gráfica 1.14: Paquetes disponibles en R.
 </p>
 </div>
-<p>Esto nos ahorra muchísimo tiempo ya el <strong>90% de lo que querramos hacer ya lo habrá querido hacer otra persona y podemos usar o adaptar su código</strong> para no empezar de cero. Vamos a instalar un paquete gráfico (<a href="https://ggplot2.tidyverse.org">ggplot2</a>) que necesitaremos. Para ello, escribe en tu consola el siguiente código y pulsa enter.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<p>Esto nos ahorra muchísimo tiempo ya que <strong>casi todo lo que querramos hacer ya lo habrá querido hacer otra persona</strong> para no empezar de cero. Vamos a instalar, por ejemplo, un paquete gráfico (<a href="https://ggplot2.tidyverse.org">ggplot2</a>) que necesitaremos. Para ello, escribe en tu consola el siguiente código y pulsa enter.</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"ggplot2"</span><span class="op">)</span></code></pre></div>
-<p>Dicha orden (puede tardar un poco la primera vez, depende de tu conexión a internet) lo que hará será acceder a la web de R, bajarse a tu ordenador los trozos de código incluidos en el paquete llamado <a href="https://ggplot2.tidyverse.org">ggplot2</a>, y dejarlos para siempre en él.</p>
+<p>Dicha orden (puede tardar un poco la primera vez, depende de tu conexión a internet) lo que hará será <strong>acceder a la web de R</strong>, <strong>bajarse a tu ordenador los trozos de código</strong> incluidos en el paquete llamado <a href="https://ggplot2.tidyverse.org">ggplot2</a>, y dejarlos para siempre en él.</p>
 <div class="rmdwarning">
-<p>La <strong>instalación de paquetes SOLO ES NECESARIO la primera vez</strong> que se usa dicho paquete en la vida del ordenador, no hace falta hacerlo cada vez que lo usas.</p>
+<p><strong><span style="color: #ffc107;">WARNING</span></strong></p>
+<p>La <strong>instalación de paquetes SOLO ES NECESARIA la primera vez</strong> que se usa dicho paquete en la vida del ordenador, no hace falta hacerlo cada vez que lo usas.</p>
 </div>
 <p>Una vez que tenemos los trozos de código (el paquete) en nuestro ordenador, en cada sesión de <code>R</code> que abramos (cada vez que cierres y abras <code>RStudio</code>) deberemos (si queremos) llamar a ese paquete que tenemos instalado, escribiendo el siguiente comando en consola</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></code></pre></div>
 <p><strong>Welcome to software libre</strong></p>
 <div class="rmdnote">
@@ -311,7 +317,7 @@ Imagen/gráfica 1.17: Personalizar el color de fondo de nuestro editor, la letra
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 11-10-2021.</p>
+    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 16-10-2021.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

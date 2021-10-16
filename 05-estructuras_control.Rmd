@@ -243,3 +243,142 @@ Puedes minimizar las estructuras de control pulsando en la flecha que aparece a 
 
 :::
 
+
+
+## 📝 Ejercicios
+
+(haz click en las flechas para ver soluciones)
+
+<details>
+  <summary>📝<strong>Ejercicio 1</strong>: del paquete `{lubridate}`, la función `hour()` nos devuelve la hora de una fecha dada, y la función `now()` nos devuelve fecha y hora del momento actual. Con ambas funciones, y usando estructuras `if...else`, imprime por pantalla `"buenos días"`, `"buenas tardes"` (de 14 a 22) o `"buenas noches"` (a partir de las 22). </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Cargamos librería
+library(lubridate)
+
+# Fecha actual
+fecha_actual <- now()
+
+# Estructura if-else
+if (hour(fecha_actual) < 14) {
+  
+  cat("Buenos días")
+} else if (hour(fecha_actual) < 22) {
+  
+  cat("Buenas tardes")
+  
+} else {
+  
+  cat("Buenas noches")
+}
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+
+<details>
+  <summary>📝<strong>Ejercicio 2</strong>: realiza el ejercicio anterior pero sin estructura de llaves, de forma concisa con `ifelse()`. Mira la ayuda si la necesitases poniendo `? ifelse`. </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Cargamos librería
+library(lubridate)
+
+# Fecha actual
+fecha_actual <- now()
+
+# Estructura if-else
+cat(ifelse(hour(fecha_actual) < 14, "Buenos días",
+       ifelse(hour(fecha_actual) < 22, "Buenas tardes",
+              "Buenas noches")))
+  
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 3</strong>: diseña un bucle `for` de 200 iteraciones que, empezando en un valor inicial de 100 (euros), te sume 3€ si el número actual es par y te restr 5€ si es impar.</summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# dinero inicial
+dinero <- 100
+
+# Bucle for
+for (i in 1:200) {
+  
+  # si dinero es par, dinero %% 2 == 0 (el resto de dividir entre 2 es 0)
+  dinero <- ifelse(dinero %% 2 == 0, dinero + 3, dinero  - 5)
+  
+}
+dinero
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 4</strong>: diseña el anterior bucle pero guardando el dinero de cada iteración.</summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# vector de importes
+dinero <- rep(0, 201)
+dinero[1] <- 100 # dinero inicial
+
+# Bucle for
+for (i in 2:201) {
+  
+  # si dinero[i - 1] es par o  impar
+  dinero[i] <- ifelse(dinero[i - 1] %% 2 == 0, dinero[i - 1] + 3,
+                      dinero[i - 1]  - 5)
+  
+}
+dinero
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 5</strong>: diseña el bucle del ejercicio 3  parando cuando no nos quede dinero.</summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+dinero <- 100 # dinero inicial
+
+# Bucle while
+while (dinero > 0) {
+  
+  dinero <- ifelse(dinero %% 2 == 0, dinero + 3, dinero - 5)
+  
+}
+dinero
+```
+
+<!-- tocstop -->
+</details>
+
+
+
