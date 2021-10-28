@@ -16,9 +16,9 @@ colorize <- function(x, color) {
 }
 ```
 
-# (PART) DATAVIZ: introducción a la visualización {-}
+# (PART) EXPLORANDO: introducción a la exploración de datos{-}
 
-# Tidy data: ordenando datos {#procesamiento}
+# Tidy data: ordenando datos {#tidydata}
 
 Empieza lo interesante :)
 
@@ -32,45 +32,27 @@ El **primero de los pasos**, la [importación de datos](#importar-exportar), la 
 
 ## Repaso: tipos de datos {#repaso_datos}
 
-::: {.rmdnote}
-
-**`r colorize("¿Qué datos hemos aprendido a manejar?", "#4197D2")`**
-
-```{r echo = FALSE}
-library(knitr)
-paquetes <-
-  data.frame("tipo de dato" = c("x <- 1 (dato numérico)",
-                                "x <- c(1, 2, 3) (vector de números)",
-                                "x <- c('a', 'b', 'c') (vector de caracteres)",
-                                "x <- matrix(1:6, nrow = 2)",
-                                "x <- data.frame('a' = 1:3, 'b' = c('a', 'b', 'c'), 'c' = c(TRUE, TRUE, FALSE))",
-                                "x <- list(1:3, c('a'), c(TRUE, FALSE))"),
-             "descripción" = c("vector de longitud 1",
-                               "vector (mismo tipo)",
-                               "vector (mismo tipo)",
-                               "matriz (mismo tipo, misma longitud)",
-                               "data.frame (distinto tipo, misma longitud)",
-                               "lista (distinto tipo, distinta longitud)"))
-kable(paquetes, col.names = c("paquetes", "descripción"), align = "ll",
-      caption = "Tipos de datos mencionados hasta ahora")
-``` 
-:::
-
-El cuadro de arriba es un **resumen de los tipos de datos que ya conocemos**. ¿Existen más?
+¿Existen más tipos de datos de los que ya conocemos?
 
 La respuesta te la estarás imaginando: sí. De hecho no es solo que existan más sino que **puedes crear tus propias clases de variables**, pero seguramente acabarán siendo, en su nivel más profundo, una combinación de alguna de las estructuras que ya conocemos. El objetivo de este curso es empezar a ser autónomo/a en el análisis de datos, pero **no es un curso profundo de R**, así que (de momento) vamos a quedarnos como estamos.
 
+&nbsp;
+
+**`r colorize("GLOSARIO:", "#4197D2")`**
+
 Si es importante entender las diferencias entre los datos que ya hemos definido.
 
-* **Vectores**: es el tipo de dato más simple, una colección de valores **PERO DEL MISMO TIPO**. Los vectores pueden ser de longitud 1 (valores individuales a secas), una **colección de números**, una **colección de cadenas de texto** o una **colección de valores lógicos** (pudiendo tener dentro datos ausentes, o valores especiales como `Inf` o `NaN`)
+* **`r colorize("Vectores", "#4197D2")`**: es el tipo de dato más simple, una colección de valores **PERO DEL MISMO TIPO**. Los vectores pueden ser de longitud 1 (valores individuales a secas), una **colección de números**, una **colección de cadenas de texto** o una **colección de valores lógicos** (pudiendo tener dentro datos ausentes, o valores especiales como `Inf` o `NaN`)
 
-* **Matrices**: se pueden entender como una especie de colección de vectores, una colección de colecciones, un tipo de dato **BIDIMENSIONAL**. Una matriz se conforma de filas y columnas pero, de nuevo, **LOS DATOS DEBEN SER DEL MISMO TIPO**, y los vectores concatenados que forma las filas y/o columnas **DEBEN TENER LA MISMA LONGITUD**.
+* **`r colorize("Matrices", "#4197D2")`**:  se pueden entender como una especie de colección de vectores, una colección de colecciones, un tipo de dato **BIDIMENSIONAL**. Una matriz se conforma de filas y columnas pero, de nuevo, **LOS DATOS DEBEN SER DEL MISMO TIPO**, y los vectores concatenados que forma las filas y/o columnas **DEBEN TENER LA MISMA LONGITUD**.
 
-* **data.frame**: son datos estructurados, lo que comunmente conocemos como «tablas». A diferencia de las matrices, aunque deben **SEGUIR TENIENDO LA MISMA LONGITUD**, las variables que lo conforman pueden ser de **TIPOS DIFERENTES**, puediendo tener el mismo conjunto de datos numéricos, caracteres, lógicos, etc.
+* * **`r colorize("data,frame", "#4197D2")`**:  son datos estructurados, lo que comunmente conocemos como «tablas». A diferencia de las matrices, aunque deben **SEGUIR TENIENDO LA MISMA LONGITUD**, las variables que lo conforman pueden ser de **TIPOS DIFERENTES**, puediendo tener el mismo conjunto de datos numéricos, caracteres, lógicos, etc.
 
-* **Listas**: las listas son una concatenación de elementos, a secas, de forma que nos permite concatenar cualquier tipo de dato anterior, pudiendo ser de **DIFERENTE LONGITUD Y DIFERENTE TIPO**.
+* * **`r colorize("Listas", "#4197D2")`**:  las listas son una concatenación de elementos, a secas, de forma que nos permite concatenar cualquier tipo de dato anterior, pudiendo ser de **DIFERENTE LONGITUD Y DIFERENTE TIPO**.
       
-::: {.rmdwarning}
+&nbsp;
+
+**`r colorize("WARNING: cuidado con las listas", "#ffc107")`**
 
 Como hemos mencionado, una **`r colorize("lista no se puede vectorizar de forma inmediata", "#ffc107")`**, por lo cualquier operación aritmética aplicada a una lista dará error. Para poder operar con ellas tenemos una opción que es aplicar la función `lapply()`, o directamente acudir al paquete `{purrr}`.
 
@@ -97,10 +79,10 @@ Si no indicamos nada, la salida será a su vez una lista. Dado que la función q
 # y le pedimos que nos devuelva un vector de números
 map_dbl(x, function(x) { sum(x) })
 ```
-:::
+&nbsp;
 
 
-## Mejorando los data.frame: tibble {#tibble}
+## Mejorando los data.frame: datos tibble {#tibble}
 
 Antes de ordenar, limpiar y procesar nuestros datos, vamos a ver un tipo de dato que mencionamos por encima en su momento: las tablas `tibble`. Los datos en formato `tibble` (del paquete `{tibble}`) son un **tipo de `data.frame` mejorado, para una gestión más ágil, eficiente y coherente**. Las **tablas en formato tibble (su clase será tbl_df)** tiene 4 ventajas principales frente a los ya vistos `data.frame`:
 
@@ -182,7 +164,7 @@ data.frame(":)" = "emoticono", " " = "en blanco", "2000" = "número")
 tibble(":)" = "emoticono", " " = "en blanco", "2000" = "número")
 ```
 
-::: {.rmdimportant}
+&nbsp;
 
 **`r colorize("CONSEJO: convertir a tibble", "#20935E")`**
 
@@ -191,10 +173,10 @@ Si ya tienes un `data.frame` es altamente recomendable convertirlo a tibble con 
 ```{r}
 as_tibble(tabla_df)
 ```
-:::
+&nbsp;
 
 
-Puedes consultar más funcionalidades en <https://tibble.tidyverse.org/>.
+Puedes consultar más funcionalidades de dichos datos en <https://tibble.tidyverse.org/>.
 
 ## Tidy data vs messy data {#tidy_data}
 
@@ -272,7 +254,6 @@ Lo que hacemos con `pivot_longer()` es **«ampliar» la tabla, haciéndola más 
 
 ### Messy data: una observación guardada en varias filas
 
-
 Vamos a visualizar la tabla `table2` del paquete `{tidyr}`.
 
 ```{r}
@@ -316,9 +297,9 @@ Si **usas un separador que no está en los datos** te devolverá dichas columnas
 table3 %>% separate(rate, into = c("cases", "population"), sep = ".")
 ```
 
-::: {.rmdimportant}
+&nbsp;
 
-**`r colorize("CONSEJO: convertir los datos", "#20935E")`**
+**`r colorize("CONSEJO: convertir variables", "#20935E")`**
 
 Una opción muy útil que podemos usar al aplicar la separación de los múltiples valores es **convertir los datos al tipo adecuado**. Los datos unidos en `rate` eran caracteres ya que tenía el separador `/` (no podían ser numéricos). Al separarlos, por defecto, aunque ahora ya son solo números, los separa como si fueran textos. Con `convert = TRUE` podemos indicarle que identifique el tipo de dato y lo convierta (fíjate en la cabecera de las columnas ahora).
 
@@ -326,7 +307,8 @@ Una opción muy útil que podemos usar al aplicar la separación de los múltipl
 table3 %>% 
   separate(rate, into = c("cases", "population"), convert = TRUE)
 ```
-:::
+
+&nbsp;
 
 Dicha función también puede ser usada para **dividir cifras, como por ejemplo el año**
 
@@ -341,6 +323,7 @@ De la misma manera que podemos separar columnas **también podemos unirlas**. Pa
 ```{r}
 table5 %>% unite(año_completo, century, year)
 ```
+
 
 Como pasaba en `separate()`, tiene un argumento de separador por defecto, en este caso `sep = "_"`. **Si queremos cambiarlo podemos hacerlo indicándoselo explícitamente**.
 

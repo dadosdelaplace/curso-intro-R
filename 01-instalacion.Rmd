@@ -49,7 +49,7 @@ knitr::include_graphics("./img/pantalla_windows_2.jpg")
 
 - **Paso 3**: tras su instalación tendrás en tu escritorio (Windows) o en tu Launchpad (Mac Os) un **ejecutable de `R` para abrir**. En Windows puede que tengas dos ejecutables `i386` y `x64` (como todo programa en Windows está la versión de 32 y de 64 bits, haz click preferiblemente - si lo tienes - en el de `x64`). Te saldrá algo parecido a lo que observas en la imagen \@ref(fig:cranR).
 
-```{r cranR, echo = FALSE, out.width = "75%", fig.align = "center", fig.cap = "Primera pantalla al abrir el ejecutable de R."}
+```{r cranR, echo = FALSE, out.width = "55%", fig.align = "center", fig.cap = "Primera pantalla al abrir el ejecutable de R."}
 knitr::include_graphics("./img/cranR.jpg")
 ```
 
@@ -62,30 +62,27 @@ a + b
 ```
 
 
-```{r primera-suma, echo = FALSE, out.width = "75%", fig.align = "center", fig.cap = "Primera suma en la consola de R."}
+```{r primera-suma, echo = FALSE, out.width = "70%", fig.align = "center", fig.cap = "Primera suma en la consola de R."}
 knitr::include_graphics("./img/primera_suma.jpg")
 ```
 
-::: {.rmdimportant}
+**¡Enhorabuena!*
 
-**¡Enhorabuena!** Si te ha devuelto `[1] 3`, ya has hecho más de lo que parece: has definido dos variables `a` y `b`, has **asignado un valor numérico a cada variable** y las hemos usado. **Ya sabemos usar `R` como calculadora**.
+Si te ha devuelto `[1] 3`, ya has hecho más de lo que parece: has definido dos variables `a` y `b`, has **asignado un valor numérico a cada variable** y las hemos usado. **Ya sabemos usar `R` como calculadora**.
 
 El valor `[1]` antes del resultado en realidad nos numera las líneas de la consola usadas.
 
-:::
- 
+&nbsp;
 
-::: {.rmdwarning}
+**`r colorize("WARNING: ", "#ffc107")`**
 
-**`r colorize("WARNING", "#ffc107")`**
-
-Como habrás advertido, en `R` usaremos `<-` para **asignar valores** en lugar de `=`, como una flecha. Usaremos `=` para indicarle el valor a los argumentos que usemos en funciones y `==` como operador de comparación: si escribimos `2 == 3`, le estamos preguntando si 2 es igual a 3.
+Como habrás advertido, en `R` usaremos `<-` para **asignar valores** en lugar de `=`, como una flecha. Usaremos `=` para **`r colorize("indicarle el valor a los argumentos que usemos en funciones", "#ffc107")`** y `==` como **`r colorize("operador de comparación", "#ffc107")`**: si escribimos `2 == 3`, le estamos preguntando si 2 es igual a 3.
 
 ```{r}
 2 == 3
 ```
 
-::: 
+&nbsp;
 
 Bonita esta interfaz no es, así que la cerraremos y no la abriremos más. Tenemos nuestro lenguaje instalado, vamos a **instalar nuestro Word** para poder programar de forma cómoda.
 
@@ -94,22 +91,24 @@ Bonita esta interfaz no es, así que la cerraremos y no la abriremos más. Tenem
 
 Para instalar `RStudio` deberemos ir a la web <https://www.rstudio.com/products/rstudio/download/#download> y seleccionar el ejecutable que te aperezca acorde a tu sistema operativo (ver imagen \@ref(fig:pantalla-rstudio)). Tras descargar el ejecutable, hay que abrirlo como otro cualquier otro ejecutable y dejar que termine la instalación.
 
-```{r pantalla-rstudio, echo = FALSE, out.width = "75%", fig.align = "center", fig.cap = "Descargar el ejecutable de RStudio para su posterior instalación."}
+```{r pantalla-rstudio, echo = FALSE, out.width = "60%", fig.align = "center", fig.cap = "Descargar el ejecutable de RStudio para su posterior instalación."}
 knitr::include_graphics("./img/pantalla_rstudio.jpg")
 
 ```
 
 Tras instalar tendremos en el escritorio o Launchpad un ejecutable de `RStudio` que abriremos. Se nos aparecerá una pantalla similar a esta:
 
-```{r inicio-rstudio-1, echo = FALSE, out.width = "75%", fig.align = "center", fig.cap = "Primer recibimiento de nuestro mejor amigo RStudio."}
+```{r inicio-rstudio-1, echo = FALSE, out.width = "65%", fig.align = "center", fig.cap = "Primer recibimiento de nuestro mejor amigo RStudio."}
 knitr::include_graphics("./img/inicio_rstudio_1.jpg")
 
 ```
 
-::: {.rmdnote}
+&nbsp;
 
-* **Consola**: es el nombre para llamar a esa ventana grande que te ocupa la mayor parte de tu pantalla. Prueba a escribir el mismo código que antes en ella (es el equivalente a la consola de R que hemos abierto al principio).
-:::
+**`r colorize("GLOSARIO:", "#4197D2")`**
+
+* **`r colorize("Consola", "#4197D2")`**: es el nombre para llamar a esa ventana grande que te ocupa la mayor parte de tu pantalla. Prueba a escribir el mismo código que antes en ella (es el equivalente a la consola de R que hemos abierto al principio).
+
 
 ```{r codigo-prueba-1bis, eval = FALSE}
 a <- 1
@@ -117,31 +116,29 @@ b <- 2
 a + b
 ```
 
-```{r inicio-rstudio-2, echo = FALSE, out.width = "75%", fig.align = "center", fig.cap = "Lanzando a consola nuestras primeras órdenes en RStudio."}
+```{r inicio-rstudio-2, echo = FALSE, out.width = "60%", fig.align = "center", fig.cap = "Lanzando a consola nuestras primeras órdenes en RStudio."}
 knitr::include_graphics("./img/inicio_rstudio_2.jpg")
 
 ```
 
-**La consola será donde ejecutaremos órdenes y mostraremos resultados**
+**`r colorize("La consola será donde ejecutaremos órdenes y mostraremos resultados", "#4197D2")`**
 
-::: {.rmdnote}
 
-* **Environment (entorno)**: la pantalla pequeña (puedes ajustar los márgenes con el ratón a tu gusto) que tenemos en la parte superior derecha se denomina environment o entorno de variables, donde como puedes ver, tras ejecutar el pequeño código en la consola, nos informa de que tenemos dos variables numéricas y su valor asignado. Nos **mostrará las variables que tenemos definidas, el tipo y su valor**.
-::: 
+* **`r colorize("Environment (entorno)", "#4197D2")`**: la pantalla pequeña (puedes ajustar los márgenes con el ratón a tu gusto) que tenemos en la parte superior derecha se denomina environment o entorno de variables, donde como puedes ver, tras ejecutar el pequeño código en la consola, nos informa de que tenemos dos variables numéricas y su valor asignado. Nos **mostrará las variables que tenemos definidas, el tipo y su valor**.
 
-```{r inicio-rstudio-3, echo = FALSE, out.width = "75%", fig.align = "center", fig.cap = "Environment de variables."}
+```{r inicio-rstudio-3, echo = FALSE, out.width = "65%", fig.align = "center", fig.cap = "Environment de variables."}
 knitr::include_graphics("./img/inicio_rstudio_3.jpg")
 
 ```
 
-::: {.rmdnote}
-* **Panel multiusos**: la ventana que tenemos en la parte inferior derecha no servirá para buscar ayuda de comandos y órdenes, además de para visualizar gráficos. Lo veremos cuando sea necesario.
-:::
+* **`r colorize("Panel multiusos", "#4197D2")`**: la ventana que tenemos en la parte inferior derecha no servirá para buscar ayuda de comandos y órdenes, además de para visualizar gráficos. Lo veremos cuando sea necesario.
 
-```{r inicio-rstudio-4, echo = FALSE, out.width = "75%", fig.align = "center", fig.cap = "Panel multiusos."}
+```{r inicio-rstudio-4, echo = FALSE, out.width = "65%", fig.align = "center", fig.cap = "Panel multiusos."}
 knitr::include_graphics("./img/inicio_rstudio_4.jpg")
 
 ```
+
+&nbsp;
 
 **WTF ¿Y DÓNDE PROGRAMAMOS?**
 
@@ -161,7 +158,7 @@ knitr::include_graphics("./img/inicio_rstudio_6.jpg")
 
 ```
 
-Ese código no se ejecuta salvo que se lo digamos. Tenemos principalmente dos opciones para ello: o copiamos el trozo de código que queramos y lo pegamos en la consola (como hemos hecho al principio), o **activamos el cuadrado `Source on save` a la derecha del botón de guardar** y volvemos a hacer click en el botón de guardar: siempre que esa opción esté activada, al guardar no solo es nos guarda el archivo `.R` sino que además se ejecuta solo y nos devuelve los resultados por consola.
+Ese código no se ejecuta salvo que se lo digamos. Tenemos principalmente dos opciones para ello: o copiamos el trozo de código que queramos y lo pegamos en la consola (como hemos hecho al principio), o **`r colorize("activamos el cuadrado Source on save a la derecha del botón de guardar", "#20935E")`** y volvemos a hacer click en el botón de guardar: siempre que esa opción esté activada, al guardar no solo es nos guarda el archivo `.R` sino que además se ejecuta solo y nos devuelve los resultados por consola.
 
 Listo, tienes instalado (casi) todo correctamente.
 
@@ -177,7 +174,7 @@ El lenguaje `R` tiene 3 ventajas principales:
 
 * Es un **lenguaje modular**: en la instalación no se instalan todas las funcionalidades salvo un mínimo para poder funcionar, de forma que se ahorra espacio en disco y en memoria. Al ser software libre, existen trozos de código hechos por otras personas llamados **paquetes**, que podemos ir instalando a nuestro gusto según los vayamos necesitando. Esto es una ventaja enorme ya que `R` tiene una comunidad de usuarios gigante, con **más de 17 000 paquetes**: ¡hay más de 17 000  trozos de código validados por la comunidad y la plataforma, de forma gratuita!
 
-```{r paquetes-R, echo = FALSE, out.width = "75%", fig.align = "center", fig.cap = "Paquetes disponibles en R."}
+```{r paquetes-R, echo = FALSE, out.width = "70%", fig.align = "center", fig.cap = "Paquetes disponibles en R."}
 knitr::include_graphics("./img/paquetes_R.jpg")
 
 ```
@@ -190,11 +187,13 @@ install.packages("ggplot2")
 
 Dicha orden (puede tardar un poco la primera vez, depende de tu conexión a internet) lo que hará será **acceder a la web de R**, **bajarse a tu ordenador los trozos de código** incluidos en el paquete llamado `{ggplot2}`, y dejarlos para siempre en él.
 
-::: {.rmdwarning}
-**`r colorize("WARNING", "#ffc107")`**
+&nbsp;
+
+**`r colorize("WARNING:", "#ffc107")`**
 
 La **instalación de paquetes SOLO ES NECESARIA la primera vez** que se usa dicho paquete en la vida del ordenador, no hace falta hacerlo cada vez que lo usas.
-:::
+
+&nbsp;
 
 Una vez que tenemos los trozos de código (el paquete) en nuestro ordenador, en cada sesión de `R` que abramos (cada vez que cierres y abras `RStudio`) deberemos (si queremos) llamar a ese paquete que tenemos instalado, escribiendo el siguiente comando en consola
 
@@ -204,21 +203,24 @@ library(ggplot2)
 
 **Welcome to software libre**
 
-::: {.rmdnote}
-* **Paquete**: trozos de código realizadas por otros usuarios de la comunidad (y validades por el equipo de CRAN si la descarga es mediante `install.packages()`) para ser usados. Una vez instalados (descargados) los trozos de código a nuestro ordenador, basta con «acudir» a ellos con `library()`.
+
+&nbsp;
+
+**`r colorize("GLOSARIO:", "#4197D2")`**
+
+* **`r colorize("Paquete", "#4197D2")`**: trozos de código realizadas por otros usuarios de la comunidad (y validades por el equipo de CRAN si la descarga es mediante `install.packages()`) para ser usados. Una vez instalados (descargados) los trozos de código a nuestro ordenador, basta con «acudir» a ellos con `library()`.
 
 Haciendo una metáfora con la colección de libros que tengas en casa: con la **instalación hemos comprado el libro** y lo tenemos en nuestra estantería (para siempre), con la llamada al paquete, por ejemplo `library(ggplot2)`, lo que hacemos es decidir, de entre todos los libros de la estantería, cuales queremos llevarnos de viaje (en cada maleta que hagamos).
 
 Los **paquetes usados** los verás denotados como `{nombre_paquete}` a lo largo del manual.
-:::
 
-::: {.rmdimportant}
-**`r colorize("CONSEJO", "#20935E")`**
+&nbsp;
 
-¿Cómo saber cuando la orden lanzada en consola ha terminado?
-  
+**`r colorize("CONSEJO:", "#20935E")`**
+
+**`r colorize("¿Cómo saber cuando la orden lanzada en consola ha terminado?", "#20935E")`**
+
 A veces `R` y `RStudio` son tan silenciosos que no sabemos si ha acabado la orden que acabamos de lanzar en la consola o no. Siempre que veas el símbolo `>` como última línea en la consola significa que está listo para que le escribamos otra orden (es la forma cariñosa de decirte que ya ha acabado, ver imagen \@ref(fig:tip-consola-lista))
-:::
 
 
 ```{r tip-consola-lista, echo = FALSE,  out.width = "70%", fig.align = "center", fig.cap = "Ejemplo de que la orden lanzada ha acabado."}
@@ -226,14 +228,14 @@ knitr::include_graphics("./img/tip_consola_lista.jpg")
 
 ```
 
-::: {.rmdimportant}
-**`r colorize("CONSEJO", "#20935E")`**
+&nbsp;
 
-¿Cómo prevenir la fatiga visual programando?</strong></summary>
+**`r colorize("CONSEJO:", "#20935E")`**
 
-Estar delante de una pantalla de ordenador, con la vista muy fija mientras se programa, puede que acabes teniendo cierta fatiga visual en el trabajo. Te aconsejo que cambies en tu `RStudio` la tonalidad del fondo de tu programa, en tonos oscuros y no blancos (¿te has fijado que mis capturas tienen un azul cobalto oscuro de fondo mientras el tuyo es un blanco nuclear? Echa un vistazo a las imágenes \@ref(fig:menu-1) y \@ref(fig:menu-2))
+**`r colorize("¿Cómo prevenir la fatiga programando?", "#20935E")`**
 
-:::
+Estando delante de una pantalla de ordenador, con la vista muy fija mientras se programa, puede que acabes teniendo cierta fatiga visual en el trabajo. Te aconsejo que cambies en tu `RStudio` la tonalidad del fondo de tu programa, en tonos oscuros y no blancos (¿te has fijado que mis capturas tienen un azul cobalto oscuro de fondo mientras el tuyo es un blanco nuclear? Echa un vistazo a las imágenes \@ref(fig:menu-1) y \@ref(fig:menu-2))
+
 
 ```{r menu-1, echo = FALSE, out.height = "40%", out.width = "40%", fig.align = "center", fig.cap = "Menú de opciones de nuestro editor"}
 knitr::include_graphics("./img/menu_1.jpg")

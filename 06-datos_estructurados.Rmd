@@ -18,13 +18,12 @@ colorize <- function(x, color) {
 
 # Tipos de datos II: datos estructurados {#datos}
 
-::: {.rmdimportant}
 
-**`r colorize("Acceso a las funciones de los paquetes", "#20935E")`**
+**`r colorize("CONSEJO: acceder a las funciones de los paquetes", "#20935E")`**
 
 A veces puede que no queramos cargar todo un paquete sino solo una función del mismo, para lo que es suficiente `nombre_paquete::nombre_funcion`.
 
-:::
+&nbsp;
 
 
 Sabemos un poco de la gramática y ortografía de nuestro lenguaje, y sabemos las funcionalidades básicas de nuestro Word. Vamos a encontrar la mejor trama para la novela: **hablemos de estructuras de datos**.
@@ -183,12 +182,12 @@ microbenchmark::microbenchmark(for (i in 1:dim(x)[1]) {
 
 **¡El bucle nos tarda 50 veces más que el `apply`!**
 
-::: {.rmdimportant}
+&nbsp;
 
-**`r colorize("CONSEJO", "#20935E")`**
+**`r colorize("CONSEJO: evita los bucles", "#20935E")`**
 
 Di no a los bucles: casi siempre hay una forma mejor de hacerlo.
-:::
+&nbsp;
 
 
 ## Tablas: data.frames
@@ -263,7 +262,7 @@ x[1, 7] - x[2, 7]
 
 &nbsp; 
 
-He aquí LA pregunta: **¿cómo juntar variables de distinto tipo, sin cambiar su naturaleza, como cuando juntamos datos en una tabla de excel?**
+He aquí LA PREGUNTA: **¿cómo juntar variables de distinto tipo, sin cambiar su naturaleza, como cuando juntamos datos en una tabla de excel?**
 
 El formato de tabla de datos en `R` que vamos a empezar a usar se llama **data.frame**: una **colección de variables de igual longitud pero cada una de un tipo distinto**. Para crear un objeto de este tipo basta con usar la función `data.frame()`, pasándole como argumentos (separados por comas) las variables que queremos reunir, indicando en texto `"..."` el nombre de las columnas.
 
@@ -390,45 +389,9 @@ subset(tabla, subset = Edad > 18, select = c("Nombre", "Apellido"))
 subset(iris, subset = Sepal.Length > 7.1, select = c("Sepal.Length", "Species"))
 ``` 
 
+&nbsp;
 
-
-```{r echo = FALSE}
-library(knitr)
-paquetes <-
-  data.frame("paquetes" = c("{base}", "{bookdown}", "{glue}",
-                            "{stringr}", "{lubridate}", "{microbenchmark}",
-                            "{tibble}", "{datasets}"),
-             "descripción" = c("utilidades básicas",
-                               "creación de libros, manuales e informes en R",
-                               "manejo de texto literal",
-                               "manejo complejo de cadenas de texto",
-                               "manejo de fechas",
-                               "comparativa de tiempos de ejecución",
-                               "data.frames eficientes",
-                               "conjuntos de datos"))
-kable(paquetes, col.names = c("paquetes", "descripción"), align = "ll",
-      caption = "Paquetes mencionados hasta ahora")
-``` 
-
-
-::: {.rmdimportant}
-
-**`r colorize("Paquete {tibble}", "#20935E")`**
-  
-En dicho paquete tienes más **funciones para una gestión más ágil, eficiente y coherente de los `data.frame`**. Las tablas en formato `tibble` (su clase será  `tbl_df`) tiene 4 ventajas principales frente a los ya vistos `data.frame`:
-
-* Permite imprimir por consola la tabla con mayor información de las variables.
-* Los datos de tipo caracter (cadenas de texto) son guardados como tal (y no como factores, un tipo de dato que veremos más adelante).
-* Los nombres de las columnas permanecen intactos.
-* La función `tibble()` construye las variables secuencialmente, pudiendo hacer uso en la propia definición de variables recién definidas en dicha definición.
-
-
-Puedes consultar más funcionalidades en <https://tibble.tidyverse.org/>.
-:::
-
-::: {.rmdimportant}
-
-**`r colorize("Nombre de variables", "#20935E")`**
+**`r colorize("CONSEJO: nombre de variables", "#20935E")`**
 
 La función `names()` no solo sirve para consultar los nombres de las variables de un `data.frame` sino también para cambiarlos a nuestro gusto.
 
@@ -441,8 +404,6 @@ names(tabla) <- c("nombre_persona", "apellido_persona", "edad", "tlf",
                   "cp", "casado", "f_creacion")
 tabla
 ```
-
-:::
 
 
 

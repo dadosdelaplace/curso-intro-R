@@ -20,21 +20,19 @@ colorize <- function(x, color) {
 
 # Tipos de datos I: vectores {#vectores}
 
-::: {.rmdimportant}
 **`r colorize("CONSEJO: recuperar un comando y autocompletar", "#20935E")`**
 
 Si haces click con el ratón en la consola y pulsas la flecha «arriba» del teclado, te irá apareciendo todo el **historial de órdenes ejecutadas**. Es una manera de ahorrar tiempo para ejecutar órdenes similares a las ya ejecutadas. Si empiezas a escribir el nombre de una variable pero no te acuerdas exactamente de su nombre, pulsando **tabulador** te **autocompletará** solo.
-:::
 
-Bien, ya controlamos la calculadora. Vamos a ir más allá: ¿y si en lugar de tener un solo número tenemos un **CONJUNTO de elementos**? En este capítulo vamos a ver un clásico de cualquier lenguaje de programación: los **vectores o arrays**.
+&nbsp;
+
+Bien, ya controlamos la calculadora. Vamos a ir más allá: ¿y si en lugar de tener un solo número tenemos un **CONJUNTO de elementos**? En este capítulo vamos a ver un clásico de cualquier lenguaje de programación: los **vectores o arrays**, una **concatenación** de elementos (del mismo tipo). De hecho un número individual (por ejemplo, `1`) es en realidad un vector de longitud uno (un solo elemento).
+
 
 
 
 ## Vectores numéricos
 
-::: {.rmdnote}
-Un conjunto de elementos del mismo tipo se llama **`r colorize("vector", "#4197D2")`** (en este caso de números), y de hecho un número individual (por ejemplo, `1`) es en realidad un vector de longitud uno (un solo elemento).
-:::
 
 La forma más sencilla de **crear un vector** en `R` es con el comando `c()` (de **concatenar elementos**), y basta con introducir sus elementos entre paréntesis, y separados por comas. Vamos a crear el vector con los tres primeros números naturales pares (el 0 no es natural, no seas bárbaro/a).
 
@@ -43,7 +41,7 @@ z <- c(2, 4, 6)
 z
 ```
 
-Como ves ahora en el **environment tenemos una colección de elementos**, tres en concreto, guardados en una misma variable `z`. La longitud de un vector se puede calcular con el comando `length()` (nos devolverá el número de elementos de la variable que le pasemos como argumento).
+Como ves ahora en el **environment (entorno, arriba a la derecha) tenemos una colección de elementos**, tres en concreto, guardados en una misma variable `z`. La longitud de un vector se puede calcular con el comando `length()` (nos devolverá el número de elementos de la variable que le pasemos como argumento).
 
 ```{r}
 length(z)
@@ -58,7 +56,7 @@ c(z, z, 8)
 Esta última concatenación lo que nos ha dado son, primero, los tres pares que ya teníamos en `z`, después de nuevo los tres primeros pares, y por último un 8.
 
 
-## Secuencias con un patrón
+## Secuencias numéricas con un patrón
 
 Muchas veces nos gustaría **crear vectores de una forma mucho más rápida**. Supongamos que queremos el vector de los primeros 21 números naturales. Si construyéramos el vector como antes, tendríamos que ejecutar el comando `c(1, 2, 3, 4, 5, ...)` hasta llegar al número 21. ¿Un poco largo, no?
 
@@ -116,8 +114,6 @@ rep(c(0, 1, 2), each = 4) # cuatro 0, luego cuatro 1, luego cuatro 2
 
 Hemos dicho que un número es un vector de longitud 1, así que **toda operación aritmética** que podamos hacer con un número la vamos a poder a hacer con un vector de números, de forma que si hacemos por ejemplo la operación `2 * z`, lo que sucederá es que **CADA ELEMENTO del vector** será multiplicado por 2.
 
-De la misma manera se pueden definir sumas `z + x`, raíces cuadradas `sqrt(z)` o elevar cada elemento al cuadrado `z^2`.
-
 
 ```{r}
 # Multiplicamos por 2 a CADA ELEMENTO del vector
@@ -131,6 +127,9 @@ z <- c(2, 4, 6)
 z + 3
 ```
 
+De la misma manera se pueden definir sumas `z + x`, raíces cuadradas `sqrt(z)` o elevar cada elemento al cuadrado `z^2`.
+
+
 ```{r}
 # Hacemos la raíz cuadrada de CADA ELEMENTO DEL VECTOR
 sqrt(z)
@@ -141,11 +140,13 @@ sqrt(z)
 z^2
 ```
 
-::: {.rmdimportant}
+&nbsp;
+
 **`r colorize("CONSEJO", "#20935E")`**
 
-Esto último es bastante importante que no se te olvide ya que en otros lenguajes no siempre es así. En `R`, salvo que especifiquemos lo contrario, **toda operación ARITMÉTICA que hagas a un vector será elemento a elemento**: si multiplicas dos matrices, la operación la realizará elemento a elemento, no como una multiplicación matricial.
-:::
+Esto último es bastante importante que no se te olvide ya que en otros lenguajes no siempre es así. En `R`, salvo que especifiquemos lo contrario, **`r colorize("toda operación ARITMÉTICA que hagas a un vector será elemento a elemento", "#20935E")`**:  si multiplicas dos matrices, la operación la realizará elemento a elemento, no como una multiplicación matricial.
+
+&nbsp;
 
 Dado que la operación (por ejemplo, una suma) se realiza elemento a elemento, **¿qué sucederá si sumamos dos vectores de distinta longitud?** Prueba a definir un vector con los 4 primeros impares, e intentar hacer la suma `z + y` (un vector de longitud 3 más un vector de longitud 4).
 
@@ -155,10 +156,9 @@ y <- c(1, 3, 5, 7)
 z + y
 ```
 
-`R` intenta molestarte lo menos posible, así que lo que hace es reciclar: si tiene un vector de 4 elementos y le intentas sumar uno de 3 elementos, lo que hará será **reciclar** elementos del vector con menor longitud: hará `1+2`, `3+4`, `5+6` pero... `7+2` (vuelve al primero).   
+`R` intenta molestarte lo menos posible, así que lo que hace es **`r colorize("reciclar", "#ffc107")`**: si tiene un vector de 4 elementos y le intentas sumar uno de 3 elementos, lo que hará será **reciclar** elementos del vector con menor longitud: hará `1+2`, `3+4`, `5+6` pero... `7+2` (vuelve al primero).   
 
-
-::: {.rmdimportant}
+&nbsp;
 
 **`r colorize("CONSEJO: diferencia de conjuntos", "#20935E")`**
 
@@ -170,7 +170,7 @@ z <- c(1, 3, 7, 10)
 setdiff(y, z) # Elementos en y que no están en z 
 ```
 
-:::
+&nbsp;
 
 ## Operaciones estadísticas con vectores numéricos
 
@@ -180,6 +180,7 @@ Al igual que podemos ejecutar operaciones aritméticas, podemos realizar tambié
 ```{r}
 sum(y) # suma
 ```
+
 ```{r}
 mean(y) # media
 ```
@@ -196,40 +197,49 @@ cumsum(y) # suma acumulada
 
 ```{r}
 y <- c(1, 2, 5, 5, 8, 9, 10, 10, 10, 11, 13, 15, 20, 23, 24, 29)
+quantile(y) # Percentiles por defecto: cuartiles (0%-25%-50%-75%-100%)
+```
+
+&nbsp;
+
+**`r colorize("WARNING:", "#ffc107")`**
+
+En `R` algunas **funciones tienen argumentos por defecto**, argumentos que no necesitan ser asignados un valor a priori. En el ejemplo de calcular los percentiles con `quantile()`, hay un argumento por defecto (con un valor ya asignado sino se especifica lo contrario) que es `probs = c(0, 0.25, 0.5, 0.75, 1)`. Pero dicho argumento por defecto puede ser cambiado, por ejemplo, para sacar los percentiles 15%-30%-70%-90%.
+
+```{r}
+y <- c(1, 2, 5, 5, 8, 9, 10, 10, 10, 11, 13, 15, 20, 23, 24, 29)
 quantile(y, probs = c(0.15, 0.3, 0.7, 0.9)) # Percentiles p15, p30, p70 y p90
 ```
 
-::: {.rmdimportant}
+&nbsp;
 
 **`r colorize("CONSEJO", "#20935E")`**
 
-Como has podido comprobar, este otro tipo de **operaciones ESTADÍSTICAS no se realizan elemento a elemento**: la media o la suma las realiza tomando todos los elementos del vector.
-:::
+Como has podido comprobar, este otro tipo de **`r colorize("operaciones ESTADÍSTICAS no se realizan elemento a elemento", "#20935E")`**: la media o la suma las realiza tomando todos los elementos del vector.
+
+&nbsp;
 
 
-::: {.rmdnote}
+**`r colorize("GLOSARIO:", "#4197D2")`**
+
 * **`r colorize("Media", "#4197D2")`**: medida de centralización que consiste en sumar todos los elementos y dividirlos entre la cantidad de elementos sumados. A pesar de ser la más conocida, la media es **muy poco robusta**: dado un conjunto, si se introducen **valores atípicos o outliers** (valores muy grandes o muy pequeños), la media se perturbar con mucha facilidad. Dado un vector de valores $x = (x_1, \ldots, x_n)$, se denota como $\overline{x}$.
 
 $$\overline{x} = \frac{\displaystyle \sum_{i=1}^{n}x_i}{n}$$
-:::
 
-::: {.rmdnote}
 * **`r colorize("Mediana", "#4197D2")`**: medida de centralización que consiste en, tras ordenar los datos de menor a mayor, quedarnos con el valor que ocupa el medio (deja tantos números por debajo como por encima). Más robusta que la media aunque menos la moda. Dado un vector de valores $x = (x_1, \ldots, x_n)$, se denota como $Me_x$.
 
 $$Me_x = \displaystyle \arg \min_{x_i} \left\lbrace F_i > 0.5 \right\rbrace, \quad F_i = \frac{\#\left\lbrace x_j \leq x_i \right\rbrace}{n}$$
-:::
 
-::: {.rmdnote}
 * **`r colorize("Moda", "#4197D2")`**: medida de centralización que consiste en encontrar el valor más repetido (el valor _trending_). Es la medida de centralización más robusta. Dado un vector de valores $x = (x_1, \ldots, x_n)$, se denota como $Mo_x$.
 
 
 $$Mo_x = \displaystyle \arg \max_{x_i} f_i  , \quad f_i = \frac{\#\left\lbrace x_j = x_i \right\rbrace}{n}$$
 
-:::
+&nbsp;
 
 ## Vectores de caracteres (texto)
 
-Un error común es asociar vectores solo a números: un **vector es una colección de elementos del mismo tipo** pero no tienen porque ser necesariamente números. Vamos a crear una frase de ejemplo, un vector de 4 elementos de tipo texto (en `R` se llaman `char`): `"Mi"`, `"nombre"`, `"es"` `"Javier"`.
+Un error común es asociar el concepto de vectores solo a números: un **vector es una colección o concatenación de elementos del mismo tipo** pero no tienen porque ser necesariamente números. Vamos a crear una frase de ejemplo, un vector de 4 elementos de tipo texto (en `R` se llaman `char`): `"Mi"`, `"nombre"`, `"es"` `"Javier"`.
 
 Como ves las variables de tipo `char` van entre comillas dobles, ya que es un **cadena de texto**.
 
@@ -278,7 +288,8 @@ glue("La edad es de {edad} años")
 ```{r echo = FALSE}
 library(glue)
 edad <- 10:15 # edades
-glue("La edad es de {edad} años")
+unidades <- "años"
+glue("La edad es de {edad} {unidades}")
 ```
 
 También podemos hacer uso de dicha función sin tener los valores numéricos previamente guardados en variables.
@@ -305,12 +316,17 @@ El paquete `{base}` también nos permite buscar y reemplazar patrones concretos 
 gsub("o", "*", texto) # toda "o" en el texto será sustituida por *
 ```
 
+&nbsp;
+
+**`r colorize("CONSEJO:", "#20935E")`**
+
 Dentro del entorno de paquetes `{tidyverse}`, el paquete `{stringr}` permite un manejo más complejo de cadenas de texo (como el uso de expresiones regulares).
 
 ```{r stringr2, echo = FALSE, fig.cap = "Paquete stringr para manejar cadenas de texto más complejas"}
 knitr::include_graphics("./img/stringr.png")
 ```
 
+&nbsp;
 
 ```{r echo = FALSE}
 paquetes <-
@@ -413,15 +429,18 @@ x
 ```{r}
 2 * x # operación aritmética con un vector con NA
 ``` 
+&nbsp;
 
-::: {.rmdwarning}
+**`r colorize("WARNING:", "#ffc107")`**
+
 Un dato que no tenemos, multiplicado por 2, sigue siendo un dato ausente. Es muy importante para evitar resultados erróneos que entendamos que un **dato ausente no computa en una operación aritmética, es un hueco vacío**. Si hacemos la suma del vector, estamos sumando números más datos ausentes, por lo que el resultado final será también un dato ausente. Si tenemos algún dato ausente en nuestro vector, la suma final está a su vez ausente, ¡no podemos saber cuánto vale!
 
 
 ```{r}
 sum(x) # suma de un vector que contiene NA
 ``` 
-:::
+
+&nbsp;
 
 Para evitar que un dato ausente en nuestros datos nos impida hacer ciertas operaciones, en muchas funciones de `R` podemos añadir el argumento `na.rm = TRUE`: **primero elimina los datos ausentes**, y luego ejecuta la función.
 
@@ -529,8 +548,7 @@ names(x) # Consultamos nuevos nombres
 x
 ```
 
-
-::: {.rmdimportant}
+&nbsp;
 
 **`r colorize("CONSEJO: all, any", "#20935E")`**
  
@@ -545,7 +563,8 @@ all(na.omit(x) > 0)
 all(is.na(x))
 any(is.na(x))
 ```
-:::
+
+&nbsp;
 
 
 ### which
@@ -599,17 +618,25 @@ order(x) # el elemento más pequeño es el octavo, luego el segundo, luego el te
 x[order(x)] # accedemos a los índices ordenados, equivalente al sort(x)
 ```
 
+&nbsp;
+
+**`r colorize("CONSEJO: argumentos por defecto", "#20935E")`**
+
+La función `sort()` es un buen ejemplo de que las **funciones traen definidos argumentos por defecto** (aunque no los veamos a priori). La orden `sort(x)` en realidad está ejecutando `sort(x, decreasing = TRUE)`, pero como es su valor por defecto, nos podemos ahorrar incluirlo. Escribe `? help sort()` en la consola y verás como en la cabecera de la función ya hay preasignado un `decreasing = TRUE`.
+
+
 
 
 ## Fechas
 
-::: {.rmdnote}
+
 * `numeric`: variables de tipo numéricas (algunas veces vendrán indicados como `int` o integer para enteros, y `dbl` o `double` para números con decimales).
 * `character`: variables de tipo caracter.
 * `Date`: variables de tipo fecha.
-:::
 
-Hay un tipo muy especial de datos que son los **datos tipo fecha**. Una fecha podría ser a priori una simple cadena de texto `"2021-04-21"` pero podemos usar la función `as.Date()` para que `R` entienda que esa cadena de texto representa un instante temporal. Fíjate la diferencia entre una fecha en texto y una fecha con `as.Date()`.
+&nbsp;
+
+Hay un tipo muy especial de datos que aún no hemos visto que son los **datos tipo fecha**. Una fecha podría ser a priori una simple cadena de texto `"2021-04-21"` pero podemos usar la función `as.Date()` para que `R` entienda que esa cadena de texto representa un instante temporal. Fíjate la diferencia entre una fecha en texto y una fecha con `as.Date()`.
 
 ```{r error = TRUE}
 fecha_char <- "2021-04-21"
@@ -621,36 +648,113 @@ fecha_date + 1
 En el momento en que convertimos la cadena de texto a fecha, aunque se visualice como tal, internamente es un número, por lo que podemos restar fechas (días entre ambas), **podemos sumar números a fechas (fecha días después)**, etc. Dentro del entorno `{tidyverse}`, el paquete `{lubridate}` tiene implementadas **múltiples funciones para poder operar con fechas de forma sencilla e intuitiva**.
 
 
-```{r echo = FALSE}
-paquetes <-
-  data.frame("paquetes" = c("{base}", "{bookdown}", "{glue}",
-                            "{stringr}", "{lubridate}"),
-             "descripción" = c("utilidades básicas",
-                               "creación de libros, manuales e informes en R",
-                               "manejo de texto literal",
-                               "manejo complejo de cadenas de texto",
-                               "manejo de fechas"))
-kable(paquetes, col.names = c("paquetes", "descripción"), align = "ll",
-      caption = "Paquetes mencionados hasta ahora")
-``` 
-
-
 ```{r lubridate-package, echo = FALSE, fig.align = 'center',  include = identical(knitr:::pandoc_to(), 'html'), fig.link = 'https://lubridate.tidyverse.org/', out.width = '100%'}
 knitr::include_graphics('img/lubridate.png')
 ```
 
-::: {.rmdimportant}
+Como ya hemos dicho, **las fechas y momentos temporales no serán meras cadenas de caracter sino que tienen clases especiales asociadas** y algunas funciones especiales que pueden sernos útiles: las fechas serán de tipo `dates` mientras que las horas será de tipo `POSIXct` o `POSIXlt`. En el primer caso, las fechas serán guardadas internamente como el **número de días transcurridos desde el 1 de enero de 1970**, y las horas como **número de segundos desde el 1 de enero de 1970** (para la clase `POSIXct`) o una lista de segundos, minutos y horas (para la clase `POSIXlt`).
 
-**`r colorize("CONSEJO: argumentos por defecto", "#20935E")`**
+**¿Cómo obtener automáticamente la fecha de hoy, por ejemplo?** La función `Sys.Date()` nos devuelve directamente la fecha y hora en el momento de la ejecución de la orden.
 
-La función `sort()` es un buen ejemplo de que las **funciones traen definidos argumentos por defecto** (aunque no los veamos a priori). La orden `sort(x)` en realidad está ejecutando `sort(x, decreasing = TRUE)`, pero como es su valor por defecto, nos podemos ahorrar incluirlo. Escribe `? help sort()` en la consola y verás como en la cabecera de la función ya hay preasignado un `decreasing = TRUE`.
+```{r}
+fecha <- Sys.Date()
+fecha
+fecha - 7 # una semana antes
+class(fecha) # de clase fecha
+``` 
 
-:::
+Para **convertir una cadena de texto a fecha**, basta usar la función `as.Date()` del paquete `{base}`, pasándole como argumento la fecha en formato `"yyyy-mm-dd"` por defecto.
+
+```{r}
+as.Date("2021-03-10") # formato por defecto
+```
+
+Si **introducimos otro tipo de formato**, debemos especificárselo en un segundo argumento, para `R` sepa el formato de fecha que le estamos pasando
+
+```{r}
+as.Date("10-03-2020", "%d-%m-%Y") # con día-mes-año (4 cifras)
+as.Date("10-03-20", "%d-%m-%y")  # con día-mes-año (2 cifras)
+as.Date("03-10-2020", "%m-%d-%Y") # con mes-día-año (4 cifras)
+as.Date("Octubre 21, 1995 21:24", "%B %d, %Y %H:%M") # fecha escrita
+``` 
 
 
-::: {.rmdcaution}
+&nbsp;
 
-**`r colorize("Convertir tipos de datos", "#dc3545")`**
+**`r colorize("ERROR: sin pasar a fecha no se puede operar", "#dc3545")`**
+
+Si tenemos una fecha como caracter, nunca podremos hacer operaciones (por ejemplo, restarle una unidad temporal, en este caso un día).
+
+```{r error = TRUE}
+"2021-03-10" - 1 # error
+```
+
+Fíjate la diferencia cuando lo convertimos en fecha
+
+```{r error = TRUE}
+fecha <- as.Date("2021-03-10") - 1 # día previo
+fecha
+``` 
+
+Aunque aparentemente parezca una cadena de texto, prueba a ejecutar `unclass(fecha)` para comprobar que tiene internamente guardado.
+
+```{r}
+unclass(fecha)
+unclass(as.Date("1969-01-01")) # un año antes de la referencia a partir de la cual cuenta días
+``` 
+
+&nbsp;
+
+
+Dentro del entorno `{tidyverse}`, el paquete `{lubridate}` tiene bastantes funciones útiles para trabajar con fechas como las siguientes
+
+
+```{r}
+library(lubridate)
+ymd_hms("2017-11-28T14:02:00") # convertir a fecha una cadena año-mes-día + hora
+ydm_hms("2017-22-12 10:00:00") # convertir a fecha una cadena año-día-mes + hora
+dmy_hms("1 Jan 2017 23:59:59") # convertir a fecha una cadena textual de fecha + hora
+mdy("July 4th, 2000") # convertir a fecha una cadena textual de fecha
+ymd(20170131)
+```
+
+Además el paquete nos proporciona **herramientas para extraer la fecha y hora actuales** con las funciones `today()` y `now()`
+
+```{r}
+today()
+now()
+```
+
+
+También tenemos disponibles en dicho paquete funciones para extraer facilmente algunas variables temporales como el **día de la semana, el mes o el cuatrimestre**, con las funciones `year()`, `months()`, `day()` o `wday()` (día de la semana).
+
+
+```{r}
+fecha <- now()
+year(fecha)
+month(fecha)
+day(fecha)
+wday(fecha, week_start = 1) # Día de la semana (empezando por el lunes)
+hour(fecha)
+minute(fecha)
+second(fecha)
+week(fecha) # Número de semana (del año)
+``` 
+
+Al igual que podemos realizar operaciones aritméticas sencillas con las fechas, también podemos **realizar comparaciones**, por ejemplo, si el día actual es menor o mayor que otra fecha dada. 
+
+```{r}
+fecha_actual <- now()
+fecha_actual > ymd(20170131) # Actual vs 2017-01-31
+fecha_actual > ymd(21000131) # Actual vs 2100-01-31
+``` 
+
+
+
+&nbsp;
+
+**`r colorize("ERROR: sumar números a caracteres sin convertir tipos de datos", "#dc3545")`**
+
 
 A veces la lectura de variables numéricas de nuestros archivos puede hacer que un número, por ejemplo `1`, sea leído como la cadena de texto `"1"`, con la que no podemos operar como un número. Las funciones `as.numeric()`, `as.character()` y `as.logical()` nos permiten convertir una variable en tipo numérico, caracter o lógico, respectivamente.
 
@@ -661,11 +765,8 @@ as.character(1)
 as.logical(c(0, 1))
 ```
 
-:::
 
-
-
-::: {.rmdimportant}
+&nbsp;
 
 **`r colorize("CONSEJO: optimizar nuestro código", "#20935E")`**
 
@@ -691,7 +792,9 @@ microbenchmark(sort(x), # primera forma
 ```
 
 Sí, estás viendo bien: aunque a priori parezca contraintuitivo, es más corto obtener los índices ordenados de un vector, y luego reordenarlo en base a esos índices, que la ordenación directa a través del comando `sort()` (ya que usan algoritmos de ordenación distintos).
-:::
+
+&nbsp;
+
 
 ```{r echo = FALSE}
 paquetes <-

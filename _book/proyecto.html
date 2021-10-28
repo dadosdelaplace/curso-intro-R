@@ -59,13 +59,14 @@
 <li><a class="" href="funciones.html"><span class="header-section-number">9</span> Creación de funciones</a></li>
 <li class="book-part">Alto en el camino</li>
 <li><a class="" href="resumen-1.html"><span class="header-section-number">10</span> ¿Qué sabemos hacer?</a></li>
-<li class="book-part">DATAVIZ: introducción a la visualización</li>
-<li><a class="" href="procesamiento.html"><span class="header-section-number">11</span> Tidy data: ordenando datos</a></li>
-<li><a class="" href="tidyverse.html"><span class="header-section-number">12</span> Transformando los datos: incursión al universo tidyverse</a></li>
-<li><a class="" href="modelos_lineales.html"><span class="header-section-number">13</span> Introducción a los modelos lineales</a></li>
-<li><a class="" href="ggplot2.html"><span class="header-section-number">14</span> Visualizando datos: incursión a ggplot2</a></li>
+<li class="book-part">EXPLORANDO: introducción a la exploración de datos</li>
+<li><a class="" href="tidydata.html"><span class="header-section-number">11</span> Tidy data: ordenando datos</a></li>
+<li><a class="" href="tidyverse.html"><span class="header-section-number">12</span> Explorando los datos: incursión a tidyverse</a></li>
+<li><a class="" href="resumiendo-y-relacionado-los-datos.html"><span class="header-section-number">13</span> Resumiendo y relacionado los datos</a></li>
+<li><a class="" href="modelos_lineales.html"><span class="header-section-number">14</span> Introducción a los modelos lineales</a></li>
+<li><a class="" href="ggplot2.html"><span class="header-section-number">15</span> Visualizando datos: incursión a ggplot2</a></li>
 <li class="book-part">Epílogo</li>
-<li><a class="" href="contribuye.html"><span class="header-section-number">15</span> Contribuye al proyecto</a></li>
+<li><a class="" href="contribuye.html"><span class="header-section-number">16</span> Contribuye al proyecto</a></li>
 <li><a class="" href="bibliograf%C3%ADa.html">Bibliografía</a></li>
 </ul>
 
@@ -78,14 +79,12 @@
 <h1>
 <span class="header-section-number">Capítulo 4</span> Flujo de trabajo: primer proyecto<a class="anchor" aria-label="anchor" href="#proyecto"><i class="fas fa-link"></i></a>
 </h1>
-<div class="rmdimportant">
 <p><strong><span style="color: #20935E;">CONSEJO: cambiar la notación exponencial</span></strong></p>
 <p>Por defecto, <code>R</code> muestra los números en formato de notación exponencial. Por ejemplo, el número <code>1000000</code> nos lo mostrará por defecto como <code>1e+06</code>. A veces podemos querer que se muestre con todas sus cifras (por ejemplo, en el título o leyenda de una gráfica): para anular la notación exponencial, escribe al inicio del código <code><a href="https://rdrr.io/r/base/options.html">options("scipen" = 10)</a></code>.</p>
-</div>
-<div class="rmdimportant">
+<p> </p>
 <p><strong><span style="color: #20935E;">CONSEJO: limpiar consola</span></strong></p>
 <p>Podemos limpiar la consola clickando en al escoba que tenemos en la parte superior derecha de la misma. Esta acción <strong>no nos elimina ninguna variable</strong>, simplemente nos limpia la consola de mensajes.</p>
-</div>
+<p> </p>
 <p>Estamos listos/as para crear nuestro <strong>primer proyecto de <code>R</code></strong> :)</p>
 <p>Cuando se empieza a programar para un trabajo concreto de <code>R</code> es recomendable crearnos lo que se conoce como un <strong>proyecto de <code>R</code></strong>: en lugar de ir abriendo ventanas sueltas para programar (los scripts, los archivos con extensión <code>.R</code>), podemos <strong>agruparlos</strong> en distintos proyectos, de forma que podamos acceder a ellos de forma ordenada (algo así como crear carpetas en nuestro disco duro).</p>
 <div id="crear-proyecto" class="section level2">
@@ -171,7 +170,7 @@ Imagen/gráfica 4.10: Subcarpeta «CODIGOS».
 </p>
 </div>
 <p>En esa carpeta de códigos vamos a crear de prueba el código llamado <code>variables.R</code> donde vamos a <strong>definir algunas variables</strong> que luego usaremos en el código principal (suele suceder con variables que van a ser fijas como nombres, fechas o codificaciones de variables).</p>
-<div class="sourceCode" id="cb261"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb321"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Descripción: script de prueba con variables</span>
 
 <span class="co"># Variables</span>
@@ -192,7 +191,7 @@ Imagen/gráfica 4.11: Escribimos una serie de variables fijas para luego ser usa
 <p>Así que eso haremos: desde nuestro archivo principal <code>main.R</code> llamaremos a ese archivo <code>variables.R</code>, para luego usar las variables definidas en él.</p>
 <p><strong>¿Cómo indicarle a <code>R</code> donde está nuestro fichero?</strong></p>
 <p>En <code>R</code>, como en todo lenguaje de programación, podemos consultar lo que el ordenador llama <em>directorio de trabajo</em>: la carpeta «base» desde donde está ejecutando tu código. Dicha ruta de directorio se puede consultar con la función <code><a href="https://rdrr.io/r/base/getwd.html">getwd()</a></code>, pudiendo ver los archivos y carpetas que hay dentro del mismo con el comando <code><a href="https://rdrr.io/r/base/list.files.html">dir()</a></code></p>
-<div class="sourceCode" id="cb262"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb322"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/getwd.html">getwd</a></span><span class="op">(</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/list.files.html">dir</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="figure" style="text-align: center">
@@ -202,7 +201,7 @@ Imagen/gráfica 4.12: Consultar directorio de trabajo predeterminado y archivos 
 </p>
 </div>
 <p>Lo ideal es empezar el código <strong>fijando como directorio de trabajo el directorio donde tengamos nuestro archivo principal</strong> <code>main.R</code> y para ello usaremos la función <code><a href="https://rdrr.io/r/base/getwd.html">setwd()</a></code>, cuyo argumento será la ruta donde queremos fijarlo. Para hacerlo de forma automática (y que el código pueda ser abierto por ti pero también por otros que no tengan tu misma estructura de carpetas), obtendremos de forma automática la ruta del archivo <code>main.R</code> o del proyecto con la orden <code>rstudioapi::getSourceEditorContext()$path</code>, y después usaremos <code><a href="https://rdrr.io/r/base/basename.html">dirname()</a></code> para quedarnos solo con la ruta de carpetas (eliminando el nombre del fichero al final). Esa será la ruta que le pasaremos a <code><a href="https://rdrr.io/r/base/getwd.html">setwd()</a></code>, quedando nuestro directorio de trabajo automáticamente fijado, sin preocuparnos de la ruta</p>
-<div class="sourceCode" id="cb263"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb323"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Fijamos directorio de trabajo automáticamente</span>
 <span class="fu"><a href="https://rdrr.io/r/base/getwd.html">setwd</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/basename.html">dirname</a></span><span class="op">(</span><span class="fu">rstudioapi</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rstudioapi/man/rstudio-editors.html">getSourceEditorContext</a></span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">path</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <div class="figure" style="text-align: center">
@@ -212,7 +211,7 @@ Imagen/gráfica 4.13: Fijamos de forma automático el directorio de trabajo.
 </p>
 </div>
 <p>Una vez que hemos fijado nuestro directorio, para cargar código <code>.R</code>, basta que usemos la función <code><a href="https://rdrr.io/r/base/source.html">source()</a></code>, cuyo argumento será la ruta del archivo. Como tenemos de directorio base el directorio en el que tenemos nuestro archivo principal (<code>./</code>), bastará que empecemos a escribir <code><a href="https://rdrr.io/r/base/source.html">source("./")</a></code>, presionar el tabulador, y se nos abrirá el menú de archivos de nuestro directorio de trabajo, pudiendo ir seleccionando de forma sencilla la ruta de nuestro archivo.</p>
-<div class="sourceCode" id="cb264"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb324"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Cargamos fichero variable.R</span>
 <span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="st">"./CODIGOS/variables.R"</span><span class="op">)</span></code></pre></div>
 <div class="figure" style="text-align: center">
@@ -241,21 +240,21 @@ Imagen/gráfica 4.16: Guardamos con la casilla «source on save» activada para 
 </div>
 <p>Como vemos en la imagen <a href="proyecto.html#fig:source-on-save">4.16</a>, una vez ejecutado, tenemos en nuestro panel de entorno (parte superior derecha) las variables ya cargadas que teníamos definidas en nuestro fichero <code>variables.R</code>.</p>
 <p>Prueba a escribir algunas funciones que hemos aprendido con dichas variables y vuelve a hacer click en «guardar» con <em>source on save</em> activado.</p>
-<div class="sourceCode" id="cb265"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb325"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Sumamos 3 a cada elemento de x</span>
 <span class="va">z</span> <span class="op">&lt;-</span> <span class="va">x</span> <span class="op">+</span> <span class="fl">3</span>
 <span class="va">z</span></code></pre></div>
 <pre><code>## [1]  4  5  3  2 74</code></pre>
-<div class="sourceCode" id="cb267"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb327"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Imprimimos por pantalla la frase unida, y a dicha frase</span>
 <span class="co"># le pegamos nuestro apellido</span>
 <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">y</span>, collapse <span class="op">=</span> <span class="st">" "</span><span class="op">)</span>, <span class="va">apellido</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## hola me llamo Javier Álvarez</code></pre>
-<div class="sourceCode" id="cb269"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb329"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Días que han pasado desde el inicio de año</span>
 <span class="va">dias</span> <span class="op">&lt;-</span> <span class="va">hoy</span> <span class="op">-</span> <span class="va">fecha_origen</span>
 <span class="va">dias</span></code></pre></div>
-<pre><code>## Time difference of 288 days</code></pre>
+<pre><code>## Time difference of 300 days</code></pre>
 <p>La función <code><a href="https://rdrr.io/r/base/cat.html">cat()</a></code> nos muestra por consola el texto que le pasemos de argumento (<strong>función especial para mensajes de alerta</strong> por consola)</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:codigo-1"></span>
@@ -264,21 +263,18 @@ Imagen/gráfica 4.17: Cálculos con la variables definidas: suma, concatenación
 </p>
 </div>
 <p>Ya hemos ejecutado nuestro primer proyecto en <code>.R</code> :)</p>
-<div class="rmdimportant">
+<p> </p>
 <p><strong><span style="color: #20935E;">CONSEJO: comentarios en los códigos</span></strong></p>
 <p>Es crucial que intentes <strong>documentar al máximo tu código</strong> y que te acostumbres a ello desde el principio, dejando explícito que haces en cada paso, tanto para ti como para otra persona que pueda leer tu código y lo entienda. Para ello usaremos <code># comentario</code> cuando queramos dejar comentarios en el código. Dichas partes, amén de estar en otro color, no son leídas por <code>R</code> ni ejecutadas: son comentarios que el programa «no ve», solo son para nosotros.</p>
-</div>
-<div class="rmdwarning">
-<p><strong><span style="color: #ffc107;">Guardar los scripts</span></strong></p>
+<p> </p>
+<p><strong><span style="color: #ffc107;">WARNING: guardar los scripts</span></strong></p>
 <p>Los scripts que tengas sin guardar tendrán un asterisco <code><a href="https://rdrr.io/r/base/Arithmetic.html">*</a></code> al final del nombre en la pestaña superior de la ventana.</p>
-</div>
-<div class="rmdimportant">
+<p> </p>
 <p><strong><span style="color: #20935E;">CONSEJO: extraer fecha y hora de hoy</span></strong></p>
 <p>La función <code><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time()</a></code> accede al sistema de nuestro ordenador para decirnos la <strong>fecha y hora del momento de la ejecución</strong> de dicha función.</p>
-<div class="sourceCode" id="cb271"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb331"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "2021-10-16 21:15:12 CEST"</code></pre>
-</div>
+<pre><code>## [1] "2021-10-28 17:47:17 CEST"</code></pre>
 
 </div>
 </div>
@@ -309,7 +305,7 @@ Imagen/gráfica 4.17: Cálculos con la variables definidas: suma, concatenación
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 16-10-2021.</p>
+    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 28-10-2021.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

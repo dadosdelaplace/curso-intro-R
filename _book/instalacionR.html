@@ -59,13 +59,14 @@
 <li><a class="" href="funciones.html"><span class="header-section-number">9</span> Creación de funciones</a></li>
 <li class="book-part">Alto en el camino</li>
 <li><a class="" href="resumen-1.html"><span class="header-section-number">10</span> ¿Qué sabemos hacer?</a></li>
-<li class="book-part">DATAVIZ: introducción a la visualización</li>
-<li><a class="" href="procesamiento.html"><span class="header-section-number">11</span> Tidy data: ordenando datos</a></li>
-<li><a class="" href="tidyverse.html"><span class="header-section-number">12</span> Transformando los datos: incursión al universo tidyverse</a></li>
-<li><a class="" href="modelos_lineales.html"><span class="header-section-number">13</span> Introducción a los modelos lineales</a></li>
-<li><a class="" href="ggplot2.html"><span class="header-section-number">14</span> Visualizando datos: incursión a ggplot2</a></li>
+<li class="book-part">EXPLORANDO: introducción a la exploración de datos</li>
+<li><a class="" href="tidydata.html"><span class="header-section-number">11</span> Tidy data: ordenando datos</a></li>
+<li><a class="" href="tidyverse.html"><span class="header-section-number">12</span> Explorando los datos: incursión a tidyverse</a></li>
+<li><a class="" href="resumiendo-y-relacionado-los-datos.html"><span class="header-section-number">13</span> Resumiendo y relacionado los datos</a></li>
+<li><a class="" href="modelos_lineales.html"><span class="header-section-number">14</span> Introducción a los modelos lineales</a></li>
+<li><a class="" href="ggplot2.html"><span class="header-section-number">15</span> Visualizando datos: incursión a ggplot2</a></li>
 <li class="book-part">Epílogo</li>
-<li><a class="" href="contribuye.html"><span class="header-section-number">15</span> Contribuye al proyecto</a></li>
+<li><a class="" href="contribuye.html"><span class="header-section-number">16</span> Contribuye al proyecto</a></li>
 <li><a class="" href="bibliograf%C3%ADa.html">Bibliografía</a></li>
 </ul>
 
@@ -118,7 +119,7 @@ Imagen/gráfica 1.4: Pantalla final de instalación de R en Windows.
 </ul>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:cranR"></span>
-<img src="img/cranR.jpg" alt="Primera pantalla al abrir el ejecutable de R." width="75%"><p class="caption">
+<img src="img/cranR.jpg" alt="Primera pantalla al abrir el ejecutable de R." width="55%"><p class="caption">
 Imagen/gráfica 1.5: Primera pantalla al abrir el ejecutable de R.
 </p>
 </div>
@@ -130,21 +131,20 @@ Imagen/gráfica 1.5: Primera pantalla al abrir el ejecutable de R.
 <pre><code>## [1] 3</code></pre>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:primera-suma"></span>
-<img src="img/primera_suma.jpg" alt="Primera suma en la consola de R." width="75%"><p class="caption">
+<img src="img/primera_suma.jpg" alt="Primera suma en la consola de R." width="70%"><p class="caption">
 Imagen/gráfica 1.6: Primera suma en la consola de R.
 </p>
 </div>
-<div class="rmdimportant">
-<p><strong>¡Enhorabuena!</strong> Si te ha devuelto <code>[1] 3</code>, ya has hecho más de lo que parece: has definido dos variables <code>a</code> y <code>b</code>, has <strong>asignado un valor numérico a cada variable</strong> y las hemos usado. <strong>Ya sabemos usar <code>R</code> como calculadora</strong>.</p>
+<p>**¡Enhorabuena!*</p>
+<p>Si te ha devuelto <code>[1] 3</code>, ya has hecho más de lo que parece: has definido dos variables <code>a</code> y <code>b</code>, has <strong>asignado un valor numérico a cada variable</strong> y las hemos usado. <strong>Ya sabemos usar <code>R</code> como calculadora</strong>.</p>
 <p>El valor <code>[1]</code> antes del resultado en realidad nos numera las líneas de la consola usadas.</p>
-</div>
-<div class="rmdwarning">
-<p><strong><span style="color: #ffc107;">WARNING</span></strong></p>
-<p>Como habrás advertido, en <code>R</code> usaremos <code><a href="https://rdrr.io/r/base/assignOps.html">&lt;-</a></code> para <strong>asignar valores</strong> en lugar de <code><a href="https://rdrr.io/r/base/assignOps.html">=</a></code>, como una flecha. Usaremos <code><a href="https://rdrr.io/r/base/assignOps.html">=</a></code> para indicarle el valor a los argumentos que usemos en funciones y <code><a href="https://rdrr.io/r/base/Comparison.html">==</a></code> como operador de comparación: si escribimos <code>2 == 3</code>, le estamos preguntando si 2 es igual a 3.</p>
+<p> </p>
+<p><strong><span style="color: #ffc107;">WARNING: </span></strong></p>
+<p>Como habrás advertido, en <code>R</code> usaremos <code><a href="https://rdrr.io/r/base/assignOps.html">&lt;-</a></code> para <strong>asignar valores</strong> en lugar de <code><a href="https://rdrr.io/r/base/assignOps.html">=</a></code>, como una flecha. Usaremos <code><a href="https://rdrr.io/r/base/assignOps.html">=</a></code> para <strong><span style="color: #ffc107;">indicarle el valor a los argumentos que usemos en funciones</span></strong> y <code><a href="https://rdrr.io/r/base/Comparison.html">==</a></code> como <strong><span style="color: #ffc107;">operador de comparación</span></strong>: si escribimos <code>2 == 3</code>, le estamos preguntando si 2 es igual a 3.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fl">2</span> <span class="op">==</span> <span class="fl">3</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-</div>
+<p> </p>
 <p>Bonita esta interfaz no es, así que la cerraremos y no la abriremos más. Tenemos nuestro lenguaje instalado, vamos a <strong>instalar nuestro Word</strong> para poder programar de forma cómoda.</p>
 <div id="instalacionRStudio" class="section level2">
 <h2>
@@ -153,58 +153,55 @@ Imagen/gráfica 1.6: Primera suma en la consola de R.
 <p>Para instalar <code>RStudio</code> deberemos ir a la web <a href="https://www.rstudio.com/products/rstudio/download/#download" class="uri">https://www.rstudio.com/products/rstudio/download/#download</a> y seleccionar el ejecutable que te aperezca acorde a tu sistema operativo (ver imagen <a href="instalacionR.html#fig:pantalla-rstudio">1.7</a>). Tras descargar el ejecutable, hay que abrirlo como otro cualquier otro ejecutable y dejar que termine la instalación.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:pantalla-rstudio"></span>
-<img src="img/pantalla_rstudio.jpg" alt="Descargar el ejecutable de RStudio para su posterior instalación." width="75%"><p class="caption">
+<img src="img/pantalla_rstudio.jpg" alt="Descargar el ejecutable de RStudio para su posterior instalación." width="60%"><p class="caption">
 Imagen/gráfica 1.7: Descargar el ejecutable de RStudio para su posterior instalación.
 </p>
 </div>
 <p>Tras instalar tendremos en el escritorio o Launchpad un ejecutable de <code>RStudio</code> que abriremos. Se nos aparecerá una pantalla similar a esta:</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:inicio-rstudio-1"></span>
-<img src="img/inicio_rstudio_1.jpg" alt="Primer recibimiento de nuestro mejor amigo RStudio." width="75%"><p class="caption">
+<img src="img/inicio_rstudio_1.jpg" alt="Primer recibimiento de nuestro mejor amigo RStudio." width="65%"><p class="caption">
 Imagen/gráfica 1.8: Primer recibimiento de nuestro mejor amigo RStudio.
 </p>
 </div>
-<div class="rmdnote">
+<p> </p>
+<p><strong><span style="color: #4197D2;">GLOSARIO:</span></strong></p>
 <ul>
 <li>
-<strong>Consola</strong>: es el nombre para llamar a esa ventana grande que te ocupa la mayor parte de tu pantalla. Prueba a escribir el mismo código que antes en ella (es el equivalente a la consola de R que hemos abierto al principio).</li>
+<strong><span style="color: #4197D2;">Consola</span></strong>: es el nombre para llamar a esa ventana grande que te ocupa la mayor parte de tu pantalla. Prueba a escribir el mismo código que antes en ella (es el equivalente a la consola de R que hemos abierto al principio).</li>
 </ul>
-</div>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">a</span> <span class="op">&lt;-</span> <span class="fl">1</span>
 <span class="va">b</span> <span class="op">&lt;-</span> <span class="fl">2</span>
 <span class="va">a</span> <span class="op">+</span> <span class="va">b</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:inicio-rstudio-2"></span>
-<img src="img/inicio_rstudio_2.jpg" alt="Lanzando a consola nuestras primeras órdenes en RStudio." width="75%"><p class="caption">
+<img src="img/inicio_rstudio_2.jpg" alt="Lanzando a consola nuestras primeras órdenes en RStudio." width="60%"><p class="caption">
 Imagen/gráfica 1.9: Lanzando a consola nuestras primeras órdenes en RStudio.
 </p>
 </div>
-<p><strong>La consola será donde ejecutaremos órdenes y mostraremos resultados</strong></p>
-<div class="rmdnote">
+<p><strong><span style="color: #4197D2;">La consola será donde ejecutaremos órdenes y mostraremos resultados</span></strong></p>
 <ul>
 <li>
-<strong>Environment (entorno)</strong>: la pantalla pequeña (puedes ajustar los márgenes con el ratón a tu gusto) que tenemos en la parte superior derecha se denomina environment o entorno de variables, donde como puedes ver, tras ejecutar el pequeño código en la consola, nos informa de que tenemos dos variables numéricas y su valor asignado. Nos <strong>mostrará las variables que tenemos definidas, el tipo y su valor</strong>.</li>
+<strong><span style="color: #4197D2;">Environment (entorno)</span></strong>: la pantalla pequeña (puedes ajustar los márgenes con el ratón a tu gusto) que tenemos en la parte superior derecha se denomina environment o entorno de variables, donde como puedes ver, tras ejecutar el pequeño código en la consola, nos informa de que tenemos dos variables numéricas y su valor asignado. Nos <strong>mostrará las variables que tenemos definidas, el tipo y su valor</strong>.</li>
 </ul>
-</div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:inicio-rstudio-3"></span>
-<img src="img/inicio_rstudio_3.jpg" alt="Environment de variables." width="75%"><p class="caption">
+<img src="img/inicio_rstudio_3.jpg" alt="Environment de variables." width="65%"><p class="caption">
 Imagen/gráfica 1.10: Environment de variables.
 </p>
 </div>
-<div class="rmdnote">
 <ul>
 <li>
-<strong>Panel multiusos</strong>: la ventana que tenemos en la parte inferior derecha no servirá para buscar ayuda de comandos y órdenes, además de para visualizar gráficos. Lo veremos cuando sea necesario.</li>
+<strong><span style="color: #4197D2;">Panel multiusos</span></strong>: la ventana que tenemos en la parte inferior derecha no servirá para buscar ayuda de comandos y órdenes, además de para visualizar gráficos. Lo veremos cuando sea necesario.</li>
 </ul>
-</div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:inicio-rstudio-4"></span>
-<img src="img/inicio_rstudio_4.jpg" alt="Panel multiusos." width="75%"><p class="caption">
+<img src="img/inicio_rstudio_4.jpg" alt="Panel multiusos." width="65%"><p class="caption">
 Imagen/gráfica 1.11: Panel multiusos.
 </p>
 </div>
+<p> </p>
 <p><strong>WTF ¿Y DÓNDE PROGRAMAMOS?</strong></p>
 <p><strong>¿Estás emocionado/a? Vamos a abrir nuestro primer script</strong> (script = documento en el que programamos, nuestro <code>.doc</code>, pero aquí será un archivo <code>.R</code>).</p>
 <p>Haz click en el menú superior en <code>File &lt;&lt; New File &lt;&lt; R Script</code> como se muestra en la imagen <a href="instalacionR.html#fig:inicio-rstudio-5">1.12</a></p>
@@ -221,7 +218,7 @@ Imagen/gráfica 1.12: Abriendo nuestro primer script de R.
 Imagen/gráfica 1.13: Escribiendo y guardando nuestro primer script.
 </p>
 </div>
-<p>Ese código no se ejecuta salvo que se lo digamos. Tenemos principalmente dos opciones para ello: o copiamos el trozo de código que queramos y lo pegamos en la consola (como hemos hecho al principio), o <strong>activamos el cuadrado <code>Source on save</code> a la derecha del botón de guardar</strong> y volvemos a hacer click en el botón de guardar: siempre que esa opción esté activada, al guardar no solo es nos guarda el archivo <code>.R</code> sino que además se ejecuta solo y nos devuelve los resultados por consola.</p>
+<p>Ese código no se ejecuta salvo que se lo digamos. Tenemos principalmente dos opciones para ello: o copiamos el trozo de código que queramos y lo pegamos en la consola (como hemos hecho al principio), o <strong><span style="color: #20935E;">activamos el cuadrado Source on save a la derecha del botón de guardar</span></strong> y volvemos a hacer click en el botón de guardar: siempre que esa opción esté activada, al guardar no solo es nos guarda el archivo <code>.R</code> sino que además se ejecuta solo y nos devuelve los resultados por consola.</p>
 <p>Listo, tienes instalado (casi) todo correctamente.</p>
 </div>
 <div id="instalacionpaquetes" class="section level2">
@@ -236,7 +233,7 @@ Imagen/gráfica 1.13: Escribiendo y guardando nuestro primer script.
 </ul>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:paquetes-R"></span>
-<img src="img/paquetes_R.jpg" alt="Paquetes disponibles en R." width="75%"><p class="caption">
+<img src="img/paquetes_R.jpg" alt="Paquetes disponibles en R." width="70%"><p class="caption">
 Imagen/gráfica 1.14: Paquetes disponibles en R.
 </p>
 </div>
@@ -244,38 +241,36 @@ Imagen/gráfica 1.14: Paquetes disponibles en R.
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"ggplot2"</span><span class="op">)</span></code></pre></div>
 <p>Dicha orden (puede tardar un poco la primera vez, depende de tu conexión a internet) lo que hará será <strong>acceder a la web de R</strong>, <strong>bajarse a tu ordenador los trozos de código</strong> incluidos en el paquete llamado <a href="https://ggplot2.tidyverse.org">ggplot2</a>, y dejarlos para siempre en él.</p>
-<div class="rmdwarning">
-<p><strong><span style="color: #ffc107;">WARNING</span></strong></p>
+<p> </p>
+<p><strong><span style="color: #ffc107;">WARNING:</span></strong></p>
 <p>La <strong>instalación de paquetes SOLO ES NECESARIA la primera vez</strong> que se usa dicho paquete en la vida del ordenador, no hace falta hacerlo cada vez que lo usas.</p>
-</div>
+<p> </p>
 <p>Una vez que tenemos los trozos de código (el paquete) en nuestro ordenador, en cada sesión de <code>R</code> que abramos (cada vez que cierres y abras <code>RStudio</code>) deberemos (si queremos) llamar a ese paquete que tenemos instalado, escribiendo el siguiente comando en consola</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></code></pre></div>
 <p><strong>Welcome to software libre</strong></p>
-<div class="rmdnote">
+<p> </p>
+<p><strong><span style="color: #4197D2;">GLOSARIO:</span></strong></p>
 <ul>
 <li>
-<strong>Paquete</strong>: trozos de código realizadas por otros usuarios de la comunidad (y validades por el equipo de CRAN si la descarga es mediante <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code>) para ser usados. Una vez instalados (descargados) los trozos de código a nuestro ordenador, basta con «acudir» a ellos con <code><a href="https://rdrr.io/r/base/library.html">library()</a></code>.</li>
+<strong><span style="color: #4197D2;">Paquete</span></strong>: trozos de código realizadas por otros usuarios de la comunidad (y validades por el equipo de CRAN si la descarga es mediante <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code>) para ser usados. Una vez instalados (descargados) los trozos de código a nuestro ordenador, basta con «acudir» a ellos con <code><a href="https://rdrr.io/r/base/library.html">library()</a></code>.</li>
 </ul>
 <p>Haciendo una metáfora con la colección de libros que tengas en casa: con la <strong>instalación hemos comprado el libro</strong> y lo tenemos en nuestra estantería (para siempre), con la llamada al paquete, por ejemplo <code><a href="https://ggplot2.tidyverse.org">library(ggplot2)</a></code>, lo que hacemos es decidir, de entre todos los libros de la estantería, cuales queremos llevarnos de viaje (en cada maleta que hagamos).</p>
 <p>Los <strong>paquetes usados</strong> los verás denotados como <code>{nombre_paquete}</code> a lo largo del manual.</p>
-</div>
-<div class="rmdimportant">
-<p><strong><span style="color: #20935E;">CONSEJO</span></strong></p>
-<p>¿Cómo saber cuando la orden lanzada en consola ha terminado?</p>
+<p> </p>
+<p><strong><span style="color: #20935E;">CONSEJO:</span></strong></p>
+<p><strong><span style="color: #20935E;">¿Cómo saber cuando la orden lanzada en consola ha terminado?</span></strong></p>
 <p>A veces <code>R</code> y <code>RStudio</code> son tan silenciosos que no sabemos si ha acabado la orden que acabamos de lanzar en la consola o no. Siempre que veas el símbolo <code><a href="https://rdrr.io/r/base/Comparison.html">&gt;</a></code> como última línea en la consola significa que está listo para que le escribamos otra orden (es la forma cariñosa de decirte que ya ha acabado, ver imagen <a href="instalacionR.html#fig:tip-consola-lista">1.15</a>)</p>
-</div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:tip-consola-lista"></span>
 <img src="img/tip_consola_lista.jpg" alt="Ejemplo de que la orden lanzada ha acabado." width="70%"><p class="caption">
 Imagen/gráfica 1.15: Ejemplo de que la orden lanzada ha acabado.
 </p>
 </div>
-<div class="rmdimportant">
-<p><strong><span style="color: #20935E;">CONSEJO</span></strong></p>
-<p>¿Cómo prevenir la fatiga visual programando?</p>
-<p>Estar delante de una pantalla de ordenador, con la vista muy fija mientras se programa, puede que acabes teniendo cierta fatiga visual en el trabajo. Te aconsejo que cambies en tu <code>RStudio</code> la tonalidad del fondo de tu programa, en tonos oscuros y no blancos (¿te has fijado que mis capturas tienen un azul cobalto oscuro de fondo mientras el tuyo es un blanco nuclear? Echa un vistazo a las imágenes <a href="instalacionR.html#fig:menu-1">1.16</a> y <a href="instalacionR.html#fig:menu-2">1.17</a>)</p>
-</div>
+<p> </p>
+<p><strong><span style="color: #20935E;">CONSEJO:</span></strong></p>
+<p><strong><span style="color: #20935E;">¿Cómo prevenir la fatiga programando?</span></strong></p>
+<p>Estando delante de una pantalla de ordenador, con la vista muy fija mientras se programa, puede que acabes teniendo cierta fatiga visual en el trabajo. Te aconsejo que cambies en tu <code>RStudio</code> la tonalidad del fondo de tu programa, en tonos oscuros y no blancos (¿te has fijado que mis capturas tienen un azul cobalto oscuro de fondo mientras el tuyo es un blanco nuclear? Echa un vistazo a las imágenes <a href="instalacionR.html#fig:menu-1">1.16</a> y <a href="instalacionR.html#fig:menu-2">1.17</a>)</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:menu-1"></span>
 <img src="img/menu_1.jpg" alt="Menú de opciones de nuestro editor" width="40%" height="40%"><p class="caption">
@@ -317,7 +312,7 @@ Imagen/gráfica 1.17: Personalizar el color de fondo de nuestro editor, la letra
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 16-10-2021.</p>
+    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 28-10-2021.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

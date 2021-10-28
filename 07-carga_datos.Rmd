@@ -18,19 +18,18 @@ colorize <- function(x, color) {
 
 # Importando/exportando {#importar-exportar}
 
-Hemos aprendido a **crear nuestros propios datos** pero la mayoría de veces los cargaremos de distintos archivos, fuentes, etc. Vamos a ver las **4 formas más comunes de importar (cargar) datos**
+Hemos aprendido a **crear nuestros propios datos** pero la mayoría de veces los cargaremos de distintos archivos, fuentes, etc. Vamos a ver las **4 formas más comunes de importar (cargar) datos**.
 
 ## Importación de datos
 
-::: {.rmdnote}
 
-Las **`r colorize("4 formas más comunes de importar (cargar) datos", "#4197D2")`** son:
+Las **4 formas más comunes de importar (cargar) datos** son:
 
 - desde un archivo propio de `R` (extensión `.RData`).
 - desde un archivo separado por comas (un archivo `.csv`).
 - desde un excel (archivo `.xlsx`).
 - desde un enlace de internet.
-:::
+
 
 ### Archivo .RData
 
@@ -74,25 +73,6 @@ head(coches)
 Otra opción de importación habitual son los **archivos `.csv` (comma separated values)**: son archivos separados por comas (u otro caracter como puntos, puntos y comas, o tabuladores). En apariencia cuando los abrimos en el ordenador son como un Excel (ya que los abre el Excel), pero ocupan mucho menos que un Excel y su **lectura es universal** (independiente de tener instalado o no el Excel) ya que son archivos de texto **sin formato**.
 
 Para leer un archivo `.csv` basta con usar la función `read_csv()` del paquete `{readr}` y la mayoría de las veces basta indicarle la ruta del archivo para su lectura (argumento `file`).
-
-```{r echo = FALSE}
-library(knitr)
-paquetes <-
-  data.frame("paquetes" = c("{base}", "{bookdown}", "{glue}",
-                            "{stringr}", "{lubridate}", "{microbenchmark}",
-                            "{tibble}", "{datasets}", "{readr}"),
-             "descripción" = c("utilidades básicas",
-                               "creación de libros, manuales e informes en R",
-                               "manejo de texto literal",
-                               "manejo complejo de cadenas de texto",
-                               "manejo de fechas",
-                               "comparativa de tiempos de ejecución",
-                               "data.frames eficientes",
-                               "conjuntos de datos",
-                               "lectura de datos rectangulares (tablas)"))
-kable(paquetes, col.names = c("paquetes", "descripción"), align = "ll",
-      caption = "Paquetes mencionados hasta ahora")
-``` 
 
 
 ```{r paquete-readr, echo = FALSE, out.width = "95%", fig.align = "center", fig.cap = "Paquete readr."}
@@ -139,7 +119,7 @@ boston <- read_xlsx(path = "~/Dropbox/DIVULGACIÓN/CURSO R BIOQUIMICA EN MOVIMIE
 head(boston)
 ```
 
-::: {.rmdimportant}
+&nbsp;
 
 **`r colorize("CONSEJO: entorno tidyverse", "#20935E")`**
 
@@ -159,7 +139,8 @@ library(tidyverse)
 ```{r}
 glimpse(boston)# Resumen por columnas
 ```
-:::
+
+&nbsp;
 
 ```{r echo = FALSE}
 library(knitr)
@@ -236,38 +217,32 @@ write_csv(tabla, file = "./EXPORTAR/tabla.csv")
 
 
 
-::: {.rmdnote}
+&nbsp;
 
-**`r colorize("Paquete rvest", "#4197D2")`**
+**`r colorize("CONSEJO: paquete rvest", "#4197D2")`**
 
 En dicho paquete tienes más **funciones para una lectura directamente de una página web (no desde un documento, desde la propia página web, como si estuvieras navegando en ella)**. Ver <https://github.com/tidyverse/rvest>.
 
-:::
+```{r}
+# Ejemplo cargando datos de una tabla de wikipedia: 
+# encuestas elecciones alemanas 2021
+library(rvest)
+library(tidyverse)
+wiki <- paste0("https://es.wikipedia.org/wiki/",
+              "Elecciones_federales_de_Alemania_de_2021")
+html<- read_html(wiki)
+datos <- html_nodes(html,".wikitable")
 
-```{r echo = FALSE}
-library(knitr)
-paquetes <-
-  data.frame("paquetes" = c("{base}", "{bookdown}", "{glue}",
-                            "{stringr}", "{lubridate}", "{microbenchmark}",
-                            "{tibble}", "{datasets}", "{readr}", "{tidyverse}",
-                            "{readxl}", "{rvest}"),
-             "descripción" = c("utilidades básicas",
-                               "creación de libros, manuales e informes en R",
-                               "manejo de texto literal",
-                               "manejo complejo de cadenas de texto",
-                               "manejo de fechas",
-                               "comparativa de tiempos de ejecución",
-                               "data.frames eficientes",
-                               "conjuntos de datos",
-                               "lectura de datos rectangulares (tablas)",
-                               "entorno de paquetes para el manejo de datos",
-                               "lectura de datos en formato excel",
-                               "lectura de datos web"))
-kable(paquetes, col.names = c("paquetes", "descripción"), align = "ll",
-      caption = "Paquetes mencionados hasta ahora")
-``` 
+# Tabla (tibble) (e ignoramos filas con algún valores ausentes)
+resultados_encuestas <-
+  html_table(datos[[5]], header = TRUE) %>% drop_na()
 
-::: {.rmdimportant}
+# Resumen de columnas: casa encuestadora, fecha, muestra, partidos
+glimpse(resultados_encuestas)
+```
+
+&nbsp;
+
 
 **`r colorize("CONSEJO: secciones en el código", "#20935E")`**
 
@@ -277,11 +252,10 @@ Los comentarios no solo sirven para documentar el código sino que además puede
 knitr::include_graphics("./img/indice.jpg")
 ```
 
-:::
+&nbsp;
 
-::: {.rmdwarning}
 
-**`r colorize("Líneas de código en los errores", "#ffc107")`**
+**`r colorize("WARNING: líneas de código en los errores", "#ffc107")`**
   
 Dado que los errores del código nos vendrán referenciados en la consola por el número de línea donde fueron detectados, puede sernos muy útil mostrar dichos números en la barra lateral izquierda, yendo a `Tools << Global Options << Code << Display << Show line numbers`
 
@@ -289,13 +263,10 @@ Dado que los errores del código nos vendrán referenciados en la consola por el
 knitr::include_graphics("./img/show_line_numbers.jpg")
 ```
 
-:::
-
-::: {.rmdimportant}
+&nbsp;
 
 **`r colorize("CONSEJO: Margen derecho en la ventana de scripts", "#20935E")`**
 
-  
 
 Aunque no afecte a nuestro código escribir todo en una línea sin saltos de línea, no somos bárbaros/as. ¿Por qué cuadno escribes en un Word lo haces en formato vertical pero cuando programas pones todas las órdenes seguidas? Recuerda que la legibilidad de tu código no solo te ahorrará tiempo sino que te hará programar mejor. ¿Cómo podemos fijar un margen imaginario para nosotros ser quienes demos al _ENTER_? Yendo a `Tools << Global Options << Code << Display << Show margin` (es un margen imaginario para ser nosotros quienes lo hagamos efectivo, a `R` le da igual)
 
@@ -303,4 +274,4 @@ Aunque no afecte a nuestro código escribir todo en una línea sin saltos de lí
 knitr::include_graphics("./img/show_margin.jpg")
 ```
 
-:::
+

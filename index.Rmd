@@ -56,7 +56,7 @@ colorize <- function(x, color) {
 
 # Prefacio {-}
 
-Este curso ha sido diseñado por [Javier Álvarez Liébana](https://dadosdelaplace.com) y pensado para introducir en el lenguaje `R` a todas aquellas personas que quieran aprender desde cero. Dicho manual ha sido elaborado a su vez en `R` con [{bookdown}](https://github.com/rstudio/bookdown). Puedes ver un resumen de las funcionalidades de algunos paquetes documentados por el equipo de [R Studio](https://www.rstudio.com/) en sus [esquemas resumen](https://www.rstudio.com/resources/cheatsheets/). El **código** de dicho manual se encuentra en [GitHub](https://github.com/dadosdelaplace/cursoR_intro_2021_2022).
+Este curso ha sido diseñado por [Javier Álvarez Liébana](https://dadosdelaplace.com) y pensado para introducir en el lenguaje `R` a todas aquellas personas que quieran **aprender desde cero**. Dicho manual ha sido elaborado a su vez en `R` con [{bookdown}](https://github.com/rstudio/bookdown). Puedes ver un resumen de las funcionalidades de algunos paquetes documentados por el equipo de [R Studio](https://www.rstudio.com/) en sus [esquemas resumen](https://www.rstudio.com/resources/cheatsheets/). El **código** de dicho manual se encuentra en [GitHub](https://github.com/dadosdelaplace/cursoR_intro_2021_2022).
 
 ```{r me-github, echo = FALSE, fig.align = 'center',  include = identical(knitr:::pandoc_to(), 'html'), fig.link = 'https://github.com/dadosdelaplace/cursoR_intro_2021_2022', out.width = '70%'}
 knitr::include_graphics('img/me_github.jpg')
@@ -112,37 +112,38 @@ Todo lo necesario para seguir este curso es de **descarga gratuita**: viva el so
 * \@ref(importar-exportar) [Importar/exportar datos](#importar-exportar)
 * \@ref(otros-datos) [Otros datos: listas y factores](#otros-datos)
 * \@ref(funciones) [Creación de funciones](#funciones)
-* \@ref(resumen-1) [Alto en el camino: ¿qué sabemos hacer?](#resumen-1)
-* \@ref(procesamiento) [Introducción al procesamiento de datos](#procesamiento)
+* \@ref(resumen-1) [Alto en el camino: ¿qué sabemos hacer?](#resumen-1)   
+* \@ref(tidydata) [Tidy data: ordenando datos](#tidydata)   
+* \@ref(tidyverse) [Explorando los datos: incursión a tidyverse](#tidyverse)
 
 ## Código de colores {-} 
 
+Puedes buscar los siguientes términos en el **buscador del documento**
 
-::: {.rmdcaution}
+**`r colorize("ERROR:", "#dc3545")`**
 
-En los **`r colorize("recuadros rojos", "#dc3545")`** encontrarás **errores comunes** o prácticas a evitar.
+En **`r colorize("color rojo", "#dc3545")`** encontrarás **`r colorize("errores comunes", "#dc3545")`** o prácticas a evitar.
 
-:::
 
-::: {.rmdwarning}
+&nbsp;
 
-En los **`r colorize("recuadros naranjas", "#ffc107")`** encontrarás **warnings o advertencias** sobre cosas a tener en cuenta para evitar problemas.
+**`r colorize("WARNING:", "#ffc107")`**
+
+En **`r colorize("color naranja/amarillo", "#ffc107")`** encontrarás **`r colorize("warnings o advertencias", "#ffc107")`** sobre cosas a tener en cuenta para evitar problemas.
 
 Algunas funciones pueden arrojar ciertas advertencias que nunca está de más leer. Pero si dichos mensajes de alerta los tenemos controlados, y no queremos que nos ensucie la ejecución en la consola, podemos poner al inicio del código ` assign("last.warning", NULL, envir = baseenv())` para limpiar los warnings antiguos y `options(warn = -1)` para desactivarlos.
-:::
 
+&nbsp;
 
-::: {.rmdimportant}
+**`r colorize("CONSEJO:", "#20935E")`**
 
-En los **`r colorize("recuadros verdes", "#20935E")`** encontrarás consejos o tips para ampliar y facilitar tu programación. Además en cada **cajita de código**, si pasas el ratón, encontrarás un botón 📄📄 en la esquina superior derecha de la caja para copiar el código directamente a tu consola. **Puedes encontrarlos todos escribiendo «consejo» en el buscador**.
+En **`r colorize("color verde", "#20935E")`** encontrarás **`r colorize("consejos o tips", "#20935E")`** para ampliar y facilitar tu programación. Además en cada **cajita de código**, si pasas el ratón, encontrarás un botón 📄📄 en la esquina superior derecha de la caja para copiar el código directamente a tu consola. **Puedes encontrarlos todos escribiendo «consejo» en el buscador**.
 
-:::
+&nbsp;
 
+**`r colorize("GLOSARIO:", "#4197D2")`**
 
-::: {.rmdnote}
-
-En los **`r colorize("recuadros azules", "#4197D2")`** encontrarás un 📚 **glosario** con algunos términos estadísticos y conceptos básicos.
-::: 
+En **`r colorize("color azul", "#4197D2")`** encontrarás un 📚 **`r colorize("glosario", "#4197D2")`** con algunos términos estadísticos y conceptos básicos.
 
 
  

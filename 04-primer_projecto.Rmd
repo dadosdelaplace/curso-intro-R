@@ -20,23 +20,20 @@ colorize <- function(x, color) {
 # Flujo de trabajo: primer proyecto {#proyecto}
 
 
-::: {.rmdimportant}
-
 **`r colorize("CONSEJO: cambiar la notación exponencial", "#20935E")`** 
 
 
 Por defecto, `R` muestra los números en formato de notación exponencial. Por ejemplo, el número `1000000` nos lo mostrará por defecto como `1e+06`. A veces podemos querer que se muestre con todas sus cifras (por ejemplo, en el título o leyenda de una gráfica): para anular la notación exponencial, escribe al inicio del código `options("scipen" = 10)`.
 
-:::
+&nbsp;
 
-
-::: {.rmdimportant}
 
 **`r colorize("CONSEJO: limpiar consola", "#20935E")`** 
 
 Podemos limpiar la consola clickando en al escoba que tenemos en la parte superior derecha de la misma. Esta acción **no nos elimina ninguna variable**, simplemente nos limpia la consola de mensajes.
 
-:::
+&nbsp;
+
 
 
 Estamos listos/as para crear nuestro **primer proyecto de `R`** :)
@@ -216,27 +213,23 @@ knitr::include_graphics("./img/codigo_1.jpg")
 Ya hemos ejecutado nuestro primer proyecto en `.R` :)
 
 
+&nbsp;
 
-::: {.rmdimportant}
 
 **`r colorize("CONSEJO: comentarios en los códigos", "#20935E")`** 
 
 Es crucial que intentes **documentar al máximo tu código** y que te acostumbres a ello desde el principio, dejando explícito que haces en cada paso, tanto para ti como para otra persona que pueda leer tu código y lo entienda. Para ello usaremos `# comentario` cuando queramos dejar comentarios en el código. Dichas partes, amén de estar en otro color, no son leídas por `R` ni ejecutadas: son comentarios que el programa «no ve», solo son para nosotros.
 
-:::
+&nbsp;
 
 
-::: {.rmdwarning}
 
-**`r colorize("Guardar los scripts", "#ffc107")`**
+**`r colorize("WARNING: guardar los scripts", "#ffc107")`**
 
 Los scripts que tengas sin guardar tendrán un asterisco `*` al final del nombre en la pestaña superior de la ventana.
 
-:::
+&nbsp;
 
-
-
-::: {.rmdimportant}
 
 **`r colorize("CONSEJO: extraer fecha y hora de hoy", "#20935E")`** 
 
@@ -246,7 +239,6 @@ La función `Sys.time()` accede al sistema de nuestro ordenador para decirnos la
 Sys.time()
 ```
 
-:::
 
 
 

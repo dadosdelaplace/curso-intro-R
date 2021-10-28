@@ -144,17 +144,16 @@ names(panel_vacunas_fecha$`2021-04-23`)
 head(panel_vacunas_fecha$`2021-04-23`[, 1:7])
 ```
 
+&nbsp;
 
-::: {.rmdcaution}
-
-**`r colorize("Operaciones aritméticas con listas", "#dc3545")`**
+**`r colorize("WARNING: operaciones aritméticas con listas", "#dc3545")`**
 
 Una **lista no se puede vectorizar de forma inmediata**, por lo cualquier operación aritmética aplicada a una lista dará error (para ello está disponible la función `lapply()`, cuyo uso corresponde a otros cursos más avanzados).
 
 ```{r error = TRUE}
 datos / 2
 ``` 
-:::
+&nbsp;
 
 
 ## Factores
@@ -170,9 +169,9 @@ datos_factor <- factor(datos) # Convertimos a factor
 datos_factor 
 ``` 
 
-::: {.rmdwarning}
+&nbsp;
 
-**`r colorize("Un factor es una CATEGORÍA", "#ffc107")`**
+**`r colorize("WARNING: un factor es una CATEGORÍA", "#ffc107")`**
 
 Es importante entender que un **factor es una CATEGORÍA**, como rojo/blanco/negro, por lo que desde el momento en el que lo convertimos en factor, ya no podemos hacer operaciones aritméticas (no podemos sumar categorías, solo números).
 
@@ -181,7 +180,7 @@ Es importante entender que un **factor es una CATEGORÍA**, como rojo/blanco/neg
 datos + 1
 datos_factor + 1
 ``` 
-:::
+&nbsp;
 
 Como puedes observar, al tenerlo en factor, además de la variable en sí se nos **muestra debajo los `levels`, los nombres de las categorías**. Si no le indicamos que nombres queremos, nos convierte los valores a texto y lo toma como nombre de categoría. Con el **argumento `labels` podemos configurarlo** a nuestro gusto. Con la función `levels` podemos reasignarle nombres tras su generación.
 
@@ -237,157 +236,17 @@ fechas_cortes
 ``` 
 
 
-::: {.rmdnote}
+&nbsp;
 
-**`r colorize("Paquete forcats", "#4197D2")`**
+**`r colorize("CONSEJO: paquete forcats", "#4197D2")`**
 
 En dicho paquete tienes muchas **funcionalidades para trabajar con factores**. Ver <https://forcats.tidyverse.org/>.
 
 ```{r forcats, echo = FALSE, out.width = "95%", fig.align = "center", fig.cap = "Paquete lubridate."}
 knitr::include_graphics("./img/forcats.png")
 ```
-:::
+&nbsp;
 
-
-## Fechas y horas
-
-Como ya hemos dicho, **las fechas y momentos temporales no serán meras cadenas de caracter sino que tienen clases especiales asociadas** y algunas funciones especiales que pueden sernos útiles: las fechas serán de tipo `dates` mientras que las horas será de tipo `POSIXct` o `POSIXlt`. En el primer caso, las fechas serán guardadas internamente como el **número de días transcurridos desde el 1 de enero de 1970**, y las horas como **número de segundos desde el 1 de enero de 1970** (para la clase `POSIXct`) o una lista de segundos, minutos y horas (para la clase `POSIXlt`).
-
-**¿Cómo obtener automáticamente la fecha de hoy, por ejemplo?** La función `Sys.Date()` nos devuelve directamente la fecha y hora en el momento de la ejecución de la orden.
-
-```{r}
-fecha <- Sys.Date()
-fecha
-fecha - 7 # una semana antes
-class(fecha) # de clase fecha
-``` 
-
-Para **convertir una cadena de texto a fecha**, basta usar la función `as.Date()` del paquete `{base}`, pasándole como argumento la fecha en formato `"yyyy-mm-dd"` por defecto.
-
-```{r}
-as.Date("2021-03-10") # formato por defecto
-```
-
-Si **introducimos otro tipo de formato**, debemos especificárselo en un segundo argumento, para `R` sepa el formato de fecha que le estamos pasando
-
-```{r}
-as.Date("10-03-2020", "%d-%m-%Y") # con día-mes-año (4 cifras)
-as.Date("10-03-20", "%d-%m-%y")  # con día-mes-año (2 cifras)
-as.Date("03-10-2020", "%m-%d-%Y") # con mes-día-año (4 cifras)
-as.Date("Octubre 21, 1995 21:24", "%B %d, %Y %H:%M") # fecha escrita
-``` 
-
-::: {.rmdcaution}
-
-**`r colorize("Sin pasar a fecha no se puede operar", "#dc3545")`**
-
-Si tenemos una fecha como caracter, nunca podremos hacer operaciones (por ejemplo, restarle una unidad temporal, en este caso un día).
-
-```{r error = TRUE}
-"2021-03-10" - 1 # error
-```
-
-Fíjate la diferencia cuando lo convertimos en fecha
-
-```{r error = TRUE}
-fecha <- as.Date("2021-03-10") - 1 # día previo
-fecha
-``` 
-
-Aunque aparentemente parezca una cadena de texto, prueba a ejecutar `unclass(fecha)` para comprobar que tiene internamente guardado.
-
-```{r}
-unclass(fecha)
-unclass(as.Date("1969-01-01")) # un año antes de la referencia a partir de la cual cuenta días
-``` 
-:::
-
-
-::: {.rmdimportant}
-
-**`r colorize("Paquete lubridate", "#20935E")`**
-
-Dentro del entorno `{tidyverse}`, el paquete `{lubridate}` nos permite una gestión mucho más intuitiva de las fechas
-
-```{r eval = FALSE}
-install.packages("lubridate")
-library(lubridate)
-```
-
-```{r include = FALSE}
-library(lubridate)
-```
-
-```{r}
-ymd_hms("2017-11-28T14:02:00") # convertir a fecha una cadena año-mes-día + hora
-ydm_hms("2017-22-12 10:00:00") # convertir a fecha una cadena año-día-mes + hora
-dmy_hms("1 Jan 2017 23:59:59") # convertir a fecha una cadena textual de fecha + hora
-mdy("July 4th, 2000") # convertir a fecha una cadena textual de fecha
-ymd(20170131)
-```
-:::
-
-En dicho paquete tienes muchas **funcionalidades para trabajar con fechas**. Ver <https://lubridate.tidyverse.org/>.
-
-```{r lubridate, echo = FALSE, out.width = "95%", fig.align = "center", fig.cap = "Paquete lubridate."}
-knitr::include_graphics("./img/lubridate.png")
-```
-
-
-```{r echo = FALSE}
-library(knitr)
-paquetes <-
-  data.frame("paquetes" = c("{base}", "{bookdown}", "{glue}",
-                            "{stringr}", "{lubridate}", "{microbenchmark}",
-                            "{tibble}", "{datasets}", "{readr}", "{tidyverse}",
-                            "{readxl}", "{rvest}"),
-             "descripción" = c("utilidades básicas",
-                               "creación de libros, manuales e informes en R",
-                               "manejo de texto literal",
-                               "manejo complejo de cadenas de texto",
-                               "manejo de fechas",
-                               "comparativa de tiempos de ejecución",
-                               "data.frames eficientes",
-                               "conjuntos de datos",
-                               "lectura de datos rectangulares (tablas)",
-                               "entorno de paquetes para el manejo de datos",
-                               "lectura de datos en formato excel",
-                               "lectura de datos web"))
-kable(paquetes, col.names = c("paquetes", "descripción"), align = "ll",
-      caption = "Paquetes mencionados hasta ahora")
-``` 
-
-
-El paquete `{lubridate}` nos proporciona **herramientas para extraer la fecha y hora actuales** con las funciones `today()` y `now()`
-
-```{r}
-today()
-now()
-```
-
-
-Además tenemos disponibles en dicho paquete funciones para extraer facilmente algunas variables temporales como el día de la semana, el mes o el cuatrimestre, con las funciones `year()`, `months()`, `day()` o `wday()` (día de la semana).
-
-
-```{r}
-fecha <- now()
-year(fecha)
-month(fecha)
-day(fecha)
-wday(fecha, week_start = 1) # Día de la semana (empezando por el lunes)
-hour(fecha)
-minute(fecha)
-second(fecha)
-week(fecha) # Número de semana (del año)
-``` 
-
-Al igual que podemos realizar operaciones aritméticas sencillas con las fechas, también podemos **realizar comparaciones**, por ejemplo, si el día actual es menor o mayor que otra fecha dada. 
-
-```{r}
-fecha_actual <- now()
-fecha_actual > ymd(20170131) # Actual vs 2017-01-31
-fecha_actual > ymd(21000131) # Actual vs 2100-01-31
-``` 
 
 
 

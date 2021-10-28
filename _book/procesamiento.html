@@ -43,31 +43,7 @@
 </form>
 
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
-        <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html">Prefacio</a></li>
-<li class="book-part">Toma de contacto</li>
-<li><a class="" href="instalacionR.html"><span class="header-section-number">1</span> Instalación</a></li>
-<li><a class="" href="primeros-pasos.html"><span class="header-section-number">2</span> Primeros pasos</a></li>
-<li class="book-part">Conceptos básicos</li>
-<li><a class="" href="vectores.html"><span class="header-section-number">3</span> Tipos de datos I: vectores</a></li>
-<li><a class="" href="proyecto.html"><span class="header-section-number">4</span> Flujo de trabajo: primer proyecto</a></li>
-<li><a class="" href="control.html"><span class="header-section-number">5</span> Estructuras de control</a></li>
-<li><a class="" href="datos.html"><span class="header-section-number">6</span> Tipos de datos II: datos estructurados</a></li>
-<li><a class="" href="importar-exportar.html"><span class="header-section-number">7</span> Importando/exportando</a></li>
-<li class="book-part">Listas y funciones</li>
-<li><a class="" href="otros-datos.html"><span class="header-section-number">8</span> Listas y factores</a></li>
-<li><a class="" href="funciones.html"><span class="header-section-number">9</span> Creación de funciones</a></li>
-<li class="book-part">Alto en el camino</li>
-<li><a class="" href="resumen-1.html"><span class="header-section-number">10</span> ¿Qué sabemos hacer?</a></li>
-<li class="book-part">DATAVIZ: introducción a la visualización</li>
-<li><a class="active" href="procesamiento.html"><span class="header-section-number">11</span> Tidy data: ordenando datos</a></li>
-<li><a class="" href="tidyverse.html"><span class="header-section-number">12</span> Transformando los datos: incursión al universo tidyverse</a></li>
-<li><a class="" href="modelos_lineales.html"><span class="header-section-number">13</span> Introducción a los modelos lineales</a></li>
-<li><a class="" href="ggplot2.html"><span class="header-section-number">14</span> Visualizando datos: incursión a ggplot2</a></li>
-<li class="book-part">Epílogo</li>
-<li><a class="" href="contribuye.html"><span class="header-section-number">15</span> Contribuye al proyecto</a></li>
-<li><a class="" href="bibliograf%C3%ADa.html">Bibliografía</a></li>
-</ul>
+        <ul class="book-toc list-unstyled"><li><a class="" href="index.html"><span class="header-section-number">Capítulo 11</span> Tidy data: ordenando datos</a></li></ul>
 
         <div class="book-extra">
           <p><a id="book-repo" href="https://github.com/dadosdelaplace/cursoR_intro_2021_2022">View book source <i class="fab fa-github"></i></a></p>
@@ -91,62 +67,30 @@ Imagen/gráfica 11.1: Flujo deseable de datos según Hadley Wickham, extraída d
 <h2>
 <span class="header-section-number">11.1</span> Repaso: tipos de datos<a class="anchor" aria-label="anchor" href="#repaso_datos"><i class="fas fa-link"></i></a>
 </h2>
-<div class="rmdnote">
-<p><strong><span style="color: #4197D2;">¿Qué datos hemos aprendido a manejar?</span></strong></p>
-<div class="inline-table"><table class="table table-sm">
-<caption>
-<span id="tab:unnamed-chunk-242">Tabla 11.1: </span>Tipos de datos mencionados hasta ahora</caption>
-<colgroup>
-<col width="64%">
-<col width="35%">
-</colgroup>
-<thead><tr class="header">
-<th align="left">paquetes</th>
-<th align="left">descripción</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td align="left">x &lt;- 1 (dato numérico)</td>
-<td align="left">vector de longitud 1</td>
-</tr>
-<tr class="even">
-<td align="left">x &lt;- c(1, 2, 3) (vector de números)</td>
-<td align="left">vector (mismo tipo)</td>
-</tr>
-<tr class="odd">
-<td align="left">x &lt;- c(‘a’, ‘b’, ‘c’) (vector de caracteres)</td>
-<td align="left">vector (mismo tipo)</td>
-</tr>
-<tr class="even">
-<td align="left">x &lt;- matrix(1:6, nrow = 2)</td>
-<td align="left">matriz (mismo tipo, misma longitud)</td>
-</tr>
-<tr class="odd">
-<td align="left">x &lt;- data.frame(‘a’ = 1:3, ‘b’ = c(‘a’, ‘b’, ‘c’), ‘c’ = c(TRUE, TRUE, FALSE))</td>
-<td align="left">data.frame (distinto tipo, misma longitud)</td>
-</tr>
-<tr class="even">
-<td align="left">x &lt;- list(1:3, c(‘a’), c(TRUE, FALSE))</td>
-<td align="left">lista (distinto tipo, distinta longitud)</td>
-</tr>
-</tbody>
-</table></div>
-</div>
-<p>El cuadro de arriba es un <strong>resumen de los tipos de datos que ya conocemos</strong>. ¿Existen más?</p>
+<p>¿Existen más tipos de datos de los que ya conocemos?</p>
 <p>La respuesta te la estarás imaginando: sí. De hecho no es solo que existan más sino que <strong>puedes crear tus propias clases de variables</strong>, pero seguramente acabarán siendo, en su nivel más profundo, una combinación de alguna de las estructuras que ya conocemos. El objetivo de este curso es empezar a ser autónomo/a en el análisis de datos, pero <strong>no es un curso profundo de R</strong>, así que (de momento) vamos a quedarnos como estamos.</p>
+<p> </p>
+<p><strong><span style="color: #4197D2;">GLOSARIO:</span></strong></p>
 <p>Si es importante entender las diferencias entre los datos que ya hemos definido.</p>
 <ul>
-<li><p><strong>Vectores</strong>: es el tipo de dato más simple, una colección de valores <strong>PERO DEL MISMO TIPO</strong>. Los vectores pueden ser de longitud 1 (valores individuales a secas), una <strong>colección de números</strong>, una <strong>colección de cadenas de texto</strong> o una <strong>colección de valores lógicos</strong> (pudiendo tener dentro datos ausentes, o valores especiales como <code>Inf</code> o <code>NaN</code>)</p></li>
-<li><p><strong>Matrices</strong>: se pueden entender como una especie de colección de vectores, una colección de colecciones, un tipo de dato <strong>BIDIMENSIONAL</strong>. Una matriz se conforma de filas y columnas pero, de nuevo, <strong>LOS DATOS DEBEN SER DEL MISMO TIPO</strong>, y los vectores concatenados que forma las filas y/o columnas <strong>DEBEN TENER LA MISMA LONGITUD</strong>.</p></li>
-<li><p><strong>data.frame</strong>: son datos estructurados, lo que comunmente conocemos como «tablas». A diferencia de las matrices, aunque deben <strong>SEGUIR TENIENDO LA MISMA LONGITUD</strong>, las variables que lo conforman pueden ser de <strong>TIPOS DIFERENTES</strong>, puediendo tener el mismo conjunto de datos numéricos, caracteres, lógicos, etc.</p></li>
-<li><p><strong>Listas</strong>: las listas son una concatenación de elementos, a secas, de forma que nos permite concatenar cualquier tipo de dato anterior, pudiendo ser de <strong>DIFERENTE LONGITUD Y DIFERENTE TIPO</strong>.</p></li>
+<li><p><strong><span style="color: #4197D2;">Vectores</span></strong>: es el tipo de dato más simple, una colección de valores <strong>PERO DEL MISMO TIPO</strong>. Los vectores pueden ser de longitud 1 (valores individuales a secas), una <strong>colección de números</strong>, una <strong>colección de cadenas de texto</strong> o una <strong>colección de valores lógicos</strong> (pudiendo tener dentro datos ausentes, o valores especiales como <code>Inf</code> o <code>NaN</code>)</p></li>
+<li><p><strong><span style="color: #4197D2;">Matrices</span></strong>: se pueden entender como una especie de colección de vectores, una colección de colecciones, un tipo de dato <strong>BIDIMENSIONAL</strong>. Una matriz se conforma de filas y columnas pero, de nuevo, <strong>LOS DATOS DEBEN SER DEL MISMO TIPO</strong>, y los vectores concatenados que forma las filas y/o columnas <strong>DEBEN TENER LA MISMA LONGITUD</strong>.</p></li>
+<li><ul>
+<li>
+<strong><span style="color: #4197D2;">data,frame</span></strong>: son datos estructurados, lo que comunmente conocemos como «tablas». A diferencia de las matrices, aunque deben <strong>SEGUIR TENIENDO LA MISMA LONGITUD</strong>, las variables que lo conforman pueden ser de <strong>TIPOS DIFERENTES</strong>, puediendo tener el mismo conjunto de datos numéricos, caracteres, lógicos, etc.</li>
+</ul></li>
+<li><ul>
+<li>
+<strong><span style="color: #4197D2;">Listas</span></strong>: las listas son una concatenación de elementos, a secas, de forma que nos permite concatenar cualquier tipo de dato anterior, pudiendo ser de <strong>DIFERENTE LONGITUD Y DIFERENTE TIPO</strong>.</li>
+</ul></li>
 </ul>
-<div class="rmdwarning">
+<p> </p>
+<p><strong><span style="color: #ffc107;">WARNING: cuidado con las listas</span></strong></p>
 <p>Como hemos mencionado, una <strong><span style="color: #ffc107;">lista no se puede vectorizar de forma inmediata</span></strong>, por lo cualquier operación aritmética aplicada a una lista dará error. Para poder operar con ellas tenemos una opción que es aplicar la función <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code>, o directamente acudir al paquete <a href="http://purrr.tidyverse.org">purrr</a>.</p>
-<div class="sourceCode" id="cb679"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"purrr"</span><span class="op">)</span> <span class="co"># solo la primera vez</span></code></pre></div>
 <p>Veamos un ejemplo muy sencillo (te animo a investigar en dicho paquete pero se escapa de los objetivos del curso): vamos definir una lista y a <strong>aplicar la misma función para cada uno de los elementos de la misma</strong>.</p>
-<div class="sourceCode" id="cb680"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://purrr.tidyverse.org">purrr</a></span><span class="op">)</span>
 
 <span class="co"># Creamos una lista de tres elementos</span>
@@ -163,22 +107,22 @@ Imagen/gráfica 11.1: Flujo deseable de datos según Hadley Wickham, extraída d
 ## [[3]]
 ## [1] 50</code></pre>
 <p>Si no indicamos nada, la salida será a su vez una lista. Dado que la función que vamos a aplicar es la suma de cada uno de los elementos que conforman la lista original, y nos <strong>devolverá en cada simplemente un número</strong>, quizás puede ser más útil pedir que nos lo devuelva en un vector de números.</p>
-<div class="sourceCode" id="cb682"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Aplicamos una función a cada elemento de la lista</span>
 <span class="co"># y le pedimos que nos devuelva un vector de números</span>
 <span class="fu"><a href="https://rdrr.io/pkg/purrr/man/map.html">map_dbl</a></span><span class="op">(</span><span class="va">x</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">}</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1]  6 22 50</code></pre>
-</div>
+<p> </p>
 </div>
 <div id="tibble" class="section level2">
 <h2>
-<span class="header-section-number">11.2</span> Mejorando los data.frame: tibble<a class="anchor" aria-label="anchor" href="#tibble"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.2</span> Mejorando los data.frame: datos tibble<a class="anchor" aria-label="anchor" href="#tibble"><i class="fas fa-link"></i></a>
 </h2>
 <p>Antes de ordenar, limpiar y procesar nuestros datos, vamos a ver un tipo de dato que mencionamos por encima en su momento: las tablas <code>tibble</code>. Los datos en formato <code>tibble</code> (del paquete <a href="https://tibble.tidyverse.org/">tibble</a>) son un <strong>tipo de <code>data.frame</code> mejorado, para una gestión más ágil, eficiente y coherente</strong>. Las <strong>tablas en formato tibble (su clase será tbl_df)</strong> tiene 4 ventajas principales frente a los ya vistos <code>data.frame</code>:</p>
 <ul>
 <li>Permite <strong>imprimir por consola la tabla con mayor información</strong> de las variables, y <strong>solo imprime por defecto las primeras filas</strong> (todas si son 20 o menos, 10 si son más de 20 filas).</li>
 </ul>
-<div class="sourceCode" id="cb684"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/">tibble</a></span><span class="op">)</span>
 
 <span class="co"># data.frame</span>
@@ -239,7 +183,7 @@ Imagen/gráfica 11.1: Flujo deseable de datos según Hadley Wickham, extraída d
 ## 48 48 c 58  FALSE
 ## 49 49 d 59   TRUE
 ## 50 50 e 60  FALSE</code></pre>
-<div class="sourceCode" id="cb686"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># tibble</span>
 <span class="va">tabla_tb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/tibble/man/tibble.html">tibble</a></span><span class="op">(</span><span class="st">"x"</span> <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">50</span>,
              <span class="st">"y"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"d"</span>, <span class="st">"e"</span><span class="op">)</span>, <span class="fl">10</span><span class="op">)</span>,
@@ -261,7 +205,7 @@ Imagen/gráfica 11.1: Flujo deseable de datos según Hadley Wickham, extraída d
 ## 10    10 e        20 FALSE 
 ## # … with 40 more rows</code></pre>
 <p>Puedes imprimir las filas y columnas que quieras con <code><a href="https://rdrr.io/r/base/print.html">print()</a></code>, pero por defecto te aseguras de <strong>no saturar la consola</strong>.</p>
-<div class="sourceCode" id="cb688"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">tabla_tb</span>, n <span class="op">=</span> <span class="fl">13</span>, width <span class="op">=</span> <span class="cn">Inf</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 50 × 4
 ##        x y         z logica
@@ -283,13 +227,13 @@ Imagen/gráfica 11.1: Flujo deseable de datos según Hadley Wickham, extraída d
 <ul>
 <li>Los <strong>datos de tipo caracter (cadenas de texto) son guardados como tal</strong> (y no como factores).</li>
 </ul>
-<div class="sourceCode" id="cb690"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Caracteres en un data.frame</span>
 <span class="va">tabla_df</span><span class="op">$</span><span class="va">y</span></code></pre></div>
 <pre><code>##  [1] a b c d e a b c d e a b c d e a b c d e a b c d e a b c d e a b c d e a b c
 ## [39] d e a b c d e a b c d e
 ## Levels: a b c d e</code></pre>
-<div class="sourceCode" id="cb692"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Caracteres en un tibble</span>
 <span class="va">tabla_tb</span><span class="op">$</span><span class="va">y</span></code></pre></div>
 <pre><code>##  [1] "a" "b" "c" "d" "e" "a" "b" "c" "d" "e" "a" "b" "c" "d" "e" "a" "b" "c" "d"
@@ -298,15 +242,15 @@ Imagen/gráfica 11.1: Flujo deseable de datos según Hadley Wickham, extraída d
 <ul>
 <li>La <strong>función <code><a href="https://rdrr.io/pkg/tibble/man/tibble.html">tibble()</a></code> construye las variables secuencialmente</strong>, pudiendo hacer uso en la propia definición de variables recién definidas en dicha definición.</li>
 </ul>
-<div class="sourceCode" id="cb694"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># data.frame</span>
 <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="st">"x"</span> <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span>,
            <span class="st">"y"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"d"</span>, <span class="st">"e"</span><span class="op">)</span>,
            <span class="st">"z"</span> <span class="op">=</span> <span class="fl">11</span><span class="op">:</span><span class="fl">15</span>,
            <span class="st">"logica"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span><span class="op">)</span>,
            <span class="st">"x*z"</span> <span class="op">=</span> <span class="va">x</span> <span class="op">*</span> <span class="va">z</span><span class="op">)</span></code></pre></div>
-<pre><code>## Error in x * z: argumento no-numérico para operador binario</code></pre>
-<div class="sourceCode" id="cb696"><pre class="downlit sourceCode r">
+<pre><code>## Error in data.frame(x = 1:5, y = c("a", "b", "c", "d", "e"), z = 11:15, : objeto 'z' no encontrado</code></pre>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># tibble</span>
 <span class="fu"><a href="https://rdrr.io/pkg/tibble/man/tibble.html">tibble</a></span><span class="op">(</span><span class="st">"x"</span> <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span>,
        <span class="st">"y"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"d"</span>, <span class="st">"e"</span><span class="op">)</span>,
@@ -324,11 +268,11 @@ Imagen/gráfica 11.1: Flujo deseable de datos según Hadley Wickham, extraída d
 <ul>
 <li>Si <strong>accedes a una columna que no existe avisa</strong> con un warning.</li>
 </ul>
-<div class="sourceCode" id="cb698"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># data.frame</span>
 <span class="va">tabla_df</span><span class="op">$</span><span class="va">variable_inexistente</span></code></pre></div>
 <pre><code>## NULL</code></pre>
-<div class="sourceCode" id="cb700"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># tibble</span>
 <span class="va">tabla_tb</span><span class="op">$</span><span class="va">variable_inexistente</span></code></pre></div>
 <pre><code>## Warning: Unknown or uninitialised column: `variable_inexistente`.</code></pre>
@@ -336,22 +280,22 @@ Imagen/gráfica 11.1: Flujo deseable de datos según Hadley Wickham, extraída d
 <ul>
 <li>No solo no te cambiará el tipo de datos sino que <strong>no te cambiará el nombre de las variables</strong> (los <code>data.frame</code> transforma los caracteres que no sean letras).</li>
 </ul>
-<div class="sourceCode" id="cb703"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># data.frame</span>
 <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="st">":)"</span> <span class="op">=</span> <span class="st">"emoticono"</span>, <span class="st">" "</span> <span class="op">=</span> <span class="st">"en blanco"</span>, <span class="st">"2000"</span> <span class="op">=</span> <span class="st">"número"</span><span class="op">)</span></code></pre></div>
 <pre><code>##         X..        X.  X2000
 ## 1 emoticono en blanco número</code></pre>
-<div class="sourceCode" id="cb705"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># tibble</span>
 <span class="fu"><a href="https://rdrr.io/pkg/tibble/man/tibble.html">tibble</a></span><span class="op">(</span><span class="st">":)"</span> <span class="op">=</span> <span class="st">"emoticono"</span>, <span class="st">" "</span> <span class="op">=</span> <span class="st">"en blanco"</span>, <span class="st">"2000"</span> <span class="op">=</span> <span class="st">"número"</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 3
 ##   `:)`      ` `       `2000`
 ##   &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
 ## 1 emoticono en blanco número</code></pre>
-<div class="rmdimportant">
+<p> </p>
 <p><strong><span style="color: #20935E;">CONSEJO: convertir a tibble</span></strong></p>
 <p>Si ya tienes un <code>data.frame</code> es altamente recomendable convertirlo a tibble con <code><a href="https://rdrr.io/pkg/tibble/man/as_tibble.html">as_tibble()</a></code></p>
-<div class="sourceCode" id="cb707"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/tibble/man/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="va">tabla_df</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 50 × 4
 ##        x y         z logica
@@ -367,8 +311,8 @@ Imagen/gráfica 11.1: Flujo deseable de datos según Hadley Wickham, extraída d
 ##  9     9 d        19 TRUE  
 ## 10    10 e        20 FALSE 
 ## # … with 40 more rows</code></pre>
-</div>
-<p>Puedes consultar más funcionalidades en <a href="https://tibble.tidyverse.org/" class="uri">https://tibble.tidyverse.org/</a>.</p>
+<p> </p>
+<p>Puedes consultar más funcionalidades de dichos datos en <a href="https://tibble.tidyverse.org/" class="uri">https://tibble.tidyverse.org/</a>.</p>
 </div>
 <div id="tidy_data" class="section level2">
 <h2>
@@ -401,16 +345,23 @@ Imagen/gráfica 11.2: Infografía con datos ordenados (tidy data) extraída de <
 </p>
 </div>
 <p>Lo contrario lo llamaremos <strong>datos desordenados</strong> o <em>messy data</em>. Para trabajar con los datos vamos a cargar <a href="https://tidyverse.tidyverse.org">tidyverse</a>, un entorno de paquetes para el manejo de datos (ver más detalles en <a href="tidyverse.html#tidyverse">Transformando los datos: incursión al universo tidyverse</a>).</p>
-<div class="sourceCode" id="cb709"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"tidyverse"</span><span class="op">)</span> <span class="co"># SOLO la primera vez</span></code></pre></div>
-<div class="sourceCode" id="cb710"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></code></pre></div>
+<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</code></pre>
+<pre><code>## ✓ ggplot2 3.3.5     ✓ dplyr   1.0.7
+## ✓ tidyr   1.1.3     ✓ stringr 1.4.0
+## ✓ readr   2.0.1     ✓ forcats 0.5.1</code></pre>
+<pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
 <div id="messy-data-valores-en-columnas-en-lugar-de-variables" class="section level3">
 <h3>
 <span class="header-section-number">11.3.1</span> Messy data: valores en columnas en lugar de variables<a class="anchor" aria-label="anchor" href="#messy-data-valores-en-columnas-en-lugar-de-variables"><i class="fas fa-link"></i></a>
 </h3>
 <p>Vamos a visualizar la tabla <code>table4a</code> del paquete <a href="https://tidyr.tidyverse.org">tidyr</a> (que ya lo tenemos cargado del entorno <a href="https://tidyverse.tidyverse.org">tidyverse</a>).</p>
-<div class="sourceCode" id="cb711"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">table4a</span></code></pre></div>
 <pre><code>## # A tibble: 3 × 3
 ##   country     `1999` `2000`
@@ -428,7 +379,7 @@ Imagen/gráfica 11.2: Infografía con datos ordenados (tidy data) extraída de <
 <li>
 <code>values_to</code>: el nombre de la columna a la que vamos a mandar los valores.</li>
 </ul>
-<div class="sourceCode" id="cb713"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">table4a</span> <span class="op">%&gt;%</span> <span class="fu">pivot_longer</span><span class="op">(</span>cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"1999"</span>, <span class="st">"2000"</span><span class="op">)</span>,
                          names_to <span class="op">=</span> <span class="st">"year"</span>,
                          values_to <span class="op">=</span> <span class="st">"values"</span><span class="op">)</span></code></pre></div>
@@ -442,7 +393,7 @@ Imagen/gráfica 11.2: Infografía con datos ordenados (tidy data) extraída de <
 ## 5 China       1999  212258
 ## 6 China       2000  213766</code></pre>
 <p>Ahora tenemos un <strong>registro por fila, una variable por columna y cada celda representa un único valor</strong>. Este ejemplo de <em>messy data</em> lo podemos encontrar muy a menudo cuando <strong>construimos rangos de variables</strong> pensando que es mejor tener una tabla más compacta (alargar la tabla a lo ancho en lugar de a lo largo). Es el caso de la tabla <code>relig_income</code>.</p>
-<div class="sourceCode" id="cb715"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">relig_income</span></code></pre></div>
 <pre><code>## # A tibble: 18 × 11
 ##    religion `&lt;$10k` `$10-20k` `$20-30k` `$30-40k` `$40-50k` `$50-75k` `$75-100k`
@@ -468,7 +419,7 @@ Imagen/gráfica 11.2: Infografía con datos ordenados (tidy data) extraída de <
 ## # … with 3 more variables: $100-150k &lt;dbl&gt;, &gt;150k &lt;dbl&gt;,
 ## #   Don't know/refused &lt;dbl&gt;</code></pre>
 <p>Salvo la primera, el resto de columnas tienen como <strong>nombre los valores de una variable en sí misma</strong> (ingresos). Para ordenar los datos vamos a razonar de la misma manera solo que ahora, en lugar de indicarle el nombre de todas las columnas que queremos usar de entrada, vamos a <strong>indicarle de forma más corta la columna que NO queremos seleccionar</strong>.</p>
-<div class="sourceCode" id="cb717"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># No necesitamos las comillas en el nombre de columnas salvo que tengan caracteres que no sean letras</span>
 <span class="va">relig_income</span> <span class="op">%&gt;%</span> <span class="fu">pivot_longer</span><span class="op">(</span><span class="op">-</span><span class="va">religion</span>, names_to <span class="op">=</span> <span class="st">"ingresos"</span>,
                               values_to <span class="op">=</span> <span class="st">"frecuencia"</span><span class="op">)</span></code></pre></div>
@@ -493,7 +444,7 @@ Imagen/gráfica 11.2: Infografía con datos ordenados (tidy data) extraída de <
 <span class="header-section-number">11.3.2</span> Messy data: una observación guardada en varias filas<a class="anchor" aria-label="anchor" href="#messy-data-una-observaci%C3%B3n-guardada-en-varias-filas"><i class="fas fa-link"></i></a>
 </h3>
 <p>Vamos a visualizar la tabla <code>table2</code> del paquete <a href="https://tidyr.tidyverse.org">tidyr</a>.</p>
-<div class="sourceCode" id="cb719"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">table2</span></code></pre></div>
 <pre><code>## # A tibble: 12 × 4
 ##    country      year type            count
@@ -517,7 +468,7 @@ Imagen/gráfica 11.2: Infografía con datos ordenados (tidy data) extraída de <
 <li>
 <code>values_from</code>: el nombre de la columna de la que vamos a sacar los valores.</li>
 </ul>
-<div class="sourceCode" id="cb721"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">table2</span> <span class="op">%&gt;%</span> <span class="fu">pivot_wider</span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">type</span>, values_from <span class="op">=</span> <span class="va">count</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 4
 ##   country      year  cases population
@@ -535,7 +486,7 @@ Imagen/gráfica 11.2: Infografía con datos ordenados (tidy data) extraída de <
 <span class="header-section-number">11.3.3</span> Messy data: una celda con múltiples valores<a class="anchor" aria-label="anchor" href="#messy-data-una-celda-con-m%C3%BAltiples-valores"><i class="fas fa-link"></i></a>
 </h3>
 <p>Por último vamos a visualizar la tabla <code>table3</code> del paquete <a href="https://tidyr.tidyverse.org">tidyr</a>.</p>
-<div class="sourceCode" id="cb723"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">table3</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 3
 ##   country      year rate             
@@ -547,7 +498,7 @@ Imagen/gráfica 11.2: Infografía con datos ordenados (tidy data) extraída de <
 ## 5 China        1999 212258/1272915272
 ## 6 China        2000 213766/1280428583</code></pre>
 <p>En la variable <code>rate</code> hay guardados dos valores, separados por <code><a href="https://rdrr.io/r/base/Arithmetic.html">/</a></code>, lo que hace que en <strong>una celda no tiene un único valor sino dos</strong>. La función <code>separate()</code> del paquete <a href="https://tidyr.tidyverse.org">tidyr</a> nos permitirá <strong>separar los múltiples valores de la columna</strong> <code>rate</code> simplemente indicándole el nombre de las nuevas columnas en el argumento <code>into = ...</code>, creando una nueva columna para cada uno de ellos.</p>
-<div class="sourceCode" id="cb725"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">table3</span> <span class="op">%&gt;%</span> <span class="fu">separate</span><span class="op">(</span><span class="va">rate</span>, into <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"cases"</span>, <span class="st">"population"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 4
 ##   country      year cases  population
@@ -559,7 +510,7 @@ Imagen/gráfica 11.2: Infografía con datos ordenados (tidy data) extraída de <
 ## 5 China        1999 212258 1272915272
 ## 6 China        2000 213766 1280428583</code></pre>
 <p>Por defecto lo que hace es <strong>localizar como separador cualquier caracter que no sea alfa-numérico</strong>. Si queremos un caracter concreto para dividir podemos indicárselo explícitamente</p>
-<div class="sourceCode" id="cb727"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">table3</span> <span class="op">%&gt;%</span> <span class="fu">separate</span><span class="op">(</span><span class="va">rate</span>, into <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"cases"</span>, <span class="st">"population"</span><span class="op">)</span>, sep <span class="op">=</span> <span class="st">"/"</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 4
 ##   country      year cases  population
@@ -571,7 +522,7 @@ Imagen/gráfica 11.2: Infografía con datos ordenados (tidy data) extraída de <
 ## 5 China        1999 212258 1272915272
 ## 6 China        2000 213766 1280428583</code></pre>
 <p>Si <strong>usas un separador que no está en los datos</strong> te devolverá dichas columnas vacías ya que no ha podido dividirlas.</p>
-<div class="sourceCode" id="cb729"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">table3</span> <span class="op">%&gt;%</span> <span class="fu">separate</span><span class="op">(</span><span class="va">rate</span>, into <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"cases"</span>, <span class="st">"population"</span><span class="op">)</span>, sep <span class="op">=</span> <span class="st">"."</span><span class="op">)</span></code></pre></div>
 <pre><code>## Warning: Expected 2 pieces. Additional pieces discarded in 6 rows [1, 2, 3, 4,
 ## 5, 6].</code></pre>
@@ -584,10 +535,10 @@ Imagen/gráfica 11.2: Infografía con datos ordenados (tidy data) extraída de <
 ## 4 Brazil       2000 ""    ""        
 ## 5 China        1999 ""    ""        
 ## 6 China        2000 ""    ""</code></pre>
-<div class="rmdimportant">
-<p><strong><span style="color: #20935E;">CONSEJO: convertir los datos</span></strong></p>
+<p> </p>
+<p><strong><span style="color: #20935E;">CONSEJO: convertir variables</span></strong></p>
 <p>Una opción muy útil que podemos usar al aplicar la separación de los múltiples valores es <strong>convertir los datos al tipo adecuado</strong>. Los datos unidos en <code>rate</code> eran caracteres ya que tenía el separador <code><a href="https://rdrr.io/r/base/Arithmetic.html">/</a></code> (no podían ser numéricos). Al separarlos, por defecto, aunque ahora ya son solo números, los separa como si fueran textos. Con <code>convert = TRUE</code> podemos indicarle que identifique el tipo de dato y lo convierta (fíjate en la cabecera de las columnas ahora).</p>
-<div class="sourceCode" id="cb732"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">table3</span> <span class="op">%&gt;%</span> 
   <span class="fu">separate</span><span class="op">(</span><span class="va">rate</span>, into <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"cases"</span>, <span class="st">"population"</span><span class="op">)</span>, convert <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 4
@@ -599,9 +550,9 @@ Imagen/gráfica 11.2: Infografía con datos ordenados (tidy data) extraída de <
 ## 4 Brazil       2000  80488  174504898
 ## 5 China        1999 212258 1272915272
 ## 6 China        2000 213766 1280428583</code></pre>
-</div>
+<p> </p>
 <p>Dicha función también puede ser usada para <strong>dividir cifras, como por ejemplo el año</strong></p>
-<div class="sourceCode" id="cb734"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">table3</span> <span class="op">%&gt;%</span> <span class="fu">separate</span><span class="op">(</span><span class="va">year</span>,
                     into <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"siglo"</span>, <span class="st">"año"</span><span class="op">)</span>,
                     sep <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
@@ -615,7 +566,7 @@ Imagen/gráfica 11.2: Infografía con datos ordenados (tidy data) extraída de <
 ## 5 China       19    99    212258/1272915272
 ## 6 China       20    00    213766/1280428583</code></pre>
 <p>De la misma manera que podemos separar columnas <strong>también podemos unirlas</strong>. Para ello vamos a usar la tabla <code>table5</code> del ya mencionado paquete. Con la función <code>unite()</code> vamos a unir el siglo (en <code>century</code>) y el año (en <code>year</code>), y al inicio le indicaremos como se llamará la nueva variable (<code>año_completo</code>).</p>
-<div class="sourceCode" id="cb736"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">table5</span> <span class="op">%&gt;%</span> <span class="fu">unite</span><span class="op">(</span><span class="va">año_completo</span>, <span class="va">century</span>, <span class="va">year</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 3
 ##   country     año_completo rate             
@@ -627,7 +578,7 @@ Imagen/gráfica 11.2: Infografía con datos ordenados (tidy data) extraída de <
 ## 5 China       19_99        212258/1272915272
 ## 6 China       20_00        213766/1280428583</code></pre>
 <p>Como pasaba en <code>separate()</code>, tiene un argumento de separador por defecto, en este caso <code>sep = "_"</code>. <strong>Si queremos cambiarlo podemos hacerlo indicándoselo explícitamente</strong>.</p>
-<div class="sourceCode" id="cb738"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">table5</span> <span class="op">%&gt;%</span>
   <span class="fu">unite</span><span class="op">(</span><span class="va">año_completo</span>, <span class="va">century</span>, <span class="va">year</span>, sep <span class="op">=</span> <span class="st">""</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 3
@@ -653,7 +604,7 @@ Imagen/gráfica 11.2: Infografía con datos ordenados (tidy data) extraída de <
 </ul>
 <p>Recuerda que podemos cargar elementos de un paquete (en este caso <code>{datasets}</code>) cargando <code><a href="https://rdrr.io/r/base/library.html">library(datasets)</a></code> y luego el elemento, o bien <code><a href="https://rdrr.io/r/datasets/anscombe.html">datasets::anscombe</a></code> (prefijo::nombre).</p>
 <p>La respuesta: NO. Tienes muchas formas de comprobarlo si imprimes el conjunto por defecto.</p>
-<div class="sourceCode" id="cb740"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">mtcars</span></code></pre></div>
 <pre><code>##                      mpg cyl  disp  hp drat    wt  qsec vs am gear carb
 ## Mazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
@@ -695,7 +646,7 @@ Imagen/gráfica 11.2: Infografía con datos ordenados (tidy data) extraída de <
 <li>Imprime el nombre de las filas (el nombre de los modelos) como si fuera una variable (¡que no existe!).</li>
 </ul>
 <p>Así debería de salir si fuera <code>tibble</code>.</p>
-<div class="sourceCode" id="cb742"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/tibble/man/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 32 × 11
 ##      mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
@@ -719,7 +670,7 @@ Imagen/gráfica 11.2: Infografía con datos ordenados (tidy data) extraída de <
 <li>Solución:</li>
 </ul>
 <p>Un ejemplo:</p>
-<div class="sourceCode" id="cb744"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/tibble/man/tibble.html">tibble</a></span><span class="op">(</span><span class="st">"a"</span> <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">7</span>, <span class="st">"b"</span> <span class="op">=</span> <span class="fl">11</span><span class="op">:</span><span class="fl">17</span>, <span class="st">"c"</span> <span class="op">=</span> <span class="va">a</span> <span class="op">*</span> <span class="va">b</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 7 × 3
 ##       a     b     c
@@ -732,16 +683,9 @@ Imagen/gráfica 11.2: Infografía con datos ordenados (tidy data) extraída de <
 ## 6     6    16    96
 ## 7     7    17   119</code></pre>
 <p>Si lo intentamos con un <code>data.frame</code>, intentará buscar una variable real que tengamos guardada que se llame <code>a</code> y <code>b</code>, sin encontrarlas.</p>
-<div class="sourceCode" id="cb746"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="st">"a"</span> <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">7</span>, <span class="st">"b"</span> <span class="op">=</span> <span class="fl">11</span><span class="op">:</span><span class="fl">17</span>, <span class="st">"c"</span> <span class="op">=</span> <span class="va">a</span> <span class="op">*</span> <span class="va">b</span><span class="op">)</span></code></pre></div>
-<pre><code>##   a  b c
-## 1 1 11 2
-## 2 2 12 2
-## 3 3 13 2
-## 4 4 14 2
-## 5 5 15 2
-## 6 6 16 2
-## 7 7 17 2</code></pre>
+<pre><code>## Error in data.frame(a = 1:7, b = 11:17, c = a * b): objeto 'a' no encontrado</code></pre>
 <!-- tocstop -->
 </details><p> </p>
 <details><p><summary>📝<strong>Ejercicio 3</strong>: define un <code>tibble</code> con tres variables de nombres <code>variable</code>, <code>2</code>, <code>tercera :)</code>, e intenta acceder a ellas.</summary></p>
@@ -750,7 +694,7 @@ Imagen/gráfica 11.2: Infografía con datos ordenados (tidy data) extraída de <
 <li>Solución:</li>
 </ul>
 <p>Las variables solo con caracteres del alfabeto se podrán acceder sin necesidad de comillas.</p>
-<div class="sourceCode" id="cb748"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Definimos el tibble</span>
 <span class="va">datos_tb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/tibble/man/tibble.html">tibble</a></span><span class="op">(</span><span class="st">"variable"</span> <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">7</span>, <span class="st">"tercera falsa :)"</span> <span class="op">=</span> <span class="fl">0</span>,
                    <span class="st">"2"</span> <span class="op">=</span> <span class="fl">11</span><span class="op">:</span><span class="fl">17</span><span class="op">)</span>
@@ -758,14 +702,14 @@ Imagen/gráfica 11.2: Infografía con datos ordenados (tidy data) extraída de <
 <span class="co"># Accedemos a sus columnas</span>
 <span class="va">datos_tb</span><span class="op">$</span><span class="va">variable</span></code></pre></div>
 <pre><code>## [1] 1 2 3 4 5 6 7</code></pre>
-<div class="sourceCode" id="cb750"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">datos_tb</span><span class="op">$</span><span class="va">`tercera falsa :)`</span></code></pre></div>
 <pre><code>## [1] 0 0 0 0 0 0 0</code></pre>
-<div class="sourceCode" id="cb752"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">datos_tb</span><span class="op">$</span><span class="va">`2`</span></code></pre></div>
 <pre><code>## [1] 11 12 13 14 15 16 17</code></pre>
 <p>También se puede acceder por el orden que ocupan:</p>
-<div class="sourceCode" id="cb754"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">datos_tb</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></code></pre></div>
 <pre><code>## # A tibble: 7 × 1
 ##   variable
@@ -777,7 +721,7 @@ Imagen/gráfica 11.2: Infografía con datos ordenados (tidy data) extraída de <
 ## 5        5
 ## 6        6
 ## 7        7</code></pre>
-<div class="sourceCode" id="cb756"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">datos_tb</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span></code></pre></div>
 <pre><code>## # A tibble: 7 × 1
 ##   `tercera falsa :)`
@@ -789,7 +733,7 @@ Imagen/gráfica 11.2: Infografía con datos ordenados (tidy data) extraída de <
 ## 5                  0
 ## 6                  0
 ## 7                  0</code></pre>
-<div class="sourceCode" id="cb758"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">datos_tb</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></code></pre></div>
 <pre><code>## # A tibble: 7 × 1
 ##     `2`
@@ -802,7 +746,7 @@ Imagen/gráfica 11.2: Infografía con datos ordenados (tidy data) extraída de <
 ## 6    16
 ## 7    17</code></pre>
 <p>Y también por el nombre entre corchetes (doble corchete extrae la variable fuera del tibble, corchete simple en formato tibble):</p>
-<div class="sourceCode" id="cb760"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">datos_tb</span><span class="op">[</span><span class="st">"variable"</span><span class="op">]</span></code></pre></div>
 <pre><code>## # A tibble: 7 × 1
 ##   variable
@@ -814,10 +758,10 @@ Imagen/gráfica 11.2: Infografía con datos ordenados (tidy data) extraída de <
 ## 5        5
 ## 6        6
 ## 7        7</code></pre>
-<div class="sourceCode" id="cb762"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">datos_tb</span><span class="op">[[</span><span class="st">"variable"</span><span class="op">]</span><span class="op">]</span></code></pre></div>
 <pre><code>## [1] 1 2 3 4 5 6 7</code></pre>
-<div class="sourceCode" id="cb764"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">datos_tb</span><span class="op">[</span><span class="st">"tercera falsa :)"</span><span class="op">]</span></code></pre></div>
 <pre><code>## # A tibble: 7 × 1
 ##   `tercera falsa :)`
@@ -829,7 +773,7 @@ Imagen/gráfica 11.2: Infografía con datos ordenados (tidy data) extraída de <
 ## 5                  0
 ## 6                  0
 ## 7                  0</code></pre>
-<div class="sourceCode" id="cb766"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">datos_tb</span><span class="op">[</span><span class="st">"2"</span><span class="op">]</span></code></pre></div>
 <pre><code>## # A tibble: 7 × 1
 ##     `2`
@@ -844,7 +788,7 @@ Imagen/gráfica 11.2: Infografía con datos ordenados (tidy data) extraída de <
 <!-- tocstop -->
 </details><p> </p>
 <details><p><summary>📝<strong>Ejercicio 4</strong>: convierte en <em>tidy data</em> el siguiente <code>data.frame</code>.</summary></p>
-<div class="sourceCode" id="cb768"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tabla_tb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/tibble/man/tibble.html">tibble</a></span><span class="op">(</span><span class="st">"trimestre"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"T1"</span>, <span class="st">"T2"</span>, <span class="st">"T3"</span><span class="op">)</span>,
                    <span class="st">"2020"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">12</span>, <span class="fl">7.5</span><span class="op">)</span>,
                    <span class="st">"2021"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">8</span>, <span class="fl">0</span>, <span class="fl">9</span><span class="op">)</span><span class="op">)</span></code></pre></div>
@@ -853,7 +797,7 @@ Imagen/gráfica 11.2: Infografía con datos ordenados (tidy data) extraída de <
 <li>Solución:</li>
 </ul>
 <p>El problema es que las dos columnas con nombres de año son en realidad valores que deberían pasar a ser variables, así que deberíamos disminuir aplicar <code>pivot_longer()</code></p>
-<div class="sourceCode" id="cb769"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Aplicamos pivot_longer</span>
 <span class="va">tabla_tb</span> <span class="op">%&gt;%</span> <span class="fu">pivot_longer</span><span class="op">(</span>cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"2020"</span>, <span class="st">"2021"</span><span class="op">)</span>,
                           names_to <span class="op">=</span> <span class="st">"año"</span>, values_to <span class="op">=</span> <span class="st">"valores"</span><span class="op">)</span></code></pre></div>
@@ -869,7 +813,7 @@ Imagen/gráfica 11.2: Infografía con datos ordenados (tidy data) extraída de <
 <!-- tocstop -->
 </details><p> </p>
 <details><p><summary>📝<strong>Ejercicio 5</strong>: convierte en <em>tidy data</em> el siguiente <code>data.frame</code>.</summary></p>
-<div class="sourceCode" id="cb771"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tabla_tb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/tibble/man/tibble.html">tibble</a></span><span class="op">(</span><span class="st">"año"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2019</span>, <span class="fl">2019</span>, <span class="fl">2020</span>, <span class="fl">2020</span>, <span class="fl">2021</span>, <span class="fl">2021</span><span class="op">)</span>,
                    <span class="st">"variable"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"A"</span>, <span class="st">"B"</span><span class="op">)</span>,
                    <span class="st">"valor"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">9383</span>, <span class="fl">7.58</span>, <span class="fl">10839</span>, <span class="fl">9</span>, <span class="fl">32949</span><span class="op">)</span><span class="op">)</span></code></pre></div>
@@ -878,7 +822,7 @@ Imagen/gráfica 11.2: Infografía con datos ordenados (tidy data) extraída de <
 <li>Solución:</li>
 </ul>
 <p>El problema es que las filas que comparten año son el mismo registro (pero con dos características que tenemos divididas en dos filas), así que deberíamos disminuir aplicar <code>pivot_wider()</code></p>
-<div class="sourceCode" id="cb772"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Aplicamos pivot_wider</span>
 <span class="va">tabla_tb</span> <span class="op">%&gt;%</span> <span class="fu">pivot_wider</span><span class="op">(</span>names_from <span class="op">=</span> <span class="st">"variable"</span>, values_from <span class="op">=</span> <span class="st">"valor"</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 3 × 3
@@ -895,7 +839,7 @@ Imagen/gráfica 11.2: Infografía con datos ordenados (tidy data) extraída de <
 <li>Solución:</li>
 </ul>
 <p>Primero uniremos el siglo y las dos últimas cifras del año para obtener el año completo (guardado en <code>año</code>)</p>
-<div class="sourceCode" id="cb774"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">table5</span> <span class="op">%&gt;%</span>
   <span class="fu">unite</span><span class="op">(</span><span class="va">año</span>, <span class="va">century</span>, <span class="va">year</span>, sep <span class="op">=</span> <span class="st">""</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 3
@@ -908,7 +852,7 @@ Imagen/gráfica 11.2: Infografía con datos ordenados (tidy data) extraída de <
 ## 5 China       1999  212258/1272915272
 ## 6 China       2000  213766/1280428583</code></pre>
 <p>Tras ello deberemos separar el valor del ratio en denominador y numerador (ya que ahora hay dos valores en una celda), y convertiremos el tipo de dato en la salida para que sea número.</p>
-<div class="sourceCode" id="cb776"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">table5</span> <span class="op">%&gt;%</span>
   <span class="fu">unite</span><span class="op">(</span><span class="va">año</span>, <span class="va">century</span>, <span class="va">year</span>, sep <span class="op">=</span> <span class="st">""</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">separate</span><span class="op">(</span><span class="va">rate</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"numerador"</span>, <span class="st">"denominador"</span><span class="op">)</span>, convert <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
@@ -926,28 +870,15 @@ Imagen/gráfica 11.2: Infografía con datos ordenados (tidy data) extraída de <
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="resumen-1.html"><span class="header-section-number">10</span> ¿Qué sabemos hacer?</a></div>
-<div class="next"><a href="tidyverse.html"><span class="header-section-number">12</span> Transformando los datos: incursión al universo tidyverse</a></div>
+<div class="empty"></div>
+<div class="empty"></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#procesamiento"><span class="header-section-number">11</span> Tidy data: ordenando datos</a></li>
-<li><a class="nav-link" href="#repaso_datos"><span class="header-section-number">11.1</span> Repaso: tipos de datos</a></li>
-<li><a class="nav-link" href="#tibble"><span class="header-section-number">11.2</span> Mejorando los data.frame: tibble</a></li>
-<li>
-<a class="nav-link" href="#tidy_data"><span class="header-section-number">11.3</span> Tidy data vs messy data</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#messy-data-valores-en-columnas-en-lugar-de-variables"><span class="header-section-number">11.3.1</span> Messy data: valores en columnas en lugar de variables</a></li>
-<li><a class="nav-link" href="#messy-data-una-observaci%C3%B3n-guardada-en-varias-filas"><span class="header-section-number">11.3.2</span> Messy data: una observación guardada en varias filas</a></li>
-<li><a class="nav-link" href="#messy-data-una-celda-con-m%C3%BAltiples-valores"><span class="header-section-number">11.3.3</span> Messy data: una celda con múltiples valores</a></li>
-</ul>
-</li>
-<li><a class="nav-link" href="#ejercicios-6"><span class="header-section-number">11.4</span> 📝 Ejercicios</a></li>
-</ul>
+      <div id="book-on-this-page"></div>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/dadosdelaplace/cursoR_intro_2021_2022/blob/master/11-procesamiento_datos.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/dadosdelaplace/cursoR_intro_2021_2022/edit/master/11-procesamiento_datos.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+          
         </ul>
 </div>
     </nav>
@@ -959,7 +890,7 @@ Imagen/gráfica 11.2: Infografía con datos ordenados (tidy data) extraída de <
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 16-10-2021.</p>
+    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 23-10-2021.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -967,34 +898,6 @@ Imagen/gráfica 11.2: Infografía con datos ordenados (tidy data) extraída de <
   </div>
 
 </div></div>
-</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
-for (let popover of popovers) {
-  const div = document.createElement('div');
-  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
-  div.innerHTML = popover.getAttribute('data-content');
-
-  var has_math = div.querySelector("span.math");
-  if (has_math) {
-    document.body.appendChild(div);
-    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
-    MathJax.Hub.Queue(function() {
-      popover.setAttribute('data-content', div.innerHTML);
-      document.body.removeChild(div);
-    })
-  }
-}
-</script>
+</footer>
 </body>
 </html>

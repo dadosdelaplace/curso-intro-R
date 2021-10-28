@@ -24,7 +24,6 @@ colorize <- function(x, color) {
 
 **Hasta aquí el aperitivo**
 
-::: {.rmdnote}
 
 **`r colorize("¿Qué datos hemos aprendido a manejar?", "#4197D2")`**
 
@@ -47,9 +46,8 @@ paquetes <-
 kable(paquetes, col.names = c("paquetes", "descripción"), align = "ll",
       caption = "Tipos de datos mencionados hasta ahora")
 ``` 
-:::
 
-::: {.rmdnote}
+
 
 **`r colorize("¿Qué paquetes hemos usado ya?", "#4197D2")`**
 
@@ -78,7 +76,6 @@ paquetes <-
 kable(paquetes, col.names = c("paquetes", "descripción"), align = "ll",
       caption = "Paquetes mencionados hasta ahora")
 ``` 
-:::
 
 
 Quizás creas que te queda un mundo por aprender:
@@ -111,7 +108,7 @@ Ahora que ya sabes lo básico para poder empezar a trabajar en un entorno amigab
 
 * **Código de este manual**: este manual está programado en sí mismo en `R` y los códigos pueden ser consultados libremente en el repositorio de [GitHub](https://github.com/dadosdelaplace/docencia) (hablaremos más adelante de como gestionar versiones de nuestro código en dicha plataforma).
 
-```{r github, echo = FALSE, fig.align = 'center',  include = identical(knitr:::pandoc_to(), 'html'), fig.link = 'https://github.com/dadosdelaplace/docencia', out.width = '70%'}
+```{r github, echo = FALSE, fig.align = 'center',  include = identical(knitr::pandoc_to(), 'html'), fig.link = 'https://github.com/dadosdelaplace/docencia', out.width = '70%'}
 knitr::include_graphics('img/me_github.jpg')
 ```
 
@@ -121,7 +118,7 @@ knitr::include_graphics('img/me_github.jpg')
 
 * **Paquete para aprender `R`**: el paquete `{swirl}` permite ir aprendiendo de forma sencilla (con preguntas tipo test) algunos conceptos básicos de `R` (muchos de ellos vistos en este manual). Puedes consultar la documentación en su [página web](https://swirlstats.com/)
 
-```{r swirl, echo = FALSE, fig.align = 'center',  include = identical(knitr:::pandoc_to(), 'html'), fig.link = 'https://swirlstats.com/', out.width = '60%'}
+```{r swirl, echo = FALSE, fig.align = 'center',  include = identical(knitr::pandoc_to(), 'html'), fig.link = 'https://swirlstats.com/', out.width = '60%'}
 knitr::include_graphics('img/swirl.png')
 ```
 
@@ -131,7 +128,7 @@ knitr::include_graphics('img/swirl.png')
 * [Tidyverse cookbook](https://rstudio-education.github.io/tidyverse-cookbook/)
 * [Tidyverse skills for data science](https://jhudatascience.org/tidyversecourse/)
 
-```{r tidyverse-png, echo = FALSE, fig.align = 'center',  include = identical(knitr:::pandoc_to(), 'html'), fig.link = 'https://www.tidyverse.org/', out.width = '60%'}
+```{r tidyverse-png, echo = FALSE, fig.align = 'center',  include = identical(knitr::pandoc_to(), 'html'), fig.link = 'https://www.tidyverse.org/', out.width = '60%'}
 knitr::include_graphics('img/tidyverse.jpg')
 ```
 
@@ -156,9 +153,9 @@ Antes de acabar esta breve introducción a `R` merece la pena hablar de **«lo a
 
 Si alguna vez has interactuado con matemáticos o estadísticos (Dios te libre), seguramente es una palabra que les hayas escuchado mentar: **aleatoriedad**. Existen múltiples definiciones, y este manual tampoco pretende ser un tratado de filosofía de la ciencia, pero podemos definir la aleatoriedad de la siguiente manera:
 
-::: {.rmdnote}
+&nbsp;
 
-**`r colorize("Aleatoriedad", "#4197D2")`**
+**`r colorize("GLOSARIO: aleatoriedad", "#4197D2")`**
 
 Propiedad de todo proceso cuyo resultado final no se puede conocer con exactitud - a nivel individual  o particular - antes de que se realice, aunque las condiciones iniciales se mantengan constantes (ejemplo: lanzar un dado).
 
@@ -167,7 +164,7 @@ Propiedad de todo proceso cuyo resultado final no se puede conocer con exactitud
 🛑 **NO** tiene que implicar algo **caótico**.  
 🛑 **NO** significa que no se pueda **predecir** a nivel de conjunto.  
 🛑 **NO** significa que **carezca de un patrón** de comportamiento.
-:::
+&nbsp;
 
 
 El ejemplo perfecto para **entender las implicaciones de algo aleatorio es un dado**, ya que no podemos saber con exactitud cuál será la siguiente tirada, pero tiene un patrón: si tiramos un millón de veces, aproximadamente un sexto del total de tiradas serán un 1.

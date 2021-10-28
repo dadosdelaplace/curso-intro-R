@@ -24,15 +24,7 @@ Aunque la mayoría de veces son sustituibles por otras expresiones más legibles
 ## if...else
  
  
-Como en cualquier lenguaje de programación, las **estructuras `if...else...` nos permiten ejecutar partes de nuestro código solo cuando se cumple la condición o condiciones lógicas** que queremos. Cuando ejecutamos un `if` estamos diciendo
-
-::: {.rmdnote}
-
-**`r colorize("if...else", "#4197D2")`**
-
-SI las condiciones impuestas se cumplen (`TRUE`), ejecuta las órdenes que tengamos dentro de las llaves. Si el`if` devuelve `FALSE`, no sucederá nada **SALVO** que tengamos además un **`else`: lo que sucede cuando no se cumple**, como en el ejemplo que tenemos debajo.
-
-:::
+Como en cualquier lenguaje de programación, las **estructuras `if...else...` nos permiten ejecutar partes de nuestro código solo cuando se cumple la condición o condiciones lógicas** que queremos. Cuando ejecutamos un `if` estamos diciendo: SI las condiciones impuestas se cumplen (`TRUE`), ejecuta las órdenes que tengamos dentro de las llaves. Si el`if` devuelve `FALSE`, no sucederá nada **SALVO** que tengamos además un **`else`: lo que sucede cuando no se cumple**, como en el ejemplo que tenemos debajo.
 
 
 ```{r}
@@ -96,15 +88,15 @@ ifelse((numeros %% 2) == 0, "par", "impar") # Los pares al dividir entre 2 tiene
 
 Esta función `ifelse()` es muy util para codificar variables o averiguar cuales cumplen una condición, sin necesidad de hacer un bucle que recorra todos los valores. 
 
-::: {.rmdimportant}
-
-**`r colorize("CONSEJO", "#20935E")`**
-
-Recuerda: di (por lo general) no a los bucles en `R`.
-:::
 
 
 ## for/while
+
+**`r colorize("CONSEJO", "#20935E")`**
+
+Recuerda: por lo general, di no a los bucles en `R` (intenta evitarlos en la mayoría de casos, hay una alternativa mejor).
+
+&nsbp;
 
 Aunque el 99% de las veces (porcentaje inventado) los bucles pueden ser sustituidos por códigos de forma vectorial mucho más eficientes, a veces no nos quedará más remedio que usarlos por lo que nunca viene mal conocer su estructura.
 
@@ -138,9 +130,9 @@ for (dias in dias_semana) { # dias recorre los días de la semana tomando sus va
 }
 ```
 
-::: {.rmdimportant}
+&nbsp;
 
-**`r colorize("CONSEJO: evita bucles", "#20935E")`**
+**`r colorize("CONSEJO: evita bucles (parte II)", "#20935E")`**
 
 Evita al máximo los bucles en `R`: suele existir una forma más eficiente de programarlo. Veamos un ejemplo muy sencillo: dado un vector de índices `idx`, queremos calcular su cuadrado y guardarlo. Vamos a comparar como sería con un sencillo bucle y de forma vectorial, repitiéndolo 1000 veces para sacar tiempos medios, haciendo uso del paquete `{microbenchmark}`.
 
@@ -226,22 +218,18 @@ conteo
 
 
 
-::: {.rmdwarning}
+&nbsp;
 
-**`r colorize("Cuidado con los bucles infinitos", "#ffc107")`**
+**`r colorize("WARNING: cuidado con los bucles infinitos", "#ffc107")`**
 
 
 Las estucturas `while{}` y `repeat{}` son de las menos usadas por su peligrosidad, ya que si no incluimos un `break` o la condición nunca llega a ser `TRUE`, el bucle seguirá ejecutándose de forma infinita y solo podrá ser detenido abortando la ejecución con la tecla `ESC`.
 
-:::
-
-::: {.rmdimportant}
+&nbsp;
 
 **`r colorize("CONSEJO: minimiza estructuras de control en el código", "#20935E")`**
 
 Puedes minimizar las estructuras de control pulsando en la flecha que aparece a la izquierda de ellas. 
-
-:::
 
 
 
