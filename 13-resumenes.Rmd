@@ -17,7 +17,7 @@ colorize <- function(x, color) {
 ```
 
 
-# Resumiendo y relacionado los datos
+# Resumiendo y relacionado los datos {#resumenes}
 
 en breve
 
@@ -31,6 +31,10 @@ en breve
 
 
 ## Relacionar datos (joins)
+
+en breve
+
+## 📝 Ejercicios
 
 en breve
 

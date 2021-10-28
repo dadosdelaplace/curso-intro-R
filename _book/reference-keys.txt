@@ -129,7 +129,7 @@ pseudoaleatorio
 tidydata
 repaso_datos
 tibble
-tidy_data
+tidy
 messy-data-valores-en-columnas-en-lugar-de-variables
 messy-data-una-observación-guardada-en-varias-filas
 messy-data-una-celda-con-múltiples-valores
@@ -145,9 +145,11 @@ renombrar-rename-y-reordenar-relocate-columnas
 crear-nuevas-variables-mutate
 recategorizar-columnas
 datos-ausentes-y-outliers
-resumiendo-y-relacionado-los-datos
+ejercicios-7
+resumenes
 tablas-de-frecuencias
 resúmenes-numéricos-summarise-y-skimr-y-por-grupos-group_by
 relacionar-datos-joins
+ejercicios-8
 ggplot2
 contribuye

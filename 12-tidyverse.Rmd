@@ -527,6 +527,8 @@ print(starwars %>%
 ```
 
 
+## 📝 Ejercicios
 
+en breve
 
 

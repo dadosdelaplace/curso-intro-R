@@ -112,9 +112,12 @@ Todo lo necesario para seguir este curso es de **descarga gratuita**: viva el so
 * \@ref(importar-exportar) [Importar/exportar datos](#importar-exportar)
 * \@ref(otros-datos) [Otros datos: listas y factores](#otros-datos)
 * \@ref(funciones) [Creación de funciones](#funciones)
-* \@ref(resumen-1) [Alto en el camino: ¿qué sabemos hacer?](#resumen-1)   
+* \@ref(resumen-1) [Alto en el camino: ¿qué sabemos hacer?](#resumen-1) 
 * \@ref(tidydata) [Tidy data: ordenando datos](#tidydata)   
 * \@ref(tidyverse) [Explorando los datos: incursión a tidyverse](#tidyverse)
+* \@ref(resumenes) [Resumiendo y relacionado los datos](#resumenes)
+* \@ref(ggplot2) [Visualizando datos: incursión a ggplot2](#ggplot2)
+* \@ref(contribuye) [Contribuye al proyecto](#contribuye)
 
 ## Código de colores {-} 
 

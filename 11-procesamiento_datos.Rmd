@@ -16,7 +16,7 @@ colorize <- function(x, color) {
 }
 ```
 
-# (PART) EXPLORANDO: introducción a la exploración de datos{-}
+# (PART) EXPLORANDO: introducción al análisis exploratorio de datos{-}
 
 # Tidy data: ordenando datos {#tidydata}
 
@@ -178,7 +178,7 @@ as_tibble(tabla_df)
 
 Puedes consultar más funcionalidades de dichos datos en <https://tibble.tidyverse.org/>.
 
-## Tidy data vs messy data {#tidy_data}
+## Tidy data vs messy data {#tidy}
 
 > Tidy datasets are all alike, but every messy dataset is messy in its own way (Hadley Wickham, Chief Scientist en RStudio)
 
