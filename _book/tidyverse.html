@@ -63,10 +63,9 @@
 <li><a class="" href="tidydata.html"><span class="header-section-number">11</span> Tidy data: ordenando datos</a></li>
 <li><a class="active" href="tidyverse.html"><span class="header-section-number">12</span> Explorando los datos: incursión a tidyverse</a></li>
 <li><a class="" href="resumiendo-y-relacionado-los-datos.html"><span class="header-section-number">13</span> Resumiendo y relacionado los datos</a></li>
-<li><a class="" href="modelos_lineales.html"><span class="header-section-number">14</span> Introducción a los modelos lineales</a></li>
-<li><a class="" href="ggplot2.html"><span class="header-section-number">15</span> Visualizando datos: incursión a ggplot2</a></li>
+<li><a class="" href="ggplot2.html"><span class="header-section-number">14</span> Visualizando datos: incursión a ggplot2</a></li>
 <li class="book-part">Epílogo</li>
-<li><a class="" href="contribuye.html"><span class="header-section-number">16</span> Contribuye al proyecto</a></li>
+<li><a class="" href="contribuye.html"><span class="header-section-number">15</span> Contribuye al proyecto</a></li>
 <li><a class="" href="bibliograf%C3%ADa.html">Bibliografía</a></li>
 </ul>
 
@@ -1251,7 +1250,186 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 <h2>
 <span class="header-section-number">12.4</span> Datos ausentes y outliers<a class="anchor" aria-label="anchor" href="#datos-ausentes-y-outliers"><i class="fas fa-link"></i></a>
 </h2>
-<p>en breve</p>
+<p>Como ya vimos en <a href="vectores.html#vectores">Tipos de datos I: vectores</a>, los datos ausentes en <code>R</code> pueden venir representados por valores <code>NA</code> o por valores <code>NaN</code> (en realidad este no sería ausente siendo estrictos, es simplemente un resultado no numérico dentro de los reales). <strong>¿Qué hacer con dichos valores?</strong></p>
+<p>Una primera opción puede ser <strong>eliminar los registros que contengan campos ausentes en alguna de sus variables</strong>, haciendo uso de la función <code>drop_na()</code>.</p>
+<div class="sourceCode" id="cb900"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">starwars</span> <span class="op">%&gt;%</span> <span class="fu">drop_na</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 14
+##   name     height  mass hair_color  skin_color eye_color birth_year sex   gender
+##   &lt;chr&gt;     &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; 
+## 1 Luke Sk…    172    77 blond       fair       blue            19   male  mascu…
+## 2 Obi-Wan…    182    77 auburn, wh… fair       blue-gray       57   male  mascu…
+## 3 Anakin …    188    84 blond       fair       blue            41.9 male  mascu…
+## 4 Chewbac…    228   112 brown       unknown    blue           200   male  mascu…
+## 5 Wedge A…    170    77 brown       fair       hazel           21   male  mascu…
+## 6 Darth M…    175    80 none        red        yellow          54   male  mascu…
+## # … with 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
+## #   vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
+<p>Como ves solo 6 de los 87 registros tienen todos los campos completos. Como quizás <strong>no todos los campos sean igual de importantes</strong> en nuestros, podemos indicarle que nos elimine aquellos registros que tengan datos ausentes <strong>algunos campos en concreto</strong> (o una coelcción de ellos)</p>
+<div class="sourceCode" id="cb902"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">starwars</span> <span class="op">%&gt;%</span> <span class="fu">drop_na</span><span class="op">(</span><span class="va">mass</span>, <span class="va">height</span>, <span class="va">sex</span>, <span class="va">gender</span>, <span class="va">birth_year</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 36 × 14
+##    name    height  mass hair_color  skin_color eye_color birth_year sex   gender
+##    &lt;chr&gt;    &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; 
+##  1 Luke S…    172    77 blond       fair       blue            19   male  mascu…
+##  2 C-3PO      167    75 &lt;NA&gt;        gold       yellow         112   none  mascu…
+##  3 R2-D2       96    32 &lt;NA&gt;        white, bl… red             33   none  mascu…
+##  4 Darth …    202   136 none        white      yellow          41.9 male  mascu…
+##  5 Leia O…    150    49 brown       light      brown           19   fema… femin…
+##  6 Owen L…    178   120 brown, grey light      blue            52   male  mascu…
+##  7 Beru W…    165    75 brown       light      blue            47   fema… femin…
+##  8 Biggs …    183    84 black       light      brown           24   male  mascu…
+##  9 Obi-Wa…    182    77 auburn, wh… fair       blue-gray       57   male  mascu…
+## 10 Anakin…    188    84 blond       fair       blue            41.9 male  mascu…
+## # … with 26 more rows, and 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;,
+## #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
+<p>Otra opción es <strong>imputar su valor</strong> en el caso de variables cuantitativas por, por ejemplo, la <strong>media de la variable sin datos ausentes</strong>, y <strong>recategorizar las cuantitaivas creando un categoría</strong> per se de ausentes.</p>
+<div class="sourceCode" id="cb904"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">starwars</span> <span class="op">%&gt;%</span>
+  <span class="co"># Variables cuanti</span>
+  <span class="fu">mutate</span><span class="op">(</span><span class="fu">across</span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span>,
+                <span class="op">~</span><span class="fu"><a href="https://rdrr.io/r/base/replace.html">replace</a></span><span class="op">(</span><span class="va">.x</span>, <span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">.x</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="co"># Variables cuali: pasamos NA y "none" a "unknown"</span>
+  <span class="fu">mutate</span><span class="op">(</span><span class="fu">across</span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="va">is.character</span><span class="op">)</span>,
+                <span class="op">~</span><span class="fu"><a href="https://rdrr.io/r/base/replace.html">replace</a></span><span class="op">(</span><span class="va">.x</span>, <span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span> <span class="op">|</span> <span class="va">.x</span> <span class="op">==</span> <span class="st">"none"</span>, <span class="st">"unknown"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 87 × 14
+##    name    height  mass hair_color  skin_color eye_color birth_year sex   gender
+##    &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; 
+##  1 Luke S…    172    77 blond       fair       blue            19   male  mascu…
+##  2 C-3PO      167    75 unknown     gold       yellow         112   unkn… mascu…
+##  3 R2-D2       96    32 unknown     white, bl… red             33   unkn… mascu…
+##  4 Darth …    202   136 unknown     white      yellow          41.9 male  mascu…
+##  5 Leia O…    150    49 brown       light      brown           19   fema… femin…
+##  6 Owen L…    178   120 brown, grey light      blue            52   male  mascu…
+##  7 Beru W…    165    75 brown       light      blue            47   fema… femin…
+##  8 R5-D4       97    32 unknown     white, red red             87.6 unkn… mascu…
+##  9 Biggs …    183    84 black       light      brown           24   male  mascu…
+## 10 Obi-Wa…    182    77 auburn, wh… fair       blue-gray       57   male  mascu…
+## # … with 77 more rows, and 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;,
+## #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
+<p> </p>
+<p>Muchas veces tendremos variables con <strong>valores muy alejados de la centralidad</strong>, centralidad normalmente entendida como media o mediana, valores muy extremos (conocidos como <strong>valores atípicos o outliers</strong>).</p>
+<ul>
+<li><p><strong>Respecto a la mediana/percentiles (iqr)</strong>: una definición de outlier muy habitual es definirlo como un <strong>valor muy alejado del primer/tercer cuartil</strong>. La definición que se suele usar es que el dato sea interior/superior al primer/tercer cuartil una amplitud de X veces el <strong>rango intercuartílico</strong> (conocido como <strong>IQR, calculado como el tercer cuartil menos el primer cuartil</strong>) por debajo/encima.</p></li>
+<li><p><strong>Respecto a la media (gesd)</strong>: el criterio utilizado suele ser el conocido como GESD (Generlized Extreme Studentized Deviate Test), un contraste de hipótesis cuya hipótesis nula es que no hay atípicos en los datos. Puedes ver la formulación matemática en <a href="https://www.itl.nist.gov/div898/handbook/eda/section3/eda35h3.htm" class="uri">https://www.itl.nist.gov/div898/handbook/eda/section3/eda35h3.htm</a></p></li>
+</ul>
+<p>Para su localización automática usaremos el paquete <a href="https://github.com/business-science/anomalize">anomalize</a>, y la función homónima de dicho paquete, indicándole la columna individual en la que queremos detectar outliers y el método a usar. Con el método <code>method = "gesd"</code> realizaremos el contraste dato a dato de forma secuencial (si hay outlier lo quita individualmente y vuelve a ejecutarlo). Con <code>method = "iqr"</code>, ese factor <code>X</code> que nos distanciamos del primer y tercer cuartil es calculado como <code>0.15/alpha</code>, de forma que con <code>alpha = 0.05</code> (por ejemplo), dicho factor sería <code>X = 3</code>. Es <strong>MUY IMPORTANTE</strong> quitar antes los valores ausentes (para que pueda ejecutarse correctamente).</p>
+<div class="sourceCode" id="cb906"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/business-science/anomalize">anomalize</a></span><span class="op">)</span>
+<span class="co"># Importante: quitar antes missings</span>
+<span class="va">starwars</span> <span class="op">%&gt;%</span> <span class="fu">drop_na</span><span class="op">(</span><span class="va">mass</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/anomalize/man/anomalize.html">anomalize</a></span><span class="op">(</span><span class="va">mass</span>, method <span class="op">=</span> <span class="st">"gesd"</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 59 × 17
+##    name    height  mass hair_color  skin_color eye_color birth_year sex   gender
+##    &lt;chr&gt;    &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; 
+##  1 Luke S…    172    77 blond       fair       blue            19   male  mascu…
+##  2 C-3PO      167    75 &lt;NA&gt;        gold       yellow         112   none  mascu…
+##  3 R2-D2       96    32 &lt;NA&gt;        white, bl… red             33   none  mascu…
+##  4 Darth …    202   136 none        white      yellow          41.9 male  mascu…
+##  5 Leia O…    150    49 brown       light      brown           19   fema… femin…
+##  6 Owen L…    178   120 brown, grey light      blue            52   male  mascu…
+##  7 Beru W…    165    75 brown       light      blue            47   fema… femin…
+##  8 R5-D4       97    32 &lt;NA&gt;        white, red red             NA   none  mascu…
+##  9 Biggs …    183    84 black       light      brown           24   male  mascu…
+## 10 Obi-Wa…    182    77 auburn, wh… fair       blue-gray       57   male  mascu…
+## # … with 49 more rows, and 8 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;,
+## #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;, mass_l1 &lt;dbl&gt;,
+## #   mass_l2 &lt;dbl&gt;, anomaly &lt;chr&gt;</code></pre>
+<p>En las columnas <code>mass_l1</code> y <code>mass_l2</code> se nos han guardado los límites para considerar o no outlier, y en <code>anomaly</code> tendremos si el valor es un outlier o no. Podemos renombrar dicha columna y recategorizarlo con <code>TRUE/FALSE</code></p>
+<div class="sourceCode" id="cb908"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://docs.ropensci.org/skimr/reference/print.html">print</a></span><span class="op">(</span><span class="va">starwars</span> <span class="op">%&gt;%</span>
+        <span class="fu">drop_na</span><span class="op">(</span><span class="va">mass</span><span class="op">)</span> <span class="op">%&gt;%</span>
+        <span class="fu"><a href="https://rdrr.io/pkg/anomalize/man/anomalize.html">anomalize</a></span><span class="op">(</span><span class="va">mass</span>, method <span class="op">=</span> <span class="st">"gesd"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+        <span class="fu">rename</span><span class="op">(</span>outlier <span class="op">=</span> <span class="va">anomaly</span><span class="op">)</span> <span class="op">%&gt;%</span>
+        <span class="co"># Eliminamos la variables auxiliares creadas</span>
+        <span class="fu">select</span><span class="op">(</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">mass_l1</span>, <span class="va">mass_l2</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+        <span class="fu">mutate</span><span class="op">(</span>outlier <span class="op">=</span> <span class="op">(</span><span class="va">outlier</span> <span class="op">==</span> <span class="st">"Yes"</span><span class="op">)</span><span class="op">)</span>, width <span class="op">=</span> <span class="cn">Inf</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 59 × 15
+##    name               height  mass hair_color    skin_color  eye_color
+##    &lt;chr&gt;               &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt;    
+##  1 Luke Skywalker        172    77 blond         fair        blue     
+##  2 C-3PO                 167    75 &lt;NA&gt;          gold        yellow   
+##  3 R2-D2                  96    32 &lt;NA&gt;          white, blue red      
+##  4 Darth Vader           202   136 none          white       yellow   
+##  5 Leia Organa           150    49 brown         light       brown    
+##  6 Owen Lars             178   120 brown, grey   light       blue     
+##  7 Beru Whitesun lars    165    75 brown         light       blue     
+##  8 R5-D4                  97    32 &lt;NA&gt;          white, red  red      
+##  9 Biggs Darklighter     183    84 black         light       brown    
+## 10 Obi-Wan Kenobi        182    77 auburn, white fair        blue-gray
+##    birth_year sex    gender    homeworld species films     vehicles  starships
+##         &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;   &lt;list&gt;    &lt;list&gt;    &lt;list&gt;   
+##  1       19   male   masculine Tatooine  Human   &lt;chr [5]&gt; &lt;chr [2]&gt; &lt;chr [2]&gt;
+##  2      112   none   masculine Tatooine  Droid   &lt;chr [6]&gt; &lt;chr [0]&gt; &lt;chr [0]&gt;
+##  3       33   none   masculine Naboo     Droid   &lt;chr [7]&gt; &lt;chr [0]&gt; &lt;chr [0]&gt;
+##  4       41.9 male   masculine Tatooine  Human   &lt;chr [4]&gt; &lt;chr [0]&gt; &lt;chr [1]&gt;
+##  5       19   female feminine  Alderaan  Human   &lt;chr [5]&gt; &lt;chr [1]&gt; &lt;chr [0]&gt;
+##  6       52   male   masculine Tatooine  Human   &lt;chr [3]&gt; &lt;chr [0]&gt; &lt;chr [0]&gt;
+##  7       47   female feminine  Tatooine  Human   &lt;chr [3]&gt; &lt;chr [0]&gt; &lt;chr [0]&gt;
+##  8       NA   none   masculine Tatooine  Droid   &lt;chr [1]&gt; &lt;chr [0]&gt; &lt;chr [0]&gt;
+##  9       24   male   masculine Tatooine  Human   &lt;chr [1]&gt; &lt;chr [0]&gt; &lt;chr [1]&gt;
+## 10       57   male   masculine Stewjon   Human   &lt;chr [6]&gt; &lt;chr [1]&gt; &lt;chr [5]&gt;
+##    outlier
+##    &lt;lgl&gt;  
+##  1 FALSE  
+##  2 FALSE  
+##  3 TRUE   
+##  4 TRUE   
+##  5 FALSE  
+##  6 TRUE   
+##  7 FALSE  
+##  8 FALSE  
+##  9 FALSE  
+## 10 FALSE  
+## # … with 49 more rows</code></pre>
+<p>Dicha variable auxiliar la podremos usar para <strong>decidir si incluir o no el registro</strong> en futuros pasos, pero también <strong>podemos usarla para imputarle un valor</strong> (por ejemplo, la media).</p>
+<div class="sourceCode" id="cb910"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://docs.ropensci.org/skimr/reference/print.html">print</a></span><span class="op">(</span><span class="va">starwars</span> <span class="op">%&gt;%</span>
+        <span class="fu">drop_na</span><span class="op">(</span><span class="va">mass</span><span class="op">)</span> <span class="op">%&gt;%</span>
+        <span class="fu"><a href="https://rdrr.io/pkg/anomalize/man/anomalize.html">anomalize</a></span><span class="op">(</span><span class="va">mass</span>, method <span class="op">=</span> <span class="st">"gesd"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+        <span class="fu">rename</span><span class="op">(</span>outlier <span class="op">=</span> <span class="va">anomaly</span><span class="op">)</span> <span class="op">%&gt;%</span>
+        <span class="co"># Eliminamos la variables auxiliares creadas</span>
+        <span class="fu">select</span><span class="op">(</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">mass_l1</span>, <span class="va">mass_l2</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+        <span class="fu">mutate</span><span class="op">(</span>outlier <span class="op">=</span> <span class="op">(</span><span class="va">outlier</span> <span class="op">==</span> <span class="st">"Yes"</span><span class="op">)</span>,
+               mass <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">outlier</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">mass</span><span class="op">)</span>, <span class="va">mass</span><span class="op">)</span><span class="op">)</span>,
+      width <span class="op">=</span> <span class="cn">Inf</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 59 × 15
+##    name               height  mass hair_color    skin_color  eye_color
+##    &lt;chr&gt;               &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt;    
+##  1 Luke Skywalker        172  77   blond         fair        blue     
+##  2 C-3PO                 167  75   &lt;NA&gt;          gold        yellow   
+##  3 R2-D2                  96  97.3 &lt;NA&gt;          white, blue red      
+##  4 Darth Vader           202  97.3 none          white       yellow   
+##  5 Leia Organa           150  49   brown         light       brown    
+##  6 Owen Lars             178  97.3 brown, grey   light       blue     
+##  7 Beru Whitesun lars    165  75   brown         light       blue     
+##  8 R5-D4                  97  32   &lt;NA&gt;          white, red  red      
+##  9 Biggs Darklighter     183  84   black         light       brown    
+## 10 Obi-Wan Kenobi        182  77   auburn, white fair        blue-gray
+##    birth_year sex    gender    homeworld species films     vehicles  starships
+##         &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;   &lt;list&gt;    &lt;list&gt;    &lt;list&gt;   
+##  1       19   male   masculine Tatooine  Human   &lt;chr [5]&gt; &lt;chr [2]&gt; &lt;chr [2]&gt;
+##  2      112   none   masculine Tatooine  Droid   &lt;chr [6]&gt; &lt;chr [0]&gt; &lt;chr [0]&gt;
+##  3       33   none   masculine Naboo     Droid   &lt;chr [7]&gt; &lt;chr [0]&gt; &lt;chr [0]&gt;
+##  4       41.9 male   masculine Tatooine  Human   &lt;chr [4]&gt; &lt;chr [0]&gt; &lt;chr [1]&gt;
+##  5       19   female feminine  Alderaan  Human   &lt;chr [5]&gt; &lt;chr [1]&gt; &lt;chr [0]&gt;
+##  6       52   male   masculine Tatooine  Human   &lt;chr [3]&gt; &lt;chr [0]&gt; &lt;chr [0]&gt;
+##  7       47   female feminine  Tatooine  Human   &lt;chr [3]&gt; &lt;chr [0]&gt; &lt;chr [0]&gt;
+##  8       NA   none   masculine Tatooine  Droid   &lt;chr [1]&gt; &lt;chr [0]&gt; &lt;chr [0]&gt;
+##  9       24   male   masculine Tatooine  Human   &lt;chr [1]&gt; &lt;chr [0]&gt; &lt;chr [1]&gt;
+## 10       57   male   masculine Stewjon   Human   &lt;chr [6]&gt; &lt;chr [1]&gt; &lt;chr [5]&gt;
+##    outlier
+##    &lt;lgl&gt;  
+##  1 FALSE  
+##  2 FALSE  
+##  3 TRUE   
+##  4 TRUE   
+##  5 FALSE  
+##  6 TRUE   
+##  7 FALSE  
+##  8 FALSE  
+##  9 FALSE  
+## 10 FALSE  
+## # … with 49 more rows</code></pre>
 
 </div>
 </div>
@@ -1283,8 +1461,8 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/dadosdelaplace/cursoR_intro_2021_2022/blob/master/12-resumen_numerico.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/dadosdelaplace/cursoR_intro_2021_2022/edit/master/12-resumen_numerico.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/dadosdelaplace/cursoR_intro_2021_2022/blob/master/12-tidyverse.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/dadosdelaplace/cursoR_intro_2021_2022/edit/master/12-tidyverse.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>
@@ -1296,7 +1474,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 28-10-2021.</p>
+    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 29-10-2021.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

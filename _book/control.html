@@ -63,10 +63,9 @@
 <li><a class="" href="tidydata.html"><span class="header-section-number">11</span> Tidy data: ordenando datos</a></li>
 <li><a class="" href="tidyverse.html"><span class="header-section-number">12</span> Explorando los datos: incursión a tidyverse</a></li>
 <li><a class="" href="resumiendo-y-relacionado-los-datos.html"><span class="header-section-number">13</span> Resumiendo y relacionado los datos</a></li>
-<li><a class="" href="modelos_lineales.html"><span class="header-section-number">14</span> Introducción a los modelos lineales</a></li>
-<li><a class="" href="ggplot2.html"><span class="header-section-number">15</span> Visualizando datos: incursión a ggplot2</a></li>
+<li><a class="" href="ggplot2.html"><span class="header-section-number">14</span> Visualizando datos: incursión a ggplot2</a></li>
 <li class="book-part">Epílogo</li>
-<li><a class="" href="contribuye.html"><span class="header-section-number">16</span> Contribuye al proyecto</a></li>
+<li><a class="" href="contribuye.html"><span class="header-section-number">15</span> Contribuye al proyecto</a></li>
 <li><a class="" href="bibliograf%C3%ADa.html">Bibliografía</a></li>
 </ul>
 
@@ -201,12 +200,12 @@
                                <span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="va">idx</span><span class="op">)</span> <span class="op">{</span>  <span class="va">y</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">idx</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">^</span><span class="fl">2</span><span class="op">}</span>,
                                times <span class="op">=</span> <span class="fl">1e3</span><span class="op">)</span></code></pre></div>
 <pre><code>## Unit: microseconds
-##                                     expr      min       lq       mean   median
-##                               x &lt;- idx^2   18.288   47.558   50.90823   52.203
-##  for (i in idx) {     y[i] &lt;- idx[i]^2 } 1811.977 1870.178 2070.24346 1936.843
-##         uq       max neval cld
-##    57.7535   172.186  1000  a 
-##  2098.2725 11559.079  1000   b</code></pre>
+##                                     expr      min       lq       mean    median
+##                               x &lt;- idx^2   18.122   47.254   52.20273   52.5735
+##  for (i in idx) {     y[i] &lt;- idx[i]^2 } 1803.264 1894.745 2124.36731 1983.9360
+##        uq       max neval cld
+##    59.064   210.409  1000  a 
+##  2156.079 12480.350  1000   b</code></pre>
 <p>Una tarea tan sencilla, <strong>programada en un bucle (segunda fila), tarda 40 veces más que hacerlo de forma vectorial (primera fila)</strong> (elevando cada elemento al cuadrado, iterando internamente, sin necesidad de implementar un bucle).</p>
 <p> </p>
 <p>Otra manera de diseñar un bucle es con la <strong>estructura <code>while{}</code></strong>, que ejecutará el <strong>bucle un número de veces a priori desconocido</strong> hasta que la condición impuesta deje de ser <code>TRUE</code>.</p>
@@ -330,7 +329,7 @@
   
   <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Buenas noches"</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
-<pre><code>## Buenas tardes</code></pre>
+<pre><code>## Buenos días</code></pre>
 <!-- tocstop -->
 </details><p> </p>
 <details><p><summary>📝<strong>Ejercicio 2</strong>: realiza el ejercicio anterior pero sin estructura de llaves, de forma concisa con <code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code>. Mira la ayuda si la necesitases poniendo <code><a href="https://rdrr.io/r/base/ifelse.html">? ifelse</a></code>. </summary></p>
@@ -349,7 +348,7 @@
 <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/hour.html">hour</a></span><span class="op">(</span><span class="va">fecha_actual</span><span class="op">)</span> <span class="op">&lt;</span> <span class="fl">14</span>, <span class="st">"Buenos días"</span>,
        <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/hour.html">hour</a></span><span class="op">(</span><span class="va">fecha_actual</span><span class="op">)</span> <span class="op">&lt;</span> <span class="fl">22</span>, <span class="st">"Buenas tardes"</span>,
               <span class="st">"Buenas noches"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>## Buenas tardes</code></pre>
+<pre><code>## Buenos días</code></pre>
 <!-- tocstop -->
 </details><p> </p>
 <details><p><summary>📝<strong>Ejercicio 3</strong>: diseña un bucle <code>for</code> de 200 iteraciones que, empezando en un valor inicial de 100 (euros), te sume 3€ si el número actual es par y te restr 5€ si es impar.</summary></p>
@@ -459,7 +458,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 28-10-2021.</p>
+    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 29-10-2021.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -149,6 +149,5 @@ resumiendo-y-relacionado-los-datos
 tablas-de-frecuencias
 resúmenes-numéricos-summarise-y-skimr-y-por-grupos-group_by
 relacionar-datos-joins
-modelos_lineales
 ggplot2
 contribuye

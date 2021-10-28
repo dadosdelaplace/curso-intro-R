@@ -455,7 +455,77 @@ starwars %>%
 
 ## Datos ausentes y outliers
 
-en breve
+
+
+Como ya vimos en [Tipos de datos I: vectores](#vectores), los datos ausentes en `R` pueden venir representados por valores `NA` o por valores `NaN` (en realidad este no sería ausente siendo estrictos, es simplemente un resultado no numérico dentro de los reales). **¿Qué hacer con dichos valores?**
+
+Una primera opción puede ser **eliminar los registros que contengan campos ausentes en alguna de sus variables**, haciendo uso de la función `drop_na()`.
+
+```{r}
+starwars %>% drop_na()
+```
+
+Como ves solo 6 de los 87 registros tienen todos los campos completos. Como quizás **no todos los campos sean igual de importantes** en nuestros, podemos indicarle que nos elimine aquellos registros que tengan datos ausentes **algunos campos en concreto** (o una coelcción de ellos)
+
+```{r}
+starwars %>% drop_na(mass, height, sex, gender, birth_year)
+```
+
+Otra opción es **imputar su valor** en el caso de variables cuantitativas por, por ejemplo, la **media de la variable sin datos ausentes**, y  **recategorizar las cuantitaivas creando un categoría** per se de ausentes.
+
+```{r}
+starwars %>%
+  # Variables cuanti
+  mutate(across(where(is.numeric),
+                ~replace(.x, is.na(.x), mean(.x, na.rm = TRUE)))) %>%
+  # Variables cuali: pasamos NA y "none" a "unknown"
+  mutate(across(where(is.character),
+                ~replace(.x, is.na(.x) | .x == "none", "unknown")))
+  
+```
+
+&nbsp;
+
+Muchas veces tendremos variables con **valores muy alejados de la centralidad**, centralidad normalmente entendida como media o mediana, valores muy extremos (conocidos como **valores atípicos o outliers**).
+
+* **Respecto a la mediana/percentiles (iqr)**: una definición de outlier muy habitual es definirlo como un **valor muy alejado del primer/tercer cuartil**. La definición que se suele usar es que el dato sea interior/superior al primer/tercer cuartil una amplitud de X veces el **rango intercuartílico** (conocido como **IQR, calculado como el tercer cuartil menos el primer cuartil**) por debajo/encima.
+
+* **Respecto a la media (gesd)**: el criterio utilizado suele ser el conocido como GESD (Generlized Extreme Studentized Deviate Test), un contraste de hipótesis cuya hipótesis nula es que no hay atípicos en los datos. Puedes ver la formulación matemática en <https://www.itl.nist.gov/div898/handbook/eda/section3/eda35h3.htm>
+
+Para su localización automática usaremos el paquete `{anomalize}`, y la función homónima de dicho paquete, indicándole la columna individual en la que queremos detectar outliers y el método a usar. Con el método `method = "gesd"` realizaremos el contraste dato a dato de forma secuencial (si hay outlier lo quita individualmente y vuelve a ejecutarlo). Con `method = "iqr"`, ese factor `X` que nos distanciamos del primer y tercer cuartil es calculado como `0.15/alpha`, de forma que con `alpha = 0.05` (por ejemplo), dicho factor sería `X = 3`. Es **MUY IMPORTANTE** quitar antes los valores ausentes (para que pueda ejecutarse correctamente).
+
+```{r}
+library(anomalize)
+# Importante: quitar antes missings
+starwars %>% drop_na(mass) %>% anomalize(mass, method = "gesd")
+``` 
+
+En las columnas `mass_l1` y `mass_l2` se nos han guardado los límites para considerar o no outlier, y en `anomaly` tendremos si el valor es un outlier o no. Podemos renombrar dicha columna y recategorizarlo con `TRUE/FALSE`
+
+```{r}
+print(starwars %>%
+        drop_na(mass) %>%
+        anomalize(mass, method = "gesd") %>%
+        rename(outlier = anomaly) %>%
+        # Eliminamos la variables auxiliares creadas
+        select(-c(mass_l1, mass_l2)) %>%
+        mutate(outlier = (outlier == "Yes")), width = Inf)
+```
+
+Dicha variable auxiliar la podremos usar para **decidir si incluir o no el registro** en futuros pasos, pero también **podemos usarla para imputarle un valor** (por ejemplo, la media).
+
+```{r}
+print(starwars %>%
+        drop_na(mass) %>%
+        anomalize(mass, method = "gesd") %>%
+        rename(outlier = anomaly) %>%
+        # Eliminamos la variables auxiliares creadas
+        select(-c(mass_l1, mass_l2)) %>%
+        mutate(outlier = (outlier == "Yes"),
+               mass = ifelse(outlier, mean(mass), mass)),
+      width = Inf)
+```
+
 
 
 

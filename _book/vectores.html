@@ -63,10 +63,9 @@
 <li><a class="" href="tidydata.html"><span class="header-section-number">11</span> Tidy data: ordenando datos</a></li>
 <li><a class="" href="tidyverse.html"><span class="header-section-number">12</span> Explorando los datos: incursión a tidyverse</a></li>
 <li><a class="" href="resumiendo-y-relacionado-los-datos.html"><span class="header-section-number">13</span> Resumiendo y relacionado los datos</a></li>
-<li><a class="" href="modelos_lineales.html"><span class="header-section-number">14</span> Introducción a los modelos lineales</a></li>
-<li><a class="" href="ggplot2.html"><span class="header-section-number">15</span> Visualizando datos: incursión a ggplot2</a></li>
+<li><a class="" href="ggplot2.html"><span class="header-section-number">14</span> Visualizando datos: incursión a ggplot2</a></li>
 <li class="book-part">Epílogo</li>
-<li><a class="" href="contribuye.html"><span class="header-section-number">16</span> Contribuye al proyecto</a></li>
+<li><a class="" href="contribuye.html"><span class="header-section-number">15</span> Contribuye al proyecto</a></li>
 <li><a class="" href="bibliograf%C3%ADa.html">Bibliografía</a></li>
 </ul>
 
@@ -686,10 +685,10 @@ Imagen/gráfica 3.1: Paquete stringr para manejar cadenas de texto más compleja
 <div class="sourceCode" id="cb228"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fecha</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span><span class="op">(</span><span class="op">)</span>
 <span class="va">fecha</span></code></pre></div>
-<pre><code>## [1] "2021-10-28"</code></pre>
+<pre><code>## [1] "2021-10-29"</code></pre>
 <div class="sourceCode" id="cb230"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fecha</span> <span class="op">-</span> <span class="fl">7</span> <span class="co"># una semana antes</span></code></pre></div>
-<pre><code>## [1] "2021-10-21"</code></pre>
+<pre><code>## [1] "2021-10-22"</code></pre>
 <div class="sourceCode" id="cb232"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span> <span class="co"># de clase fecha</span></code></pre></div>
 <pre><code>## [1] "Date"</code></pre>
@@ -749,10 +748,10 @@ Imagen/gráfica 3.1: Paquete stringr para manejar cadenas de texto más compleja
 <p>Además el paquete nos proporciona <strong>herramientas para extraer la fecha y hora actuales</strong> con las funciones <code><a href="https://rdrr.io/pkg/lubridate/man/now.html">today()</a></code> y <code><a href="https://rdrr.io/pkg/lubridate/man/now.html">now()</a></code></p>
 <div class="sourceCode" id="cb262"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/now.html">today</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "2021-10-28"</code></pre>
+<pre><code>## [1] "2021-10-29"</code></pre>
 <div class="sourceCode" id="cb264"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/now.html">now</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "2021-10-28 17:47:10 CEST"</code></pre>
+<pre><code>## [1] "2021-10-29 00:42:15 CEST"</code></pre>
 <p>También tenemos disponibles en dicho paquete funciones para extraer facilmente algunas variables temporales como el <strong>día de la semana, el mes o el cuatrimestre</strong>, con las funciones <code><a href="https://rdrr.io/pkg/lubridate/man/year.html">year()</a></code>, <code><a href="https://rdrr.io/r/base/weekday.POSIXt.html">months()</a></code>, <code><a href="https://rdrr.io/pkg/lubridate/man/day.html">day()</a></code> o <code><a href="https://rdrr.io/pkg/lubridate/man/day.html">wday()</a></code> (día de la semana).</p>
 <div class="sourceCode" id="cb266"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fecha</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/now.html">now</a></span><span class="op">(</span><span class="op">)</span>
@@ -763,22 +762,22 @@ Imagen/gráfica 3.1: Paquete stringr para manejar cadenas de texto más compleja
 <pre><code>## [1] 10</code></pre>
 <div class="sourceCode" id="cb270"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/day.html">day</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 28</code></pre>
+<pre><code>## [1] 29</code></pre>
 <div class="sourceCode" id="cb272"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/day.html">wday</a></span><span class="op">(</span><span class="va">fecha</span>, week_start <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="co"># Día de la semana (empezando por el lunes)</span></code></pre></div>
-<pre><code>## [1] 4</code></pre>
+<pre><code>## [1] 5</code></pre>
 <div class="sourceCode" id="cb274"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/hour.html">hour</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 17</code></pre>
+<pre><code>## [1] 0</code></pre>
 <div class="sourceCode" id="cb276"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/minute.html">minute</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 47</code></pre>
+<pre><code>## [1] 42</code></pre>
 <div class="sourceCode" id="cb278"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/second.html">second</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 10.18148</code></pre>
+<pre><code>## [1] 15.97057</code></pre>
 <div class="sourceCode" id="cb280"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/week.html">week</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span> <span class="co"># Número de semana (del año)</span></code></pre></div>
-<pre><code>## [1] 43</code></pre>
+<pre><code>## [1] 44</code></pre>
 <p>Al igual que podemos realizar operaciones aritméticas sencillas con las fechas, también podemos <strong>realizar comparaciones</strong>, por ejemplo, si el día actual es menor o mayor que otra fecha dada.</p>
 <div class="sourceCode" id="cb282"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fecha_actual</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/now.html">now</a></span><span class="op">(</span><span class="op">)</span>
@@ -816,8 +815,8 @@ Imagen/gráfica 3.1: Paquete stringr para manejar cadenas de texto más compleja
                times <span class="op">=</span> <span class="fl">1e3</span><span class="op">)</span> <span class="co"># se repetirá 1000 veces</span></code></pre></div>
 <pre><code>## Unit: microseconds
 ##         expr    min      lq     mean median     uq     max neval cld
-##      sort(x) 41.329 47.8615 59.12444  54.53 60.366 267.496  1000   b
-##  x[order(x)] 29.242 34.0765 40.87774  38.30 42.327 135.531  1000  a</code></pre>
+##      sort(x) 45.769 50.2405 60.41965 55.589 60.898 685.967  1000   b
+##  x[order(x)] 31.034 36.1485 42.20213 39.239 42.988 152.405  1000  a</code></pre>
 <p>Sí, estás viendo bien: aunque a priori parezca contraintuitivo, es más corto obtener los índices ordenados de un vector, y luego reordenarlo en base a esos índices, que la ordenación directa a través del comando <code><a href="https://rdrr.io/r/base/sort.html">sort()</a></code> (ya que usan algoritmos de ordenación distintos).</p>
 <p> </p>
 <div class="inline-table"><table class="table table-sm">
@@ -963,7 +962,7 @@ Imagen/gráfica 3.1: Paquete stringr para manejar cadenas de texto más compleja
 
 <span class="co"># Diferencia</span>
 <span class="va">hoy</span> <span class="op">-</span> <span class="va">cumple</span></code></pre></div>
-<pre><code>## Time difference of 11736 days</code></pre>
+<pre><code>## Time difference of 11737 days</code></pre>
 <!-- tocstop -->
 </details>
 </div>
@@ -1015,7 +1014,7 @@ Imagen/gráfica 3.1: Paquete stringr para manejar cadenas de texto más compleja
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 28-10-2021.</p>
+    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 29-10-2021.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

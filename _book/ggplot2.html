@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Capítulo 15 Visualizando datos: incursión a ggplot2 | Aprendiendo R sin morir en el intento</title>
+<title>Capítulo 14 Visualizando datos: incursión a ggplot2 | Aprendiendo R sin morir en el intento</title>
 <meta name="author" content="Javier Álvarez Liébana">
 <meta name="description" content="en breve">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
-<meta property="og:title" content="Capítulo 15 Visualizando datos: incursión a ggplot2 | Aprendiendo R sin morir en el intento">
+<meta property="og:title" content="Capítulo 14 Visualizando datos: incursión a ggplot2 | Aprendiendo R sin morir en el intento">
 <meta property="og:type" content="book">
 <meta property="og:image" content="/img/logo_R.png">
 <meta property="og:description" content="en breve">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Capítulo 15 Visualizando datos: incursión a ggplot2 | Aprendiendo R sin morir en el intento">
+<meta name="twitter:title" content="Capítulo 14 Visualizando datos: incursión a ggplot2 | Aprendiendo R sin morir en el intento">
 <meta name="twitter:description" content="en breve">
 <meta name="twitter:image" content="/img/logo_R.png">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -63,10 +63,9 @@
 <li><a class="" href="tidydata.html"><span class="header-section-number">11</span> Tidy data: ordenando datos</a></li>
 <li><a class="" href="tidyverse.html"><span class="header-section-number">12</span> Explorando los datos: incursión a tidyverse</a></li>
 <li><a class="" href="resumiendo-y-relacionado-los-datos.html"><span class="header-section-number">13</span> Resumiendo y relacionado los datos</a></li>
-<li><a class="" href="modelos_lineales.html"><span class="header-section-number">14</span> Introducción a los modelos lineales</a></li>
-<li><a class="active" href="ggplot2.html"><span class="header-section-number">15</span> Visualizando datos: incursión a ggplot2</a></li>
+<li><a class="active" href="ggplot2.html"><span class="header-section-number">14</span> Visualizando datos: incursión a ggplot2</a></li>
 <li class="book-part">Epílogo</li>
-<li><a class="" href="contribuye.html"><span class="header-section-number">16</span> Contribuye al proyecto</a></li>
+<li><a class="" href="contribuye.html"><span class="header-section-number">15</span> Contribuye al proyecto</a></li>
 <li><a class="" href="bibliograf%C3%ADa.html">Bibliografía</a></li>
 </ul>
 
@@ -77,7 +76,7 @@
 </div>
   </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="ggplot2" class="section level1">
 <h1>
-<span class="header-section-number">Capítulo 15</span> Visualizando datos: incursión a ggplot2<a class="anchor" aria-label="anchor" href="#ggplot2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">Capítulo 14</span> Visualizando datos: incursión a ggplot2<a class="anchor" aria-label="anchor" href="#ggplot2"><i class="fas fa-link"></i></a>
 </h1>
 <p>en breve</p>
 
@@ -86,16 +85,16 @@
 
 
   <div class="chapter-nav">
-<div class="prev"><a href="modelos_lineales.html"><span class="header-section-number">14</span> Introducción a los modelos lineales</a></div>
-<div class="next"><a href="contribuye.html"><span class="header-section-number">16</span> Contribuye al proyecto</a></div>
+<div class="prev"><a href="resumiendo-y-relacionado-los-datos.html"><span class="header-section-number">13</span> Resumiendo y relacionado los datos</a></div>
+<div class="next"><a href="contribuye.html"><span class="header-section-number">15</span> Contribuye al proyecto</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav"><li><a class="nav-link" href="#ggplot2"><span class="header-section-number">15</span> Visualizando datos: incursión a ggplot2</a></li></ul>
+      <ul class="nav navbar-nav"><li><a class="nav-link" href="#ggplot2"><span class="header-section-number">14</span> Visualizando datos: incursión a ggplot2</a></li></ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/dadosdelaplace/cursoR_intro_2021_2022/blob/master/15-dataviz.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/dadosdelaplace/cursoR_intro_2021_2022/edit/master/15-dataviz.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/dadosdelaplace/cursoR_intro_2021_2022/blob/master/14-dataviz.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/dadosdelaplace/cursoR_intro_2021_2022/edit/master/14-dataviz.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>
@@ -107,7 +106,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 28-10-2021.</p>
+    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 29-10-2021.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
