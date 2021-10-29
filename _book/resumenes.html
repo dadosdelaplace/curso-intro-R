@@ -4,17 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Capítulo 13 Resumiendo y relacionado los datos | Aprendiendo R sin morir en el intento</title>
+<title>Capítulo 12 Resumiendo y relacionado los datos | Aprendiendo R sin morir en el intento</title>
 <meta name="author" content="Javier Álvarez Liébana">
-<meta name="description" content="en breve  13.1 Tablas de frecuencias en breve  13.2 Resúmenes numéricos (summarise y skimr) y por grupos (group_by) en breve  13.3 Relacionar datos (joins) en breve  13.4 📝 Ejercicios en breve">
+<meta name="description" content="Ahora que ya sabemos depurar y transformar los datos con pocas líneas de código, así como extraer la información que nos interese, en esta sección vamos a aprender dos cosas básicas a la hora de...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
-<meta property="og:title" content="Capítulo 13 Resumiendo y relacionado los datos | Aprendiendo R sin morir en el intento">
+<meta property="og:title" content="Capítulo 12 Resumiendo y relacionado los datos | Aprendiendo R sin morir en el intento">
 <meta property="og:type" content="book">
 <meta property="og:image" content="/img/logo_R.png">
-<meta property="og:description" content="en breve  13.1 Tablas de frecuencias en breve  13.2 Resúmenes numéricos (summarise y skimr) y por grupos (group_by) en breve  13.3 Relacionar datos (joins) en breve  13.4 📝 Ejercicios en breve">
+<meta property="og:description" content="Ahora que ya sabemos depurar y transformar los datos con pocas líneas de código, así como extraer la información que nos interese, en esta sección vamos a aprender dos cosas básicas a la hora de...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Capítulo 13 Resumiendo y relacionado los datos | Aprendiendo R sin morir en el intento">
-<meta name="twitter:description" content="en breve  13.1 Tablas de frecuencias en breve  13.2 Resúmenes numéricos (summarise y skimr) y por grupos (group_by) en breve  13.3 Relacionar datos (joins) en breve  13.4 📝 Ejercicios en breve">
+<meta name="twitter:title" content="Capítulo 12 Resumiendo y relacionado los datos | Aprendiendo R sin morir en el intento">
+<meta name="twitter:description" content="Ahora que ya sabemos depurar y transformar los datos con pocas líneas de código, así como extraer la información que nos interese, en esta sección vamos a aprender dos cosas básicas a la hora de...">
 <meta name="twitter:image" content="/img/logo_R.png">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -22,7 +22,11 @@
 <link href="https://fonts.googleapis.com/css2?family=DM%20Mono&amp;display=swap" rel="stylesheet">
 <link href="libs/_Bitter-0.4.0/font.css" rel="stylesheet">
 <script src="libs/bs3compat-0.3.0/transition.js"></script><script src="libs/bs3compat-0.3.0/tabs.js"></script><script src="libs/bs3compat-0.3.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS -->
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="libs/datatables-binding-0.18/datatables.js"></script><link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script><link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet">
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS -->
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -43,31 +47,7 @@
 </form>
 
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
-        <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html">Prefacio</a></li>
-<li class="book-part">Toma de contacto</li>
-<li><a class="" href="instalacionR.html"><span class="header-section-number">1</span> Instalación</a></li>
-<li><a class="" href="primeros-pasos.html"><span class="header-section-number">2</span> Primeros pasos</a></li>
-<li class="book-part">Conceptos básicos</li>
-<li><a class="" href="vectores.html"><span class="header-section-number">3</span> Tipos de datos I: vectores</a></li>
-<li><a class="" href="proyecto.html"><span class="header-section-number">4</span> Flujo de trabajo: primer proyecto</a></li>
-<li><a class="" href="control.html"><span class="header-section-number">5</span> Estructuras de control</a></li>
-<li><a class="" href="datos.html"><span class="header-section-number">6</span> Tipos de datos II: datos estructurados</a></li>
-<li><a class="" href="importar-exportar.html"><span class="header-section-number">7</span> Importando/exportando</a></li>
-<li class="book-part">Listas y funciones</li>
-<li><a class="" href="otros-datos.html"><span class="header-section-number">8</span> Listas y factores</a></li>
-<li><a class="" href="funciones.html"><span class="header-section-number">9</span> Creación de funciones</a></li>
-<li class="book-part">Alto en el camino</li>
-<li><a class="" href="resumen-1.html"><span class="header-section-number">10</span> ¿Qué sabemos hacer?</a></li>
-<li class="book-part">EXPLORANDO: introducción al análisis exploratorio de datos</li>
-<li><a class="" href="tidydata.html"><span class="header-section-number">11</span> Tidy data: ordenando datos</a></li>
-<li><a class="" href="tidyverse.html"><span class="header-section-number">12</span> Explorando los datos: incursión a tidyverse</a></li>
-<li><a class="active" href="resumenes.html"><span class="header-section-number">13</span> Resumiendo y relacionado los datos</a></li>
-<li><a class="" href="ggplot2.html"><span class="header-section-number">14</span> Visualizando datos: incursión a ggplot2</a></li>
-<li class="book-part">Epílogo</li>
-<li><a class="" href="contribuye.html"><span class="header-section-number">15</span> Contribuye al proyecto</a></li>
-<li><a class="" href="bibliograf%C3%ADa.html">Bibliografía</a></li>
-</ul>
+        <ul class="book-toc list-unstyled"><li><a class="" href="index.html"><span class="header-section-number">Capítulo 12</span> Resumiendo y relacionado los datos</a></li></ul>
 
         <div class="book-extra">
           <p><a id="book-repo" href="https://github.com/dadosdelaplace/cursoR_intro_2021_2022">View book source <i class="fab fa-github"></i></a></p>
@@ -76,52 +56,215 @@
 </div>
   </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="resumenes" class="section level1">
 <h1>
-<span class="header-section-number">Capítulo 13</span> Resumiendo y relacionado los datos<a class="anchor" aria-label="anchor" href="#resumenes"><i class="fas fa-link"></i></a>
+<span class="header-section-number">Capítulo 12</span> Resumiendo y relacionado los datos<a class="anchor" aria-label="anchor" href="#resumenes"><i class="fas fa-link"></i></a>
 </h1>
-<p>en breve</p>
+<p>Ahora que <strong>ya sabemos depurar y transformar los datos</strong> con pocas líneas de código, así como extraer la información que nos interese, en esta sección vamos a aprender dos cosas básicas a la hora de trabajar con datos:</p>
+<ul>
+<li>Realizar <strong>resúmenes numéricos</strong> de los datos, de forma general pero también cuando queremos calcular estadísticas desagregadas por grupos.</li>
+<li>
+<strong>Relacionar tablas</strong> entre sí (los famosos <em>join</em>).</li>
+</ul>
 <div id="tablas-de-frecuencias" class="section level2">
 <h2>
-<span class="header-section-number">13.1</span> Tablas de frecuencias<a class="anchor" aria-label="anchor" href="#tablas-de-frecuencias"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.1</span> Tablas de frecuencias<a class="anchor" aria-label="anchor" href="#tablas-de-frecuencias"><i class="fas fa-link"></i></a>
 </h2>
-<p>en breve</p>
+<p>Una de las <strong>primeras cosas</strong> que uno aprende en la asignatura de estadística <strong>descriptiva</strong> es <strong>saber resumir nuestros datos</strong> cuando tenemos muchos, y además <strong>muchos valores repetidos</strong>. Vamos a construir la <strong>tabla de frecuencias</strong> de la variable <code>n_films</code> de nuestro ya conocido conjunto <code>starwars</code> (una variable que vamos a crear contando en cuántas películas aparece cada personaje)</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://purrr.tidyverse.org">purrr</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></code></pre></div>
+<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</code></pre>
+<pre><code>## ✓ ggplot2 3.3.5     ✓ dplyr   1.0.7
+## ✓ tibble  3.1.4     ✓ stringr 1.4.0
+## ✓ tidyr   1.1.3     ✓ forcats 0.5.1
+## ✓ readr   2.0.1</code></pre>
+<pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">starwars_nueva</span> <span class="op">&lt;-</span> <span class="va">starwars</span> <span class="op">%&gt;%</span>
+  <span class="fu">mutate</span><span class="op">(</span>n_films <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/purrr/man/map.html">map_int</a></span><span class="op">(</span><span class="va">films</span>, <span class="va">length</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<p>Y lo primero es <strong>contar</strong>: ¿cuántos registros hay de cada una de las clases? Para ello usaremos la función <code>count()</code></p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">starwars_nueva</span> <span class="op">%&gt;%</span> <span class="fu">count</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 1
+##       n
+##   &lt;int&gt;
+## 1    87</code></pre>
+<p>Como ves si aplicamos la <strong>función directamente</strong> simplemente nos <strong>cuenta el número de filas</strong> de la tabla, así que vamos a <strong>usar la misma función pero indicándole la variable</strong>.</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">tabla_freq</span> <span class="op">&lt;-</span> <span class="va">starwars_nueva</span> <span class="op">%&gt;%</span> <span class="fu">count</span><span class="op">(</span><span class="va">n_films</span><span class="op">)</span>
+<span class="va">tabla_freq</span></code></pre></div>
+<pre><code>## # A tibble: 7 × 2
+##   n_films     n
+##     &lt;int&gt; &lt;int&gt;
+## 1       1    46
+## 2       2    18
+## 3       3    13
+## 4       4     2
+## 5       5     5
+## 6       6     2
+## 7       7     1</code></pre>
+<p>Esa columna <code>n</code> es lo que conocemos como <strong>frecuencias absolutas</strong>, el <strong>número de veces</strong> que la variable toma dicha valor. También es posible <strong>calcular las frecuencias absolutas</strong> por varias variables a la vez (algo similar a una <strong>tabla de contigencia</strong> aunque en otro formato).</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">starwars_nueva</span> <span class="op">%&gt;%</span> <span class="fu">count</span><span class="op">(</span><span class="va">sex</span>, <span class="va">gender</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 3
+##   sex            gender        n
+##   &lt;chr&gt;          &lt;chr&gt;     &lt;int&gt;
+## 1 female         feminine     16
+## 2 hermaphroditic masculine     1
+## 3 male           masculine    60
+## 4 none           feminine      1
+## 5 none           masculine     5
+## 6 &lt;NA&gt;           &lt;NA&gt;          4</code></pre>
+<p><strong>¿Cómo seguir construyendo nuestra tabla de frecuencias en <code>tabla_freq</code>?</strong> Necesitamos añadir una columna <code>N_i</code> de <strong>frecuencia absoluta acumulada</strong>, una columna que nos diga el <strong>número de personajes que han hecho un número de películas igual o menor</strong> que el indicado.</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Construimos de cero</span>
+<span class="va">tabla_freq</span> <span class="op">&lt;-</span> <span class="va">starwars_nueva</span> <span class="op">%&gt;%</span>
+  <span class="co"># n: frecuencia absoluta</span>
+  <span class="fu">count</span><span class="op">(</span><span class="va">n_films</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="co"># N_i: frecuencia absoluta acumulada</span>
+  <span class="fu">mutate</span><span class="op">(</span>N_i <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cumsum.html">cumsum</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span> <span class="co"># cumsum calcula la suma acumulada</span>
+<span class="va">tabla_freq</span></code></pre></div>
+<pre><code>## # A tibble: 7 × 3
+##   n_films     n   N_i
+##     &lt;int&gt; &lt;int&gt; &lt;int&gt;
+## 1       1    46    46
+## 2       2    18    64
+## 3       3    13    77
+## 4       4     2    79
+## 5       5     5    84
+## 6       6     2    86
+## 7       7     1    87</code></pre>
+<p>También <strong>necesitamos otras dos columnas</strong> <code>f_i</code> y <code>F_i</code>, de <strong>frecuencias relativas</strong> (no acumulada y acumulada, respectivamente), que nos indica lo mismo que las dos primeras columnas pero en <strong>proporción</strong> respecto a los datos.</p>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Construimos de cero</span>
+<span class="va">tabla_freq</span> <span class="op">&lt;-</span> <span class="va">starwars_nueva</span> <span class="op">%&gt;%</span>
+  <span class="co"># n: frecuencia absoluta</span>
+  <span class="fu">count</span><span class="op">(</span><span class="va">n_films</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="co"># N_i: frecuencia absoluta acumulada</span>
+  <span class="fu">mutate</span><span class="op">(</span>N_i <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cumsum.html">cumsum</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># cumsum calcula la suma acumulada</span>
+  <span class="fu">mutate</span><span class="op">(</span>f_i <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/prop.table.html">prop.table</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span>, <span class="co"># prop.table nos devuelve proporciones</span>
+         F_i <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cumsum.html">cumsum</a></span><span class="op">(</span><span class="va">f_i</span><span class="op">)</span><span class="op">)</span>
+<span class="va">tabla_freq</span></code></pre></div>
+<pre><code>## # A tibble: 7 × 5
+##   n_films     n   N_i    f_i   F_i
+##     &lt;int&gt; &lt;int&gt; &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt;
+## 1       1    46    46 0.529  0.529
+## 2       2    18    64 0.207  0.736
+## 3       3    13    77 0.149  0.885
+## 4       4     2    79 0.0230 0.908
+## 5       5     5    84 0.0575 0.966
+## 6       6     2    86 0.0230 0.989
+## 7       7     1    87 0.0115 1</code></pre>
+<p>Esas <strong>frecuencias relativas</strong> quizás querramos tenerlas expresadas en <strong>porcentajes</strong> en lugar de en proporciones.</p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Pasamos frecuencias relativas a porcentajes</span>
+<span class="va">tabla_freq</span> <span class="op">%&gt;%</span> <span class="fu">mutate</span><span class="op">(</span>f_i <span class="op">=</span> <span class="va">f_i</span> <span class="op">*</span> <span class="fl">100</span>,
+                      F_i <span class="op">=</span> <span class="va">F_i</span> <span class="op">*</span> <span class="fl">100</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 7 × 5
+##   n_films     n   N_i   f_i   F_i
+##     &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1       1    46    46 52.9   52.9
+## 2       2    18    64 20.7   73.6
+## 3       3    13    77 14.9   88.5
+## 4       4     2    79  2.30  90.8
+## 5       5     5    84  5.75  96.6
+## 6       6     2    86  2.30  98.9
+## 7       7     1    87  1.15 100</code></pre>
+<p>Por último, con la tabla <code>tabla_freq</code> expresando las frecuencias relativas en proporciones, vamos a cambiar el nombre de las columnas para que tengan los <strong>típicos nombres de una tabla de frecuencias</strong>.</p>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Renombramos</span>
+<span class="va">tabla_freq</span> <span class="op">&lt;-</span> <span class="va">tabla_freq</span> <span class="op">%&gt;%</span>
+  <span class="fu">rename</span><span class="op">(</span>n_i <span class="op">=</span> <span class="va">n</span>, x_i <span class="op">=</span> <span class="va">n_films</span><span class="op">)</span>
+<span class="va">tabla_freq</span></code></pre></div>
+<pre><code>## # A tibble: 7 × 5
+##     x_i   n_i   N_i    f_i   F_i
+##   &lt;int&gt; &lt;int&gt; &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt;
+## 1     1    46    46 0.529  0.529
+## 2     2    18    64 0.207  0.736
+## 3     3    13    77 0.149  0.885
+## 4     4     2    79 0.0230 0.908
+## 5     5     5    84 0.0575 0.966
+## 6     6     2    86 0.0230 0.989
+## 7     7     1    87 0.0115 1</code></pre>
+<div id="htmlwidget-f1e4e711e5c385b1436e" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f1e4e711e5c385b1436e">{"x":{"filter":"none","caption":"<caption>Tabla de frecuencias del número de películas en las que aparece cada personaje<\/caption>","data":[[1,2,3,4,5,6,7],[46,18,13,2,5,2,1],[46,64,77,79,84,86,87],[0.528735632183908,0.206896551724138,0.149425287356322,0.0229885057471264,0.0574712643678161,0.0229885057471264,0.0114942528735632],[0.528735632183908,0.735632183908046,0.885057471264368,0.908045977011494,0.96551724137931,0.988505747126437,1]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>x_i<\/th>\n      <th>n_i<\/th>\n      <th>N_i<\/th>\n      <th>f_i<\/th>\n      <th>F_i<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":10,"scrollX":true,"fixedColumns":{"leftColumns":1},"headerCallback":"function(thead) {\n  $(thead).css('font-size', '0.95em');\n}","language":{"url":"//cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json"},"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \".\", \".\");\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \".\", \".\");\n  }"},{"className":"dt-right","targets":[0,1,2,3,4]}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.headerCallback","options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script><p>Con esta tabla podemos <strong>calcular por ejemplo la media</strong> <span class="math inline">\(\overline{x}\)</span> <strong>usando el resumen que tenemos guardado</strong> (como se suele - o solía - hacer cuando se tiene que realizar «a mano» un ejercicio de este tipo en los primeros cursos de estadística).</p>
+<p><span class="math display">\[\overline{x} = \frac{1}{N} \sum_{i=1}^{k} n_i x_i = \sum_{i=1}^{k} f_i x_i\]</span></p>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tidyverse/glue">glue</a></span><span class="op">)</span></code></pre></div>
+<pre><code>## 
+## Attaching package: 'glue'</code></pre>
+<pre><code>## The following object is masked from 'package:dplyr':
+## 
+##     collapse</code></pre>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Renombramos</span>
+<span class="va">tabla_freq</span> <span class="op">&lt;-</span> <span class="va">tabla_freq</span> <span class="op">%&gt;%</span> <span class="fu">mutate</span><span class="op">(</span>f_i_x_i <span class="op">=</span> <span class="va">f_i</span> <span class="op">*</span> <span class="va">x_i</span><span class="op">)</span>
+<span class="va">media</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">tabla_freq</span><span class="op">$</span><span class="va">f_i_x_i</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/glue/man/glue.html">glue</a></span><span class="op">(</span><span class="st">"La media de películas es {round(media, 3)}"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## La media de películas es 1.989</code></pre>
+<p> </p>
+<p><strong>¿Cómo construir una tabla similar para variables continuas?</strong> La metodología sería la misma solo que antes debemos <strong>agrupar los datos</strong> (por ejemplo, de la variable <code>height</code>) en <strong>subintervalos</strong>.</p>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Construimos de cero</span>
+<span class="va">tabla_freq_continua</span> <span class="op">&lt;-</span>
+  <span class="va">starwars</span> <span class="op">%&gt;%</span>
+  <span class="co"># agrupamos los datos en tramos de 20 en 20</span>
+  <span class="fu">mutate</span><span class="op">(</span>intervalo <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span><span class="op">(</span><span class="va">height</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">65</span>, <span class="fl">265</span>, by <span class="op">=</span> <span class="fl">20</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="co"># n: frecuencia absoluta</span>
+  <span class="fu">count</span><span class="op">(</span><span class="va">intervalo</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="co"># N_i: frecuencia absoluta acumulada</span>
+  <span class="fu">mutate</span><span class="op">(</span>N_i <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cumsum.html">cumsum</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># cumsum calcula la suma acumulada</span>
+  <span class="fu">mutate</span><span class="op">(</span>f_i <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/prop.table.html">prop.table</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span>, <span class="co"># prop.table nos devuelve proporciones</span>
+         F_i <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cumsum.html">cumsum</a></span><span class="op">(</span><span class="va">f_i</span><span class="op">)</span><span class="op">)</span>
+<span class="va">tabla_freq_continua</span></code></pre></div>
+<pre><code>## # A tibble: 11 × 5
+##    intervalo     n   N_i    f_i    F_i
+##    &lt;fct&gt;     &lt;int&gt; &lt;int&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+##  1 (65,85]       2     2 0.0230 0.0230
+##  2 (85,105]      5     7 0.0575 0.0805
+##  3 (105,125]     2     9 0.0230 0.103 
+##  4 (125,145]     1    10 0.0115 0.115 
+##  5 (145,165]     9    19 0.103  0.218 
+##  6 (165,185]    34    53 0.391  0.609 
+##  7 (185,205]    19    72 0.218  0.828 
+##  8 (205,225]     5    77 0.0575 0.885 
+##  9 (225,245]     3    80 0.0345 0.920 
+## 10 (245,265]     1    81 0.0115 0.931 
+## 11 &lt;NA&gt;          6    87 0.0690 1</code></pre>
+<p>El problema es que <strong>cuando agrupamos los datos de una varibale continua en subintervalos</strong>, aunque nos sirva como <strong>resumen</strong> para tener una idea de como se comporta nuestra variable (y sea <strong>algo necesario para, por ejemplo, construir un «histograma discretizado»</strong>), a la hora de calcular sus estadísticas perdemos información ya que todos los elementos que cae en un intervalo se les <strong>imputará un único valor: la marca de clase, que normalmente es el punto medio del intervalo</strong>.</p>
+<p>Vamos a <strong>calcular resúmenes numéricos</strong> de las variables sin agrupar aprovechando que <code>R</code> el trabajo por nosotros/as.</p>
 </div>
 <div id="resúmenes-numéricos-summarise-y-skimr-y-por-grupos-group_by" class="section level2">
 <h2>
-<span class="header-section-number">13.2</span> Resúmenes numéricos (summarise y skimr) y por grupos (group_by)<a class="anchor" aria-label="anchor" href="#res%C3%BAmenes-num%C3%A9ricos-summarise-y-skimr-y-por-grupos-group_by"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.2</span> Resúmenes numéricos (summarise y skimr) y por grupos (group_by)<a class="anchor" aria-label="anchor" href="#res%C3%BAmenes-num%C3%A9ricos-summarise-y-skimr-y-por-grupos-group_by"><i class="fas fa-link"></i></a>
 </h2>
 <p>en breve</p>
 </div>
 <div id="relacionar-datos-joins" class="section level2">
 <h2>
-<span class="header-section-number">13.3</span> Relacionar datos (joins)<a class="anchor" aria-label="anchor" href="#relacionar-datos-joins"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.3</span> Relacionar datos (joins)<a class="anchor" aria-label="anchor" href="#relacionar-datos-joins"><i class="fas fa-link"></i></a>
 </h2>
 <p>en breve</p>
 </div>
 <div id="ejercicios-8" class="section level2">
 <h2>
-<span class="header-section-number">13.4</span> 📝 Ejercicios<a class="anchor" aria-label="anchor" href="#ejercicios-8"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.4</span> 📝 Ejercicios<a class="anchor" aria-label="anchor" href="#ejercicios-8"><i class="fas fa-link"></i></a>
 </h2>
 <p>en breve</p>
 
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="tidyverse.html"><span class="header-section-number">12</span> Explorando los datos: incursión a tidyverse</a></div>
-<div class="next"><a href="ggplot2.html"><span class="header-section-number">14</span> Visualizando datos: incursión a ggplot2</a></div>
+<div class="empty"></div>
+<div class="empty"></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#resumenes"><span class="header-section-number">13</span> Resumiendo y relacionado los datos</a></li>
-<li><a class="nav-link" href="#tablas-de-frecuencias"><span class="header-section-number">13.1</span> Tablas de frecuencias</a></li>
-<li><a class="nav-link" href="#res%C3%BAmenes-num%C3%A9ricos-summarise-y-skimr-y-por-grupos-group_by"><span class="header-section-number">13.2</span> Resúmenes numéricos (summarise y skimr) y por grupos (group_by)</a></li>
-<li><a class="nav-link" href="#relacionar-datos-joins"><span class="header-section-number">13.3</span> Relacionar datos (joins)</a></li>
-<li><a class="nav-link" href="#ejercicios-8"><span class="header-section-number">13.4</span> 📝 Ejercicios</a></li>
-</ul>
+      <div id="book-on-this-page"></div>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/dadosdelaplace/cursoR_intro_2021_2022/blob/master/13-resumenes.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/dadosdelaplace/cursoR_intro_2021_2022/edit/master/13-resumenes.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+          
         </ul>
 </div>
     </nav>

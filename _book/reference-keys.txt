@@ -153,3 +153,7 @@ relacionar-datos-joins
 ejercicios-8
 ggplot2
 contribuye
+la-importancia-del-dataviz
+entendiendo-la-gramática-de-ggplot2
+algunos-gráficos-útiles
+tab:unnamed-chunk-8

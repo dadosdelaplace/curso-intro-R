@@ -1,3 +1,16 @@
 # Visualizando datos: incursión a ggplot2 {#ggplot2}
+
+en breve 
+
+## La importancia del dataviz
+
+en breve 
+
+## Entendiendo la gramática de ggplot2
+
+en breve 
+
+## Algunos gráficos útiles
+
 en breve 
 

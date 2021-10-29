@@ -19,11 +19,139 @@ colorize <- function(x, color) {
 
 # Resumiendo y relacionado los datos {#resumenes}
 
-en breve
+Ahora que **ya sabemos depurar y transformar los datos** con pocas líneas de código, así como extraer la información que nos interese, en esta sección vamos a aprender dos cosas básicas a la hora de trabajar con datos:
+
+* Realizar **resúmenes numéricos** de los datos, de forma general pero también cuando queremos calcular estadísticas desagregadas por grupos.
+* **Relacionar tablas** entre sí (los famosos _join_).
+
 
 ## Tablas de frecuencias
 
-en breve
+Una de las **primeras cosas** que uno aprende en la asignatura de estadística **descriptiva** es **saber resumir nuestros datos** cuando tenemos muchos, y además **muchos valores repetidos**. Vamos a construir la **tabla de frecuencias** de la variable `n_films` de nuestro ya conocido conjunto `starwars` (una variable que vamos a crear contando en cuántas películas aparece cada personaje)
+
+```{r}
+library(purrr)
+library(tidyverse)
+starwars_nueva <- starwars %>%
+  mutate(n_films = map_int(films, length))
+```
+
+Y lo primero es **contar**: ¿cuántos registros hay de cada una de las clases? Para ello usaremos la función `count()`
+
+```{r}
+starwars_nueva %>% count()
+```
+
+Como ves si aplicamos la **función directamente** simplemente nos **cuenta el número de filas** de la tabla, así que vamos a **usar la misma función pero indicándole la variable**.
+
+```{r}
+tabla_freq <- starwars_nueva %>% count(n_films)
+tabla_freq
+```
+
+Esa columna `n` es lo que conocemos como **frecuencias absolutas**, el **número de veces** que la variable toma dicha valor. También es posible **calcular las frecuencias absolutas** por varias variables a la vez (algo similar a una **tabla de contigencia** aunque en otro formato).
+
+```{r}
+starwars_nueva %>% count(sex, gender)
+```
+
+**¿Cómo seguir construyendo nuestra tabla de frecuencias en `tabla_freq`?** Necesitamos añadir una columna `N_i` de **frecuencia absoluta acumulada**, una columna que nos diga el **número de personajes que han hecho un número de películas igual o menor** que el indicado.
+
+
+```{r}
+# Construimos de cero
+tabla_freq <- starwars_nueva %>%
+  # n: frecuencia absoluta
+  count(n_films) %>%
+  # N_i: frecuencia absoluta acumulada
+  mutate(N_i = cumsum(n)) # cumsum calcula la suma acumulada
+tabla_freq
+```
+
+También **necesitamos otras dos columnas** `f_i` y `F_i`, de **frecuencias relativas** (no acumulada y acumulada, respectivamente), que nos indica lo mismo que las dos primeras columnas pero en **proporción** respecto a los datos.
+
+```{r}
+# Construimos de cero
+tabla_freq <- starwars_nueva %>%
+  # n: frecuencia absoluta
+  count(n_films) %>%
+  # N_i: frecuencia absoluta acumulada
+  mutate(N_i = cumsum(n)) %>% # cumsum calcula la suma acumulada
+  mutate(f_i = prop.table(n), # prop.table nos devuelve proporciones
+         F_i = cumsum(f_i))
+tabla_freq
+```
+
+Esas **frecuencias relativas** quizás querramos tenerlas expresadas en **porcentajes** en lugar de en proporciones.
+
+```{r}
+# Pasamos frecuencias relativas a porcentajes
+tabla_freq %>% mutate(f_i = f_i * 100,
+                      F_i = F_i * 100)
+```
+
+Por último, con la tabla `tabla_freq` expresando las frecuencias relativas en proporciones, vamos a cambiar el nombre de las columnas para que tengan los **típicos nombres de una tabla de frecuencias**.
+
+```{r}
+# Renombramos
+tabla_freq <- tabla_freq %>%
+  rename(n_i = n, x_i = n_films)
+tabla_freq
+```
+
+```{r, echo = FALSE, message = FALSE}
+library(DT)
+datatable(options =
+            list(pageLength = 10, scrollX = TRUE,
+                 fixedColumns = list(leftColumns = 1),
+                 headerCallback = DT::JS(
+                   "function(thead) {",
+                   "  $(thead).css('font-size', '0.95em');",
+                   "}"
+                   ),
+                 language =
+                   list(url = '//cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json')),
+          tabla_freq, rownames = FALSE,
+          caption = "Tabla de frecuencias del número de películas en las que aparecen los personajes de la saga.") %>%
+   formatRound(c("f_i", "F_i"), digits = 3, mark = ".",
+                 dec.mark = getOption("OutDec"))
+```
+
+Con esta tabla podemos **calcular por ejemplo la media** $\overline{x}$ **usando el resumen que tenemos guardado** (como se suele - o solía - hacer cuando se tiene que realizar «a mano» un ejercicio de este tipo en los primeros cursos de estadística).
+
+$$\overline{x} = \frac{1}{N} \sum_{i=1}^{k} n_i x_i = \sum_{i=1}^{k} f_i x_i$$
+
+```{r}
+library(glue)
+
+# Renombramos
+tabla_freq <- tabla_freq %>% mutate(f_i_x_i = f_i * x_i)
+media <- sum(tabla_freq$f_i_x_i)
+print(glue("La media de películas es {round(media, 3)}"))
+```
+
+&nbsp;
+
+**¿Cómo construir una tabla similar para variables continuas?** La metodología sería la misma solo que antes debemos **agrupar los datos** (por ejemplo, de la variable `height`) en **subintervalos**.
+
+```{r}
+# Construimos de cero
+tabla_freq_continua <-
+  starwars %>%
+  # agrupamos los datos en tramos de 20 en 20
+  mutate(intervalo = cut(height, breaks = seq(65, 265, by = 20))) %>%
+  # n: frecuencia absoluta
+  count(intervalo) %>%
+  # N_i: frecuencia absoluta acumulada
+  mutate(N_i = cumsum(n)) %>% # cumsum calcula la suma acumulada
+  mutate(f_i = prop.table(n), # prop.table nos devuelve proporciones
+         F_i = cumsum(f_i))
+tabla_freq_continua
+```
+
+El problema es que **cuando agrupamos los datos de una varibale continua en subintervalos**, aunque nos sirva como **resumen** para tener una idea de como se comporta nuestra variable (y sea **algo necesario para, por ejemplo, construir un «histograma discretizado»**), a la hora de calcular sus estadísticas perdemos información ya que todos los elementos que cae en un intervalo se les **imputará un único valor: la marca de clase, que normalmente es el punto medio del intervalo**.
+
+Vamos a **calcular resúmenes numéricos** de las variables sin agrupar aprovechando que `R` el trabajo por nosotros/as.
 
 ## Resúmenes numéricos (summarise y skimr) y por grupos (group_by)
 
