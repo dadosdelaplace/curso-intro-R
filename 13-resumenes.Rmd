@@ -29,7 +29,6 @@ en breve
 
 en breve
 
-
 ## Relacionar datos (joins)
 
 en breve

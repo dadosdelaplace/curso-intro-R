@@ -260,9 +260,9 @@
 ##                                                                           expr
 ##  for (i in 1:dim(x)[1]) {     suma_por_filas[i] &lt;- sum(x[i, ], na.rm = TRUE) }
 ##                                apply(x, MARGIN = 1, FUN = "sum", na.rm = TRUE)
-##       min       lq       mean    median        uq      max neval cld
-##  1673.925 1752.885 1966.90724 1826.4765 2128.1285 4776.980   100   b
-##    19.857   24.005   33.09781   32.4595   40.1285   89.582   100  a</code></pre>
+##       min        lq       mean    median       uq      max neval cld
+##  1697.012 1726.5540 1844.67227 1755.2135 1822.798 4827.585   100   b
+##    19.442   23.6635   31.80965   33.1625   37.080  108.227   100  a</code></pre>
 <p><strong>¡El bucle nos tarda 50 veces más que el <code>apply</code>!</strong></p>
 <p> </p>
 <p><strong><span style="color: #20935E;">CONSEJO: evita los bucles</span></strong></p>
