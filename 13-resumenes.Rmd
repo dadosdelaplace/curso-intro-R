@@ -155,7 +155,213 @@ Vamos a **calcular resúmenes numéricos** de las variables sin agrupar aprovech
 
 ## Resúmenes numéricos (summarise y skimr) y por grupos (group_by)
 
-en breve
+Antes de pasar a ver **cómo generar nuestras propias estadísticas de los datos**, veamos la funcionalidad de un maravilloso paquete llamado `{skimr}`, que nos permite tener en un vistazo un **resumen numérico** muy completo de nuestros datos, con **histograma/diagrama de barras incluido**.
+
+```{r}
+library(skimr)
+starwars %>% skim()
+```
+
+Dicho resumen nos proporciona:
+
+- Variables de tipo **caracter**: `n_missing` (número de ausentes), `complete_rate` (proporción de datos sin ausentes), `min/max` y `n_unique` (número de valores únicos).
+
+- Variables de tipo **lista**: `n_missing` (número de ausentes), `complete_rate` (proporción de datos sin ausentes), `n_unique` (número de valores únicos) y `min_length/max_length` (longitud mínimo/máxima de las listas).
+
+- Variables de tipo **numérico**: `n_missing` (número de ausentes), `complete_rate` (proporción de datos sin ausentes), `mean/sd` (media y cuasidesviación típica), `p0/p25/p50/p75/p100` (cuartiles, percentiles 0%-25%-50%-75%-100%, valores que nos dividen nuestro conjunto en 4 trozos) e `hist` (una especie de histograma/barras sencillo).
+
+Este resumen no solo podemos visualizarlo sino que podemos guardarlo para exportarlo por ejemplo en un `.csv`.
+
+```{r}
+library(skimr)
+resumen_skim <- starwars %>% skim()
+```
+
+Sin embargo, aunque el resumen es bastante completo, muchas veces **querremos generar nuestras propias estadísticas o resúmenes numéricos**, y para eso vamos a aplicar `summarise()`, que nos calculará estadísticas de nuestros datos. Por ejemplo, vamos a **calcular las medidas de centralización (media-mediana-moda)**. Para las dos primeras basta con aplicar las funciones correspondientes.
+
+```{r}
+starwars %>% summarise(media = mean(mass),
+                       mediana = median(mass))
+```
+
+Como ves nos **devuelve un dato ausente** ya que al existir datos ausentes en la variables, **la media también lo es**. Para evitar ese problema **podemos hacer dos cosas**: eliminar antes los ausentes o indicarle en la propia media y mediana que haga el cálculo ignorando los valores `NA`.
+
+```{r}
+# Primero eliminamos NA
+starwars %>% drop_na(mass) %>%
+  summarise(media = mean(mass), mediana = median(mass))
+
+# Al realizar el cálculo los ignora
+starwars %>%
+  summarise(media = mean(mass, na.rm = TRUE),
+            mediana = median(mass, na.rm = TRUE))
+```
+
+La **media** es una medida de centralización basada en el valor que nos **minimiza el promedio de desviaciones al cuadrado (varianza)** y solo se puede calcular para **variables cuantitativas (discretas o continuas)**.
+
+```{r}
+# Media de todas las cuantitativas
+starwars_nueva %>%
+  summarise(media = across(where(is.numeric), mean, na.rm = TRUE))
+```
+
+La **mediana** se define como el **valor que ocupa el centro de los datos CUANDO LOS ORDENAMOS de menor a mayor**, un valor que nos deja por debajo al menos el 50% y por encima al menos el 50%.
+
+```{r}
+# Media y mediana de todas las cuantitativas
+starwars_nueva %>%
+  summarise(media = across(where(is.numeric), mean, na.rm = TRUE),
+            mediana = across(where(is.numeric), median, na.rm = TRUE))
+```
+
+La **mediana también se puede calcular para variables cualitativas ordinales (categorías que se puedan ordenar)**. Vamos a construir una variable que sea «muy bajo-bajo-medio-alto-muy alto» según la estatura, y calcular la mediana para dichas categorías.
+
+```{r}
+categorias <- c("muy bajo", "bajo", "medio", "alto", "muy alto")
+starwars_talla <- 
+  starwars %>%
+  mutate(talla =
+           cut(height, breaks = c(-Inf, 80, 120, 160, 190, Inf),
+               labels = categorias))
+
+# Mediana (hay que pasárselo como número)
+starwars_talla %>%
+  summarise(mediana =
+              categorias[median(as.numeric(talla), na.rm = TRUE)])
+```
+
+Para la **moda tenemos algún problema mayor** ya que no hay un función en los paquetes `{base}` para su cálculo, así que para ello **usaremos el paquete `{modeest}`**: la función `mfv()` nos calcula la **moda exacta** de una variable numérica discreta o cuantitativa (busca los valores más repetidos), la función `mlv()` nos calcula la **moda estimada** de una variable numérica continua.
+
+
+```{r, warning = FALSE}
+library(modeest)
+
+# Media y mediana y moda de mass y n_films
+resumen <- 
+  starwars_nueva %>%
+  summarise(media = across(c(mass, n_films), mean, na.rm = TRUE),
+            mediana = across(c(mass, n_films), median, na.rm = TRUE),
+            moda_n_films = mfv(n_films, na_rm = TRUE),
+            moda_mass = mlv(mass, na.rm = TRUE))
+resumen
+```
+
+Fíjate que el resumen ha agrupado todas las modas y medianas que hemos calculado a la vez: **la salida de nuestro resumen es una lista, con tablas a su vez dentro**.
+
+De la misma manera podemos pedirle que nos calcule **medidas de dispersión (varianza, desv. típica y cv, cómo de dispersos están los datos respecto a un centro, normalmente la media)** y **medidas de localización (percentiles)**.
+
+```{r, warning = FALSE}
+starwars %>%
+  summarise(media = mean(mass, na.rm = TRUE),
+            mediana = median(mass, na.rm = TRUE),
+            moda = mlv(mass, na.rm = TRUE),
+            var = var(mass, na.rm = TRUE),
+            sd = sd(mass, na.rm = TRUE),
+            cv = sd / abs(media),
+            p13 = quantile(mass, probs = c(0.13), na.rm = TRUE),
+            p87 = quantile(mass, probs = c(0.87), na.rm = TRUE))
+``` 
+
+Haciendo uso de cosas ya vistas podemos, por ejemplo, **calcular el coeficiente de variación (CV)** de todas las variables numéricas para poder decidir cual es más o meno dispersa.
+
+```{r, warning = FALSE}
+resumen <- 
+  starwars %>%
+  summarise(media = across(where(is.numeric), mean, na.rm = TRUE),
+            var = across(where(is.numeric), var, na.rm = TRUE),
+            cv = sqrt(var) / abs(media))
+resumen$media
+resumen$var
+resumen$cv # más homogénea la altura por tener menos CV.
+``` 
+
+### Agrupando datos: group_by
+
+Una de las **funcionalidades más potentes es la opción de añadir antes una agrupación** con `group_by()`. Esta función per se no cambia los datos sino que cambia la forma en la que se aplicarán las funciones posteriores, realizándose por **desagregadas grupos**.
+
+Imagina que queremos calcular la **media de altura y peso** de cada personaje PERO desagregada por cada una de las clases que tenemos en la variable `sex`.
+
+```{r}
+starwars %>% group_by(sex) %>%
+  summarise(media_altura = mean(height, na.rm = TRUE),
+            media_peso = mean(mass, na.rm = TRUE)) %>%
+  ungroup()
+```
+
+Lo que obtenemos no es la media de todos los personajes sino la **media desagregada por grupo**, grupo marcado por la variable `sex`. Las **agrupaciones pueden estar en función de varias variables** a la vez.
+
+```{r}
+starwars %>% group_by(sex, gender) %>%
+  summarise(media_altura = mean(height, na.rm = TRUE),
+            media_peso = mean(mass, na.rm = TRUE)) %>%
+  ungroup()
+```
+
+Dicha función también es muy útil cuando queremos **realizar un filtro de registros en base al número de cada clase**: por ejemplo, vamos a filtrar los registros que pertenezcan a una clase de `sex` que tenga al menos 10 individuos dentro de dicho grupo.
+
+```{r}
+starwars %>%
+  group_by(sex) %>%
+  count() %>%
+  ungroup()
+```
+
+Si te fijas solo deberíamos filtrar los registros que sean `female` y `male`. Vamos a hacerlo de forma automática en base a dicho **umbral**.
+
+```{r}
+# Podemos filtrar por grupos solo aquellos que superen un
+# un umbral mínimo
+starwars %>% 
+  group_by(sex) %>% 
+  filter(n() > 10) %>%
+  ungroup()
+```
+
+Para comprobar rápidamente que efectivamente solo ha filtrado aquellos grupos con más de 10 elementos en ellos podemos **añadir `count()`**.
+
+```{r}
+starwars %>% 
+  group_by(sex) %>% 
+  filter(n() > 10) %>%
+  count() %>%
+  ungroup()
+```
+
+Los resúmenes y las agrupaciones podemos **combinarlas de todas las formas que nos imaginemos**, por ejemplo, calculando la media desagregada por sexo y género pero solo de las variables numéricas.
+
+```{r}
+starwars %>% # doble agrupación
+  group_by(sex, gender) %>%
+  summarise(across(where(is.numeric), mean, na.rm = TRUE)) %>%
+  ungroup()
+```
+
+### Rowwise: operaciones por filas
+
+Por último veamos un ejemplo de una **opción muy útil usada antes de una operación que es** `rowwise()`: toda operación que venga después se aplicará **en cada fila por separado**. Para el ejemplo vamos a definir un fichero _dummy_ de notas en mates, lengua y dibujo de 50 alumnos. Para ello usamos la función `sample()`: le decimos que seleccione aleatoriamente `size = 50` notas de un conjunto de notas posibles (`0:10`), y que lo haga con reemplazamiento (`replace = TRUE`, es decir, que dos alumnos puedan tener la misma nota)
+
+```{r}
+notas <- tibble("mates" = sample(0:10, size = 50, replace = TRUE),
+                "lengua" = sample(0:10, size = 50, replace = TRUE),
+                "dibujo" = sample(0:10, size = 50, replace = TRUE))
+notas
+```
+
+Una vez que tenemos 3 notas aleatorias por cada uno de los 50 alumnos, **¿qué sucede si yo quiero calcular la nota media del curso?**
+
+```{r}
+notas %>% mutate(media_curso = mean(c(mates, lengua, dibujo)))
+```
+
+Como ves si aplicamos la media de las tres variables, en cada fila el valor de `media_curso` es idéntico ya que nos ha hecho la **media global**: ha tomado las 50 filas, las 3 columnas, y ha hecho la media de 150 datos. Cuando en realidad a nosotros nos gustaría **sacar una media por registro**, que para cada alumno tengamos la media de las asignaturas.
+
+```{r}
+# Aplicado por fila
+notas %>% rowwise() %>%
+  mutate(media_curso = mean(c(mates, lengua, dibujo)))
+```
+
+Solos nos falta poner la guinda a lo aprendido a esta introducción: **vamos a ver como podemos relacionar dos conjuntos de datos distintos entre sí**.
 
 ## Relacionar datos (joins)
 

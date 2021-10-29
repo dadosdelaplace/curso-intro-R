@@ -22,7 +22,11 @@
 <link href="https://fonts.googleapis.com/css2?family=DM%20Mono&amp;display=swap" rel="stylesheet">
 <link href="libs/_Bitter-0.4.0/font.css" rel="stylesheet">
 <script src="libs/bs3compat-0.3.0/transition.js"></script><script src="libs/bs3compat-0.3.0/tabs.js"></script><script src="libs/bs3compat-0.3.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS -->
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="libs/datatables-binding-0.18/datatables.js"></script><link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script><link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet">
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS -->
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -751,7 +755,7 @@ Imagen/gráfica 3.1: Paquete stringr para manejar cadenas de texto más compleja
 <pre><code>## [1] "2021-10-29"</code></pre>
 <div class="sourceCode" id="cb264"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/now.html">now</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "2021-10-29 10:53:12 CEST"</code></pre>
+<pre><code>## [1] "2021-10-29 14:00:04 CEST"</code></pre>
 <p>También tenemos disponibles en dicho paquete funciones para extraer facilmente algunas variables temporales como el <strong>día de la semana, el mes o el cuatrimestre</strong>, con las funciones <code><a href="https://rdrr.io/pkg/lubridate/man/year.html">year()</a></code>, <code><a href="https://rdrr.io/r/base/weekday.POSIXt.html">months()</a></code>, <code><a href="https://rdrr.io/pkg/lubridate/man/day.html">day()</a></code> o <code><a href="https://rdrr.io/pkg/lubridate/man/day.html">wday()</a></code> (día de la semana).</p>
 <div class="sourceCode" id="cb266"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fecha</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/now.html">now</a></span><span class="op">(</span><span class="op">)</span>
@@ -768,13 +772,13 @@ Imagen/gráfica 3.1: Paquete stringr para manejar cadenas de texto más compleja
 <pre><code>## [1] 5</code></pre>
 <div class="sourceCode" id="cb274"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/hour.html">hour</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 10</code></pre>
+<pre><code>## [1] 14</code></pre>
 <div class="sourceCode" id="cb276"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/minute.html">minute</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 53</code></pre>
+<pre><code>## [1] 0</code></pre>
 <div class="sourceCode" id="cb278"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/second.html">second</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 12.52119</code></pre>
+<pre><code>## [1] 4.770287</code></pre>
 <div class="sourceCode" id="cb280"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/week.html">week</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span> <span class="co"># Número de semana (del año)</span></code></pre></div>
 <pre><code>## [1] 44</code></pre>
@@ -815,8 +819,8 @@ Imagen/gráfica 3.1: Paquete stringr para manejar cadenas de texto más compleja
                times <span class="op">=</span> <span class="fl">1e3</span><span class="op">)</span> <span class="co"># se repetirá 1000 veces</span></code></pre></div>
 <pre><code>## Unit: microseconds
 ##         expr    min      lq     mean  median      uq     max neval cld
-##      sort(x) 43.505 47.9425 56.86746 55.4910 61.0505 158.587  1000   b
-##  x[order(x)] 30.901 35.2675 41.14474 39.5455 43.4735 115.218  1000  a</code></pre>
+##      sort(x) 41.937 51.1230 57.68088 55.1195 59.4135 211.564  1000   b
+##  x[order(x)] 29.498 36.4345 40.48148 39.0220 42.0010 115.655  1000  a</code></pre>
 <p>Sí, estás viendo bien: aunque a priori parezca contraintuitivo, es más corto obtener los índices ordenados de un vector, y luego reordenarlo en base a esos índices, que la ordenación directa a través del comando <code><a href="https://rdrr.io/r/base/sort.html">sort()</a></code> (ya que usan algoritmos de ordenación distintos).</p>
 <p> </p>
 <div class="inline-table"><table class="table table-sm">

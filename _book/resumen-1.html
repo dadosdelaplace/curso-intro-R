@@ -22,7 +22,11 @@
 <link href="https://fonts.googleapis.com/css2?family=DM%20Mono&amp;display=swap" rel="stylesheet">
 <link href="libs/_Bitter-0.4.0/font.css" rel="stylesheet">
 <script src="libs/bs3compat-0.3.0/transition.js"></script><script src="libs/bs3compat-0.3.0/tabs.js"></script><script src="libs/bs3compat-0.3.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS -->
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="libs/datatables-binding-0.18/datatables.js"></script><link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script><link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet">
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS -->
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -270,8 +274,8 @@ Imagen/gráfica 10.1: Cuando intentas aprenderte todos los paquetes.
 <div class="sourceCode" id="cb654"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Tiramos 20 veces una moneda</span>
 <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"cara"</span>, <span class="st">"cruz"</span><span class="op">)</span>, size <span class="op">=</span> <span class="fl">20</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [1] "cara" "cara" "cara" "cara" "cara" "cruz" "cruz" "cara" "cruz" "cara"
-## [11] "cruz" "cruz" "cara" "cara" "cruz" "cruz" "cruz" "cara" "cara" "cruz"</code></pre>
+<pre><code>##  [1] "cara" "cruz" "cara" "cara" "cruz" "cruz" "cruz" "cruz" "cara" "cruz"
+## [11] "cruz" "cara" "cruz" "cruz" "cara" "cruz" "cruz" "cara" "cruz" "cruz"</code></pre>
 <p>Fíjate que hemos indicado explícitamente <code>replace = TRUE</code> para decirle que aunque solo tengamos dos opciones, vamos a permitir que tras extraer una bola, la apuntemos, y la volvamos a introducir (puede salir de nuevo). ¿Qué sucede si <code>replace = FALSE</code> (su valor por defecto)?</p>
 <div class="sourceCode" id="cb656"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Tiramos 20 veces una moneda SIN reemplazamiento</span>
@@ -285,20 +289,20 @@ Imagen/gráfica 10.1: Cuando intentas aprenderte todos los paquetes.
 <span class="va">n_tiradas</span> <span class="op">&lt;-</span> <span class="fl">50</span>
 <span class="va">tiradas</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">1</span>, size <span class="op">=</span> <span class="va">n_tiradas</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 <span class="va">tiradas</span></code></pre></div>
-<pre><code>##  [1] 1 0 0 1 1 1 1 0 1 1 0 0 1 1 0 0 0 0 0 1 1 0 0 0 1 0 0 0 0 1 1 1 1 1 1 1 0 1
-## [39] 1 1 1 1 1 0 0 0 0 1 1 0</code></pre>
+<pre><code>##  [1] 1 1 1 0 1 0 1 0 0 0 1 1 0 1 1 0 1 0 0 0 0 1 0 1 0 0 1 0 1 0 1 0 1 0 0 0 0 1
+## [39] 1 1 0 0 1 1 1 0 1 0 1 0</code></pre>
 <div class="sourceCode" id="cb660"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Cantidad de cruces: sumamos los 1's</span>
 <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">tiradas</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 27</code></pre>
+<pre><code>## [1] 24</code></pre>
 <div class="sourceCode" id="cb662"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Cantidad de caras: lo que son cruces</span>
 <span class="va">n_tiradas</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">tiradas</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 23</code></pre>
+<pre><code>## [1] 26</code></pre>
 <div class="sourceCode" id="cb664"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># % de caras</span>
 <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fl">100</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">tiradas</span><span class="op">)</span> <span class="op">/</span> <span class="va">n_tiradas</span>, <span class="st">"% de cruces"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>## 54% de cruces</code></pre>
+<pre><code>## 48% de cruces</code></pre>
 <p>El argumento <code>prob = ...</code> nos permite generar experimentos que sean dicotómicos pero que <strong>no sean equiprobables</strong>, algo similar a <strong>lanzar una moneda trucada</strong> (por ejemplo, 30% caras y 70% cruces). Nótese como dichas probabilidades deben ser introducidas como proporciones (divididas entre 100).</p>
 <div class="sourceCode" id="cb666"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Tiradas de una moneda trucada</span>
@@ -306,7 +310,7 @@ Imagen/gráfica 10.1: Cuando intentas aprenderte todos los paquetes.
 
 <span class="co"># % de caras</span>
 <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fl">100</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">tiradas</span><span class="op">)</span> <span class="op">/</span> <span class="va">n_tiradas</span>, <span class="st">"% de cruces"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>## 68% de cruces</code></pre>
+<pre><code>## 80% de cruces</code></pre>
 <details><p><summary>📝<strong>Ejercicio</strong>: ¿cómo simularías 200 tiradas de un dado?</summary></p>
 <!-- toc -->
 <ul>
@@ -315,12 +319,12 @@ Imagen/gráfica 10.1: Cuando intentas aprenderte todos los paquetes.
 <div class="sourceCode" id="cb668"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Lo único que cambia son las opciones en la urna</span>
 <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">6</span>, size <span class="op">=</span> <span class="fl">200</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<pre><code>##   [1] 4 1 1 1 5 6 6 4 5 2 1 3 3 2 4 4 6 5 6 2 1 5 3 2 2 1 3 2 3 1 2 6 6 2 5 5 2
-##  [38] 1 4 5 1 3 3 6 2 3 1 6 4 2 1 1 6 1 1 4 4 3 5 6 3 2 5 3 1 5 6 1 2 6 1 6 1 6
-##  [75] 4 6 3 6 2 1 6 1 6 4 6 1 3 5 6 5 4 1 4 3 1 2 6 2 1 3 4 6 6 5 3 4 2 1 4 2 1
-## [112] 1 6 3 2 1 6 2 2 2 6 2 5 2 3 2 3 4 4 1 6 5 3 4 6 1 3 4 4 3 5 4 3 3 6 4 2 3
-## [149] 5 5 5 5 3 4 1 6 2 5 2 2 1 5 6 6 2 5 5 5 6 2 6 6 3 4 2 5 3 3 3 2 4 2 3 6 2
-## [186] 4 2 2 6 5 5 5 5 4 5 2 5 4 5 4</code></pre>
+<pre><code>##   [1] 3 6 4 6 1 1 6 5 3 1 6 4 6 6 6 1 4 3 2 5 6 4 2 3 4 6 5 3 2 3 5 1 6 6 1 1 4
+##  [38] 3 1 6 4 2 6 2 1 5 3 1 6 1 3 2 4 1 5 2 2 1 6 1 2 3 4 5 2 2 5 2 4 3 1 2 3 2
+##  [75] 5 5 2 2 1 6 4 1 6 2 3 1 4 5 6 1 2 1 3 2 5 1 1 4 2 4 1 1 5 2 4 1 3 3 1 1 5
+## [112] 5 1 4 3 3 3 2 2 3 1 3 5 3 1 6 1 5 6 3 4 2 4 1 6 2 6 5 1 6 5 6 5 2 4 6 2 6
+## [149] 2 3 4 6 1 1 4 4 4 6 1 4 1 5 2 5 3 5 2 1 3 4 5 3 4 3 2 3 5 6 4 6 5 5 2 4 2
+## [186] 5 6 4 5 4 3 1 4 6 6 1 2 6 1 5</code></pre>
 <!-- tocstop -->
 </details>
 </div>
@@ -331,13 +335,13 @@ Imagen/gráfica 10.1: Cuando intentas aprenderte todos los paquetes.
 <p>Si has hecho varias pruebas con los códigos de arriba quizás ya hayas visto que <strong>cada vez que lanzas el código, el resultado es distinto</strong>, algo similar a lo que sucedería si lanzas una moneda. Prueba a ejecutar este código varias veces.</p>
 <div class="sourceCode" id="cb670"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">1</span>, size <span class="op">=</span> <span class="fl">20</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [1] 0 1 0 0 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0</code></pre>
+<pre><code>##  [1] 1 0 1 0 0 1 0 0 1 0 1 1 1 1 0 0 1 1 1 1</code></pre>
 <div class="sourceCode" id="cb672"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">1</span>, size <span class="op">=</span> <span class="fl">20</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [1] 0 1 0 0 1 0 0 0 0 1 0 1 1 1 1 0 1 0 0 0</code></pre>
+<pre><code>##  [1] 0 1 1 1 1 0 0 1 0 0 1 1 1 0 0 1 0 0 0 0</code></pre>
 <div class="sourceCode" id="cb674"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">1</span>, size <span class="op">=</span> <span class="fl">20</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [1] 0 1 0 0 1 0 0 0 0 0 1 0 0 1 0 0 0 0 0 0</code></pre>
+<pre><code>##  [1] 0 1 0 0 1 0 1 1 1 1 0 1 1 0 0 0 1 0 0 1</code></pre>
 <p><strong>¿Y si quisiéramos generar toda la clase la misma tirada de moneda?</strong></p>
 <p>Lo primero que quizás pienses es que es <strong>imposible</strong>, ya que al tirar una moneda en la vida real, nunca vamos a tener forma de garantizar que salgan las mismas tiradas a diferentes personas. Y <strong>efectivamente eso sería cierto si nuestros procesos generados hubiesen sido aleatorios</strong>, como en la vida real pero…no lo son.</p>
 <p>Mientras esperamos a que lleguen al mainstream los ordenadores cuánticos, <strong>TODO lo que hay en tu ordenador es determínistico</strong>, ya que cualquier proceso se reduce a una <strong>secuencia de bits (<code>0's</code> y <code>1's</code>)</strong> y un <strong>algoritmo</strong> (sin azar, cuyo resultado siempre será el mismo bajo las mismas condiciones iniciales). He aquí la decepción de tu vida: un ordenador «normal» NO puede generar procesos aleatorios, sino <strong>procesos y números PSEUDOALEATORIOS</strong>, basados en <strong>cadenas pseudoaleatorias</strong> generadas por un algoritmo determinístico.</p>
