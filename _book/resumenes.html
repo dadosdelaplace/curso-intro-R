@@ -781,7 +781,191 @@
 <h2>
 <span class="header-section-number">13.3</span> Relacionar datos (joins)<a class="anchor" aria-label="anchor" href="#relacionar-datos-joins"><i class="fas fa-link"></i></a>
 </h2>
-<p>en breve</p>
+<p>Una de las <strong>opciones más comunes para trabajar con datos</strong> es tener a nuestra disposición diversas tablas, con alguno o varios de los campos en común, y nos interesa a veces <strong>cruzar datos</strong> de ambos para tener una información más completa con el conjunto de las tablas. Es lo que se conoce en ciencia de datos e informática como <strong>hacer un <em>join</em> de tablas</strong>. Para ese cruce será <strong>indispensable que haya uno o varios campos clave</strong>, campos que sirvan para identificar unívocamente cada registro (por ejemplo, DNI).</p>
+<div class="figure">
+<span style="display:block;" id="fig:joins"></span>
+<img src="img/sql-joins.jpg" alt="Esquema con los principales tipos de join, extraído de &lt;https://estradawebgroup.com/Post/-Que-es-y-para-que-sirve-SQL-Joins-/4278&gt;" width="450"><p class="caption">
+Imagen/gráfica 13.1: Esquema con los principales tipos de join, extraído de <a href="https://estradawebgroup.com/Post/-Que-es-y-para-que-sirve-SQL-Joins-/4278" class="uri">https://estradawebgroup.com/Post/-Que-es-y-para-que-sirve-SQL-Joins-/4278</a>
+</p>
+</div>
+<p>Existen principalmente <strong>cuatro tipos de cruces</strong> si pensamos en cruzar un conjunto <code>A</code> con otro conjunto <code>B</code>:</p>
+<ul>
+<li><p><strong>Inner join</strong>: solo nos quedamos con las <strong>filas que tengan correspondencia en ambas tablas</strong> (personas cuyo DNI aparezca en ambas tablas, por ejemplo).</p></li>
+<li><p><strong>Left (outer) join</strong>: nos quedamos con <strong>todas las filas de <code>A</code></strong>, buscando que registros de dicha tabla están también en <code>B</code>, completando los datos de esta tabla para esos registros.</p></li>
+<li><p><strong>Right (outer) join</strong>: nos quedamos con <strong>todas las filas de <code>B</code></strong>, buscando que registros de dicha tabla están también en <code>A</code>, completando los datos de esta tabla para esos registros.</p></li>
+<li><p><strong>Full join</strong>: nos quedamos con <strong>todas las filas de <code>A</code> y <code>B</code></strong>, tengan o no correspondencia en la otra tabla (si no está en una de ellas, las columnas correspondientes quedarán como campo ausente).</p></li>
+</ul>
+<p>Esos <strong>campos clave (keys)</strong> serán las columnas que usaremos para definir los cruces. Para los ejemplos usaremos las tablas del paquete <a href="https://github.com/hadley/nycflights13">nycflights13</a>.</p>
+<div class="sourceCode" id="cb1007"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hadley/nycflights13">nycflights13</a></span><span class="op">)</span></code></pre></div>
+<p>Dicho paquete cuenta con las siguientes <strong>tablas</strong>:</p>
+<ul>
+<li>
+<code>airlines</code>: nombre de la aerolínea (con su abreviatura).</li>
+<li>
+<code>airports</code>: datos de aeropuertos (nombres, longitud, latitud, altitud, etc).</li>
+<li>
+<code>flights</code>: datos de vuelos (con <code>tailnum</code> como marca de idenfiticación).</li>
+<li>
+<code>planes</code>: datos de los aviones.</li>
+<li>
+<code>weather</code>: datos meteorológicos horarios de las estaciones LGA, JFK y EWR.</li>
+</ul>
+<p>Veamos un ejemplo: imagina que queremos <strong>completar en la tabla de vuelos los datos de cada una de las aerolíneas que operan dichos vuelos</strong>. Vamos a seleccionar unas pocas columnas para que sea más fácil de visualizar.</p>
+<div class="sourceCode" id="cb1008"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Seleccionamos antes columnas para que sea más corto</span>
+<span class="va">flights_filtrada</span> <span class="op">&lt;-</span> <span class="va">flights</span> <span class="op">%&gt;%</span>
+  <span class="fu">select</span><span class="op">(</span><span class="va">year</span><span class="op">:</span><span class="va">day</span>, <span class="va">arr_time</span>, <span class="va">carrier</span><span class="op">:</span><span class="va">dest</span><span class="op">)</span>
+<span class="va">flights_filtrada</span></code></pre></div>
+<pre><code>## # A tibble: 336,776 × 9
+##     year month   day arr_time carrier flight tailnum origin dest 
+##    &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt; &lt;chr&gt;    &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;
+##  1  2013     1     1      830 UA        1545 N14228  EWR    IAH  
+##  2  2013     1     1      850 UA        1714 N24211  LGA    IAH  
+##  3  2013     1     1      923 AA        1141 N619AA  JFK    MIA  
+##  4  2013     1     1     1004 B6         725 N804JB  JFK    BQN  
+##  5  2013     1     1      812 DL         461 N668DN  LGA    ATL  
+##  6  2013     1     1      740 UA        1696 N39463  EWR    ORD  
+##  7  2013     1     1      913 B6         507 N516JB  EWR    FLL  
+##  8  2013     1     1      709 EV        5708 N829AS  LGA    IAD  
+##  9  2013     1     1      838 B6          79 N593JB  JFK    MCO  
+## 10  2013     1     1      753 AA         301 N3ALAA  LGA    ORD  
+## # … with 336,766 more rows</code></pre>
+<p>Queremos <strong>TODAS las filas de los vuelos</strong>, todos sus registros, pero <strong>añadiendo la información</strong> que tenemos de la aerolínea que opere los vuelos, así que haremos un <strong>LEFT JOIN</strong> de <code>flights</code> vs <code>airlines</code>. El campo común que nos permite cruzarla, la <strong>clave (key)</strong> es el código abreviado de las aerolíneas (variable <code>carrier</code>).</p>
+<div class="sourceCode" id="cb1010"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Mismas filas pero con una nueva columna: siempre que sea</span>
+<span class="co"># posible el cruce tendrá la info de la aerolínea</span>
+<span class="va">l_join_flights_airlines</span> <span class="op">&lt;-</span>
+  <span class="va">flights_filtrada</span> <span class="op">%&gt;%</span> <span class="fu">left_join</span><span class="op">(</span><span class="va">airlines</span>, by <span class="op">=</span> <span class="st">"carrier"</span><span class="op">)</span>
+<span class="va">l_join_flights_airlines</span></code></pre></div>
+<pre><code>## # A tibble: 336,776 × 10
+##     year month   day arr_time carrier flight tailnum origin dest  name          
+##    &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt; &lt;chr&gt;    &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;         
+##  1  2013     1     1      830 UA        1545 N14228  EWR    IAH   United Air Li…
+##  2  2013     1     1      850 UA        1714 N24211  LGA    IAH   United Air Li…
+##  3  2013     1     1      923 AA        1141 N619AA  JFK    MIA   American Airl…
+##  4  2013     1     1     1004 B6         725 N804JB  JFK    BQN   JetBlue Airwa…
+##  5  2013     1     1      812 DL         461 N668DN  LGA    ATL   Delta Air Lin…
+##  6  2013     1     1      740 UA        1696 N39463  EWR    ORD   United Air Li…
+##  7  2013     1     1      913 B6         507 N516JB  EWR    FLL   JetBlue Airwa…
+##  8  2013     1     1      709 EV        5708 N829AS  LGA    IAD   ExpressJet Ai…
+##  9  2013     1     1      838 B6          79 N593JB  JFK    MCO   JetBlue Airwa…
+## 10  2013     1     1      753 AA         301 N3ALAA  LGA    ORD   American Airl…
+## # … with 336,766 more rows</code></pre>
+<p>Si te fijas ahora tenemos en <code>l_join_flights_airlines</code> las mismas 336776 filas pero con una columna más: la tabla <code>airlines</code> tenía 2 columnas, una la común con <code>flights</code> y en otra la nueva que se ha incorporado a la tabla. <strong>¿Y si en <code>flights</code> había algún vuelo operado por alguna aerolínea que no estuviese en <code>airlines</code>?</strong></p>
+<div class="sourceCode" id="cb1012"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Filtramos</span>
+<span class="va">l_join_flights_airlines</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">name</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 0 × 10
+## # … with 10 variables: year &lt;int&gt;, month &lt;int&gt;, day &lt;int&gt;, arr_time &lt;int&gt;,
+## #   carrier &lt;chr&gt;, flight &lt;int&gt;, tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;,
+## #   name &lt;chr&gt;</code></pre>
+<p>En este caso todos los registros de la primera tabla tenían su correspondencia en la segunda tabla. Veamos un ejemplo donde suceda eso, quitándole algunas filas a <code>airlines</code>, quitando las aerolíneas con códigos <code>"B6"</code>.</p>
+<div class="sourceCode" id="cb1014"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">airlines_filtrada</span> <span class="op">&lt;-</span> <span class="va">airlines</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="op">(</span><span class="va">carrier</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"B6"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<span class="va">l_join</span> <span class="op">&lt;-</span> <span class="va">flights_filtrada</span> <span class="op">%&gt;%</span> <span class="fu">left_join</span><span class="op">(</span><span class="va">airlines_filtrada</span>, by <span class="op">=</span> <span class="st">"carrier"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">l_join</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">name</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 54635    10</code></pre>
+<p>En el anterior ejemplo tenemos 54 635 filas que cuyo nombre está ausente, es decir, 54 635 filas de <code>flights</code> que no tienen correspondencia en la tabla filtrada <code>airlines_filtrada</code>. Ahora las <strong>filas que no han encontrado su <em>match</em> en la segunda tabla están como campo ausente</strong>.</p>
+<div class="sourceCode" id="cb1016"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">l_join</span></code></pre></div>
+<pre><code>## # A tibble: 336,776 × 10
+##     year month   day arr_time carrier flight tailnum origin dest  name          
+##    &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt; &lt;chr&gt;    &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;         
+##  1  2013     1     1      830 UA        1545 N14228  EWR    IAH   United Air Li…
+##  2  2013     1     1      850 UA        1714 N24211  LGA    IAH   United Air Li…
+##  3  2013     1     1      923 AA        1141 N619AA  JFK    MIA   American Airl…
+##  4  2013     1     1     1004 B6         725 N804JB  JFK    BQN   &lt;NA&gt;          
+##  5  2013     1     1      812 DL         461 N668DN  LGA    ATL   Delta Air Lin…
+##  6  2013     1     1      740 UA        1696 N39463  EWR    ORD   United Air Li…
+##  7  2013     1     1      913 B6         507 N516JB  EWR    FLL   &lt;NA&gt;          
+##  8  2013     1     1      709 EV        5708 N829AS  LGA    IAD   ExpressJet Ai…
+##  9  2013     1     1      838 B6          79 N593JB  JFK    MCO   &lt;NA&gt;          
+## 10  2013     1     1      753 AA         301 N3ALAA  LGA    ORD   American Airl…
+## # … with 336,766 more rows</code></pre>
+<div class="figure">
+<span style="display:block;" id="fig:left-join"></span>
+<img src="img/left_join.jpg" alt="Esquema del left join, extraído de &lt;https://r4ds.had.co.nz/relational-data.html#mutating-joins&gt;" width="400"><p class="caption">
+Imagen/gráfica 13.2: Esquema del left join, extraído de <a href="https://r4ds.had.co.nz/relational-data.html#mutating-joins" class="uri">https://r4ds.had.co.nz/relational-data.html#mutating-joins</a>
+</p>
+</div>
+<p>La misma lógica para los <strong>RIGHT JOIN</strong> y los <strong>FULL JOIN</strong>. En este último tendremos bastantes datos ausentes, ya que todos los registros que no estén en ambas tablas tendrán una parte de sus variables como <code>NA</code></p>
+<div class="sourceCode" id="cb1018"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">tabla1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/tibble/man/tibble.html">tibble</a></span><span class="op">(</span><span class="st">"key_1"</span> <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">7</span>, <span class="st">"valor_1"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">7</span><span class="op">)</span><span class="op">)</span>
+<span class="va">tabla2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/tibble/man/tibble.html">tibble</a></span><span class="op">(</span><span class="st">"key_2"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">5</span>, <span class="fl">6</span>, <span class="fl">9</span>, <span class="fl">10</span><span class="op">)</span>,
+                 <span class="st">"valor_2"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">5</span>, <span class="fl">6</span>, <span class="fl">9</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+
+<span class="co"># Left</span>
+<span class="va">tabla1</span> <span class="op">%&gt;%</span> <span class="fu">left_join</span><span class="op">(</span><span class="va">tabla2</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"key_1"</span> <span class="op">=</span> <span class="st">"key_2"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 7 × 3
+##   key_1 valor_1 valor_2
+##   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  
+## 1     1 x1      x1     
+## 2     2 x2      x2     
+## 3     3 x3      &lt;NA&gt;   
+## 4     4 x4      &lt;NA&gt;   
+## 5     5 x5      x5     
+## 6     6 x6      x6     
+## 7     7 x7      &lt;NA&gt;</code></pre>
+<div class="sourceCode" id="cb1020"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Right</span>
+<span class="va">tabla1</span> <span class="op">%&gt;%</span> <span class="fu">right_join</span><span class="op">(</span><span class="va">tabla2</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"key_1"</span> <span class="op">=</span> <span class="st">"key_2"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 7 × 3
+##   key_1 valor_1 valor_2
+##   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  
+## 1     1 x1      x1     
+## 2     2 x2      x2     
+## 3     5 x5      x5     
+## 4     6 x6      x6     
+## 5     0 &lt;NA&gt;    x0     
+## 6     9 &lt;NA&gt;    x9     
+## 7    10 &lt;NA&gt;    x10</code></pre>
+<div class="sourceCode" id="cb1022"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Full</span>
+<span class="va">tabla1</span> <span class="op">%&gt;%</span> <span class="fu">full_join</span><span class="op">(</span><span class="va">tabla2</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"key_1"</span> <span class="op">=</span> <span class="st">"key_2"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 10 × 3
+##    key_1 valor_1 valor_2
+##    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  
+##  1     1 x1      x1     
+##  2     2 x2      x2     
+##  3     3 x3      &lt;NA&gt;   
+##  4     4 x4      &lt;NA&gt;   
+##  5     5 x5      x5     
+##  6     6 x6      x6     
+##  7     7 x7      &lt;NA&gt;   
+##  8     0 &lt;NA&gt;    x0     
+##  9     9 &lt;NA&gt;    x9     
+## 10    10 &lt;NA&gt;    x10</code></pre>
+<div class="figure">
+<span style="display:block;" id="fig:right-join"></span>
+<img src="img/right_join.jpg" alt="Esquema del right join, extraído de &lt;https://r4ds.had.co.nz/relational-data.html#mutating-joins&gt;" width="400"><p class="caption">
+Imagen/gráfica 13.3: Esquema del right join, extraído de <a href="https://r4ds.had.co.nz/relational-data.html#mutating-joins" class="uri">https://r4ds.had.co.nz/relational-data.html#mutating-joins</a>
+</p>
+</div>
+<div class="figure">
+<span style="display:block;" id="fig:full-join"></span>
+<img src="img/full_join.jpg" alt="Esquema del full join, extraído de &lt;https://r4ds.had.co.nz/relational-data.html#mutating-joins&gt;" width="400"><p class="caption">
+Imagen/gráfica 13.4: Esquema del full join, extraído de <a href="https://r4ds.had.co.nz/relational-data.html#mutating-joins" class="uri">https://r4ds.had.co.nz/relational-data.html#mutating-joins</a>
+</p>
+</div>
+<p>Un tipo de join especial son los <strong>INNER JOIN</strong>. Hasta ahora la tabla resultante tenía al menos tantas filas como tuviese la tabla más pequeña en el cruce. En el caso de los <strong>INNER JOIN</strong> vamos a <strong>reducir el tamaño</strong> ya que solo nos quedaremos con <strong>aquellos registros que podamos encontrar en ambas</strong>, de forma que <strong>el cruce nunca generará datos ausentes</strong>.</p>
+<div class="sourceCode" id="cb1024"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Inner</span>
+<span class="va">tabla1</span> <span class="op">%&gt;%</span> <span class="fu">inner_join</span><span class="op">(</span><span class="va">tabla2</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"key_1"</span> <span class="op">=</span> <span class="st">"key_2"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 4 × 3
+##   key_1 valor_1 valor_2
+##   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  
+## 1     1 x1      x1     
+## 2     2 x2      x2     
+## 3     5 x5      x5     
+## 4     6 x6      x6</code></pre>
+<div class="figure">
+<span style="display:block;" id="fig:inner-join"></span>
+<img src="img/inner_join.png" alt="Esquema del inner join, extraído de &lt;https://r4ds.had.co.nz/relational-data.html#mutating-joins&gt;" width="338"><p class="caption">
+Imagen/gráfica 13.5: Esquema del inner join, extraído de <a href="https://r4ds.had.co.nz/relational-data.html#mutating-joins" class="uri">https://r4ds.had.co.nz/relational-data.html#mutating-joins</a>
+</p>
+</div>
 </div>
 <div id="ejercicios-8" class="section level2">
 <h2>

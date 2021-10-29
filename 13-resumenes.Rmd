@@ -365,7 +365,120 @@ Solos nos falta poner la guinda a lo aprendido a esta introducción: **vamos a v
 
 ## Relacionar datos (joins)
 
-en breve
+Una de las **opciones más comunes para trabajar con datos** es tener a nuestra disposición diversas tablas, con alguno o varios de los campos en común, y nos interesa a veces **cruzar datos** de ambos para tener una información más completa con el conjunto de las tablas. Es lo que se conoce en ciencia de datos e informática como **hacer un _join_ de tablas**. Para ese cruce será **indispensable que haya uno o varios campos clave**, campos que sirvan para identificar unívocamente cada registro (por ejemplo, DNI).
+
+```{r joins, echo = FALSE, fig.cap = "Esquema con los principales tipos de join, extraído de <https://estradawebgroup.com/Post/-Que-es-y-para-que-sirve-SQL-Joins-/4278>"}
+knitr::include_graphics("./img/sql-joins.jpg")
+```
+
+Existen principalmente **cuatro tipos de cruces** si pensamos en cruzar un conjunto `A` con otro conjunto `B`:
+
+- **Inner join**: solo nos quedamos con las **filas que tengan correspondencia en ambas tablas** (personas cuyo DNI aparezca en ambas tablas, por ejemplo).
+
+- **Left (outer) join**: nos quedamos con **todas las filas de `A`**, buscando que registros de dicha tabla están también en `B`, completando los datos de esta tabla para esos registros.
+
+- **Right (outer) join**: nos quedamos con **todas las filas de `B`**, buscando que registros de dicha tabla están también en `A`, completando los datos de esta tabla para esos registros.
+
+- **Full join**: nos quedamos con **todas las filas de `A` y `B`**, tengan o no correspondencia en la otra tabla (si no está en una de ellas, las columnas correspondientes quedarán como campo ausente).
+
+
+Esos **campos clave (keys)** serán las columnas que usaremos para definir los cruces. Para los ejemplos usaremos las tablas del paquete `{nycflights13}`.
+
+```{r}
+library(nycflights13)
+```
+
+Dicho paquete cuenta con las siguientes **tablas**:
+
+* `airlines`:	nombre de la aerolínea (con su abreviatura).
+* `airports`: datos de aeropuertos (nombres, longitud, latitud, altitud, etc).
+* `flights`: datos de vuelos (con `tailnum` como marca de idenfiticación).
+* `planes`:	datos de los aviones.
+* `weather`: datos meteorológicos horarios de las estaciones LGA, JFK y  EWR.
+
+Veamos un ejemplo: imagina que queremos **completar en la tabla de vuelos los datos de cada una de las aerolíneas que operan dichos vuelos**. Vamos a seleccionar unas pocas columnas para que sea más fácil de visualizar.
+
+```{r}
+# Seleccionamos antes columnas para que sea más corto
+flights_filtrada <- flights %>%
+  select(year:day, arr_time, carrier:dest)
+flights_filtrada
+```
+
+Queremos **TODAS las filas de los vuelos**, todos sus registros, pero **añadiendo la información** que tenemos de la aerolínea que opere los vuelos, así que haremos un **LEFT JOIN** de `flights` vs `airlines`. El campo común que nos permite cruzarla, la **clave (key)** es el código abreviado de las aerolíneas (variable `carrier`).
+
+```{r}
+# Mismas filas pero con una nueva columna: siempre que sea
+# posible el cruce tendrá la info de la aerolínea
+l_join_flights_airlines <-
+  flights_filtrada %>% left_join(airlines, by = "carrier")
+l_join_flights_airlines
+```
+
+Si te fijas ahora tenemos en `l_join_flights_airlines` las mismas 336776 filas pero con una columna más: la tabla `airlines` tenía 2 columnas, una la común con `flights` y en otra la nueva que se ha incorporado a la tabla. **¿Y si en `flights` había algún vuelo operado por alguna aerolínea que no estuviese en `airlines`?**
+
+```{r}
+# Filtramos
+l_join_flights_airlines %>% filter(is.na(name))
+```
+
+En este caso todos los registros de la primera tabla tenían su correspondencia en la segunda tabla. Veamos un ejemplo donde suceda eso, quitándole algunas filas a `airlines`, quitando las aerolíneas con códigos `"B6"`.
+
+```{r}
+airlines_filtrada <- airlines %>% 
+  filter(!(carrier %in% c("B6")))
+l_join <- flights_filtrada %>% left_join(airlines_filtrada, by = "carrier")
+dim(l_join %>% filter(is.na(name)))
+```
+
+En el anterior ejemplo tenemos 54 635 filas que cuyo nombre está ausente, es decir, 54 635 filas de `flights` que no tienen correspondencia en la tabla filtrada `airlines_filtrada`. Ahora las **filas que no han encontrado su _match_ en la segunda tabla están como campo ausente**.
+
+```{r}
+l_join
+```
+
+```{r left-join, echo = FALSE, fig.cap = "Esquema del left join, extraído de <https://r4ds.had.co.nz/relational-data.html#mutating-joins>"}
+knitr::include_graphics("./img/left_join.jpg")
+```
+
+La misma lógica para los **RIGHT JOIN** y los **FULL JOIN**. En este último tendremos bastantes datos ausentes, ya que todos los registros que no estén en ambas tablas tendrán una parte de sus variables como `NA`
+
+
+```{r}
+tabla1 <- tibble("key_1" = 1:7, "valor_1" = paste0("x", 1:7))
+tabla2 <- tibble("key_2" = c(0, 1, 2, 5, 6, 9, 10),
+                 "valor_2" = paste0("x", c(0, 1, 2, 5, 6, 9, 10)))
+
+# Left
+tabla1 %>% left_join(tabla2, by = c("key_1" = "key_2"))
+
+# Right
+tabla1 %>% right_join(tabla2, by = c("key_1" = "key_2"))
+
+# Full
+tabla1 %>% full_join(tabla2, by = c("key_1" = "key_2"))
+```
+
+```{r right-join, echo = FALSE, fig.cap = "Esquema del right join, extraído de <https://r4ds.had.co.nz/relational-data.html#mutating-joins>"}
+knitr::include_graphics("./img/right_join.jpg")
+```
+
+```{r full-join, echo = FALSE, fig.cap = "Esquema del full join, extraído de <https://r4ds.had.co.nz/relational-data.html#mutating-joins>"}
+knitr::include_graphics("./img/full_join.jpg")
+```
+
+Un tipo de join especial son los **INNER JOIN**. Hasta ahora la tabla resultante tenía al menos tantas filas como tuviese la tabla más pequeña en el cruce. En el caso de los **INNER JOIN** vamos a **reducir el tamaño** ya que solo nos quedaremos con **aquellos registros que podamos encontrar en ambas**, de forma que **el cruce nunca generará datos ausentes**.
+
+```{r}
+# Inner
+tabla1 %>% inner_join(tabla2, by = c("key_1" = "key_2"))
+```
+
+
+
+```{r inner-join, echo = FALSE, fig.cap = "Esquema del inner join, extraído de <https://r4ds.had.co.nz/relational-data.html#mutating-joins>"}
+knitr::include_graphics("./img/inner_join.png")
+```
 
 ## 📝 Ejercicios
 

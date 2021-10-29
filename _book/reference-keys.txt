@@ -63,6 +63,11 @@ fig:flujo-tidy-data
 fig:tidy-data
 fig:dplyr
 tab:unnamed-chunk-349
+fig:joins
+fig:left-join
+fig:right-join
+fig:full-join
+fig:inner-join
 fig:me-photo
 instalacionR
 instalacionRStudio
