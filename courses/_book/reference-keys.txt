@@ -164,3 +164,4 @@ la-importancia-del-dataviz
 entendiendo-la-gramática-de-ggplot2
 algunos-gráficos-útiles
 contribuye
+tab:unnamed-chunk-13
