@@ -74,7 +74,7 @@
 </ul>
 
         <div class="book-extra">
-          <p><a id="book-repo" href="https://github.com/dadosdelaplace/cursoR_intro_2021_2022">View book source <i class="fab fa-github"></i></a></p>
+          <p><a id="book-repo" href="https://github.com/dadosdelaplace/intro-R">View book source <i class="fab fa-github"></i></a></p>
         </div>
       </nav>
 </div>
@@ -88,7 +88,7 @@
 <span class="header-section-number">5.1</span> if…else<a class="anchor" aria-label="anchor" href="#ifelse"><i class="fas fa-link"></i></a>
 </h2>
 <p>Como en cualquier lenguaje de programación, las <strong>estructuras <code>if...else...</code> nos permiten ejecutar partes de nuestro código solo cuando se cumple la condición o condiciones lógicas</strong> que queremos. Cuando ejecutamos un <code>if</code> estamos diciendo: SI las condiciones impuestas se cumplen (<code>TRUE</code>), ejecuta las órdenes que tengamos dentro de las llaves. Si el<code>if</code> devuelve <code>FALSE</code>, no sucederá nada <strong>SALVO</strong> que tengamos además un <strong><code>else</code>: lo que sucede cuando no se cumple</strong>, como en el ejemplo que tenemos debajo.</p>
-<div class="sourceCode" id="cb333"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb337"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">edades</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">14</span>, <span class="fl">24</span>, <span class="fl">56</span>, <span class="fl">31</span>, <span class="fl">20</span>, <span class="fl">87</span>, <span class="fl">73</span><span class="op">)</span>
 <span class="va">mayores_de_edad</span> <span class="op">&lt;-</span> <span class="cn">FALSE</span> 
 
@@ -106,7 +106,7 @@
 <pre><code>## [1] "algún menor de edad se ha eliminado"</code></pre>
 <p>Las órdenes dentro del primer <code>if</code> se ejecutarán si todas las personas son mayores de edad. En caso de no cumplirse (como es el caso), se ejecutará lo que hay entre llaves tras el <code>else</code> (filtra solo los mayores de edad e imprime un mensaje de control).</p>
 <p>Dicha estructura puede <strong>anidarse</strong>, de forma que vayamos concatenando estructuras <code>ifelse</code>, como en el ejemplo que tenemos debajo.</p>
-<div class="sourceCode" id="cb335"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb339"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">edades</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">14</span>, <span class="fl">14</span>, <span class="fl">16</span>, <span class="fl">11</span>, <span class="fl">2</span>, <span class="fl">17</span>, <span class="fl">13</span><span class="op">)</span>
 
 <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/all.html">all</a></span><span class="op">(</span><span class="va">edades</span> <span class="op">&gt;=</span> <span class="fl">18</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span> <span class="co"># Si todas las personas son mayores de edad</span>
@@ -126,20 +126,20 @@
 <span class="op">}</span></code></pre></div>
 <pre><code>## [1] "todas las personas son menores de edad"</code></pre>
 <p>Esta <strong>estructura condicional puede ser vectorizada</strong>, de forma que podamos reunir en una <strong>sola fila un número elevado de estructuras de comparación</strong>. Por ejemplo, vamos a definir un vector de números y vamos a comprobar si son números pares o impares (para ello, usamos el operador <code><a href="https://rdrr.io/r/base/Arithmetic.html">%%</a></code>, que nos calcula el resto de cada número al dividirlo por una cifra).</p>
-<div class="sourceCode" id="cb337"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb341"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fl">1</span> <span class="op">%%</span> <span class="fl">2</span></code></pre></div>
 <pre><code>## [1] 1</code></pre>
-<div class="sourceCode" id="cb339"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb343"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fl">2</span> <span class="op">%%</span> <span class="fl">2</span></code></pre></div>
 <pre><code>## [1] 0</code></pre>
-<div class="sourceCode" id="cb341"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb345"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fl">3</span> <span class="op">%%</span> <span class="fl">2</span></code></pre></div>
 <pre><code>## [1] 1</code></pre>
-<div class="sourceCode" id="cb343"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb347"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fl">5</span> <span class="op">%%</span> <span class="fl">3</span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
 <p>Para nuestro objetivo aplicaremos la función <code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code>, cuyos argumentos de entrada serán la condición a evaluar, lo que sucede cuando se cumple y lo que no, que aplicará a cada elemento del vector de entrada.</p>
-<div class="sourceCode" id="cb345"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb349"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">numeros</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>
 <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="op">(</span><span class="va">numeros</span> <span class="op">%%</span> <span class="fl">2</span><span class="op">)</span> <span class="op">==</span> <span class="fl">0</span>, <span class="st">"par"</span>, <span class="st">"impar"</span><span class="op">)</span> <span class="co"># Los pares al dividir entre 2 tienen resto 0</span></code></pre></div>
 <pre><code>##  [1] "impar" "par"   "impar" "par"   "impar" "par"   "impar" "par"   "impar"
@@ -155,7 +155,7 @@
 <p>&amp;nsbp;</p>
 <p>Aunque el 99% de las veces (porcentaje inventado) los bucles pueden ser sustituidos por códigos de forma vectorial mucho más eficientes, a veces no nos quedará más remedio que usarlos por lo que nunca viene mal conocer su estructura.</p>
 <p>Un <strong>bucle <code>for{}</code> es una estructura que nos permite ejecutar un conjunto de órdenes un número repetido (finito y conocido)</strong> de veces: dado un conjunto de índices, el <strong>bucle irá recorriendo cada elemento</strong> de dicho conjunto, y para cada uno de ellos ejecutará lo que tenga dentro de las llaves.</p>
-<div class="sourceCode" id="cb347"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb351"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">variable</span> <span class="op">&lt;-</span> <span class="cn">NULL</span> <span class="co"># vector donde guardaremos los pasos del bucle</span>
 <span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span> <span class="op">{</span> 
   
@@ -163,7 +163,7 @@
 <span class="op">}</span>
 <span class="va">variable</span></code></pre></div>
 <pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
-<div class="sourceCode" id="cb349"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb353"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span> <span class="op">{</span> 
   
   <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">i</span><span class="op">^</span><span class="fl">3</span><span class="op">)</span> <span class="co"># imprimimos el índice al cubo</span>
@@ -179,7 +179,7 @@
 ## [1] 729
 ## [1] 1000</code></pre>
 <p>Aunque normalmente el conjunto que recorre el bucle suelen ser índices numéricos, <strong>podemos recorrer cualquier tipo de objeto</strong>.</p>
-<div class="sourceCode" id="cb351"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb355"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">dias_semana</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"lunes"</span>, <span class="st">"martes"</span>, <span class="st">"miércoles"</span>, <span class="st">"jueves"</span>,
                  <span class="st">"viernes"</span>, <span class="st">"sábado"</span>, <span class="st">"domingo"</span><span class="op">)</span>
 <span class="va">nombre_mayuscula</span> <span class="op">&lt;-</span> <span class="cn">NULL</span>
@@ -197,23 +197,23 @@
 <p> </p>
 <p><strong><span style="color: #20935E;">CONSEJO: evita bucles (parte II)</span></strong></p>
 <p>Evita al máximo los bucles en <code>R</code>: suele existir una forma más eficiente de programarlo. Veamos un ejemplo muy sencillo: dado un vector de índices <code>idx</code>, queremos calcular su cuadrado y guardarlo. Vamos a comparar como sería con un sencillo bucle y de forma vectorial, repitiéndolo 1000 veces para sacar tiempos medios, haciendo uso del paquete <a href="https://github.com/joshuaulrich/microbenchmark/">microbenchmark</a>.</p>
-<div class="sourceCode" id="cb353"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb357"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">idx</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10000</span>
 <span class="va">x</span> <span class="op">&lt;-</span> <span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">idx</span><span class="op">)</span><span class="op">)</span>
 <span class="fu">microbenchmark</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html">microbenchmark</a></span><span class="op">(</span><span class="va">x</span> <span class="op">&lt;-</span> <span class="va">idx</span><span class="op">^</span><span class="fl">2</span>, 
                                <span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="va">idx</span><span class="op">)</span> <span class="op">{</span>  <span class="va">y</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">idx</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">^</span><span class="fl">2</span><span class="op">}</span>,
                                times <span class="op">=</span> <span class="fl">1e3</span><span class="op">)</span></code></pre></div>
 <pre><code>## Unit: microseconds
-##                                     expr      min       lq      mean    median
-##                               x &lt;- idx^2   18.097   51.019  145.0418   59.6905
-##  for (i in idx) {     y[i] &lt;- idx[i]^2 } 1869.407 2085.892 3452.8658 2397.7200
-##         uq      max neval cld
-##    71.3845 12743.72  1000  a 
-##  2951.8595 96148.69  1000   b</code></pre>
+##                                     expr      min        lq       mean
+##                               x &lt;- idx^2   18.484   47.3875   53.12571
+##  for (i in idx) {     y[i] &lt;- idx[i]^2 } 1820.162 1920.9560 2291.08465
+##     median       uq       max neval cld
+##    52.2985   59.783   253.103  1000  a 
+##  1992.2320 2220.288 23153.427  1000   b</code></pre>
 <p>Una tarea tan sencilla, <strong>programada en un bucle (segunda fila), tarda 40 veces más que hacerlo de forma vectorial (primera fila)</strong> (elevando cada elemento al cuadrado, iterando internamente, sin necesidad de implementar un bucle).</p>
 <p> </p>
 <p>Otra manera de diseñar un bucle es con la <strong>estructura <code>while{}</code></strong>, que ejecutará el <strong>bucle un número de veces a priori desconocido</strong> hasta que la condición impuesta deje de ser <code>TRUE</code>.</p>
-<div class="sourceCode" id="cb355"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb359"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">max_ciclos</span> <span class="op">&lt;-</span> <span class="fl">10</span>
 <span class="va">ciclos</span> <span class="op">&lt;-</span> <span class="fl">1</span>
 
@@ -235,7 +235,7 @@
 ## [1] "Todavía no, vamos por el ciclo  9"
 ## [1] "Todavía no, vamos por el ciclo  10"</code></pre>
 <p><strong>¿Y qué sucede cuando la condición nunca llega a ser <code>FALSE</code>?</strong> Compruébalo tú mismo/a.</p>
-<div class="sourceCode" id="cb357"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb361"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw">while</span> <span class="op">(</span><span class="fl">1</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span> <span class="co"># Nunca va a dejar de ser cierto</span>
   
   <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Presiona ESC para salir del bucle"</span><span class="op">)</span>
@@ -246,7 +246,7 @@
 <span class="header-section-number">5.2.1</span> BREAK/NEXT<a class="anchor" aria-label="anchor" href="#breaknext"><i class="fas fa-link"></i></a>
 </h3>
 <p>En <code>R</code> tenemos dos comandos reservados para poder <strong>abortar un bucle</strong> o <strong>avanzar forzosamente un bucle</strong>: dichas palabras son <code>break</code> y <code>next</code>. La primera nos habilita para <strong>parar un bucle</strong> aunque no haya llegado al final de su conjunto de índices a recorrer (o se siga cumpliendo la condición del <code>while{}</code>).</p>
-<div class="sourceCode" id="cb358"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb362"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw">for</span><span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span> <span class="op">{</span>
   <span class="kw">if</span> <span class="op">(</span><span class="va">i</span> <span class="op">==</span> <span class="fl">7</span><span class="op">)</span> <span class="op">{</span>
     
@@ -262,7 +262,7 @@
 ## [1] 5
 ## [1] 6</code></pre>
 <p>Mientras que la segunda <strong>obliga al bucle a avanzar a la siguiente interacción</strong>, abortando la iteración actual en la que se encuentra.</p>
-<div class="sourceCode" id="cb360"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb364"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw">for</span><span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span> <span class="op">{</span>
   <span class="kw">if</span> <span class="op">(</span><span class="va">i</span> <span class="op">==</span> <span class="fl">7</span><span class="op">)</span> <span class="op">{</span>
     
@@ -286,7 +286,7 @@
 <span class="header-section-number">5.2.2</span> REPEAT<a class="anchor" aria-label="anchor" href="#repeat"><i class="fas fa-link"></i></a>
 </h3>
 <p>Aunque es una opción muy poco usada, existe una estructura de control llamada <code>repeat{}</code> que nos <strong>ejecuta un bucle de forma infinita</strong> hasta que le ordenemos parar con un <code>break</code>.</p>
-<div class="sourceCode" id="cb362"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb366"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">conteo</span> <span class="op">&lt;-</span> <span class="fl">0</span>
 <span class="kw">repeat</span> <span class="op">{</span> 
   
@@ -314,7 +314,7 @@
 <ul>
 <li>Solución:</li>
 </ul>
-<div class="sourceCode" id="cb364"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb368"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Cargamos librería</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://lubridate.tidyverse.org">lubridate</a></span><span class="op">)</span>
 
@@ -341,7 +341,7 @@
 <ul>
 <li>Solución:</li>
 </ul>
-<div class="sourceCode" id="cb366"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb370"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Cargamos librería</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://lubridate.tidyverse.org">lubridate</a></span><span class="op">)</span>
 
@@ -360,7 +360,7 @@
 <ul>
 <li>Solución:</li>
 </ul>
-<div class="sourceCode" id="cb368"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb372"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># dinero inicial</span>
 <span class="va">dinero</span> <span class="op">&lt;-</span> <span class="fl">100</span>
 
@@ -380,7 +380,7 @@
 <ul>
 <li>Solución:</li>
 </ul>
-<div class="sourceCode" id="cb370"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb374"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># vector de importes</span>
 <span class="va">dinero</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">201</span><span class="op">)</span>
 <span class="va">dinero</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">100</span> <span class="co"># dinero inicial</span>
@@ -415,7 +415,7 @@
 <ul>
 <li>Solución:</li>
 </ul>
-<div class="sourceCode" id="cb372"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb376"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">dinero</span> <span class="op">&lt;-</span> <span class="fl">100</span> <span class="co"># dinero inicial</span>
 
 <span class="co"># Bucle while</span>
@@ -449,8 +449,8 @@
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/dadosdelaplace/cursoR_intro_2021_2022/blob/master/05-estructuras_control.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/dadosdelaplace/cursoR_intro_2021_2022/edit/master/05-estructuras_control.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/dadosdelaplace/intro-R/blob/master/05-estructuras_control.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/dadosdelaplace/intro-R/edit/master/05-estructuras_control.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>
@@ -462,7 +462,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 29-10-2021.</p>
+    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 19-12-2021.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

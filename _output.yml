@@ -17,7 +17,7 @@ bookdown::bs4_book:
         # arguments to sass::font_google() 
         family: DM Mono
         local: false
-  repo: "https://github.com/dadosdelaplace/cursoR_intro_2021_2022"
+  repo: "https://github.com/dadosdelaplace/intro-R"
   search:
     engine: lunr
   toc_depth: 4

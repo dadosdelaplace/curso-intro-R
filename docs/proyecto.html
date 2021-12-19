@@ -74,7 +74,7 @@
 </ul>
 
         <div class="book-extra">
-          <p><a id="book-repo" href="https://github.com/dadosdelaplace/cursoR_intro_2021_2022">View book source <i class="fab fa-github"></i></a></p>
+          <p><a id="book-repo" href="https://github.com/dadosdelaplace/intro-R">View book source <i class="fab fa-github"></i></a></p>
         </div>
       </nav>
 </div>
@@ -173,7 +173,7 @@ Imagen/gráfica 4.10: Subcarpeta «CODIGOS».
 </p>
 </div>
 <p>En esa carpeta de códigos vamos a crear de prueba el código llamado <code>variables.R</code> donde vamos a <strong>definir algunas variables</strong> que luego usaremos en el código principal (suele suceder con variables que van a ser fijas como nombres, fechas o codificaciones de variables).</p>
-<div class="sourceCode" id="cb321"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb325"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Descripción: script de prueba con variables</span>
 
 <span class="co"># Variables</span>
@@ -194,7 +194,7 @@ Imagen/gráfica 4.11: Escribimos una serie de variables fijas para luego ser usa
 <p>Así que eso haremos: desde nuestro archivo principal <code>main.R</code> llamaremos a ese archivo <code>variables.R</code>, para luego usar las variables definidas en él.</p>
 <p><strong>¿Cómo indicarle a <code>R</code> donde está nuestro fichero?</strong></p>
 <p>En <code>R</code>, como en todo lenguaje de programación, podemos consultar lo que el ordenador llama <em>directorio de trabajo</em>: la carpeta «base» desde donde está ejecutando tu código. Dicha ruta de directorio se puede consultar con la función <code><a href="https://rdrr.io/r/base/getwd.html">getwd()</a></code>, pudiendo ver los archivos y carpetas que hay dentro del mismo con el comando <code><a href="https://rdrr.io/r/base/list.files.html">dir()</a></code></p>
-<div class="sourceCode" id="cb322"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb326"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/getwd.html">getwd</a></span><span class="op">(</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/list.files.html">dir</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="figure" style="text-align: center">
@@ -204,7 +204,7 @@ Imagen/gráfica 4.12: Consultar directorio de trabajo predeterminado y archivos 
 </p>
 </div>
 <p>Lo ideal es empezar el código <strong>fijando como directorio de trabajo el directorio donde tengamos nuestro archivo principal</strong> <code>main.R</code> y para ello usaremos la función <code><a href="https://rdrr.io/r/base/getwd.html">setwd()</a></code>, cuyo argumento será la ruta donde queremos fijarlo. Para hacerlo de forma automática (y que el código pueda ser abierto por ti pero también por otros que no tengan tu misma estructura de carpetas), obtendremos de forma automática la ruta del archivo <code>main.R</code> o del proyecto con la orden <code>rstudioapi::getSourceEditorContext()$path</code>, y después usaremos <code><a href="https://rdrr.io/r/base/basename.html">dirname()</a></code> para quedarnos solo con la ruta de carpetas (eliminando el nombre del fichero al final). Esa será la ruta que le pasaremos a <code><a href="https://rdrr.io/r/base/getwd.html">setwd()</a></code>, quedando nuestro directorio de trabajo automáticamente fijado, sin preocuparnos de la ruta</p>
-<div class="sourceCode" id="cb323"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb327"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Fijamos directorio de trabajo automáticamente</span>
 <span class="fu"><a href="https://rdrr.io/r/base/getwd.html">setwd</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/basename.html">dirname</a></span><span class="op">(</span><span class="fu">rstudioapi</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rstudioapi/man/rstudio-editors.html">getSourceEditorContext</a></span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">path</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <div class="figure" style="text-align: center">
@@ -214,7 +214,7 @@ Imagen/gráfica 4.13: Fijamos de forma automático el directorio de trabajo.
 </p>
 </div>
 <p>Una vez que hemos fijado nuestro directorio, para cargar código <code>.R</code>, basta que usemos la función <code><a href="https://rdrr.io/r/base/source.html">source()</a></code>, cuyo argumento será la ruta del archivo. Como tenemos de directorio base el directorio en el que tenemos nuestro archivo principal (<code>./</code>), bastará que empecemos a escribir <code><a href="https://rdrr.io/r/base/source.html">source("./")</a></code>, presionar el tabulador, y se nos abrirá el menú de archivos de nuestro directorio de trabajo, pudiendo ir seleccionando de forma sencilla la ruta de nuestro archivo.</p>
-<div class="sourceCode" id="cb324"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb328"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Cargamos fichero variable.R</span>
 <span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="st">"./CODIGOS/variables.R"</span><span class="op">)</span></code></pre></div>
 <div class="figure" style="text-align: center">
@@ -243,21 +243,21 @@ Imagen/gráfica 4.16: Guardamos con la casilla «source on save» activada para 
 </div>
 <p>Como vemos en la imagen <a href="proyecto.html#fig:source-on-save">4.16</a>, una vez ejecutado, tenemos en nuestro panel de entorno (parte superior derecha) las variables ya cargadas que teníamos definidas en nuestro fichero <code>variables.R</code>.</p>
 <p>Prueba a escribir algunas funciones que hemos aprendido con dichas variables y vuelve a hacer click en «guardar» con <em>source on save</em> activado.</p>
-<div class="sourceCode" id="cb325"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb329"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Sumamos 3 a cada elemento de x</span>
 <span class="va">z</span> <span class="op">&lt;-</span> <span class="va">x</span> <span class="op">+</span> <span class="fl">3</span>
 <span class="va">z</span></code></pre></div>
 <pre><code>## [1]  4  5  3  2 74</code></pre>
-<div class="sourceCode" id="cb327"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb331"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Imprimimos por pantalla la frase unida, y a dicha frase</span>
 <span class="co"># le pegamos nuestro apellido</span>
 <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">y</span>, collapse <span class="op">=</span> <span class="st">" "</span><span class="op">)</span>, <span class="va">apellido</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## hola me llamo Javier Álvarez</code></pre>
-<div class="sourceCode" id="cb329"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb333"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Días que han pasado desde el inicio de año</span>
 <span class="va">dias</span> <span class="op">&lt;-</span> <span class="va">hoy</span> <span class="op">-</span> <span class="va">fecha_origen</span>
 <span class="va">dias</span></code></pre></div>
-<pre><code>## Time difference of 301 days</code></pre>
+<pre><code>## Time difference of 352 days</code></pre>
 <p>La función <code><a href="https://rdrr.io/r/base/cat.html">cat()</a></code> nos muestra por consola el texto que le pasemos de argumento (<strong>función especial para mensajes de alerta</strong> por consola)</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:codigo-1"></span>
@@ -275,9 +275,9 @@ Imagen/gráfica 4.17: Cálculos con la variables definidas: suma, concatenación
 <p> </p>
 <p><strong><span style="color: #20935E;">CONSEJO: extraer fecha y hora de hoy</span></strong></p>
 <p>La función <code><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time()</a></code> accede al sistema de nuestro ordenador para decirnos la <strong>fecha y hora del momento de la ejecución</strong> de dicha función.</p>
-<div class="sourceCode" id="cb331"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb335"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "2021-10-29 17:00:36 CEST"</code></pre>
+<pre><code>## [1] "2021-12-19 21:22:35 CET"</code></pre>
 
 </div>
 </div>
@@ -295,8 +295,8 @@ Imagen/gráfica 4.17: Cálculos con la variables definidas: suma, concatenación
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/dadosdelaplace/cursoR_intro_2021_2022/blob/master/04-primer_projecto.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/dadosdelaplace/cursoR_intro_2021_2022/edit/master/04-primer_projecto.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/dadosdelaplace/intro-R/blob/master/04-primer_projecto.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/dadosdelaplace/intro-R/edit/master/04-primer_projecto.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>
@@ -308,7 +308,7 @@ Imagen/gráfica 4.17: Cálculos con la variables definidas: suma, concatenación
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 29-10-2021.</p>
+    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 19-12-2021.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

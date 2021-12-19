@@ -74,7 +74,7 @@
 </ul>
 
         <div class="book-extra">
-          <p><a id="book-repo" href="https://github.com/dadosdelaplace/cursoR_intro_2021_2022">View book source <i class="fab fa-github"></i></a></p>
+          <p><a id="book-repo" href="https://github.com/dadosdelaplace/intro-R">View book source <i class="fab fa-github"></i></a></p>
         </div>
       </nav>
 </div>
@@ -90,11 +90,11 @@
 </li>
 </ul>
 <p>Sin embargo muchas veces los datos no los tenemos en el formato deseado, o directamente queremos realizar algunas transformaciones en los mismos, crear nuevas variables u obtener resúmenes numéricos. En esta sección <strong>aprenderemos a explorar, procesar, depurar, transformar y analizar numéricamente los datos</strong>, haciendo uso principalmente de los paquetes <a href="https://tidyverse.tidyverse.org">tidyverse</a> y <a href="https://docs.ropensci.org/skimr/">skimr</a></p>
-<div class="sourceCode" id="cb781"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb785"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/skimr/">skimr</a></span><span class="op">)</span></code></pre></div>
 <p>El entorno <a href="https://tidyverse.tidyverse.org">tidyverse</a> es una de las <strong>herramientas más importantes en el manejo de datos en <code>R</code></strong>, una <strong>colección de paquetes</strong> pensada para el manejo, la exploración, el análisis y la visualización de datos, compartiendo una <strong>misma filosofía y gramática</strong>. Puedes ver su documentación en <a href="https://www.tidyverse.org/" class="uri">https://www.tidyverse.org/</a>. Esta sección pretende ser una <strong>introducción a dicho entorno</strong>, y lo haremos principalmente con el conjunto de datos <code>starwars</code>, del paquete <a href="https://dplyr.tidyverse.org">dplyr</a> (ya cargado en <a href="https://tidyverse.tidyverse.org">tidyverse</a>).</p>
-<div class="sourceCode" id="cb782"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb786"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">starwars</span></code></pre></div>
 <pre><code>## # A tibble: 87 × 14
 ##    name    height  mass hair_color  skin_color eye_color birth_year sex   gender
@@ -127,15 +127,15 @@
 <code>date</code>: fechas.</li>
 </ul>
 <p>Las <strong>funciones</strong> que veremos a lo largo de esta sección <strong>siempre van a compartir una misma metodología</strong>: primero escribimos el nombre una tabla (<code>data.frame</code> o <code>tibble</code>), después <strong>lo que queremos hacer</strong> a dicho conjunto de datos (con las variables SIN comillas) encandenando órdenes con <code><a href="https://rdrr.io/pkg/magrittr/man/pipe.html">%&gt;%</a></code> (lo que se conoce como <em>pipes</em>), y <strong>obtenemos una nueva tabla</strong> en el mismo formato de entrada.</p>
-<div class="sourceCode" id="cb784"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb788"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Tipo de datos</span>
 <span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">starwars</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "tbl_df"     "tbl"        "data.frame"</code></pre>
-<div class="sourceCode" id="cb786"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb790"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Dimensión de los datos</span>
 <span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">starwars</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 87 14</code></pre>
-<div class="sourceCode" id="cb788"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb792"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Resumen por columnas</span>
 <span class="fu"><a href="https://rdrr.io/pkg/pillar/man/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">starwars</span><span class="op">)</span></code></pre></div>
 <pre><code>## Rows: 87
@@ -155,7 +155,7 @@
 ## $ vehicles   &lt;list&gt; &lt;"Snowspeeder", "Imperial Speeder Bike"&gt;, &lt;&gt;, &lt;&gt;, &lt;&gt;, "Imp…
 ## $ starships  &lt;list&gt; &lt;"X-wing", "Imperial shuttle"&gt;, &lt;&gt;, &lt;&gt;, "TIE Advanced x1",…</code></pre>
 <p>Los datos podemos verlos escribiendo el nombre de la tabla en la consola (recuerda que si es un <code>tibble</code>, para evitar saturar la consola, te saca un extracto, no todas las columnas y filas) o bien con la <strong>función <code><a href="https://docs.ropensci.org/skimr/reference/print.html">print()</a></code>, indicándole número de filas (<code>n = 15</code> por ejemplo) y número de columnas (<code>width = Inf</code> si queremos mostrar todas)</strong>.</p>
-<div class="sourceCode" id="cb790"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb794"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Imprimir personalizado</span>
 <span class="fu"><a href="https://docs.ropensci.org/skimr/reference/print.html">print</a></span><span class="op">(</span><span class="va">starwars</span>, n <span class="op">=</span> <span class="fl">5</span>, width <span class="op">=</span> <span class="cn">Inf</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 87 × 14
@@ -191,7 +191,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 <span class="header-section-number">12.1.1</span> Seleccionar filas (filter, slice)<a class="anchor" aria-label="anchor" href="#seleccionar-filas-filter-slice"><i class="fas fa-link"></i></a>
 </h3>
 <p>La función <code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code> nos permite <strong>seleccionar filas en base a que se cumpla una o varias condiciones</strong> respecto a las variables. Para usarla basta con que introduzcamos como argumento el conjunto de condiciones que debe cumplir (recuerda: nombre de columnas sin comillas). Supongamos que queremos por ejemplo <strong>seleccionar solo los personajes con ojos marrones</strong>.</p>
-<div class="sourceCode" id="cb792"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb796"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">starwars</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">eye_color</span> <span class="op">==</span> <span class="st">"brown"</span><span class="op">)</span> <span class="co"># con ojos marrones</span></code></pre></div>
 <pre><code>## # A tibble: 21 × 14
 ##    name     height  mass hair_color skin_color eye_color birth_year sex   gender
@@ -209,7 +209,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ## # … with 11 more rows, and 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;,
 ## #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
 <p>En tan solo una línea hemos hecho más de lo que parece: <code>R</code> ha «recorrido» cada una de las filas y ha ido comprobando que fila cumple la condición y cual no. Con la misma lógica podemos <strong>seleccionar los personajes que NO TIENEN ojos marrones</strong>, cambiando <code><a href="https://rdrr.io/r/base/Comparison.html">==</a></code> por <code><a href="https://rdrr.io/r/base/Comparison.html">!=</a></code></p>
-<div class="sourceCode" id="cb794"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb798"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">starwars</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">eye_color</span> <span class="op">!=</span> <span class="st">"brown"</span><span class="op">)</span> <span class="co"># NO tengan ojos marrones</span></code></pre></div>
 <pre><code>## # A tibble: 66 × 14
 ##    name    height  mass hair_color  skin_color eye_color birth_year sex   gender
@@ -227,7 +227,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ## # … with 56 more rows, and 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;,
 ## #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
 <p>También se pueden <strong>seleccionar los personajes que tienen los ojos de una serie de colores permitidos</strong>.</p>
-<div class="sourceCode" id="cb796"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb800"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">starwars</span> <span class="op">%&gt;%</span> <span class="co"># con ojos marrones, azules o rojos</span>
   <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">eye_color</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"brown"</span>, <span class="st">"blue"</span>, <span class="st">"red"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 45 × 14
@@ -246,7 +246,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ## # … with 35 more rows, and 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;,
 ## #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
 <p>Si es una <strong>variable numérica</strong> también podemos <strong>seleccionar por rango</strong> con <code>between()</code>, por ejemplo, los personajes cuya altura está entre 120 y 160 cm.</p>
-<div class="sourceCode" id="cb798"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb802"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Con between filtramos por rango</span>
 <span class="va">starwars</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="fu">between</span><span class="op">(</span><span class="va">height</span>, <span class="fl">120</span>, <span class="fl">160</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 14
@@ -261,7 +261,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ## # … with 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
 ## #   vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
 <p>Las <strong>condiciones se pueden concatenar y complejizar</strong> todo lo que queramos, pudiendo en pocas líneas realizar un <strong>filtro complejo</strong></p>
-<div class="sourceCode" id="cb800"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb804"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">starwars</span> <span class="op">%&gt;%</span> <span class="co"># humanos con ojos marrones</span>
   <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">eye_color</span> <span class="op">==</span> <span class="st">"brown"</span>, <span class="va">species</span> <span class="op">==</span> <span class="st">"Human"</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 17 × 14
@@ -286,7 +286,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ## 17 Padmé A…    165  45   brown      light      brown           46   fema… femin…
 ## # … with 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
 ## #   vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
-<div class="sourceCode" id="cb802"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb806"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># humanos con ojos marrones, azules o rojos, que no sean humanos, y menos de 50a</span>
 <span class="va">starwars</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">eye_color</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"brown"</span>, <span class="st">"blue"</span>, <span class="st">"red"</span><span class="op">)</span>,
@@ -301,7 +301,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ## # … with 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
 ## #   vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
 <p>Muchas veces querremos <strong>extraer filas simplemente por el lugar que ocupan, sin hacer que dependa de ninguna condición</strong>. Vamos a extraer las filas quinta, sexta, séptima, octava, novena y décima.</p>
-<div class="sourceCode" id="cb804"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb808"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># slice: extramos filas por índice de fila.</span>
 <span class="va">starwars</span> <span class="op">%&gt;%</span> <span class="fu">slice</span><span class="op">(</span><span class="fl">5</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span> <span class="co"># filas de la 5 a la 10</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 14
@@ -316,7 +316,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ## # … with 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
 ## #   vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
 <p>Podemos <strong>combinar los índices</strong> para extraer por ejemplo solo los pares o filas concretas separadas por los espacios que queramos.</p>
-<div class="sourceCode" id="cb806"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb810"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">starwars</span> <span class="op">%&gt;%</span> <span class="fu">slice</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">starwars</span><span class="op">)</span>, by <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="co"># filas pares</span></code></pre></div>
 <pre><code>## # A tibble: 43 × 14
 ##    name    height  mass hair_color  skin_color eye_color birth_year sex   gender
@@ -333,7 +333,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ## 10 Palpat…    170    75 grey        pale       yellow          82   male  mascu…
 ## # … with 33 more rows, and 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;,
 ## #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
-<div class="sourceCode" id="cb808"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb812"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">starwars</span> <span class="op">%&gt;%</span> <span class="fu">slice</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">10</span>, <span class="fl">20</span>, <span class="fl">33</span><span class="op">)</span><span class="op">)</span> <span class="co"># filas 3, 4, 10, 20 y 33</span></code></pre></div>
 <pre><code>## # A tibble: 5 × 14
 ##   name     height  mass hair_color  skin_color eye_color birth_year sex   gender
@@ -346,7 +346,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ## # … with 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
 ## #   vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
 <p>También hay opciones por defecto para extraer directamente <strong>las primeras o últimas filas</strong> con <code>slice_head()</code> y <code>slice_tail()</code>.</p>
-<div class="sourceCode" id="cb810"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb814"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Podemos extraer directamente las primeras o últimas filas</span>
 <span class="va">starwars</span> <span class="op">%&gt;%</span> <span class="fu">slice_head</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">7</span><span class="op">)</span> <span class="co"># 7 primeras filas </span></code></pre></div>
 <pre><code>## # A tibble: 7 × 14
@@ -361,7 +361,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ## 7 Beru Wh…    165    75 brown       light      blue            47   fema… femin…
 ## # … with 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
 ## #   vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
-<div class="sourceCode" id="cb812"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb816"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">starwars</span> <span class="op">%&gt;%</span> <span class="fu">slice_tail</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="co"># 3 últimas filas </span></code></pre></div>
 <pre><code>## # A tibble: 3 × 14
 ##   name     height  mass hair_color skin_color eye_color birth_year sex    gender
@@ -372,7 +372,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ## # … with 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
 ## #   vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
 <p>Una opción también habitual es querer <strong>extraer un número de filas pero AL AZAR</strong>, pudiendo hacerlo sin reemplazamiento (una vez extraída, no se puede volver a extraer) o con reemplazamiento (<code>replace = TRUE</code>).</p>
-<div class="sourceCode" id="cb814"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb818"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># También podemos hacer una extracción al azar de filas</span>
 <span class="va">starwars</span> <span class="op">%&gt;%</span> <span class="fu">slice_sample</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span> <span class="co"># 5 al azar</span></code></pre></div>
 <pre><code>## # A tibble: 5 × 14
@@ -385,7 +385,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ## 5 Arvel C…     NA    NA brown      fair        brown             NA male  mascu…
 ## # … with 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
 ## #   vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
-<div class="sourceCode" id="cb816"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb820"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">starwars</span> <span class="op">%&gt;%</span> <span class="fu">slice_sample</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">100</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="co"># 100 con reemplazamiento</span></code></pre></div>
 <pre><code>## # A tibble: 100 × 14
 ##    name     height  mass hair_color skin_color eye_color birth_year sex   gender
@@ -403,7 +403,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ## # … with 90 more rows, and 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;,
 ## #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
 <p>Por último, tenemos <code>slice_min()</code> y <code>slice_max()</code> que nos permite <strong>extraer filas en función del mínimo y máximo de una variable</strong>. Por defecto, si hay empate, mostrará todas las filas (aunque supere el número <code>n</code> indicado), salvo que <code>with_ties = FALSE</code>, que decidirá en caso de empate cual mostrarte</p>
-<div class="sourceCode" id="cb818"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb822"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Podemos extraer filas en función del mín/máx de una variable</span>
 <span class="va">starwars</span> <span class="op">%&gt;%</span> <span class="fu">slice_min</span><span class="op">(</span><span class="va">height</span>, n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span> <span class="co"># los 5 más bajitos</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 14
@@ -417,7 +417,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ## 6 R4-P17        96    NA none       silver, r… red, blue         NA none  femin…
 ## # … with 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
 ## #   vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
-<div class="sourceCode" id="cb820"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb824"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">starwars</span> <span class="op">%&gt;%</span> <span class="co"># los 5 más bajitos (sin empates, exactamente 5)</span>
   <span class="fu">slice_min</span><span class="op">(</span><span class="va">height</span>, n <span class="op">=</span> <span class="fl">5</span>, with_ties <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> </code></pre></div>
 <pre><code>## # A tibble: 5 × 14
@@ -430,7 +430,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ## 5 R2-D2         96    32 &lt;NA&gt;       white, bl… red               33 none  mascu…
 ## # … with 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
 ## #   vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
-<div class="sourceCode" id="cb822"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb826"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">starwars</span> <span class="op">%&gt;%</span> <span class="fu">slice_max</span><span class="op">(</span><span class="va">mass</span>, n <span class="op">=</span> <span class="fl">7</span><span class="op">)</span> <span class="co"># los 7 más pesados</span></code></pre></div>
 <pre><code>## # A tibble: 7 × 14
 ##   name    height  mass hair_color  skin_color  eye_color birth_year sex   gender
@@ -450,7 +450,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 <span class="header-section-number">12.1.2</span> Reordenar filas (arrange)<a class="anchor" aria-label="anchor" href="#reordenar-filas-arrange"><i class="fas fa-link"></i></a>
 </h3>
 <p>Muchas veces necesitamos las <strong>filas ordenadas en función del valor de alguna de las variables</strong>. Para ello tenemos la función <code>arrange()</code> sin más que pasarle como argumento el nombre de la variable que usaremos para la ordenación</p>
-<div class="sourceCode" id="cb824"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb828"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Con arrange ordenamos en base al orden de la variable que introduzcamos</span>
 <span class="va">starwars</span> <span class="op">%&gt;%</span> <span class="fu">arrange</span><span class="op">(</span><span class="va">height</span><span class="op">)</span> <span class="co"># de bajitos a altos, yoda al poder</span></code></pre></div>
 <pre><code>## # A tibble: 87 × 14
@@ -469,7 +469,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ## # … with 77 more rows, and 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;,
 ## #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
 <p>Por defecto la <strong>ordenación es de menor a mayor</strong> pero <strong>podemos invertirlo</strong> usando <code>desc()</code>.</p>
-<div class="sourceCode" id="cb826"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb830"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Por defecto lo hace ascendente pero podemos cambiarlo</span>
 <span class="va">starwars</span> <span class="op">%&gt;%</span> <span class="fu">arrange</span><span class="op">(</span><span class="fu">desc</span><span class="op">(</span><span class="va">height</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 87 × 14
@@ -488,7 +488,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ## # … with 77 more rows, and 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;,
 ## #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
 <p>La ordenación puede realizarse <strong>en base al valor de dos o más variables</strong>: ordenará las filas en base a la primera, en caso de empate usará la segunda, en caso de empate la tercera, y así sucesivamente.</p>
-<div class="sourceCode" id="cb828"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb832"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Podemos combinar varios criterios: ordenados de bajitos a altos,</span>
 <span class="co"># y en caso de empate, de pesados a ligeros. Un dato NA va siempre al final</span>
 <span class="va">starwars</span> <span class="op">%&gt;%</span> <span class="fu">arrange</span><span class="op">(</span><span class="va">height</span>, <span class="fu">desc</span><span class="op">(</span><span class="va">mass</span><span class="op">)</span><span class="op">)</span></code></pre></div>
@@ -512,7 +512,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 <p>Si te fijas los <strong><span style="color: #ffc107;">valores ausentes van siempre al final</span></strong> de la ordenación. Luego veremos como eliminarlos si quisiéramos.</p>
 <p> </p>
 <p>Como estarás imaginando <strong>podemos combinar varias acciones en pocas líneas</strong>, filtrando datos a la vez que ordenamos el filtro resultante.</p>
-<div class="sourceCode" id="cb830"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb834"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Podemos combinar varias acciones en pocas líneas:</span>
 <span class="co"># seleccionamos humanos, hombres, de ojos marrones</span>
 <span class="co"># y en orden altura descendente y peso ascendente</span>
@@ -542,7 +542,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 <span class="header-section-number">12.1.3</span> Eliminar filas. Eliminar duplicados<a class="anchor" aria-label="anchor" href="#eliminar-filas.-eliminar-duplicados"><i class="fas fa-link"></i></a>
 </h3>
 <p>La misma lógica que hemos usado para <strong>seleccionar filas podemos usarla para eliminar filas</strong>, simplemente negando la condición de filtrado. Por ejemplo, vamos a <strong>eliminar las 5 primeras filas</strong>.</p>
-<div class="sourceCode" id="cb832"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb836"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Eliminamos por índices</span>
 <span class="va">starwars</span> <span class="op">%&gt;%</span> <span class="fu">slice</span><span class="op">(</span><span class="op">-</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span> <span class="co"># eliminamos las 5 primeras filas</span></code></pre></div>
 <pre><code>## # A tibble: 82 × 14
@@ -561,7 +561,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ## # … with 72 more rows, and 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;,
 ## #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
 <p>Otra opción a la hora de eliminar filas es <strong>eliminar filas duplicadas (o filas con valores duplicados en alguna columna)</strong>. Para ello deberemos aplicar la función <code>distinct()</code>, con argumentos el nombre de las variables que usaremos para quitar duplicados.</p>
-<div class="sourceCode" id="cb834"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb838"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Eliminamos duplicados</span>
 <span class="va">starwars</span> <span class="op">%&gt;%</span> <span class="co"># Eliminamos registros con igual par (color_pelo, color_ojos)</span>
   <span class="fu">distinct</span><span class="op">(</span><span class="va">hair_color</span>, <span class="va">eye_color</span><span class="op">)</span></code></pre></div>
@@ -580,7 +580,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ## 10 auburn, grey  blue     
 ## # … with 25 more rows</code></pre>
 <p>Si te fijas además nos ha extraído las dos columnas en base a las cuales hemos eliminado duplicados. Si queremos que nos mantenga toda la tabla deberemos explicitarlo con <code>.keep_all = TRUE</code>.</p>
-<div class="sourceCode" id="cb836"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb840"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Eliminamos duplicados</span>
 <span class="va">starwars</span> <span class="op">%&gt;%</span> <span class="co"># Eliminamos registros con igual par (color_pelo, color_ojos)</span>
   <span class="fu">distinct</span><span class="op">(</span><span class="va">hair_color</span>, <span class="va">eye_color</span>,
@@ -601,12 +601,12 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ## # … with 25 more rows, and 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;,
 ## #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
 <p>Si no incluimos <strong>ningún nombre</strong> de columna <strong>nos eliminará solo los registros que tengan TODOS los campos duplicados</strong>.</p>
-<div class="sourceCode" id="cb838"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb842"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Duplicamos el conjunto para probarlo</span>
 <span class="va">duplicado_starwars</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">starwars</span>, <span class="va">starwars</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">duplicado_starwars</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 174  14</code></pre>
-<div class="sourceCode" id="cb840"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb844"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Eliminamos duplicados (filas exactamente iguales)</span>
 <span class="va">duplicado_starwars</span> <span class="op">%&gt;%</span> <span class="fu">distinct</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 87 × 14
@@ -624,7 +624,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ## 10 Obi-Wa…    182    77 auburn, wh… fair       blue-gray       57   male  mascu…
 ## # … with 77 more rows, and 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;,
 ## #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
-<div class="sourceCode" id="cb842"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb846"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">duplicado_starwars</span> <span class="op">%&gt;%</span> <span class="fu">distinct</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 87 14</code></pre>
 </div>
@@ -639,7 +639,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 <span class="header-section-number">12.2.1</span> Seleccionar (select) y extraer (pull) columnas<a class="anchor" aria-label="anchor" href="#seleccionar-select-y-extraer-pull-columnas"><i class="fas fa-link"></i></a>
 </h3>
 <p>La opción más sencilla es usar la función <code>select()</code> pasándole como argumentos los nombres de columnas (¡SIN COMILLAS!) queremos seleccionar.</p>
-<div class="sourceCode" id="cb844"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb848"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># select: columnas a seleccionar sin comillas</span>
 <span class="va">starwars</span> <span class="op">%&gt;%</span> <span class="co"># seleccionamos solo 3 columnas: pelo, piel y ojos</span>
   <span class="fu">select</span><span class="op">(</span><span class="va">hair_color</span>, <span class="va">skin_color</span>, <span class="va">eye_color</span><span class="op">)</span></code></pre></div>
@@ -658,25 +658,25 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ## 10 auburn, white fair        blue-gray
 ## # … with 77 more rows</code></pre>
 <p>Si las columnas a seleccionar sabemos que son consecutivas, podemos indicarle que las seleccionemos desde una <strong>columna inicial hasta una columna inicial</strong> pasando por todas.</p>
-<div class="sourceCode" id="cb846"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb850"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Podemos seleccionar columnas en orden: desde nombre hasta año nacim.</span>
 <span class="va">starwars</span> <span class="op">%&gt;%</span> <span class="fu">select</span><span class="op">(</span><span class="va">name</span><span class="op">:</span><span class="va">birth_year</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 87 × 7
-##    name               height  mass hair_color    skin_color  eye_color birth_year
-##    &lt;chr&gt;               &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt;          &lt;dbl&gt;
-##  1 Luke Skywalker        172    77 blond         fair        blue            19  
-##  2 C-3PO                 167    75 &lt;NA&gt;          gold        yellow         112  
-##  3 R2-D2                  96    32 &lt;NA&gt;          white, blue red             33  
-##  4 Darth Vader           202   136 none          white       yellow          41.9
-##  5 Leia Organa           150    49 brown         light       brown           19  
-##  6 Owen Lars             178   120 brown, grey   light       blue            52  
-##  7 Beru Whitesun lars    165    75 brown         light       blue            47  
-##  8 R5-D4                  97    32 &lt;NA&gt;          white, red  red             NA  
-##  9 Biggs Darklighter     183    84 black         light       brown           24  
-## 10 Obi-Wan Kenobi        182    77 auburn, white fair        blue-gray       57  
+##    name               height  mass hair_color    skin_color eye_color birth_year
+##    &lt;chr&gt;               &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt;
+##  1 Luke Skywalker        172    77 blond         fair       blue            19  
+##  2 C-3PO                 167    75 &lt;NA&gt;          gold       yellow         112  
+##  3 R2-D2                  96    32 &lt;NA&gt;          white, bl… red             33  
+##  4 Darth Vader           202   136 none          white      yellow          41.9
+##  5 Leia Organa           150    49 brown         light      brown           19  
+##  6 Owen Lars             178   120 brown, grey   light      blue            52  
+##  7 Beru Whitesun lars    165    75 brown         light      blue            47  
+##  8 R5-D4                  97    32 &lt;NA&gt;          white, red red             NA  
+##  9 Biggs Darklighter     183    84 black         light      brown           24  
+## 10 Obi-Wan Kenobi        182    77 auburn, white fair       blue-gray       57  
 ## # … with 77 more rows</code></pre>
 <p>Una de las mejores opciones en este entorno es que las columnas las podemos seleccionar a través de expresiones regulares, por ejemplo, <strong>seleccionando solo aquellas columnas que compartan un sufijo común en el nombre</strong>, con <code><a href="https://rdrr.io/pkg/tidyselect/man/starts_with.html">ends_with()</a></code> dentro de órdenes como <code>select()</code></p>
-<div class="sourceCode" id="cb848"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb852"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Podemos seleccionar columnas por sufijo y prefijo</span>
 <span class="va">starwars</span> <span class="op">%&gt;%</span> <span class="fu">select</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/tidyselect/man/starts_with.html">ends_with</a></span><span class="op">(</span><span class="st">"color"</span><span class="op">)</span><span class="op">)</span> <span class="co"># acaban en "color"</span></code></pre></div>
 <pre><code>## # A tibble: 87 × 3
@@ -694,7 +694,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ## 10 auburn, white fair        blue-gray
 ## # … with 77 more rows</code></pre>
 <p>De una manera similar podemos <strong>seleccionar columnas cuyo nombre empiecen o contengan</strong> alguna cadena de texto concreta</p>
-<div class="sourceCode" id="cb850"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb854"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">starwars</span> <span class="op">%&gt;%</span> <span class="fu">select</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/tidyselect/man/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"h"</span><span class="op">)</span><span class="op">)</span> <span class="co"># empiezan por h</span></code></pre></div>
 <pre><code>## # A tibble: 87 × 3
 ##    height hair_color    homeworld
@@ -710,7 +710,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ##  9    183 black         Tatooine 
 ## 10    182 auburn, white Stewjon  
 ## # … with 77 more rows</code></pre>
-<div class="sourceCode" id="cb852"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb856"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">starwars</span> <span class="op">%&gt;%</span> <span class="fu">select</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/tidyselect/man/starts_with.html">contains</a></span><span class="op">(</span><span class="st">"h"</span><span class="op">)</span><span class="op">)</span> <span class="co"># contienen la h</span></code></pre></div>
 <pre><code>## # A tibble: 87 × 6
 ##    height hair_color    birth_year homeworld vehicles  starships
@@ -727,7 +727,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ## 10    182 auburn, white       57   Stewjon   &lt;chr [1]&gt; &lt;chr [5]&gt;
 ## # … with 77 more rows</code></pre>
 <p>Todo lo que hemos usado para seleccionar lo podemos usar para <strong>eliminar columnas</strong></p>
-<div class="sourceCode" id="cb854"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb858"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">starwars</span> <span class="op">%&gt;%</span> <span class="co"># seleccionamos todas menos 3 columnas: pelo, piel y ojos</span>
   <span class="fu">select</span><span class="op">(</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">hair_color</span>, <span class="va">skin_color</span>, <span class="va">eye_color</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 87 × 11
@@ -745,7 +745,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ## 10 Obi-Wa…    182    77       57   male  mascu… Stewjon   Human   &lt;chr… &lt;chr [1…
 ## # … with 77 more rows, and 1 more variable: starships &lt;list&gt;</code></pre>
 <p>Incluso nos permite <strong>seleccionar aquellas columnas que son del mismo tipo</strong> (imagina que necesitamos solo las columnas numéricas para calcular ciertas estadísticas).</p>
-<div class="sourceCode" id="cb856"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb860"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Seleccionamos solo la columnas numéricas</span>
 <span class="va">starwars</span> <span class="op">%&gt;%</span> <span class="fu">select</span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 87 × 3
@@ -763,7 +763,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ## 10    182    77       57  
 ## # … with 77 more rows</code></pre>
 <p>Por último, podemos no tanto seleccionar sino <strong>extraer columnas</strong>: las saca fuera de la tabla y las convierte en un vector fuera del <code>tibble</code>, con la función <code>pull()</code>.</p>
-<div class="sourceCode" id="cb858"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb862"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">starwars</span> <span class="op">%&gt;%</span> <span class="fu">pull</span><span class="op">(</span><span class="va">name</span><span class="op">)</span></code></pre></div>
 <pre><code>##  [1] "Luke Skywalker"        "C-3PO"                 "R2-D2"                
 ##  [4] "Darth Vader"           "Leia Organa"           "Owen Lars"            
@@ -800,7 +800,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 <span class="header-section-number">12.2.2</span> Renombrar (rename) y reordenar (relocate) columnas<a class="anchor" aria-label="anchor" href="#renombrar-rename-y-reordenar-relocate-columnas"><i class="fas fa-link"></i></a>
 </h3>
 <p>A veces también podemos querer <strong>modificar la «metainformación» de la tabla</strong>, no modificando los datos sino <strong>renombrando el orden de las columnas</strong>. Para ello debremos usar la función <code>rename()</code> poniendo primero el nombre nuevo y luego el antiguo</p>
-<div class="sourceCode" id="cb860"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb864"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># rename: renombrar columnas, primero el nuevo y luego el antiguo</span>
 <span class="va">starwars</span> <span class="op">%&gt;%</span> <span class="fu">rename</span><span class="op">(</span>nombre <span class="op">=</span> <span class="va">name</span>, altura <span class="op">=</span> <span class="va">height</span>, peso <span class="op">=</span> <span class="va">mass</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 87 × 14
@@ -819,7 +819,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ## # … with 77 more rows, and 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;,
 ## #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
 <p>De la misma manera podemos <strong>reordenar las columnas</strong>, indicando el nombre de columnas que queremos mover, y con <code>.after</code> y/o <code>.before</code> para indicar antes o después de que columnas queremos moverlas.</p>
-<div class="sourceCode" id="cb862"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb866"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">starwars</span> <span class="op">%&gt;%</span> <span class="co"># altura y masa detrás de color de piel</span>
   <span class="fu">relocate</span><span class="op">(</span><span class="va">height</span>, <span class="va">mass</span>, .after <span class="op">=</span> <span class="va">skin_color</span><span class="op">)</span> </code></pre></div>
 <pre><code>## # A tibble: 87 × 14
@@ -837,7 +837,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ## 10 Obi-Wa… auburn, wh… fair          182    77 blue-gray       57   male  mascu…
 ## # … with 77 more rows, and 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;,
 ## #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
-<div class="sourceCode" id="cb864"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb868"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">starwars</span> <span class="op">%&gt;%</span> <span class="co"># color de piel, pelo y ojos antes de peso</span>
   <span class="fu">relocate</span><span class="op">(</span><span class="va">hair_color</span>, <span class="va">skin_color</span>, <span class="va">eye_color</span>,
            .before <span class="op">=</span> <span class="va">mass</span><span class="op">)</span> </code></pre></div>
@@ -857,7 +857,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ## # … with 77 more rows, and 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;,
 ## #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
 <p>Otra opción es hacerlo con <code>select()</code>, indicándole el orden de las columnas manualmente, pudiendo hacer uso de <code><a href="https://rdrr.io/pkg/tidyselect/man/everything.html">everything()</a></code> para <strong>incluir el resto de columnas no mencionadas anteriormente</strong>.</p>
-<div class="sourceCode" id="cb866"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb870"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">starwars</span> <span class="op">%&gt;%</span> <span class="fu">select</span><span class="op">(</span><span class="va">name</span>, <span class="va">homeworld</span>, <span class="fu"><a href="https://rdrr.io/pkg/tidyselect/man/everything.html">everything</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 87 × 14
 ##    name  homeworld height  mass hair_color skin_color eye_color birth_year sex  
@@ -881,7 +881,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 <span class="header-section-number">12.3</span> Crear nuevas variables (mutate)<a class="anchor" aria-label="anchor" href="#crear-nuevas-variables-mutate"><i class="fas fa-link"></i></a>
 </h2>
 <p>A veces no queremos modificar variables ya existentes sino <strong>crear nuevas variables/columnas</strong> en base a variables ya existentes. Para ello tenemos la opción de <code>mutate()</code> que nos permite crear una nueva variable en función de las existentes.</p>
-<div class="sourceCode" id="cb868"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb872"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Mutate: nos añade nuevas columnas usando funciones</span>
 <span class="co"># aplicadas a nuestras variables</span>
 <span class="va">starwars</span> <span class="op">%&gt;%</span> <span class="fu">mutate</span><span class="op">(</span>height_m <span class="op">=</span> <span class="va">height</span> <span class="op">/</span> <span class="fl">100</span><span class="op">)</span> <span class="co"># altura en metros</span></code></pre></div>
@@ -901,7 +901,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ## # … with 77 more rows, and 6 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;,
 ## #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;, height_m &lt;dbl&gt;</code></pre>
 <p>Recuerda que para <strong>ver todas las columnas</strong> debes indicarle que quieres imprimir todas.</p>
-<div class="sourceCode" id="cb870"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb874"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://docs.ropensci.org/skimr/reference/print.html">print</a></span><span class="op">(</span><span class="va">starwars</span> <span class="op">%&gt;%</span> <span class="fu">mutate</span><span class="op">(</span>height_m <span class="op">=</span> <span class="va">height</span> <span class="op">/</span> <span class="fl">100</span><span class="op">)</span>, width <span class="op">=</span> <span class="cn">Inf</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 87 × 15
 ##    name               height  mass hair_color    skin_color  eye_color
@@ -942,7 +942,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ## 10     1.82
 ## # … with 77 more rows</code></pre>
 <p>Otra opción es <strong>quedarnos solo con las columnas nuevas creadas</strong> con <code>transmute()</code></p>
-<div class="sourceCode" id="cb872"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb876"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">starwars</span> <span class="op">%&gt;%</span> <span class="fu">transmute</span><span class="op">(</span>height_m <span class="op">=</span> <span class="va">height</span> <span class="op">/</span> <span class="fl">100</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 87 × 1
 ##    height_m
@@ -959,7 +959,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ## 10     1.82
 ## # … with 77 more rows</code></pre>
 <p>Si queremos añadir <strong>varias variables</strong> en función de las ya existentes podemos hacerlo ya que permite incorporar los datos de forma secuencial sin duplicar órdenes de <code>mutate()</code> para cada una.</p>
-<div class="sourceCode" id="cb874"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb878"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://docs.ropensci.org/skimr/reference/print.html">print</a></span><span class="op">(</span><span class="va">starwars</span> <span class="op">%&gt;%</span>
   <span class="co"># Calculamos altura en metros y el IMC</span>
   <span class="fu">mutate</span><span class="op">(</span>height_m <span class="op">=</span> <span class="va">height</span> <span class="op">/</span> <span class="fl">100</span>,
@@ -1003,7 +1003,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ## 10     1.82  23.2
 ## # … with 77 more rows</code></pre>
 <p>Como ves <strong>por defecto añade las columnas al final</strong> pero podemos <strong>reordenar las columnas</strong> como ya hemos visto</p>
-<div class="sourceCode" id="cb876"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb880"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">starwars</span> <span class="op">%&gt;%</span>
   <span class="fu">mutate</span><span class="op">(</span>height_m <span class="op">=</span> <span class="va">height</span> <span class="op">/</span> <span class="fl">100</span>,
          BMI <span class="op">=</span> <span class="va">mass</span> <span class="op">/</span> <span class="op">(</span><span class="va">height_m</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -1025,7 +1025,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ## #   homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;, vehicles &lt;list&gt;,
 ## #   starships &lt;list&gt;</code></pre>
 <p>También podemos pasarle una <strong>función propia que queramos definir</strong>, no solo funciones de <code>R</code>. Vamos a definir la función que nos calcula el IMC, a la que llamaremos <code>BMI_fun</code>, que necesita solo de dos argumentos: la altura en metros y el peso.</p>
-<div class="sourceCode" id="cb878"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb882"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">BMI_fun</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">m</span>, <span class="va">h</span><span class="op">)</span> <span class="op">{</span>
   
   <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">m</span> <span class="op">/</span> <span class="va">h</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span>
@@ -1033,7 +1033,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 <span class="fu">BMI_fun</span><span class="op">(</span><span class="fl">90</span>, <span class="fl">1.6</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 35.15625</code></pre>
 <p>La función definida como <code>BMI_fun()</code> podemos ahora aplicarla dentro de <code>mutate()</code>.</p>
-<div class="sourceCode" id="cb880"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb884"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">starwars</span> <span class="op">%&gt;%</span>
   <span class="fu">mutate</span><span class="op">(</span>height_m <span class="op">=</span> <span class="va">height</span> <span class="op">/</span> <span class="fl">100</span>,
          BMI <span class="op">=</span> <span class="fu">BMI_fun</span><span class="op">(</span><span class="va">mass</span>, <span class="va">height_m</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -1056,7 +1056,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ## #   homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;, vehicles &lt;list&gt;,
 ## #   starships &lt;list&gt;</code></pre>
 <p>También se pueden aplicar funciones más complejas como la función <code><a href="https://rdrr.io/pkg/purrr/man/map.html">map()</a></code> del paquete <a href="http://purrr.tidyverse.org">purrr</a>: dado que las listas no se pueden vectorizar, esta función nos permite <strong>aplicar operaciones a listas, elemento a elemento de cada una de ellas</strong>. Veamos un ejemplo: imagina que queremos calcular el número de películas en las que sale cada personaje de la saga.</p>
-<div class="sourceCode" id="cb882"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb886"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Películas de los 5 primeros personajes</span>
 <span class="va">starwars</span><span class="op">$</span><span class="va">films</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span></code></pre></div>
 <pre><code>## [[1]]
@@ -1084,11 +1084,11 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ## [3] "Return of the Jedi"      "A New Hope"             
 ## [5] "The Force Awakens"</code></pre>
 <p>Las películas de cada personaje están en <strong>modo lista</strong>: no podíamos guardarlo en un <code>data.frame</code> ya que cada personaje ha podido participar en un número distinto (en una tabla, todas las columnas tienen la misma longitud). Para saber la cantidad de películas en las que ha participado el primer personaje basta con usar el comando <code><a href="https://rdrr.io/r/base/length.html">length()</a></code> (nos dará el número de elementos de la lista).</p>
-<div class="sourceCode" id="cb884"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb888"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">starwars</span><span class="op">$</span><span class="va">films</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 1</code></pre>
 <p><strong>¿Cómo aplicar dicha a función a cada personaje?</strong> Con <code><a href="https://rdrr.io/pkg/purrr/man/map.html">map()</a></code> y la función a aplicar en cada elemento de la lista.</p>
-<div class="sourceCode" id="cb886"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb890"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Mapeamos la lista con length</span>
 <span class="op">(</span><span class="va">starwars</span><span class="op">$</span><span class="va">films</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/purrr/man/map.html">map</a></span><span class="op">(</span><span class="va">length</span><span class="op">)</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span></code></pre></div>
 <pre><code>## [[1]]
@@ -1121,14 +1121,14 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ## [[10]]
 ## [1] 6</code></pre>
 <p>Si te fijas con los 10 primeros, lo que nos devuelve por defecto a su vez una lista, cuando a nosotros <strong>nos gustaría que nos devolviera un vector que poder incluir como columna</strong>. Para ello existen diversas funciones como <code><a href="https://rdrr.io/pkg/purrr/man/map.html">map_chr()</a></code>, <code><a href="https://rdrr.io/pkg/purrr/man/map.html">map_dbl()</a></code> para devolverlo en un formato concreto</p>
-<div class="sourceCode" id="cb888"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb892"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Mapeamos la lista con length pero devolvemos un vector de números enteros</span>
 <span class="va">starwars</span><span class="op">$</span><span class="va">films</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/purrr/man/map.html">map_int</a></span><span class="op">(</span><span class="va">length</span><span class="op">)</span></code></pre></div>
 <pre><code>##  [1] 5 6 7 4 5 3 3 1 1 6 3 2 5 4 1 3 3 1 5 5 3 1 1 2 1 2 1 1 1 1 1 3 1 2 1 1 1 2
 ## [39] 1 1 2 1 1 3 1 1 1 3 3 3 2 2 2 1 3 2 1 1 1 2 2 1 1 2 2 1 1 1 1 1 1 1 2 1 1 2
 ## [77] 1 1 2 2 1 1 1 1 1 1 3</code></pre>
 <p>Ya solo nos falta incorporar dicha operación a una nueva columna con <code>mutate()</code></p>
-<div class="sourceCode" id="cb890"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb894"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">starwars</span> <span class="op">%&gt;%</span>
   <span class="fu">mutate</span><span class="op">(</span><span class="st">"n_peliculas"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/purrr/man/map.html">map_int</a></span><span class="op">(</span><span class="va">films</span>, <span class="va">length</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">select</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">name</span>, <span class="va">homeworld</span>, <span class="va">n_peliculas</span><span class="op">)</span><span class="op">)</span></code></pre></div>
@@ -1151,7 +1151,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 <span class="header-section-number">12.3.1</span> Recategorizar columnas<a class="anchor" aria-label="anchor" href="#recategorizar-columnas"><i class="fas fa-link"></i></a>
 </h3>
 <p>Una operación también muy habitual es querer <strong>recategorizar nuestras variables</strong>: tenemos categorías ya existentes o variables numéricas que queremos convertir a categoría (factores en <code>R</code>). Supongamos por ejemplo que queremos <strong>crear una categoría para cada registro</strong> en función de su altura: menos de 120, entre 120 y 180, y más de 180. Para ello podemos hacer uso de la función <code><a href="https://rdrr.io/r/base/cut.html">cut()</a></code>, a la que en el argumento <code>breaks</code> le debemos indicar los <strong>«cortes» o saltos de la variable</strong>.</p>
-<div class="sourceCode" id="cb892"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb896"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://docs.ropensci.org/skimr/reference/print.html">print</a></span><span class="op">(</span><span class="va">starwars</span> <span class="op">%&gt;%</span> <span class="fu">mutate</span><span class="op">(</span><span class="st">"estat_categoria"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span><span class="op">(</span><span class="va">height</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="cn">Inf</span>, <span class="fl">120</span>, <span class="fl">180</span>, <span class="cn">Inf</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>, width <span class="op">=</span> <span class="cn">Inf</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 87 × 15
 ##    name               height  mass hair_color    skin_color  eye_color
@@ -1192,7 +1192,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ## 10 (180, Inf]     
 ## # … with 77 more rows</code></pre>
 <p>Recuerda que si quieres <strong>mostrar solo las nuevas columnas</strong> creadas puedes usar <code>transmute()</code></p>
-<div class="sourceCode" id="cb894"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb898"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">starwars</span> <span class="op">%&gt;%</span> <span class="fu">transmute</span><span class="op">(</span><span class="st">"estat_categoria"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span><span class="op">(</span><span class="va">height</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="cn">Inf</span>, <span class="fl">120</span>, <span class="fl">180</span>, <span class="cn">Inf</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 87 × 1
 ##    estat_categoria
@@ -1209,7 +1209,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ## 10 (180, Inf]     
 ## # … with 77 more rows</code></pre>
 <p>Si queremos que la categoría tenga un nombre explícito (y no el intervalo en sí), podemos indicárselo en <code>labels =</code> el vector de nombres de las categorías.</p>
-<div class="sourceCode" id="cb896"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb900"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">starwars</span> <span class="op">%&gt;%</span>
   <span class="fu">transmute</span><span class="op">(</span><span class="st">"estat_categoria"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span><span class="op">(</span><span class="va">height</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="cn">Inf</span>, <span class="fl">120</span>, <span class="fl">180</span>, <span class="cn">Inf</span><span class="op">)</span>,
                                     labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"bajos"</span>, <span class="st">"medios"</span>, <span class="st">"altos"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
@@ -1228,7 +1228,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ## 10 altos          
 ## # … with 77 more rows</code></pre>
 <p>Otra opción es hacerlo con la función <code>factor</code> que nos transforma una variable en categoría.</p>
-<div class="sourceCode" id="cb898"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb902"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Vamos a categorizar en bajitos a los que miden menos de 180 cm</span>
 <span class="va">starwars</span> <span class="op">%&gt;%</span>
   <span class="fu">mutate</span><span class="op">(</span>talla <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">height</span> <span class="op">&lt;</span> <span class="fl">180</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"bajos"</span>, <span class="st">"altos"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
@@ -1255,7 +1255,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 </h2>
 <p>Como ya vimos en <a href="vectores.html#vectores">Tipos de datos I: vectores</a>, los datos ausentes en <code>R</code> pueden venir representados por valores <code>NA</code> o por valores <code>NaN</code> (en realidad este no sería ausente siendo estrictos, es simplemente un resultado no numérico dentro de los reales). <strong>¿Qué hacer con dichos valores?</strong></p>
 <p>Una primera opción puede ser <strong>eliminar los registros que contengan campos ausentes en alguna de sus variables</strong>, haciendo uso de la función <code>drop_na()</code>.</p>
-<div class="sourceCode" id="cb900"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb904"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">starwars</span> <span class="op">%&gt;%</span> <span class="fu">drop_na</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 14
 ##   name     height  mass hair_color  skin_color eye_color birth_year sex   gender
@@ -1269,7 +1269,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ## # … with 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
 ## #   vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
 <p>Como ves solo 6 de los 87 registros tienen todos los campos completos. Como quizás <strong>no todos los campos sean igual de importantes</strong> en nuestros, podemos indicarle que nos elimine aquellos registros que tengan datos ausentes <strong>algunos campos en concreto</strong> (o una coelcción de ellos)</p>
-<div class="sourceCode" id="cb902"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb906"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">starwars</span> <span class="op">%&gt;%</span> <span class="fu">drop_na</span><span class="op">(</span><span class="va">mass</span>, <span class="va">height</span>, <span class="va">sex</span>, <span class="va">gender</span>, <span class="va">birth_year</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 36 × 14
 ##    name    height  mass hair_color  skin_color eye_color birth_year sex   gender
@@ -1287,7 +1287,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ## # … with 26 more rows, and 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;,
 ## #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
 <p>Otra opción es <strong>imputar su valor</strong> en el caso de variables cuantitativas por, por ejemplo, la <strong>media de la variable sin datos ausentes</strong>, y <strong>recategorizar las cuantitaivas creando un categoría</strong> per se de ausentes.</p>
-<div class="sourceCode" id="cb904"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb908"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">starwars</span> <span class="op">%&gt;%</span>
   <span class="co"># Variables cuanti</span>
   <span class="fu">mutate</span><span class="op">(</span><span class="fu">across</span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span>,
@@ -1317,7 +1317,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 <li><p><strong>Respecto a la media (gesd)</strong>: el criterio utilizado suele ser el conocido como GESD (Generlized Extreme Studentized Deviate Test), un contraste de hipótesis cuya hipótesis nula es que no hay atípicos en los datos. Puedes ver la formulación matemática en <a href="https://www.itl.nist.gov/div898/handbook/eda/section3/eda35h3.htm" class="uri">https://www.itl.nist.gov/div898/handbook/eda/section3/eda35h3.htm</a></p></li>
 </ul>
 <p>Para su localización automática usaremos el paquete <a href="https://github.com/business-science/anomalize">anomalize</a>, y la función homónima de dicho paquete, indicándole la columna individual en la que queremos detectar outliers y el método a usar. Con el método <code>method = "gesd"</code> realizaremos el contraste dato a dato de forma secuencial (si hay outlier lo quita individualmente y vuelve a ejecutarlo). Con <code>method = "iqr"</code>, ese factor <code>X</code> que nos distanciamos del primer y tercer cuartil es calculado como <code>0.15/alpha</code>, de forma que con <code>alpha = 0.05</code> (por ejemplo), dicho factor sería <code>X = 3</code>. Es <strong>MUY IMPORTANTE</strong> quitar antes los valores ausentes (para que pueda ejecutarse correctamente).</p>
-<div class="sourceCode" id="cb906"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb910"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/business-science/anomalize">anomalize</a></span><span class="op">)</span>
 <span class="co"># Importante: quitar antes missings</span>
 <span class="va">starwars</span> <span class="op">%&gt;%</span> <span class="fu">drop_na</span><span class="op">(</span><span class="va">mass</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/anomalize/man/anomalize.html">anomalize</a></span><span class="op">(</span><span class="va">mass</span>, method <span class="op">=</span> <span class="st">"gesd"</span><span class="op">)</span></code></pre></div>
@@ -1338,7 +1338,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ## #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;, mass_l1 &lt;dbl&gt;,
 ## #   mass_l2 &lt;dbl&gt;, anomaly &lt;chr&gt;</code></pre>
 <p>En las columnas <code>mass_l1</code> y <code>mass_l2</code> se nos han guardado los límites para considerar o no outlier, y en <code>anomaly</code> tendremos si el valor es un outlier o no. Podemos renombrar dicha columna y recategorizarlo con <code>TRUE/FALSE</code></p>
-<div class="sourceCode" id="cb908"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb912"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://docs.ropensci.org/skimr/reference/print.html">print</a></span><span class="op">(</span><span class="va">starwars</span> <span class="op">%&gt;%</span>
         <span class="fu">drop_na</span><span class="op">(</span><span class="va">mass</span><span class="op">)</span> <span class="op">%&gt;%</span>
         <span class="fu"><a href="https://rdrr.io/pkg/anomalize/man/anomalize.html">anomalize</a></span><span class="op">(</span><span class="va">mass</span>, method <span class="op">=</span> <span class="st">"gesd"</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -1385,7 +1385,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ## 10 FALSE  
 ## # … with 49 more rows</code></pre>
 <p>Dicha variable auxiliar la podremos usar para <strong>decidir si incluir o no el registro</strong> en futuros pasos, pero también <strong>podemos usarla para imputarle un valor</strong> (por ejemplo, la media).</p>
-<div class="sourceCode" id="cb910"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb914"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://docs.ropensci.org/skimr/reference/print.html">print</a></span><span class="op">(</span><span class="va">starwars</span> <span class="op">%&gt;%</span>
         <span class="fu">drop_na</span><span class="op">(</span><span class="va">mass</span><span class="op">)</span> <span class="op">%&gt;%</span>
         <span class="fu"><a href="https://rdrr.io/pkg/anomalize/man/anomalize.html">anomalize</a></span><span class="op">(</span><span class="va">mass</span>, method <span class="op">=</span> <span class="st">"gesd"</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -1444,7 +1444,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 <ul>
 <li>Solución:</li>
 </ul>
-<div class="sourceCode" id="cb912"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb916"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># todas columnas</span>
 <span class="va">filtro</span> <span class="op">&lt;-</span>
   <span class="va">starwars</span> <span class="op">%&gt;%</span>
@@ -1502,7 +1502,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ## 13 &lt;chr [0]&gt;
 ## 14 &lt;chr [1]&gt;
 ## 15 &lt;chr [0]&gt;</code></pre>
-<div class="sourceCode" id="cb914"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb918"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Solo name, mass, eye_color, birth_year</span>
 <span class="va">filtro</span> <span class="op">%&gt;%</span> <span class="fu">select</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">name</span>, <span class="va">mass</span>, <span class="va">eye_color</span>, <span class="va">birth_year</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 15 × 4
@@ -1530,7 +1530,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 <ul>
 <li>Solución:</li>
 </ul>
-<div class="sourceCode" id="cb916"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb920"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">starwars</span> <span class="op">%&gt;%</span> <span class="fu">select</span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">relocate</span><span class="op">(</span><span class="va">height</span>, <span class="va">mass</span>, .after <span class="op">=</span> <span class="va">birth_year</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">rename</span><span class="op">(</span>edad <span class="op">=</span> <span class="va">birth_year</span>, altura <span class="op">=</span> <span class="va">height</span>, peso <span class="op">=</span> <span class="va">mass</span><span class="op">)</span></code></pre></div>
@@ -1555,7 +1555,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 <ul>
 <li>Solución:</li>
 </ul>
-<div class="sourceCode" id="cb918"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb922"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">starwars</span> <span class="op">%&gt;%</span>
   <span class="fu">mutate</span><span class="op">(</span>n_naves <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/purrr/man/map.html">map_chr</a></span><span class="op">(</span><span class="va">starships</span>, <span class="va">length</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 87 × 15
@@ -1573,7 +1573,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ## 10 Obi-Wa…    182    77 auburn, wh… fair       blue-gray       57   male  mascu…
 ## # … with 77 more rows, and 6 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;,
 ## #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;, n_naves &lt;chr&gt;</code></pre>
-<div class="sourceCode" id="cb920"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb924"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Imprimimos todas las columnas</span>
 <span class="fu"><a href="https://docs.ropensci.org/skimr/reference/print.html">print</a></span><span class="op">(</span><span class="va">starwars</span> <span class="op">%&gt;%</span>
         <span class="fu">mutate</span><span class="op">(</span>n_naves <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/purrr/man/map.html">map_chr</a></span><span class="op">(</span><span class="va">starships</span>, <span class="va">length</span><span class="op">)</span><span class="op">)</span>, width <span class="op">=</span> <span class="cn">Inf</span><span class="op">)</span></code></pre></div>
@@ -1615,7 +1615,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ##  9 1      
 ## 10 5      
 ## # … with 77 more rows</code></pre>
-<div class="sourceCode" id="cb922"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb926"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Solo la columna añadida</span>
 <span class="va">starwars</span> <span class="op">%&gt;%</span>
   <span class="fu">transmute</span><span class="op">(</span>n_naves <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/purrr/man/map.html">map_chr</a></span><span class="op">(</span><span class="va">starships</span>, <span class="va">length</span><span class="op">)</span><span class="op">)</span></code></pre></div>
@@ -1633,7 +1633,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ##  9 1      
 ## 10 5      
 ## # … with 77 more rows</code></pre>
-<div class="sourceCode" id="cb924"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb928"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Filtro</span>
 <span class="va">starwars</span> <span class="op">%&gt;%</span>
   <span class="fu">mutate</span><span class="op">(</span>n_naves <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/purrr/man/map.html">map_chr</a></span><span class="op">(</span><span class="va">starships</span>, <span class="va">length</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -1663,7 +1663,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ## 20 Padmé …    165  45   brown       light      brown           46   fema… femin…
 ## # … with 6 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
 ## #   vehicles &lt;list&gt;, starships &lt;list&gt;, n_naves &lt;chr&gt;</code></pre>
-<div class="sourceCode" id="cb926"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb930"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Nueva columna lógica</span>
 <span class="va">starwars</span> <span class="op">%&gt;%</span>
   <span class="fu">mutate</span><span class="op">(</span>n_naves <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/purrr/man/map.html">map_chr</a></span><span class="op">(</span><span class="va">starships</span>, <span class="va">length</span><span class="op">)</span>,
@@ -1701,7 +1701,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 <ul>
 <li>Solución:</li>
 </ul>
-<div class="sourceCode" id="cb928"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb932"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">starwars</span> <span class="op">%&gt;%</span> <span class="co"># Calculamos el número de películas</span>
   <span class="fu">mutate</span><span class="op">(</span>n_films <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/purrr/man/map.html">map_int</a></span><span class="op">(</span><span class="va">films</span>, <span class="va">length</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">arrange</span><span class="op">(</span><span class="fu">desc</span><span class="op">(</span><span class="va">n_films</span><span class="op">)</span><span class="op">)</span> <span class="co"># Ordenamos de mayor a menor</span></code></pre></div>
@@ -1727,7 +1727,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 <ul>
 <li>Solución:</li>
 </ul>
-<div class="sourceCode" id="cb930"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb934"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Una extracción aleatoria</span>
 <span class="va">starwars</span> <span class="op">%&gt;%</span> <span class="fu">slice_sample</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">9</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 9 × 14
@@ -1744,7 +1744,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ## 9 Shaak Ti    178  57   none       red, blue,… black           NA   fema… femin…
 ## # … with 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
 ## #   vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
-<div class="sourceCode" id="cb932"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb936"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># otra (que sale distinta, claro)</span>
 <span class="va">starwars</span> <span class="op">%&gt;%</span> <span class="fu">slice_sample</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">9</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 9 × 14
@@ -1761,7 +1761,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ## 9 Dormé        165    NA brown      light      brown             NA fema… femin…
 ## # … with 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
 ## #   vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
-<div class="sourceCode" id="cb934"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb938"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># personas que en más películas han salido (metiendo empates)</span>
 <span class="va">starwars</span> <span class="op">%&gt;%</span>
   <span class="fu">mutate</span><span class="op">(</span>n_films <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/purrr/man/map.html">map_int</a></span><span class="op">(</span><span class="va">films</span>, <span class="va">length</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -1779,7 +1779,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ## 8 Palpati…    170    75 grey        pale       yellow            82 male  mascu…
 ## # … with 6 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
 ## #   vehicles &lt;list&gt;, starships &lt;list&gt;, n_films &lt;int&gt;</code></pre>
-<div class="sourceCode" id="cb936"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb940"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># personas que en más películas han salido (sin empates)</span>
 <span class="va">starwars</span> <span class="op">%&gt;%</span>
   <span class="fu">mutate</span><span class="op">(</span>n_films <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/purrr/man/map.html">map_int</a></span><span class="op">(</span><span class="va">films</span>, <span class="va">length</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -1794,7 +1794,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ## 5 Leia Or…    150    49 brown       light      brown             19 fema… femin…
 ## # … with 6 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
 ## #   vehicles &lt;list&gt;, starships &lt;list&gt;, n_films &lt;int&gt;</code></pre>
-<div class="sourceCode" id="cb938"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb942"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># personas que en menos películas han salido (metiendo empates)</span>
 <span class="va">starwars</span> <span class="op">%&gt;%</span>
   <span class="fu">mutate</span><span class="op">(</span>n_films <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/purrr/man/map.html">map_int</a></span><span class="op">(</span><span class="va">films</span>, <span class="va">length</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -1814,7 +1814,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ## 10 Wicket …     88    20 brown      brown      brown              8 male  mascu…
 ## # … with 36 more rows, and 6 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;,
 ## #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;, n_films &lt;int&gt;</code></pre>
-<div class="sourceCode" id="cb940"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb944"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># personas que en menos películas han salido (sin empates)</span>
 <span class="va">starwars</span> <span class="op">%&gt;%</span>
   <span class="fu">mutate</span><span class="op">(</span>n_films <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/purrr/man/map.html">map_int</a></span><span class="op">(</span><span class="va">films</span>, <span class="va">length</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -1836,7 +1836,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 <ul>
 <li>Solución:</li>
 </ul>
-<div class="sourceCode" id="cb942"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb946"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Contiene "color" independientemente de que sea sufijo o prefijo</span>
 <span class="va">starwars</span> <span class="op">%&gt;%</span> <span class="fu">select</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/tidyselect/man/starts_with.html">contains</a></span><span class="op">(</span><span class="st">"color"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 87 × 3
@@ -1853,7 +1853,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 ##  9 black         light       brown    
 ## 10 auburn, white fair        blue-gray
 ## # … with 77 more rows</code></pre>
-<div class="sourceCode" id="cb944"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb948"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Contiene "color" como sufijo</span>
 <span class="va">starwars</span> <span class="op">%&gt;%</span> <span class="fu">select</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/tidyselect/man/starts_with.html">ends_with</a></span><span class="op">(</span><span class="st">"color"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 87 × 3
@@ -1903,8 +1903,8 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/dadosdelaplace/cursoR_intro_2021_2022/blob/master/12-tidyverse.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/dadosdelaplace/cursoR_intro_2021_2022/edit/master/12-tidyverse.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/dadosdelaplace/intro-R/blob/master/12-tidyverse.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/dadosdelaplace/intro-R/edit/master/12-tidyverse.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>
@@ -1916,7 +1916,7 @@ Imagen/gráfica 12.1: Cheet sheet de las opciones del paquete dplyr para la mani
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 29-10-2021.</p>
+    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 19-12-2021.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

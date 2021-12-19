@@ -1,5 +1,5 @@
 book_filename: "Intro_R_2021_2022"
-output_dir: _book
+output_dir: docs
 clean: [packages.bib]
 toc-title: "Índice"
 language:

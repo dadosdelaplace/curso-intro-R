@@ -20,6 +20,8 @@ colorize <- function(x, color) {
 
 **¿Empezamos?**
 
+## Historia de R
+
 Veamos antes **un poco de historia** sobre nuestro deidad.
 
 Allá por 1975, los **laboratorios Bell** (los que inventaron la radio moderna tal y como la conocemos), necesitaban una alternativa a los lenguajes más «rudos» y antiguos como `C++` o `Fortran`, lenguajes rápidos en la ejecución pero complejos en su uso, con una gran curva de aprendizaje y con **muy poca capacidad en la visualización de datos** que se empezaba a necesitar.
@@ -126,6 +128,35 @@ abs(y)
 
 &nbsp;
 
+## ¿Y dónde programamos?
+
+**¿Estás emocionado/a? Vamos a abrir nuestro primer script** (script = documento en el que programamos, nuestro `.doc`, pero aquí será un archivo `.R`).
+
+Haz click en el menú superior en `File << New File << R Script` como se muestra en la imagen \@ref(fig:inicio-rstudio-5)
+
+```{r inicio-rstudio-5, echo = FALSE, out.width = "80%", fig.align = "center", fig.cap = "Abriendo nuestro primer script de R."}
+knitr::include_graphics("./img/inicio_rstudio_5.jpg")
+
+```
+
+Tras abrirlo tendremos una cuarta ventana: esta será la ventana de nuestros códigos, la ventana más importante ya que es donde **escribiremos lo que queremos ejecutar**. Escribe el **código de la suma de arriba** en ese script y guarda el archivo haciendo click en el botón `Save current document`
+
+```{r inicio-rstudio-6, echo = FALSE, out.width = "85%", fig.align = "center", fig.cap = "Escribiendo y guardando nuestro primer script."}
+knitr::include_graphics("./img/inicio_rstudio_6.jpg")
+
+```
+
+Ese código no se ejecuta salvo que se lo digamos. Tenemos **tres opciones para ejecutar código**:
+
+* **`r colorize("Copiar y pegar el trozo de código en la consola", "#20935E")`** (como hemos hecho al principio).
+
+* **`r colorize("Seleccionar líneas de código y clickar en Run", "#20935E")`** (o con su atajo de teclado), lo que hará que se ejecute solo las líneas seleccionadas.
+
+* **`r colorize("Activar el cuadrado Source on save a la derecha del botón de guardar", "#20935E")`** y volvemos a hacer click en el botón de guardar: siempre que esa opción esté activada, al guardar no solo es nos guarda el archivo `.R` sino que además **se ejecuta**.
+
+
+
+
 
 ## Tipos de errores {#tipos_errores}
 
@@ -159,7 +190,15 @@ Los **`r colorize("mensajes de CONTROL", "#20935E")`** serán aquellos que apare
 
 &nbsp;
 
-**`r colorize("CONSEJO: panel de ayuda", "#20935E")`**
+
+## Consejos
+
+
+**`r colorize("CONSEJOS", "#20935E")`**
+
+&nbsp;
+
+**`r colorize("Panel de ayuda", "#20935E")`**
 
 Si escribes en la consola `? nombre_funcion` (por ejemplo, escribe en la consola `? sqrt`), en el panel inferior derecho te aparecerá una **documentación de ayuda** de la función para saber que argumentos necesita, como puedes usar la función, qué es lo que te devuelve, ejemplos de uso, etc.
 
@@ -173,11 +212,88 @@ knitr::include_graphics("./img/panel_ayuda.jpg")
 ```
 
 
+&nbsp;
+**`r colorize("¿Cómo comentar el código?", "#20935E")`**
+
+Probablemente lo más importante al programar es que **te acostumbres a comentar** lo máximo posible tu código. **¿Qué es un comentario?** Es un texto que escribes entre el código precedido de `#`: todo lo que venga detrás no será interpretado por `R` como código. Es **vital cuando programamos** que nos acostumbremos a comentar lo que hacemos, tanto para nosotros como para otras personas que puedan leer nuestro código.
+
+&nbsp;
 
 ## 📝 Ejercicios
 
+(haz click en las flechas para ver soluciones)
+
 <details>
-  <summary>📝<strong>Ejercicio 1</strong>: calcula en consola la suma de 3 más 4, y todo ello multiplicado por 10, y asígnalo a una variable `x` (**haz click** en la flecha para la solución propuesta).</summary>
+  <summary>📝<strong>Ejercicio 1</strong>: en consola, guarda el valor de dos variables `a` y `b`, la primera con valor igual a 2 y la segunda con valor igual a 5. Tras asignarles valor, multiplica los números en consola (**haz click** en la flecha para la solución propuesta). </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Para poner comentarios en el código se usa #
+
+# Variables
+a <- 2
+b <- 5
+
+a * b
+```
+
+```{r consola-multi, echo = FALSE, out.width = "80%", fig.align = "center", fig.cap = "Multiplicación de a y b."}
+knitr::include_graphics("./img/consola_multiplicacion.jpg")
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 2</strong>: repite el ejercicio anterior pero ahora guarda el resultado en una variable `c`. Para ver el resultado en `c` escribe dicha variable en consola (**haz click** en la flecha para la solución propuesta). </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Variables
+a <- 2
+b <- 5
+
+# Resultado
+c <- a * b
+
+# Muestro en consola
+c
+```
+
+```{r consola-multi-2, echo = FALSE, out.width = "80%", fig.align = "center", fig.cap = "Multiplicación de a y b guardando el resultado."}
+knitr::include_graphics("./img/consola_multiplicacion_2.jpg")
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+
+<details>
+  <summary>📝<strong>Ejercicio 3</strong>: repite el ejercicio anterior pero ahora escribe el código en un script (fichero `.R`, guardado en [script1.R]()). Recuerda al acabar seleccionar las líneas a ejecutar y clickar `Run`, o bien guardar el script con `Source on save` activado (**haz click** en la flecha para la solución propuesta). </summary>
+  
+<!-- toc -->
+- Solución:
+
+
+```{r consola-multi-3, echo = FALSE, out.width = "80%", fig.align = "center", fig.cap = "Multiplicación de a y b guardando el resultado pero escribiendo en el script."}
+knitr::include_graphics("./img/consola_multiplicacion_3.jpg")
+```
+
+<!-- tocstop -->
+</details>
+
+
+
+<details>
+  <summary>📝<strong>Ejercicio 4</strong>: calcula en consola la suma de 3 más 4, y todo ello multiplicado por 10, y asígnalo a una variable `x` (**haz click** en la flecha para la solución propuesta).</summary>
   
 <!-- toc -->
 - Solución:
@@ -193,7 +309,7 @@ x <- (3 + 4) * 10
 &nbsp;
 
 <details>
-  <summary>📝<strong>Ejercicio 2</strong>: asigna un valor positivo a `x` y calcula  su raíz cuadrada; asigna otro negativo y calcula su valor absoluto (**haz click** en la flecha para la solución propuesta).</summary>
+  <summary>📝<strong>Ejercicio 5</strong>: asigna un valor positivo a `x` y calcula  su raíz cuadrada; asigna otro negativo y calcula su valor absoluto (**haz click** en la flecha para la solución propuesta).</summary>
   
 <!-- toc -->
 - Solución:
@@ -221,7 +337,7 @@ Las órdenes `sqrt(x)` y `abs(y)` se llaman **funciones**, y la variable que tie
 &nbsp;
 
 <details>
-  <summary>📝<strong>Ejercicio 3</strong>: usando la variable `x` ya definida, calcula `x - 5` y guárdalo en una nueva variable `z` (**haz click** en la flecha para la solución propuesta).</summary>
+  <summary>📝<strong>Ejercicio 6</strong>: usando la variable `x` ya definida, calcula `x - 5` y guárdalo en una nueva variable `z` (**haz click** en la flecha para la solución propuesta).</summary>
   
 <!-- toc -->
 - Solución:
@@ -236,7 +352,7 @@ z
 &nbsp;
 
 <details>
-  <summary>📝<strong>Ejercicio 4</strong>: usando las variables `x` y `z` ya definidas, calcula la raíz cuadrada del máximo entre ambas, y guárdalo en una nueva variable `t` (**haz click** en la flecha para la solución propuesta).</summary>
+  <summary>📝<strong>Ejercicio 7</strong>: usando las variables `x` y `z` ya definidas, calcula la raíz cuadrada del máximo entre ambas, y guárdalo en una nueva variable `t`. Hazlo en un script en lugar de en consola (**haz click** en la flecha para la solución propuesta).</summary>
   
 <!-- toc -->
 - Solución:

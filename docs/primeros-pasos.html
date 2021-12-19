@@ -6,15 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Capítulo 2 Primeros pasos | Aprendiendo R sin morir en el intento</title>
 <meta name="author" content="Javier Álvarez Liébana">
-<meta name="description" content="¿Empezamos? Veamos antes un poco de historia sobre nuestro deidad. Allá por 1975, los laboratorios Bell (los que inventaron la radio moderna tal y como la conocemos), necesitaban una alternativa a...">
+<meta name="description" content="¿Empezamos?  2.1 Historia de R Veamos antes un poco de historia sobre nuestro deidad. Allá por 1975, los laboratorios Bell (los que inventaron la radio moderna tal y como la conocemos),...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
 <meta property="og:title" content="Capítulo 2 Primeros pasos | Aprendiendo R sin morir en el intento">
 <meta property="og:type" content="book">
 <meta property="og:image" content="/img/logo_R.png">
-<meta property="og:description" content="¿Empezamos? Veamos antes un poco de historia sobre nuestro deidad. Allá por 1975, los laboratorios Bell (los que inventaron la radio moderna tal y como la conocemos), necesitaban una alternativa a...">
+<meta property="og:description" content="¿Empezamos?  2.1 Historia de R Veamos antes un poco de historia sobre nuestro deidad. Allá por 1975, los laboratorios Bell (los que inventaron la radio moderna tal y como la conocemos),...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Capítulo 2 Primeros pasos | Aprendiendo R sin morir en el intento">
-<meta name="twitter:description" content="¿Empezamos? Veamos antes un poco de historia sobre nuestro deidad. Allá por 1975, los laboratorios Bell (los que inventaron la radio moderna tal y como la conocemos), necesitaban una alternativa a...">
+<meta name="twitter:description" content="¿Empezamos?  2.1 Historia de R Veamos antes un poco de historia sobre nuestro deidad. Allá por 1975, los laboratorios Bell (los que inventaron la radio moderna tal y como la conocemos),...">
 <meta name="twitter:image" content="/img/logo_R.png">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -74,7 +74,7 @@
 </ul>
 
         <div class="book-extra">
-          <p><a id="book-repo" href="https://github.com/dadosdelaplace/cursoR_intro_2021_2022">View book source <i class="fab fa-github"></i></a></p>
+          <p><a id="book-repo" href="https://github.com/dadosdelaplace/intro-R">View book source <i class="fab fa-github"></i></a></p>
         </div>
       </nav>
 </div>
@@ -83,14 +83,19 @@
 <span class="header-section-number">Capítulo 2</span> Primeros pasos<a class="anchor" aria-label="anchor" href="#primeros-pasos"><i class="fas fa-link"></i></a>
 </h1>
 <p><strong>¿Empezamos?</strong></p>
+<div id="historia-de-r" class="section level2">
+<h2>
+<span class="header-section-number">2.1</span> Historia de R<a class="anchor" aria-label="anchor" href="#historia-de-r"><i class="fas fa-link"></i></a>
+</h2>
 <p>Veamos antes <strong>un poco de historia</strong> sobre nuestro deidad.</p>
 <p>Allá por 1975, los <strong>laboratorios Bell</strong> (los que inventaron la radio moderna tal y como la conocemos), necesitaban una alternativa a los lenguajes más «rudos» y antiguos como <code>C++</code> o <code>Fortran</code>, lenguajes rápidos en la ejecución pero complejos en su uso, con una gran curva de aprendizaje y con <strong>muy poca capacidad en la visualización de datos</strong> que se empezaba a necesitar.</p>
 <p>Así que en <strong>1976 sacaron la primera versión del lenguaje conocido <code>S</code></strong> (hasta entonces estaba de moda lo de llamar a los lenguajes con una sola inicial). En <strong>1980</strong> se empezó a distribuir la primera versión pública de <code>S</code>, más allá de los laboratorios Bell, y en <strong>1988</strong> se añadieron bastantes funcionalidades nuevas como poder aplicar funciones a otras funciones (los famosos <code><a href="https://rdrr.io/r/base/apply.html">apply()</a></code> que ya veremos). Años más tarde, en <strong>1991</strong>, dicho lenguaje se simplificó, reescribiendo muchas subrutinas de otros lenguajes más primitivos, para tener una versión muy parecida al actual <code>R</code>, permitiendo el usod de operadores, <code>data.frames</code> (que veremos) y otro tipo de objetos, sencillos en la programación pero muy versatiles.</p>
 <p>Sin embargo, salvo uso docente, <code>S</code> tenía licencia así que <strong>en 1992 Ross Ihaka y Robert Gentleman se lanzaron a crear una versión de <code>S</code> libre y gratuita</strong>, un trabajo de casi 8 años hasta que en el año 2000, ambos investigadores de la Universidad de Auckland en Nueva Zelanda lanzaron la primera versión estable del lenguaje.</p>
 <p>Tras dicho lanzamiento, se creó un <strong>equipo de expertos en estadística computacional (el conocido como <em>R Development Core Team</em>)</strong> que es el que se encarga de mantener toda la aerquitectura de <code>R</code> y los que se encargar de actualizar y mejorar el paquete <code>{base}</code>, una <strong>librería motor</strong> sobre la que se construye el resto de funciones.</p>
+</div>
 <div id="excel-no-es-tu-amigo" class="section level2">
 <h2>
-<span class="header-section-number">2.1</span> Excel no es tu amigo<a class="anchor" aria-label="anchor" href="#excel-no-es-tu-amigo"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.2</span> Excel no es tu amigo<a class="anchor" aria-label="anchor" href="#excel-no-es-tu-amigo"><i class="fas fa-link"></i></a>
 </h2>
 <p><strong><code>R</code> es un lenguaje de programación</strong>, de alto nivel para el usuario y modular. Los lenguajes de alto nivel como <code>R</code>, <code>Python</code> (curso interactivo de Python en <a href="https://checkio.org/" class="uri">https://checkio.org/</a>) o <code>Matlab</code>, facilitan la programación al usuario, teniendo que preocuparte solo de la tarea de programar. Son lenguajes con una <strong>menor curva de aprendizaje</strong> aunque suelen ser más lentos en su ejecución en comparación con lenguajes de bajo nivel (<code>C</code>, <code>C++</code> o <code>Fortran</code>), lenguajes muy rápidos en su ejecución pero cuya programación requiere un mayor tiempo y formación, teniendo que además estar pendiente del tipo de variables, espacio en memoria, etc.</p>
 <p>Por su arquitectura, <code>R</code> es un lenguaje que puede ser usado para un propósito general pero que está especialmente diseñado para el <strong>análisis estadístico de datos</strong>. Su <strong>modularidad</strong> nos da la ventaja de que podemos instalar las funcionalidades que vayamos necesitando de forma progresiva.</p>
@@ -139,7 +144,7 @@ Imagen/gráfica 2.3: Los centenarios con biberón.
 </div>
 <div id="primeros-pasos-calculadora" class="section level2">
 <h2>
-<span class="header-section-number">2.2</span> Primeros pasos: calculadora<a class="anchor" aria-label="anchor" href="#primeros-pasos-calculadora"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.3</span> Primeros pasos: calculadora<a class="anchor" aria-label="anchor" href="#primeros-pasos-calculadora"><i class="fas fa-link"></i></a>
 </h2>
 <p>¿Te acuerdas de lo que era la <strong>consola</strong>? Vamos a trabajar de momento en esa ventana que tienes en la ventana inferior.</p>
 <div class="figure" style="text-align: center">
@@ -180,9 +185,35 @@ Imagen/gráfica 2.5: Environment.
 <pre><code>## [1] 2</code></pre>
 <p> </p>
 </div>
+<div id="y-dónde-programamos" class="section level2">
+<h2>
+<span class="header-section-number">2.4</span> ¿Y dónde programamos?<a class="anchor" aria-label="anchor" href="#y-d%C3%B3nde-programamos"><i class="fas fa-link"></i></a>
+</h2>
+<p><strong>¿Estás emocionado/a? Vamos a abrir nuestro primer script</strong> (script = documento en el que programamos, nuestro <code>.doc</code>, pero aquí será un archivo <code>.R</code>).</p>
+<p>Haz click en el menú superior en <code>File &lt;&lt; New File &lt;&lt; R Script</code> como se muestra en la imagen <a href="primeros-pasos.html#fig:inicio-rstudio-5">2.6</a></p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:inicio-rstudio-5"></span>
+<img src="img/inicio_rstudio_5.jpg" alt="Abriendo nuestro primer script de R." width="80%"><p class="caption">
+Imagen/gráfica 2.6: Abriendo nuestro primer script de R.
+</p>
+</div>
+<p>Tras abrirlo tendremos una cuarta ventana: esta será la ventana de nuestros códigos, la ventana más importante ya que es donde <strong>escribiremos lo que queremos ejecutar</strong>. Escribe el <strong>código de la suma de arriba</strong> en ese script y guarda el archivo haciendo click en el botón <code>Save current document</code></p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:inicio-rstudio-6"></span>
+<img src="img/inicio_rstudio_6.jpg" alt="Escribiendo y guardando nuestro primer script." width="85%"><p class="caption">
+Imagen/gráfica 2.7: Escribiendo y guardando nuestro primer script.
+</p>
+</div>
+<p>Ese código no se ejecuta salvo que se lo digamos. Tenemos <strong>tres opciones para ejecutar código</strong>:</p>
+<ul>
+<li><p><strong><span style="color: #20935E;">Copiar y pegar el trozo de código en la consola</span></strong> (como hemos hecho al principio).</p></li>
+<li><p><strong><span style="color: #20935E;">Seleccionar líneas de código y clickar en Run</span></strong> (o con su atajo de teclado), lo que hará que se ejecute solo las líneas seleccionadas.</p></li>
+<li><p><strong><span style="color: #20935E;">Activar el cuadrado Source on save a la derecha del botón de guardar</span></strong> y volvemos a hacer click en el botón de guardar: siempre que esa opción esté activada, al guardar no solo es nos guarda el archivo <code>.R</code> sino que además <strong>se ejecuta</strong>.</p></li>
+</ul>
+</div>
 <div id="tipos_errores" class="section level2">
 <h2>
-<span class="header-section-number">2.3</span> Tipos de errores<a class="anchor" aria-label="anchor" href="#tipos_errores"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.5</span> Tipos de errores<a class="anchor" aria-label="anchor" href="#tipos_errores"><i class="fas fa-link"></i></a>
 </h2>
 <p>Durante tu aprendizaje en <code>R</code> va a ser <strong>muy habitual</strong> que las cosas no salgan a la primera, <strong>apareciendo en consola mensajes en un color rojo</strong>. Un <strong>miedo</strong> muy habitual cuando se empieza a programar es pensar que si haces algo mal o aparece algún mensaje de error, el ordenador puede explotar en cualquier momento. <strong>A programar se aprende programando</strong>, así que haz las pruebas que quieres, lo peor que puede pasar es que necesites cerrar sesión en <code>R Studio</code> y abrirlo de nuevo.</p>
 <p>Dado que el 99.99999% de veces tu código tendrá errores que deberás ir solventando, no está de más conocer los tipos de mensajes que <code>R</code> puede sacarte por consola:</p>
@@ -201,41 +232,111 @@ Imagen/gráfica 2.5: Environment.
 <p> </p>
 <p>Los <strong><span style="color: #20935E;">mensajes de CONTROL</span></strong> serán aquellos que aparecerán por consola sin empezar por «Error in…» ni «Warning:…». Dichos mensajes, que puedes incluir tú mismo en tu código con funciones como <code><a href="https://rdrr.io/r/base/cat.html">cat()</a></code> para monitorizar la ejecución de códigos largos, no son errores ni problemas, son simplemente información que <code>R</code> considera útil aportarte.</p>
 <p> </p>
-<p><strong><span style="color: #20935E;">CONSEJO: panel de ayuda</span></strong></p>
+</div>
+<div id="consejos-1" class="section level2">
+<h2>
+<span class="header-section-number">2.6</span> Consejos<a class="anchor" aria-label="anchor" href="#consejos-1"><i class="fas fa-link"></i></a>
+</h2>
+<p><strong><span style="color: #20935E;">CONSEJOS</span></strong></p>
+<p> </p>
+<p><strong><span style="color: #20935E;">Panel de ayuda</span></strong></p>
 <p>Si escribes en la consola <code>? nombre_funcion</code> (por ejemplo, escribe en la consola <code><a href="https://rdrr.io/r/base/MathFun.html">? sqrt</a></code>), en el panel inferior derecho te aparecerá una <strong>documentación de ayuda</strong> de la función para saber que argumentos necesita, como puedes usar la función, qué es lo que te devuelve, ejemplos de uso, etc.</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="op">?</span> <span class="va">sqrt</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:unnamed-chunk-11"></span>
 <img src="img/panel_ayuda.jpg" alt="Panel de ayuda." width="50%"><p class="caption">
-Imagen/gráfica 2.6: Panel de ayuda.
+Imagen/gráfica 2.8: Panel de ayuda.
 </p>
 </div>
+<p> 
+<strong><span style="color: #20935E;">¿Cómo comentar el código?</span></strong></p>
+<p>Probablemente lo más importante al programar es que <strong>te acostumbres a comentar</strong> lo máximo posible tu código. <strong>¿Qué es un comentario?</strong> Es un texto que escribes entre el código precedido de <code>#</code>: todo lo que venga detrás no será interpretado por <code>R</code> como código. Es <strong>vital cuando programamos</strong> que nos acostumbremos a comentar lo que hacemos, tanto para nosotros como para otras personas que puedan leer nuestro código.</p>
+<p> </p>
 </div>
 <div id="ejercicios" class="section level2">
 <h2>
-<span class="header-section-number">2.4</span> 📝 Ejercicios<a class="anchor" aria-label="anchor" href="#ejercicios"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.7</span> 📝 Ejercicios<a class="anchor" aria-label="anchor" href="#ejercicios"><i class="fas fa-link"></i></a>
 </h2>
-<details><p><summary>📝<strong>Ejercicio 1</strong>: calcula en consola la suma de 3 más 4, y todo ello multiplicado por 10, y asígnalo a una variable <code>x</code> (<strong>haz click</strong> en la flecha para la solución propuesta).</summary></p>
+<p>(haz click en las flechas para ver soluciones)</p>
+<details><p><summary>📝<strong>Ejercicio 1</strong>: en consola, guarda el valor de dos variables <code>a</code> y <code>b</code>, la primera con valor igual a 2 y la segunda con valor igual a 5. Tras asignarles valor, multiplica los números en consola (<strong>haz click</strong> en la flecha para la solución propuesta). </summary></p>
 <!-- toc -->
 <ul>
 <li>Solución:</li>
 </ul>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fl">3</span> <span class="op">+</span> <span class="fl">4</span><span class="op">)</span> <span class="op">*</span> <span class="fl">10</span></code></pre></div>
+<code class="sourceCode R"><span class="co"># Para poner comentarios en el código se usa #</span>
+
+<span class="co"># Variables</span>
+<span class="va">a</span> <span class="op">&lt;-</span> <span class="fl">2</span>
+<span class="va">b</span> <span class="op">&lt;-</span> <span class="fl">5</span>
+
+<span class="va">a</span> <span class="op">*</span> <span class="va">b</span></code></pre></div>
+<pre><code>## [1] 10</code></pre>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:consola-multi"></span>
+<img src="img/consola_multiplicacion.jpg" alt="Multiplicación de a y b." width="80%"><p class="caption">
+Imagen/gráfica 2.9: Multiplicación de a y b.
+</p>
+</div>
 <!-- tocstop -->
 </details><p> </p>
-<details><p><summary>📝<strong>Ejercicio 2</strong>: asigna un valor positivo a <code>x</code> y calcula su raíz cuadrada; asigna otro negativo y calcula su valor absoluto (<strong>haz click</strong> en la flecha para la solución propuesta).</summary></p>
+<details><p><summary>📝<strong>Ejercicio 2</strong>: repite el ejercicio anterior pero ahora guarda el resultado en una variable <code>c</code>. Para ver el resultado en <code>c</code> escribe dicha variable en consola (<strong>haz click</strong> en la flecha para la solución propuesta). </summary></p>
 <!-- toc -->
 <ul>
 <li>Solución:</li>
 </ul>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Variables</span>
+<span class="va">a</span> <span class="op">&lt;-</span> <span class="fl">2</span>
+<span class="va">b</span> <span class="op">&lt;-</span> <span class="fl">5</span>
+
+<span class="co"># Resultado</span>
+<span class="va">c</span> <span class="op">&lt;-</span> <span class="va">a</span> <span class="op">*</span> <span class="va">b</span>
+
+<span class="co"># Muestro en consola</span>
+<span class="va">c</span></code></pre></div>
+<pre><code>## [1] 10</code></pre>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:consola-multi-2"></span>
+<img src="img/consola_multiplicacion_2.jpg" alt="Multiplicación de a y b guardando el resultado." width="80%"><p class="caption">
+Imagen/gráfica 2.10: Multiplicación de a y b guardando el resultado.
+</p>
+</div>
+<!-- tocstop -->
+</details><p> </p>
+<details><p><summary>📝<strong>Ejercicio 3</strong>: repite el ejercicio anterior pero ahora escribe el código en un script (fichero <code>.R</code>, guardado en <code>script1.R</code>). Recuerda al acabar seleccionar las líneas a ejecutar y clickar <code>Run</code>, o bien guardar el script con <code>Source on save</code> activado (<strong>haz click</strong> en la flecha para la solución propuesta). </summary></p>
+<!-- toc -->
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:consola-multi-3"></span>
+<img src="img/consola_multiplicacion_3.jpg" alt="Multiplicación de a y b guardando el resultado pero escribiendo en el script." width="80%"><p class="caption">
+Imagen/gráfica 2.11: Multiplicación de a y b guardando el resultado pero escribiendo en el script.
+</p>
+</div>
+<!-- tocstop -->
+</details><details><p><summary>📝<strong>Ejercicio 4</strong>: calcula en consola la suma de 3 más 4, y todo ello multiplicado por 10, y asígnalo a una variable <code>x</code> (<strong>haz click</strong> en la flecha para la solución propuesta).</summary></p>
+<!-- toc -->
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fl">3</span> <span class="op">+</span> <span class="fl">4</span><span class="op">)</span> <span class="op">*</span> <span class="fl">10</span></code></pre></div>
+<!-- tocstop -->
+</details><p> </p>
+<details><p><summary>📝<strong>Ejercicio 5</strong>: asigna un valor positivo a <code>x</code> y calcula su raíz cuadrada; asigna otro negativo y calcula su valor absoluto (<strong>haz click</strong> en la flecha para la solución propuesta).</summary></p>
+<!-- toc -->
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Raíz cuadrada</span>
 <span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">73</span>
 <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 8.544004</code></pre>
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Valor absoluto</span>
 <span class="va">y</span> <span class="op">&lt;-</span> <span class="op">-</span><span class="fl">73</span>
 <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></code></pre></div>
@@ -245,23 +346,23 @@ Imagen/gráfica 2.6: Panel de ayuda.
 <p><strong><span style="color: #20935E;">CONSEJO:</span></strong></p>
 <p>Las órdenes <code><a href="https://rdrr.io/r/base/MathFun.html">sqrt(x)</a></code> y <code><a href="https://rdrr.io/r/base/MathFun.html">abs(y)</a></code> se llaman <strong>funciones</strong>, y la variable que tienen entre paréntesis se llama <strong>argumento de la función</strong>: una variable que toma de entrada la función y con la que opera internamente.</p>
 <p> </p>
-<details><p><summary>📝<strong>Ejercicio 3</strong>: usando la variable <code>x</code> ya definida, calcula <code>x - 5</code> y guárdalo en una nueva variable <code>z</code> (<strong>haz click</strong> en la flecha para la solución propuesta).</summary></p>
+<details><p><summary>📝<strong>Ejercicio 6</strong>: usando la variable <code>x</code> ya definida, calcula <code>x - 5</code> y guárdalo en una nueva variable <code>z</code> (<strong>haz click</strong> en la flecha para la solución propuesta).</summary></p>
 <!-- toc -->
 <ul>
 <li>Solución:</li>
 </ul>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">z</span> <span class="op">&lt;-</span> <span class="va">x</span> <span class="op">-</span> <span class="fl">5</span>
 <span class="va">z</span></code></pre></div>
 <pre><code>## [1] 68</code></pre>
 <!-- tocstop -->
 </details><p> </p>
-<details><p><summary>📝<strong>Ejercicio 4</strong>: usando las variables <code>x</code> y <code>z</code> ya definidas, calcula la raíz cuadrada del máximo entre ambas, y guárdalo en una nueva variable <code>t</code> (<strong>haz click</strong> en la flecha para la solución propuesta).</summary></p>
+<details><p><summary>📝<strong>Ejercicio 7</strong>: usando las variables <code>x</code> y <code>z</code> ya definidas, calcula la raíz cuadrada del máximo entre ambas, y guárdalo en una nueva variable <code>t</code>. Hazlo en un script en lugar de en consola (<strong>haz click</strong> en la flecha para la solución propuesta).</summary></p>
 <!-- toc -->
 <ul>
 <li>Solución:</li>
 </ul>
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">t</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">z</span><span class="op">)</span><span class="op">)</span> 
 <span class="va">t</span></code></pre></div>
 <pre><code>## [1] 8.544004</code></pre>
@@ -282,16 +383,19 @@ Imagen/gráfica 2.6: Panel de ayuda.
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#primeros-pasos"><span class="header-section-number">2</span> Primeros pasos</a></li>
-<li><a class="nav-link" href="#excel-no-es-tu-amigo"><span class="header-section-number">2.1</span> Excel no es tu amigo</a></li>
-<li><a class="nav-link" href="#primeros-pasos-calculadora"><span class="header-section-number">2.2</span> Primeros pasos: calculadora</a></li>
-<li><a class="nav-link" href="#tipos_errores"><span class="header-section-number">2.3</span> Tipos de errores</a></li>
-<li><a class="nav-link" href="#ejercicios"><span class="header-section-number">2.4</span> 📝 Ejercicios</a></li>
+<li><a class="nav-link" href="#historia-de-r"><span class="header-section-number">2.1</span> Historia de R</a></li>
+<li><a class="nav-link" href="#excel-no-es-tu-amigo"><span class="header-section-number">2.2</span> Excel no es tu amigo</a></li>
+<li><a class="nav-link" href="#primeros-pasos-calculadora"><span class="header-section-number">2.3</span> Primeros pasos: calculadora</a></li>
+<li><a class="nav-link" href="#y-d%C3%B3nde-programamos"><span class="header-section-number">2.4</span> ¿Y dónde programamos?</a></li>
+<li><a class="nav-link" href="#tipos_errores"><span class="header-section-number">2.5</span> Tipos de errores</a></li>
+<li><a class="nav-link" href="#consejos-1"><span class="header-section-number">2.6</span> Consejos</a></li>
+<li><a class="nav-link" href="#ejercicios"><span class="header-section-number">2.7</span> 📝 Ejercicios</a></li>
 </ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/dadosdelaplace/cursoR_intro_2021_2022/blob/master/02-toma_contacto.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/dadosdelaplace/cursoR_intro_2021_2022/edit/master/02-toma_contacto.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/dadosdelaplace/intro-R/blob/master/02-toma_contacto.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/dadosdelaplace/intro-R/edit/master/02-toma_contacto.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>
@@ -303,7 +407,7 @@ Imagen/gráfica 2.6: Panel de ayuda.
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 29-10-2021.</p>
+    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 19-12-2021.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

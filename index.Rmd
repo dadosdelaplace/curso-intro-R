@@ -15,7 +15,7 @@ mainfont: Palatino
 monofont: "Source Code Pro"
 monofontoptions: "Scale=0.8"
 site: bookdown::bookdown_site
-github-repo: dadosdelaplace/cursoR_intro_2021_2022
+github-repo: dadosdelaplace/intro-R
 header-includes:
 - \usepackage{setspace}\doublespacing
 - \usepackage{float}
@@ -25,7 +25,7 @@ header-includes:
 - \usepackage{multicol}
 - \usepackage{threeparttable}
 - \usepackage{caption}
-description: "Introducción a R desde cero. Curso elaborado por Javier Álvarez Liébana"
+description: "Introducción a R (desde cero). Curso elaborado por Javier Álvarez Liébana (@dadosdelaplace)"
 cover-image: img/logo_R.png
 ---
 
@@ -56,7 +56,7 @@ colorize <- function(x, color) {
 
 # Prefacio {-}
 
-Este curso ha sido diseñado por [Javier Álvarez Liébana](https://dadosdelaplace.com) y pensado para introducir en el lenguaje `R` a todas aquellas personas que quieran **aprender desde cero**. Dicho manual ha sido elaborado a su vez en `R` con [{bookdown}](https://github.com/rstudio/bookdown). Puedes ver un resumen de las funcionalidades de algunos paquetes documentados por el equipo de [R Studio](https://www.rstudio.com/) en sus [esquemas resumen](https://www.rstudio.com/resources/cheatsheets/). El **código** de dicho manual se encuentra en [GitHub](https://github.com/dadosdelaplace/cursoR_intro_2021_2022).
+Este curso ha sido diseñado por [Javier Álvarez Liébana](https://dadosdelaplace.github.io) y pensado para introducir en el lenguaje `R` a todas aquellas personas que quieran **aprender `R` desde cero**. Dicho manual ha sido elaborado a su vez en `R` con [{bookdown}](https://github.com/rstudio/bookdown). Puedes ver un resumen de las funcionalidades de algunos paquetes documentados por el equipo de [R Studio](https://www.rstudio.com/) en sus [esquemas resumen](https://www.rstudio.com/resources/cheatsheets/). El **código** de dicho manual se encuentra en [GitHub](https://github.com/dadosdelaplace/intro-R).
 
 ```{r me-github, echo = FALSE, fig.align = 'center',  include = identical(knitr:::pandoc_to(), 'html'), fig.link = 'https://github.com/dadosdelaplace/cursoR_intro_2021_2022', out.width = '70%'}
 knitr::include_graphics('img/me_github.jpg')
@@ -83,11 +83,12 @@ knitr::include_graphics('img/hex-rmarkdown.png')
 
 El **objetivo** de este tutorial es introducir a la programación y análisis estadístico en `R` a toda aquella persona que nunca se haya iniciado en él, **sin necesitar conocimientos previos** de programación (aunque siempre ayuda, obviamente). Con este manual no se pretende que adquieras un vasto y experto conocimiento de `R`, pero si lo suficiente como para lograr **5 objetivos**:
 
-* **No tener miedo** a programar.
+* **No tener miedo** a programar
 * Entender los **conceptos básicos de `R`**.
 * Dotarte de una **autonomía** muy básica para pdoer trabajar con datos.
 * Introducirte en el **análisis estadístico**.
 * Algunos **trucos sencillos** para que el trabajo sea más rápido, tanto en tiempo de escritura como de ejecución.
+
 
 ## Requisitos {-}
 
@@ -154,9 +155,9 @@ En **`r colorize("color azul", "#4197D2")`** encontrarás un 📚 **`r colorize(
 
 Esto de presentarse a sí mismo es siempre un poco raro pero vamos a intentarlo. Mi nombre es **Javier Álvarez Liébana**, soy **matemático**, nacido en 1989 en **Carabanchel (Madrid)**, pasando por Bologna (Italia). Tras terminar licenciatura y Máster en Ingeniería Matemática, recibí en julio de 2018 el título de **Doctor en Estadística** (por la Universidad de Granada, con dos estancias en Université Pierre et Marie Curie)
 
-Además de **investigador** (con plaza y acreditación de Ayudante Doctor en la Facultad de Estudios Estadísticos de la Universidad Complutense de Madrid, tras ocupar dicha plaza en la Universidad de Oviedo), soy [**docente** en dicha facultad](#docencia-impartida) y ando intentando eso de la **divulgación en estadística y dataviz** (visualización de datos) en redes sociales
+Además de **investigador** (con plaza y acreditación de Ayudante Doctor en la Facultad de Estudios Estadísticos de la Universidad Complutense de Madrid), soy [**docente** en dicha facultad](#docencia-impartida) y ando intentando eso de la **divulgación en estadística y dataviz** (visualización de datos) en redes sociales
 
-🎲 [Web](https://dadosdelaplace.com)  
+🎲 [Web](https://dadosdelaplace.github.io)  
 💌 [Newsletter](https://cartasdelaplace.substack.com)  
 🐦 [Twitter](https://twitter.com/dadosdelaplace)  
 📸 [Instagram](https://instagram.com/javieralvarezliebana)  
