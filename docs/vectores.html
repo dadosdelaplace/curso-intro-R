@@ -6,15 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Capítulo 3 Tipos de datos I: vectores | Aprendiendo R sin morir en el intento</title>
 <meta name="author" content="Javier Álvarez Liébana">
-<meta name="description" content="CONSEJO: recuperar un comando y autocompletar Si haces click con el ratón en la consola y pulsas la flecha «arriba» del teclado, te irá apareciendo todo el historial de órdenes ejecutadas. Es una...">
+<meta name="description" content="Bien, ya controlamos la calculadora. Vamos a ir más allá: ¿y si en lugar de tener un solo número tenemos una COLECCIÓN de elementos? En este capítulo vamos a ver un clásico de cualquier lenguaje...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
 <meta property="og:title" content="Capítulo 3 Tipos de datos I: vectores | Aprendiendo R sin morir en el intento">
 <meta property="og:type" content="book">
 <meta property="og:image" content="/img/logo_R.png">
-<meta property="og:description" content="CONSEJO: recuperar un comando y autocompletar Si haces click con el ratón en la consola y pulsas la flecha «arriba» del teclado, te irá apareciendo todo el historial de órdenes ejecutadas. Es una...">
+<meta property="og:description" content="Bien, ya controlamos la calculadora. Vamos a ir más allá: ¿y si en lugar de tener un solo número tenemos una COLECCIÓN de elementos? En este capítulo vamos a ver un clásico de cualquier lenguaje...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Capítulo 3 Tipos de datos I: vectores | Aprendiendo R sin morir en el intento">
-<meta name="twitter:description" content="CONSEJO: recuperar un comando y autocompletar Si haces click con el ratón en la consola y pulsas la flecha «arriba» del teclado, te irá apareciendo todo el historial de órdenes ejecutadas. Es una...">
+<meta name="twitter:description" content="Bien, ya controlamos la calculadora. Vamos a ir más allá: ¿y si en lugar de tener un solo número tenemos una COLECCIÓN de elementos? En este capítulo vamos a ver un clásico de cualquier lenguaje...">
 <meta name="twitter:image" content="/img/logo_R.png">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -54,22 +54,23 @@
 <li><a class="" href="primeros-pasos.html"><span class="header-section-number">2</span> Primeros pasos</a></li>
 <li class="book-part">Conceptos básicos</li>
 <li><a class="active" href="vectores.html"><span class="header-section-number">3</span> Tipos de datos I: vectores</a></li>
-<li><a class="" href="proyecto.html"><span class="header-section-number">4</span> Flujo de trabajo: primer proyecto</a></li>
-<li><a class="" href="control.html"><span class="header-section-number">5</span> Estructuras de control</a></li>
-<li><a class="" href="datos.html"><span class="header-section-number">6</span> Tipos de datos II: datos estructurados</a></li>
-<li><a class="" href="importar-exportar.html"><span class="header-section-number">7</span> Importando/exportando</a></li>
+<li><a class="" href="operacionesvectores.html"><span class="header-section-number">4</span> Operaciones con vectores</a></li>
+<li><a class="" href="proyecto.html"><span class="header-section-number">5</span> Flujo de trabajo: primer proyecto</a></li>
+<li><a class="" href="control.html"><span class="header-section-number">6</span> Estructuras de control</a></li>
+<li><a class="" href="datos.html"><span class="header-section-number">7</span> Tipos de datos II: datos estructurados</a></li>
+<li><a class="" href="importar-exportar.html"><span class="header-section-number">8</span> Importando/exportando</a></li>
 <li class="book-part">Listas y funciones</li>
-<li><a class="" href="otros-datos.html"><span class="header-section-number">8</span> Listas y factores</a></li>
-<li><a class="" href="funciones.html"><span class="header-section-number">9</span> Creación de funciones</a></li>
+<li><a class="" href="otros-datos.html"><span class="header-section-number">9</span> Listas y factores</a></li>
+<li><a class="" href="funciones.html"><span class="header-section-number">10</span> Creación de funciones</a></li>
 <li class="book-part">Alto en el camino</li>
-<li><a class="" href="resumen-1.html"><span class="header-section-number">10</span> ¿Qué sabemos hacer?</a></li>
+<li><a class="" href="resumen-1.html"><span class="header-section-number">11</span> ¿Qué sabemos hacer?</a></li>
 <li class="book-part">EXPLORANDO: introducción al análisis exploratorio de datos</li>
-<li><a class="" href="tidydata.html"><span class="header-section-number">11</span> Tidy data: ordenando datos</a></li>
-<li><a class="" href="tidyverse.html"><span class="header-section-number">12</span> Explorando los datos: incursión a tidyverse</a></li>
-<li><a class="" href="resumenes.html"><span class="header-section-number">13</span> Resumiendo y relacionado los datos</a></li>
-<li><a class="" href="ggplot2.html"><span class="header-section-number">14</span> Visualizando datos: incursión a ggplot2</a></li>
+<li><a class="" href="tidydata.html"><span class="header-section-number">12</span> Tidy data: ordenando datos</a></li>
+<li><a class="" href="tidyverse.html"><span class="header-section-number">13</span> Explorando los datos: incursión a tidyverse</a></li>
+<li><a class="" href="resumenes.html"><span class="header-section-number">14</span> Resumiendo y relacionado los datos</a></li>
+<li><a class="" href="ggplot2.html"><span class="header-section-number">15</span> Visualizando datos: incursión a ggplot2</a></li>
 <li class="book-part">Epílogo</li>
-<li><a class="" href="contribuye.html"><span class="header-section-number">15</span> Contribuye al proyecto</a></li>
+<li><a class="" href="contribuye.html"><span class="header-section-number">16</span> Contribuye al proyecto</a></li>
 <li><a class="" href="bibliograf%C3%ADa.html">Bibliografía</a></li>
 </ul>
 
@@ -82,10 +83,7 @@
 <h1>
 <span class="header-section-number">Capítulo 3</span> Tipos de datos I: vectores<a class="anchor" aria-label="anchor" href="#vectores"><i class="fas fa-link"></i></a>
 </h1>
-<p><strong><span style="color: #20935E;">CONSEJO: recuperar un comando y autocompletar</span></strong></p>
-<p>Si haces click con el ratón en la consola y pulsas la flecha «arriba» del teclado, te irá apareciendo todo el <strong>historial de órdenes ejecutadas</strong>. Es una manera de ahorrar tiempo para ejecutar órdenes similares a las ya ejecutadas. Si empiezas a escribir el nombre de una variable pero no te acuerdas exactamente de su nombre, pulsando <strong>tabulador</strong> te <strong>autocompletará</strong> solo.</p>
-<p> </p>
-<p>Bien, ya controlamos la calculadora. Vamos a ir más allá: ¿y si en lugar de tener un solo número tenemos un <strong>CONJUNTO de elementos</strong>? En este capítulo vamos a ver un clásico de cualquier lenguaje de programación: los <strong>vectores o arrays</strong>, una <strong>concatenación</strong> de elementos (del mismo tipo). De hecho un número individual (por ejemplo, <code>1</code>) es en realidad un vector de longitud uno (un solo elemento).</p>
+<p>Bien, ya controlamos la calculadora. Vamos a ir más allá: ¿y si en lugar de tener un solo número tenemos una <strong>COLECCIÓN de elementos</strong>? En este capítulo vamos a ver un clásico de cualquier lenguaje de programación: los <strong>vectores o arrays</strong>, una <strong>concatenación</strong> de elementos (del mismo tipo). De hecho un número individual (por ejemplo, <code>1</code>) es en realidad un vector de longitud uno (un solo elemento).</p>
 <div id="vectores-numéricos" class="section level2">
 <h2>
 <span class="header-section-number">3.1</span> Vectores numéricos<a class="anchor" aria-label="anchor" href="#vectores-num%C3%A9ricos"><i class="fas fa-link"></i></a>
@@ -146,143 +144,48 @@
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>, each <span class="op">=</span> <span class="fl">4</span><span class="op">)</span> <span class="co"># cuatro 0, luego cuatro 1, luego cuatro 2</span></code></pre></div>
 <pre><code>##  [1] 0 0 0 0 1 1 1 1 2 2 2 2</code></pre>
 </div>
-<div id="operaciones-aritméticas-con-vectores-numéricos" class="section level2">
-<h2>
-<span class="header-section-number">3.3</span> Operaciones aritméticas con vectores numéricos<a class="anchor" aria-label="anchor" href="#operaciones-aritm%C3%A9ticas-con-vectores-num%C3%A9ricos"><i class="fas fa-link"></i></a>
-</h2>
-<p>Hemos dicho que un número es un vector de longitud 1, así que <strong>toda operación aritmética</strong> que podamos hacer con un número la vamos a poder a hacer con un vector de números, de forma que si hacemos por ejemplo la operación <code>2 * z</code>, lo que sucederá es que <strong>CADA ELEMENTO del vector</strong> será multiplicado por 2.</p>
-<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Multiplicamos por 2 a CADA ELEMENTO del vector</span>
-<span class="va">z</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">4</span>, <span class="fl">6</span><span class="op">)</span>
-<span class="fl">2</span> <span class="op">*</span> <span class="va">z</span></code></pre></div>
-<pre><code>## [1]  4  8 12</code></pre>
-<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Sumamos 3 a CADA ELEMENTO DEL VECTOR</span>
-<span class="va">z</span> <span class="op">+</span> <span class="fl">3</span></code></pre></div>
-<pre><code>## [1] 5 7 9</code></pre>
-<p>De la misma manera se pueden definir sumas <code>z + x</code>, raíces cuadradas <code><a href="https://rdrr.io/r/base/MathFun.html">sqrt(z)</a></code> o elevar cada elemento al cuadrado <code>z^2</code>.</p>
-<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Hacemos la raíz cuadrada de CADA ELEMENTO DEL VECTOR</span>
-<span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">z</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 1.414214 2.000000 2.449490</code></pre>
-<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Elevamos al cuadrado CADA ELEMENTO DEL VECTOR</span>
-<span class="va">z</span><span class="op">^</span><span class="fl">2</span></code></pre></div>
-<pre><code>## [1]  4 16 36</code></pre>
-<p> </p>
-<p><strong><span style="color: #20935E;">CONSEJO</span></strong></p>
-<p>Esto último es bastante importante que no se te olvide ya que en otros lenguajes no siempre es así. En <code>R</code>, salvo que especifiquemos lo contrario, <strong><span style="color: #20935E;">toda operación ARITMÉTICA que hagas a un vector será elemento a elemento</span></strong>: si multiplicas dos matrices, la operación la realizará elemento a elemento, no como una multiplicación matricial.</p>
-<p> </p>
-<p>Dado que la operación (por ejemplo, una suma) se realiza elemento a elemento, <strong>¿qué sucederá si sumamos dos vectores de distinta longitud?</strong> Prueba a definir un vector con los 4 primeros impares, e intentar hacer la suma <code>z + y</code> (un vector de longitud 3 más un vector de longitud 4).</p>
-<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">7</span><span class="op">)</span>
-<span class="va">z</span> <span class="op">+</span> <span class="va">y</span></code></pre></div>
-<pre><code>## [1]  3  7 11  9</code></pre>
-<p><code>R</code> intenta molestarte lo menos posible, así que lo que hace es <strong><span style="color: #ffc107;">reciclar</span></strong>: si tiene un vector de 4 elementos y le intentas sumar uno de 3 elementos, lo que hará será <strong>reciclar</strong> elementos del vector con menor longitud: hará <code>1+2</code>, <code>3+4</code>, <code>5+6</code> pero… <code>7+2</code> (vuelve al primero).</p>
-<p> </p>
-<p><strong><span style="color: #20935E;">CONSEJO: diferencia de conjuntos</span></strong></p>
-<p>Una función muy útil para ver las <strong>diferencias entre dos conjuntos</strong> es <code><a href="https://rdrr.io/pkg/generics/man/setops.html">setdiff()</a></code>, una función que nos devuelve los elementos distintos entre dos conjuntos.</p>
-<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">y</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>
-<span class="va">z</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">7</span>, <span class="fl">10</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/sets.html">setdiff</a></span><span class="op">(</span><span class="va">y</span>, <span class="va">z</span><span class="op">)</span> <span class="co"># Elementos en y que no están en z </span></code></pre></div>
-<pre><code>## [1] 2 4 5 6 8 9</code></pre>
-<p> </p>
-</div>
-<div id="operaciones-estadísticas-con-vectores-numéricos" class="section level2">
-<h2>
-<span class="header-section-number">3.4</span> Operaciones estadísticas con vectores numéricos<a class="anchor" aria-label="anchor" href="#operaciones-estad%C3%ADsticas-con-vectores-num%C3%A9ricos"><i class="fas fa-link"></i></a>
-</h2>
-<p>Al igual que podemos ejecutar operaciones aritméticas, podemos realizar también <strong>operaciones estadísticas</strong> con los vectores, como calcular su suma (<code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code>), su media (<code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code>), su mediana (<code><a href="https://rdrr.io/r/stats/median.html">median()</a></code>), su suma acumulada (<code><a href="https://rdrr.io/r/base/cumsum.html">cumsum()</a></code> cada elemento lo acumula al anterior) o percentiles (<code>quantiles()</code>).</p>
-<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span> <span class="co"># suma</span></code></pre></div>
-<pre><code>## [1] 55</code></pre>
-<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span> <span class="co"># media</span></code></pre></div>
-<pre><code>## [1] 5.5</code></pre>
-<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span> <span class="co"># mediana</span></code></pre></div>
-<pre><code>## [1] 5.5</code></pre>
-<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/cumsum.html">cumsum</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span> <span class="co"># suma acumulada</span></code></pre></div>
-<pre><code>##  [1]  1  3  6 10 15 21 28 36 45 55</code></pre>
-<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">8</span>, <span class="fl">9</span>, <span class="fl">10</span>, <span class="fl">10</span>, <span class="fl">10</span>, <span class="fl">11</span>, <span class="fl">13</span>, <span class="fl">15</span>, <span class="fl">20</span>, <span class="fl">23</span>, <span class="fl">24</span>, <span class="fl">29</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span> <span class="co"># Percentiles por defecto: cuartiles (0%-25%-50%-75%-100%)</span></code></pre></div>
-<pre><code>##    0%   25%   50%   75%  100% 
-##  1.00  7.25 10.00 16.25 29.00</code></pre>
-<p> </p>
-<p><strong><span style="color: #ffc107;">WARNING:</span></strong></p>
-<p>En <code>R</code> algunas <strong>funciones tienen argumentos por defecto</strong>, argumentos que no necesitan ser asignados un valor a priori. En el ejemplo de calcular los percentiles con <code><a href="https://rdrr.io/r/stats/quantile.html">quantile()</a></code>, hay un argumento por defecto (con un valor ya asignado sino se especifica lo contrario) que es <code>probs = c(0, 0.25, 0.5, 0.75, 1)</code>. Pero dicho argumento por defecto puede ser cambiado, por ejemplo, para sacar los percentiles 15%-30%-70%-90%.</p>
-<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">8</span>, <span class="fl">9</span>, <span class="fl">10</span>, <span class="fl">10</span>, <span class="fl">10</span>, <span class="fl">11</span>, <span class="fl">13</span>, <span class="fl">15</span>, <span class="fl">20</span>, <span class="fl">23</span>, <span class="fl">24</span>, <span class="fl">29</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">y</span>, probs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.15</span>, <span class="fl">0.3</span>, <span class="fl">0.7</span>, <span class="fl">0.9</span><span class="op">)</span><span class="op">)</span> <span class="co"># Percentiles p15, p30, p70 y p90</span></code></pre></div>
-<pre><code>##  15%  30%  70%  90% 
-##  5.0  8.5 14.0 23.5</code></pre>
-<p> </p>
-<p><strong><span style="color: #20935E;">CONSEJO</span></strong></p>
-<p>Como has podido comprobar, este otro tipo de <strong><span style="color: #20935E;">operaciones ESTADÍSTICAS no se realizan elemento a elemento</span></strong>: la media o la suma las realiza tomando todos los elementos del vector.</p>
-<p> </p>
-<p><strong><span style="color: #4197D2;">GLOSARIO:</span></strong></p>
-<ul>
-<li>
-<strong><span style="color: #4197D2;">Media</span></strong>: medida de centralización que consiste en sumar todos los elementos y dividirlos entre la cantidad de elementos sumados. A pesar de ser la más conocida, la media es <strong>muy poco robusta</strong>: dado un conjunto, si se introducen <strong>valores atípicos o outliers</strong> (valores muy grandes o muy pequeños), la media se perturbar con mucha facilidad. Dado un vector de valores <span class="math inline">\(x = (x_1, \ldots, x_n)\)</span>, se denota como <span class="math inline">\(\overline{x}\)</span>.</li>
-</ul>
-<p><span class="math display">\[\overline{x} = \frac{\displaystyle \sum_{i=1}^{n}x_i}{n}\]</span></p>
-<ul>
-<li>
-<strong><span style="color: #4197D2;">Mediana</span></strong>: medida de centralización que consiste en, tras ordenar los datos de menor a mayor, quedarnos con el valor que ocupa el medio (deja tantos números por debajo como por encima). Más robusta que la media aunque menos la moda. Dado un vector de valores <span class="math inline">\(x = (x_1, \ldots, x_n)\)</span>, se denota como <span class="math inline">\(Me_x\)</span>.</li>
-</ul>
-<p><span class="math display">\[Me_x = \displaystyle \arg \min_{x_i} \left\lbrace F_i &gt; 0.5 \right\rbrace, \quad F_i = \frac{\#\left\lbrace x_j \leq x_i \right\rbrace}{n}\]</span></p>
-<ul>
-<li>
-<strong><span style="color: #4197D2;">Moda</span></strong>: medida de centralización que consiste en encontrar el valor más repetido (el valor <em>trending</em>). Es la medida de centralización más robusta. Dado un vector de valores <span class="math inline">\(x = (x_1, \ldots, x_n)\)</span>, se denota como <span class="math inline">\(Mo_x\)</span>.</li>
-</ul>
-<p><span class="math display">\[Mo_x = \displaystyle \arg \max_{x_i} f_i  , \quad f_i = \frac{\#\left\lbrace x_j = x_i \right\rbrace}{n}\]</span></p>
-<p> </p>
-</div>
 <div id="vectores-de-caracteres-texto" class="section level2">
 <h2>
-<span class="header-section-number">3.5</span> Vectores de caracteres (texto)<a class="anchor" aria-label="anchor" href="#vectores-de-caracteres-texto"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.3</span> Vectores de caracteres (texto)<a class="anchor" aria-label="anchor" href="#vectores-de-caracteres-texto"><i class="fas fa-link"></i></a>
 </h2>
 <p>Un error común es asociar el concepto de vectores solo a números: un <strong>vector es una colección o concatenación de elementos del mismo tipo</strong> pero no tienen porque ser necesariamente números. Vamos a crear una frase de ejemplo, un vector de 4 elementos de tipo texto (en <code>R</code> se llaman <code>char</code>): <code>"Mi"</code>, <code>"nombre"</code>, <code>"es"</code> <code>"Javier"</code>.</p>
 <p>Como ves las variables de tipo <code>char</code> van entre comillas dobles, ya que es un <strong>cadena de texto</strong>.</p>
-<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">mi_nombre</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Mi"</span>, <span class="st">"nombre"</span>, <span class="st">"es"</span>, <span class="st">"Javier"</span><span class="op">)</span>
 <span class="va">mi_nombre</span></code></pre></div>
 <pre><code>## [1] "Mi"     "nombre" "es"     "Javier"</code></pre>
 <p>Ya tenemos nuestro primer vector de texto de longitud 4. Las <strong>cadenas de texto</strong> son un tipo especial de dato, con los que obviamente no podremos hacer operaciones aritméticas como la suma o la media, pero si podemos hacer operaciones propias de cadenas de texto como puede ser la función <code><a href="https://rdrr.io/r/base/paste.html">paste()</a></code>. Dicha función nos permite convertir un vector de 4 palabras en una frase, decidiendo que caracter queremos que vaya entre palabra con el argumento <code>collapse =</code>.</p>
-<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">mi_nombre</span>, collapse <span class="op">=</span> <span class="st">""</span><span class="op">)</span> <span class="co"># todo junto</span></code></pre></div>
 <pre><code>## [1] "MinombreesJavier"</code></pre>
-<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">mi_nombre</span>, collapse <span class="op">=</span> <span class="st">" "</span><span class="op">)</span> <span class="co"># separados por un espacio</span></code></pre></div>
 <pre><code>## [1] "Mi nombre es Javier"</code></pre>
-<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">mi_nombre</span>, collapse <span class="op">=</span> <span class="st">"."</span><span class="op">)</span> <span class="co"># separados por un punto .</span></code></pre></div>
 <pre><code>## [1] "Mi.nombre.es.Javier"</code></pre>
 <p>Si queremos pegar los elementos de la cadena de texto sin ningún tipo de caracter, existe una forma más abreviada y limpia de ejecutar la orden <code><a href="https://rdrr.io/r/base/paste.html">paste(mi_nombre, collapse = "")</a></code>, usando la función <code><a href="https://rdrr.io/r/base/paste.html">paste0()</a></code></p>
-<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">mi_nombre</span><span class="op">)</span> <span class="co"># todo junto sin nada separando</span></code></pre></div>
 <pre><code>## [1] "Mi"     "nombre" "es"     "Javier"</code></pre>
 <p>Esta función es muy útil si queremos definir variables de texto que compartan por ejemplo un prefijo (<code>variable_1</code>, <code>variable_2</code>, …)</p>
-<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"variable"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">7</span><span class="op">)</span> <span class="co"># a la palabra «variable» le pegamos los números del 1 al 7</span></code></pre></div>
 <pre><code>## [1] "variable1" "variable2" "variable3" "variable4" "variable5" "variable6"
 ## [7] "variable7"</code></pre>
-<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"variable"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">7</span>, sep <span class="op">=</span> <span class="st">"_"</span><span class="op">)</span> <span class="co"># separado por una barra baja</span></code></pre></div>
 <pre><code>## [1] "variable_1" "variable_2" "variable_3" "variable_4" "variable_5"
 ## [6] "variable_6" "variable_7"</code></pre>
 <div id="paquete-glue" class="section level3">
 <h3>
-<span class="header-section-number">3.5.1</span> Paquete glue<a class="anchor" aria-label="anchor" href="#paquete-glue"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.3.1</span> Paquete glue<a class="anchor" aria-label="anchor" href="#paquete-glue"><i class="fas fa-link"></i></a>
 </h3>
 <p>Otra <strong>forma más intuitiva de trabajar con textos y variables numéricas</strong> es usar el paquete <a href="https://github.com/tidyverse/glue">glue</a>, que nos permite pegar cadenas de texto a variables numéricas de <strong>forma simbólica</strong>.</p>
-<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"glue"</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tidyverse/glue">glue</a></span><span class="op">)</span></code></pre></div>
-<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">edad</span> <span class="op">&lt;-</span> <span class="fl">10</span><span class="op">:</span><span class="fl">15</span> <span class="co"># edades</span>
 <span class="fu"><a href="https://rdrr.io/pkg/glue/man/glue.html">glue</a></span><span class="op">(</span><span class="st">"La edad es de {edad} años"</span><span class="op">)</span></code></pre></div>
 <pre><code>## La edad es de 10 años
@@ -292,7 +195,7 @@
 ## La edad es de 14 años
 ## La edad es de 15 años</code></pre>
 <p>También podemos hacer uso de dicha función sin tener los valores numéricos previamente guardados en variables.</p>
-<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Otra forma sin definir variables a priori</span>
 <span class="fu"><a href="https://rdrr.io/pkg/glue/man/glue.html">glue</a></span><span class="op">(</span><span class="st">"La edad es de {10:15} años"</span><span class="op">)</span></code></pre></div>
 <pre><code>## La edad es de 10 años
@@ -303,62 +206,27 @@
 ## La edad es de 15 años</code></pre>
 <p>Ya sabemos trabajar con textos :)</p>
 <p>¿Y si queremos <strong>pasar todo a mayúscula</strong>? ¿O <strong>todo a minúscula</strong>? ¿Y si queremos <strong>sustituir un caracter (por ejemplo <code>.</code>) por otro en todos los elementos</strong>? <code>R</code> también nos proporciona algunas funciones muy sencillas (del paquete <code>{base}</code>) de usar para dichas tareas. Aquí un ejemplo de algunas de ellas.</p>
-<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">texto</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Hola."</span>, <span class="st">"qué"</span>, <span class="st">"ase?"</span>, <span class="st">"todo"</span>, <span class="st">"bien."</span>, <span class="st">"y yo"</span>,
            <span class="st">"que"</span>, <span class="st">"ME"</span>, <span class="st">"ALEGRO"</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/chartr.html">toupper</a></span><span class="op">(</span><span class="va">texto</span><span class="op">)</span> <span class="co"># todo a mayúscula</span></code></pre></div>
 <pre><code>## [1] "HOLA."  "QUÉ"    "ASE?"   "TODO"   "BIEN."  "Y YO"   "QUE"    "ME"    
 ## [9] "ALEGRO"</code></pre>
-<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/chartr.html">tolower</a></span><span class="op">(</span><span class="va">texto</span><span class="op">)</span> <span class="co"># todo a minúscula</span></code></pre></div>
 <pre><code>## [1] "hola."  "qué"    "ase?"   "todo"   "bien."  "y yo"   "que"    "me"    
 ## [9] "alegro"</code></pre>
 <p>El paquete <code>{base}</code> también nos permite buscar y reemplazar patrones concretos en cadenas de texta (por ejemplo, sustituir toda letra «o» por el caracter «*»).</p>
-<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/grep.html">gsub</a></span><span class="op">(</span><span class="st">"o"</span>, <span class="st">"*"</span>, <span class="va">texto</span><span class="op">)</span> <span class="co"># toda "o" en el texto será sustituida por *</span></code></pre></div>
 <pre><code>## [1] "H*la."  "qué"    "ase?"   "t*d*"   "bien."  "y y*"   "que"    "ME"    
 ## [9] "ALEGRO"</code></pre>
 <p> </p>
-<p><strong><span style="color: #20935E;">CONSEJO:</span></strong></p>
-<p>Dentro del entorno de paquetes <a href="https://tidyverse.tidyverse.org">tidyverse</a>, el paquete <a href="http://stringr.tidyverse.org">stringr</a> permite un manejo más complejo de cadenas de texo (como el uso de expresiones regulares).</p>
-<div class="figure">
-<span style="display:block;" id="fig:stringr2"></span>
-<img src="img/stringr.png" alt="Paquete stringr para manejar cadenas de texto más complejas" width="615"><p class="caption">
-Imagen/gráfica 3.1: Paquete stringr para manejar cadenas de texto más complejas
-</p>
-</div>
-<p> </p>
-<div class="inline-table"><table class="table table-sm">
-<caption>
-<span id="tab:unnamed-chunk-51">Tabla 3.1: </span>Paquetes mencionados hasta ahora</caption>
-<thead><tr class="header">
-<th align="left">paquetes</th>
-<th align="left">descripción</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td align="left">{base}</td>
-<td align="left">utilidades básicas</td>
-</tr>
-<tr class="even">
-<td align="left">{bookdown}</td>
-<td align="left">creación de libros, manuales e informes en R</td>
-</tr>
-<tr class="odd">
-<td align="left">{glue}</td>
-<td align="left">manejo de texto literal</td>
-</tr>
-<tr class="even">
-<td align="left">{stringr}</td>
-<td align="left">manejo complejo de cadenas de texto</td>
-</tr>
-</tbody>
-</table></div>
 </div>
 </div>
 <div id="vectores-lógicos-truefalse" class="section level2">
 <h2>
-<span class="header-section-number">3.6</span> Vectores lógicos (TRUE/FALSE)<a class="anchor" aria-label="anchor" href="#vectores-l%C3%B3gicos-truefalse"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.4</span> Vectores lógicos (TRUE/FALSE)<a class="anchor" aria-label="anchor" href="#vectores-l%C3%B3gicos-truefalse"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li>[X] Variables numéricas (individuales)</li>
@@ -376,27 +244,27 @@ Imagen/gráfica 3.1: Paquete stringr para manejar cadenas de texto más compleja
 <code>NA</code> (dato ausente, son las siglas de <em>not available</em>, cuando pretendemos aplicar una comparación a un dato ya de por si ausente).</li>
 </ul>
 <p>Estos valores son resultado de evaluar <strong>condiciones lógicas</strong>. Por ejemplo, imaginemos que definimos un vector de números <code>x &lt;- c(1.5, -1, 2, 4, 3, -4)</code>. ¿Qué numeros del vector son menores que 2? Basta con que ejecutemos la orden <code>x &lt; 2</code>, que nos devolverá <code>TRUE/FALSE</code> en cada hueco, en función de si cumple (<code>TRUE</code>) o no (<code>FALSE</code>) la condición pedida.</p>
-<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1.5</span>, <span class="op">-</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">4</span>, <span class="fl">3</span>, <span class="op">-</span><span class="fl">4</span><span class="op">)</span>
 <span class="va">x</span> <span class="op">&lt;</span> <span class="fl">2</span></code></pre></div>
 <pre><code>## [1]  TRUE  TRUE FALSE FALSE FALSE  TRUE</code></pre>
 <p>El primer, segundo y sexto elemento del vector son los únicos elementos (estrictamente) menores que <code>2</code>, de ahí que en el primer, segundo y sexto elemento aparezca un <code>TRUE</code> y en el resto un <code>FALSE</code>. Es <strong>importante</strong> recordar que al <strong>evaluar una condición lógica sobre un vector</strong> de longitud <code>n</code>, la <strong>salida sigue siendo un vector</strong> de longitud <code>n</code> pero con valores lógicos.</p>
 <p>Dicha condición lógica puede hacerse con otros operadores como <code><a href="https://rdrr.io/r/base/Comparison.html">&lt;=</a></code>, <code><a href="https://rdrr.io/r/base/Comparison.html">&gt;</a></code> o <code><a href="https://rdrr.io/r/base/Comparison.html">&gt;=</a></code>.</p>
-<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;=</span> <span class="fl">2</span></code></pre></div>
 <pre><code>## [1]  TRUE  TRUE  TRUE FALSE FALSE  TRUE</code></pre>
-<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&gt;</span> <span class="fl">2</span></code></pre></div>
 <pre><code>## [1] FALSE FALSE FALSE  TRUE  TRUE FALSE</code></pre>
-<div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&gt;=</span> <span class="fl">2</span></code></pre></div>
 <pre><code>## [1] FALSE FALSE  TRUE  TRUE  TRUE FALSE</code></pre>
 <p> </p>
 <p>También podemos <strong>comparar si es igual a otro elemento</strong>, para lo que usaremos el operador <code><a href="https://rdrr.io/r/base/Comparison.html">==</a></code>, pudiendo usar también su opuesto <code><a href="https://rdrr.io/r/base/Comparison.html">!=</a></code> («distinto de»).</p>
-<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">==</span> <span class="fl">2</span></code></pre></div>
 <pre><code>## [1] FALSE FALSE  TRUE FALSE FALSE FALSE</code></pre>
-<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">!=</span> <span class="fl">2</span></code></pre></div>
 <pre><code>## [1]  TRUE  TRUE FALSE  TRUE  TRUE  TRUE</code></pre>
 <p>Las <strong>condiciones pueden ser combinadas</strong>, principalmente de dos maneras:</p>
@@ -405,264 +273,17 @@ Imagen/gráfica 3.1: Paquete stringr para manejar cadenas de texto más compleja
 <li><p><strong>Unión</strong>: basta con que una de las condiciones concatenadas se cumpla (conjunción <code>o</code>, operador <code><a href="https://rdrr.io/r/base/Logic.html">|</a></code>) para devolver un <code>TRUE</code>.</p></li>
 </ul>
 <p>Por ejemplo, vamos a calcular qué elementos del vector <code><a href="https://rdrr.io/r/base/c.html">c(1.5, -1, 2, 4, 3, -4)</a></code> sean menores que 3 pero (y) mayores que 0, y los elementos menores que 2 o mayores que 3.</p>
-<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1.5</span>, <span class="op">-</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">4</span>, <span class="fl">3</span>, <span class="op">-</span><span class="fl">4</span><span class="op">)</span>
 <span class="va">x</span> <span class="op">&lt;</span> <span class="fl">3</span> <span class="op">&amp;</span> <span class="va">x</span> <span class="op">&gt;</span> <span class="fl">0</span> <span class="co"># Solo los que cumplen ambas condiciones</span></code></pre></div>
 <pre><code>## [1]  TRUE FALSE  TRUE FALSE FALSE FALSE</code></pre>
-<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;</span> <span class="fl">2</span> <span class="op">|</span> <span class="va">x</span> <span class="op">&gt;</span> <span class="fl">3</span> <span class="co"># Los cumplen al menos una de ellas</span></code></pre></div>
 <pre><code>## [1]  TRUE  TRUE FALSE  TRUE FALSE  TRUE</code></pre>
-<p>Como hemos comentado anteriormente, los valores lógicos <code>TRUE/FALSE</code> son guardados internamente como <code>0/1</code> por lo que podemos usar <strong>operaciones aritméticas con ellos</strong>. Por ejemplo, si queremos averiguar el número de elementos de un vector que cumplen una condición lógica <code>&lt; 2</code>, los que lo hagan tendrán asignado un <code>1</code> y los que no un <code>0</code>, por lo que basta con sumar el vector lógico para obtener el número de elementos bajo dicha condición.</p>
-<div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">x</span> <span class="op">&lt;</span> <span class="fl">2</span><span class="op">)</span> <span class="co"># sumamos el vector de TRUE/FALSE --&gt; número de TRUE</span></code></pre></div>
-<pre><code>## [1] 3</code></pre>
-</div>
-<div id="ausentes" class="section level2">
-<h2>
-<span class="header-section-number">3.7</span> Datos ausentes: NA y NaN<a class="anchor" aria-label="anchor" href="#ausentes"><i class="fas fa-link"></i></a>
-</h2>
-<p>La vida no siempre es perfecta así que en muchas ocasiones nos encontraremos con lo que llamamos en estadística un <strong>dato ausente o <em>missing value</em></strong>, un <strong>valor que no tenemos en nuestra variable</strong>, y un ejemplo práctico lo tenemos con los datos de vacunación de covid del Ministerio de Sanidad que hemos tenido en 2020-2021. Cada día se publicaba un PDF (ya…mal) con los datos de vacunación PERO…no se publican datos los fines de semana: en dichas fechas hay datos que no tenemos, y en <code>R</code> se representan por <code>NA</code> (significa <em>not available</em>).</p>
-<div id="na-not-available" class="section level3">
-<h3>
-<span class="header-section-number">3.7.1</span> NA: not available<a class="anchor" aria-label="anchor" href="#na-not-available"><i class="fas fa-link"></i></a>
-</h3>
-<p>Vamos a crear un vector de números con datos ausentes con la orden <code>x &lt;- c(1, NA, 3, NA, NA, 5, 6)</code>: el vector tendrá longitud 7 pero en el segundo, cuarto y quinto elemento tendremos un dato faltante, un lugar que no tenemos relleno (pero que no eliminamos).</p>
-<div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="cn">NA</span>, <span class="fl">3</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="fl">5</span>, <span class="fl">6</span><span class="op">)</span> <span class="co"># Vector numérico con datos faltante</span>
-<span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="co"># longitud del vector</span></code></pre></div>
-<pre><code>## [1] 7</code></pre>
-<div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span></code></pre></div>
-<pre><code>## [1]  1 NA  3 NA NA  5  6</code></pre>
-<p><strong>¿Puedes aventurar que sucede cuando multiplicamos ese vector por 2 por ejemplo?</strong></p>
-<div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fl">2</span> <span class="op">*</span> <span class="va">x</span> <span class="co"># operación aritmética con un vector con NA</span></code></pre></div>
-<pre><code>## [1]  2 NA  6 NA NA 10 12</code></pre>
-<p> </p>
-<p><strong><span style="color: #ffc107;">WARNING:</span></strong></p>
-<p>Un dato que no tenemos, multiplicado por 2, sigue siendo un dato ausente. Es muy importante para evitar resultados erróneos que entendamos que un <strong>dato ausente no computa en una operación aritmética, es un hueco vacío</strong>. Si hacemos la suma del vector, estamos sumando números más datos ausentes, por lo que el resultado final será también un dato ausente. Si tenemos algún dato ausente en nuestro vector, la suma final está a su vez ausente, ¡no podemos saber cuánto vale!</p>
-<div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="co"># suma de un vector que contiene NA</span></code></pre></div>
-<pre><code>## [1] NA</code></pre>
-<p> </p>
-<p>Para evitar que un dato ausente en nuestros datos nos impida hacer ciertas operaciones, en muchas funciones de <code>R</code> podemos añadir el argumento <code>na.rm = TRUE</code>: <strong>primero elimina los datos ausentes</strong>, y luego ejecuta la función.</p>
-<div class="sourceCode" id="cb134"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">x</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="co"># eliminando datos ausentes</span></code></pre></div>
-<pre><code>## [1] 15</code></pre>
-<p>Una manera de <strong>localizar que elementos están ausentes</strong> en nuestras variables es con la función <code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code>, una función que nos devuelve un vector de valores lógico: <code>TRUE</code> si el elemento está ausente y <code>FALSE</code> si no lo está.</p>
-<div class="sourceCode" id="cb136"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="co"># TRUE si está ausente (NA), FALSE si no lo está.</span></code></pre></div>
-<pre><code>## [1] FALSE  TRUE FALSE  TRUE  TRUE FALSE FALSE</code></pre>
-<p>Dichos <strong>datos ausentes se pueden eliminar</strong> (sin necesidad de sumarlos) con la función <code><a href="https://rdrr.io/r/stats/na.fail.html">na.omit()</a></code> (aunque a veces lo que nos interesa es que no sea ausente, introduciendo el punto medio entre su valor anterior y su valor posterior, por ejemplo).</p>
-<div class="sourceCode" id="cb138"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/na.fail.html">na.omit</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 1 3 5 6
-## attr(,"na.action")
-## [1] 2 4 5
-## attr(,"class")
-## [1] "omit"</code></pre>
-</div>
-<div id="nan-not-a-number" class="section level3">
-<h3>
-<span class="header-section-number">3.7.2</span> NaN: not a number<a class="anchor" aria-label="anchor" href="#nan-not-a-number"><i class="fas fa-link"></i></a>
-</h3>
-<p>Hay un <strong>tipo de dato muy particular, como resultado de operaciones no permitidas o cuyo resultado es indeterminado</strong>, que en <code>R</code> lo veremos como <code>NaN</code>: <em>not a number</em>, un resultado fruto de una indeterminación, como por ejemplo la operación <code>0/0</code> (cuyo límite no está definido). Importante saber que también existe una forma de denotar al infinito como <code>Inf</code>, siendo el resultado de algunas operaciones como <code>1/0</code>.</p>
-<div class="sourceCode" id="cb140"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fl">1</span><span class="op">/</span><span class="fl">0</span></code></pre></div>
-<pre><code>## [1] Inf</code></pre>
-<div class="sourceCode" id="cb142"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fl">0</span><span class="op">/</span><span class="fl">0</span></code></pre></div>
-<pre><code>## [1] NaN</code></pre>
-<p>De la misma manera que podemos localizar valores <code>NA</code>, tenemos a nuestra disposición las funciones <code>is.infinte()</code> y <code><a href="https://rdrr.io/r/base/is.finite.html">is.nan()</a></code> para detectar que elementos de nuestro vector son <code>Inf</code> o <code>NaN</code>, respectivamente.</p>
-<div class="sourceCode" id="cb144"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="cn">NA</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="cn">Inf</span>, <span class="fl">6</span>, <span class="fl">7</span>, <span class="cn">Inf</span>, <span class="cn">NaN</span>, <span class="cn">NA</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [1] FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE</code></pre>
-<div class="sourceCode" id="cb146"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/is.finite.html">is.nan</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE</code></pre>
-<div class="sourceCode" id="cb148"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/is.finite.html">is.infinite</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [1] FALSE FALSE FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE FALSE</code></pre>
-</div>
-</div>
-<div id="seleccionar-elementos-de-un-vector" class="section level2">
-<h2>
-<span class="header-section-number">3.8</span> Seleccionar elementos de un vector<a class="anchor" aria-label="anchor" href="#seleccionar-elementos-de-un-vector"><i class="fas fa-link"></i></a>
-</h2>
-<p>Ya sabemos definir variables que sean vectores (recuerda: colección de valores del mismo tipo). ¿Y si del <strong>vector original queremos EXTRAER UN SUBCONJUNTO del mismo</strong>, por ejemplo, los primeros 10 elementos?</p>
-<p><code>R</code> tiene varias formas de hacer esto pero la más sencilla es entendiendo que si yo quiero <strong>acceder al elemento i</strong> de un vector, deberé usar el <strong>operador de selección <code>[i]</code></strong>. Veamos un ejemplo</p>
-<div class="sourceCode" id="cb150"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">100</span> <span class="co"># Vector de longitud 100 (del 1 al 100)</span>
-<span class="va">y</span> <span class="op">&lt;-</span> <span class="va">x</span><span class="op">[</span><span class="fl">37</span><span class="op">]</span> <span class="co"># Solo me interesa el elemento que ocupa el lugar 37</span>
-<span class="va">y</span></code></pre></div>
-<pre><code>## [1] 37</code></pre>
-<p>Dado que hemos visto que un número no es más que un vector de longitud uno, esta operación también la podemos aplicar usando un vector de índices a seleccionar, de forma que le podemos indicar simultaneamente que valores que queremos</p>
-<div class="sourceCode" id="cb152"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">4</span>, <span class="fl">51</span>, <span class="fl">77</span><span class="op">)</span><span class="op">]</span> <span class="co"># Solo queremos acceder a los elementos en la posición 1, 4, 51, y 77</span></code></pre></div>
-<pre><code>## [1]  1  4 51 77</code></pre>
-<div class="sourceCode" id="cb154"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"hola"</span>, <span class="st">"qué"</span>, <span class="st">"tal"</span>, <span class="st">"todo"</span>, <span class="st">"ok"</span>, <span class="st">"?"</span><span class="op">)</span>
-<span class="va">y</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span> <span class="co"># Solo queremos acceder a los elementos en la posición 1 y 2</span></code></pre></div>
-<pre><code>## [1] "hola" "qué"</code></pre>
-<div class="sourceCode" id="cb156"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 1 2 6</code></pre>
-<div class="sourceCode" id="cb158"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">y</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span><span class="op">]</span> <span class="co"># Solo accedemos a los elementos en la posición 1, 2 y además el que ocupa la última posición (recuerda: length(y) nos da la longitud total del vector)</span></code></pre></div>
-<pre><code>## [1] "hola" "qué"  "?"</code></pre>
-<p>Otras veces no querremos seleccionar un elemento en concreto sino <strong>filtrar algunos elementos en concreto y no extraerlos</strong>, para lo cual deberemos repetir la misma operación pero con el signo <code><a href="https://rdrr.io/r/base/Arithmetic.html">-</a></code> delante: el operador <code>[-i]</code> no selecciona el elemento i-ésimo del vector sino que lo elimina en nuestro filtro.</p>
-<div class="sourceCode" id="cb160"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">y</span></code></pre></div>
-<pre><code>## [1] "hola" "qué"  "tal"  "todo" "ok"   "?"</code></pre>
-<div class="sourceCode" id="cb162"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">z</span> <span class="op">&lt;-</span> <span class="va">y</span><span class="op">[</span><span class="op">-</span><span class="fl">2</span><span class="op">]</span> <span class="co"># Nos muestra todo y salvo el elemento que ocupa la segunda posición</span>
-<span class="va">z</span></code></pre></div>
-<pre><code>## [1] "hola" "tal"  "todo" "ok"   "?"</code></pre>
-<p> </p>
-<p>Sin embargo, <strong>lo habitual es que dicho filtro lo hagamos en base a una condición lógica</strong>. Supongamos que <code>x &lt;- c(7, 20, 18, 3, 19, 9, 13, 3, 45)</code> y <code>y &lt;- c(17, 21, 58, 33, 15, 59, 13, 1, 45)</code> son las edades de dos grupos de personas y que queremos quedarnos solo con los mayores edad. ¿Tenemos que andar averiguando en que posición se encuentran para luego seleccionarlos? No, vamos a <strong>seleccionar los elementos que cumplen una condición dada</strong>.</p>
-<div class="sourceCode" id="cb164"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">7</span>, <span class="fl">20</span>, <span class="fl">18</span>, <span class="fl">3</span>, <span class="fl">19</span>, <span class="fl">9</span>, <span class="fl">13</span>, <span class="fl">3</span>, <span class="fl">45</span><span class="op">)</span>
-<span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">17</span>, <span class="fl">21</span>, <span class="fl">58</span>, <span class="fl">33</span>, <span class="fl">15</span>, <span class="fl">59</span>, <span class="fl">13</span>, <span class="fl">1</span>, <span class="fl">45</span><span class="op">)</span>
-<span class="va">x</span><span class="op">[</span><span class="va">x</span> <span class="op">&gt;=</span> <span class="fl">18</span><span class="op">]</span> <span class="co"># mayores de 18 años del conjunto x</span></code></pre></div>
-<pre><code>## [1] 20 18 19 45</code></pre>
-<div class="sourceCode" id="cb166"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">y</span><span class="op">[</span><span class="va">x</span> <span class="op">&gt;=</span> <span class="fl">18</span><span class="op">]</span> <span class="co"># mayores de 18 años del conjunto y</span></code></pre></div>
-<pre><code>## [1] 21 58 15 45</code></pre>
-<p>Lo que hemos hecho ha sido pasarlo como índices un vector lógico <code>TRUE/FALSE</code>, de forma que solo filtrará los que tengan un <code>TRUE</code> asignado, aquellos que cumplen la condición lógica introducida. Esto también nos puede servir para limpiar de datos ausentes, combinando la función <code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code>, que nos localiza el lugar que ocupan los ausentes, con el operador <code><a href="https://rdrr.io/r/base/Logic.html">!</a></code>, que lo que hace es negar lo que venga detrás. También podemos probar a <strong>combinar condiciones lógicas para nuestra selección</strong>.</p>
-<div class="sourceCode" id="cb168"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">7</span>, <span class="cn">NA</span>, <span class="fl">20</span>, <span class="fl">3</span>, <span class="fl">19</span>, <span class="fl">21</span>, <span class="fl">25</span>, <span class="fl">80</span>, <span class="cn">NA</span><span class="op">)</span>
-<span class="va">x</span><span class="op">[</span><span class="va">x</span> <span class="op">&gt;=</span> <span class="fl">18</span><span class="op">]</span> <span class="co"># mayores de 18 años del conjunto x</span></code></pre></div>
-<pre><code>## [1] NA 20 19 21 25 80 NA</code></pre>
-<div class="sourceCode" id="cb170"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">]</span> <span class="co"># solo valores ausentes</span></code></pre></div>
-<pre><code>## [1] NA NA</code></pre>
-<div class="sourceCode" id="cb172"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span><span class="op">[</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">]</span> <span class="co"># sin valores ausentes: ! es el símbolo de la negación</span></code></pre></div>
-<pre><code>## [1]  7 20  3 19 21 25 80</code></pre>
-<div class="sourceCode" id="cb174"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="op">!</span><span class="op">(</span><span class="va">x</span> <span class="op">&gt;=</span> <span class="fl">18</span><span class="op">)</span> <span class="co"># niega los mayores de 18 años, todo lo que no cumpla esa condición</span></code></pre></div>
-<pre><code>## [1]  TRUE    NA FALSE  TRUE FALSE FALSE FALSE FALSE    NA</code></pre>
-<div class="sourceCode" id="cb176"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span><span class="op">[</span><span class="va">x</span> <span class="op">&gt;=</span> <span class="fl">18</span> <span class="op">&amp;</span> <span class="va">x</span> <span class="op">&lt;=</span> <span class="fl">25</span><span class="op">]</span> <span class="co"># los valores que cumplen ambas (&amp;): entre 18 y 25 años</span></code></pre></div>
-<pre><code>## [1] NA 20 19 21 25 NA</code></pre>
-<p>Como ves si un valor es <code>NA</code>, la evaluación de una condición lógica sobre él (mayor o menor de 18 años) nos seguirá devolviendo <code>NA</code>. Por último, <code>R</code> nos permite <strong>dar significado léxico</strong> a nuestros valores (significan algo, no solo números), pudiendo poner nombres a los elementos de un vector, permitiendo su selección por dichos nombres.</p>
-<div class="sourceCode" id="cb178"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"edad"</span> <span class="op">=</span> <span class="fl">31</span>, <span class="st">"tlf"</span> <span class="op">=</span> <span class="fl">613910687</span>, <span class="st">"cp"</span> <span class="op">=</span> <span class="fl">33007</span><span class="op">)</span> <span class="co"># cada número tiene un significado distinto</span>
-<span class="va">x</span></code></pre></div>
-<pre><code>##      edad       tlf        cp 
-##        31 613910687     33007</code></pre>
-<div class="sourceCode" id="cb180"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"edad"</span>, <span class="st">"cp"</span><span class="op">)</span><span class="op">]</span> <span class="co"># seleccionamos los elementos que tienen ese nombre asignado</span></code></pre></div>
-<pre><code>##  edad    cp 
-##    31 33007</code></pre>
-<p>Con la función <code><a href="https://rdrr.io/r/base/names.html">names()</a></code> además podemos, no solo consultar los nombres de una variable, sino cambiarlos a nuestro gusto.</p>
-<div class="sourceCode" id="cb182"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="co"># Consultamos nombres</span></code></pre></div>
-<pre><code>## [1] "edad" "tlf"  "cp"</code></pre>
-<div class="sourceCode" id="cb184"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"años"</span>, <span class="st">"móvil"</span>, <span class="st">"dirección"</span><span class="op">)</span> <span class="co"># Cambiamos nombres</span>
-<span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="co"># Consultamos nuevos nombres</span></code></pre></div>
-<pre><code>## [1] "años"      "móvil"     "dirección"</code></pre>
-<div class="sourceCode" id="cb186"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span></code></pre></div>
-<pre><code>##      años     móvil dirección 
-##        31 613910687     33007</code></pre>
-<p> </p>
-<p><strong><span style="color: #20935E;">CONSEJO: all, any</span></strong></p>
-<p>Existen dos funciones muy útiles en <code>R</code> para saber si <strong>TODOS</strong> o <strong>ALGUNO</strong> de los elementos de un vector cumple una condición. Las funciones <code><a href="https://rdrr.io/r/base/all.html">all()</a></code> y <code><a href="https://rdrr.io/r/base/any.html">any()</a></code> nos devolverá un único valor lógico. Estas funciones son muy útiles al final de los códigos para comprobar que las condiciones que tienen que verificar los datos se cumplen, y asegurarnos que el proceso se ha ejecutado correctamente (por ejemplo, que todos los datos sean positivos o no haya datos ausentes).</p>
-<div class="sourceCode" id="cb188"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">5</span>, <span class="cn">NA</span>, <span class="fl">7</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/all.html">all</a></span><span class="op">(</span><span class="va">x</span> <span class="op">&lt;</span> <span class="fl">3</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb190"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/any.html">any</a></span><span class="op">(</span><span class="va">x</span> <span class="op">&lt;</span> <span class="fl">3</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb192"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/all.html">all</a></span><span class="op">(</span><span class="va">x</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] NA</code></pre>
-<div class="sourceCode" id="cb194"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/all.html">all</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/na.fail.html">na.omit</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb196"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/all.html">all</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb198"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/any.html">any</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] TRUE</code></pre>
-<p> </p>
-<div id="which" class="section level3">
-<h3>
-<span class="header-section-number">3.8.1</span> which<a class="anchor" aria-label="anchor" href="#which"><i class="fas fa-link"></i></a>
-</h3>
-<p>Hemos visto como seleccionar elementos de un vector que cumplen una condición, para a veces no queremos el elemento en sí, sino el lugar que ocupa: <strong>¿qué valores de un vector cumplen una condición lógica, qué lugar ocupan?</strong> Para obtener dicho índice tenemos a nuestro disposición la función <code><a href="https://rdrr.io/r/base/which.html">which()</a></code>, que no nos devuelve el elemento en sí sino su lugar.</p>
-<div class="sourceCode" id="cb200"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">7</span>, <span class="cn">NA</span>, <span class="fl">20</span>, <span class="fl">3</span>, <span class="fl">19</span>, <span class="fl">21</span>, <span class="fl">25</span>, <span class="fl">80</span>, <span class="cn">NA</span><span class="op">)</span>
-<span class="va">x</span><span class="op">[</span><span class="va">x</span> <span class="op">&gt;=</span> <span class="fl">18</span><span class="op">]</span> <span class="co"># Accedemos a los elementos que cumplen la condición</span></code></pre></div>
-<pre><code>## [1] NA 20 19 21 25 80 NA</code></pre>
-<div class="sourceCode" id="cb202"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">x</span> <span class="op">&gt;=</span> <span class="fl">18</span><span class="op">)</span> <span class="co"># Obtenemos los lugares que ocupan los elementos que cumplen la condición</span></code></pre></div>
-<pre><code>## [1] 3 5 6 7 8</code></pre>
-<p>Esta función es muy útil especialmente cuando queremos <strong>averiguar el valor que ocupa el máximo/mínimo</strong> de una colección de valores, con las funciones <code><a href="https://rdrr.io/r/base/which.min.html">which.max()</a></code> y <code><a href="https://rdrr.io/r/base/which.min.html">which.min()</a></code>.</p>
-<div class="sourceCode" id="cb204"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">x</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="co"># máximo de x (si no eliminamos NA, nos devolverá NA)</span></code></pre></div>
-<pre><code>## [1] 80</code></pre>
-<div class="sourceCode" id="cb206"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">x</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="co"># mínimo de x (si no eliminamos NA, nos devolverá NA)</span></code></pre></div>
-<pre><code>## [1] 3</code></pre>
-<div class="sourceCode" id="cb208"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/which.min.html">which.max</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="co"># Lugar que ocupa el máximo</span></code></pre></div>
-<pre><code>## [1] 8</code></pre>
-<div class="sourceCode" id="cb210"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.min.html">which.max</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">]</span></code></pre></div>
-<pre><code>## [1] 80</code></pre>
-<div class="sourceCode" id="cb212"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/which.min.html">which.min</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="co"># Lugar que ocupa el mínimo</span></code></pre></div>
-<pre><code>## [1] 4</code></pre>
-<div class="sourceCode" id="cb214"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.min.html">which.min</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">]</span></code></pre></div>
-<pre><code>## [1] 3</code></pre>
-</div>
-<div id="null" class="section level3">
-<h3>
-<span class="header-section-number">3.8.2</span> NULL<a class="anchor" aria-label="anchor" href="#null"><i class="fas fa-link"></i></a>
-</h3>
-<p>A veces veremos que además de <code>NA</code> y <code>NaN</code>, <code>R</code> nos muestra un dato llamado <code>NULL</code>. Cuando tenemos <code>NA</code> en alguna variable, el registro existe, pero no está relleno. Sin embargo, cuando tenemos un <code>NULL</code> significa que ese registro ni siquiera existe: no es un dato guardado pero cuyo valor desconocemos, es un dato que ni siquiera existe (por ejemplo, si guardamos datos de 7 personas, el dato de la octava persona no es <code>NA</code>, es que no hay octava persona directamente).</p>
-<div class="sourceCode" id="cb216"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="cn">NA</span>, <span class="fl">3</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="fl">5</span>, <span class="fl">6</span><span class="op">)</span>
-<span class="va">x</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="co"># NA: el registro existe pero sin dato</span></code></pre></div>
-<pre><code>## [1] NA</code></pre>
-<div class="sourceCode" id="cb218"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="co"># No hemos definido el nombre de las variables, así que devuelve NULL</span></code></pre></div>
-<pre><code>## NULL</code></pre>
-</div>
-</div>
-<div id="ordenar-vectores" class="section level2">
-<h2>
-<span class="header-section-number">3.9</span> Ordenar vectores<a class="anchor" aria-label="anchor" href="#ordenar-vectores"><i class="fas fa-link"></i></a>
-</h2>
-<p>Una acción habitual al trabajar con datos es <strong>saber ordenarlos</strong>: de menor a mayor edad, datos más recientes vs antiguos, etc. Para ello tenemos la función <code><a href="https://rdrr.io/r/base/sort.html">sort()</a></code>, que podemos usar directamente para <strong>ordenar de menor a mayor</strong>, o con el argumento <code>decreasing = TRUE</code>, para <strong>ordenar de mayor a menor</strong>.</p>
-<div class="sourceCode" id="cb220"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="op">-</span><span class="fl">3</span>, <span class="fl">0</span>, <span class="fl">10</span>, <span class="fl">5</span>, <span class="fl">2</span>, <span class="fl">7</span>, <span class="op">-</span><span class="fl">13</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="co"># orden de menor a mayor</span></code></pre></div>
-<pre><code>## [1] -13  -3   0   1   2   5   7  10</code></pre>
-<div class="sourceCode" id="cb222"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="va">x</span>, decreasing <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="co"># orden de mayor a menor</span></code></pre></div>
-<pre><code>## [1] -13  -3   0   1   2   5   7  10</code></pre>
-<p>Otra forma de ordenar un vector es que <code>R</code> nos <strong>devuelva los índices de los elementos ordenados</strong>, y luego usar dichos índices para reorganizar los elementos, con la función <code><a href="https://rdrr.io/r/base/order.html">order()</a></code>.</p>
-<div class="sourceCode" id="cb224"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/order.html">order</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="co"># el elemento más pequeño es el octavo, luego el segundo, luego el tercero, luego el primero, luego el sexto, etc.</span></code></pre></div>
-<pre><code>## [1] 8 2 3 1 6 5 7 4</code></pre>
-<div class="sourceCode" id="cb226"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/order.html">order</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">]</span> <span class="co"># accedemos a los índices ordenados, equivalente al sort(x)</span></code></pre></div>
-<pre><code>## [1] -13  -3   0   1   2   5   7  10</code></pre>
-<p> </p>
-<p><strong><span style="color: #20935E;">CONSEJO: argumentos por defecto</span></strong></p>
-<p>La función <code><a href="https://rdrr.io/r/base/sort.html">sort()</a></code> es un buen ejemplo de que las <strong>funciones traen definidos argumentos por defecto</strong> (aunque no los veamos a priori). La orden <code><a href="https://rdrr.io/r/base/sort.html">sort(x)</a></code> en realidad está ejecutando <code><a href="https://rdrr.io/r/base/sort.html">sort(x, decreasing = TRUE)</a></code>, pero como es su valor por defecto, nos podemos ahorrar incluirlo. Escribe <code>? help sort()</code> en la consola y verás como en la cabecera de la función ya hay preasignado un <code>decreasing = TRUE</code>.</p>
 </div>
 <div id="fechas" class="section level2">
 <h2>
-<span class="header-section-number">3.10</span> Fechas<a class="anchor" aria-label="anchor" href="#fechas"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.5</span> Fechas<a class="anchor" aria-label="anchor" href="#fechas"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li>
@@ -674,158 +295,159 @@ Imagen/gráfica 3.1: Paquete stringr para manejar cadenas de texto más compleja
 </ul>
 <p> </p>
 <p>Hay un tipo muy especial de datos que aún no hemos visto que son los <strong>datos tipo fecha</strong>. Una fecha podría ser a priori una simple cadena de texto <code>"2021-04-21"</code> pero podemos usar la función <code><a href="https://rdrr.io/r/base/as.Date.html">as.Date()</a></code> para que <code>R</code> entienda que esa cadena de texto representa un instante temporal. Fíjate la diferencia entre una fecha en texto y una fecha con <code><a href="https://rdrr.io/r/base/as.Date.html">as.Date()</a></code>.</p>
-<div class="sourceCode" id="cb228"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fecha_char</span> <span class="op">&lt;-</span> <span class="st">"2021-04-21"</span>
 <span class="va">fecha_date</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="va">fecha_char</span>, format <span class="op">=</span> <span class="st">"%Y-%m-%d"</span><span class="op">)</span>
 <span class="va">fecha_char</span> <span class="op">+</span> <span class="fl">1</span></code></pre></div>
 <pre><code>## Error in fecha_char + 1: argumento no-numérico para operador binario</code></pre>
-<div class="sourceCode" id="cb230"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fecha_date</span> <span class="op">+</span> <span class="fl">1</span></code></pre></div>
 <pre><code>## [1] "2021-04-22"</code></pre>
 <p>En el momento en que convertimos la cadena de texto a fecha, aunque se visualice como tal, internamente es un número, por lo que podemos restar fechas (días entre ambas), <strong>podemos sumar números a fechas (fecha días después)</strong>, etc. Dentro del entorno <a href="https://tidyverse.tidyverse.org">tidyverse</a>, el paquete <a href="https://lubridate.tidyverse.org">lubridate</a> tiene implementadas <strong>múltiples funciones para poder operar con fechas de forma sencilla e intuitiva</strong>.</p>
 <p><a href="https://lubridate.tidyverse.org/" target="_blank"><img src="img/lubridate.png" width="100%" style="display: block; margin: auto;"></a></p>
 <p>Como ya hemos dicho, <strong>las fechas y momentos temporales no serán meras cadenas de caracter sino que tienen clases especiales asociadas</strong> y algunas funciones especiales que pueden sernos útiles: las fechas serán de tipo <code>dates</code> mientras que las horas será de tipo <code>POSIXct</code> o <code>POSIXlt</code>. En el primer caso, las fechas serán guardadas internamente como el <strong>número de días transcurridos desde el 1 de enero de 1970</strong>, y las horas como <strong>número de segundos desde el 1 de enero de 1970</strong> (para la clase <code>POSIXct</code>) o una lista de segundos, minutos y horas (para la clase <code>POSIXlt</code>).</p>
 <p><strong>¿Cómo obtener automáticamente la fecha de hoy, por ejemplo?</strong> La función <code><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date()</a></code> nos devuelve directamente la fecha y hora en el momento de la ejecución de la orden.</p>
-<div class="sourceCode" id="cb232"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fecha</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span><span class="op">(</span><span class="op">)</span>
 <span class="va">fecha</span></code></pre></div>
-<pre><code>## [1] "2021-12-19"</code></pre>
-<div class="sourceCode" id="cb234"><pre class="downlit sourceCode r">
+<pre><code>## [1] "2021-12-20"</code></pre>
+<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fecha</span> <span class="op">-</span> <span class="fl">7</span> <span class="co"># una semana antes</span></code></pre></div>
-<pre><code>## [1] "2021-12-12"</code></pre>
-<div class="sourceCode" id="cb236"><pre class="downlit sourceCode r">
+<pre><code>## [1] "2021-12-13"</code></pre>
+<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span> <span class="co"># de clase fecha</span></code></pre></div>
 <pre><code>## [1] "Date"</code></pre>
 <p>Para <strong>convertir una cadena de texto a fecha</strong>, basta usar la función <code><a href="https://rdrr.io/r/base/as.Date.html">as.Date()</a></code> del paquete <code>{base}</code>, pasándole como argumento la fecha en formato <code>"yyyy-mm-dd"</code> por defecto.</p>
-<div class="sourceCode" id="cb238"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"2021-03-10"</span><span class="op">)</span> <span class="co"># formato por defecto</span></code></pre></div>
 <pre><code>## [1] "2021-03-10"</code></pre>
 <p>Si <strong>introducimos otro tipo de formato</strong>, debemos especificárselo en un segundo argumento, para <code>R</code> sepa el formato de fecha que le estamos pasando</p>
-<div class="sourceCode" id="cb240"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"10-03-2020"</span>, <span class="st">"%d-%m-%Y"</span><span class="op">)</span> <span class="co"># con día-mes-año (4 cifras)</span></code></pre></div>
 <pre><code>## [1] "2020-03-10"</code></pre>
-<div class="sourceCode" id="cb242"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"10-03-20"</span>, <span class="st">"%d-%m-%y"</span><span class="op">)</span>  <span class="co"># con día-mes-año (2 cifras)</span></code></pre></div>
 <pre><code>## [1] "2020-03-10"</code></pre>
-<div class="sourceCode" id="cb244"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"03-10-2020"</span>, <span class="st">"%m-%d-%Y"</span><span class="op">)</span> <span class="co"># con mes-día-año (4 cifras)</span></code></pre></div>
 <pre><code>## [1] "2020-03-10"</code></pre>
-<div class="sourceCode" id="cb246"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"Octubre 21, 1995 21:24"</span>, <span class="st">"%B %d, %Y %H:%M"</span><span class="op">)</span> <span class="co"># fecha escrita</span></code></pre></div>
 <pre><code>## [1] NA</code></pre>
 <p> </p>
 <p><strong><span style="color: #dc3545;">ERROR: sin pasar a fecha no se puede operar</span></strong></p>
 <p>Si tenemos una fecha como caracter, nunca podremos hacer operaciones (por ejemplo, restarle una unidad temporal, en este caso un día).</p>
-<div class="sourceCode" id="cb248"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="st">"2021-03-10"</span> <span class="op">-</span> <span class="fl">1</span> <span class="co"># error</span></code></pre></div>
 <pre><code>## Error in "2021-03-10" - 1: argumento no-numérico para operador binario</code></pre>
 <p>Fíjate la diferencia cuando lo convertimos en fecha</p>
-<div class="sourceCode" id="cb250"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fecha</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"2021-03-10"</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span> <span class="co"># día previo</span>
 <span class="va">fecha</span></code></pre></div>
 <pre><code>## [1] "2021-03-09"</code></pre>
 <p>Aunque aparentemente parezca una cadena de texto, prueba a ejecutar <code><a href="https://rdrr.io/r/base/class.html">unclass(fecha)</a></code> para comprobar que tiene internamente guardado.</p>
-<div class="sourceCode" id="cb252"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">unclass</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 18695</code></pre>
-<div class="sourceCode" id="cb254"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">unclass</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"1969-01-01"</span><span class="op">)</span><span class="op">)</span> <span class="co"># un año antes de la referencia a partir de la cual cuenta días</span></code></pre></div>
 <pre><code>## [1] -365</code></pre>
 <p> </p>
-<p>Dentro del entorno <a href="https://tidyverse.tidyverse.org">tidyverse</a>, el paquete <a href="https://lubridate.tidyverse.org">lubridate</a> tiene bastantes funciones útiles para trabajar con fechas como las siguientes</p>
-<div class="sourceCode" id="cb256"><pre class="downlit sourceCode r">
+<p>Dentro del entorno de paquetes de <a href="https://tidyverse.tidyverse.org">tidyverse</a>, el paquete <a href="https://lubridate.tidyverse.org">lubridate</a> tiene bastantes funciones útiles para trabajar con fechas como las siguientes</p>
+<div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://lubridate.tidyverse.org">lubridate</a></span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/ymd_hms.html">ymd_hms</a></span><span class="op">(</span><span class="st">"2017-11-28T14:02:00"</span><span class="op">)</span> <span class="co"># convertir a fecha una cadena año-mes-día + hora</span></code></pre></div>
 <pre><code>## [1] "2017-11-28 14:02:00 UTC"</code></pre>
-<div class="sourceCode" id="cb258"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/ymd_hms.html">ydm_hms</a></span><span class="op">(</span><span class="st">"2017-22-12 10:00:00"</span><span class="op">)</span> <span class="co"># convertir a fecha una cadena año-día-mes + hora</span></code></pre></div>
 <pre><code>## [1] "2017-12-22 10:00:00 UTC"</code></pre>
-<div class="sourceCode" id="cb260"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/ymd_hms.html">dmy_hms</a></span><span class="op">(</span><span class="st">"1 Jan 2017 23:59:59"</span><span class="op">)</span> <span class="co"># convertir a fecha una cadena textual de fecha + hora</span></code></pre></div>
 <pre><code>## [1] "2017-01-01 23:59:59 UTC"</code></pre>
-<div class="sourceCode" id="cb262"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb134"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/ymd.html">mdy</a></span><span class="op">(</span><span class="st">"July 4th, 2000"</span><span class="op">)</span> <span class="co"># convertir a fecha una cadena textual de fecha</span></code></pre></div>
 <pre><code>## [1] "2000-07-04"</code></pre>
-<div class="sourceCode" id="cb264"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb136"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/ymd.html">ymd</a></span><span class="op">(</span><span class="fl">20170131</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "2017-01-31"</code></pre>
 <p>Además el paquete nos proporciona <strong>herramientas para extraer la fecha y hora actuales</strong> con las funciones <code><a href="https://rdrr.io/pkg/lubridate/man/now.html">today()</a></code> y <code><a href="https://rdrr.io/pkg/lubridate/man/now.html">now()</a></code></p>
-<div class="sourceCode" id="cb266"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb138"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/now.html">today</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "2021-12-19"</code></pre>
-<div class="sourceCode" id="cb268"><pre class="downlit sourceCode r">
+<pre><code>## [1] "2021-12-20"</code></pre>
+<div class="sourceCode" id="cb140"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/now.html">now</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "2021-12-19 21:22:27 CET"</code></pre>
+<pre><code>## [1] "2021-12-20 09:16:53 CET"</code></pre>
 <p>También tenemos disponibles en dicho paquete funciones para extraer facilmente algunas variables temporales como el <strong>día de la semana, el mes o el cuatrimestre</strong>, con las funciones <code><a href="https://rdrr.io/pkg/lubridate/man/year.html">year()</a></code>, <code><a href="https://rdrr.io/r/base/weekday.POSIXt.html">months()</a></code>, <code><a href="https://rdrr.io/pkg/lubridate/man/day.html">day()</a></code> o <code><a href="https://rdrr.io/pkg/lubridate/man/day.html">wday()</a></code> (día de la semana).</p>
-<div class="sourceCode" id="cb270"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb142"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fecha</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/now.html">now</a></span><span class="op">(</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/year.html">year</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 2021</code></pre>
-<div class="sourceCode" id="cb272"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb144"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/month.html">month</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 12</code></pre>
-<div class="sourceCode" id="cb274"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb146"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/day.html">day</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 19</code></pre>
-<div class="sourceCode" id="cb276"><pre class="downlit sourceCode r">
+<pre><code>## [1] 20</code></pre>
+<div class="sourceCode" id="cb148"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/day.html">wday</a></span><span class="op">(</span><span class="va">fecha</span>, week_start <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="co"># Día de la semana (empezando por el lunes)</span></code></pre></div>
-<pre><code>## [1] 7</code></pre>
-<div class="sourceCode" id="cb278"><pre class="downlit sourceCode r">
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode" id="cb150"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/hour.html">hour</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 21</code></pre>
-<div class="sourceCode" id="cb280"><pre class="downlit sourceCode r">
+<pre><code>## [1] 9</code></pre>
+<div class="sourceCode" id="cb152"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/minute.html">minute</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 22</code></pre>
-<div class="sourceCode" id="cb282"><pre class="downlit sourceCode r">
+<pre><code>## [1] 16</code></pre>
+<div class="sourceCode" id="cb154"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/second.html">second</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 27.49749</code></pre>
-<div class="sourceCode" id="cb284"><pre class="downlit sourceCode r">
+<pre><code>## [1] 54.02898</code></pre>
+<div class="sourceCode" id="cb156"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/week.html">week</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span> <span class="co"># Número de semana (del año)</span></code></pre></div>
 <pre><code>## [1] 51</code></pre>
 <p>Al igual que podemos realizar operaciones aritméticas sencillas con las fechas, también podemos <strong>realizar comparaciones</strong>, por ejemplo, si el día actual es menor o mayor que otra fecha dada.</p>
-<div class="sourceCode" id="cb286"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb158"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fecha_actual</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/now.html">now</a></span><span class="op">(</span><span class="op">)</span>
 <span class="va">fecha_actual</span> <span class="op">&gt;</span> <span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/ymd.html">ymd</a></span><span class="op">(</span><span class="fl">20170131</span><span class="op">)</span> <span class="co"># Actual vs 2017-01-31</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb288"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb160"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fecha_actual</span> <span class="op">&gt;</span> <span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/ymd.html">ymd</a></span><span class="op">(</span><span class="fl">21000131</span><span class="op">)</span> <span class="co"># Actual vs 2100-01-31</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <p> </p>
 <p><strong><span style="color: #dc3545;">ERROR: sumar números a caracteres sin convertir tipos de datos</span></strong></p>
 <p>A veces la lectura de variables numéricas de nuestros archivos puede hacer que un número, por ejemplo <code>1</code>, sea leído como la cadena de texto <code>"1"</code>, con la que no podemos operar como un número. Las funciones <code><a href="https://rdrr.io/r/base/numeric.html">as.numeric()</a></code>, <code><a href="https://rdrr.io/r/base/character.html">as.character()</a></code> y <code><a href="https://rdrr.io/r/base/logical.html">as.logical()</a></code> nos permiten convertir una variable en tipo numérico, caracter o lógico, respectivamente.</p>
-<div class="sourceCode" id="cb290"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb162"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="st">"1"</span> <span class="op">+</span> <span class="fl">1</span></code></pre></div>
 <pre><code>## Error in "1" + 1: argumento no-numérico para operador binario</code></pre>
-<div class="sourceCode" id="cb292"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb164"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="st">"1"</span><span class="op">)</span> <span class="op">+</span> <span class="fl">1</span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
-<div class="sourceCode" id="cb294"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb166"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "1"</code></pre>
-<div class="sourceCode" id="cb296"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb168"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/logical.html">as.logical</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] FALSE  TRUE</code></pre>
+</div>
+<div id="consejos-2" class="section level2">
+<h2>
+<span class="header-section-number">3.6</span> Consejos<a class="anchor" aria-label="anchor" href="#consejos-2"><i class="fas fa-link"></i></a>
+</h2>
+<p><strong><span style="color: #20935E;">CONSEJOS</span></strong></p>
 <p> </p>
-<p><strong><span style="color: #20935E;">CONSEJO: optimizar nuestro código</span></strong></p>
-<p>Aunque parezca un tema menor, si tu código tarda 1 milisegundo más de lo que podría tardar de otra forma, si esa orden se repite muchas veces, ese milisegundo extra puede ser 5, 10 o 20 minutos más que tu código tardará en ejecutarse. Hay un paquete muy útil en <code>R</code> para medir tiempos de distintas órdenes que hacen lo mismo (el paquete <a href="https://github.com/joshuaulrich/microbenchmark/">microbenchmark</a>), vamos a instalarlo.</p>
-<div class="sourceCode" id="cb298"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"microbenchmark"</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/joshuaulrich/microbenchmark/">microbenchmark</a></span><span class="op">)</span></code></pre></div>
-<p>Este paquete contiene una orden para comparar el tiempo de dos órdenes: necesita como primeros argumentos las dos órdenes cuyos tiempos vamos a comparar, y un argumento <code>times</code> en el que le indicamos el número de veces que ejecutará cada orden para realizar los tiempos medios. Vamos a comparar los comandos de ordenación <code><a href="https://rdrr.io/r/base/order.html">order()</a></code> y <code><a href="https://rdrr.io/r/base/sort.html">sort()</a></code>.</p>
-<div class="sourceCode" id="cb299"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">1e3</span><span class="op">)</span> <span class="co"># 1000 elementos aleatorias de una normal N(0, 1)</span>
-<span class="fu"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html">microbenchmark</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="co"># primera forma</span>
-               <span class="va">x</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/order.html">order</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">]</span>, <span class="co"># segunda forma</span>
-               times <span class="op">=</span> <span class="fl">1e3</span><span class="op">)</span> <span class="co"># se repetirá 1000 veces</span></code></pre></div>
-<pre><code>## Unit: microseconds
-##         expr    min      lq     mean median      uq     max neval cld
-##      sort(x) 43.345 51.4390 60.55572 56.641 61.9945 186.241  1000   b
-##  x[order(x)] 29.789 36.5635 43.13420 39.410 43.7095 667.437  1000  a</code></pre>
-<p>Sí, estás viendo bien: aunque a priori parezca contraintuitivo, es más corto obtener los índices ordenados de un vector, y luego reordenarlo en base a esos índices, que la ordenación directa a través del comando <code><a href="https://rdrr.io/r/base/sort.html">sort()</a></code> (ya que usan algoritmos de ordenación distintos).</p>
+<p><strong><span style="color: #20935E;">Recuperar un comando y autocompletar</span></strong></p>
+<p>Si haces click con el ratón en la consola y pulsas la flecha «arriba» del teclado, te irá apareciendo todo el <strong>historial de órdenes ejecutadas</strong>. Es una manera de ahorrar tiempo para ejecutar órdenes similares a las ya ejecutadas. Si empiezas a escribir el nombre de una variable pero no te acuerdas exactamente de su nombre, pulsando <strong>tabulador</strong> te <strong>autocompletará</strong> solo.</p>
+<p> </p>
+<p><strong><span style="color: #20935E;">Expresiones regulares</span></strong></p>
+<p>Dentro del entorno de paquetes <a href="https://tidyverse.tidyverse.org">tidyverse</a>, el paquete <a href="http://stringr.tidyverse.org">stringr</a> permite un manejo más complejo de cadenas de texo (como el uso de expresiones regulares).</p>
+<div class="figure">
+<span style="display:block;" id="fig:stringr2"></span>
+<img src="img/stringr.png" alt="Paquete stringr para manejar cadenas de texto más complejas" width="615"><p class="caption">
+Imagen/gráfica 3.1: Paquete stringr para manejar cadenas de texto más complejas
+</p>
+</div>
 <p> </p>
 <div class="inline-table"><table class="table table-sm">
 <caption>
-<span id="tab:unnamed-chunk-96">Tabla 3.2: </span>Paquetes mencionados hasta ahora</caption>
+<span id="tab:unnamed-chunk-58">Tabla 3.1: </span>Paquetes mencionados hasta ahora</caption>
 <thead><tr class="header">
 <th align="left">paquetes</th>
 <th align="left">descripción</th>
@@ -847,97 +469,32 @@ Imagen/gráfica 3.1: Paquete stringr para manejar cadenas de texto más compleja
 <td align="left">{stringr}</td>
 <td align="left">manejo complejo de cadenas de texto</td>
 </tr>
-<tr class="odd">
-<td align="left">{lubridate}</td>
-<td align="left">manejo de fechas</td>
-</tr>
-<tr class="even">
-<td align="left">{microbenchmark}</td>
-<td align="left">comparativa de tiempos de ejecución</td>
-</tr>
 </tbody>
 </table></div>
 </div>
 <div id="ejercicios-1" class="section level2">
 <h2>
-<span class="header-section-number">3.11</span> 📝 Ejercicios<a class="anchor" aria-label="anchor" href="#ejercicios-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.7</span> 📝 Ejercicios<a class="anchor" aria-label="anchor" href="#ejercicios-1"><i class="fas fa-link"></i></a>
 </h2>
 <p>(haz click en las flechas para ver soluciones)</p>
-<details><p><summary>📝<strong>Ejercicio 1</strong>: define un vector que contenga los números 1, 10, -1 y 2, y guárdalo en una variable llamada <code>vector_num</code>. Tras definirlo, calcula su suma. </summary></p>
+<details><p><summary>📝<strong>Ejercicio 1</strong>: define un vector que contenga los números 1, 10, -1 y 2, y guárdalo en una variable llamada <code>vector_num</code>. </summary></p>
 <!-- toc -->
 <ul>
 <li>Solución:</li>
 </ul>
-<div class="sourceCode" id="cb301"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb170"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Vector de números</span>
 <span class="va">vector_num</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">10</span>, <span class="op">-</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>
-
-<span class="co"># Suma</span>
-<span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">vector_num</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 12</code></pre>
+<span class="va">vector_num</span></code></pre></div>
+<pre><code>## [1]  1 10 -1  2</code></pre>
 <!-- tocstop -->
 </details><p> </p>
-<details><p><summary>📝<strong>Ejercicio 2</strong>: calcula la versión ordenada del vector anterior <code>vector_num</code>. </summary></p>
+<details><p><summary>📝<strong>Ejercicio 2</strong>: crea un vector con las palabras “Hola”, “me”, “llamo” (y tu nombre y apellidos), y pega luego sus elementos de forma que la frase esté correctamente escrita en castellano. Tras hacerlo, añade “y tengo 30 años”. </summary></p>
 <!-- toc -->
 <ul>
 <li>Solución:</li>
 </ul>
-<div class="sourceCode" id="cb303"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Ordenamos el vector + 1 (con sort)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="va">vector_num</span> <span class="op">+</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1]  0  2  3 11</code></pre>
-<div class="sourceCode" id="cb305"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Ordenamos el vector + 1 (con order)</span>
-<span class="va">vector_num2</span> <span class="op">&lt;-</span> <span class="va">vector_num</span> <span class="op">+</span> <span class="fl">1</span>
-<span class="va">vector_num2</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/order.html">order</a></span><span class="op">(</span><span class="va">vector_num2</span><span class="op">)</span><span class="op">]</span></code></pre></div>
-<pre><code>## [1]  0  2  3 11</code></pre>
-<!-- tocstop -->
-</details><p> </p>
-<details><p><summary>📝<strong>Ejercicio 3</strong>: encuentra del vector <code>vector_num</code> original el lugar (el índice) que ocupa su mínimo y su máximo. </summary></p>
-<!-- toc -->
-<ul>
-<li>Solución:</li>
-</ul>
-<div class="sourceCode" id="cb307"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">vector_num</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">10</span>, <span class="op">-</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>
-
-<span class="co"># Encontrando el lugar que ocupa el máximo y mínimo</span>
-<span class="fu"><a href="https://rdrr.io/r/base/which.min.html">which.max</a></span><span class="op">(</span><span class="va">vector_num</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 2</code></pre>
-<div class="sourceCode" id="cb309"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/which.min.html">which.min</a></span><span class="op">(</span><span class="va">vector_num</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 3</code></pre>
-<div class="sourceCode" id="cb311"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Vector lógico: mayores que 1 y menores que 7</span>
-<span class="va">vector_num</span> <span class="op">&gt;</span> <span class="fl">1</span> <span class="op">&amp;</span> <span class="va">vector_num</span> <span class="op">&lt;</span> <span class="fl">7</span></code></pre></div>
-<pre><code>## [1] FALSE FALSE FALSE  TRUE</code></pre>
-<div class="sourceCode" id="cb313"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># ¿Son todos positivos?</span>
-<span class="fu"><a href="https://rdrr.io/r/base/all.html">all</a></span><span class="op">(</span><span class="va">vector_num</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] FALSE</code></pre>
-<!-- tocstop -->
-</details><p> </p>
-<details><p><summary>📝<strong>Ejercicio 4</strong>: encuentra del vector <code>vector_num</code> los elementos mayores que 1 y menores que 7. Encuentra una forma de averiguar si todos los elementos son o no positivos. </summary></p>
-<!-- toc -->
-<ul>
-<li>Solución:</li>
-</ul>
-<div class="sourceCode" id="cb315"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Vector lógico: mayores que 1 y menores que 7</span>
-<span class="va">vector_num</span> <span class="op">&gt;</span> <span class="fl">1</span> <span class="op">&amp;</span> <span class="va">vector_num</span> <span class="op">&lt;</span> <span class="fl">7</span></code></pre></div>
-<pre><code>## [1] FALSE FALSE FALSE  TRUE</code></pre>
-<div class="sourceCode" id="cb317"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># ¿Son todos positivos?</span>
-<span class="fu"><a href="https://rdrr.io/r/base/all.html">all</a></span><span class="op">(</span><span class="va">vector_num</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] FALSE</code></pre>
-<!-- tocstop -->
-</details><p> </p>
-<details><p><summary>📝<strong>Ejercicio 5</strong>: crea un vector con las palabras “Hola”, “me”, “llamo” (y tu nombre y apellidos), y pega luego sus elementos de forma que la frase esté correctamente escrita en castellano. Tras hacerlo, añade “y tengo 30 años”. </summary></p>
-<!-- toc -->
-<ul>
-<li>Solución:</li>
-</ul>
-<div class="sourceCode" id="cb319"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb172"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Definiendo el vector</span>
 <span class="va">vector_char</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Hola"</span>, <span class="st">"me"</span>, <span class="st">"llamo"</span>, <span class="st">"Javier"</span>,
                  <span class="st">"Álvarez"</span>, <span class="st">"Liébana"</span><span class="op">)</span>
@@ -945,62 +502,48 @@ Imagen/gráfica 3.1: Paquete stringr para manejar cadenas de texto más compleja
 <span class="co"># Pegamos</span>
 <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">vector_char</span>, collapse <span class="op">=</span> <span class="st">" "</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "Hola me llamo Javier Álvarez Liébana"</code></pre>
-<div class="sourceCode" id="cb321"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb174"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Añadimos frase</span>
 <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">vector_char</span>, collapse <span class="op">=</span> <span class="st">" "</span><span class="op">)</span>, <span class="st">" y tengo 30 años."</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "Hola me llamo Javier Álvarez Liébana y tengo 30 años."</code></pre>
 <!-- tocstop -->
 </details><p> </p>
-<details><p><summary>📝<strong>Ejercicio 6</strong>: obten la fecha de hoy, define la fecha de tu cumpleaños, y calcula la diferencia de días</summary></p>
+<details><p><summary>📝<strong>Ejercicio 3</strong>: obten la fecha de hoy, define la fecha de tu cumpleaños, y calcula la diferencia de días</summary></p>
 <!-- toc -->
 <ul>
 <li>Solución:</li>
 </ul>
-<div class="sourceCode" id="cb323"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb176"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Hoy</span>
 <span class="va">hoy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span><span class="op">(</span><span class="op">)</span>
 
-<span class="co"># Cumple (diferentes formatos)</span>
-<span class="va">cumple</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"1989-09-10"</span><span class="op">)</span>
+<span class="co"># Cumple (diferentes formatos de entrada)</span>
+<span class="va">cumple</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"1989-09-10"</span><span class="op">)</span> <span class="co"># por defecto</span>
 <span class="va">cumple</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"10-09-1989"</span>, <span class="st">"%d-%m-%Y"</span><span class="op">)</span>
 
 <span class="co"># Diferencia</span>
 <span class="va">hoy</span> <span class="op">-</span> <span class="va">cumple</span></code></pre></div>
-<pre><code>## Time difference of 11788 days</code></pre>
+<pre><code>## Time difference of 11789 days</code></pre>
 <!-- tocstop -->
 </details>
 </div>
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="primeros-pasos.html"><span class="header-section-number">2</span> Primeros pasos</a></div>
-<div class="next"><a href="proyecto.html"><span class="header-section-number">4</span> Flujo de trabajo: primer proyecto</a></div>
+<div class="next"><a href="operacionesvectores.html"><span class="header-section-number">4</span> Operaciones con vectores</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#vectores"><span class="header-section-number">3</span> Tipos de datos I: vectores</a></li>
 <li><a class="nav-link" href="#vectores-num%C3%A9ricos"><span class="header-section-number">3.1</span> Vectores numéricos</a></li>
 <li><a class="nav-link" href="#secuencias-num%C3%A9ricas-con-un-patr%C3%B3n"><span class="header-section-number">3.2</span> Secuencias numéricas con un patrón</a></li>
-<li><a class="nav-link" href="#operaciones-aritm%C3%A9ticas-con-vectores-num%C3%A9ricos"><span class="header-section-number">3.3</span> Operaciones aritméticas con vectores numéricos</a></li>
-<li><a class="nav-link" href="#operaciones-estad%C3%ADsticas-con-vectores-num%C3%A9ricos"><span class="header-section-number">3.4</span> Operaciones estadísticas con vectores numéricos</a></li>
 <li>
-<a class="nav-link" href="#vectores-de-caracteres-texto"><span class="header-section-number">3.5</span> Vectores de caracteres (texto)</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#paquete-glue"><span class="header-section-number">3.5.1</span> Paquete glue</a></li></ul>
+<a class="nav-link" href="#vectores-de-caracteres-texto"><span class="header-section-number">3.3</span> Vectores de caracteres (texto)</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#paquete-glue"><span class="header-section-number">3.3.1</span> Paquete glue</a></li></ul>
 </li>
-<li><a class="nav-link" href="#vectores-l%C3%B3gicos-truefalse"><span class="header-section-number">3.6</span> Vectores lógicos (TRUE/FALSE)</a></li>
-<li>
-<a class="nav-link" href="#ausentes"><span class="header-section-number">3.7</span> Datos ausentes: NA y NaN</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#na-not-available"><span class="header-section-number">3.7.1</span> NA: not available</a></li>
-<li><a class="nav-link" href="#nan-not-a-number"><span class="header-section-number">3.7.2</span> NaN: not a number</a></li>
-</ul>
-</li>
-<li>
-<a class="nav-link" href="#seleccionar-elementos-de-un-vector"><span class="header-section-number">3.8</span> Seleccionar elementos de un vector</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#which"><span class="header-section-number">3.8.1</span> which</a></li>
-<li><a class="nav-link" href="#null"><span class="header-section-number">3.8.2</span> NULL</a></li>
-</ul>
-</li>
-<li><a class="nav-link" href="#ordenar-vectores"><span class="header-section-number">3.9</span> Ordenar vectores</a></li>
-<li><a class="nav-link" href="#fechas"><span class="header-section-number">3.10</span> Fechas</a></li>
-<li><a class="nav-link" href="#ejercicios-1"><span class="header-section-number">3.11</span> 📝 Ejercicios</a></li>
+<li><a class="nav-link" href="#vectores-l%C3%B3gicos-truefalse"><span class="header-section-number">3.4</span> Vectores lógicos (TRUE/FALSE)</a></li>
+<li><a class="nav-link" href="#fechas"><span class="header-section-number">3.5</span> Fechas</a></li>
+<li><a class="nav-link" href="#consejos-2"><span class="header-section-number">3.6</span> Consejos</a></li>
+<li><a class="nav-link" href="#ejercicios-1"><span class="header-section-number">3.7</span> 📝 Ejercicios</a></li>
 </ul>
 
       <div class="book-extra">
@@ -1018,7 +561,7 @@ Imagen/gráfica 3.1: Paquete stringr para manejar cadenas de texto más compleja
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 19-12-2021.</p>
+    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 20-12-2021.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

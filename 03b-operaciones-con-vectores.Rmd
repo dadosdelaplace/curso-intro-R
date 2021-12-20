@@ -1,0 +1,569 @@
+```{r echo = FALSE}
+library(knitr)
+
+# Color text
+colorize <- function(x, color) {
+  
+  if (knitr::is_latex_output()) {
+    
+    sprintf("\\textcolor{%s}{%s}", color, x)
+    
+  } else if (knitr::is_html_output()) {
+    
+    sprintf("<span style='color: %s;'>%s</span>", color, x)
+    
+  } else { x }
+}
+```
+
+# Operaciones con vectores {#operacionesvectores}
+
+## Operaciones aritméticas con vectores numéricos
+
+Hemos dicho que un número es un vector de longitud 1, así que **toda operación aritmética** que podamos hacer con un número la vamos a poder a hacer con un vector de números, de forma que si hacemos por ejemplo la operación `2 * z`, lo que sucederá es que **CADA ELEMENTO del vector** será multiplicado por 2.
+
+
+```{r}
+# Multiplicamos por 2 a CADA ELEMENTO del vector
+z <- c(2, 4, 6)
+2 * z
+```
+
+
+```{r}
+# Sumamos 3 a CADA ELEMENTO DEL VECTOR
+z + 3
+```
+
+De la misma manera se pueden definir sumas `z + x`, raíces cuadradas `sqrt(z)` o elevar **cada elemento** al cuadrado `z^2`.
+
+
+```{r}
+# Hacemos la raíz cuadrada de CADA ELEMENTO DEL VECTOR
+sqrt(z)
+```
+
+```{r}
+# Elevamos al cuadrado CADA ELEMENTO DEL VECTOR
+z^2
+```
+
+&nbsp;
+
+
+Esto último es bastante importante que no se te olvide ya que en otros lenguajes no siempre es así. En `R`, salvo que especifiquemos lo contrario, **`r colorize("toda operación ARITMÉTICA que hagas a un vector será elemento a elemento", "#20935E")`**:  si multiplicas dos matrices, la operación la realizará elemento a elemento, no como una multiplicación matricial.
+
+&nbsp;
+
+Dado que la operación (por ejemplo, una suma) se realiza elemento a elemento, **¿qué sucederá si sumamos dos vectores de distinta longitud?** Prueba a definir un vector con los 4 primeros impares, e intentar hacer la suma `z + y` (un vector de longitud 3 más un vector de longitud 4).
+
+```{r}
+y <- c(1, 3, 5, 7)
+z + y
+```
+
+`R` intenta molestarte lo menos posible, así que lo que hace es **`r colorize("reciclar", "#ffc107")`**: si tiene un vector de 4 elementos y le intentas sumar uno de 3 elementos, lo que hará será **reciclar** elementos del vector con menor longitud: hará `1+2`, `3+4`, `5+6` pero... `7+2` (vuelve al primero).   
+
+&nbsp;
+
+Como hemos comentado anteriormente, los valores lógicos `TRUE/FALSE` son guardados internamente como `0/1` por lo que podemos usar **operaciones aritméticas con ellos**. Por ejemplo, si queremos averiguar el número de elementos de un vector que cumplen una condición lógica `< 2`, los que lo hagan tendrán asignado un `1` y los que no un `0`, por lo que basta con sumar el vector lógico para obtener el número de elementos bajo dicha condición.
+
+```{r}
+sum(x < 2) # sumamos el vector de TRUE/FALSE --> número de TRUE
+```
+
+
+## Operaciones estadísticas con vectores numéricos
+
+Al igual que podemos ejecutar operaciones aritméticas, podemos realizar también **operaciones estadísticas** con los vectores, como calcular su suma (`sum()`), su media (`mean()`), su mediana (`median()`), su suma acumulada (`cumsum()` cada elemento lo acumula al anterior) o percentiles (`quantiles()`).
+
+
+```{r}
+sum(y) # suma
+```
+
+```{r}
+mean(y) # media
+```
+
+
+```{r}
+median(y) # mediana
+```
+
+
+```{r}
+cumsum(y) # suma acumulada
+```
+
+```{r}
+y <- c(1, 2, 5, 5, 8, 9, 10, 10, 10, 11, 13, 15, 20, 23, 24, 29)
+quantile(y) # Percentiles por defecto: cuartiles (0%-25%-50%-75%-100%)
+```
+
+&nbsp;
+
+**`r colorize("WARNING:", "#ffc107")`**
+
+En `R` algunas **funciones tienen argumentos por defecto**, argumentos que no necesitan ser asignados un valor a priori. En el ejemplo de calcular los percentiles con `quantile()`, hay un argumento por defecto (con un valor ya asignado sino se especifica lo contrario) que es `probs = c(0, 0.25, 0.5, 0.75, 1)`. Pero dicho argumento por defecto puede ser cambiado, por ejemplo, para sacar los percentiles 15%-30%-70%-90%.
+
+```{r}
+y <- c(1, 2, 5, 5, 8, 9, 10, 10, 10, 11, 13, 15, 20, 23, 24, 29)
+quantile(y, probs = c(0.15, 0.3, 0.7, 0.9)) # Percentiles p15, p30, p70 y p90
+```
+
+&nbsp;
+
+**`r colorize("CONSEJO", "#20935E")`**
+
+Como has podido comprobar, este otro tipo de **`r colorize("operaciones ESTADÍSTICAS no se realizan elemento a elemento", "#20935E")`**: la media o la suma las realiza tomando todos los elementos del vector.
+
+&nbsp;
+
+
+**`r colorize("GLOSARIO:", "#4197D2")`**
+
+* **`r colorize("Media", "#4197D2")`**: medida de centralización que consiste en sumar todos los elementos y dividirlos entre la cantidad de elementos sumados. A pesar de ser la más conocida, la media es **muy poco robusta**: dado un conjunto, si se introducen **valores atípicos o outliers** (valores muy grandes o muy pequeños), la media se perturbar con mucha facilidad. Dado un vector de valores $x = (x_1, \ldots, x_n)$, se denota como $\overline{x}$.
+
+$$\overline{x} = \frac{\displaystyle \sum_{i=1}^{n}x_i}{n}$$
+
+* **`r colorize("Mediana", "#4197D2")`**: medida de centralización que consiste en, tras ordenar los datos de menor a mayor, quedarnos con el valor que ocupa el medio (deja tantos números por debajo como por encima). Más robusta que la media aunque menos la moda. Dado un vector de valores $x = (x_1, \ldots, x_n)$, se denota como $Me_x$.
+
+$$Me_x = \displaystyle \arg \min_{x_i} \left\lbrace F_i > 0.5 \right\rbrace, \quad F_i = \frac{\#\left\lbrace x_j \leq x_i \right\rbrace}{n}$$
+
+* **`r colorize("Moda", "#4197D2")`**: medida de centralización que consiste en encontrar el valor más repetido (el valor _trending_). Es la medida de centralización más robusta. Dado un vector de valores $x = (x_1, \ldots, x_n)$, se denota como $Mo_x$.
+
+
+$$Mo_x = \displaystyle \arg \max_{x_i} f_i  , \quad f_i = \frac{\#\left\lbrace x_j = x_i \right\rbrace}{n}$$
+
+&nbsp;
+
+
+## Datos ausentes: NA y NaN {#ausentes}
+
+La vida no siempre es perfecta así que en muchas ocasiones nos encontraremos con lo que llamamos en estadística un **dato ausente o _missing value_**, un **valor que no tenemos en nuestra variable**, y un ejemplo práctico lo tenemos con los datos de vacunación de covid del Ministerio de Sanidad que hemos tenido en 2020-2021. Cada día se publicaba un PDF (ya...mal) con los datos de vacunación PERO...no se publican datos los fines de semana: en dichas fechas hay datos que no tenemos, y en `R` se representan por `NA` (significa _not available_).
+
+### NA: not available
+
+Vamos a crear un vector de números con datos ausentes con la orden `x <- c(1, NA, 3, NA, NA, 5, 6)`: el vector tendrá longitud 7 pero en el segundo, cuarto y quinto elemento tendremos un dato faltante, un lugar que no tenemos relleno (pero que no eliminamos).
+
+```{r}
+x <- c(1, NA, 3, NA, NA, 5, 6) # Vector numérico con datos faltante
+length(x) # longitud del vector
+x
+``` 
+
+
+**¿Puedes aventurar que sucede cuando multiplicamos ese vector por 2 por ejemplo?**
+
+```{r}
+2 * x # operación aritmética con un vector con NA
+``` 
+&nbsp;
+
+**`r colorize("WARNING:", "#ffc107")`**
+
+Un dato que no tenemos, multiplicado por 2, sigue siendo un dato ausente. Es muy importante para evitar resultados erróneos que entendamos que un **dato ausente no computa en una operación aritmética, es un hueco vacío**. Si hacemos la suma del vector, estamos sumando números más datos ausentes, por lo que el resultado final será también un dato ausente. Si tenemos algún dato ausente en nuestro vector, la suma final está a su vez ausente, ¡no podemos saber cuánto vale!
+
+
+```{r}
+sum(x) # suma de un vector que contiene NA
+``` 
+
+&nbsp;
+
+Para evitar que un dato ausente en nuestros datos nos impida hacer ciertas operaciones, en muchas funciones de `R` podemos añadir el argumento `na.rm = TRUE`: **primero elimina los datos ausentes**, y luego ejecuta la función.
+
+```{r}
+sum(x, na.rm = TRUE) # eliminando datos ausentes
+``` 
+
+Una manera de **localizar que elementos están ausentes** en nuestras variables es con la función `is.na()`, una función que nos devuelve un vector de valores lógico: `TRUE` si el elemento está ausente y `FALSE` si no lo está.
+
+```{r}
+is.na(x) # TRUE si está ausente (NA), FALSE si no lo está.
+``` 
+
+Dichos **datos ausentes se pueden eliminar** (sin necesidad de sumarlos) con la función `na.omit()` (aunque a veces lo que nos interesa es que no sea ausente, introduciendo el punto medio entre su valor anterior y su valor posterior, por ejemplo).
+
+```{r}
+na.omit(x)
+``` 
+
+### NaN: not a number
+
+Hay un **tipo de dato muy particular, como resultado de operaciones no permitidas o cuyo resultado es indeterminado**, que en `R` lo veremos como `NaN`: _not a number_, un resultado fruto de una indeterminación, como por ejemplo la operación `0/0` (cuyo límite no está definido). Importante saber que también existe una forma de denotar al infinito como `Inf`, siendo el resultado de algunas operaciones como `1/0`.
+
+```{r}
+1/0
+0/0
+``` 
+
+De la misma manera que podemos localizar valores `NA`, tenemos a nuestra disposición las funciones `is.infinte()` y `is.nan()` para detectar que elementos de nuestro vector son `Inf` o `NaN`, respectivamente.
+
+```{r}
+x <- c(1, NA, 3, 4, Inf, 6, 7, Inf, NaN, NA)
+is.na(x)
+is.nan(x)
+is.infinite(x)
+``` 
+
+
+## Seleccionar elementos de un vector
+
+Ya sabemos definir variables que sean vectores (recuerda: colección de valores del mismo tipo). ¿Y si del **vector original queremos EXTRAER UN SUBCONJUNTO del mismo**, por ejemplo, los primeros 10 elementos?
+
+`R` tiene varias formas de hacer esto pero la más sencilla es entendiendo que si yo quiero **acceder al elemento i** de un vector, deberé usar el **operador de selección `[i]`**. Veamos un ejemplo
+
+```{r}
+x <- 1:100 # Vector de longitud 100 (del 1 al 100)
+y <- x[37] # Solo me interesa el elemento que ocupa el lugar 37
+y
+```
+
+Dado que hemos visto que un número no es más que un vector de longitud uno, esta operación también la podemos aplicar usando un vector de índices a seleccionar, de forma que le podemos indicar simultaneamente que valores que queremos
+
+```{r}
+x[c(1, 4, 51, 77)] # Solo queremos acceder a los elementos en la posición 1, 4, 51, y 77
+y <- c("hola", "qué", "tal", "todo", "ok", "?")
+y[1:2] # Solo queremos acceder a los elementos en la posición 1 y 2
+c(1:2, length(y))
+y[c(1:2, length(y))] # Solo accedemos a los elementos en la posición 1, 2 y además el que ocupa la última posición (recuerda: length(y) nos da la longitud total del vector)
+```
+
+Otras veces no querremos seleccionar un elemento en concreto sino **filtrar algunos elementos en concreto y no extraerlos**, para lo cual deberemos repetir la misma operación pero con el signo `-` delante: el operador `[-i]` no selecciona el elemento i-ésimo del vector sino que lo elimina en nuestro filtro.
+
+```{r}
+y
+z <- y[-2] # Nos muestra todo y salvo el elemento que ocupa la segunda posición
+z
+```
+
+&nbsp;
+
+Sin embargo, **lo habitual es que dicho filtro lo hagamos en base a una condición lógica**. Supongamos que `x <- c(7, 20, 18, 3, 19, 9, 13, 3, 45)` y `y <- c(17, 21, 58, 33, 15, 59, 13, 1, 45)` son las edades de dos grupos de personas y que queremos quedarnos solo con los mayores edad. ¿Tenemos que andar averiguando en que posición se encuentran para luego seleccionarlos? No, vamos a **seleccionar los elementos que cumplen una condición dada**.
+
+```{r}
+x <- c(7, 20, 18, 3, 19, 9, 13, 3, 45)
+y <- c(17, 21, 58, 33, 15, 59, 13, 1, 45)
+x[x >= 18] # mayores de 18 años del conjunto x
+y[x >= 18] # mayores de 18 años del conjunto y
+```
+
+Lo que hemos hecho ha sido pasarlo como índices un vector lógico `TRUE/FALSE`, de forma que solo filtrará los que tengan un `TRUE` asignado, aquellos que cumplen la condición lógica introducida. Esto también nos puede servir para limpiar de datos ausentes, combinando la función `is.na()`, que nos localiza el lugar que ocupan los ausentes, con el operador `!`, que lo que hace es negar lo que venga detrás. También podemos probar a **combinar condiciones lógicas para nuestra selección**.
+
+```{r}
+x <- c(7, NA, 20, 3, 19, 21, 25, 80, NA)
+x[x >= 18] # mayores de 18 años del conjunto x
+x[is.na(x)] # solo valores ausentes
+x[!is.na(x)] # sin valores ausentes: ! es el símbolo de la negación
+!(x >= 18) # niega los mayores de 18 años, todo lo que no cumpla esa condición
+x[x >= 18 & x <= 25] # los valores que cumplen ambas (&): entre 18 y 25 años
+```
+
+Como ves si un valor es `NA`, la evaluación de una condición lógica sobre él (mayor o menor de 18 años) nos seguirá devolviendo `NA`. Por último, `R` nos permite **dar significado léxico** a nuestros valores (significan algo, no solo números), pudiendo poner nombres a los elementos de un vector, permitiendo su selección por dichos nombres.
+
+```{r}
+x <- c("edad" = 31, "tlf" = 613910687, "cp" = 33007) # cada número tiene un significado distinto
+x
+x[c("edad", "cp")] # seleccionamos los elementos que tienen ese nombre asignado
+```
+
+Con la función `names()` además podemos, no solo consultar los nombres de una variable, sino cambiarlos a nuestro gusto.
+
+```{r}
+names(x) # Consultamos nombres
+names(x) <- c("años", "móvil", "dirección") # Cambiamos nombres
+names(x) # Consultamos nuevos nombres
+x
+```
+
+&nbsp;
+
+**`r colorize("CONSEJO: all, any", "#20935E")`**
+ 
+Existen dos funciones muy útiles en `R` para saber si **TODOS** o **ALGUNO** de los elementos de un vector cumple una condición. Las funciones `all()` y `any()` nos devolverá un único valor lógico. Estas funciones son muy útiles al final de los códigos para comprobar que las condiciones que tienen que verificar los datos se cumplen, y asegurarnos que el proceso se ha ejecutado correctamente (por ejemplo, que todos los datos sean positivos o no haya datos ausentes).
+
+```{r}
+x <- c(1, 2, 3, 4, 5, NA, 7)
+all(x < 3)
+any(x < 3)
+all(x > 0)
+all(na.omit(x) > 0)
+all(is.na(x))
+any(is.na(x))
+```
+
+&nbsp;
+
+
+### which
+
+Hemos visto como seleccionar elementos de un vector que cumplen una condición, para a veces no queremos el elemento en sí, sino el lugar que ocupa: **¿qué valores de un vector cumplen una condición lógica, qué lugar ocupan?** Para obtener dicho índice tenemos a nuestro disposición la función `which()`, que no nos devuelve el elemento en sí sino su lugar.
+
+```{r}
+x <- c(7, NA, 20, 3, 19, 21, 25, 80, NA)
+x[x >= 18] # Accedemos a los elementos que cumplen la condición
+which(x >= 18) # Obtenemos los lugares que ocupan los elementos que cumplen la condición
+
+```
+
+Esta función es muy útil especialmente cuando queremos **averiguar el valor que ocupa el máximo/mínimo** de una colección de valores, con las funciones `which.max()` y `which.min()`.
+
+```{r}
+max(x, na.rm = TRUE) # máximo de x (si no eliminamos NA, nos devolverá NA)
+min(x, na.rm = TRUE) # mínimo de x (si no eliminamos NA, nos devolverá NA)
+which.max(x) # Lugar que ocupa el máximo
+x[which.max(x)]
+which.min(x) # Lugar que ocupa el mínimo
+x[which.min(x)]
+```
+
+### NULL
+
+A veces veremos que además de `NA` y `NaN`, `R` nos muestra un dato llamado `NULL`. Cuando tenemos `NA` en alguna variable, el registro existe, pero no está relleno. Sin embargo, cuando tenemos un `NULL` significa que ese registro ni siquiera existe: no es un dato guardado pero cuyo valor desconocemos, es un dato que ni siquiera existe (por ejemplo, si guardamos datos de 7 personas, el dato de la octava persona no es `NA`, es que no hay octava persona directamente).
+
+```{r}
+x <- c(1, NA, 3, NA, NA, 5, 6)
+x[2] # NA: el registro existe pero sin dato
+names(x) # No hemos definido el nombre de las variables, así que devuelve NULL
+```
+
+
+
+## Ordenar vectores
+
+Una acción habitual al trabajar con datos es **saber ordenarlos**: de menor a mayor edad, datos más recientes vs antiguos, etc. Para ello tenemos la función `sort()`, que podemos usar directamente para **ordenar de menor a mayor**, o con el argumento `decreasing = TRUE`, para **ordenar de mayor a menor**.
+
+```{r}
+x <- c(1, -3, 0, 10, 5, 2, 7, -13)
+sort(x) # orden de menor a mayor
+sort(x, decreasing = FALSE) # orden de mayor a menor
+```
+
+
+Otra forma de ordenar un vector es que `R` nos **devuelva los índices de los elementos ordenados**, y luego usar dichos índices para reorganizar los elementos, con la función `order()`.
+```{r}
+order(x) # el elemento más pequeño es el octavo, luego el segundo, luego el tercero, luego el primero, luego el sexto, etc.
+x[order(x)] # accedemos a los índices ordenados, equivalente al sort(x)
+```
+
+&nbsp;
+
+**`r colorize("CONSEJO: argumentos por defecto", "#20935E")`**
+
+La función `sort()` es un buen ejemplo de que las **funciones traen definidos argumentos por defecto** (aunque no los veamos a priori). La orden `sort(x)` en realidad está ejecutando `sort(x, decreasing = TRUE)`, pero como es su valor por defecto, nos podemos ahorrar incluirlo. Escribe `? help sort()` en la consola y verás como en la cabecera de la función ya hay preasignado un `decreasing = TRUE`.
+
+
+
+
+
+## Consejos
+
+
+**`r colorize("CONSEJOS", "#20935E")`**
+
+&nbsp;
+
+
+**`r colorize("Diferencia de conjuntos", "#20935E")`**
+
+Una función muy útil para ver las **diferencias entre dos conjuntos** es `setdiff()`, una función que nos devuelve los elementos distintos entre dos conjuntos.
+
+```{r}
+y <- 1:10
+z <- c(1, 3, 7, 10)
+setdiff(y, z) # Elementos en y que no están en z 
+```
+
+&nbsp;
+
+**`r colorize("Optimiza tu código", "#20935E")`**
+
+Aunque parezca un tema menor, si tu código tarda 1 milisegundo más de lo que podría tardar de otra forma, si esa orden se repite muchas veces, ese milisegundo extra puede ser 5, 10 o 20 minutos más que tu código tardará en ejecutarse. Hay un paquete muy útil en `R` para medir tiempos de distintas órdenes que hacen lo mismo (el paquete `{microbenchmark}`), vamos a instalarlo.
+
+```{r eval = FALSE}
+install.packages("microbenchmark")
+library(microbenchmark)
+```
+
+
+```{r echo = FALSE}
+library(microbenchmark)
+```
+
+Este paquete contiene una orden para comparar el tiempo de dos órdenes: necesita como primeros argumentos las dos órdenes cuyos tiempos vamos a comparar, y un argumento `times` en el que le indicamos el número de veces que ejecutará cada orden para realizar los tiempos medios. Vamos a comparar los comandos de ordenación `order()` y `sort()`.
+
+```{r}
+x <- rnorm(1e3) # 1000 elementos aleatorias de una normal N(0, 1)
+microbenchmark(sort(x), # primera forma
+               x[order(x)], # segunda forma
+               times = 1e3) # se repetirá 1000 veces
+```
+
+Sí, estás viendo bien: aunque a priori parezca contraintuitivo, es más corto obtener los índices ordenados de un vector, y luego reordenarlo en base a esos índices, que la ordenación directa a través del comando `sort()` (ya que usan algoritmos de ordenación distintos).
+
+
+
+## 📝 Ejercicios
+
+(haz click en las flechas para ver soluciones)
+
+<details>
+  <summary>📝<strong>Ejercicio 1</strong>: calcula la suma del vector `vector_num` mencionado anteriormente (definido como un vector que contenga los números 1, 10, -1 y 2). </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Vector de números
+vector_num <- c(1, 10, -1, 2)
+
+# Suma
+sum(vector_num)
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 2</strong>: define otro vector `vector_num2` que contenga los números 5, -7, 8, -3, y haz la suma de `vector_num` y `vector_num2`. </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Vector de números
+vector_num2 <- c(5, -7, 8, -3)
+
+# Suma
+vector_num + vector_num2
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 3</strong>: calcula el número de elementos mayores que 0 del resultado de la suma de `vector_num` y `vector_num2`. </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Vector de números
+vector_suma <- vector_num + vector_num2
+
+# Suma
+sum(vector_suma > 0)
+```
+
+<!-- tocstop -->
+</details>
+
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 4</strong>: calcula la versión ordenada del vector anterior `vector_num`. </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Ordenamos el vector (con sort)
+sort(vector_num)
+
+# Ordenamos el vector  (con order)
+vector_num[order(vector_num)]
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+
+
+<details>
+  <summary>📝<strong>Ejercicio 5</strong>: encuentra del vector `vector_num` original el lugar (el índice) que ocupa su mínimo y su máximo. </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+vector_num <- c(1, 10, -1, 2)
+
+# Encontrando el lugar que ocupa el máximo y mínimo
+which.max(vector_num)
+which.min(vector_num)
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 6</strong>: encuentra del vector `vector_num` los elementos mayores que 1 y menores que 7. Encuentra una forma de averiguar si todos los elementos son o no positivos. </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Vector lógico: mayores que 1 y menores que 7
+vector_num > 1 & vector_num < 7
+
+# ¿Son todos positivos?
+all(vector_num > 0)
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 7</strong>: define el vector `c(-1, 0, 4, 5, -2)`, calcula la raíz cuadrada del vector y determina que lugares son ausente de tipo `NaN`. </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Vector
+x <- c(-1, 0, 4, 5, -2)
+
+# ¿Cuáles son ausentes tras aplicar la raíz cuadrada?
+is.nan(sqrt(x))
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 8</strong>: define el vector de los primeros números impares (hasta el 21) y extrae los elementos que ocupan los lugares 1, 4, 5, 8. Elimina del vector el segundo elemento</summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Vector de impares (de 1 a 21 saltando de dos en dos)
+x <- seq(1, 21, by = 2)
+
+# Seleccionamos elementos
+x[c(1, 4, 5, 8)]
+
+# Eliminamos elementos
+y <- x[-2]
+y
+```
+
+<!-- tocstop -->
+</details>
+
+

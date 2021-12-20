@@ -277,7 +277,7 @@ knitr::include_graphics("./img/consola_multiplicacion_2.jpg")
 
 
 <details>
-  <summary>📝<strong>Ejercicio 3</strong>: repite el ejercicio anterior pero ahora escribe el código en un script (fichero `.R`, guardado en [script1.R]()). Recuerda al acabar seleccionar las líneas a ejecutar y clickar `Run`, o bien guardar el script con `Source on save` activado (**haz click** en la flecha para la solución propuesta). </summary>
+  <summary>📝<strong>Ejercicio 3</strong>: repite el ejercicio anterior pero ahora escribe el código en un script (fichero `.R`, guardado en [script1.R](https://github.com/dadosdelaplace/intro-R/tree/main/scripts)). Recuerda al acabar seleccionar las líneas a ejecutar y clickar `Run`, o bien guardar el script con `Source on save` activado (**haz click** en la flecha para la solución propuesta). </summary>
   
 <!-- toc -->
 - Solución:

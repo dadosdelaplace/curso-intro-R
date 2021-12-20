@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Capítulo 4 Flujo de trabajo: primer proyecto | Aprendiendo R sin morir en el intento</title>
+<title>Capítulo 5 Flujo de trabajo: primer proyecto | Aprendiendo R sin morir en el intento</title>
 <meta name="author" content="Javier Álvarez Liébana">
 <meta name="description" content="CONSEJO: cambiar la notación exponencial Por defecto, R muestra los números en formato de notación exponencial. Por ejemplo, el número 1000000 nos lo mostrará por defecto como 1e+06. A veces...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
-<meta property="og:title" content="Capítulo 4 Flujo de trabajo: primer proyecto | Aprendiendo R sin morir en el intento">
+<meta property="og:title" content="Capítulo 5 Flujo de trabajo: primer proyecto | Aprendiendo R sin morir en el intento">
 <meta property="og:type" content="book">
 <meta property="og:image" content="/img/logo_R.png">
 <meta property="og:description" content="CONSEJO: cambiar la notación exponencial Por defecto, R muestra los números en formato de notación exponencial. Por ejemplo, el número 1000000 nos lo mostrará por defecto como 1e+06. A veces...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Capítulo 4 Flujo de trabajo: primer proyecto | Aprendiendo R sin morir en el intento">
+<meta name="twitter:title" content="Capítulo 5 Flujo de trabajo: primer proyecto | Aprendiendo R sin morir en el intento">
 <meta name="twitter:description" content="CONSEJO: cambiar la notación exponencial Por defecto, R muestra los números en formato de notación exponencial. Por ejemplo, el número 1000000 nos lo mostrará por defecto como 1e+06. A veces...">
 <meta name="twitter:image" content="/img/logo_R.png">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -54,22 +54,23 @@
 <li><a class="" href="primeros-pasos.html"><span class="header-section-number">2</span> Primeros pasos</a></li>
 <li class="book-part">Conceptos básicos</li>
 <li><a class="" href="vectores.html"><span class="header-section-number">3</span> Tipos de datos I: vectores</a></li>
-<li><a class="active" href="proyecto.html"><span class="header-section-number">4</span> Flujo de trabajo: primer proyecto</a></li>
-<li><a class="" href="control.html"><span class="header-section-number">5</span> Estructuras de control</a></li>
-<li><a class="" href="datos.html"><span class="header-section-number">6</span> Tipos de datos II: datos estructurados</a></li>
-<li><a class="" href="importar-exportar.html"><span class="header-section-number">7</span> Importando/exportando</a></li>
+<li><a class="" href="operacionesvectores.html"><span class="header-section-number">4</span> Operaciones con vectores</a></li>
+<li><a class="active" href="proyecto.html"><span class="header-section-number">5</span> Flujo de trabajo: primer proyecto</a></li>
+<li><a class="" href="control.html"><span class="header-section-number">6</span> Estructuras de control</a></li>
+<li><a class="" href="datos.html"><span class="header-section-number">7</span> Tipos de datos II: datos estructurados</a></li>
+<li><a class="" href="importar-exportar.html"><span class="header-section-number">8</span> Importando/exportando</a></li>
 <li class="book-part">Listas y funciones</li>
-<li><a class="" href="otros-datos.html"><span class="header-section-number">8</span> Listas y factores</a></li>
-<li><a class="" href="funciones.html"><span class="header-section-number">9</span> Creación de funciones</a></li>
+<li><a class="" href="otros-datos.html"><span class="header-section-number">9</span> Listas y factores</a></li>
+<li><a class="" href="funciones.html"><span class="header-section-number">10</span> Creación de funciones</a></li>
 <li class="book-part">Alto en el camino</li>
-<li><a class="" href="resumen-1.html"><span class="header-section-number">10</span> ¿Qué sabemos hacer?</a></li>
+<li><a class="" href="resumen-1.html"><span class="header-section-number">11</span> ¿Qué sabemos hacer?</a></li>
 <li class="book-part">EXPLORANDO: introducción al análisis exploratorio de datos</li>
-<li><a class="" href="tidydata.html"><span class="header-section-number">11</span> Tidy data: ordenando datos</a></li>
-<li><a class="" href="tidyverse.html"><span class="header-section-number">12</span> Explorando los datos: incursión a tidyverse</a></li>
-<li><a class="" href="resumenes.html"><span class="header-section-number">13</span> Resumiendo y relacionado los datos</a></li>
-<li><a class="" href="ggplot2.html"><span class="header-section-number">14</span> Visualizando datos: incursión a ggplot2</a></li>
+<li><a class="" href="tidydata.html"><span class="header-section-number">12</span> Tidy data: ordenando datos</a></li>
+<li><a class="" href="tidyverse.html"><span class="header-section-number">13</span> Explorando los datos: incursión a tidyverse</a></li>
+<li><a class="" href="resumenes.html"><span class="header-section-number">14</span> Resumiendo y relacionado los datos</a></li>
+<li><a class="" href="ggplot2.html"><span class="header-section-number">15</span> Visualizando datos: incursión a ggplot2</a></li>
 <li class="book-part">Epílogo</li>
-<li><a class="" href="contribuye.html"><span class="header-section-number">15</span> Contribuye al proyecto</a></li>
+<li><a class="" href="contribuye.html"><span class="header-section-number">16</span> Contribuye al proyecto</a></li>
 <li><a class="" href="bibliograf%C3%ADa.html">Bibliografía</a></li>
 </ul>
 
@@ -80,7 +81,7 @@
 </div>
   </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="proyecto" class="section level1">
 <h1>
-<span class="header-section-number">Capítulo 4</span> Flujo de trabajo: primer proyecto<a class="anchor" aria-label="anchor" href="#proyecto"><i class="fas fa-link"></i></a>
+<span class="header-section-number">Capítulo 5</span> Flujo de trabajo: primer proyecto<a class="anchor" aria-label="anchor" href="#proyecto"><i class="fas fa-link"></i></a>
 </h1>
 <p><strong><span style="color: #20935E;">CONSEJO: cambiar la notación exponencial</span></strong></p>
 <p>Por defecto, <code>R</code> muestra los números en formato de notación exponencial. Por ejemplo, el número <code>1000000</code> nos lo mostrará por defecto como <code>1e+06</code>. A veces podemos querer que se muestre con todas sus cifras (por ejemplo, en el título o leyenda de una gráfica): para anular la notación exponencial, escribe al inicio del código <code><a href="https://rdrr.io/r/base/options.html">options("scipen" = 10)</a></code>.</p>
@@ -92,13 +93,13 @@
 <p>Cuando se empieza a programar para un trabajo concreto de <code>R</code> es recomendable crearnos lo que se conoce como un <strong>proyecto de <code>R</code></strong>: en lugar de ir abriendo ventanas sueltas para programar (los scripts, los archivos con extensión <code>.R</code>), podemos <strong>agruparlos</strong> en distintos proyectos, de forma que podamos acceder a ellos de forma ordenada (algo así como crear carpetas en nuestro disco duro).</p>
 <div id="crear-proyecto" class="section level2">
 <h2>
-<span class="header-section-number">4.1</span> Crear proyecto<a class="anchor" aria-label="anchor" href="#crear-proyecto"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.1</span> Crear proyecto<a class="anchor" aria-label="anchor" href="#crear-proyecto"><i class="fas fa-link"></i></a>
 </h2>
-<p>Para crear nuestro proyecto deberemos de ir al menú superior <code>File &lt;&lt; New Project</code> (ver <a href="proyecto.html#fig:crear-proyecto1">4.1</a>)</p>
+<p>Para crear nuestro proyecto deberemos de ir al menú superior <code>File &lt;&lt; New Project</code> (ver <a href="proyecto.html#fig:crear-proyecto1">5.1</a>)</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:crear-proyecto1"></span>
 <img src="img/crear_proyecto1.jpg" alt="Crear un nuevo proyecto en R." width="50%"><p class="caption">
-Imagen/gráfica 4.1: Crear un nuevo proyecto en R.
+Imagen/gráfica 5.1: Crear un nuevo proyecto en R.
 </p>
 </div>
 <p>Se nos abrirá una ventana con 3 opciones:</p>
@@ -110,45 +111,45 @@ Imagen/gráfica 4.1: Crear un nuevo proyecto en R.
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:crear-proyecto2"></span>
 <img src="img/crear_proyecto2.jpg" alt="Opciones de creación." width="50%"><p class="caption">
-Imagen/gráfica 4.2: Opciones de creación.
+Imagen/gráfica 5.2: Opciones de creación.
 </p>
 </div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:crear-proyecto3"></span>
 <img src="img/crear_proyecto3.jpg" alt="Clickar en «New project»." width="50%"><p class="caption">
-Imagen/gráfica 4.3: Clickar en «New project».
+Imagen/gráfica 5.3: Clickar en «New project».
 </p>
 </div>
 <p>Deberemos elegir el <strong>directorio de nuestro ordenador</strong> donde queremos que se guarde (una carpeta que contendrá todos los códigos y datos de ese proyecto), así como el <strong>nombre del proyecto</strong> (que será a su vez el nombre de la subcarpeta que se os creará en el ordenador).</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:crear-proyecto4"></span>
 <img src="img/crear_proyecto4.jpg" alt="Nombre del proyecto." width="50%"><p class="caption">
-Imagen/gráfica 4.4: Nombre del proyecto.
+Imagen/gráfica 5.4: Nombre del proyecto.
 </p>
 </div>
 <p>Una vez que el proyecto está creado, abriremos nuestro primer <strong>script de <code>R</code></strong> (donde escribiremos el código), escribiremos una descripción del proyecto en la primera línea y guardaremos el archivo (archivo de extensión <code>.R</code>).</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:crear-proyecto5"></span>
 <img src="img/crear_proyecto5.jpg" alt="Abrir nuestro primer script de R." width="50%"><p class="caption">
-Imagen/gráfica 4.5: Abrir nuestro primer script de R.
+Imagen/gráfica 5.5: Abrir nuestro primer script de R.
 </p>
 </div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:crear-proyecto6"></span>
 <img src="img/crear_proyecto6.jpg" alt="Descripción al inicio del código." width="50%"><p class="caption">
-Imagen/gráfica 4.6: Descripción al inicio del código.
+Imagen/gráfica 5.6: Descripción al inicio del código.
 </p>
 </div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:crear-proyecto7"></span>
 <img src="img/crear_proyecto7.jpg" alt="Guardamos el código." width="50%"><p class="caption">
-Imagen/gráfica 4.7: Guardamos el código.
+Imagen/gráfica 5.7: Guardamos el código.
 </p>
 </div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:crear-proyecto8"></span>
 <img src="img/crear_proyecto8.jpg" alt="Guardamos el código." width="50%"><p class="caption">
-Imagen/gráfica 4.8: Guardamos el código.
+Imagen/gráfica 5.8: Guardamos el código.
 </p>
 </div>
 <p>Este será nuestro <strong>código principal</strong> (puedes ponerle el nombre que quieras, normalmente se le llama <code>main.R</code> para diferenciarlo del resto), desde el que iremos construyendo nuestro código e iremos llamando a otros archivos si es necesario. Recuerda que <strong>programar es como escribir</strong>: cuanto más limpio y estructurado, mejor se entenderá.</p>
@@ -157,23 +158,23 @@ Imagen/gráfica 4.8: Guardamos el código.
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:crear-proyecto9"></span>
 <img src="img/crear_proyecto9.jpg" alt="Saltar de proyecto en proyecto." width="50%"><p class="caption">
-Imagen/gráfica 4.9: Saltar de proyecto en proyecto.
+Imagen/gráfica 5.9: Saltar de proyecto en proyecto.
 </p>
 </div>
 </div>
 <div id="directorios-de-trabajo-y-cabecera" class="section level2">
 <h2>
-<span class="header-section-number">4.2</span> Directorios de trabajo y cabecera<a class="anchor" aria-label="anchor" href="#directorios-de-trabajo-y-cabecera"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.2</span> Directorios de trabajo y cabecera<a class="anchor" aria-label="anchor" href="#directorios-de-trabajo-y-cabecera"><i class="fas fa-link"></i></a>
 </h2>
-<p>Como luego veremos en la Sección <a href="datos.html#datos">6</a>, es altamente recomendable que <strong>todos los archivos (códigos, datos, imágenes, recursos, etc)</strong> los tengamos dentro de la misma carpeta del proyecto (aunque podamos crear subdirectorios), para que trabajar en el proyecto sea más sencillo e intuitivo. Vamos a crearnos dentro de la carpeta del proyecto, una subcarpeta que se llame <code>DATOS</code>, en donde <strong>debemos descargar todos los ficheros que hay en <a href="https://github.com/dadosdelaplace/cursoR_intro/tree/main/DATOS" class="uri">https://github.com/dadosdelaplace/cursoR_intro/tree/main/DATOS</a></strong>, y otra llamada <code>CODIGOS</code>, donde guardar nuestros archivos <code>.R</code> (por eso de ser ordenadicos.)</p>
+<p>Como luego veremos en la Sección <a href="datos.html#datos">7</a>, es altamente recomendable que <strong>todos los archivos (códigos, datos, imágenes, recursos, etc)</strong> los tengamos dentro de la misma carpeta del proyecto (aunque podamos crear subdirectorios), para que trabajar en el proyecto sea más sencillo e intuitivo. Vamos a crearnos dentro de la carpeta del proyecto, una subcarpeta que se llame <code>DATOS</code>, en donde <strong>debemos descargar todos los ficheros que hay en <a href="https://github.com/dadosdelaplace/cursoR_intro/tree/main/DATOS" class="uri">https://github.com/dadosdelaplace/cursoR_intro/tree/main/DATOS</a></strong>, y otra llamada <code>CODIGOS</code>, donde guardar nuestros archivos <code>.R</code> (por eso de ser ordenadicos.)</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:carpeta-codigos"></span>
 <img src="img/carpeta_codigos.jpg" alt="Subcarpeta «CODIGOS»." width="50%"><p class="caption">
-Imagen/gráfica 4.10: Subcarpeta «CODIGOS».
+Imagen/gráfica 5.10: Subcarpeta «CODIGOS».
 </p>
 </div>
 <p>En esa carpeta de códigos vamos a crear de prueba el código llamado <code>variables.R</code> donde vamos a <strong>definir algunas variables</strong> que luego usaremos en el código principal (suele suceder con variables que van a ser fijas como nombres, fechas o codificaciones de variables).</p>
-<div class="sourceCode" id="cb325"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb333"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Descripción: script de prueba con variables</span>
 
 <span class="co"># Variables</span>
@@ -187,82 +188,82 @@ Imagen/gráfica 4.10: Subcarpeta «CODIGOS».
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:carpeta-codigos2"></span>
 <img src="img/carpeta_codigos2.jpg" alt="Escribimos una serie de variables fijas para luego ser usadas." width="50%"><p class="caption">
-Imagen/gráfica 4.11: Escribimos una serie de variables fijas para luego ser usadas.
+Imagen/gráfica 5.11: Escribimos una serie de variables fijas para luego ser usadas.
 </p>
 </div>
 <p>No es obligatorio pero es <strong>altamente recomendable</strong> tener muy estructurado nuestros códigos, de forma que el archivo <code>.R</code> haga una <strong>tarea concreta y definida</strong> (uno carga archivos, otro preprocesa, otro hace un modelo, otro hace las gráficas), y sea el <strong>código principal el que haga una llamada limpia a todos ellos</strong>, para que en caso de error, la detección del mismo sea más sencilla.</p>
 <p>Así que eso haremos: desde nuestro archivo principal <code>main.R</code> llamaremos a ese archivo <code>variables.R</code>, para luego usar las variables definidas en él.</p>
 <p><strong>¿Cómo indicarle a <code>R</code> donde está nuestro fichero?</strong></p>
 <p>En <code>R</code>, como en todo lenguaje de programación, podemos consultar lo que el ordenador llama <em>directorio de trabajo</em>: la carpeta «base» desde donde está ejecutando tu código. Dicha ruta de directorio se puede consultar con la función <code><a href="https://rdrr.io/r/base/getwd.html">getwd()</a></code>, pudiendo ver los archivos y carpetas que hay dentro del mismo con el comando <code><a href="https://rdrr.io/r/base/list.files.html">dir()</a></code></p>
-<div class="sourceCode" id="cb326"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb334"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/getwd.html">getwd</a></span><span class="op">(</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/list.files.html">dir</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:getwd"></span>
 <img src="img/getwd.jpg" alt="Consultar directorio de trabajo predeterminado y archivos contenidos en él." width="50%"><p class="caption">
-Imagen/gráfica 4.12: Consultar directorio de trabajo predeterminado y archivos contenidos en él.
+Imagen/gráfica 5.12: Consultar directorio de trabajo predeterminado y archivos contenidos en él.
 </p>
 </div>
 <p>Lo ideal es empezar el código <strong>fijando como directorio de trabajo el directorio donde tengamos nuestro archivo principal</strong> <code>main.R</code> y para ello usaremos la función <code><a href="https://rdrr.io/r/base/getwd.html">setwd()</a></code>, cuyo argumento será la ruta donde queremos fijarlo. Para hacerlo de forma automática (y que el código pueda ser abierto por ti pero también por otros que no tengan tu misma estructura de carpetas), obtendremos de forma automática la ruta del archivo <code>main.R</code> o del proyecto con la orden <code>rstudioapi::getSourceEditorContext()$path</code>, y después usaremos <code><a href="https://rdrr.io/r/base/basename.html">dirname()</a></code> para quedarnos solo con la ruta de carpetas (eliminando el nombre del fichero al final). Esa será la ruta que le pasaremos a <code><a href="https://rdrr.io/r/base/getwd.html">setwd()</a></code>, quedando nuestro directorio de trabajo automáticamente fijado, sin preocuparnos de la ruta</p>
-<div class="sourceCode" id="cb327"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb335"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Fijamos directorio de trabajo automáticamente</span>
 <span class="fu"><a href="https://rdrr.io/r/base/getwd.html">setwd</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/basename.html">dirname</a></span><span class="op">(</span><span class="fu">rstudioapi</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rstudioapi/man/rstudio-editors.html">getSourceEditorContext</a></span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">path</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:setwd"></span>
 <img src="img/setwd.jpg" alt="Fijamos de forma automático el directorio de trabajo." width="50%"><p class="caption">
-Imagen/gráfica 4.13: Fijamos de forma automático el directorio de trabajo.
+Imagen/gráfica 5.13: Fijamos de forma automático el directorio de trabajo.
 </p>
 </div>
 <p>Una vez que hemos fijado nuestro directorio, para cargar código <code>.R</code>, basta que usemos la función <code><a href="https://rdrr.io/r/base/source.html">source()</a></code>, cuyo argumento será la ruta del archivo. Como tenemos de directorio base el directorio en el que tenemos nuestro archivo principal (<code>./</code>), bastará que empecemos a escribir <code><a href="https://rdrr.io/r/base/source.html">source("./")</a></code>, presionar el tabulador, y se nos abrirá el menú de archivos de nuestro directorio de trabajo, pudiendo ir seleccionando de forma sencilla la ruta de nuestro archivo.</p>
-<div class="sourceCode" id="cb328"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb336"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Cargamos fichero variable.R</span>
 <span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="st">"./CODIGOS/variables.R"</span><span class="op">)</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:menu-carpetas"></span>
 <img src="img/menu_carpetas.jpg" alt="Cargar archivos de nuestro directorio de trabajo." width="50%"><p class="caption">
-Imagen/gráfica 4.14: Cargar archivos de nuestro directorio de trabajo.
+Imagen/gráfica 5.14: Cargar archivos de nuestro directorio de trabajo.
 </p>
 </div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:menu-carpetas1"></span>
 <img src="img/menu_carpetas1.jpg" alt="Cargar archivos de nuestro directorio de trabajo." width="50%"><p class="caption">
-Imagen/gráfica 4.15: Cargar archivos de nuestro directorio de trabajo.
+Imagen/gráfica 5.15: Cargar archivos de nuestro directorio de trabajo.
 </p>
 </div>
 </div>
 <div id="ejecución" class="section level2">
 <h2>
-<span class="header-section-number">4.3</span> Ejecución<a class="anchor" aria-label="anchor" href="#ejecuci%C3%B3n"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.3</span> Ejecución<a class="anchor" aria-label="anchor" href="#ejecuci%C3%B3n"><i class="fas fa-link"></i></a>
 </h2>
 <p>Ese archivo que hemos incluido en el código principal nos <strong>cargará las variables que hemos definido en él</strong>, pudiendo usarlas en el código. Vamos a ejecutar lo que tenemos de momento, y para ello tenemos 2 opciones: o copiar el código del script en la consola y pulsar <em>ENTER</em>, o bien, activando la casilla <em>source on save</em> y guardando el script (no solo se guardará sino que se ejecutará).</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:source-on-save"></span>
 <img src="img/source_on_save.jpg" alt="Guardamos con la casilla «source on save» activada para que además de guardar se ejecute el código." width="50%"><p class="caption">
-Imagen/gráfica 4.16: Guardamos con la casilla «source on save» activada para que además de guardar se ejecute el código.
+Imagen/gráfica 5.16: Guardamos con la casilla «source on save» activada para que además de guardar se ejecute el código.
 </p>
 </div>
-<p>Como vemos en la imagen <a href="proyecto.html#fig:source-on-save">4.16</a>, una vez ejecutado, tenemos en nuestro panel de entorno (parte superior derecha) las variables ya cargadas que teníamos definidas en nuestro fichero <code>variables.R</code>.</p>
+<p>Como vemos en la imagen <a href="proyecto.html#fig:source-on-save">5.16</a>, una vez ejecutado, tenemos en nuestro panel de entorno (parte superior derecha) las variables ya cargadas que teníamos definidas en nuestro fichero <code>variables.R</code>.</p>
 <p>Prueba a escribir algunas funciones que hemos aprendido con dichas variables y vuelve a hacer click en «guardar» con <em>source on save</em> activado.</p>
-<div class="sourceCode" id="cb329"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb337"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Sumamos 3 a cada elemento de x</span>
 <span class="va">z</span> <span class="op">&lt;-</span> <span class="va">x</span> <span class="op">+</span> <span class="fl">3</span>
 <span class="va">z</span></code></pre></div>
 <pre><code>## [1]  4  5  3  2 74</code></pre>
-<div class="sourceCode" id="cb331"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb339"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Imprimimos por pantalla la frase unida, y a dicha frase</span>
 <span class="co"># le pegamos nuestro apellido</span>
 <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">y</span>, collapse <span class="op">=</span> <span class="st">" "</span><span class="op">)</span>, <span class="va">apellido</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## hola me llamo Javier Álvarez</code></pre>
-<div class="sourceCode" id="cb333"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb341"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Días que han pasado desde el inicio de año</span>
 <span class="va">dias</span> <span class="op">&lt;-</span> <span class="va">hoy</span> <span class="op">-</span> <span class="va">fecha_origen</span>
 <span class="va">dias</span></code></pre></div>
-<pre><code>## Time difference of 352 days</code></pre>
+<pre><code>## Time difference of 353 days</code></pre>
 <p>La función <code><a href="https://rdrr.io/r/base/cat.html">cat()</a></code> nos muestra por consola el texto que le pasemos de argumento (<strong>función especial para mensajes de alerta</strong> por consola)</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:codigo-1"></span>
 <img src="img/codigo_1.jpg" alt="Cálculos con la variables definidas: suma, concatenación de texto y diferencia de fechas." width="50%"><p class="caption">
-Imagen/gráfica 4.17: Cálculos con la variables definidas: suma, concatenación de texto y diferencia de fechas.
+Imagen/gráfica 5.17: Cálculos con la variables definidas: suma, concatenación de texto y diferencia de fechas.
 </p>
 </div>
 <p>Ya hemos ejecutado nuestro primer proyecto en <code>.R</code> :)</p>
@@ -275,22 +276,22 @@ Imagen/gráfica 4.17: Cálculos con la variables definidas: suma, concatenación
 <p> </p>
 <p><strong><span style="color: #20935E;">CONSEJO: extraer fecha y hora de hoy</span></strong></p>
 <p>La función <code><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time()</a></code> accede al sistema de nuestro ordenador para decirnos la <strong>fecha y hora del momento de la ejecución</strong> de dicha función.</p>
-<div class="sourceCode" id="cb335"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb343"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "2021-12-19 21:22:35 CET"</code></pre>
+<pre><code>## [1] "2021-12-20 09:17:08 CET"</code></pre>
 
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="vectores.html"><span class="header-section-number">3</span> Tipos de datos I: vectores</a></div>
-<div class="next"><a href="control.html"><span class="header-section-number">5</span> Estructuras de control</a></div>
+<div class="prev"><a href="operacionesvectores.html"><span class="header-section-number">4</span> Operaciones con vectores</a></div>
+<div class="next"><a href="control.html"><span class="header-section-number">6</span> Estructuras de control</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#proyecto"><span class="header-section-number">4</span> Flujo de trabajo: primer proyecto</a></li>
-<li><a class="nav-link" href="#crear-proyecto"><span class="header-section-number">4.1</span> Crear proyecto</a></li>
-<li><a class="nav-link" href="#directorios-de-trabajo-y-cabecera"><span class="header-section-number">4.2</span> Directorios de trabajo y cabecera</a></li>
-<li><a class="nav-link" href="#ejecuci%C3%B3n"><span class="header-section-number">4.3</span> Ejecución</a></li>
+<li><a class="nav-link" href="#proyecto"><span class="header-section-number">5</span> Flujo de trabajo: primer proyecto</a></li>
+<li><a class="nav-link" href="#crear-proyecto"><span class="header-section-number">5.1</span> Crear proyecto</a></li>
+<li><a class="nav-link" href="#directorios-de-trabajo-y-cabecera"><span class="header-section-number">5.2</span> Directorios de trabajo y cabecera</a></li>
+<li><a class="nav-link" href="#ejecuci%C3%B3n"><span class="header-section-number">5.3</span> Ejecución</a></li>
 </ul>
 
       <div class="book-extra">
@@ -308,7 +309,7 @@ Imagen/gráfica 4.17: Cálculos con la variables definidas: suma, concatenación
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 19-12-2021.</p>
+    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 20-12-2021.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
