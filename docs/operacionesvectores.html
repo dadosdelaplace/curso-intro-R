@@ -442,9 +442,9 @@
                <span class="va">x</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/order.html">order</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">]</span>, <span class="co"># segunda forma</span>
                times <span class="op">=</span> <span class="fl">1e3</span><span class="op">)</span> <span class="co"># se repetirá 1000 veces</span></code></pre></div>
 <pre><code>## Unit: microseconds
-##         expr    min      lq     mean  median      uq     max neval cld
-##      sort(x) 41.518 48.4835 55.48941 53.4185 57.4340 166.304  1000   b
-##  x[order(x)] 29.472 35.4875 40.24403 38.0365 41.1925 163.473  1000  a</code></pre>
+##         expr    min      lq     mean  median     uq     max neval cld
+##      sort(x) 41.928 50.2675 56.89951 53.6825 57.763 203.385  1000   b
+##  x[order(x)] 29.463 35.8490 40.04304 38.0895 41.191 110.490  1000  a</code></pre>
 <p>Sí, estás viendo bien: aunque a priori parezca contraintuitivo, es más corto obtener los índices ordenados de un vector, y luego reordenarlo en base a esos índices, que la ordenación directa a través del comando <code><a href="https://rdrr.io/r/base/sort.html">sort()</a></code> (ya que usan algoritmos de ordenación distintos).</p>
 </div>
 <div id="ejercicios-2" class="section level2">
@@ -616,7 +616,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 20-12-2021.</p>
+    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 21-12-2021.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
