@@ -206,11 +206,11 @@
                                times <span class="op">=</span> <span class="fl">1e3</span><span class="op">)</span></code></pre></div>
 <pre><code>## Unit: microseconds
 ##                                     expr      min        lq       mean
-##                               x &lt;- idx^2   18.168   46.9895   53.41099
-##  for (i in idx) {     y[i] &lt;- idx[i]^2 } 1833.403 1964.6325 2228.94693
-##     median        uq       max neval cld
-##    53.4975   60.6305   367.842  1000  a 
-##  2065.9610 2260.9130 13427.908  1000   b</code></pre>
+##                               x &lt;- idx^2   17.776   48.1955   53.45679
+##  for (i in idx) {     y[i] &lt;- idx[i]^2 } 1817.415 1909.6480 2196.26029
+##     median       uq       max neval cld
+##    53.8715   59.916   168.588  1000  a 
+##  2002.6640 2246.290 12553.943  1000   b</code></pre>
 <p>Una tarea tan sencilla, <strong>programada en un bucle (segunda fila), tarda 40 veces más que hacerlo de forma vectorial (primera fila)</strong> (elevando cada elemento al cuadrado, iterando internamente, sin necesidad de implementar un bucle).</p>
 <p> </p>
 <p>Otra manera de diseñar un bucle es con la <strong>estructura <code>while{}</code></strong>, que ejecutará el <strong>bucle un número de veces a priori desconocido</strong> hasta que la condición impuesta deje de ser <code>TRUE</code>.</p>
