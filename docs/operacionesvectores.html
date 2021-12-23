@@ -55,22 +55,23 @@
 <li class="book-part">Conceptos básicos</li>
 <li><a class="" href="vectores.html"><span class="header-section-number">3</span> Tipos de datos I: vectores</a></li>
 <li><a class="active" href="operacionesvectores.html"><span class="header-section-number">4</span> Operaciones con vectores</a></li>
-<li><a class="" href="proyecto.html"><span class="header-section-number">5</span> Flujo de trabajo: primer proyecto</a></li>
-<li><a class="" href="control.html"><span class="header-section-number">6</span> Estructuras de control</a></li>
-<li><a class="" href="datos.html"><span class="header-section-number">7</span> Tipos de datos II: datos estructurados</a></li>
+<li><a class="" href="control.html"><span class="header-section-number">5</span> Estructuras de control</a></li>
+<li><a class="" href="datos.html"><span class="header-section-number">6</span> Tipos de datos II: datos estructurados</a></li>
+<li><a class="" href="proyecto.html"><span class="header-section-number">7</span> Flujo de trabajo: primer proyecto</a></li>
 <li><a class="" href="importar-exportar.html"><span class="header-section-number">8</span> Importando/exportando</a></li>
-<li class="book-part">Listas y funciones</li>
-<li><a class="" href="otros-datos.html"><span class="header-section-number">9</span> Listas y factores</a></li>
-<li><a class="" href="funciones.html"><span class="header-section-number">10</span> Creación de funciones</a></li>
-<li class="book-part">Alto en el camino</li>
-<li><a class="" href="resumen-1.html"><span class="header-section-number">11</span> ¿Qué sabemos hacer?</a></li>
+<li class="book-part">Un pasito más</li>
+<li><a class="" href="listas.html"><span class="header-section-number">9</span> Listas</a></li>
+<li><a class="" href="factores.html"><span class="header-section-number">10</span> Factores</a></li>
+<li><a class="" href="funciones.html"><span class="header-section-number">11</span> Creación de funciones</a></li>
 <li class="book-part">EXPLORANDO: introducción al análisis exploratorio de datos</li>
 <li><a class="" href="tidydata.html"><span class="header-section-number">12</span> Tidy data: ordenando datos</a></li>
-<li><a class="" href="tidyverse.html"><span class="header-section-number">13</span> Explorando los datos: incursión a tidyverse</a></li>
+<li><a class="" href="tidyverse.html"><span class="header-section-number">13</span> Incursión a tidyverse</a></li>
 <li><a class="" href="resumenes.html"><span class="header-section-number">14</span> Resumiendo y relacionado los datos</a></li>
-<li><a class="" href="ggplot2.html"><span class="header-section-number">15</span> Visualizando datos: incursión a ggplot2</a></li>
+<li class="book-part">Final del camino</li>
+<li><a class="" href="resumen-1.html"><span class="header-section-number">15</span> ¿Qué sabemos hacer?</a></li>
+<li><a class="" href="recursos.html"><span class="header-section-number">16</span> Recursos extras</a></li>
 <li class="book-part">Epílogo</li>
-<li><a class="" href="contribuye.html"><span class="header-section-number">16</span> Contribuye al proyecto</a></li>
+<li><a class="" href="contribuye.html"><span class="header-section-number">17</span> Contribuye al proyecto</a></li>
 <li><a class="" href="bibliograf%C3%ADa.html">Bibliografía</a></li>
 </ul>
 
@@ -87,7 +88,7 @@
 <h2>
 <span class="header-section-number">4.1</span> Operaciones aritméticas con vectores numéricos<a class="anchor" aria-label="anchor" href="#operaciones-aritm%C3%A9ticas-con-vectores-num%C3%A9ricos"><i class="fas fa-link"></i></a>
 </h2>
-<p>Hemos dicho que un número es un vector de longitud 1, así que <strong>toda operación aritmética</strong> que podamos hacer con un número la vamos a poder a hacer con un vector de números, de forma que si hacemos por ejemplo la operación <code>2 * z</code>, lo que sucederá es que <strong>CADA ELEMENTO del vector</strong> será multiplicado por 2.</p>
+<p>Hemos dicho que un número es un vector de longitud 1, así que toda <mark><strong>operación aritmética</strong></mark> que podamos hacer con un número la vamos a poder a hacer con un vector de números, de forma que si hacemos por ejemplo la operación <code>2 * z</code>, lo que sucederá es que <strong>CADA ELEMENTO del vector</strong> será multiplicado por 2.</p>
 <div class="sourceCode" id="cb178"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Multiplicamos por 2 a CADA ELEMENTO del vector</span>
 <span class="va">z</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">4</span>, <span class="fl">6</span><span class="op">)</span>
@@ -116,7 +117,7 @@
 <pre><code>## [1]  3  7 11  9</code></pre>
 <p><code>R</code> intenta molestarte lo menos posible, así que lo que hace es <strong><span style="color: #ffc107;">reciclar</span></strong>: si tiene un vector de 4 elementos y le intentas sumar uno de 3 elementos, lo que hará será <strong>reciclar</strong> elementos del vector con menor longitud: hará <code>1+2</code>, <code>3+4</code>, <code>5+6</code> pero… <code>7+2</code> (vuelve al primero).</p>
 <p> </p>
-<p>Como hemos comentado anteriormente, los valores lógicos <code>TRUE/FALSE</code> son guardados internamente como <code>0/1</code> por lo que podemos usar <strong>operaciones aritméticas con ellos</strong>. Por ejemplo, si queremos averiguar el número de elementos de un vector que cumplen una condición lógica <code>&lt; 2</code>, los que lo hagan tendrán asignado un <code>1</code> y los que no un <code>0</code>, por lo que basta con sumar el vector lógico para obtener el número de elementos bajo dicha condición.</p>
+<p>Como hemos comentado anteriormente, los <mark><strong>valores lógicos</strong></mark><code>TRUE/FALSE</code> son guardados internamente como <code>0/1</code> por lo que podemos usar <strong>operaciones aritméticas con ellos</strong>. Por ejemplo, si queremos averiguar el número de elementos de un vector que cumplen una condición lógica <code>&lt; 2</code>, los que lo hagan tendrán asignado un <code>1</code> y los que no un <code>0</code>, por lo que basta con sumar el vector lógico para obtener el número de elementos bajo dicha condición.</p>
 <div class="sourceCode" id="cb188"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">x</span> <span class="op">&lt;</span> <span class="fl">2</span><span class="op">)</span> <span class="co"># sumamos el vector de TRUE/FALSE --&gt; número de TRUE</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
@@ -125,7 +126,7 @@
 <h2>
 <span class="header-section-number">4.2</span> Operaciones estadísticas con vectores numéricos<a class="anchor" aria-label="anchor" href="#operaciones-estad%C3%ADsticas-con-vectores-num%C3%A9ricos"><i class="fas fa-link"></i></a>
 </h2>
-<p>Al igual que podemos ejecutar operaciones aritméticas, podemos realizar también <strong>operaciones estadísticas</strong> con los vectores, como calcular su suma (<code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code>), su media (<code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code>), su mediana (<code><a href="https://rdrr.io/r/stats/median.html">median()</a></code>), su suma acumulada (<code><a href="https://rdrr.io/r/base/cumsum.html">cumsum()</a></code> cada elemento lo acumula al anterior) o percentiles (<code>quantiles()</code>).</p>
+<p>Al igual que podemos ejecutar operaciones aritméticas, podemos realizar también <mark><strong>operaciones estadísticas</strong></mark> con los vectores, como calcular su suma (<code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code>), su media (<code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code>), su mediana (<code><a href="https://rdrr.io/r/stats/median.html">median()</a></code>), su suma acumulada (<code><a href="https://rdrr.io/r/base/cumsum.html">cumsum()</a></code> cada elemento lo acumula al anterior) o percentiles (<code>quantiles()</code>).</p>
 <div class="sourceCode" id="cb190"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span> <span class="co"># suma</span></code></pre></div>
 <pre><code>## [1] 16</code></pre>
@@ -177,7 +178,7 @@
 <h2>
 <span class="header-section-number">4.3</span> Datos ausentes: NA y NaN<a class="anchor" aria-label="anchor" href="#ausentes"><i class="fas fa-link"></i></a>
 </h2>
-<p>La vida no siempre es perfecta así que en muchas ocasiones nos encontraremos con lo que llamamos en estadística un <strong>dato ausente o <em>missing value</em></strong>, un <strong>valor que no tenemos en nuestra variable</strong>, y un ejemplo práctico lo tenemos con los datos de vacunación de covid del Ministerio de Sanidad que hemos tenido en 2020-2021. Cada día se publicaba un PDF (ya…mal) con los datos de vacunación PERO…no se publican datos los fines de semana: en dichas fechas hay datos que no tenemos, y en <code>R</code> se representan por <code>NA</code> (significa <em>not available</em>).</p>
+<p>La vida no siempre es perfecta así que en muchas ocasiones nos encontraremos con lo que llamamos en estadística un <mark><strong>dato ausente o <em>missing value</em></strong></mark>, un <strong>valor que no tenemos en nuestra variable</strong>, y un ejemplo práctico lo tenemos con los datos de vacunación de covid del Ministerio de Sanidad que hemos tenido en 2020-2021. Cada día se publicaba un PDF (ya…mal) con los datos de vacunación PERO…no se publican datos los fines de semana: en dichas fechas hay datos que no tenemos, y en <code>R</code> se representan por <code>NA</code> (significa <em>not available</em>).</p>
 <div id="na-not-available" class="section level3">
 <h3>
 <span class="header-section-number">4.3.1</span> NA: not available<a class="anchor" aria-label="anchor" href="#na-not-available"><i class="fas fa-link"></i></a>
@@ -196,7 +197,7 @@
 <pre><code>## [1]  2 NA  6 NA NA 10 12</code></pre>
 <p> </p>
 <p><strong><span style="color: #ffc107;">WARNING:</span></strong></p>
-<p>Un dato que no tenemos, multiplicado por 2, sigue siendo un dato ausente. Es muy importante para evitar resultados erróneos que entendamos que un <strong>dato ausente no computa en una operación aritmética, es un hueco vacío</strong>. Si hacemos la suma del vector, estamos sumando números más datos ausentes, por lo que el resultado final será también un dato ausente. Si tenemos algún dato ausente en nuestro vector, la suma final está a su vez ausente, ¡no podemos saber cuánto vale!</p>
+<p>Un dato que no tenemos, multiplicado por 2, sigue siendo un dato ausente. Es muy importante para evitar resultados erróneos que entendamos que un <strong>dato ausente no computa en una operación aritmética</strong>, es un <mark><strong>hueco vacío</strong></mark>. Si hacemos la suma del vector, estamos sumando números más datos ausentes, por lo que el resultado final será también un dato ausente. Si tenemos algún dato ausente en nuestro vector, la suma final está a su vez ausente, ¡no podemos saber cuánto vale!</p>
 <div class="sourceCode" id="cb208"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="co"># suma de un vector que contiene NA</span></code></pre></div>
 <pre><code>## [1] NA</code></pre>
@@ -222,7 +223,7 @@
 <h3>
 <span class="header-section-number">4.3.2</span> NaN: not a number<a class="anchor" aria-label="anchor" href="#nan-not-a-number"><i class="fas fa-link"></i></a>
 </h3>
-<p>Hay un <strong>tipo de dato muy particular, como resultado de operaciones no permitidas o cuyo resultado es indeterminado</strong>, que en <code>R</code> lo veremos como <code>NaN</code>: <em>not a number</em>, un resultado fruto de una indeterminación, como por ejemplo la operación <code>0/0</code> (cuyo límite no está definido). Importante saber que también existe una forma de denotar al infinito como <code>Inf</code>, siendo el resultado de algunas operaciones como <code>1/0</code>.</p>
+<p>Hay un <strong>tipo de dato</strong>, como <mark><strong>resultado de operaciones no permitidas o cuyo resultado es indeterminado</strong></mark>, que en <code>R</code> lo veremos como <code>NaN</code>: <em>not a number</em>, un resultado fruto de una indeterminación, como por ejemplo la operación <code>0/0</code> (cuyo límite no está definido). Importante saber que también existe una forma de denotar al infinito como <code>Inf</code>, siendo el resultado de algunas operaciones como <code>1/0</code>.</p>
 <div class="sourceCode" id="cb216"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fl">1</span><span class="op">/</span><span class="fl">0</span></code></pre></div>
 <pre><code>## [1] Inf</code></pre>
@@ -246,8 +247,8 @@
 <h2>
 <span class="header-section-number">4.4</span> Seleccionar elementos de un vector<a class="anchor" aria-label="anchor" href="#seleccionar-elementos-de-un-vector"><i class="fas fa-link"></i></a>
 </h2>
-<p>Ya sabemos definir variables que sean vectores (recuerda: colección de valores del mismo tipo). ¿Y si del <strong>vector original queremos EXTRAER UN SUBCONJUNTO del mismo</strong>, por ejemplo, los primeros 10 elementos?</p>
-<p><code>R</code> tiene varias formas de hacer esto pero la más sencilla es entendiendo que si yo quiero <strong>acceder al elemento i</strong> de un vector, deberé usar el <strong>operador de selección <code>[i]</code></strong>. Veamos un ejemplo</p>
+<p>Ya sabemos definir variables que sean vectores (recuerda: colección de valores del mismo tipo). ¿Y si del <mark><strong>vector original queremos EXTRAER UN SUBCONJUNTO del mismo</strong></mark>, por ejemplo, los primeros 10 elementos?</p>
+<p><code>R</code> tiene varias formas de hacer esto pero la más sencilla es entendiendo que si yo quiero <mark><strong>acceder al elemento i-ésimo</strong></mark> de un vector, deberé usar el <strong>operador de selección <code>[i]</code></strong>. Veamos un ejemplo</p>
 <div class="sourceCode" id="cb226"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">100</span> <span class="co"># Vector de longitud 100 (del 1 al 100)</span>
 <span class="va">y</span> <span class="op">&lt;-</span> <span class="va">x</span><span class="op">[</span><span class="fl">37</span><span class="op">]</span> <span class="co"># Solo me interesa el elemento que ocupa el lugar 37</span>
@@ -397,7 +398,7 @@
 <h2>
 <span class="header-section-number">4.5</span> Ordenar vectores<a class="anchor" aria-label="anchor" href="#ordenar-vectores"><i class="fas fa-link"></i></a>
 </h2>
-<p>Una acción habitual al trabajar con datos es <strong>saber ordenarlos</strong>: de menor a mayor edad, datos más recientes vs antiguos, etc. Para ello tenemos la función <code><a href="https://rdrr.io/r/base/sort.html">sort()</a></code>, que podemos usar directamente para <strong>ordenar de menor a mayor</strong>, o con el argumento <code>decreasing = TRUE</code>, para <strong>ordenar de mayor a menor</strong>.</p>
+<p>Una acción habitual al trabajar con datos es <mark><strong>saber ordenarlos</strong></mark>: de menor a mayor edad, datos más recientes vs antiguos, etc. Para ello tenemos la función <code><a href="https://rdrr.io/r/base/sort.html">sort()</a></code>, que podemos usar directamente para <strong>ordenar de menor a mayor</strong>, o con el argumento <code>decreasing = TRUE</code>, para <strong>ordenar de mayor a menor</strong>.</p>
 <div class="sourceCode" id="cb296"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="op">-</span><span class="fl">3</span>, <span class="fl">0</span>, <span class="fl">10</span>, <span class="fl">5</span>, <span class="fl">2</span>, <span class="fl">7</span>, <span class="op">-</span><span class="fl">13</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="co"># orden de menor a mayor</span></code></pre></div>
@@ -442,9 +443,9 @@
                <span class="va">x</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/order.html">order</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">]</span>, <span class="co"># segunda forma</span>
                times <span class="op">=</span> <span class="fl">1e3</span><span class="op">)</span> <span class="co"># se repetirá 1000 veces</span></code></pre></div>
 <pre><code>## Unit: microseconds
-##         expr    min      lq     mean median      uq     max neval cld
-##      sort(x) 44.476 49.7690 58.53688 54.882 59.7390 174.917  1000   b
-##  x[order(x)] 31.025 36.0505 41.25120 38.463 41.8885 123.889  1000  a</code></pre>
+##         expr    min      lq     mean  median      uq     max neval cld
+##      sort(x) 41.348 48.1265 57.03764 54.4150 61.2575 200.952  1000   b
+##  x[order(x)] 28.568 34.7995 40.09355 38.5755 42.4450 112.321  1000  a</code></pre>
 <p>Sí, estás viendo bien: aunque a priori parezca contraintuitivo, es más corto obtener los índices ordenados de un vector, y luego reordenarlo en base a esos índices, que la ordenación directa a través del comando <code><a href="https://rdrr.io/r/base/sort.html">sort()</a></code> (ya que usan algoritmos de ordenación distintos).</p>
 </div>
 <div id="ejercicios-2" class="section level2">
@@ -577,7 +578,7 @@
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="vectores.html"><span class="header-section-number">3</span> Tipos de datos I: vectores</a></div>
-<div class="next"><a href="proyecto.html"><span class="header-section-number">5</span> Flujo de trabajo: primer proyecto</a></div>
+<div class="next"><a href="control.html"><span class="header-section-number">5</span> Estructuras de control</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
@@ -603,8 +604,8 @@
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/dadosdelaplace/intro-R/blob/master/03b-operaciones-con-vectores.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/dadosdelaplace/intro-R/edit/master/03b-operaciones-con-vectores.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/dadosdelaplace/intro-R/blob/master/04-operaciones-con-vectores.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/dadosdelaplace/intro-R/edit/master/04-operaciones-con-vectores.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>
@@ -616,7 +617,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 21-12-2021.</p>
+    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 23-12-2021.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

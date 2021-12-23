@@ -1,0 +1,104 @@
+```{r echo = FALSE}
+library(knitr)
+
+# Color text
+colorize <- function(x, color) {
+  
+  if (knitr::is_latex_output()) {
+    
+    sprintf("\\textcolor{%s}{%s}", color, x)
+    
+  } else if (knitr::is_html_output()) {
+    
+    sprintf("<span style='color: %s;'>%s</span>", color, x)
+    
+  } else { x }
+}
+```
+
+
+# (PART) Final del camino {-}
+
+
+# ¿Qué sabemos hacer?  {#resumen-1}
+
+**Hasta aquí el aperitivo**
+
+
+**`r colorize("¿Qué datos hemos aprendido a manejar?", "#4197D2")`**
+
+
+```{r echo = FALSE}
+library(knitr)
+paquetes <-
+  data.frame("tipo de dato" = c("x <- 1 (dato numérico)",
+                                "x <- c(1, 2, 3) (vector de números)",
+                                "x <- c('a', 'b', 'c') (vector de caracteres)",
+                                "x <- matrix(1:6, nrow = 2)",
+                                "x <- data.frame('a' = 1:3, 'b' = c('a', 'b', 'c'), 'c' = c(TRUE, TRUE, FALSE))",
+                                "x <- list(1:3, c('a'), c(TRUE, FALSE))"),
+             "descripción" = c("vector de longitud 1",
+                               "vector (mismo tipo)",
+                               "vector (mismo tipo)",
+                               "matriz (mismo tipo, misma longitud)",
+                               "data.frame (distinto tipo, misma longitud)",
+                               "lista (distinto tipo, distinta longitud)"))
+kable(paquetes, col.names = c("paquetes", "descripción"), align = "ll",
+      caption = "Tipos de datos mencionados hasta ahora")
+``` 
+
+
+
+**`r colorize("¿Qué paquetes hemos usado ya?", "#4197D2")`**
+
+Como ves, hemos podido hacer bastantes cosas ya en `R` con muy pocos paquetes, y ocupando el mínimo espacio y tiempo en nuestro ordenador.
+
+
+```{r echo = FALSE}
+library(knitr)
+paquetes <-
+  data.frame("paquetes" = c("{base}", "{bookdown}", "{glue}",
+                            "{stringr}", "{lubridate}", "{microbenchmark}",
+                            "{tibble}", "{datasets}", "{readr}", "{tidyverse}",
+                            "{readxl}", "{rvest}"),
+             "descripción" = c("utilidades básicas",
+                               "creación de libros, manuales e informes en R",
+                               "manejo de texto literal",
+                               "manejo complejo de cadenas de texto",
+                               "manejo de fechas",
+                               "comparativa de tiempos de ejecución",
+                               "data.frames eficientes",
+                               "conjuntos de datos",
+                               "lectura de datos rectangulares (tablas)",
+                               "entorno de paquetes para el manejo de datos",
+                               "lectura de datos en formato excel",
+                               "lectura de datos web"))
+kable(paquetes, col.names = c("paquetes", "descripción"), align = "ll",
+      caption = "Paquetes mencionados hasta ahora")
+``` 
+
+
+Quizás creas que te queda un mundo por aprender:
+
+- ¿Cómo **manejo datos de forma más profunda** (filtrar, operar con ellos, etc)?
+- ¿Cómo realizo **análisis estadísticos**?
+- ¿Cómo **visualizo datos**?
+- ¿Cómo **generar informes** con los resultados (ver [@xie2015])?
+- ¿Cómo **crear webs interactivas** para la visualización y análisis de datos?
+
+No te voy a mentir: no tendrías días de tu vida para ir investigando todos los paquetes que hay hechos en `R` (ni tú ni nadie). Pero la idea de estos primeros capítulos no era que fueses experto en `R` sino que vieses que, **con pocas líneas de código y con cierta práctica**, se puede empezar a tener herramientas para **comenzar nuestra andadura** en el análisis estadístico a través de este software. No te obsesiones con saberte todos los comandos de todos los paquetes o acabarás loco/a.
+
+```{r echo = FALSE, out.width = "50%", fig.align = "center", fig.cap = "Cuando intentas aprenderte todos los paquetes."}
+knitr::include_graphics("./img/stanley_kubrick.jpg")
+
+```
+
+Estos primeros capítulos de un lenguaje de programación suelen ser un poco «aburridos»
+
+* **Si sabes programar**, te habrán parecido triviales (más allá de conocer la sintaxis propia de `R`).
+* **Si no sabías programar**, han sido de repente un puñado de conceptos y cosas a recordar, que hasta que nos los vayas practicando tendrás que acudir a este manual (u otros recursos). **No te obsesiones con memorizar**: yo consulto cada día cosas que aparecen en este tutorial porque se me olvidan.
+
+**Lo importante es entender, no memorizar comandos**
+
+Pero aunque sean más aburridos estos primeros conceptos, **son necesarios para empezar a caminar**: el inicio de aprender un idioma siempre es un poco meh, pero sin las reglas básicas de gramática y un mínimo de léxico nunca podrás empezar.
+

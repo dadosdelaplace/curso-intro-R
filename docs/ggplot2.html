@@ -4,17 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Capítulo 15 Visualizando datos: incursión a ggplot2 | Aprendiendo R sin morir en el intento</title>
+<title>Capítulo 16 Visualizando datos: incursión a ggplot2 | Aprendiendo R sin morir en el intento</title>
 <meta name="author" content="Javier Álvarez Liébana">
-<meta name="description" content="en breve  15.1 La importancia del dataviz en breve  15.2 Entendiendo la gramática de ggplot2 en breve  15.3 Algunos gráficos útiles en breve">
+<meta name="description" content="en breve  16.1 La importancia del dataviz en breve  16.2 Entendiendo la gramática de ggplot2 en breve  16.3 Algunos gráficos útiles en breve">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
-<meta property="og:title" content="Capítulo 15 Visualizando datos: incursión a ggplot2 | Aprendiendo R sin morir en el intento">
+<meta property="og:title" content="Capítulo 16 Visualizando datos: incursión a ggplot2 | Aprendiendo R sin morir en el intento">
 <meta property="og:type" content="book">
 <meta property="og:image" content="/img/logo_R.png">
-<meta property="og:description" content="en breve  15.1 La importancia del dataviz en breve  15.2 Entendiendo la gramática de ggplot2 en breve  15.3 Algunos gráficos útiles en breve">
+<meta property="og:description" content="en breve  16.1 La importancia del dataviz en breve  16.2 Entendiendo la gramática de ggplot2 en breve  16.3 Algunos gráficos útiles en breve">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Capítulo 15 Visualizando datos: incursión a ggplot2 | Aprendiendo R sin morir en el intento">
-<meta name="twitter:description" content="en breve  15.1 La importancia del dataviz en breve  15.2 Entendiendo la gramática de ggplot2 en breve  15.3 Algunos gráficos útiles en breve">
+<meta name="twitter:title" content="Capítulo 16 Visualizando datos: incursión a ggplot2 | Aprendiendo R sin morir en el intento">
+<meta name="twitter:description" content="en breve  16.1 La importancia del dataviz en breve  16.2 Entendiendo la gramática de ggplot2 en breve  16.3 Algunos gráficos útiles en breve">
 <meta name="twitter:image" content="/img/logo_R.png">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -55,22 +55,23 @@
 <li class="book-part">Conceptos básicos</li>
 <li><a class="" href="vectores.html"><span class="header-section-number">3</span> Tipos de datos I: vectores</a></li>
 <li><a class="" href="operacionesvectores.html"><span class="header-section-number">4</span> Operaciones con vectores</a></li>
-<li><a class="" href="proyecto.html"><span class="header-section-number">5</span> Flujo de trabajo: primer proyecto</a></li>
-<li><a class="" href="control.html"><span class="header-section-number">6</span> Estructuras de control</a></li>
-<li><a class="" href="datos.html"><span class="header-section-number">7</span> Tipos de datos II: datos estructurados</a></li>
+<li><a class="" href="control.html"><span class="header-section-number">5</span> Estructuras de control</a></li>
+<li><a class="" href="datos.html"><span class="header-section-number">6</span> Tipos de datos II: datos estructurados</a></li>
+<li><a class="" href="proyecto.html"><span class="header-section-number">7</span> Flujo de trabajo: primer proyecto</a></li>
 <li><a class="" href="importar-exportar.html"><span class="header-section-number">8</span> Importando/exportando</a></li>
-<li class="book-part">Listas y funciones</li>
-<li><a class="" href="otros-datos.html"><span class="header-section-number">9</span> Listas y factores</a></li>
-<li><a class="" href="funciones.html"><span class="header-section-number">10</span> Creación de funciones</a></li>
+<li class="book-part">Un pasito más</li>
+<li><a class="" href="listas.html"><span class="header-section-number">9</span> Listas</a></li>
+<li><a class="" href="factores.html"><span class="header-section-number">10</span> Factores</a></li>
+<li><a class="" href="funciones.html"><span class="header-section-number">11</span> Creación de funciones</a></li>
 <li class="book-part">Alto en el camino</li>
-<li><a class="" href="resumen-1.html"><span class="header-section-number">11</span> ¿Qué sabemos hacer?</a></li>
+<li><a class="" href="resumen-1.html"><span class="header-section-number">12</span> ¿Qué sabemos hacer?</a></li>
 <li class="book-part">EXPLORANDO: introducción al análisis exploratorio de datos</li>
-<li><a class="" href="tidydata.html"><span class="header-section-number">12</span> Tidy data: ordenando datos</a></li>
-<li><a class="" href="tidyverse.html"><span class="header-section-number">13</span> Explorando los datos: incursión a tidyverse</a></li>
-<li><a class="" href="resumenes.html"><span class="header-section-number">14</span> Resumiendo y relacionado los datos</a></li>
-<li><a class="active" href="ggplot2.html"><span class="header-section-number">15</span> Visualizando datos: incursión a ggplot2</a></li>
+<li><a class="" href="tidydata.html"><span class="header-section-number">13</span> Tidy data: ordenando datos</a></li>
+<li><a class="" href="tidyverse.html"><span class="header-section-number">14</span> Explorando los datos: incursión a tidyverse</a></li>
+<li><a class="" href="resumenes.html"><span class="header-section-number">15</span> Resumiendo y relacionado los datos</a></li>
+<li><a class="active" href="ggplot2.html"><span class="header-section-number">16</span> Visualizando datos: incursión a ggplot2</a></li>
 <li class="book-part">Epílogo</li>
-<li><a class="" href="contribuye.html"><span class="header-section-number">16</span> Contribuye al proyecto</a></li>
+<li><a class="" href="contribuye.html"><span class="header-section-number">17</span> Contribuye al proyecto</a></li>
 <li><a class="" href="bibliograf%C3%ADa.html">Bibliografía</a></li>
 </ul>
 
@@ -81,24 +82,24 @@
 </div>
   </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="ggplot2" class="section level1">
 <h1>
-<span class="header-section-number">Capítulo 15</span> Visualizando datos: incursión a ggplot2<a class="anchor" aria-label="anchor" href="#ggplot2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">Capítulo 16</span> Visualizando datos: incursión a ggplot2<a class="anchor" aria-label="anchor" href="#ggplot2"><i class="fas fa-link"></i></a>
 </h1>
 <p>en breve</p>
 <div id="la-importancia-del-dataviz" class="section level2">
 <h2>
-<span class="header-section-number">15.1</span> La importancia del dataviz<a class="anchor" aria-label="anchor" href="#la-importancia-del-dataviz"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.1</span> La importancia del dataviz<a class="anchor" aria-label="anchor" href="#la-importancia-del-dataviz"><i class="fas fa-link"></i></a>
 </h2>
 <p>en breve</p>
 </div>
 <div id="entendiendo-la-gramática-de-ggplot2" class="section level2">
 <h2>
-<span class="header-section-number">15.2</span> Entendiendo la gramática de ggplot2<a class="anchor" aria-label="anchor" href="#entendiendo-la-gram%C3%A1tica-de-ggplot2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.2</span> Entendiendo la gramática de ggplot2<a class="anchor" aria-label="anchor" href="#entendiendo-la-gram%C3%A1tica-de-ggplot2"><i class="fas fa-link"></i></a>
 </h2>
 <p>en breve</p>
 </div>
 <div id="algunos-gráficos-útiles" class="section level2">
 <h2>
-<span class="header-section-number">15.3</span> Algunos gráficos útiles<a class="anchor" aria-label="anchor" href="#algunos-gr%C3%A1ficos-%C3%BAtiles"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.3</span> Algunos gráficos útiles<a class="anchor" aria-label="anchor" href="#algunos-gr%C3%A1ficos-%C3%BAtiles"><i class="fas fa-link"></i></a>
 </h2>
 <p>en breve</p>
 
@@ -108,21 +109,21 @@
 
 
   <div class="chapter-nav">
-<div class="prev"><a href="resumenes.html"><span class="header-section-number">14</span> Resumiendo y relacionado los datos</a></div>
-<div class="next"><a href="contribuye.html"><span class="header-section-number">16</span> Contribuye al proyecto</a></div>
+<div class="prev"><a href="resumenes.html"><span class="header-section-number">15</span> Resumiendo y relacionado los datos</a></div>
+<div class="next"><a href="contribuye.html"><span class="header-section-number">17</span> Contribuye al proyecto</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#ggplot2"><span class="header-section-number">15</span> Visualizando datos: incursión a ggplot2</a></li>
-<li><a class="nav-link" href="#la-importancia-del-dataviz"><span class="header-section-number">15.1</span> La importancia del dataviz</a></li>
-<li><a class="nav-link" href="#entendiendo-la-gram%C3%A1tica-de-ggplot2"><span class="header-section-number">15.2</span> Entendiendo la gramática de ggplot2</a></li>
-<li><a class="nav-link" href="#algunos-gr%C3%A1ficos-%C3%BAtiles"><span class="header-section-number">15.3</span> Algunos gráficos útiles</a></li>
+<li><a class="nav-link" href="#ggplot2"><span class="header-section-number">16</span> Visualizando datos: incursión a ggplot2</a></li>
+<li><a class="nav-link" href="#la-importancia-del-dataviz"><span class="header-section-number">16.1</span> La importancia del dataviz</a></li>
+<li><a class="nav-link" href="#entendiendo-la-gram%C3%A1tica-de-ggplot2"><span class="header-section-number">16.2</span> Entendiendo la gramática de ggplot2</a></li>
+<li><a class="nav-link" href="#algunos-gr%C3%A1ficos-%C3%BAtiles"><span class="header-section-number">16.3</span> Algunos gráficos útiles</a></li>
 </ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/dadosdelaplace/intro-R/blob/master/14-dataviz.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/dadosdelaplace/intro-R/edit/master/14-dataviz.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/dadosdelaplace/intro-R/blob/master/16-dataviz.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/dadosdelaplace/intro-R/edit/master/16-dataviz.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>
@@ -134,7 +135,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 21-12-2021.</p>
+    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 22-12-2021.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

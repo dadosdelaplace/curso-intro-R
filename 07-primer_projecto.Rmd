@@ -1,0 +1,246 @@
+```{r echo = FALSE}
+library(knitr)
+
+# Color text
+colorize <- function(x, color) {
+  
+  if (knitr::is_latex_output()) {
+    
+    sprintf("\\textcolor{%s}{%s}", color, x)
+    
+  } else if (knitr::is_html_output()) {
+    
+    sprintf("<span style='color: %s;'>%s</span>", color, x)
+    
+  } else { x }
+}
+```
+
+
+# Flujo de trabajo: primer proyecto {#proyecto}
+
+
+Estamos listos/as para crear nuestro <mark>**primer proyecto de `R`**</mark> para trabajar ordenadicos/as.
+
+Cuando se empieza a programar para un trabajo concreto de `R` es recomendable crearnos lo que se conoce como un <mark>**proyecto de `R`**<mark>: en lugar de ir abriendo ventanas sueltas para programar (los scripts, los archivos con extensión `.R`), podemos <mark>**agruparlos**</mark> en distintos proyectos, de forma que podamos acceder a ellos de forma ordenada (algo así como crear carpetas en nuestro disco duro).
+
+
+## Crear proyecto
+
+Para <mark>**crear nuestro proyecto**</mark> deberemos de ir al menú superior `File << New Project` (ver \@ref(fig:crear-proyecto1))
+
+```{r crear-proyecto1, echo = FALSE, out.width = "50%", fig.align = "center", fig.cap = "Crear un nuevo proyecto en R."}
+knitr::include_graphics("./img/crear_proyecto1.jpg")
+```
+
+Se nos abrirá una ventana con 3 opciones:
+
+- **New directory**: crear un proyecto desde el inicio (**opción recomendable**).
+
+- **Existing directory**: crear un proyecto con los códigos que tienes ya guardados en una carpeta.
+
+- **Version control**: para importar el proyecto de algún repositorio y vincularlo a él.
+
+
+```{r crear-proyecto2, echo = FALSE, out.width = "50%", fig.align = "center", fig.cap = "Opciones de creación."}
+knitr::include_graphics("./img/crear_proyecto2.jpg")
+```
+
+```{r crear-proyecto3, echo = FALSE, out.width = "50%", fig.align = "center", fig.cap = "Clickar en «New project»."}
+knitr::include_graphics("./img/crear_proyecto3.jpg")
+```
+
+Deberemos elegir el <mark>**directorio de nuestro ordenador**</mark> donde queremos que se guarde (una carpeta que contendrá todos los códigos y datos de ese proyecto), así como el **nombre del proyecto** (que será a su vez el nombre de la subcarpeta que se os creará en el ordenador).
+
+```{r crear-proyecto4, echo = FALSE, out.width = "50%", fig.align = "center", fig.cap = "Nombre del proyecto."}
+knitr::include_graphics("./img/crear_proyecto4.jpg")
+```
+
+Una vez que el proyecto está creado, abriremos un **script de `R`** (donde escribiremos el código), escribiremos si queremos una descripción del proyecto en la primera línea y guardaremos el archivo (archivo de extensión `.R`).
+
+```{r crear-proyecto5, echo = FALSE, out.width = "50%", fig.align = "center", fig.cap = "Abrir nuestro primer script de R."}
+knitr::include_graphics("./img/crear_proyecto5.jpg")
+```
+
+```{r crear-proyecto6, echo = FALSE, out.width = "50%", fig.align = "center", fig.cap = "Descripción al inicio del código."}
+knitr::include_graphics("./img/crear_proyecto6.jpg")
+```
+
+```{r crear-proyecto7, echo = FALSE, out.width = "50%", fig.align = "center", fig.cap = "Guardamos el código."}
+knitr::include_graphics("./img/crear_proyecto7.jpg")
+```
+
+```{r crear-proyecto8, echo = FALSE, out.width = "50%", fig.align = "center", fig.cap = "Guardamos el código."}
+knitr::include_graphics("./img/crear_proyecto8.jpg")
+```
+
+Este será nuestro **código principal** (puedes ponerle el nombre que quieras, normalmente se le llama `main.R` para diferenciarlo del resto), desde el que iremos construyendo nuestro código e iremos llamando a otros archivos si es necesario. Recuerda que <mark>**programar es como escribir**</mark>: cuanto más limpio y estructurado, mejor se entenderá.
+
+&nbsp;
+
+La **ventaja de tener los códigos agrupados por proyectos** es que si estamos trabajando en varios a la vez podemos saltar de uno a otro, visualizando solo los códigos de un proyecto, y no los 100 archivos que vayamos creando.
+
+```{r crear-proyecto9, echo = FALSE, out.width = "50%", fig.align = "center", fig.cap = "Saltar de proyecto en proyecto."}
+knitr::include_graphics("./img/crear_proyecto9.jpg")
+```
+
+
+## Directorios de trabajo y cabecera
+
+Como luego veremos, es altamente recomendable que <mark>**todos los archivos (códigos, datos, imágenes, recursos, etc) estén dentro de la misma carpeta**</mark> del proyecto (aunque podamos crear subdirectorios), para que trabajar en el proyecto sea más sencillo e intuitivo. Vamos a crearnos dentro de la carpeta del proyecto, una subcarpeta que se llame `DATOS`, en donde **debemos descargar todos los ficheros que hay en <https://github.com/dadosdelaplace/courses-intro-r/tree/main/DATOS>**, y otra llamada `CODIGOS`, donde guardar nuestros archivos `.R` (por eso de ser ordenadicos).
+
+
+```{r carpeta-codigos, echo = FALSE, out.width = "50%", fig.align = "center", fig.cap = "Subcarpeta «CODIGOS»."}
+knitr::include_graphics("./img/carpeta_codigos.jpg")
+```
+
+En esa carpeta de códigos vamos a crear de prueba el código llamado `variables.R` donde vamos a **definir algunas variables** que luego usaremos en el código principal (suele suceder con variables que van a ser fijas como nombres, fechas o codificaciones de variables).
+
+```{r}
+# Descripción: script de prueba con variables
+
+# Variables
+x <- c(1, 2, 0, -1, 71) # Vector de números
+y <- c("hola", "me", "llamo", "Javier") # Vector de caracteres
+apellido <- "Álvarez"
+
+# Fechas
+hoy <- as.Date(Sys.time()) # Convertir a tipo fecha la fecha de hoy
+fecha_origen <- as.Date("2021-01-01") # Inicio de año
+```
+
+```{r carpeta-codigos2, echo = FALSE, out.width = "50%", fig.align = "center", fig.cap = "Escribimos una serie de variables fijas para luego ser usadas."}
+knitr::include_graphics("./img/carpeta_codigos2.jpg")
+```
+
+No es obligatorio pero es **altamente recomendable** tener muy estructurado nuestros códigos, de forma que el archivo `.R` haga una **tarea concreta y definida** (uno carga archivos, otro preprocesa, otro hace un modelo, otro hace las gráficas), y sea el <mark>**código principal el que haga una llamada limpia a todos ellos**</mark>, para que en caso de error, la detección del mismo sea más sencilla.
+
+Así que eso haremos: desde nuestro archivo principal `main.R` llamaremos a ese archivo `variables.R`, para luego usar las variables definidas en él.
+
+**¿Cómo indicarle a `R` donde está nuestro fichero?**
+
+En `R`, como en todo lenguaje de programación, podemos consultar lo que el ordenador llama _directorio de trabajo_: la carpeta «base» desde donde está ejecutando tu código. Dicha ruta de directorio se puede consultar con la función `getwd()`, pudiendo ver los archivos y carpetas que hay dentro del mismo con el comando `dir()`
+
+```{r eval = FALSE}
+getwd()
+dir()
+```
+
+
+```{r getwd, echo = FALSE, out.width = "50%", fig.align = "center", fig.cap = "Consultar directorio de trabajo predeterminado y archivos contenidos en él."}
+knitr::include_graphics("./img/getwd.jpg")
+```
+
+
+Lo ideal es empezar el código <mark>**fijando como directorio de trabajo el directorio donde tengamos nuestro archivo principal**</mark> `main.R` y para ello usaremos la función `setwd()`, cuyo argumento será la ruta donde queremos fijarlo. Para hacerlo de forma automática (y que el código pueda ser abierto por ti pero también por otros que no tengan tu misma estructura de carpetas), obtendremos de forma automática la ruta del archivo `main.R` o del proyecto con la orden `rstudioapi::getSourceEditorContext()$path`, y después usaremos `dirname()` para quedarnos solo con la ruta de carpetas (eliminando el nombre del fichero al final). Esa será la ruta que le pasaremos a `setwd()`, quedando nuestro directorio de trabajo automáticamente fijado, sin preocuparnos de la ruta
+
+```{r eval = FALSE}
+# Fijamos directorio de trabajo automáticamente
+setwd(dirname(rstudioapi::getSourceEditorContext()$path))
+```
+
+
+```{r setwd, echo = FALSE, out.width = "50%", fig.align = "center", fig.cap = "Fijamos de forma automático el directorio de trabajo."}
+knitr::include_graphics("./img/setwd.jpg")
+```
+
+Una vez que hemos fijado nuestro directorio, para <mark>**cargar código `.R`**</mark>, basta que usemos la función `source()`, cuyo argumento será la ruta del archivo. Como tenemos de directorio base el directorio en el que tenemos nuestro archivo principal (`./`), bastará que empecemos a escribir `source("./")`, presionar el tabulador, y se nos abrirá el menú de archivos de nuestro directorio de trabajo, pudiendo ir seleccionando de forma sencilla la ruta de nuestro archivo.
+
+
+```{r menu-carpetas, echo = FALSE, out.width = "50%", fig.align = "center", fig.cap = "Cargar archivos de nuestro directorio de trabajo."}
+knitr::include_graphics("./img/menu_carpetas.jpg")
+```
+
+
+```{r menu-carpetas1, echo = FALSE, out.width = "50%", fig.align = "center", fig.cap = "Cargar archivos de nuestro directorio de trabajo."}
+knitr::include_graphics("./img/menu_carpetas1.jpg")
+```
+
+## Ejecución
+
+Ese archivo que hemos incluido en el código principal nos <mark>**cargará las variables que hemos definido en él**</mark>, pudiendo usarlas en el código. Vamos a ejecutar lo que tenemos de momento, y para ello tenemos 2 opciones: o copiar el código del script en la consola y pulsar _ENTER_, o bien, activando la casilla _source on save_ y guardando el script (no solo se guardará sino que se ejecutará).
+
+```{r source-on-save, echo = FALSE, out.width = "50%", fig.align = "center", fig.cap = "Guardamos con la casilla «source on save» activada para que además de guardar se ejecute el código."}
+knitr::include_graphics("./img/source_on_save.jpg")
+```
+
+Como vemos en la imagen \@ref(fig:source-on-save), una vez ejecutado, tenemos en nuestro panel de entorno (parte superior derecha) las variables ya cargadas que teníamos definidas en nuestro fichero `variables.R`.
+
+Prueba a escribir algunas funciones que hemos aprendido con dichas variables y vuelve a hacer click en «guardar» con _source on save_ activado.
+
+```{r}
+# Sumamos 3 a cada elemento de x
+z <- x + 3
+z
+
+# Imprimimos por pantalla la frase unida, y a dicha frase
+# le pegamos nuestro apellido
+cat(paste(paste(y, collapse = " "), apellido))
+
+# Días que han pasado desde el inicio de año
+dias <- hoy - fecha_origen
+dias
+```
+
+La función `cat()` nos muestra por consola el texto que le pasemos de argumento (**función especial para mensajes de alerta** por consola)
+
+
+```{r codigo-1, echo = FALSE, out.width = "50%", fig.align = "center", fig.cap = "Cálculos con la variables definidas: suma, concatenación de texto y diferencia de fechas."}
+knitr::include_graphics("./img/codigo_1.jpg")
+```
+
+Ya hemos ejecutado nuestro primer proyecto en `.R` :)
+
+
+&nbsp;
+
+
+**`r colorize("WARNING: guardar los scripts", "#ffc107")`**
+
+Los scripts que tengas sin guardar tendrán un asterisco `*` al final del nombre en la pestaña superior de la ventana.
+
+
+
+
+
+
+
+## Consejos
+
+
+**`r colorize("CONSEJOS", "#20935E")`**
+
+&nbsp;
+
+**`r colorize("Cambiar la notación exponencial", "#20935E")`** 
+
+
+Por defecto, `R` muestra los números en formato de notación exponencial. Por ejemplo, el número `1000000` nos lo mostrará por defecto como `1e+06`. A veces podemos querer que se muestre con todas sus cifras (por ejemplo, en el título o leyenda de una gráfica): para anular la notación exponencial, escribe al inicio del código `options("scipen" = 10)`.
+
+&nbsp;
+
+
+**`r colorize("Limpiar consola", "#20935E")`** 
+
+Podemos limpiar la consola clickando en al escoba que tenemos en la parte superior derecha de la misma. Esta acción **no nos elimina ninguna variable**, simplemente nos limpia la consola de mensajes.
+
+&nbsp;
+
+
+**`r colorize("Comentarios en los códigos", "#20935E")`** 
+
+Es crucial que intentes **documentar al máximo tu código** y que te acostumbres a ello desde el principio, dejando explícito que haces en cada paso, tanto para ti como para otra persona que pueda leer tu código y lo entienda. Para ello usaremos `# comentario` cuando queramos dejar comentarios en el código. Dichas partes, amén de estar en otro color, no son leídas por `R` ni ejecutadas: son comentarios que el programa «no ve», solo son para nosotros.
+
+
+
+
+&nbsp;
+
+
+**`r colorize("Extraer fecha y hora de hoy", "#20935E")`** 
+
+La función `Sys.time()` accede al sistema de nuestro ordenador para decirnos la **fecha y hora del momento de la ejecución** de dicha función.
+
+```{r}
+Sys.time()
+```

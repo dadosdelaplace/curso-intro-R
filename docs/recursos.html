@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Capítulo 16 Recursos extras | Aprendiendo R sin morir en el intento</title>
+<meta name="author" content="Javier Álvarez Liébana">
+<meta name="description" content="16.1 Incursión aleatoria Antes de acabar esta breve introducción a R merece la pena hablar de «lo aleatorio» y su generación en R. ¿Cómo se define la aleatoriedad? Si alguna vez has interactuado...">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="Capítulo 16 Recursos extras | Aprendiendo R sin morir en el intento">
+<meta property="og:type" content="book">
+<meta property="og:image" content="/img/logo_R.png">
+<meta property="og:description" content="16.1 Incursión aleatoria Antes de acabar esta breve introducción a R merece la pena hablar de «lo aleatorio» y su generación en R. ¿Cómo se define la aleatoriedad? Si alguna vez has interactuado...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Capítulo 16 Recursos extras | Aprendiendo R sin morir en el intento">
+<meta name="twitter:description" content="16.1 Incursión aleatoria Antes de acabar esta breve introducción a R merece la pena hablar de «lo aleatorio» y su generación en R. ¿Cómo se define la aleatoriedad? Si alguna vez has interactuado...">
+<meta name="twitter:image" content="/img/logo_R.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/_Sen-0.4.0/font.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM%20Mono&amp;display=swap" rel="stylesheet">
+<link href="libs/_Bitter-0.4.0/font.css" rel="stylesheet">
+<script src="libs/bs3compat-0.3.0/transition.js"></script><script src="libs/bs3compat-0.3.0/tabs.js"></script><script src="libs/bs3compat-0.3.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="libs/datatables-binding-0.18/datatables.js"></script><link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script><link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet">
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS -->
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Aprendiendo R sin morir en el intento</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Prefacio</a></li>
+<li class="book-part">Toma de contacto</li>
+<li><a class="" href="instalacionR.html"><span class="header-section-number">1</span> Instalación</a></li>
+<li><a class="" href="primeros-pasos.html"><span class="header-section-number">2</span> Primeros pasos</a></li>
+<li class="book-part">Conceptos básicos</li>
+<li><a class="" href="vectores.html"><span class="header-section-number">3</span> Tipos de datos I: vectores</a></li>
+<li><a class="" href="operacionesvectores.html"><span class="header-section-number">4</span> Operaciones con vectores</a></li>
+<li><a class="" href="control.html"><span class="header-section-number">5</span> Estructuras de control</a></li>
+<li><a class="" href="datos.html"><span class="header-section-number">6</span> Tipos de datos II: datos estructurados</a></li>
+<li><a class="" href="proyecto.html"><span class="header-section-number">7</span> Flujo de trabajo: primer proyecto</a></li>
+<li><a class="" href="importar-exportar.html"><span class="header-section-number">8</span> Importando/exportando</a></li>
+<li class="book-part">Un pasito más</li>
+<li><a class="" href="listas.html"><span class="header-section-number">9</span> Listas</a></li>
+<li><a class="" href="factores.html"><span class="header-section-number">10</span> Factores</a></li>
+<li><a class="" href="funciones.html"><span class="header-section-number">11</span> Creación de funciones</a></li>
+<li class="book-part">EXPLORANDO: introducción al análisis exploratorio de datos</li>
+<li><a class="" href="tidydata.html"><span class="header-section-number">12</span> Tidy data: ordenando datos</a></li>
+<li><a class="" href="tidyverse.html"><span class="header-section-number">13</span> Incursión a tidyverse</a></li>
+<li><a class="" href="resumenes.html"><span class="header-section-number">14</span> Resumiendo y relacionado los datos</a></li>
+<li class="book-part">Final del camino</li>
+<li><a class="" href="resumen-1.html"><span class="header-section-number">15</span> ¿Qué sabemos hacer?</a></li>
+<li><a class="active" href="recursos.html"><span class="header-section-number">16</span> Recursos extras</a></li>
+<li class="book-part">Epílogo</li>
+<li><a class="" href="contribuye.html"><span class="header-section-number">17</span> Contribuye al proyecto</a></li>
+<li><a class="" href="bibliograf%C3%ADa.html">Bibliografía</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/dadosdelaplace/intro-R">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="recursos" class="section level1">
+<h1>
+<span class="header-section-number">Capítulo 16</span> Recursos extras<a class="anchor" aria-label="anchor" href="#recursos"><i class="fas fa-link"></i></a>
+</h1>
+<div id="aleatorio-1" class="section level2">
+<h2>
+<span class="header-section-number">16.1</span> Incursión aleatoria<a class="anchor" aria-label="anchor" href="#aleatorio-1"><i class="fas fa-link"></i></a>
+</h2>
+<p>Antes de acabar esta breve introducción a <code>R</code> merece la pena hablar de <strong>«lo aleatorio»</strong> y su generación en <code>R</code>.</p>
+<p><strong>¿Cómo se define la aleatoriedad?</strong></p>
+<p>Si alguna vez has interactuado con matemáticos o estadísticos (Dios te libre), seguramente es una palabra que les hayas escuchado mentar: <strong>aleatoriedad</strong>. Existen múltiples definiciones, y este manual tampoco pretende ser un tratado de filosofía de la ciencia, pero podemos definir la aleatoriedad de la siguiente manera:</p>
+<p> </p>
+<p><strong><span style="color: #4197D2;">GLOSARIO: aleatoriedad</span></strong></p>
+<p>Propiedad de todo proceso cuyo resultado final no se puede conocer con exactitud - a nivel individual o particular - antes de que se realice, aunque las condiciones iniciales se mantengan constantes (ejemplo: lanzar un dado).</p>
+<p><strong>¿Qué NO significa la palabra «aleatorio»?</strong></p>
+<p>🛑 <strong>NO</strong> tiene que implicar algo <strong>caótico</strong>.<br>
+🛑 <strong>NO</strong> significa que no se pueda <strong>predecir</strong> a nivel de conjunto.<br>
+🛑 <strong>NO</strong> significa que <strong>carezca de un patrón</strong> de comportamiento.
+ </p>
+<p>El ejemplo perfecto para <strong>entender las implicaciones de algo aleatorio es un dado</strong>, ya que no podemos saber con exactitud cuál será la siguiente tirada, pero tiene un patrón: si tiramos un millón de veces, aproximadamente un sexto del total de tiradas serán un 1.</p>
+<p> </p>
+<p>En el análisis estadístico y en la programación en <code>R</code> nos vamos a encontrar con múltiples situaciones en las que <strong>lo aleatorio juega un papel importante</strong>, y aunque este sea un tutorial muy básico e introductorio, creo que es interesante conocer <strong>algunas formas muy sencillas de generar números aleatorios</strong> (o…no tanto, ahora llegamos a la Sección <a href="recursos.html#pseudoaleatorio">16.2</a>).</p>
+<p>Empecemos por lo más simple: vamos a <strong>simular tiradas de una moneda</strong>, asumiendo que solo tenemos dos opciones (eliminando la opción de caer de canto). Cuando tiramos una moneda es un experimento aleatorio, ya que no sabemos el resultado exacto de la siguiente tirada, pero sí sabemos que la probabilidad teórica es de 50-50, y que las únicas opciones a elegir son <code>cara</code> y <code>cruz</code>.</p>
+<p>Una forma de ver el experimento de lanzar una moneda es pensar que tenemos una <strong>urna con dos bolas (cara y cruz)</strong>, y empezamos a sacar bolas de la urna (<strong>permitiendo que al sacar una bola, se pueda devolver a la urna de nuevo</strong>). Eso es precisamente lo que hace la función <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code>, una función que nos seleccionará «aleatoriamente» elementos de una urna.</p>
+<ul>
+<li>
+<code>x</code>: los elementos distintos que tiene para elegir, que en nuestro caso serán <code>"cara"</code> y <code>"cruz"</code>.</li>
+<li>
+<code>size</code>: el número de bolas que queremos sacar de la urna.</li>
+<li>
+<code>replace</code>: si tras extraer devolvemos la bola a la urna (<code>replace = TRUE</code>) o si se queda fuera (<code>replace = FALSE</code>, valor por defecto).</li>
+<li>
+<code>prob</code>: la probabilidad que tiene cada elemento en caso de no ser equiprobables (valor por defecto).</li>
+</ul>
+<div class="sourceCode" id="cb1082"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Tiramos 20 veces una moneda</span>
+<span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"cara"</span>, <span class="st">"cruz"</span><span class="op">)</span>, size <span class="op">=</span> <span class="fl">20</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<pre><code>##  [1] "cara" "cruz" "cara" "cruz" "cara" "cara" "cruz" "cara" "cara" "cruz"
+## [11] "cara" "cara" "cruz" "cara" "cruz" "cruz" "cruz" "cara" "cruz" "cruz"</code></pre>
+<p>Fíjate que hemos indicado explícitamente <code>replace = TRUE</code> para decirle que aunque solo tengamos dos opciones, vamos a permitir que tras extraer una bola, la apuntemos, y la volvamos a introducir (puede salir de nuevo). ¿Qué sucede si <code>replace = FALSE</code> (su valor por defecto)?</p>
+<div class="sourceCode" id="cb1084"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Tiramos 20 veces una moneda SIN reemplazamiento</span>
+<span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"cara"</span>, <span class="st">"cruz"</span><span class="op">)</span>, size <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></code></pre></div>
+<pre><code>## Error in sample.int(length(x), size, replace, prob): cannot take a sample larger than the population when 'replace = FALSE'</code></pre>
+<p><strong>Al tener solo dos opciones</strong>, y no permitir que al extraer bolas vuelvan a la urna, tras extraer las dos únicas bolas, <strong>el proceso no puede continuar</strong> hasta los 20 lanzamientos.</p>
+<p>Como seguramente te hayas percatado, lanzar una moneda es un experimento dicotómico, y dichos experimentos tienen una gran ventaja en programación y es que podemos escribirlo en binario: <code>0</code> para lo que llamemos fracaso (cara, por ejemplo), <code>1</code> para lo que llamemos éxito (cruz).</p>
+<p>Generar experimentos dicotómicos de forma binario nos permite hacer cálculos sobre las tiradas de forma muy sencilla e intuitiva, ya que nos permite pasar de tener cadenas de texto a números.</p>
+<div class="sourceCode" id="cb1086"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Tiramos 50 veces una moneda: 0 es cara, 1 es cruz</span>
+<span class="va">n_tiradas</span> <span class="op">&lt;-</span> <span class="fl">50</span>
+<span class="va">tiradas</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">1</span>, size <span class="op">=</span> <span class="va">n_tiradas</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="va">tiradas</span></code></pre></div>
+<pre><code>##  [1] 1 0 1 1 1 0 1 0 1 1 1 0 1 0 1 0 0 1 1 0 0 0 1 0 1 1 0 0 1 1 0 0 0 0 1 0 0 1
+## [39] 1 1 1 0 0 1 0 0 1 1 1 1</code></pre>
+<div class="sourceCode" id="cb1088"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Cantidad de cruces: sumamos los 1's</span>
+<span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">tiradas</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 27</code></pre>
+<div class="sourceCode" id="cb1090"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Cantidad de caras: lo que son cruces</span>
+<span class="va">n_tiradas</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">tiradas</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 23</code></pre>
+<div class="sourceCode" id="cb1092"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># % de caras</span>
+<span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fl">100</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">tiradas</span><span class="op">)</span> <span class="op">/</span> <span class="va">n_tiradas</span>, <span class="st">"% de cruces"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## 54% de cruces</code></pre>
+<p>El argumento <code>prob = ...</code> nos permite generar experimentos que sean dicotómicos pero que <strong>no sean equiprobables</strong>, algo similar a <strong>lanzar una moneda trucada</strong> (por ejemplo, 30% caras y 70% cruces). Nótese como dichas probabilidades deben ser introducidas como proporciones (divididas entre 100).</p>
+<div class="sourceCode" id="cb1094"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Tiradas de una moneda trucada</span>
+<span class="va">tiradas</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">1</span>, size <span class="op">=</span> <span class="va">n_tiradas</span>, replace <span class="op">=</span> <span class="cn">TRUE</span>, prob <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.3</span>, <span class="fl">0.7</span><span class="op">)</span><span class="op">)</span>
+
+<span class="co"># % de caras</span>
+<span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fl">100</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">tiradas</span><span class="op">)</span> <span class="op">/</span> <span class="va">n_tiradas</span>, <span class="st">"% de cruces"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## 78% de cruces</code></pre>
+<details><p><summary>📝<strong>Ejercicio</strong>: ¿cómo simularías 200 tiradas de un dado?</summary></p>
+<!-- toc -->
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb1096"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Lo único que cambia son las opciones en la urna</span>
+<span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">6</span>, size <span class="op">=</span> <span class="fl">200</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<pre><code>##   [1] 6 3 5 2 5 3 2 2 3 5 5 6 4 5 3 5 3 5 4 3 1 5 3 5 1 3 4 2 4 6 3 1 4 4 6 1 3
+##  [38] 6 6 6 6 2 1 6 5 4 1 2 2 4 3 2 5 5 6 3 1 5 3 6 4 6 6 5 2 1 1 4 1 1 4 5 1 3
+##  [75] 6 1 2 4 1 3 2 4 1 3 3 4 6 1 6 1 2 1 3 2 6 2 6 1 3 5 6 6 3 2 6 4 1 6 1 2 6
+## [112] 3 1 3 1 1 4 4 4 5 3 1 1 6 6 5 2 6 6 2 4 1 5 5 6 6 5 4 2 6 5 5 3 6 5 2 5 6
+## [149] 1 5 3 3 4 3 1 2 6 4 2 3 6 2 6 2 4 5 2 6 5 6 1 3 5 3 6 6 1 4 4 3 2 3 3 4 6
+## [186] 5 5 3 6 1 6 6 1 3 4 2 1 1 1 3</code></pre>
+<!-- tocstop -->
+</details>
+</div>
+<div id="pseudoaleatorio" class="section level2">
+<h2>
+<span class="header-section-number">16.2</span> Pseudoaleatoriedad<a class="anchor" aria-label="anchor" href="#pseudoaleatorio"><i class="fas fa-link"></i></a>
+</h2>
+<p>Si has hecho varias pruebas con los códigos de arriba quizás ya hayas visto que <strong>cada vez que lanzas el código, el resultado es distinto</strong>, algo similar a lo que sucedería si lanzas una moneda. Prueba a ejecutar este código varias veces.</p>
+<div class="sourceCode" id="cb1098"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">1</span>, size <span class="op">=</span> <span class="fl">20</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<pre><code>##  [1] 1 0 1 0 1 1 0 1 0 0 0 1 0 1 0 0 1 0 0 0</code></pre>
+<div class="sourceCode" id="cb1100"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">1</span>, size <span class="op">=</span> <span class="fl">20</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<pre><code>##  [1] 1 1 1 1 1 0 1 0 0 1 1 1 1 1 1 0 0 0 0 1</code></pre>
+<div class="sourceCode" id="cb1102"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">1</span>, size <span class="op">=</span> <span class="fl">20</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<pre><code>##  [1] 1 0 0 1 0 1 1 0 0 0 1 1 1 1 0 1 1 1 0 0</code></pre>
+<p><strong>¿Y si quisiéramos generar toda la clase la misma tirada de moneda?</strong></p>
+<p>Lo primero que quizás pienses es que es <strong>imposible</strong>, ya que al tirar una moneda en la vida real, nunca vamos a tener forma de garantizar que salgan las mismas tiradas a diferentes personas. Y <strong>efectivamente eso sería cierto si nuestros procesos generados hubiesen sido aleatorios</strong>, como en la vida real pero…no lo son.</p>
+<p>Mientras esperamos a que lleguen al mainstream los ordenadores cuánticos, <strong>TODO lo que hay en tu ordenador es determínistico</strong>, ya que cualquier proceso se reduce a una <strong>secuencia de bits (<code>0's</code> y <code>1's</code>)</strong> y un <strong>algoritmo</strong> (sin azar, cuyo resultado siempre será el mismo bajo las mismas condiciones iniciales). He aquí la decepción de tu vida: un ordenador «normal» NO puede generar procesos aleatorios, sino <strong>procesos y números PSEUDOALEATORIOS</strong>, basados en <strong>cadenas pseudoaleatorias</strong> generadas por un algoritmo determinístico.</p>
+<p>Dichas secuencias aparentan ser aleatorias pero no lo son, y de hecho muchas son <strong>periódicas</strong>: si generamos el número suficiente de elementos de la cadena pseudoaleatoria volveremos al inicio. Muchos de los algoritmos disponibles para generar números aleatorios dependen, entre otros factores, de un <strong>valor inicial llamada semilla</strong> (normalmente obtenida a partir del reloj interno del ordenador): misma semilla, mismo resultado «aleatorio». Para <strong>fijar la semilla</strong> usaremos <code><a href="https://rdrr.io/r/base/Random.html">set.seed()</a></code>, pasándole como argumento una secuencia de números (todos la misma).</p>
+<div class="sourceCode" id="cb1104"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1234567</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">1</span>, size <span class="op">=</span> <span class="fl">20</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<pre><code>##  [1] 0 1 1 0 1 0 0 0 1 1 0 1 0 1 0 0 1 1 1 0</code></pre>
+<div class="sourceCode" id="cb1106"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1234567</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">1</span>, size <span class="op">=</span> <span class="fl">20</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<pre><code>##  [1] 0 1 1 0 1 0 0 0 1 1 0 1 0 1 0 0 1 1 1 0</code></pre>
+<div class="sourceCode" id="cb1108"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1234567</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">1</span>, size <span class="op">=</span> <span class="fl">20</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<pre><code>##  [1] 0 1 1 0 1 0 0 0 1 1 0 1 0 1 0 0 1 1 1 0</code></pre>
+<p><strong>Siempre la misma tirada si la semilla inicial es la misma</strong> ya que las cadenas pseudoaleatorias que usa el ordenador para simular nuestras tiradas son idénticas.</p>
+</div>
+<div id="ggplot2" class="section level2">
+<h2>
+<span class="header-section-number">16.3</span> Visualizando datos: incursión a ggplot2<a class="anchor" aria-label="anchor" href="#ggplot2"><i class="fas fa-link"></i></a>
+</h2>
+<p>Este curso es una pequeña introducción y no pretende ser un manual extenso ni detallado de <code>R</code>, así que no entraremos en profundidad en la parte visual. Pero si creo que merece la pena hacer una <mark><strong>breve incursión al dataviz</strong></mark> ya que una de las principales fortalezas de <code>R</code> frente a <code>Python</code> es el manejo de datos con <a href="https://tidyverse.tidyverse.org">tidyverse</a>, entorno en el que se incluye el paquete <a href="https://ggplot2.tidyverse.org">ggplot2</a>.</p>
+<p>La <mark><strong>visualización de datos o dataviz</strong></mark> debería ser una parte fundamental de todo análisis de datos. No es solo que nuestro trabajo sea más <strong>presentable y estético</strong> (algo fundamental). La visualización de datos es <mark><strong>fundamental para convertir el dato en información</strong></mark>, y usar dicha información para <mark><strong>contar una historia</strong></mark> con nuestros datos: no solo importa lo que cuentas sino <strong>cómo lo cuentas</strong>).</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:unnamed-chunk-400"></span>
+<img src="img/telling-dataviz" alt="Imagen extraída de Reddit &lt;https://www.reddit.com/r/lego/comments/pezxk5/oc_a_lego_data_story_adapted_from_original_image/&gt;." width="70%"><p class="caption">
+Imagen/gráfica 16.1: Imagen extraída de Reddit <a href="https://www.reddit.com/r/lego/comments/pezxk5/oc_a_lego_data_story_adapted_from_original_image/" class="uri">https://www.reddit.com/r/lego/comments/pezxk5/oc_a_lego_data_story_adapted_from_original_image/</a>.
+</p>
+</div>
+<p>Uno de los ejemplos más famosos para explicar la <strong>importancia de la visualización de datos</strong> en el análisis exploratorio es el conocido como <a href="https://cartasdelaplace.substack.com/p/carta-2"><strong>cuarteto de Anscombe</strong></a>: cuatro pares de datos <span class="math inline">\((X, Y)\)</span> con la misma media de todas las <span class="math inline">\(X\)</span>, la misma media de todas las <span class="math inline">\(Y\)</span>, la misma correlación en todos los pares y la misma recta de regresión si la pintásemos. Matemáticamente, con dichos indicadores, no podríamos distinguir un conjunto de datos de otro, pero al visualizarlos, son datos totalmente distintos. Algo similar sucede con el <mark><strong>conjunto de datos <code>Datasaurus</code></strong></mark> que te visualizo debajo de estas líneas, conjunto creado por el experto en visualización de datos <strong>Alberto Cairo</strong>: mismas medias y varianzas, mismas correlaciones, pero datos totalmente distintos.</p>
+<div id="grammar-of-graphics-gg-entendiendo-la-gramática-ggplot2" class="section level3">
+<h3>
+<span class="header-section-number">16.3.1</span> Grammar of graphics (gg): entendiendo la gramática ggplot2<a class="anchor" aria-label="anchor" href="#grammar-of-graphics-gg-entendiendo-la-gram%C3%A1tica-ggplot2"><i class="fas fa-link"></i></a>
+</h3>
+<p>La idea de la filosofía detrás del paquete <a href="https://ggplot2.tidyverse.org">ggplot2</a> (ya incluido en <a href="https://tidyverse.tidyverse.org">tidyverse</a>) es <mark><strong>entender los gráficos como parte integrada del flujo de procesamiento, depuración y modelado</strong></mark> de los datos, dándoles una gramática <em>Grammar of Graphics</em> (ver <a href="https://ggplot2-book.org/introduction.html" class="uri">https://ggplot2-book.org/introduction.html</a>) que nos permite combinar diferentes elementos gráficos y ligarlos a los datos. El objetivo es empezar con un lienzo en blanco e ir <mark><strong>añadiendo capas</strong></mark> a tu gráfico, como harías por ejemplo en Photoshop, con la diferencia de que nuestras <strong>capas podemos ligarlas al conjunto de datos</strong>, tanto las capas estéticas como las estadísticas. Y dicho paquete nos permite hacerlo con la misma filosofía con la que hemos procesado los datos</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:grammar"></span>
+<img src="img/grammar.jpg" alt="Idea detrás de la «Grammar of graphics» de Wilkinson." width="70%"><p class="caption">
+Imagen/gráfica 16.2: Idea detrás de la «Grammar of graphics» de Wilkinson.
+</p>
+</div>
+<p>La ventaja del sistema <a href="https://ggplot2.tidyverse.org">ggplot2</a> es poder <mark><strong>mapear atributos estéticos (color, forma, tamaño) de objetos geométricos (puntos, barras, líneas)</strong></mark> en función de los datos, añadiendo transformaciones de los datos, resúmenes estadísticos y transformaciones de las coordenadas.</p>
+<p>Un gráfico se compondrá de las <strong>siguientes capas</strong></p>
+<ul>
+<li>
+<strong>Elementos geométricos (geom)</strong>: puntos, líneas, barras, polígonos, etc.</li>
+<li>
+<strong>Transformaciones estadísticas (stat)</strong>: ordenar, resumir, agrupar, etc.</li>
+<li>
+<strong>Elementos del espacio aesthetics (scale)</strong>: color, forma, tamaño, leyenda, ejes, etc.</li>
+<li>
+<strong>Sistema de coordenadas (coord)</strong>: coordenadas, grids, etc.</li>
+<li>
+<strong>Componer gráficas (facet)</strong>: visualizar varias gráficas a la vez.</li>
+<li>
+<strong>Temas (theme)</strong>: fuente, tamaño de letra, subtítulos, captions, etc.</li>
+</ul>
+</div>
+</div>
+<div id="primer-intento-scatter-plot-o-diagrama-de-puntos" class="section level2">
+<h2>
+<span class="header-section-number">16.4</span> Primer intento: scatter plot o diagrama de puntos<a class="anchor" aria-label="anchor" href="#primer-intento-scatter-plot-o-diagrama-de-puntos"><i class="fas fa-link"></i></a>
+</h2>
+<p>Veamos un primer intento para entender la filosofía. Imagina que queremos dibujar un <em>scatter plot</em> o <mark><strong>diagrama de (dispersión) de puntos</strong></mark>. Para ello vamos a usar el conjunto de datos <code>gapminder</code> del paquete homónimo, un fichero con datos de esperanzas de vida, poblaciones y renta per cápita de distintos países en distintos momentos temporales.</p>
+<div class="sourceCode" id="cb1110"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jennybc/gapminder">gapminder</a></span><span class="op">)</span>
+<span class="va">gapminder</span></code></pre></div>
+<pre><code>## # A tibble: 1,704 × 6
+##    country     continent  year lifeExp      pop gdpPercap
+##    &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;
+##  1 Afghanistan Asia       1952    28.8  8425333      779.
+##  2 Afghanistan Asia       1957    30.3  9240934      821.
+##  3 Afghanistan Asia       1962    32.0 10267083      853.
+##  4 Afghanistan Asia       1967    34.0 11537966      836.
+##  5 Afghanistan Asia       1972    36.1 13079460      740.
+##  6 Afghanistan Asia       1977    38.4 14880372      786.
+##  7 Afghanistan Asia       1982    39.9 12881816      978.
+##  8 Afghanistan Asia       1987    40.8 13867957      852.
+##  9 Afghanistan Asia       1992    41.7 16317921      649.
+## 10 Afghanistan Asia       1997    41.8 22227415      635.
+## # … with 1,694 more rows</code></pre>
+<div class="sourceCode" id="cb1112"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/pillar/man/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">gapminder</span><span class="op">)</span></code></pre></div>
+<pre><code>## Rows: 1,704
+## Columns: 6
+## $ country   &lt;fct&gt; "Afghanistan", "Afghanistan", "Afghanistan", "Afghanistan", …
+## $ continent &lt;fct&gt; Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, …
+## $ year      &lt;int&gt; 1952, 1957, 1962, 1967, 1972, 1977, 1982, 1987, 1992, 1997, …
+## $ lifeExp   &lt;dbl&gt; 28.801, 30.332, 31.997, 34.020, 36.088, 38.438, 39.854, 40.8…
+## $ pop       &lt;int&gt; 8425333, 9240934, 10267083, 11537966, 13079460, 14880372, 12…
+## $ gdpPercap &lt;dbl&gt; 779.4453, 820.8530, 853.1007, 836.1971, 739.9811, 786.1134, …</code></pre>
+<p>Para empezar con algo sencillo <strong>filtraremos solo los datos del año 1997</strong> haciendo uso de <code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code>.</p>
+<div class="sourceCode" id="cb1114"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">gapminder_1997</span> <span class="op">&lt;-</span> <span class="va">gapminder</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">==</span> <span class="fl">1997</span><span class="op">)</span>
+<span class="va">gapminder_1997</span></code></pre></div>
+<pre><code>## # A tibble: 142 × 6
+##    country     continent  year lifeExp       pop gdpPercap
+##    &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;     &lt;int&gt;     &lt;dbl&gt;
+##  1 Afghanistan Asia       1997    41.8  22227415      635.
+##  2 Albania     Europe     1997    73.0   3428038     3193.
+##  3 Algeria     Africa     1997    69.2  29072015     4797.
+##  4 Angola      Africa     1997    41.0   9875024     2277.
+##  5 Argentina   Americas   1997    73.3  36203463    10967.
+##  6 Australia   Oceania    1997    78.8  18565243    26998.
+##  7 Austria     Europe     1997    77.5   8069876    29096.
+##  8 Bahrain     Asia       1997    73.9    598561    20292.
+##  9 Bangladesh  Asia       1997    59.4 123315288      973.
+## 10 Belgium     Europe     1997    77.5  10199787    27561.
+## # … with 132 more rows</code></pre>
+<p>Vamos a realizar un diagrama de puntos enfrentando en el eje y la población (variable <code>pop</code>) y en el eje x la renta per cápita (variable <code>gdpPercap</code>). <strong>¿Qué necesitamos?</strong></p>
+<ul>
+<li>
+<mark><strong>Datos</strong></mark>: el conjunto filtrado <code>gapminder_1997</code>.</li>
+<li>
+<mark><strong>Mapeado</strong></mark>: indicarle en <code><a href="https://rdrr.io/pkg/ggplot2/man/aes.html">aes()</a></code> (aesthetics) las variables a pintar en cada coordenada.</li>
+<li>
+<mark><strong>Elegir geometría</strong></mark>: puntos.</li>
+</ul>
+<div class="sourceCode" id="cb1116"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gapminder_1997</span>, <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">gdpPercap</span>, y <span class="op">=</span> <span class="va">pop</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># Geometría</span></code></pre></div>
+<div class="inline-figure"><img src="Intro_R_2021_2022_files/figure-html/unnamed-chunk-404-1.png" width="768"></div>
+<p>Podemos hacer lo mismo pero <strong>cambiando el rol de las coordenadas</strong>, intercambiando lsa variables</p>
+<div class="sourceCode" id="cb1117"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gapminder_1997</span>, <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">gdpPercap</span>, x <span class="op">=</span> <span class="va">pop</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="Intro_R_2021_2022_files/figure-html/unnamed-chunk-405-1.png" width="768"></div>
+<p>Y podemos repetirlo enfrentando ahora la población en el eje X y la experanza de vida en el eje Y (variable <code>lifeExp</code>).</p>
+<div class="sourceCode" id="cb1118"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gapminder_1997</span>, <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">lifeExp</span>, x <span class="op">=</span> <span class="va">pop</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="Intro_R_2021_2022_files/figure-html/unnamed-chunk-406-1.png" width="768"></div>
+<p>A veces nos puede ser más conveniente representar alguna de las variables en <mark><strong>escala logarítmica</strong></mark> (importante: indícalo siempre en el gráfico), lo que podemos hacer facilmente con <code><a href="https://rdrr.io/pkg/ggplot2/man/scale_continuous.html">scale_x_log10()</a></code> y <code><a href="https://rdrr.io/pkg/ggplot2/man/scale_continuous.html">scale_y_log10()</a></code></p>
+<div class="sourceCode" id="cb1119"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gapminder_1997</span>, <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">lifeExp</span>, x <span class="op">=</span> <span class="va">pop</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/scale_continuous.html">scale_x_log10</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="Intro_R_2021_2022_files/figure-html/unnamed-chunk-407-1.png" width="768"></div>
+<p><mark><strong>¿Cómo podemos dar color y tamaño a nuestro gráfico?</strong></mark></p>
+<p>La opción más sencilla es indicándole, dentro de <code><a href="https://rdrr.io/pkg/ggplot2/man/geom_point.html">geom_point()</a></code> el color de la geometría con <code>color = ...</code> (en este caso, el color del punto), mediante un color fijo, bien sea con alguno de los colores reservados que tiene <code>R</code>, bien sea con su <a href="https://htmlcolorcodes.com/es/">código hexadecimal</a></p>
+<div class="sourceCode" id="cb1120"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Color con palabra reservada</span>
+<span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gapminder_1997</span>, <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">lifeExp</span>, x <span class="op">=</span> <span class="va">pop</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/geom_point.html">geom_point</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/scale_continuous.html">scale_x_log10</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="Intro_R_2021_2022_files/figure-html/unnamed-chunk-408-1.png" width="768"></div>
+<div class="sourceCode" id="cb1121"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Color en hexadecimal, de la página https://htmlcolorcodes.com/es/</span>
+<span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gapminder_1997</span>, <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">lifeExp</span>, x <span class="op">=</span> <span class="va">pop</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/geom_point.html">geom_point</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"#2EA2D8"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/scale_continuous.html">scale_x_log10</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="Intro_R_2021_2022_files/figure-html/unnamed-chunk-408-2.png" width="768"></div>
+<p>De la misma manera podemos indicarle el <mark><strong>tamaño de la geometría</strong></mark> (en este caso del punto) con <code>size = ...</code>, incluso la <mark><strong>transparencia</strong></mark> que queremos para un color dado con <code>alpha = ...</code> (entre 0 - transparente - y 1 - totalmente opaco).</p>
+<div class="sourceCode" id="cb1122"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Color opaco</span>
+<span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gapminder_1997</span>, <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">lifeExp</span>, x <span class="op">=</span> <span class="va">pop</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/geom_point.html">geom_point</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"#A02B85"</span>, size <span class="op">=</span> <span class="fl">6</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/scale_continuous.html">scale_x_log10</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="Intro_R_2021_2022_files/figure-html/unnamed-chunk-409-1.png" width="768"></div>
+<div class="sourceCode" id="cb1123"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># alpha = 50%</span>
+<span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gapminder_1997</span>, <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">lifeExp</span>, x <span class="op">=</span> <span class="va">pop</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/geom_point.html">geom_point</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"#A02B85"</span>, size <span class="op">=</span> <span class="fl">6</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/scale_continuous.html">scale_x_log10</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="Intro_R_2021_2022_files/figure-html/unnamed-chunk-409-2.png" width="768"></div>
+<p>Dichos parámetros se los hemos pasado fijos, como si fuera un valor constante pero podemos <mark><strong>mapear los <em>aesthetics</em> de un gráfico</strong></mark> para que <strong>dependan de los datos</strong>, por ejemplo, asignándole un <strong>color a cada continente</strong>.</p>
+<div class="sourceCode" id="cb1124"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gapminder_1997</span>, <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">lifeExp</span>, x <span class="op">=</span> <span class="va">pop</span>, color <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/geom_point.html">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">5</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/scale_continuous.html">scale_x_log10</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="Intro_R_2021_2022_files/figure-html/unnamed-chunk-410-1.png" width="768"></div>
+<p>Podemos combinarlo con lo que hemos hecho anteriormente e indicarle además que queremos el <strong>tamaño en función de la renta</strong>, con cierto grado de transparencia.</p>
+<div class="sourceCode" id="cb1125"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gapminder_1997</span>, <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">lifeExp</span>, x <span class="op">=</span> <span class="va">pop</span>,
+                           color <span class="op">=</span> <span class="va">continent</span>, size <span class="op">=</span> <span class="va">gdpPercap</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/geom_point.html">geom_point</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.7</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/scale_continuous.html">scale_x_log10</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="Intro_R_2021_2022_files/figure-html/unnamed-chunk-411-1.png" width="768"></div>
+<p>En lugar de jugar con el color, también podríamos añadir mapear las variables en función de la <strong>forma de la geometría</strong> con <code>shape = ...</code> (en realidad si tuviéramos suficientes variables podríamos incluir, solo con ejes + colores + tamaños + formas + transparencia, hasta 6 variables distintas).</p>
+<div class="sourceCode" id="cb1126"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gapminder_1997</span>, <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">lifeExp</span>, x <span class="op">=</span> <span class="va">pop</span>,
+                           shape <span class="op">=</span> <span class="va">continent</span>, size <span class="op">=</span> <span class="va">gdpPercap</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/geom_point.html">geom_point</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.7</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/scale_continuous.html">scale_x_log10</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="Intro_R_2021_2022_files/figure-html/unnamed-chunk-412-1.png" width="768"></div>
+<p>Reflexionemos sobre el gráfico que acabamos de hacer</p>
+<div class="sourceCode" id="cb1127"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gapminder_1997</span>, <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">lifeExp</span>, x <span class="op">=</span> <span class="va">pop</span>,
+                           color <span class="op">=</span> <span class="va">continent</span>, size <span class="op">=</span> <span class="va">gdpPercap</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/geom_point.html">geom_point</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.7</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/scale_continuous.html">scale_x_log10</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="Intro_R_2021_2022_files/figure-html/unnamed-chunk-413-1.png" width="768"></div>
+<p><strong>Usando los datos</strong> hemos conseguido dibujar en un <strong>gráfico bidimensional 4 variables</strong> (<code>pop</code> y <code>lifeExp</code> en los ejes X,Y, <code>continent</code> como color y <code>gdpPercap</code> como tamaño de la geometría) con muy pocas líneas de código, y <mark><strong>totalmente adaptado y flexible</strong></mark> a nuestras necesidades. Respecto a los colores, si te fijas <code>R</code> <strong>ha elegido automáticamente la paleta</strong> de colores pero podemos <mark><strong>indicarle alguna paleta</strong></mark> concreta de varias maneras.</p>
+<p>La primera y más inmediata es indicarle los colores manualmente.</p>
+<div class="sourceCode" id="cb1128"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gapminder_1997</span>, <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">lifeExp</span>, x <span class="op">=</span> <span class="va">pop</span>,
+                           color <span class="op">=</span> <span class="va">continent</span>, size <span class="op">=</span> <span class="va">gdpPercap</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/geom_point.html">geom_point</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.7</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/scale_continuous.html">scale_x_log10</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/scale_manual.html">scale_color_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#A02B85"</span>, <span class="st">"#2DE86B"</span>, <span class="st">"#4FB2CA"</span>,
+                                <span class="st">"#E8DA2D"</span>, <span class="st">"#E84C2D"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="Intro_R_2021_2022_files/figure-html/unnamed-chunk-414-1.png" width="768"></div>
+<p>Otra opción es elegir alguna de las paletas disponibles en el paquete <a href="https://github.com/jrnold/ggthemes">ggthemes</a>, como <code><a href="https://rdrr.io/pkg/ggthemes/man/scale_economist.html">scale_color_economist()</a></code>, <code><a href="https://rdrr.io/pkg/ggthemes/man/scale_excel.html">scale_color_excel()</a></code> o <code><a href="https://rdrr.io/pkg/ggthemes/man/scale_color_tableau.html">scale_color_tableau()</a></code>.</p>
+<div class="sourceCode" id="cb1129"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jrnold/ggthemes">ggthemes</a></span><span class="op">)</span>
+
+<span class="co"># scale_color_economist()</span>
+<span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gapminder_1997</span>, <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">lifeExp</span>, x <span class="op">=</span> <span class="va">pop</span>,
+                           color <span class="op">=</span> <span class="va">continent</span>, size <span class="op">=</span> <span class="va">gdpPercap</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/geom_point.html">geom_point</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/scale_continuous.html">scale_x_log10</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggthemes/man/scale_economist.html">scale_color_economist</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="Intro_R_2021_2022_files/figure-html/unnamed-chunk-415-1.png" width="768"></div>
+<div class="sourceCode" id="cb1130"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># scale_color_excel()</span>
+<span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gapminder_1997</span>, <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">lifeExp</span>, x <span class="op">=</span> <span class="va">pop</span>,
+                           color <span class="op">=</span> <span class="va">continent</span>, size <span class="op">=</span> <span class="va">gdpPercap</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/geom_point.html">geom_point</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/scale_continuous.html">scale_x_log10</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggthemes/man/scale_excel.html">scale_color_excel</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="Intro_R_2021_2022_files/figure-html/unnamed-chunk-415-2.png" width="768"></div>
+<div class="sourceCode" id="cb1131"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># scale_color_tableau()</span>
+<span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gapminder_1997</span>, <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">lifeExp</span>, x <span class="op">=</span> <span class="va">pop</span>,
+                           color <span class="op">=</span> <span class="va">continent</span>, size <span class="op">=</span> <span class="va">gdpPercap</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/geom_point.html">geom_point</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/scale_continuous.html">scale_x_log10</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggthemes/man/scale_color_tableau.html">scale_color_tableau</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="Intro_R_2021_2022_files/figure-html/unnamed-chunk-415-3.png" width="768"></div>
+<p>También existen múltiples paquetes que nos proporcionan paletas de colores basados en películas (paquete <a href="https://github.com/aljrico/harrypotter">harrypotter</a> descargado desde el repositorio de Github), pájaros (paquete <a href="https://github.com/G-Thomson/Manu">Manu</a>) o cuadros (paquete <code>{MetBrewer}</code>).</p>
+<div class="sourceCode" id="cb1132"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/devtools/man/remote-reexports.html">install_github</a></span><span class="op">(</span>repo <span class="op">=</span> <span class="st">"https://github.com/aljrico/harrypotter"</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb1133"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/aljrico/harrypotter">harrypotter</a></span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gapminder_1997</span>, <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">lifeExp</span>, x <span class="op">=</span> <span class="va">pop</span>,
+                           color <span class="op">=</span> <span class="va">continent</span>, size <span class="op">=</span> <span class="va">gdpPercap</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/geom_point.html">geom_point</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/scale_continuous.html">scale_x_log10</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/harrypotter/man/scale_hp.html">scale_color_hp_d</a></span><span class="op">(</span>option <span class="op">=</span> <span class="st">"gryffindor"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Ejemplo de ggplot2"</span>,
+       subtitle <span class="op">=</span> <span class="st">"Paleta de Gryffindor"</span>,
+       caption <span class="op">=</span> <span class="st">"Autor: Javier Álvarez Liébana | Datos: gapminder"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="Intro_R_2021_2022_files/figure-html/unnamed-chunk-417-1.png" width="768"></div>
+<div class="sourceCode" id="cb1134"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gapminder_1997</span>, <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">lifeExp</span>, x <span class="op">=</span> <span class="va">pop</span>,
+                           color <span class="op">=</span> <span class="va">continent</span>, size <span class="op">=</span> <span class="va">gdpPercap</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/geom_point.html">geom_point</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/scale_continuous.html">scale_x_log10</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/harrypotter/man/scale_hp.html">scale_color_hp_d</a></span><span class="op">(</span>option <span class="op">=</span> <span class="st">"hufflepuff"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Ejemplo de ggplot2"</span>,
+       subtitle <span class="op">=</span> <span class="st">"Paleta de Hufflepuff"</span>,
+       caption <span class="op">=</span> <span class="st">"Autor: Javier Álvarez Liébana | Datos: gapminder"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="Intro_R_2021_2022_files/figure-html/unnamed-chunk-417-2.png" width="768"></div>
+<div class="sourceCode" id="cb1135"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/devtools/man/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"G-Thomson/Manu"</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb1136"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/G-Thomson/Manu">Manu</a></span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gapminder_1997</span>, <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">lifeExp</span>, x <span class="op">=</span> <span class="va">pop</span>,
+                           color <span class="op">=</span> <span class="va">continent</span>, size <span class="op">=</span> <span class="va">gdpPercap</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/geom_point.html">geom_point</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/scale_continuous.html">scale_x_log10</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="co"># paleta del pájaro Takahē - Porphyrio hochstetteri</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/scale_manual.html">scale_colour_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/Manu/man/get_pal.html">get_pal</a></span><span class="op">(</span><span class="st">"Takahe"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Ejemplo de ggplot2"</span>,
+       subtitle <span class="op">=</span> <span class="st">"Paleta del pájaro Takahē - Porphyrio hochstetteri"</span>,
+       caption <span class="op">=</span> <span class="st">"Autor: Javier Álvarez Liébana | Datos: gapminder"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="Intro_R_2021_2022_files/figure-html/unnamed-chunk-419-1.png" width="768"></div>
+<div class="sourceCode" id="cb1137"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/devtools/man/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"BlakeRMills/MetBrewer"</span><span class="op">)</span> </code></pre></div>
+<div class="sourceCode" id="cb1138"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">MetBrewer</span><span class="op">)</span>
+<span class="fu">MetBrewer</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/MetBrewer/man/met.brewer.html">met.brewer</a></span><span class="op">(</span><span class="st">"Renoir"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="Intro_R_2021_2022_files/figure-html/unnamed-chunk-421-1.png" width="768"></div>
+<div class="sourceCode" id="cb1139"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">MetBrewer</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/MetBrewer/man/met.brewer.html">met.brewer</a></span><span class="op">(</span><span class="st">"Monet"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="Intro_R_2021_2022_files/figure-html/unnamed-chunk-421-2.png" width="768"></div>
+<div class="sourceCode" id="cb1140"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">MetBrewer</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/MetBrewer/man/met.brewer.html">met.brewer</a></span><span class="op">(</span><span class="st">"Hokusai"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="Intro_R_2021_2022_files/figure-html/unnamed-chunk-421-3.png" width="768"></div>
+<div class="sourceCode" id="cb1141"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gapminder_1997</span>, <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">lifeExp</span>, x <span class="op">=</span> <span class="va">pop</span>,
+                           color <span class="op">=</span> <span class="va">continent</span>, size <span class="op">=</span> <span class="va">gdpPercap</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/geom_point.html">geom_point</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/scale_continuous.html">scale_x_log10</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/scale_manual.html">scale_colour_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/MetBrewer/man/met.brewer.html">met.brewer</a></span><span class="op">(</span><span class="st">"Klimt"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Ejemplo de ggplot2"</span>,
+       subtitle <span class="op">=</span> <span class="st">"Paleta de cuadros de Klimt"</span>,
+       caption <span class="op">=</span> <span class="st">"Autor: Javier Álvarez Liébana | Datos: gapminder"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="Intro_R_2021_2022_files/figure-html/unnamed-chunk-421-4.png" width="768"></div>
+<p>Los <mark><strong>gráficos pueden además personalizarse añadiendo</strong></mark>, por ejemplo, <strong>títulos y subtítulos de la gráfica</strong> con `labs()</p>
+<div class="sourceCode" id="cb1142"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gapminder_1997</span>, <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">lifeExp</span>, x <span class="op">=</span> <span class="va">pop</span>,
+                           color <span class="op">=</span> <span class="va">continent</span>, size <span class="op">=</span> <span class="va">gdpPercap</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/geom_point.html">geom_point</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/scale_continuous.html">scale_x_log10</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggthemes/man/scale_color_tableau.html">scale_color_tableau</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Ejemplo de ggplot2"</span>,
+       subtitle <span class="op">=</span> <span class="st">"Aprendiendo R sin morir en el intento"</span>,
+       caption <span class="op">=</span> <span class="st">"Autor: Javier Álvarez Liébana | Datos: gapminder"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="Intro_R_2021_2022_files/figure-html/unnamed-chunk-422-1.png" width="768"></div>
+<p>De la misma manera podemos personalizar el <mark><strong>título que vamos a dar a los ejes</strong></mark> y también el <mark><strong>título de las leyendas</strong></mark>.</p>
+<div class="sourceCode" id="cb1143"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gapminder_1997</span>, <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">lifeExp</span>, x <span class="op">=</span> <span class="va">pop</span>,
+                           color <span class="op">=</span> <span class="va">continent</span>, size <span class="op">=</span> <span class="va">gdpPercap</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/geom_point.html">geom_point</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/scale_continuous.html">scale_x_log10</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggthemes/man/scale_color_tableau.html">scale_color_tableau</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Población"</span>, y <span class="op">=</span> <span class="st">"Esperanza de vida"</span>,
+       color <span class="op">=</span> <span class="st">"Continente"</span>, size <span class="op">=</span> <span class="st">"Renta per cápita"</span>,
+       title <span class="op">=</span> <span class="st">"Ejemplo de ggplot2"</span>,
+       subtitle <span class="op">=</span> <span class="st">"Población vs esperanza de vida (año 1997)"</span>,
+       caption <span class="op">=</span> <span class="st">"Autor: Javier Álvarez Liébana | Datos: gapminder"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="Intro_R_2021_2022_files/figure-html/unnamed-chunk-423-1.png" width="768"></div>
+<p>Por último, podemos <mark><strong>dividir/desagregar los gráficos (<em>facetar</em>) por variables</strong></mark>, pintando por ejemplo un <strong>gráfico por continente</strong>, mostrando todos los gráficos a la vez pero por separado, con <code><a href="https://rdrr.io/pkg/ggplot2/man/facet_wrap.html">facet_wrap()</a></code>.</p>
+<div class="sourceCode" id="cb1144"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gapminder_1997</span>, <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">lifeExp</span>, x <span class="op">=</span> <span class="va">pop</span>, size <span class="op">=</span> <span class="va">gdpPercap</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/geom_point.html">geom_point</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/scale_continuous.html">scale_x_log10</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span> <span class="va">continent</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Población"</span>, y <span class="op">=</span> <span class="st">"Esperanza de vida"</span>,
+       color <span class="op">=</span> <span class="st">"Continente"</span>, size <span class="op">=</span> <span class="st">"Renta per cápita"</span>,
+       title <span class="op">=</span> <span class="st">"Ejemplo de ggplot2"</span>,
+       subtitle <span class="op">=</span> <span class="st">"Población vs esperanza de vida (año 1997)"</span>,
+       caption <span class="op">=</span> <span class="st">"Autor: Javier Álvarez Liébana | Datos: gapminder"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="Intro_R_2021_2022_files/figure-html/unnamed-chunk-424-1.png" width="768"></div>
+<p>Podemos hacer lo mismo pero separando, por ejemplo, por años, con el fichero <strong>original sin filtrar</strong>.</p>
+<div class="sourceCode" id="cb1145"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gapminder</span>, <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">lifeExp</span>, x <span class="op">=</span> <span class="va">pop</span>,
+                      size <span class="op">=</span> <span class="va">gdpPercap</span>, color <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/geom_point.html">geom_point</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.6</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/scale_continuous.html">scale_x_log10</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span> <span class="va">year</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggthemes/man/scale_color_tableau.html">scale_color_tableau</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Población"</span>, y <span class="op">=</span> <span class="st">"Esperanza de vida"</span>,
+       color <span class="op">=</span> <span class="st">"Continente"</span>, size <span class="op">=</span> <span class="st">"Renta per cápita"</span>,
+       title <span class="op">=</span> <span class="st">"Ejemplo de ggplot2"</span>,
+       subtitle <span class="op">=</span> <span class="st">"Población vs esperanza de vida (año 1997)"</span>,
+       caption <span class="op">=</span> <span class="st">"Autor: Javier Álvarez Liébana | Datos: gapminder"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="Intro_R_2021_2022_files/figure-html/unnamed-chunk-425-1.png" width="768"></div>
+<p>Se sale fuera de esta introducción pero con <code><a href="https://rdrr.io/pkg/ggplot2/man/theme_get.html">theme_update()</a></code> podemos configurar cualquier aspecto del gráfico.</p>
+<div class="sourceCode" id="cb1146"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/theme_get.html">theme_update</a></span><span class="op">(</span>
+  <span class="co"># Título, subtítulo y caption</span>
+  plot.title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">21</span>, face <span class="op">=</span> <span class="st">"bold"</span>, color <span class="op">=</span> <span class="st">"#2a475e"</span><span class="op">)</span>,
+  plot.subtitle <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">11</span>, face <span class="op">=</span> <span class="st">"bold"</span>,
+                               color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span>,
+  plot.caption <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">9</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span>,
+  <span class="co"># Ejes</span>
+  axis.title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">11</span>, color <span class="op">=</span> <span class="st">"grey30"</span><span class="op">)</span>,
+  <span class="co"># Líneas de los ejes</span>
+  axis.line <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/element.html">element_line</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"grey50"</span><span class="op">)</span>,
+  <span class="co"># Fondo dentro de la gr?fica sin formato</span>
+  rect <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,
+  <span class="co"># Líneas del grid</span>
+  panel.grid <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/element.html">element_line</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"#b4aea9"</span><span class="op">)</span>,
+  <span class="co"># Sin grid secuendario (intermedio entre el grande)</span>
+  panel.grid.minor <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,
+  <span class="co"># Grid principal</span>
+  panel.grid.major.x <span class="op">=</span>  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/element.html">element_line</a></span><span class="op">(</span>linetype <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span>,
+  panel.grid.major.y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/element.html">element_line</a></span><span class="op">(</span>linetype <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span>,
+  <span class="co"># Color de fondo</span>
+  plot.background <span class="op">=</span>
+    <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/element.html">element_rect</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"#fbf9f4"</span>, color <span class="op">=</span> <span class="st">"#fbf9f4"</span><span class="op">)</span>,
+  plot.margin <span class="op">=</span> <span class="co"># m?rgenes</span>
+      <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/element.html">margin</a></span><span class="op">(</span>t <span class="op">=</span> <span class="fl">0.3</span>, b <span class="op">=</span> <span class="fl">0.3</span>, r <span class="op">=</span> <span class="fl">0.5</span>, l <span class="op">=</span> <span class="fl">0.5</span>, <span class="st">"cm"</span><span class="op">)</span><span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gapminder_1997</span>, <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">lifeExp</span>, x <span class="op">=</span> <span class="va">pop</span>,
+                           color <span class="op">=</span> <span class="va">continent</span>, size <span class="op">=</span> <span class="va">gdpPercap</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/geom_point.html">geom_point</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/scale_continuous.html">scale_x_log10</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggthemes/man/scale_color_tableau.html">scale_color_tableau</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Población"</span>, y <span class="op">=</span> <span class="st">"Esperanza de vida"</span>,
+       color <span class="op">=</span> <span class="st">"Continent"</span>, size <span class="op">=</span> <span class="st">"Renta per cápita"</span>,
+       title <span class="op">=</span> <span class="st">"Ejemplo de ggplot2"</span>,
+       subtitle <span class="op">=</span> <span class="st">"Aprendiendo R sin morir en el intento"</span>,
+       caption <span class="op">=</span> <span class="st">"Autor: Javier Álvarez Liébana | Datos: gapminder"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="Intro_R_2021_2022_files/figure-html/unnamed-chunk-426-1.png" width="768"></div>
+</div>
+<div id="recursos-para-seguir" class="section level2">
+<h2>
+<span class="header-section-number">16.5</span> Recursos para seguir<a class="anchor" aria-label="anchor" href="#recursos-para-seguir"><i class="fas fa-link"></i></a>
+</h2>
+<p>Ahora que ya sabes lo básico para poder empezar a trabajar en un entorno amigable, aunque la idea es que este manual tenga más capítulos (¿los tiene?) para seguir avanzando, por si se me olvida, te dejo una <strong>lista de recursos útiles</strong> para que puedas ir viendo el abanico de opciones que tienes</p>
+<ul>
+<li>
+<strong>Código de este manual</strong>: este manual está programado en sí mismo en <code>R</code> y los códigos pueden ser consultados libremente en el repositorio de <a href="https://github.com/dadosdelaplace/courses-intro-R">GitHub</a>.</li>
+</ul>
+<p><a href="https://github.com/dadosdelaplace/courses-intro-R" target="_blank"><img src="img/me_github.jpg" width="70%" style="display: block; margin: auto;"></a></p>
+<ul>
+<li><p><a href="https://dadosdelaplace.github.io">Cursos y selección de paquetes</a>: <strong>recopilatorio y selección de tutoriales y cursos de <code>R</code></strong> en distintos campos.</p></li>
+<li><p><a href="https://bookdown.org/roback/bookdown-BeyondMLR/">Incursión a los modelos de regresión en <code>R</code></a>: manual sobre el uso de distintos modelos predictivos basados los Modelos Lineales Generalizados (GLM).</p></li>
+<li><p><a href="https://tidydatatutor.com/">Visualizador de Tidyverse</a>: permite visualizar las acciones que haces sobre las tablas para entender mejor el código.</p></li>
+<li><p><a href="https://www.tidymodels.org/start/">Tidymodels</a>: para aprender a dominar <a href="https://tidymodels.tidymodels.org">tidymodels</a>, un conjunto de paquetes pensados para el Machine Learning con la misma filosofía flexible pero uniforme de <a href="https://tidyverse.tidyverse.org">tidyverse</a>. También es interesante <a href="https://emilhvitfeldt.github.io/ISLR-tidymodels-labs/index.html">este tutorial</a> para entender un poco los conceptos de data mining y machine learning en R.</p></li>
+<li><p><a href="https://ggplot2.tidyverse.org/index.html">ggplot2</a>: recomiendo mucho las entradas sencillas de <a href="https://elartedeldato.com/#calendario_adviento">el arte del dato</a> para ir dominando, el trabajo de <a href="https://dominicroye.github.io/en/">Dominic Royé</a> y el de <a href="https://www.cedricscherer.com/">Cedric Scherer</a>. También existen las gráficas interactivas <a href="https://plotly.com/ggplot2/">plotly</a> (pasas el ratón y te dan info), y puedes o aprenderlas de 0 o convertir tus <a href="https://www.rdocumentation.org/packages/plotly/versions/4.10.0/topics/ggplotly">ggplot en interactivos</a></p></li>
+<li><p><a href="https://bjnnowak.netlify.app/2021/10/04/r-beautiful-tables-with-gt-and-gtextras/">Tablas en R</a></p></li>
+<li><p><strong>Paquete para aprender <code>R</code></strong>: el paquete <a href="http://swirlstats.com">swirl</a> permite ir aprendiendo de forma sencilla (con preguntas tipo test) algunos conceptos básicos de <code>R</code> (muchos de ellos vistos en este manual). Puedes consultar la documentación en su <a href="https://swirlstats.com/">página web</a></p></li>
+</ul>
+<p><a href="https://swirlstats.com/" target="_blank"><img src="img/swirl.png" width="60%" style="display: block; margin: auto;"></a></p>
+<ul>
+<li><a href="https://rstudio-education.github.io/tidyverse-cookbook/">Tidyverse cookbook</a></li>
+<li><a href="https://jhudatascience.org/tidyversecourse/">Tidyverse skills for data science</a></li>
+</ul>
+<p><a href="https://www.tidyverse.org/" target="_blank"><img src="img/tidyverse.jpg" width="60%" style="display: block; margin: auto;"></a></p>
+<ul>
+<li>
+<strong>Visualización de datos en Twitter</strong>: una de las <strong>fortalezas de <code>R</code></strong> es su versatilidad para la visualización de datos. Y al igual que un escritor necesita leer mucho para tomar ideas, hay dos recursos en Twitter que te recomiendo encarecidamente:
+<ul>
+<li>El <strong>hashtag #TidyTuesday</strong> es una etiqueta en la que cada semana se plantea el reto de proponer la mejor visualización para un conjunto de datos dado, donde no solo puedes participar con la comunidad sino <a href="https://github.com/rfordatascience/tidytuesday">ver las visualizaciones de otros usuarios</a> de <code>R</code>.</li>
+<li>Además he elaborado una <a href="https://twitter.com/i/lists/1324478481338683392?s=20">lista de Twitter</a> de usuarios que se dedican a la visualización de datos.</li>
+</ul>
+</li>
+<li><p><a href="https://app.datacamp.com/learn/career-tracks/data-scientist-with-r?version=5">Datacamp</a>: compendio de cursos que si superas te dan un certificado y sales con un control muy muy potente de data science en R. Son ejercicios sencillos que se van complicando, y la plataforma funciona con tarifa plana: como un netflix de cursos.</p></li>
+<li><p><strong>Generación de informes desde R</strong>: el paquete <a href="https://github.com/rstudio/rmarkdown">rmarkdown</a> permite <a href="https://rmarkdown.rstudio.com/">generar directamente informes</a> que mezclen texto, fórmulas matemáticas, gráficas y código <code>R</code> (como este mismo manual), sin necesidad de importarlos a otras herramientas de Office.</p></li>
+<li><p><a href="https://bookdown.org/yihui/blogdown/">Webs en bookdown</a>. También se puede crear apps/webs interactivas con código <code>R</code>, permitiendo que el usuario selecciona parámetros y se ejecuta código gráficas: ver <a href="https://shiny.rstudio.com/tutorial/" class="uri">https://shiny.rstudio.com/tutorial/</a>. Un ejemplo es la <a href="https://dgspasturias.shinyapps.io/panel_de_indicadores_asturias/">web de visualización covid de Asturias</a> que elaboré durante la pandemia para el Gobierno de Asturias (la web en sí está elaborada con <a href="https://shiny.rstudio.com/">shiny</a>, un paquete de <code>R</code> que <a href="https://shiny.rstudio.com/tutorial/">permite crear aplicaciones web</a>).</p></li>
+<li><p><strong>Comunidad de R hispano</strong>: tenemos un <a href="https://discord.gg/7ueKQqeaGr">grupo de Discord</a> y <a href="https://t.me/hispanoverse">grupo de Telegram</a> varios usuarios de R en España para compartir recursos.</p></li>
+</ul>
+</div>
+</div>
+
+
+
+  <div class="chapter-nav">
+<div class="prev"><a href="resumen-1.html"><span class="header-section-number">15</span> ¿Qué sabemos hacer?</a></div>
+<div class="next"><a href="contribuye.html"><span class="header-section-number">17</span> Contribuye al proyecto</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#recursos"><span class="header-section-number">16</span> Recursos extras</a></li>
+<li><a class="nav-link" href="#aleatorio-1"><span class="header-section-number">16.1</span> Incursión aleatoria</a></li>
+<li><a class="nav-link" href="#pseudoaleatorio"><span class="header-section-number">16.2</span> Pseudoaleatoriedad</a></li>
+<li>
+<a class="nav-link" href="#ggplot2"><span class="header-section-number">16.3</span> Visualizando datos: incursión a ggplot2</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#grammar-of-graphics-gg-entendiendo-la-gram%C3%A1tica-ggplot2"><span class="header-section-number">16.3.1</span> Grammar of graphics (gg): entendiendo la gramática ggplot2</a></li></ul>
+</li>
+<li><a class="nav-link" href="#primer-intento-scatter-plot-o-diagrama-de-puntos"><span class="header-section-number">16.4</span> Primer intento: scatter plot o diagrama de puntos</a></li>
+<li><a class="nav-link" href="#recursos-para-seguir"><span class="header-section-number">16.5</span> Recursos para seguir</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/dadosdelaplace/intro-R/blob/master/16-extras.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/dadosdelaplace/intro-R/edit/master/16-extras.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 23-12-2021.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

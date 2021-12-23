@@ -21,7 +21,7 @@ colorize <- function(x, color) {
 # Tipos de datos I: vectores {#vectores}
 
 
-Bien, ya controlamos la calculadora. Vamos a ir más allá: ¿y si en lugar de tener un solo número tenemos una **COLECCIÓN de elementos**? En este capítulo vamos a ver un clásico de cualquier lenguaje de programación: los **vectores o arrays**, una **concatenación** de elementos (del mismo tipo). De hecho un número individual (por ejemplo, `1`) es en realidad un vector de longitud uno (un solo elemento).
+Bien, ya controlamos la calculadora. Vamos a ir más allá: ¿y si en lugar de tener un solo número tenemos una <mark>**colección de elementos**</mark>? En este capítulo vamos a ver un clásico de cualquier lenguaje de programación: los <mark>**vectores o arrays**</mark>, una <mark>**concatenación**</mark> de elementos (del mismo tipo). De hecho un número individual (por ejemplo, `1`) es en realidad un vector de longitud uno (un solo elemento).
 
 
 
@@ -55,13 +55,13 @@ Esta última concatenación lo que nos ha dado son, primero, los tres pares que 
 
 Muchas veces nos gustaría **crear vectores de una forma mucho más rápida**. Supongamos que queremos el vector de los primeros 21 números naturales. Si construyéramos el vector como antes, tendríamos que ejecutar el comando `c(1, 2, 3, 4, 5, ...)` hasta llegar al número 21. ¿Un poco largo, no?
 
-Hay un atajo: el comando `seq()` nos permite crear una **secuencia desde un elemento inicial hasta un elemento final, avanzando de uno en uno**.
+Hay un atajo: el comando `seq()` nos permite crear una <mark>**secuencia desde un elemento inicial hasta un elemento final**</mark>, avanzando de uno en uno.
 
 ```{r}
 seq(1, 21) # secuencia desde 1 hasta 21 de uno en uno
 ```
 
-Es importante que no perdamos el foco de que **programar es similar a escribir en un idioma**, por lo que si hay algo que se puede decir de una forma más limpia y que se entienda mejor, ¿por qué no usarlo? Siempre que queramos definir secuencias entre dos números naturales (por ejemplo, entre `1` y un valor `n`), cuya distancia entre elementos consecutivos sea uno, el comando `1:n` nos devuelve lo mismo que la orden `seq(1, n)`. Además, si el elemento inicial es mayor que el final, `R` entenderá solo que la secuencia la queremo decreciente.
+Es importante que no perdamos el foco de que <mark>**programar es similar a escribir en un idioma**</mark>, por lo que si hay algo que se puede decir de una forma más limpia y que se entienda mejor, ¿por qué no usarlo? Siempre que queramos definir secuencias entre dos números naturales (por ejemplo, entre `1` y un valor `n`), cuya distancia entre elementos consecutivos sea uno, el comando `1:n` nos devuelve lo mismo que la orden `seq(1, n)`. Además, si el elemento inicial es mayor que el final, `R` entenderá solo que la secuencia la queremo decreciente.
 
 ```{r}
 n <- 21
@@ -86,7 +86,7 @@ seq(1, 50, l = 11) # secuencia desde 1 a 50 de longitud 11
 
 &nbsp;
 
-Otro atajo que podemos usar para definir secuencias de números con un patrón es definir **vectores repetidos**, por ejemplo un vector lleno de ceros. La función `rep()` nos permite repetir un elemento un número fijado de veces.
+Otro atajo que podemos usar para definir secuencias de números con un patrón es definir <mark>**vectores de elementos repetidos**</mark>, por ejemplo un vector lleno de ceros. La función `rep()` nos permite repetir un elemento un número fijado de veces.
 
 ```{r}
 rep(0, 7) # vector de 7 ceros
@@ -107,9 +107,9 @@ rep(c(0, 1, 2), each = 4) # cuatro 0, luego cuatro 1, luego cuatro 2
 
 ## Vectores de caracteres (texto)
 
-Un error común es asociar el concepto de vectores solo a números: un **vector es una colección o concatenación de elementos del mismo tipo** pero no tienen porque ser necesariamente números. Vamos a crear una frase de ejemplo, un vector de 4 elementos de tipo texto (en `R` se llaman `char`): `"Mi"`, `"nombre"`, `"es"` `"Javier"`.
+Un error común es asociar el concepto de vectores solo a números: un <mark>**vector es una colección o concatenación de elementos del mismo tipo**</mark> pero no tienen porque ser necesariamente números. Vamos a crear una frase de ejemplo, un vector de 4 elementos de tipo texto (en `R` se llaman `char`): `"Mi"`, `"nombre"`, `"es"` `"Javier"`.
 
-Como ves las variables de tipo `char` van entre comillas dobles, ya que es un **cadena de texto**.
+Como ves las variables de tipo `char` o `character` van entre comillas dobles, ya que es un <mark>**cadena de texto**</mark>.
 
 ```{r}
 mi_nombre <- c("Mi", "nombre", "es", "Javier")
@@ -194,13 +194,13 @@ gsub("o", "*", texto) # toda "o" en el texto será sustituida por *
 - [X] Vectores de caracteres
 - [ ] Vectores lógicos
 
-Veamos un último tipo de vectores importante en todo lenguaje de programación: los **vectores lógicos**. Un **valor lógico** puede tomar tres valores:
+Veamos un último tipo de vectores importante en todo lenguaje de programación: los <mark>**vectores de valores lógicos**</mark>. Un **valor lógico** puede tomar tres valores:
 
 * `TRUE` (guardado internamente como un `1`).
 * `FALSE` (guardado internamente como un `0`).
 * `NA` (dato ausente, son las siglas de _not available_, cuando pretendemos aplicar una comparación a un dato ya de por si ausente).
 
-Estos valores son resultado de evaluar **condiciones lógicas**. Por ejemplo, imaginemos que definimos un vector de números `x <- c(1.5, -1, 2, 4, 3, -4)`. ¿Qué numeros del vector son menores que 2? Basta con que ejecutemos la orden `x < 2`, que nos devolverá `TRUE/FALSE` en cada hueco, en función de si cumple (`TRUE`) o no (`FALSE`) la condición pedida.
+Estos valores son resultado de evaluar <mark>**condiciones lógicas**</mark>. Por ejemplo, imaginemos que definimos un vector de números `x <- c(1.5, -1, 2, 4, 3, -4)`. ¿Qué numeros del vector son menores que 2? Basta con que ejecutemos la orden `x < 2`, que nos devolverá `TRUE/FALSE` en cada hueco, en función de si cumple (`TRUE`) o no (`FALSE`) la condición pedida.
 
 ```{r}
 x <- c(1.5, -1, 2, 4, 3, -4)
@@ -259,7 +259,7 @@ x < 2 | x > 3 # Los cumplen al menos una de ellas
 
 &nbsp;
 
-Hay un tipo muy especial de datos que aún no hemos visto que son los **datos tipo fecha**. Una fecha podría ser a priori una simple cadena de texto `"2021-04-21"` pero podemos usar la función `as.Date()` para que `R` entienda que esa cadena de texto representa un instante temporal. Fíjate la diferencia entre una fecha en texto y una fecha con `as.Date()`.
+Hay un tipo muy especial de datos que aún no hemos visto que son los <mark>**datos tipo fecha**</mark>. Una fecha podría ser a priori una simple cadena de texto `"2021-04-21"` pero podemos usar la función `as.Date()` para que `R` entienda que esa cadena de texto representa un instante temporal. Fíjate la diferencia entre una fecha en texto y una fecha con `as.Date()`.
 
 ```{r error = TRUE}
 fecha_char <- "2021-04-21"
@@ -286,7 +286,7 @@ fecha - 7 # una semana antes
 class(fecha) # de clase fecha
 ``` 
 
-Para **convertir una cadena de texto a fecha**, basta usar la función `as.Date()` del paquete `{base}`, pasándole como argumento la fecha en formato `"yyyy-mm-dd"` por defecto.
+Para <mark>**convertir una cadena de texto a fecha**</mark>, basta usar la función `as.Date()` del paquete `{base}`, pasándole como argumento la fecha en formato `"yyyy-mm-dd"` por defecto.
 
 ```{r}
 as.Date("2021-03-10") # formato por defecto
@@ -398,7 +398,7 @@ as.logical(c(0, 1))
 
 **`r colorize("Recuperar un comando y autocompletar", "#20935E")`**
 
-Si haces click con el ratón en la consola y pulsas la flecha «arriba» del teclado, te irá apareciendo todo el **historial de órdenes ejecutadas**. Es una manera de ahorrar tiempo para ejecutar órdenes similares a las ya ejecutadas. Si empiezas a escribir el nombre de una variable pero no te acuerdas exactamente de su nombre, pulsando **tabulador** te **autocompletará** solo.
+Si haces click con el ratón en la consola y pulsas la flecha «arriba» del teclado, te irá apareciendo todo el <mark>**historial de órdenes ejecutadas**</mark>. Es una manera de ahorrar tiempo para ejecutar órdenes similares a las ya ejecutadas. Si empiezas a escribir el nombre de una variable pero no te acuerdas exactamente de su nombre, pulsando **tabulador** te **autocompletará** solo.
 
 &nbsp;
 

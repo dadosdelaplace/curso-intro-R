@@ -1,0 +1,786 @@
+```{r echo = FALSE}
+library(knitr)
+
+# Color text
+colorize <- function(x, color) {
+  
+  if (knitr::is_latex_output()) {
+    
+    sprintf("\\textcolor{%s}{%s}", color, x)
+    
+  } else if (knitr::is_html_output()) {
+    
+    sprintf("<span style='color: %s;'>%s</span>", color, x)
+    
+  } else { x }
+}
+```
+
+
+# Incursión a tidyverse {#tidyverse}
+
+* Intentaremos que nuestros datos sean [Tidy data](#tidy_data)
+* Conocemos un **formato amable** de almacenar los datos como son los `data.frame` de tipo `tibble`
+
+Sin embargo muchas veces los datos no los tenemos en el formato deseado, o directamente queremos realizar algunas <mark>**transformaciones**</mark> en los mismos, crear nuevas variables u obtener resúmenes numéricos. En esta sección **aprenderemos a explorar, procesar, depurar, transformar y analizar numéricamente los datos**, haciendo uso principalmente de los paquetes `{tidyverse}` y `{skimr}`
+
+```{r}
+library(tidyverse)
+library(skimr)
+```
+
+El entorno `{tidyverse}` es una de las **herramientas más importantes en el manejo de datos en `R`**, una **colección de paquetes** pensada para el manejo, la exploración, el análisis y la visualización de datos, compartiendo una **misma filosofía y gramática**. Puedes ver su documentación en <https://www.tidyverse.org/>. Esta sección pretende ser una **introducción a dicho entorno**, y lo haremos principalmente con el conjunto de datos `starwars`, del paquete `{dplyr}` (ya cargado en `{tidyverse}`).
+
+```{r}
+starwars
+```
+
+Dicho **conjunto de datos**, extraída de la [Star Wars API](https://swapi.dev), recopila diferentes datos y características de los personajes de la **saga Star Wars**. Como habrás advertido, `starwars` es una tabla en un formato ya conocido, un `tibble`, en el que se nos especifica al inicio de la tabla de qué tipo son cada columna:
+
+* `int`: números enteros.
+* `dbl`: números reales (o racionales).
+* `chr`: cadenas de texto.
+* `lgl`: valores lógicos (`TRUE` o `FALSE`).
+* `fct`: factores, variables cualitativas (categorías).
+* `date`: fechas.
+
+Las **funciones** que veremos a lo largo de esta sección <mark>**siempre van a compartir una misma metodología**</mark>: primero escribimos el nombre una tabla (`data.frame` o `tibble`), después **lo que queremos hacer** a dicho conjunto de datos (con las variables SIN comillas) encandenando órdenes con `%>%` (lo que se conoce como _pipes_), y **obtenemos una nueva tabla** en el mismo formato de entrada.
+
+```{r}
+# Tipo de datos
+class(starwars)
+
+# Dimensión de los datos
+dim(starwars)
+```
+
+Con `glimpse(starwars)` podemos obtener una visión global de las variables que tenemos.
+
+```{r}
+# Resumen por columnas
+glimpse(starwars)
+```
+
+Los datos podemos verlos escribiendo el nombre de la tabla en la consola (recuerda que si es un `tibble`, para evitar saturar la consola, te saca un extracto, no todas las columnas y filas) o bien con la **función `print()`, indicándole número de filas (`n = 15` por ejemplo) y número de columnas (`width = Inf` si queremos mostrar todas)**.
+
+```{r}
+# Imprimir personalizado
+print(starwars, n = 5, width = Inf)
+```
+
+Fíjate que las **3 últimas variables son de tipo lista** (echa un vistazo a [Listas](#listas)). Por ejemplo, en `starwars$films` se **guardan para cada personaje la colección de películas de la saga** en las que aparece (algunos tendrán 1 solo nombre, otros 7).
+
+```{r dplyr, echo = FALSE,  out.width = "80%", fig.align = "center", fig.cap = "Cheet sheet de las opciones del paquete dplyr para la manipulación de datos extraída de <https://github.com/rstudio/cheatsheets/blob/master/data-transformation.pdf>"}
+knitr::include_graphics("./img/dplyr.png")
+``` 
+
+
+
+## Operaciones con filas
+
+Empecemos por <mark>**cómo seleccionar filas**</mark>. Principalmente tenemos tres opciones: seleccionarlas en base a algún **filtro o condición** (solo los mayores de tal edad, por ejemplo), **extraer filas por su índice** de fila o **extraer filas aleatoriamente**.
+
+### Seleccionar filas (filter, slice)
+
+La función `filter()` nos permite <mark>**seleccionar filas en base a que se cumpla una o varias condiciones**</mark> respecto a las variables. Para usarla basta con que introduzcamos como argumento el conjunto de condiciones que debe cumplir (recuerda: nombre de columnas sin comillas). Supongamos que queremos por ejemplo **seleccionar solo los personajes con ojos marrones**: nos bastará con usar `filter()` con la condición `eye_color == "brown"`.
+
+```{r}
+starwars %>% filter(eye_color == "brown") # con ojos marrones
+```
+
+En tan solo una línea hemos hecho más de lo que parece: `R` ha «recorrido» (algo similar a un bucle) cada una de las filas y ha ido comprobando que fila cumple la condición y cual no. Con la misma lógica podemos **seleccionar los personajes que NO TIENEN ojos marrones**, cambiando `==` por `!=`
+
+```{r}
+starwars %>% filter(eye_color != "brown") # NO tengan ojos marrones
+```
+
+También se pueden **seleccionar los personajes que tienen los ojos de una serie de colores permitidos**.
+
+```{r}
+starwars %>% # con ojos marrones, azules o rojos
+  filter(eye_color %in% c("brown", "blue", "red"))
+```
+
+Si es una **variable numérica** también podemos <mark>**seleccionar por rango**</mark> con `between()`, por ejemplo, los personajes cuya altura está entre 120 y 160 cm.
+
+```{r}
+# Con between filtramos por rango
+starwars %>% filter(between(height, 120, 160))
+```
+
+Las **condiciones se pueden concatenar y complejizar** todo lo que queramos, pudiendo en pocas líneas realizar un **filtro complejo**, por ejemplo personajes con ohos marrones y que sean humanos.
+
+```{r}
+starwars %>% # humanos con ojos marrones
+  filter(eye_color == "brown", species == "Human")
+```
+
+También podemos filtrar personajes con ojos marrones, azules o rojos, que no sean humanos, y con menos de 50 años.
+
+```{r}
+# humanos con ojos marrones, azules o rojos, que no sean humanos, y menos de 50a
+starwars %>% 
+  filter(eye_color %in% c("brown", "blue", "red"),
+         species != "Human", birth_year < 50)
+```
+
+Muchas veces querremos <mark>**extraer filas simplemente por el lugar que ocupan**</mark>, sin hacer que dependa de ninguna condición. Vamos a extraer las filas quinta, sexta, séptima, octava, novena y décima con `slice()`.
+
+```{r}
+# slice: extramos filas por índice de fila.
+starwars %>% slice(5:10) # filas de la 5 a la 10
+```
+
+Podemos **combinar los índices** para extraer por ejemplo solo los pares o filas concretas separadas por los espacios que queramos.
+
+```{r}
+starwars %>% slice(seq(2, nrow(starwars), by = 2)) # filas pares
+starwars %>% slice(c(3, 4, 10, 20, 33)) # filas 3, 4, 10, 20 y 33
+```
+
+También hay opciones por defecto para directamente <mark>**extraer las primeras o últimas filas**</mark> con `slice_head()` y `slice_tail()`.
+
+```{r}
+# Podemos extraer directamente las primeras o últimas filas
+starwars %>% slice_head(n = 7) # 7 primeras filas 
+starwars %>% slice_tail(n = 3) # 3 últimas filas 
+```
+
+Una opción también habitual es querer <mark>**extraer un número de filas pero AL AZAR**</mark>, pudiendo hacerlo sin reemplazamiento (una vez extraída, no se puede volver a extraer) o con reemplazamiento (con `replace = TRUE`).
+
+```{r}
+# También podemos hacer una extracción al azar de filas
+starwars %>% slice_sample(n = 5) # 5 al azar
+starwars %>% slice_sample(n = 100, replace = TRUE) # 100 con reemplazamiento
+```
+
+Por último, tenemos `slice_min()` y `slice_max()` que nos permite <mark>**extraer filas en función del mínimo y máximo de una variable**</mark>. Por defecto, si hay empate, mostrará todas las filas (aunque supere el número `n` indicado), salvo que `with_ties = FALSE`, que decidirá en caso de empate cual mostrarte
+
+```{r}
+# Podemos extraer filas en función del mín/máx de una variable
+starwars %>% slice_min(height, n = 5) # los 5 más bajitos
+starwars %>% # los 5 más bajitos (sin empates, exactamente 5)
+  slice_min(height, n = 5, with_ties = FALSE) 
+starwars %>% slice_max(mass, n = 7) # los 7 más pesados
+```
+
+
+### Reordenar filas (arrange)
+
+Muchas veces necesitamos las <mark>**filas ordenadas en función del valor de alguna de las variables**</mark>. Para ello tenemos la función `arrange()` sin más que pasarle como argumento el nombre de la variable que usaremos para la ordenación. Vamos a ordenar nuestra tabla de personajes por altura, de bajitos a altos.
+
+```{r}
+# Con arrange ordenamos en base al orden de la variable que introduzcamos
+starwars %>% arrange(height) # de bajitos a altos, yoda al poder
+```
+
+Por defecto la **ordenación es de menor a mayor** pero **podemos invertirlo** usando `desc()`.
+
+```{r}
+# Por defecto lo hace ascendente pero podemos cambiarlo
+starwars %>% arrange(desc(height))
+```
+
+La ordenación puede realizarse **en base al valor de dos o más variables**: ordenará las filas en base a la primera, en caso de empate usará la segunda, en caso de empate la tercera, y así sucesivamente. Vamos a ordenar los personajes por altura y, luego, por peso.
+
+```{r}
+# Podemos combinar varios criterios: ordenados de bajitos a altos,
+# y en caso de empate, de pesados a ligeros. Un dato NA va siempre al final
+starwars %>% arrange(height, desc(mass))
+```
+
+&nbsp;
+
+**`r colorize("WARNING: valores ausentes", "#ffc107")`**
+
+Si te fijas los **`r colorize("valores ausentes van siempre al final", "#ffc107")`** de la ordenación. Luego veremos como eliminarlos si quisiéramos.
+
+&nbsp;
+
+Como estarás imaginando **podemos combinar varias acciones en pocas líneas**, filtrando datos a la vez que ordenamos el filtro resultante. Como ejemplo vamos a seleccionar los personajes humanos, hombres, de ojos marrones, y en orden altura descendente y peso ascendente.
+
+```{r}
+# Podemos combinar varias acciones en pocas líneas
+starwars %>%
+  filter(eye_color == "brown",
+         species == "Human", sex == "male") %>%
+  arrange(height, desc(mass))
+```
+
+### Eliminar filas y duplicados
+
+La misma lógica que hemos usado para seleccionar filas podemos usarla para <mark>**eliminar filas**</mark>, simplemente negando la condición de filtrado. Por ejemplo, vamos a **eliminar las 5 primeras filas**.
+
+```{r}
+# Eliminamos por índices
+starwars %>% slice(-(1:5)) # eliminamos las 5 primeras filas
+```
+
+Otra opción a la hora de eliminar filas es <mark>**eliminar filas duplicadas**</mark> (o filas con valores duplicados en alguna columna). Para ello deberemos aplicar la función `distinct()`, pasándole como argumentos el nombre de las variables que usaremos para quitar duplicados, por ejemplo, aquellos personajes con igual par de color de pelo y ojos.
+
+```{r}
+# Eliminamos duplicados
+starwars %>% # Eliminamos registros con igual par (color_pelo, color_ojos)
+  distinct(hair_color, eye_color)
+```
+
+Si te fijas además nos ha extraído solo las dos columnas en base a las cuales hemos eliminado duplicados. Si queremos que nos mantenga toda la tabla deberemos explicitarlo con `.keep_all = TRUE`.
+
+```{r}
+# Eliminamos duplicados
+starwars %>% # Eliminamos registros con igual par (color_pelo, color_ojos)
+  distinct(hair_color, eye_color,
+           .keep_all = TRUE) # .keep_all = TRUE mantiene todas columnas
+```
+
+Si no incluimos **ningún nombre** de columna **nos eliminará solo los registros que tengan TODOS los campos duplicados**.
+
+```{r}
+# Duplicamos el conjunto para probarlo
+duplicado_starwars <- rbind(starwars, starwars)
+dim(duplicado_starwars)
+
+# Eliminamos duplicados (filas exactamente iguales)
+duplicado_starwars %>% distinct()
+dim(duplicado_starwars %>% distinct())
+```
+
+## Operaciones con columnas
+
+Ya hemos visto algunas opciones para manejar filas. Pasemos a  <mark>**seleccionar columnas**</mark> o <mark>**construir columnas/variables nuevas**</mark> en base a las ya existentes.
+
+
+### Seleccionar (select) y extraer (pull) columnas
+
+La opción más sencilla es usar la función `select()` pasándole como argumentos los nombres de columnas (¡SIN COMILLAS!) queremos seleccionar, por ejemplo, color de pelo, piel y ojos.
+
+```{r}
+# select: columnas a seleccionar sin comillas
+starwars %>% # seleccionamos solo 3 columnas: pelo, piel y ojos
+  select(hair_color, skin_color, eye_color)
+```
+
+Si las columnas a seleccionar sabemos que son consecutivas, podemos indicarle que las seleccionemos desde una **columna inicial hasta una columna inicial** pasando por todas.
+
+```{r}
+# Podemos seleccionar columnas en orden: desde nombre hasta año nacim.
+starwars %>% select(name:birth_year)
+```
+
+Una de las mejores opciones en este entorno es que las columnas las podemos seleccionar a través de expresiones regulares, por ejemplo, <mark>**seleccionando solo aquellas columnas que compartan un sufijo común en el nombre**</mark>, con `ends_with()` dentro de órdenes como `select()`
+
+```{r}
+# Podemos seleccionar columnas por sufijo y prefijo
+starwars %>% select(ends_with("color")) # acaban en "color"
+```
+
+De una manera similar podemos <mark>**seleccionar columnas cuyo nombre empiecen o contengan**</mark> alguna cadena de texto concreta
+
+```{r}
+starwars %>% select(starts_with("h")) # empiezan por h
+starwars %>% select(contains("h")) # contienen la h
+```
+
+Todo lo que hemos usado para seleccionar lo podemos usar para **eliminar columnas**
+
+```{r}
+starwars %>% # seleccionamos todas menos 3 columnas: pelo, piel y ojos
+  select(-c(hair_color, skin_color, eye_color))
+
+
+```
+
+Incluso nos permite <mark>**seleccionar aquellas columnas que son del mismo tipo**</mark> (imagina que necesitamos solo las columnas numéricas para calcular ciertas estadísticas) con `where()`.
+
+```{r}
+# Seleccionamos solo la columnas numéricas
+starwars %>% select(where(is.numeric))
+```
+
+Por último, podemos no tanto seleccionar sino <mark>**extraer columnas**</mark>: las saca fuera de la tabla y las convierte en un vector fuera del `tibble`, con la función `pull()`.
+
+```{r}
+starwars %>% pull(name)
+```
+
+### Renombrar (rename) y reordenar (relocate) columnas
+
+A veces también podemos querer **modificar la «metainformación» de la tabla**, no modificando los datos sino <mark>**renombrando el orden de las columnas**</mark>. Para ello debremos usar la función `rename()` poniendo primero el nombre nuevo y luego el antiguo
+
+```{r}
+# rename: renombrar columnas, primero el nuevo y luego el antiguo
+starwars %>% rename(nombre = name, altura = height, peso = mass)
+```
+
+De la misma manera podemos <mark>**reordenar las columnas**</mark>, indicando el nombre de columnas que queremos mover, y con `.after` y/o `.before` para indicar antes o después de que columnas queremos moverlas.
+
+```{r}
+starwars %>% # altura y masa detrás de color de piel
+  relocate(height, mass, .after = skin_color) 
+starwars %>% # color de piel, pelo y ojos antes de peso
+  relocate(hair_color, skin_color, eye_color,
+           .before = mass) 
+```
+
+Otra opción es hacerlo con `select()`, indicándole el orden de las columnas manualmente, pudiendo hacer uso de `everything()` para **incluir el resto de columnas no mencionadas anteriormente**.
+
+```{r}
+starwars %>% select(name, homeworld, everything())
+```
+
+
+## Crear nuevas variables (mutate)
+
+A veces no queremos modificar variables ya existentes sino <mark>**crear nuevas variables/columnas**</mark> en base a variables ya existentes. Para ello tenemos la opción de `mutate()` que nos permite crear una nueva variable en función de las existentes.
+
+```{r}
+# Mutate: nos añade nuevas columnas usando funciones
+# aplicadas a nuestras variables
+starwars %>% mutate(height_m = height / 100) # altura en metros
+``` 
+
+Recuerda que para **ver todas las columnas** debes indicarle que quieres imprimir todas.
+
+```{r}
+print(starwars %>% mutate(height_m = height / 100), width = Inf)
+``` 
+
+Otra opción es **quedarnos solo con las columnas nuevas creadas** con `transmute()`
+
+```{r}
+starwars %>% transmute(height_m = height / 100)
+``` 
+
+Si queremos añadir **varias variables** en función de las ya existentes podemos hacerlo ya que permite incorporar los datos de forma secuencial sin duplicar órdenes de `mutate()` para cada una.
+
+```{r}
+print(starwars %>%
+  # Calculamos altura en metros y el IMC
+  mutate(height_m = height / 100,
+         BMI = mass / (height_m^2)), width = Inf)
+```
+
+Como ves **por defecto añade las columnas al final** pero podemos **reordenar las columnas** como ya hemos visto
+```{r}
+starwars %>%
+  mutate(height_m = height / 100,
+         BMI = mass / (height_m^2)) %>%
+  relocate(height_m, BMI, .after = name)
+```
+
+También podemos pasarle una **función propia que queramos definir**, no solo funciones de `R`. Vamos a definir la función que nos calcula el IMC, a la que llamaremos `BMI_fun`, que necesita solo de dos argumentos: la altura en metros y el peso.
+
+```{r}
+BMI_fun <- function(m, h) {
+  
+  return(m / h^2)
+}
+BMI_fun(90, 1.6)
+```
+
+La función definida como `BMI_fun()` podemos ahora aplicarla dentro de `mutate()`.
+
+```{r}
+starwars %>%
+  mutate(height_m = height / 100,
+         BMI = BMI_fun(mass, height_m)) %>%
+  # Las movemos al inicio (por defecto las mete al final)
+  relocate(height_m, BMI, .after = name)
+```
+
+También se pueden aplicar funciones más complejas como la función `map()` del paquete `{purrr}` para manejo de listas: dado que las listas no se pueden vectorizar, esta función nos permite **aplicar operaciones a listas, elemento a elemento de cada una de ellas**. Veamos un ejemplo: imagina que queremos calcular el número de películas en las que sale cada personaje de la saga.
+
+```{r}
+# Películas de los 5 primeros personajes
+starwars$films[1:5]
+```
+
+Las películas de cada personaje están en **modo lista**: no podíamos guardarlo en un `data.frame` ya que cada personaje ha podido participar en un número distinto (en una tabla, todas las columnas tienen la misma longitud). Para saber la cantidad de películas en las que ha participado el primer personaje basta con usar el comando `length()` (nos dará el número de elementos de la lista).
+
+```{r}
+length(starwars$films[1])
+```
+
+**¿Cómo aplicar dicha a función a cada personaje?** Con `map()` y la función a aplicar en cada elemento de la lista.
+
+```{r}
+# Mapeamos la lista con length
+(starwars$films %>% map(length))[1:10]
+```
+
+Si te fijas con los 10 primeros, lo que nos devuelve por defecto a su vez una lista, cuando a nosotros **nos gustaría que nos devolviera un vector que poder incluir como columna**. Para ello existen diversas funciones como `map_chr()`, `map_dbl()` para devolverlo en un formato concreto (caracter o numérico).
+
+```{r}
+# Mapeamos la lista con length pero devolvemos un vector de números enteros
+starwars$films %>% map_int(length)
+```
+
+Ya solo nos falta incorporar dicha operación a una nueva columna con `mutate()`
+```{r}
+starwars %>%
+  mutate("n_peliculas" = map_int(films, length)) %>%
+  select(c(name, homeworld, n_peliculas))
+```
+
+
+
+### Recategorizar columnas
+
+Una operación también muy habitual es querer <mark>**recategorizar nuestras variables**</mark>: tenemos categorías ya existentes o variables numéricas que queremos convertir a categoría (factores en `R`). Supongamos por ejemplo que queremos **crear una categoría para cada registro** en función de su altura: menos de 120, entre 120 y 180, y más de 180. Para ello podemos hacer uso de la función `cut()`, a la que en el argumento `breaks` le debemos indicar los **«cortes» o saltos de la variable**.
+
+```{r}
+print(starwars %>% mutate("estat_categoria" = cut(height, breaks = c(-Inf, 120, 180, Inf))), width = Inf)
+```
+
+Recuerda que si quieres **mostrar solo las nuevas columnas** creadas puedes usar `transmute()`
+
+```{r}
+starwars %>% transmute("estat_categoria" = cut(height, breaks = c(-Inf, 120, 180, Inf)))
+```
+
+Si queremos que la categoría tenga un nombre explícito (y no el intervalo en sí), podemos indicárselo en `labels = ` el vector de nombres de las categorías.
+
+```{r}
+starwars %>%
+  transmute("estat_categoria" = cut(height, breaks = c(-Inf, 120, 180, Inf),
+                                    labels = c("bajos", "medios", "altos")))
+```
+
+Otra opción es hacerlo con la función `factor` que nos transforma una variable en categoría.
+
+```{r}
+# Vamos a categorizar en bajitos a los que miden menos de 180 cm
+starwars %>%
+  mutate(talla = factor(height < 180, labels = c("bajos", "altos")))
+```
+
+## Datos ausentes y outliers
+
+Como ya vimos en [Tipos de datos I: vectores](#vectores), los datos ausentes en `R` pueden venir representados por valores `NA` o por valores `NaN` (en realidad este no sería ausente siendo estrictos, es simplemente un resultado no numérico dentro de los reales). **¿Qué hacer con dichos valores?**
+
+Una primera opción puede ser <mark>**eliminar los registros que contengan campos ausentes**</mark> en alguna de sus variables, haciendo uso de la función `drop_na()`.
+
+```{r}
+starwars %>% drop_na()
+```
+
+Como ves solo 6 de los 87 registros tienen todos los campos completos. Como quizás **no todos los campos sean igual de importantes** en nuestros, podemos indicarle que nos elimine aquellos registros que tengan datos ausentes **algunos campos en concreto** (o una coelcción de ellos)
+
+```{r}
+starwars %>% drop_na(mass, height, sex, gender, birth_year)
+```
+
+Otra opción es **imputar su valor** en el caso de variables cuantitativas por, por ejemplo, la **media de la variable sin datos ausentes**, y  **recategorizar las cuantitaivas creando un categoría** per se de ausentes.
+
+```{r}
+starwars %>%
+  # Variables cuanti
+  mutate(across(where(is.numeric),
+                ~replace(.x, is.na(.x), mean(.x, na.rm = TRUE)))) %>%
+  # Variables cuali: pasamos NA y "none" a "unknown"
+  mutate(across(where(is.character),
+                ~replace(.x, is.na(.x) | .x == "none", "unknown")))
+  
+```
+
+&nbsp;
+
+Muchas veces tendremos variables con **valores muy alejados de la centralidad**, centralidad normalmente entendida como media o mediana, valores muy extremos (conocidos como <mark>**valores atípicos o outliers**</mark>).
+
+* **Respecto a la mediana/percentiles (iqr)**: una definición de outlier muy habitual es definirlo como un **valor muy alejado del primer/tercer cuartil**. La definición que se suele usar es que el dato sea interior/superior al primer/tercer cuartil una amplitud de X veces el **rango intercuartílico** (conocido como **IQR, calculado como el tercer cuartil menos el primer cuartil**) por debajo/encima.
+
+* **Respecto a la media (gesd)**: el criterio utilizado suele ser el conocido como GESD (Generlized Extreme Studentized Deviate Test), un contraste de hipótesis cuya hipótesis nula es que no hay atípicos en los datos. Puedes ver la formulación matemática en <https://www.itl.nist.gov/div898/handbook/eda/section3/eda35h3.htm>
+
+Para su localización automática usaremos el paquete `{anomalize}`, y la función homónima de dicho paquete, indicándole la columna individual en la que queremos detectar outliers y el método a usar. Con el método `method = "gesd"` realizaremos el contraste dato a dato de forma secuencial (si hay outlier lo quita individualmente y vuelve a ejecutarlo). Con `method = "iqr"`, ese factor `X` que nos distanciamos del primer y tercer cuartil es calculado como `0.15/alpha`, de forma que con `alpha = 0.05` (por ejemplo), dicho factor sería `X = 3`. Es **MUY IMPORTANTE** quitar antes los valores ausentes (para que pueda ejecutarse correctamente).
+
+```{r}
+library(anomalize)
+# Importante: quitar antes missings
+starwars %>% drop_na(mass) %>% anomalize(mass, method = "gesd")
+``` 
+
+En las columnas `mass_l1` y `mass_l2` se nos han guardado los límites para considerar o no outlier, y en `anomaly` tendremos si el valor es un outlier o no. Podemos renombrar dicha columna y recategorizarlo con `TRUE/FALSE`
+
+```{r}
+print(starwars %>%
+        drop_na(mass) %>%
+        anomalize(mass, method = "gesd") %>%
+        rename(outlier = anomaly) %>%
+        # Eliminamos la variables auxiliares creadas
+        select(-c(mass_l1, mass_l2)) %>%
+        mutate(outlier = (outlier == "Yes")), width = Inf)
+```
+
+Dicha variable auxiliar la podremos usar para **decidir si incluir o no el registro** en futuros pasos, pero también **podemos usarla para imputarle un valor** (por ejemplo, la media).
+
+```{r}
+print(starwars %>%
+        drop_na(mass) %>%
+        anomalize(mass, method = "gesd") %>%
+        rename(outlier = anomaly) %>%
+        # Eliminamos la variables auxiliares creadas
+        select(-c(mass_l1, mass_l2)) %>%
+        mutate(outlier = (outlier == "Yes"),
+               mass = ifelse(outlier, mean(mass), mass)),
+      width = Inf)
+```
+
+
+## Visualizar el procesamiento en tidyverse
+
+Antes de pasar a los ejercicios, existe una reciente herramienta que nos va a permitir entender mejor y <mark>**visualizar el flujo de trabajo**</mark> de las funciones que hemos visto en este entorno `{tidyverse}`: <https://tidydatatutor.com/>. Basta con poner el código que queremos ejecutar, y nos muestra las operaciones en los datos visualmente.
+
+```{r echo = FALSE, out.width = "50%", fig.align = "center", fig.cap = "Tidytutor."}
+knitr::include_graphics("./img/tidytutor.jpg")
+
+```
+
+```{r echo = FALSE, out.width = "50%", fig.align = "center", fig.cap = "Tidytutor."}
+knitr::include_graphics("./img/tidytutor1.jpg")
+
+```
+
+```{r echo = FALSE, out.width = "50%", fig.align = "center", fig.cap = "Tidytutor."}
+knitr::include_graphics("./img/tidytutor2.jpg")
+
+```
+
+```{r echo = FALSE, out.width = "50%", fig.align = "center", fig.cap = "Tidytutor."}
+knitr::include_graphics("./img/tidytutor3.jpg")
+
+```
+
+```{r echo = FALSE, out.width = "50%", fig.align = "center", fig.cap = "Tidytutor."}
+knitr::include_graphics("./img/tidytutor4.jpg")
+
+```
+
+```{r echo = FALSE, out.width = "50%", fig.align = "center", fig.cap = "Tidytutor."}
+knitr::include_graphics("./img/tidytutor5.jpg")
+
+```
+## 📝 Ejercicios
+
+(haz click en las flechas para ver soluciones)
+
+<details>
+  <summary>📝<strong>Ejercicio 1</strong>: del fichero `starwars` encuentra todos los personajes que el peso esté entre 60 y 90.
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# todas columnas
+filtro <-
+  starwars %>% filter(between(mass, 60, 90))
+print(filtro, width = Inf)
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 2</strong>: añadido al filtro anterior, encuentra todos los personajes de ojos que no sean azules, y que tengan menos de 100 años.
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# todas columnas
+filtro <-
+  starwars %>%
+  filter(between(mass, 60, 90) & eye_color != "blue" &
+           birth_year < 100)
+print(filtro, width = Inf)
+```
+
+<!-- tocstop -->
+</details>
+
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 3</strong>: añadido al filtro anterior, selecciona solo las columnas `name, mass, eye_color, birth_year`
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Solo name, mass, eye_color, birth_year
+filtro %>% select(c(name, mass, eye_color, birth_year))
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 4</strong>: selecciona solo las columnas que contengan variables numéricas, coloca los años de nacimiento como primera columna y cambia los nombres a castellano.
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+starwars %>% select(where(is.numeric))
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 5</strong>: añadido a la selección anterior, coloca los años de nacimiento como primera columna y cambia los nombres a castellano.
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+starwars %>% select(where(is.numeric)) %>%
+  relocate(height, mass, .after = birth_year) %>%
+  rename(edad = birth_year, altura = height, peso = mass)
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 6</strong>: calcula una nueva columna que indique el número de naves que ha pilotado cada persona (escribe `? starwars` en consola para ver documentación del fichero).
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+starwars_numero_naves <- 
+  starwars %>%
+  mutate(n_naves = map_chr(starships, length))
+
+# Imprimimos todas las columnas
+print(starwars_numero_naves, width = Inf)
+
+# Solo la columna añadida
+starwars %>%
+  transmute(n_naves = map_chr(starships, length))
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 7</strong>: con la columna anterior añadido, crea una nueva variable `TRUE/FALSE` que nos diga si ha conducido o no alguna nave, y filtra después solo aquellos personajes que han conducido alguna nave.
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Nueva columna lógica
+starwars_numero_naves %>%
+  mutate(conducir_nave = n_naves > 0) %>%
+  filter(conducir_nave)
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 8</strong>: calcula el número de películas en las que han salido y ordena a los personajes de mayor a menor número de películas en las que ha aparecido
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+starwars %>% # Calculamos primero el número de películas
+  mutate(n_films = map_int(films, length)) %>%
+  arrange(desc(n_films)) # Ordenamos de mayor a menor
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 9</strong>: selecciona 9 personajes al azar.
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Una extracción aleatoria
+starwars %>% slice_sample(n = 9)
+
+# otra (que sale distinta, claro)
+starwars %>% slice_sample(n = 9)
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+
+<details>
+  <summary>📝<strong>Ejercicio 10</strong>: de la tabla del ejercicio anterior, selecciona los 5 personajes que en más películas han salido y los 5 que menos.
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Una extracción aleatoria
+selec_aleatoria <- starwars %>% slice_sample(n = 9)
+
+# personajes que en más películas han salido (metiendo empates)
+selec_aleatoria  %>%
+  mutate(n_films = map_int(films, length)) %>%
+  slice_max(n_films, n = 5)
+
+# personajes que en más películas han salido (sin empates)
+starwars %>%
+  mutate(n_films = map_int(films, length)) %>%
+  slice_max(n_films, n = 5, with_ties = FALSE)
+
+# personajes que en menos películas han salido (metiendo empates)
+starwars %>%
+  mutate(n_films = map_int(films, length)) %>%
+  slice_min(n_films, n = 5)
+
+# personajes que en menos películas han salido (sin empates)
+starwars %>%
+  mutate(n_films = map_int(films, length)) %>%
+  slice_min(n_films, n = 5, with_ties = FALSE)
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 11</strong>: selecciona las columnas que se refieren a variables de color (ojos, piel, pelo).
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Contiene "color" independientemente de que sea sufijo o prefijo
+starwars %>% select(contains("color"))
+
+# Contiene "color" como sufijo
+starwars %>% select(ends_with("color"))
+```
+
+<!-- tocstop -->
+</details>
+
+
+

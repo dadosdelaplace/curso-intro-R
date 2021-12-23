@@ -55,22 +55,23 @@
 <li class="book-part">Conceptos básicos</li>
 <li><a class="" href="vectores.html"><span class="header-section-number">3</span> Tipos de datos I: vectores</a></li>
 <li><a class="" href="operacionesvectores.html"><span class="header-section-number">4</span> Operaciones con vectores</a></li>
-<li><a class="" href="proyecto.html"><span class="header-section-number">5</span> Flujo de trabajo: primer proyecto</a></li>
-<li><a class="" href="control.html"><span class="header-section-number">6</span> Estructuras de control</a></li>
-<li><a class="" href="datos.html"><span class="header-section-number">7</span> Tipos de datos II: datos estructurados</a></li>
+<li><a class="" href="control.html"><span class="header-section-number">5</span> Estructuras de control</a></li>
+<li><a class="" href="datos.html"><span class="header-section-number">6</span> Tipos de datos II: datos estructurados</a></li>
+<li><a class="" href="proyecto.html"><span class="header-section-number">7</span> Flujo de trabajo: primer proyecto</a></li>
 <li><a class="" href="importar-exportar.html"><span class="header-section-number">8</span> Importando/exportando</a></li>
-<li class="book-part">Listas y funciones</li>
-<li><a class="" href="otros-datos.html"><span class="header-section-number">9</span> Listas y factores</a></li>
-<li><a class="" href="funciones.html"><span class="header-section-number">10</span> Creación de funciones</a></li>
-<li class="book-part">Alto en el camino</li>
-<li><a class="" href="resumen-1.html"><span class="header-section-number">11</span> ¿Qué sabemos hacer?</a></li>
+<li class="book-part">Un pasito más</li>
+<li><a class="" href="listas.html"><span class="header-section-number">9</span> Listas</a></li>
+<li><a class="" href="factores.html"><span class="header-section-number">10</span> Factores</a></li>
+<li><a class="" href="funciones.html"><span class="header-section-number">11</span> Creación de funciones</a></li>
 <li class="book-part">EXPLORANDO: introducción al análisis exploratorio de datos</li>
 <li><a class="" href="tidydata.html"><span class="header-section-number">12</span> Tidy data: ordenando datos</a></li>
-<li><a class="" href="tidyverse.html"><span class="header-section-number">13</span> Explorando los datos: incursión a tidyverse</a></li>
+<li><a class="" href="tidyverse.html"><span class="header-section-number">13</span> Incursión a tidyverse</a></li>
 <li><a class="" href="resumenes.html"><span class="header-section-number">14</span> Resumiendo y relacionado los datos</a></li>
-<li><a class="" href="ggplot2.html"><span class="header-section-number">15</span> Visualizando datos: incursión a ggplot2</a></li>
+<li class="book-part">Final del camino</li>
+<li><a class="" href="resumen-1.html"><span class="header-section-number">15</span> ¿Qué sabemos hacer?</a></li>
+<li><a class="" href="recursos.html"><span class="header-section-number">16</span> Recursos extras</a></li>
 <li class="book-part">Epílogo</li>
-<li><a class="" href="contribuye.html"><span class="header-section-number">16</span> Contribuye al proyecto</a></li>
+<li><a class="" href="contribuye.html"><span class="header-section-number">17</span> Contribuye al proyecto</a></li>
 <li><a class="" href="bibliograf%C3%ADa.html">Bibliografía</a></li>
 </ul>
 
@@ -87,7 +88,7 @@
 <h2>
 <span class="header-section-number">1.1</span> Instalación de R<a class="anchor" aria-label="anchor" href="#instalaci%C3%B3n-de-r"><i class="fas fa-link"></i></a>
 </h2>
-<p>Vamos a necesitar <strong>solo 3 pasos (y conexión a internet)</strong>.</p>
+<p>Vamos a necesitar <mark><strong>solo 3 pasos (y conexión a internet)</strong></mark>.</p>
 <div id="paso-1" class="section level3">
 <h3>
 <span class="header-section-number">1.1.1</span> Paso 1<a class="anchor" aria-label="anchor" href="#paso-1"><i class="fas fa-link"></i></a>
@@ -129,14 +130,14 @@ Imagen/gráfica 1.4: Pantalla final de instalación de R en Windows.
 <h3>
 <span class="header-section-number">1.1.3</span> Paso 3<a class="anchor" aria-label="anchor" href="#paso-3"><i class="fas fa-link"></i></a>
 </h3>
-<p>Tras su instalación tendrás en tu escritorio (Windows) o en tu Launchpad (Mac Os) un <strong>ejecutable de <code>R</code> para abrir</strong>. En Windows puede que tengas dos ejecutables <code>i386</code> y <code>x64</code> (como todo programa en Windows está la versión de 32 y de 64 bits, haz click preferiblemente - si lo tienes - en el de <code>x64</code>). Te saldrá algo parecido a lo que observas en la imagen <a href="instalacionR.html#fig:cranR">1.5</a>.</p>
+<p>Tras su instalación tendrás en tu escritorio (Windows) o en tu Launchpad (Mac Os) un <mark><strong>ejecutable de <code>R</code> para abrir</strong></mark>. En Windows puede que tengas dos ejecutables <code>i386</code> y <code>x64</code> (como todo programa en Windows está la versión de 32 y de 64 bits, haz click preferiblemente - si lo tienes - en el de <code>x64</code>). Te saldrá algo parecido a lo que observas en la imagen <a href="instalacionR.html#fig:cranR">1.5</a>.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:cranR"></span>
 <img src="img/cranR.jpg" alt="Primera pantalla al abrir el ejecutable de R." width="75%"><p class="caption">
 Imagen/gráfica 1.5: Primera pantalla al abrir el ejecutable de R.
 </p>
 </div>
-<p>Para comprobar que está correctamente instalado, <strong>prueba a escribir en la consola inferior</strong> el siguiente código (<strong>recuerda</strong>: los códigos puedes <strong>copiarlos</strong> directamente de la cajita haciendo click en el botón de la esquina superior derecha)</p>
+<p>Para comprobar que está correctamente instalado, <mark><strong>prueba a escribir</strong></mark> en la consola inferior el siguiente código (<mark><strong>recuerda</strong></mark>: los códigos puedes <strong>copiarlos</strong> directamente de la cajita haciendo click en el botón de la esquina superior derecha)</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">a</span> <span class="op">&lt;-</span> <span class="fl">1</span>
 <span class="va">b</span> <span class="op">&lt;-</span> <span class="fl">2</span>
@@ -149,7 +150,7 @@ Imagen/gráfica 1.6: Primera suma en la consola de R.
 </p>
 </div>
 <p><strong>¡Enhorabuena!</strong></p>
-<p>Si te ha devuelto el resultado (en la consola debe aparecer <code>[1] 3</code>), ya has hecho más de lo que parece: has definido dos variables <code>a</code> y <code>b</code>, has <strong>asignado un valor numérico a cada una de ellas</strong> y las hemos usado en una operación aritmética. <strong>Ya sabemos usar <code>R</code> como calculadora</strong>.</p>
+<p>Si te ha devuelto el resultado (en la consola debe aparecer <code>[1] 3</code>), ya has hecho más de lo que parece: has definido dos variables <code>a</code> y <code>b</code>, has <mark><strong>asignado un valor numérico a cada una de ellas</strong></mark> y las hemos usado en una operación aritmética. <strong>Ya sabemos usar <code>R</code> como <mark>calculadora</mark></strong>.</p>
 <p>El valor <code>[1]</code> antes del resultado de la operación en realidad nos numera las líneas de la consola usadas.</p>
 <p> </p>
 <p><strong><span style="color: #ffc107;">WARNING: </span></strong></p>
@@ -188,8 +189,8 @@ Imagen/gráfica 1.8: Primer recibimiento de nuestro mejor amigo RStudio.
 <p>El lenguaje <code>R</code> tiene 3 ventajas principales:</p>
 <ul>
 <li><p>Es un <strong>lenguaje creado por y para estadísticos/as</strong>.</p></li>
-<li><p>Es <strong>software libre</strong> (como C, C++, Python, Fortran, y otros tantos lenguajes). El software libre no solo tiene una ventaja evidente (es gratis, ok) sino que permite acceder a código ajeno.</p></li>
-<li><p>Es un <strong>lenguaje modular</strong>: en la instalación no se instalan todas las funcionalidades salvo un mínimo para poder funcionar, de forma que se ahorra espacio en disco y en memoria. Al ser software libre, existen trozos de código hechos por otras personas llamados <strong>paquetes</strong>, que podemos ir instalando a nuestro gusto según los vayamos necesitando. Esto es una ventaja enorme ya que <code>R</code> tiene una comunidad de usuarios gigante, con <strong>más de 17 000 paquetes</strong>: ¡hay más de 17 000 trozos de código validados por la comunidad y la plataforma, de forma gratuita!</p></li>
+<li><p>Es <mark><strong>software libre</strong></mark> (como C, C++, Python, Fortran, y otros tantos lenguajes). El software libre no solo tiene una ventaja evidente (es gratis, ok) sino que permite acceder a código ajeno.</p></li>
+<li><p>Es un <mark><strong>lenguaje modular</strong></mark>: en la instalación no se instalan todas las funcionalidades salvo un mínimo para poder funcionar, de forma que se ahorra espacio en disco y en memoria. Al ser software libre, existen trozos de código hechos por otras personas llamados <mark><strong>paquetes</strong></mark>, que podemos ir instalando a nuestro gusto según los vayamos necesitando. Esto es una ventaja enorme ya que <code>R</code> tiene una comunidad de usuarios gigante, con <strong>más de 17 000 paquetes</strong>: ¡hay más de 17 000 trozos de código validados por la comunidad y la plataforma, de forma gratuita!</p></li>
 </ul>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:paquetes-R"></span>
@@ -208,7 +209,7 @@ Imagen/gráfica 1.9: Paquetes disponibles en R.
 <p>Una vez que tenemos los trozos de código (el paquete) en nuestro ordenador, en cada sesión de <code>R</code> que abramos (cada vez que cierres y abras <code>RStudio</code>) deberemos (si queremos) llamar a ese paquete que tenemos instalado, escribiendo el siguiente comando en consola</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></code></pre></div>
-<p><strong>Welcome to software libre</strong></p>
+<p><strong>Welcome to <mark>software libre</mark></strong></p>
 </div>
 <div id="glosario" class="section level2">
 <h2>
@@ -217,7 +218,7 @@ Imagen/gráfica 1.9: Paquetes disponibles en R.
 <p><strong><span style="color: #4197D2;">GLOSARIO</span></strong></p>
 <ul>
 <li>
-<strong><span style="color: #4197D2;">Consola</span></strong>: es el nombre para llamar a esa ventana grande que te ocupa la mayor parte de tu pantalla. Prueba a escribir el mismo código que antes en ella (es el equivalente a la consola de R que hemos abierto al principio).</li>
+<strong><span style="color: #4197D2;">Consola</span></strong>: es el nombre para llamar a esa ventana grande que te ocupa buena parte de tu pantalla. Prueba a escribir el mismo código que antes en ella (es el equivalente a la consola de R que hemos abierto al principio).</li>
 </ul>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">a</span> <span class="op">&lt;-</span> <span class="fl">1</span>
@@ -323,7 +324,7 @@ Imagen/gráfica 1.15: Personalizar el color de fondo de nuestro editor, la letra
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 21-12-2021.</p>
+    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 23-12-2021.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

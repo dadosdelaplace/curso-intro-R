@@ -1,0 +1,316 @@
+
+# Creación de funciones {#funciones}
+
+En `R` no solo podemos usar las funciones predeterminadas que vienen ya cargadas, o las de los paquetes que instalamos, sino que además podemos <mark>**crear nuestras propias funciones**</mark>, para automatizar tareas que vayamos a repetir a lo largo de nuestro código.
+
+<mark>**¿Cómo crear nuestra propia función?**</mark> Veamos su sintaxis básica. Para crear una función necesitamos un nombre, por ejemplo `nombre_funcion` (sin espacios ni caracteres extraños), al que le asignamos la orden `function()`. Dentro de `function()` tendríamos que definir los argumentos de entrada que vamos a usar.
+
+```{r}
+nombre_funcion <- function(argumento_1, argumento_2, ... ) {
+  
+  # Código que queramos ejecutar en la función
+  código
+  
+  # Salida
+  return(variable_salida)
+}
+``` 
+
+- **argumento_1, argumento_2, ...**: serán los argumentos de entrada, los argumentos que toma la función para ejecutar el código que tiene dentro
+- **código**: líneas de código que queramos que ejecute la función. **IMPORTANTE**: todas las variables que definamos dentro de la función son variables locales, solo existirán dentro de la función salvo que especifiquemos lo contrario.
+- `return(variable_salida)`: dentro del comando `return()` se introducirá la salida de la función, que puede ser un número, un ` data.frame`, una gráfica, una matriz... o todo junto en una lista.
+
+
+## Primera función
+
+Veamos un **ejemplo muy simple de función** para <mark>**calcular el área de un rectángulo**</mark>: dados dos lados `lado_1` y  `lado_2`, deberá devolver el área como su producto.
+
+```{r}
+# Definición del nombre de función y argumentos de entrada
+calcular_area <- function(lado_1, lado_2) {
+  
+  # Cuerpo de la función
+  area <- lado_1 * lado_2
+  
+  # Resultado que devolvemos
+  return(area)
+  
+}
+```
+
+También podemos hacer la definición directa sin almacenar variables.
+
+```{r}
+# Definición del nombre de función y argumentos de entrada
+calcular_area <- function(lado_1, lado_2) {
+
+  # Resultado que devolvemos
+  return(lado_1 * lado_2)
+  
+}
+```
+
+<mark>**¿Cómo aplicar la función?**</mark> Con el nombre y los valores de los argumentos.
+
+```{r}
+# Aplicación de la función con los parámetros por defecto
+calcular_area(5, 3) # área de un rectángulo 5 x 3 
+```
+
+Imagina ahora que nos damos cuenta que el 90% de las veces el área que nos toca calcular es la de un cuadrado: `R` nos permite definir **argumentos en la función con valores por defecto** (tomarán dicho valor salvo que le asignemos otro). ¿**Por qué no asignar `lado_2 = lado_1` por defecto**, para ahorrar líneas de código y tiempo? 
+
+```{r}
+# Definición del nombre de función y argumentos de entrada
+calcular_area <- function(lado_1, lado_2 = lado_1) {
+  
+  # Cuerpo de la función
+  area <- lado_1 * lado_2
+  
+  # Resultado que devolvemos
+  return(area)
+  
+}
+```
+
+
+```{r}
+calcular_area(lado_1 = 5) # si no indicamos nada, lado_2 = lado_1
+``` 
+
+Compliquemos un poco la función y añadamos en la salida los valores de cada lado etiquetados como primer lado y segundo lado.
+
+```{r}
+# Definición del nombre de función y argumentos de entrada
+calcular_area <- function(lado_1, lado_2 = lado_1) {
+  
+  # Cuerpo de la función
+  area <- lado_1 * lado_2
+  
+  # Resultado que devolvemos en modo lista ya que devolvemos
+  # varios argumentos a la vez (podemos dar a cada elemento 
+  # de la lista con un nombre que nos permita identificarlo)
+  return(list("area" = area, "lado_1" = lado_1, "lado_2" = lado_2))
+  
+}
+```
+
+Veamos que nos devuelve ahora
+
+```{r}
+calcular_area(5, 3)
+```
+
+Fíjate que puedes guardar la salida de forma conjunta para luego acceder a solo uno de los elementos de la lista de salida.
+
+```{r}
+x <- calcular_area(5, 3)
+x$area
+x$lado_1
+x$lado_2
+```
+
+Antes nos daba igual el orden de los argumentos pero ahora no, ya que en la salida incluimos `lado_1` y `lado_2`. Es **altamente recomendable** hacer la llamada a la función indicando explícitamente los argumentos `argumento_1 = valor_1` para **mejorar la legibilidad e interpretabilidad de nuestro código** (recuerda: programa como escribirías una novela).
+
+```{r}
+calcular_area(lado_1 = 5, lado_2 = 3)
+```
+
+
+## Segunda función
+ 
+
+Vayamos con un **ejemplo más complejo**. Imaginemos que en nuestro código vamos a tener calcular, **para cada día, el número de vacunas diarias administradas, el número de vacunas administradas en los últimos 7 días y el número de vacunadas administradas en los últimos 14 días**, usando tan solo el número de vacunadas acumuladas. Para ello vamos a usar la **función `diff()` que nos calcula las diferencias de un vector dado**.
+
+```{r}
+vacunas <- c(50, 60, 71, 52, 63, 40, 77, 50, 65, 70,
+             90, 100, 73, 48, 250, 200, 124)
+diff(vacunas) # vector con [elemento2 - elemento1, elemento3 - elemento2, elemento4 - elemento3, ...]
+diff(vacunas, 3) # vector con [elemento4 - elemento1, elemento5 - elemento2, elemento6 - elemento3, ...]
+diff(vacunas, 7) # vector con [elemento8 - elemento1, elemento9 - elemento2, elemento10 - elemento3, ...]
+```
+
+
+```{r}
+# Para España
+datos_diarios <- diff(vacunas)
+datos_7D <- diff(vacunas, 7) # diferencias a 7 días
+datos_14D <- diff(vacunas, 14) # diferencias a 14 días
+```
+
+
+¿Cuánto ocuparía realizar esta misma tarea para cada comunidad, y cada variable? **¿Por qué no la automatizamos?**
+
+
+```{r}
+datos_acumulados <- function(variable_acumulada, dias_dif = c(1, 7, 14)) {
+  
+  # Dentro de las llaves el cuerpo de la función
+  acumulados_diferenciales <- NULL
+  for (i in dias_dif) { # Vamos calculando tantos acumulados diferenciales como le hayamos pasado por el argumento dias_dif
+    
+    # A lo que teníamos, le concatenamos por columnas uno nuevo
+    acumulados_diferenciales <- c(acumulados_diferenciales,
+                                  rev(diff(variable_acumulada, i))[1])
+  
+  }
+  
+  # La salida de la función
+  return(acumulados_diferenciales)
+}
+``` 
+
+Como vemos, los argumentos pueden ser cualquier tipo de variable, y nos permite además **generalizar y automatizar una tarea** para que pueda ser usada incluso en algún escenario para el que no tuviéramos previsto (acumulados a ... 13 días, por ejemplo). Para que nuestra función sea realmente útil debemos intentar asignar **nombres de funciones y argumentos lo más concisos posibles y evidentes en su interpretación**.
+
+```{r}
+datos_acumulados(vacunas)
+datos_acumulados(vacunas)
+datos_acumulados(vacunas, dias_dif = c(1, 3, 13, 15))
+``` 
+
+Fíjate que hemos devuelto solo el último acumulado (hemos dado la vuelta al vector resultante y nos hemos quedado con el primer elemento). Para hacer que la salida sea más interpretable, muchas de las **funciones en `R` tienen como salida una lista, con unos nombres asignados**. 
+
+```{r}
+datos_acumulados <- function(variable_acumulada) {
+  
+  # Datos
+  dato_diario <- diff(variable_acumulada)
+  dato_7D <- diff(variable_acumulada, 7)
+  dato_14D <- diff(variable_acumulada, 14)
+
+  # La salida de la función como una lista, con 3 vectores
+  return(list("diario" = dato_diario, "7D" = dato_7D,
+              "14D" = dato_14D))
+}
+datos_salida <- datos_acumulados(vacunas)
+names(datos_salida)
+datos_salida
+``` 
+
+
+
+
+## Variables locales/globales
+
+Hemos dicho que **«lo local se queda en lo local»**, ¿pero qué sucede si nombramos a una variable dentro de una función que se nos ha olvidado asignar un valor dentro de la misma? Debemos ser cautos al usar funciones en `R`, ya que debido a la <mark>**«regla lexicográfica»**</mark>, si una variable no se define dentro de la función, `R`  buscará dicha variable en el entorno de variable. 
+
+```{r}
+x <- 1
+funcion_ejemplo <- function() {
+    
+  print(x) # No devuelve nada per se, solo realiza la acción de imprimir en consola
+}
+funcion_ejemplo()
+```
+
+Si una **variable ya está definida fuera de la función (entorno global)**, y además es usada dentro de la misma cambiando su valor, el valor de dicha variable solo cambia dentro de la función pero no en el entorno global.
+
+
+```{r}
+x <- 1
+funcion_ejemplo <- function() {
+    
+  x <- 2
+  print(x) # lo que vale dentro
+}
+funcion_ejemplo() # lo que vale dentro
+print(x) # lo que vale fuera
+```
+
+Si queremos que **además de cambiar localmente lo haga globalmente** deberemos usar la **doble asignación** (`<<-`).
+
+```{r}
+x <- 1
+y <- 2
+funcion_ejemplo <- function() {
+  
+  x <- 3 # no cambia globalmente, solo localmente
+  y <<- 0 # cambia globalmente
+  print(x)
+  print(y)
+}
+
+funcion_ejemplo() # lo que vale dentro
+x # lo que vale fuera
+y # lo que vale fuera
+```
+
+
+## 📝 Ejercicios
+
+<details>
+  <summary><strong>Ejercicio 1</strong>: define una función propia llamada `pares` que, dados dos números `x` e `y`, nos diga si la suma de ambos es par o no.</summary>
+  
+- Solución:
+
+```{r}
+# Definimos función
+pares <- function(x, y) {
+  
+  # Sumamos
+  suma <- x + y
+  
+  # Comprobamos si es par calculando el resto al dividir entre 2: si al dividir suma entre 2 el resto es 0 ==> es par
+  
+  par <- suma %% 2 == 0
+  
+  # Devolvemos la salida
+  return(par)
+}
+
+# Aplicamos la función
+pares(1, 3)
+pares(1, 0)
+pares(2, 6)
+pares(2, 7)
+```
+
+También se puede definir directamente como
+
+```{r}
+# Definimos función
+pares <- function(x, y) {
+
+  # Devolvemos la salida
+  return((x + y) %% 2 == 0)
+}
+
+pares(1, 3)
+pares(1, 0)
+pares(2, 6)
+pares(2, 7)
+```
+
+</details>
+
+&nbsp; 
+
+<details>
+  <summary><strong>Ejercicio 2</strong>: define una función propia llamada `proximo_par` que, dados un número `x`, nos diga si es par y, en aso de no serlo, nos devuelva el próximo número que si lo sea.</summary>
+  
+- Solución:
+
+```{r}
+# Definimos función
+proximo_par <- function(x) {
+  
+  # ¿par? TRUE/FALSE
+  par <- (x %% 2) == 0
+  
+  # Si es par, devolvemos el propio número (era par), sino le sumamos uno
+  if (par) {
+    
+    return(list("par" = par, "proximo" = x))
+    
+  } else { # Si no es par, devolvemos el siguiente (que será par) 
+    
+    return(list("par" = par, "proximo" = x + 1))
+  
+  }
+  # Devolvemos una lista de dos elementos: par (TRUE/FALSE) y proximo (si es par, el propio x, sino x + 1)
+}
+
+# Aplicamos la función
+proximo_par(7)
+proximo_par(8)
+```
+

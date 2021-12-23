@@ -22,7 +22,7 @@ colorize <- function(x, color) {
 
 ## Instalación de R
 
-Vamos a necesitar **solo 3 pasos (y conexión a internet)**.
+Vamos a necesitar <mark>**solo 3 pasos (y conexión a internet)**</mark>.
 
 ### Paso 1
 
@@ -55,13 +55,13 @@ knitr::include_graphics("./img/pantalla_windows_2.jpg")
 
 ### Paso 3
 
-Tras su instalación tendrás en tu escritorio (Windows) o en tu Launchpad (Mac Os) un **ejecutable de `R` para abrir**. En Windows puede que tengas dos ejecutables `i386` y `x64` (como todo programa en Windows está la versión de 32 y de 64 bits, haz click preferiblemente - si lo tienes - en el de `x64`). Te saldrá algo parecido a lo que observas en la imagen \@ref(fig:cranR).
+Tras su instalación tendrás en tu escritorio (Windows) o en tu Launchpad (Mac Os) un <mark>**ejecutable de `R` para abrir**</mark>. En Windows puede que tengas dos ejecutables `i386` y `x64` (como todo programa en Windows está la versión de 32 y de 64 bits, haz click preferiblemente - si lo tienes - en el de `x64`). Te saldrá algo parecido a lo que observas en la imagen \@ref(fig:cranR).
 
 ```{r cranR, echo = FALSE, out.width = "75%", fig.align = "center", fig.cap = "Primera pantalla al abrir el ejecutable de R."}
 knitr::include_graphics("./img/cranR.jpg")
 ```
 
-Para comprobar que está correctamente instalado, **prueba a escribir en la consola inferior** el siguiente código (**recuerda**: los códigos puedes **copiarlos** directamente de la cajita haciendo click en el botón de la esquina superior derecha)
+Para comprobar que está correctamente instalado, <mark>**prueba a escribir**</mark> en la consola inferior el siguiente código (<mark>**recuerda**</mark>: los códigos puedes **copiarlos** directamente de la cajita haciendo click en el botón de la esquina superior derecha)
 
 ```{r codigo-prueba-1}
 a <- 1
@@ -76,7 +76,7 @@ knitr::include_graphics("./img/primera_suma.jpg")
 
 **¡Enhorabuena!**
 
-Si te ha devuelto el resultado (en la consola debe aparecer `[1] 3`), ya has hecho más de lo que parece: has definido dos variables `a` y `b`, has **asignado un valor numérico a cada una de ellas** y las hemos usado en una operación aritmética. **Ya sabemos usar `R` como calculadora**.
+Si te ha devuelto el resultado (en la consola debe aparecer `[1] 3`), ya has hecho más de lo que parece: has definido dos variables `a` y `b`, has <mark>**asignado un valor numérico a cada una de ellas**</mark> y las hemos usado en una operación aritmética. **Ya sabemos usar `R` como <mark>calculadora</mark>**.
 
 El valor `[1]` antes del resultado de la operación en realidad nos numera las líneas de la consola usadas.
 
@@ -122,9 +122,9 @@ El lenguaje `R` tiene 3 ventajas principales:
 
 * Es un **lenguaje creado por y para estadísticos/as**.
 
-* Es **software libre** (como C, C++, Python, Fortran, y otros tantos lenguajes). El software libre no solo tiene una ventaja evidente (es gratis, ok) sino que permite acceder a código ajeno.
+* Es <mark>**software libre**</mark> (como C, C++, Python, Fortran, y otros tantos lenguajes). El software libre no solo tiene una ventaja evidente (es gratis, ok) sino que permite acceder a código ajeno.
 
-* Es un **lenguaje modular**: en la instalación no se instalan todas las funcionalidades salvo un mínimo para poder funcionar, de forma que se ahorra espacio en disco y en memoria. Al ser software libre, existen trozos de código hechos por otras personas llamados **paquetes**, que podemos ir instalando a nuestro gusto según los vayamos necesitando. Esto es una ventaja enorme ya que `R` tiene una comunidad de usuarios gigante, con **más de 17 000 paquetes**: ¡hay más de 17 000 trozos de código validados por la comunidad y la plataforma, de forma gratuita!
+* Es un <mark>**lenguaje modular**</mark>: en la instalación no se instalan todas las funcionalidades salvo un mínimo para poder funcionar, de forma que se ahorra espacio en disco y en memoria. Al ser software libre, existen trozos de código hechos por otras personas llamados <mark>**paquetes**</mark>, que podemos ir instalando a nuestro gusto según los vayamos necesitando. Esto es una ventaja enorme ya que `R` tiene una comunidad de usuarios gigante, con **más de 17 000 paquetes**: ¡hay más de 17 000 trozos de código validados por la comunidad y la plataforma, de forma gratuita!
 
 ```{r paquetes-R, echo = FALSE, out.width = "70%", fig.align = "center", fig.cap = "Paquetes disponibles en R."}
 knitr::include_graphics("./img/paquetes_R.jpg")
@@ -153,7 +153,7 @@ Una vez que tenemos los trozos de código (el paquete) en nuestro ordenador, en 
 library(ggplot2)
 ```
 
-**Welcome to software libre**
+**Welcome to <mark>software libre</mark>**
 
  
  
@@ -162,7 +162,7 @@ library(ggplot2)
 
 **`r colorize("GLOSARIO", "#4197D2")`**
 
-* **`r colorize("Consola", "#4197D2")`**: es el nombre para llamar a esa ventana grande que te ocupa la mayor parte de tu pantalla. Prueba a escribir el mismo código que antes en ella (es el equivalente a la consola de R que hemos abierto al principio).
+* **`r colorize("Consola", "#4197D2")`**: es el nombre para llamar a esa ventana grande que te ocupa buena parte de tu pantalla. Prueba a escribir el mismo código que antes en ella (es el equivalente a la consola de R que hemos abierto al principio).
 
 
 ```{r codigo-prueba-1bis, eval = FALSE}

@@ -1,0 +1,250 @@
+```{r echo = FALSE}
+library(knitr)
+
+# Color text
+colorize <- function(x, color) {
+  
+  if (knitr::is_latex_output()) {
+    
+    sprintf("\\textcolor{%s}{%s}", color, x)
+    
+  } else if (knitr::is_html_output()) {
+    
+    sprintf("<span style='color: %s;'>%s</span>", color, x)
+    
+  } else { x }
+}
+```
+
+
+# Factores {#factores}
+
+¿Qué nos puede quedar más allá de las listas? Hay una forma de guardar los datos muy particular en `R`, que nos permite diferenciar variables no por su contenido en sí sino por lo que representan: <mark>**hablemos de factores**</mark> 
+
+Los <mark>**factores la manera que tiene `R` para definir variables categóricas**</mark>, también llamadas **cualitativas**, variables que aunque puedan ser números, en realidad representa **categorías (categoría 1, 2, 3...)**. Algunos <mark>**ejemplos**</mark> de variables categóricas o cualitativas son las siguientes:
+
+* Estado civil (soltero/casado/viudo)
+* Diagnóstico del paciente (sano/leve/grave/fallecido)
+* Religión (musulmán/católico/ateo/budista)
+* País (España/Francia/Argentina)
+* Notas (suspenso/aprobado/notable/sobresaliente)
+* Colores (rojo/azul/verde)
+* Código postal (28017/34001/18003/33009)
+
+<mark>**¿Qué diferencias observas entre ellas?**</mark>
+
+Si las observas, bien algunas de ellas tienen asignadas una <mark>**jerarquía (orden)**</mark>, a pesar de ser variables cualitativas. Es el caso de `notas` y `diagnóstico`, y son variables que llamamos **variables cualitativas <mark>ordinales</mark>**. En otros casos, no se puede (ni se debería) establecer una jerarquía, como es el caso de `estado civil`, `religión`, `país`, `colores` o `código postal`, **variables cualitativas <mark>nominales</mark>**. Además esta última es especial ya que es una varibale CUALItativa aunque esté formada por números: el código postal, los DNI, las tarjetas sanitarias, son variables que permiten **identificar** registros, direcciones o inviduos, por lo que su naturaleza no es cuantitativa (no cuantifican ninguna cantidad) sino cualitativa.
+
+Esas variables cualitativas en `R` se llaman <mark>**factores**</mark>. Internamente los factores se guardan como **variable numéricas enteras (enumerando las categorías)** pero se nos mostarán con el nombre asignada a dicha categoría. Para convertir una variable a factor basta con ejecutar la función `factor()`, que nos convierte cada valor diferente en una categoría (para ver valores diferentes de un vector, usar la función `unique()`).
+
+
+```{r}
+datos <- c(1, 2, 3, 1, 2, 3, 2, 3, 3, 1)
+unique(datos)
+datos
+
+# Convertimos a factor
+datos_factor <- factor(datos) 
+datos_factor 
+``` 
+
+&nbsp;
+
+**`r colorize("WARNING: un factor es una CATEGORÍA, no un número", "#ffc107")`**
+
+Es importante entender que un **factor es una CATEGORÍA**, como rojo/blanco/negro, por lo que desde el momento en el que lo convertimos en factor, ya no podemos hacer operaciones aritméticas (no podemos sumar categorías, solo números).
+
+
+```{r error = TRUE}
+datos + 1
+datos_factor + 1
+``` 
+
+&nbsp;
+
+Como puedes observar, al tenerlo en factor, además de la variable en sí se nos **muestra debajo los `levels`, los niveles permitidos de las categorías**. Si no le indicamos que nombres queremos, nos convierte los valores a texto y lo toma como nombre de categoría. Con el **argumento `labels` podemos configurarlo** a nuestro gusto. Con la función `levels` podemos reasignarle nombres tras su generación.
+
+```{r}
+datos_factor <-
+  factor(datos, labels = paste("Categoría", sort(unique(datos)))) # damos nombre de categoría 1, 2, 3...
+datos_factor 
+
+# Renombramos si queremos
+levels(datos_factor) <- c("C1", "C2", "C3")
+datos_factor
+``` 
+
+Aunque sirve también para variables numéricas, la función <mark>**`table()` nos calcula las frecuencias de cada una de las categorías**</mark>, las veces que se repiten en nuestro conjunto (es una forma eficiente de guardar categorías ya que solo se guardan los valores únicos y el número de veces que se repiten, así como su lugar).
+
+```{r}
+table(datos_factor)
+``` 
+
+Una ventaja de los factores es que le podemos **indicar que considere que las categorías son ordinales** con el argumento `ordered = TRUE`.
+
+```{r}
+notas <- c(7, 2, 10, 5, 7, 8, 10, 8, 2, 2, 5, 5, 5, 10) # notas de clase: tienen un orden
+notas_factor <- factor(notas)
+notas_factor[1] < notas_factor[2]
+
+notas_factor_ordenados <- factor(notas, ordered = TRUE)
+notas_factor_ordenados
+``` 
+
+Las **variables cualitativas ordinales** pueden ser comparadas al tener un orden.
+
+```{r}
+notas_factor_ordenados[1] < notas_factor_ordenados[2] # nos dice que la categoría 7 no es menor que la categoría 2
+```
+
+
+Y con `summary()` además podemos obtener un **resumen** de nuestras categorías
+
+```{r}
+summary(notas_factor_ordenados)
+```
+
+Para <mark>**convertir de factor a numérica**</mark> (y poder operar aritméticamente con ellos), basta usar la función `as.numeric()`.
+
+```{r error = TRUE}
+notas_factor_ordenados + 1
+as.numeric(notas_factor_ordenados) + 1
+mean(as.numeric(notas_factor_ordenados))
+``` 
+
+También podemos <mark>**convertir variables continuas (o discretas) a factores indicando los rangos de las categorías**</mark> que queremos asignar con la función `cut()`. Por ejemplo, supongamos que tenemos notas numéricas de clase y queremos asignar una nota categórica. En el argumento `breaks` debemos indicarle los **cortes que queremos en los datos**, teniendo `n+1` valores, siendo `n` el número de categorías. Con `right = FALSE` le vamos a indicar que los intervalos son abiertos por la derecha.
+
+```{r}
+notas <- c(7.4, 1.1, 2.9, 10, 5.2, 7.7, 8.9, 10, 8.1, 2.6, 2.4, 5.5, 5, 5, 10, 6.3, 9.4) # notas de clase
+notas_categoricas <- cut(notas, breaks = c(0, 5, 7, 9, 10, 10.1), labels = c("suspenso", "aprobado", "notable", "sobresaliente", "mh"), right = FALSE)
+notas_categoricas
+``` 
+
+Además, la función `cut()` identifica los datos de tipo fecha, pudiendo hacer **cortes por unidades temporales**.
+
+
+```{r}
+fechas <- as.Date(c("2021-04-10", "2021-03-10", "2021-01-01", "2020-01-15", "2020-09-10", "2020-09-15", "2020-07-08"))
+fechas_cortes <- cut(fechas, breaks = "year")
+levels(fechas_cortes) <- c("2020", "2021")
+fechas_cortes
+``` 
+
+
+## Consejos
+
+
+**`r colorize("CONSEJOS", "#20935E")`**
+
+&nbsp;
+
+**`r colorize("Paquete forcats", "#4197D2")`**
+
+En dicho paquete tienes muchas **funcionalidades para trabajar con factores**. Ver <https://forcats.tidyverse.org/>.
+
+```{r forcats, echo = FALSE, out.width = "95%", fig.align = "center", fig.cap = "Paquete lubridate."}
+knitr::include_graphics("./img/forcats.png")
+```
+
+&nbsp;
+
+
+
+
+## 📝 Ejercicios
+
+<details>
+  <summary><strong>Ejercicio 1</strong>: define una variable de 5 elementos con los valores `vector_char <- c("H", "H", "M", "H", "M", "M", "H")`. Convierte la variable a factor, y renombra los niveles como `"Hombre"` y `"Mujer"`.</summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Vector de caracteres
+vector_char <- c("H", "H", "M", "H", "M", "M", "H")
+vector_char
+class(vector_char)
+
+# Convertimos a factor
+vector_factor <- factor(vector_char)
+vector_factor
+class(vector_factor)
+
+# Renombramos niveles
+levels(vector_factor) <- c("Hombre", "Mujer")
+vector_factor
+```
+
+</details>
+
+&nbsp;
+
+<details>
+  <summary><strong>Ejercicio 2</strong>: define un vector con nombres de algunos animales y convierte el vector a factor.</summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Ejemplo
+animales_char <- c("perro", "gato", "pájaro", "perro", "loro", "gato", "perro", "león")
+animales_char
+class(animales_char)
+
+# Convertimos a factor
+animales_vector <- factor(animales_char)
+animales_vector
+class(animales_vector)
+```
+
+</details>
+
+&nbsp;
+
+<details>
+  <summary><strong>Ejercicio 3</strong>: define un vector con las notas `notas_char <- c("Suspenso", "Aprobado", "Notable", "Sobresaliente", "Matrícula")` y conviértelo a factor. OJO: ¿es una variable cualitativa nominal u ordinal? Calcula el resumen de la variable.</summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Notas (es ordinal)
+notas_char <- c("Aprobado", "Suspenso", "Sobresaliente", "Notable",
+                "Matrícula", "Aprobado", "Aprobado", "Notable",
+                "Suspenso", "Sobresaliente",
+                "Matrícula", "Suspenso")
+notas_char 
+
+# Convertimos a factor ORDENADO
+notas_factor <-
+  factor(notas_char, order = TRUE,
+         levels =  c("Suspenso", "Aprobado", "Notable", 
+                     "Sobresaliente", "Matrícula"))
+notas_factor
+
+# Resumen
+summary(notas_factor)
+```
+
+</details>
+
+&nbsp;
+
+<details>
+  <summary><strong>Ejercicio 4</strong>: de la variable  `notas_char` anterior compara el elemento segundo y el cuarto.</summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+notas_factor[2] < notas_factor[4]
+notas_factor[2] > notas_factor[4]
+```
+
+</details>
+
+
+
+
+
+

@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Capítulo 10 Creación de funciones | Aprendiendo R sin morir en el intento</title>
+<title>Capítulo 11 Creación de funciones | Aprendiendo R sin morir en el intento</title>
 <meta name="author" content="Javier Álvarez Liébana">
 <meta name="description" content="En R no solo podemos usar las funciones predeterminadas que vienen ya cargadas, o las de los paquetes que instalamos, sino que además podemos crear nuestras propias funciones, para automatizar...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
-<meta property="og:title" content="Capítulo 10 Creación de funciones | Aprendiendo R sin morir en el intento">
+<meta property="og:title" content="Capítulo 11 Creación de funciones | Aprendiendo R sin morir en el intento">
 <meta property="og:type" content="book">
 <meta property="og:image" content="/img/logo_R.png">
 <meta property="og:description" content="En R no solo podemos usar las funciones predeterminadas que vienen ya cargadas, o las de los paquetes que instalamos, sino que además podemos crear nuestras propias funciones, para automatizar...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Capítulo 10 Creación de funciones | Aprendiendo R sin morir en el intento">
+<meta name="twitter:title" content="Capítulo 11 Creación de funciones | Aprendiendo R sin morir en el intento">
 <meta name="twitter:description" content="En R no solo podemos usar las funciones predeterminadas que vienen ya cargadas, o las de los paquetes que instalamos, sino que además podemos crear nuestras propias funciones, para automatizar...">
 <meta name="twitter:image" content="/img/logo_R.png">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -55,22 +55,23 @@
 <li class="book-part">Conceptos básicos</li>
 <li><a class="" href="vectores.html"><span class="header-section-number">3</span> Tipos de datos I: vectores</a></li>
 <li><a class="" href="operacionesvectores.html"><span class="header-section-number">4</span> Operaciones con vectores</a></li>
-<li><a class="" href="proyecto.html"><span class="header-section-number">5</span> Flujo de trabajo: primer proyecto</a></li>
-<li><a class="" href="control.html"><span class="header-section-number">6</span> Estructuras de control</a></li>
-<li><a class="" href="datos.html"><span class="header-section-number">7</span> Tipos de datos II: datos estructurados</a></li>
+<li><a class="" href="control.html"><span class="header-section-number">5</span> Estructuras de control</a></li>
+<li><a class="" href="datos.html"><span class="header-section-number">6</span> Tipos de datos II: datos estructurados</a></li>
+<li><a class="" href="proyecto.html"><span class="header-section-number">7</span> Flujo de trabajo: primer proyecto</a></li>
 <li><a class="" href="importar-exportar.html"><span class="header-section-number">8</span> Importando/exportando</a></li>
-<li class="book-part">Listas y funciones</li>
-<li><a class="" href="otros-datos.html"><span class="header-section-number">9</span> Listas y factores</a></li>
-<li><a class="active" href="funciones.html"><span class="header-section-number">10</span> Creación de funciones</a></li>
-<li class="book-part">Alto en el camino</li>
-<li><a class="" href="resumen-1.html"><span class="header-section-number">11</span> ¿Qué sabemos hacer?</a></li>
+<li class="book-part">Un pasito más</li>
+<li><a class="" href="listas.html"><span class="header-section-number">9</span> Listas</a></li>
+<li><a class="" href="factores.html"><span class="header-section-number">10</span> Factores</a></li>
+<li><a class="active" href="funciones.html"><span class="header-section-number">11</span> Creación de funciones</a></li>
 <li class="book-part">EXPLORANDO: introducción al análisis exploratorio de datos</li>
 <li><a class="" href="tidydata.html"><span class="header-section-number">12</span> Tidy data: ordenando datos</a></li>
-<li><a class="" href="tidyverse.html"><span class="header-section-number">13</span> Explorando los datos: incursión a tidyverse</a></li>
+<li><a class="" href="tidyverse.html"><span class="header-section-number">13</span> Incursión a tidyverse</a></li>
 <li><a class="" href="resumenes.html"><span class="header-section-number">14</span> Resumiendo y relacionado los datos</a></li>
-<li><a class="" href="ggplot2.html"><span class="header-section-number">15</span> Visualizando datos: incursión a ggplot2</a></li>
+<li class="book-part">Final del camino</li>
+<li><a class="" href="resumen-1.html"><span class="header-section-number">15</span> ¿Qué sabemos hacer?</a></li>
+<li><a class="" href="recursos.html"><span class="header-section-number">16</span> Recursos extras</a></li>
 <li class="book-part">Epílogo</li>
-<li><a class="" href="contribuye.html"><span class="header-section-number">16</span> Contribuye al proyecto</a></li>
+<li><a class="" href="contribuye.html"><span class="header-section-number">17</span> Contribuye al proyecto</a></li>
 <li><a class="" href="bibliograf%C3%ADa.html">Bibliografía</a></li>
 </ul>
 
@@ -81,11 +82,11 @@
 </div>
   </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="funciones" class="section level1">
 <h1>
-<span class="header-section-number">Capítulo 10</span> Creación de funciones<a class="anchor" aria-label="anchor" href="#funciones"><i class="fas fa-link"></i></a>
+<span class="header-section-number">Capítulo 11</span> Creación de funciones<a class="anchor" aria-label="anchor" href="#funciones"><i class="fas fa-link"></i></a>
 </h1>
-<p>En <code>R</code> no solo podemos usar las funciones predeterminadas que vienen ya cargadas, o las de los paquetes que instalamos, sino que además podemos <strong>crear nuestras propias funciones</strong>, para automatizar tareas que vayamos a repetir a lo largo de nuestro código.</p>
-<p><strong>¿Cómo crear nuestra propia función?</strong> Veamos su sintaxis básica. Para crear una función necesitamos un <code>nombre_funcion</code> (sin espacios ni caracteres extraños), al que le asignamos la orden <code>function()</code>. Dentro de <code>function()</code> tendríamos que definir los argumentos de entrada que vamos a usar.</p>
-<div class="sourceCode" id="cb597"><pre class="downlit sourceCode r">
+<p>En <code>R</code> no solo podemos usar las funciones predeterminadas que vienen ya cargadas, o las de los paquetes que instalamos, sino que además podemos <mark><strong>crear nuestras propias funciones</strong></mark>, para automatizar tareas que vayamos a repetir a lo largo de nuestro código.</p>
+<p><mark><strong>¿Cómo crear nuestra propia función?</strong></mark> Veamos su sintaxis básica. Para crear una función necesitamos un nombre, por ejemplo <code>nombre_funcion</code> (sin espacios ni caracteres extraños), al que le asignamos la orden <code>function()</code>. Dentro de <code>function()</code> tendríamos que definir los argumentos de entrada que vamos a usar.</p>
+<div class="sourceCode" id="cb674"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">nombre_funcion</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">argumento_1</span>, <span class="va">argumento_2</span>, <span class="va">...</span> <span class="op">)</span> <span class="op">{</span>
   
   <span class="co"># Código que queramos ejecutar en la función</span>
@@ -104,10 +105,10 @@
 </ul>
 <div id="primera-función" class="section level2">
 <h2>
-<span class="header-section-number">10.1</span> Primera función<a class="anchor" aria-label="anchor" href="#primera-funci%C3%B3n"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.1</span> Primera función<a class="anchor" aria-label="anchor" href="#primera-funci%C3%B3n"><i class="fas fa-link"></i></a>
 </h2>
-<p>Veamos un <strong>ejemplo muy simple de función</strong> para calcular el área de un rectángulo: dados dos lados <code>lado_1</code> y <code>lado_2</code>, deberá devolver el área como su producto.</p>
-<div class="sourceCode" id="cb598"><pre class="downlit sourceCode r">
+<p>Veamos un <strong>ejemplo muy simple de función</strong> para <mark><strong>calcular el área de un rectángulo</strong></mark>: dados dos lados <code>lado_1</code> y <code>lado_2</code>, deberá devolver el área como su producto.</p>
+<div class="sourceCode" id="cb675"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Definición del nombre de función y argumentos de entrada</span>
 <span class="va">calcular_area</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">lado_1</span>, <span class="va">lado_2</span><span class="op">)</span> <span class="op">{</span>
   
@@ -119,7 +120,7 @@
   
 <span class="op">}</span></code></pre></div>
 <p>También podemos hacer la definición directa sin almacenar variables.</p>
-<div class="sourceCode" id="cb599"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb676"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Definición del nombre de función y argumentos de entrada</span>
 <span class="va">calcular_area</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">lado_1</span>, <span class="va">lado_2</span><span class="op">)</span> <span class="op">{</span>
 
@@ -127,13 +128,13 @@
   <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">lado_1</span> <span class="op">*</span> <span class="va">lado_2</span><span class="op">)</span>
   
 <span class="op">}</span></code></pre></div>
-<p><strong>¿Cómo aplicar la función?</strong> Con el nombre y los valores de los argumentos.</p>
-<div class="sourceCode" id="cb600"><pre class="downlit sourceCode r">
+<p><mark><strong>¿Cómo aplicar la función?</strong></mark> Con el nombre y los valores de los argumentos.</p>
+<div class="sourceCode" id="cb677"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Aplicación de la función con los parámetros por defecto</span>
 <span class="fu">calcular_area</span><span class="op">(</span><span class="fl">5</span>, <span class="fl">3</span><span class="op">)</span> <span class="co"># área de un rectángulo 5 x 3 </span></code></pre></div>
 <pre><code>## [1] 15</code></pre>
 <p>Imagina ahora que nos damos cuenta que el 90% de las veces el área que nos toca calcular es la de un cuadrado: <code>R</code> nos permite definir <strong>argumentos en la función con valores por defecto</strong> (tomarán dicho valor salvo que le asignemos otro). ¿<strong>Por qué no asignar <code>lado_2 = lado_1</code> por defecto</strong>, para ahorrar líneas de código y tiempo?</p>
-<div class="sourceCode" id="cb602"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb679"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Definición del nombre de función y argumentos de entrada</span>
 <span class="va">calcular_area</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">lado_1</span>, <span class="va">lado_2</span> <span class="op">=</span> <span class="va">lado_1</span><span class="op">)</span> <span class="op">{</span>
   
@@ -144,11 +145,11 @@
   <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">area</span><span class="op">)</span>
   
 <span class="op">}</span></code></pre></div>
-<div class="sourceCode" id="cb603"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb680"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">calcular_area</span><span class="op">(</span>lado_1 <span class="op">=</span> <span class="fl">5</span><span class="op">)</span> <span class="co"># si no indicamos nada, lado_2 = lado_1</span></code></pre></div>
 <pre><code>## [1] 25</code></pre>
 <p>Compliquemos un poco la función y añadamos en la salida los valores de cada lado etiquetados como primer lado y segundo lado.</p>
-<div class="sourceCode" id="cb605"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb682"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Definición del nombre de función y argumentos de entrada</span>
 <span class="va">calcular_area</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">lado_1</span>, <span class="va">lado_2</span> <span class="op">=</span> <span class="va">lado_1</span><span class="op">)</span> <span class="op">{</span>
   
@@ -162,7 +163,7 @@
   
 <span class="op">}</span></code></pre></div>
 <p>Veamos que nos devuelve ahora</p>
-<div class="sourceCode" id="cb606"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb683"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">calcular_area</span><span class="op">(</span><span class="fl">5</span>, <span class="fl">3</span><span class="op">)</span></code></pre></div>
 <pre><code>## $area
 ## [1] 15
@@ -173,18 +174,18 @@
 ## $lado_2
 ## [1] 3</code></pre>
 <p>Fíjate que puedes guardar la salida de forma conjunta para luego acceder a solo uno de los elementos de la lista de salida.</p>
-<div class="sourceCode" id="cb608"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb685"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">calcular_area</span><span class="op">(</span><span class="fl">5</span>, <span class="fl">3</span><span class="op">)</span>
 <span class="va">x</span><span class="op">$</span><span class="va">area</span></code></pre></div>
 <pre><code>## [1] 15</code></pre>
-<div class="sourceCode" id="cb610"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb687"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span><span class="op">$</span><span class="va">lado_1</span></code></pre></div>
 <pre><code>## [1] 5</code></pre>
-<div class="sourceCode" id="cb612"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb689"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span><span class="op">$</span><span class="va">lado_2</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 <p>Antes nos daba igual el orden de los argumentos pero ahora no, ya que en la salida incluimos <code>lado_1</code> y <code>lado_2</code>. Es <strong>altamente recomendable</strong> hacer la llamada a la función indicando explícitamente los argumentos <code>argumento_1 = valor_1</code> para <strong>mejorar la legibilidad e interpretabilidad de nuestro código</strong> (recuerda: programa como escribirías una novela).</p>
-<div class="sourceCode" id="cb614"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb691"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">calcular_area</span><span class="op">(</span>lado_1 <span class="op">=</span> <span class="fl">5</span>, lado_2 <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></code></pre></div>
 <pre><code>## $area
 ## [1] 15
@@ -197,26 +198,27 @@
 </div>
 <div id="segunda-función" class="section level2">
 <h2>
-<span class="header-section-number">10.2</span> Segunda función<a class="anchor" aria-label="anchor" href="#segunda-funci%C3%B3n"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.2</span> Segunda función<a class="anchor" aria-label="anchor" href="#segunda-funci%C3%B3n"><i class="fas fa-link"></i></a>
 </h2>
 <p>Vayamos con un <strong>ejemplo más complejo</strong>. Imaginemos que en nuestro código vamos a tener calcular, <strong>para cada día, el número de vacunas diarias administradas, el número de vacunas administradas en los últimos 7 días y el número de vacunadas administradas en los últimos 14 días</strong>, usando tan solo el número de vacunadas acumuladas. Para ello vamos a usar la <strong>función <code><a href="https://rdrr.io/r/base/diff.html">diff()</a></code> que nos calcula las diferencias de un vector dado</strong>.</p>
-<div class="sourceCode" id="cb616"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">7</span>, <span class="fl">10</span>, <span class="fl">15</span>, <span class="fl">20</span>, <span class="fl">50</span>, <span class="fl">100</span>, <span class="fl">250</span>, <span class="fl">600</span>, <span class="fl">1200</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/diff.html">diff</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="co"># vector con [elemento2 - elemento1, elemento3 - elemento2, elemento4 - elemento3, ...]</span></code></pre></div>
-<pre><code>##  [1]   1   1   4   3   5   5  30  50 150 350 600</code></pre>
-<div class="sourceCode" id="cb618"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/diff.html">diff</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">3</span><span class="op">)</span> <span class="co"># vector con [elemento4 - elemento1, elemento5 - elemento2, elemento6 - elemento3, ...]</span></code></pre></div>
-<pre><code>## [1]    6    8   12   13   40   85  230  550 1100</code></pre>
-<div class="sourceCode" id="cb620"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/diff.html">diff</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">7</span><span class="op">)</span> <span class="co"># vector con [elemento8 - elemento1, elemento9 - elemento2, elemento10 - elemento3, ...]</span></code></pre></div>
-<pre><code>## [1]   49   98  247  593 1190</code></pre>
-<div class="sourceCode" id="cb622"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb693"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">vacunas</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">50</span>, <span class="fl">60</span>, <span class="fl">71</span>, <span class="fl">52</span>, <span class="fl">63</span>, <span class="fl">40</span>, <span class="fl">77</span>, <span class="fl">50</span>, <span class="fl">65</span>, <span class="fl">70</span>,
+             <span class="fl">90</span>, <span class="fl">100</span>, <span class="fl">73</span>, <span class="fl">48</span>, <span class="fl">250</span>, <span class="fl">200</span>, <span class="fl">124</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/diff.html">diff</a></span><span class="op">(</span><span class="va">vacunas</span><span class="op">)</span> <span class="co"># vector con [elemento2 - elemento1, elemento3 - elemento2, elemento4 - elemento3, ...]</span></code></pre></div>
+<pre><code>##  [1]  10  11 -19  11 -23  37 -27  15   5  20  10 -27 -25 202 -50 -76</code></pre>
+<div class="sourceCode" id="cb695"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/diff.html">diff</a></span><span class="op">(</span><span class="va">vacunas</span>, <span class="fl">3</span><span class="op">)</span> <span class="co"># vector con [elemento4 - elemento1, elemento5 - elemento2, elemento6 - elemento3, ...]</span></code></pre></div>
+<pre><code>##  [1]   2   3 -31  25 -13  25  -7  40  35   3 -42 150 127  76</code></pre>
+<div class="sourceCode" id="cb697"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/diff.html">diff</a></span><span class="op">(</span><span class="va">vacunas</span>, <span class="fl">7</span><span class="op">)</span> <span class="co"># vector con [elemento8 - elemento1, elemento9 - elemento2, elemento10 - elemento3, ...]</span></code></pre></div>
+<pre><code>##  [1]   0   5  -1  38  37  33 -29 200 135  54</code></pre>
+<div class="sourceCode" id="cb699"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Para España</span>
-<span class="va">casos_diarios</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/diff.html">diff</a></span><span class="op">(</span><span class="va">panel_vacunas</span><span class="op">$</span><span class="va">ES</span><span class="op">$</span><span class="va">personas_vacunadas</span><span class="op">)</span>
-<span class="va">casos_7D</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/diff.html">diff</a></span><span class="op">(</span><span class="va">panel_vacunas</span><span class="op">$</span><span class="va">ES</span><span class="op">$</span><span class="va">personas_vacunadas</span>, <span class="fl">7</span><span class="op">)</span> <span class="co"># diferencias a 7 días</span>
-<span class="va">casos_14D</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/diff.html">diff</a></span><span class="op">(</span><span class="va">panel_vacunas</span><span class="op">$</span><span class="va">ES</span><span class="op">$</span><span class="va">personas_vacunadas</span>, <span class="fl">14</span><span class="op">)</span> <span class="co"># diferencias a 14 días</span></code></pre></div>
+<span class="va">datos_diarios</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/diff.html">diff</a></span><span class="op">(</span><span class="va">vacunas</span><span class="op">)</span>
+<span class="va">datos_7D</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/diff.html">diff</a></span><span class="op">(</span><span class="va">vacunas</span>, <span class="fl">7</span><span class="op">)</span> <span class="co"># diferencias a 7 días</span>
+<span class="va">datos_14D</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/diff.html">diff</a></span><span class="op">(</span><span class="va">vacunas</span>, <span class="fl">14</span><span class="op">)</span> <span class="co"># diferencias a 14 días</span></code></pre></div>
 <p>¿Cuánto ocuparía realizar esta misma tarea para cada comunidad, y cada variable? <strong>¿Por qué no la automatizamos?</strong></p>
-<div class="sourceCode" id="cb623"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb700"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">datos_acumulados</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">variable_acumulada</span>, <span class="va">dias_dif</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">7</span>, <span class="fl">14</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
   
   <span class="co"># Dentro de las llaves el cuerpo de la función</span>
@@ -233,17 +235,17 @@
   <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">acumulados_diferenciales</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
 <p>Como vemos, los argumentos pueden ser cualquier tipo de variable, y nos permite además <strong>generalizar y automatizar una tarea</strong> para que pueda ser usada incluso en algún escenario para el que no tuviéramos previsto (acumulados a … 13 días, por ejemplo). Para que nuestra función sea realmente útil debemos intentar asignar <strong>nombres de funciones y argumentos lo más concisos posibles y evidentes en su interpretación</strong>.</p>
-<div class="sourceCode" id="cb624"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">datos_acumulados</span><span class="op">(</span><span class="va">panel_vacunas</span><span class="op">$</span><span class="va">ES</span><span class="op">$</span><span class="va">personas_vacunadas</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1]  263914 1403809 3246147</code></pre>
-<div class="sourceCode" id="cb626"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">datos_acumulados</span><span class="op">(</span><span class="va">panel_vacunas</span><span class="op">$</span><span class="va">AN</span><span class="op">$</span><span class="va">personas_vacunadas</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1]  59583 235051 537727</code></pre>
-<div class="sourceCode" id="cb628"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">datos_acumulados</span><span class="op">(</span><span class="va">panel_vacunas</span><span class="op">$</span><span class="va">ES</span><span class="op">$</span><span class="va">personas_vacunadas</span>, dias_dif <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">13</span>, <span class="fl">21</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1]  263914  816950 3073866 4779568</code></pre>
+<div class="sourceCode" id="cb701"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">datos_acumulados</span><span class="op">(</span><span class="va">vacunas</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] -76  54  53</code></pre>
+<div class="sourceCode" id="cb703"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">datos_acumulados</span><span class="op">(</span><span class="va">vacunas</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] -76  54  53</code></pre>
+<div class="sourceCode" id="cb705"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">datos_acumulados</span><span class="op">(</span><span class="va">vacunas</span>, dias_dif <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">13</span>, <span class="fl">15</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] -76  76  72  64</code></pre>
 <p>Fíjate que hemos devuelto solo el último acumulado (hemos dado la vuelta al vector resultante y nos hemos quedado con el primer elemento). Para hacer que la salida sea más interpretable, muchas de las <strong>funciones en <code>R</code> tienen como salida una lista, con unos nombres asignados</strong>.</p>
-<div class="sourceCode" id="cb630"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb707"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">datos_acumulados</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">variable_acumulada</span><span class="op">)</span> <span class="op">{</span>
   
   <span class="co"># Datos</span>
@@ -255,57 +257,26 @@
   <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"diario"</span> <span class="op">=</span> <span class="va">dato_diario</span>, <span class="st">"7D"</span> <span class="op">=</span> <span class="va">dato_7D</span>,
               <span class="st">"14D"</span> <span class="op">=</span> <span class="va">dato_14D</span><span class="op">)</span><span class="op">)</span>
 <span class="op">}</span>
-<span class="va">datos_salida</span> <span class="op">&lt;-</span> <span class="fu">datos_acumulados</span><span class="op">(</span><span class="va">panel_vacunas</span><span class="op">$</span><span class="va">ES</span><span class="op">$</span><span class="va">personas_vacunadas</span><span class="op">)</span>
+<span class="va">datos_salida</span> <span class="op">&lt;-</span> <span class="fu">datos_acumulados</span><span class="op">(</span><span class="va">vacunas</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">datos_salida</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "diario" "7D"     "14D"</code></pre>
-<div class="sourceCode" id="cb632"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb709"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">datos_salida</span></code></pre></div>
 <pre><code>## $diario
-##   [1]  33992  33992  70653  42705  42705  42705  81950  93597  94548  92764
-##  [11]  42226  42225  42226  61129  53539  43950  43124  17175  17176  17175
-##  [21]  18624  15876  19464  19464   9682   9682   9682   3166  11265  13420
-##  [31]  26031   4458   4459   4458   9833  15107  33663  45331  22986  22985
-##  [41]  22986  36073  43687  66918 126790  42768  42769  42768  63596 106609
-##  [51] 140881 157476  68588  68589  68588  74417 130284 147861 208913  66537
-##  [61]  66537  66537 107709 105255 127181 100675  60566  60566  60566  62460
-##  [71]  38789  54080  26122  26123  26123  26122  41558  91262 103674 113995
-##  [81] 135234 135233 135234 125305 221541 231064  81155  81155  91719  91719
-##  [91] 227822 297306 375063 368637 172281 172282 172281 261006 313321 380661
-## [101] 370506 146544 146543 146544 147228 297290 255746 263914
+##  [1]  10  11 -19  11 -23  37 -27  15   5  20  10 -27 -25 202 -50 -76
 ## 
 ## $`7D`
-##   [1]  348702  408307  468863  490974  490495  490015  489536  468715  428657
-##  [10]  378059  328419  303368  278319  253268  210763  173100  148614  124954
-##  [19]  117461  109967  102474   87016   82405   76361   82928   77704   72481
-##  [28]   67257   73924   77766   98009  117309  135837  154363  172891  199131
-##  [37]  227711  260966  342425  362207  381991  401773  429296  492218  566181
-##  [46]  596867  622687  648507  674327  685148  708823  715803  767240  765189
-##  [55]  763137  761086  794378  769349  748669  640431  634460  628489  622518
-##  [64]  577269  510803  437702  363149  328706  294263  259819  238917  291390
-##  [73]  340984  428857  537968  647078  756190  839937  970216 1097606 1064766
-##  [82] 1010687  967173  923658 1026175 1101940 1245939 1533421 1624547 1705110
-##  [91] 1785672 1818856 1834871 1840469 1842338 1816601 1790862 1765125 1651347
-## [100] 1635316 1510401 1403809
+##  [1]   0   5  -1  38  37  33 -29 200 135  54
 ## 
 ## $`14D`
-##  [1]  817417  836964  846922  819393  793863  768334  742804  679478  601757
-## [10]  526673  453373  420829  388286  355742  297779  255505  224975  207882
-## [19]  195165  182448  169731  160940  160171  174370  200237  213541  226844
-## [28]  240148  273055  305477  358975  459734  498044  536354  574664  628427
-## [37]  719929  827147  939292  984894 1030498 1076100 1114444 1201041 1281984
-## [46] 1364107 1387876 1411644 1435413 1479526 1478172 1464472 1407671 1399649
-## [55] 1391626 1383604 1371647 1280152 1186371 1003580  963166  922752  882337
-## [64]  816186  802193  778686  792006  866674  941341 1016009 1078854 1261606
-## [73] 1438590 1493623 1548655 1614251 1679848 1866112 2072156 2343545 2598187
-## [82] 2635234 2672283 2709330 2845031 2936811 3086408 3375759 3441148 3495972
-## [91] 3550797 3470203 3470187 3350870 3246147</code></pre>
+## [1] 200 140  53</code></pre>
 </div>
 <div id="variables-localesglobales" class="section level2">
 <h2>
-<span class="header-section-number">10.3</span> Variables locales/globales<a class="anchor" aria-label="anchor" href="#variables-localesglobales"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.3</span> Variables locales/globales<a class="anchor" aria-label="anchor" href="#variables-localesglobales"><i class="fas fa-link"></i></a>
 </h2>
-<p>Hemos dicho que «lo local se queda en lo local», ¿pero qué sucede si nombramos a una variable dentro de una función que se nos ha olvidado asignar un valor dentro de la misma? Debemos ser cautos al usar funciones en <code>R</code>, ya que debido a la <strong>«regla lexicográfica»</strong>, si una variable no se define dentro de la función, <code>R</code> buscará dicha variable en el entorno de variable.</p>
-<div class="sourceCode" id="cb634"><pre class="downlit sourceCode r">
+<p>Hemos dicho que <strong>«lo local se queda en lo local»</strong>, ¿pero qué sucede si nombramos a una variable dentro de una función que se nos ha olvidado asignar un valor dentro de la misma? Debemos ser cautos al usar funciones en <code>R</code>, ya que debido a la <mark><strong>«regla lexicográfica»</strong></mark>, si una variable no se define dentro de la función, <code>R</code> buscará dicha variable en el entorno de variable.</p>
+<div class="sourceCode" id="cb711"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span>
 <span class="va">funcion_ejemplo</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span>
     
@@ -314,7 +285,7 @@
 <span class="fu">funcion_ejemplo</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 1</code></pre>
 <p>Si una <strong>variable ya está definida fuera de la función (entorno global)</strong>, y además es usada dentro de la misma cambiando su valor, el valor de dicha variable solo cambia dentro de la función pero no en el entorno global.</p>
-<div class="sourceCode" id="cb636"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb713"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span>
 <span class="va">funcion_ejemplo</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span>
     
@@ -323,11 +294,11 @@
 <span class="op">}</span>
 <span class="fu">funcion_ejemplo</span><span class="op">(</span><span class="op">)</span> <span class="co"># lo que vale dentro</span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
-<div class="sourceCode" id="cb638"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb715"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="co"># lo que vale fuera</span></code></pre></div>
 <pre><code>## [1] 1</code></pre>
 <p>Si queremos que <strong>además de cambiar localmente lo haga globalmente</strong> deberemos usar la <strong>doble asignación</strong> (<code><a href="https://rdrr.io/r/base/assignOps.html">&lt;&lt;-</a></code>).</p>
-<div class="sourceCode" id="cb640"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb717"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span>
 <span class="va">y</span> <span class="op">&lt;-</span> <span class="fl">2</span>
 <span class="va">funcion_ejemplo</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span>
@@ -341,22 +312,22 @@
 <span class="fu">funcion_ejemplo</span><span class="op">(</span><span class="op">)</span> <span class="co"># lo que vale dentro</span></code></pre></div>
 <pre><code>## [1] 3
 ## [1] 0</code></pre>
-<div class="sourceCode" id="cb642"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb719"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="co"># lo que vale fuera</span></code></pre></div>
 <pre><code>## [1] 1</code></pre>
-<div class="sourceCode" id="cb644"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb721"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">y</span> <span class="co"># lo que vale fuera</span></code></pre></div>
 <pre><code>## [1] 0</code></pre>
 </div>
-<div id="ejercicios-6" class="section level2">
+<div id="ejercicios-7" class="section level2">
 <h2>
-<span class="header-section-number">10.4</span> 📝 Ejercicios<a class="anchor" aria-label="anchor" href="#ejercicios-6"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.4</span> 📝 Ejercicios<a class="anchor" aria-label="anchor" href="#ejercicios-7"><i class="fas fa-link"></i></a>
 </h2>
 <details><p><summary><strong>Ejercicio 1</strong>: define una función propia llamada <code>pares</code> que, dados dos números <code>x</code> e <code>y</code>, nos diga si la suma de ambos es par o no.</summary></p>
 <ul>
 <li>Solución:</li>
 </ul>
-<div class="sourceCode" id="cb646"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb723"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Definimos función</span>
 <span class="va">pares</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span> <span class="op">{</span>
   
@@ -374,17 +345,17 @@
 <span class="co"># Aplicamos la función</span>
 <span class="fu">pares</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb648"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb725"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">pares</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb650"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb727"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">pares</span><span class="op">(</span><span class="fl">2</span>, <span class="fl">6</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb652"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb729"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">pares</span><span class="op">(</span><span class="fl">2</span>, <span class="fl">7</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <p>También se puede definir directamente como</p>
-<div class="sourceCode" id="cb654"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb731"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Definimos función</span>
 <span class="va">pares</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span> <span class="op">{</span>
 
@@ -394,13 +365,13 @@
 
 <span class="fu">pares</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb656"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb733"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">pares</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb658"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb735"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">pares</span><span class="op">(</span><span class="fl">2</span>, <span class="fl">6</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb660"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb737"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">pares</span><span class="op">(</span><span class="fl">2</span>, <span class="fl">7</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 </details><p> </p>
@@ -408,7 +379,7 @@
 <ul>
 <li>Solución:</li>
 </ul>
-<div class="sourceCode" id="cb662"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb739"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Definimos función</span>
 <span class="va">proximo_par</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span>
   
@@ -435,7 +406,7 @@
 ## 
 ## $proximo
 ## [1] 8</code></pre>
-<div class="sourceCode" id="cb664"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb741"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">proximo_par</span><span class="op">(</span><span class="fl">8</span><span class="op">)</span></code></pre></div>
 <pre><code>## $par
 ## [1] TRUE
@@ -450,22 +421,22 @@
 
 
   <div class="chapter-nav">
-<div class="prev"><a href="otros-datos.html"><span class="header-section-number">9</span> Listas y factores</a></div>
-<div class="next"><a href="resumen-1.html"><span class="header-section-number">11</span> ¿Qué sabemos hacer?</a></div>
+<div class="prev"><a href="factores.html"><span class="header-section-number">10</span> Factores</a></div>
+<div class="next"><a href="tidydata.html"><span class="header-section-number">12</span> Tidy data: ordenando datos</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#funciones"><span class="header-section-number">10</span> Creación de funciones</a></li>
-<li><a class="nav-link" href="#primera-funci%C3%B3n"><span class="header-section-number">10.1</span> Primera función</a></li>
-<li><a class="nav-link" href="#segunda-funci%C3%B3n"><span class="header-section-number">10.2</span> Segunda función</a></li>
-<li><a class="nav-link" href="#variables-localesglobales"><span class="header-section-number">10.3</span> Variables locales/globales</a></li>
-<li><a class="nav-link" href="#ejercicios-6"><span class="header-section-number">10.4</span> 📝 Ejercicios</a></li>
+<li><a class="nav-link" href="#funciones"><span class="header-section-number">11</span> Creación de funciones</a></li>
+<li><a class="nav-link" href="#primera-funci%C3%B3n"><span class="header-section-number">11.1</span> Primera función</a></li>
+<li><a class="nav-link" href="#segunda-funci%C3%B3n"><span class="header-section-number">11.2</span> Segunda función</a></li>
+<li><a class="nav-link" href="#variables-localesglobales"><span class="header-section-number">11.3</span> Variables locales/globales</a></li>
+<li><a class="nav-link" href="#ejercicios-7"><span class="header-section-number">11.4</span> 📝 Ejercicios</a></li>
 </ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/dadosdelaplace/intro-R/blob/master/09-funciones.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/dadosdelaplace/intro-R/edit/master/09-funciones.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/dadosdelaplace/intro-R/blob/master/11-funciones.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/dadosdelaplace/intro-R/edit/master/11-funciones.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>
@@ -477,7 +448,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 21-12-2021.</p>
+    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 23-12-2021.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

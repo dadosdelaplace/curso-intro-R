@@ -1,0 +1,471 @@
+```{r echo = FALSE}
+library(knitr)
+
+# Color text
+colorize <- function(x, color) {
+  
+  if (knitr::is_latex_output()) {
+    
+    sprintf("\\textcolor{%s}{%s}", color, x)
+    
+  } else if (knitr::is_html_output()) {
+    
+    sprintf("<span style='color: %s;'>%s</span>", color, x)
+    
+  } else { x }
+}
+```
+
+
+# Resumiendo y relacionado los datos {#resumenes}
+
+Ahora que **ya sabemos depurar y transformar los datos** con pocas líneas de código, así como extraer la información que nos interese, en esta sección vamos a aprender dos cosas básicas a la hora de trabajar con datos:
+
+* Realizar <mark>**resúmenes numéricos**</mark> de los datos, de forma general pero también cuando queremos calcular estadísticas desagregadas por grupos.
+* <mark>**Relacionar tablas**</mark> entre sí (los famosos _join_).
+
+
+## Tablas de frecuencias
+
+Una de las **primeras cosas** que uno aprende en la asignatura de estadística **descriptiva** es <mark>**saber resumir nuestros datos**</mark> cuando tenemos muchos, y además **muchos valores repetidos**. Vamos a construir la <mark>**tabla de frecuencias**</mark> de la variable `n_films` de nuestro ya conocido conjunto `starwars` (una variable que vamos a crear contando en cuántas películas aparece cada personaje)
+
+```{r}
+library(purrr)
+library(tidyverse)
+starwars_nueva <- starwars %>%
+  mutate(n_films = map_int(films, length))
+```
+
+Y lo primero es <mark>**contar**</mark>: ¿cuántos registros hay de cada una de las clases? Para ello usaremos la función `count()`
+
+```{r}
+starwars_nueva %>% count()
+```
+
+Como ves si aplicamos la **función directamente** simplemente nos **cuenta el número de filas** de la tabla, así que vamos a **usar la misma función pero indicándole la variable**.
+
+```{r}
+tabla_freq <- starwars_nueva %>% count(n_films)
+tabla_freq
+```
+
+Esa columna `n` es lo que conocemos como <mark>**frecuencias absolutas**</mark>, el **número de veces** que la variable toma dicha valor. También es posible **calcular las frecuencias absolutas** por varias variables a la vez.
+
+```{r}
+starwars_nueva %>% count(sex, gender)
+```
+
+Podemos también añadir una columna `N_i` de <mark>**frecuencia absoluta acumulada**</mark>, una columna que nos diga el **número de personajes que han hecho un número de películas igual o menor** que el indicado.
+
+
+```{r}
+# Construimos de cero
+tabla_freq <-
+  starwars_nueva %>%
+  # n: frecuencia absoluta
+  count(n_films) %>%
+  # N_i: frecuencia absoluta acumulada
+  mutate(N_i = cumsum(n)) # cumsum calcula la suma acumulada
+tabla_freq
+```
+
+Y ambas columnas podemos pasarlas a porcentaje o proporción, las **columnas** `f_i` y `F_i` o <mark>**frecuencias relativas**</mark> (no acumulada y acumulada, respectivamente).
+
+```{r}
+# Construimos de cero
+tabla_freq <- starwars_nueva %>%
+  # n: frecuencia absoluta
+  count(n_films) %>%
+  # N_i: frecuencia absoluta acumulada
+  mutate(N_i = cumsum(n)) %>% # cumsum calcula la suma acumulada
+  mutate(f_i = prop.table(n), # prop.table nos devuelve proporciones
+         F_i = cumsum(f_i))
+tabla_freq
+```
+
+Esas **frecuencias relativas** quizás querramos tenerlas expresadas en **porcentajes** en lugar de en proporciones.
+
+```{r}
+# Pasamos frecuencias relativas a porcentajes
+tabla_freq %>% mutate(f_i = f_i * 100,
+                      F_i = F_i * 100)
+```
+
+Por último, con la tabla `tabla_freq` expresando las frecuencias relativas en proporciones, vamos a cambiar el nombre de las columnas para que tengan los **típicos nombres de una tabla de frecuencias**.
+
+```{r}
+# Renombramos
+tabla_freq <- tabla_freq %>%
+  rename(n_i = n, x_i = n_films)
+tabla_freq
+```
+
+```{r, echo = FALSE, message = FALSE}
+library(DT)
+datatable(options =
+            list(pageLength = 10, scrollX = TRUE,
+                 fixedColumns = list(leftColumns = 1),
+                 headerCallback = DT::JS(
+                   "function(thead) {",
+                   "  $(thead).css('font-size', '0.95em');",
+                   "}"
+                   ),
+                 language =
+                   list(url = '//cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json')),
+          tabla_freq, rownames = FALSE,
+          caption = "Tabla de frecuencias del número de películas en las que aparecen los personajes de la saga.") %>%
+   formatRound(c("f_i", "F_i"), digits = 3, mark = ".",
+                 dec.mark = getOption("OutDec"))
+```
+
+
+**¿Cómo construir una tabla similar para variables continuas?** La metodología sería la misma solo que antes debemos **agrupar los datos** (por ejemplo, de la variable `height`) en **subintervalos**.
+
+```{r}
+# Construimos de cero
+tabla_freq_continua <-
+  starwars %>%
+  # agrupamos los datos en tramos de 20 en 20
+  mutate(intervalo = cut(height, breaks = seq(65, 265, by = 20))) %>%
+  count(intervalo) %>%
+  mutate(N_i = cumsum(n)) %>% # cumsum calcula la suma acumulada
+  mutate(f_i = prop.table(n), # prop.table nos devuelve proporciones
+         F_i = cumsum(f_i))
+tabla_freq_continua
+```
+
+El problema es que **cuando agrupamos los datos de una variable continua en subintervalos**, aunque nos sirva como **resumen** para tener una idea de como se comporta nuestra variable (y sea **algo necesario para, por ejemplo, construir un «histograma discretizado»**), a la hora de calcular sus estadísticas perdemos información ya que todos los elementos que cae en un intervalo se les **imputará un único valor: la marca de clase, que normalmente es el punto medio del intervalo**.
+
+Vamos a <mark>**calcular resúmenes numéricos**</mark> de las variables sin agrupar aprovechando que `R` el trabajo por nosotros/as.
+
+## Resúmenes numéricos (summarise y skimr) y por grupos (group_by)
+
+Antes de pasar a ver **cómo generar nuestras propias estadísticas de los datos**, veamos la funcionalidad de un maravilloso paquete llamado `{skimr}`, que nos permite tener en un vistazo un <mark>**resumen numérico**</mark> muy completo de nuestros datos, con **histograma/diagrama de barras incluido**.
+
+```{r}
+library(skimr)
+starwars %>% skim()
+```
+
+Dicho resumen nos proporciona:
+
+- Variables de tipo **caracter**: `n_missing` (número de ausentes), `complete_rate` (proporción de datos sin ausentes), `min/max` y `n_unique` (número de valores únicos).
+
+- Variables de tipo **lista**: `n_missing` (número de ausentes), `complete_rate` (proporción de datos sin ausentes), `n_unique` (número de valores únicos) y `min_length/max_length` (longitud mínimo/máxima de las listas).
+
+- Variables de tipo **numérico**: `n_missing` (número de ausentes), `complete_rate` (proporción de datos sin ausentes), `mean/sd` (media y cuasidesviación típica), `p0/p25/p50/p75/p100` (cuartiles, percentiles 0%-25%-50%-75%-100%, valores que nos dividen nuestro conjunto en 4 trozos) e `hist` (una especie de histograma/barras sencillo).
+
+Este resumen no solo podemos visualizarlo sino que podemos guardarlo para exportarlo por ejemplo en un `.csv`.
+
+```{r}
+library(skimr)
+resumen_skim <- starwars %>% skim()
+```
+
+Sin embargo, aunque el resumen es bastante completo, muchas veces querremos <mark>**generar nuestras propias estadísticas o resúmenes numéricos**</mark>, y para eso vamos a aplicar `summarise()`, que nos calculará estadísticas de nuestros datos. Por ejemplo, vamos a **calcular las medidas de centralización (media-mediana-moda)**. Para las dos primeras basta con aplicar las funciones correspondientes.
+
+```{r}
+starwars %>% summarise(media = mean(mass),
+                       mediana = median(mass))
+```
+
+Como ves nos **devuelve un dato ausente** ya que al existir datos ausentes en la variables, **la media también lo es**. Para evitar ese problema **podemos hacer dos cosas**: eliminar antes los ausentes, o indicarle en la propia media y mediana que haga el cálculo ignorando los valores `NA`.
+
+```{r}
+# Primero eliminamos NA
+starwars %>% drop_na(mass) %>%
+  summarise(media = mean(mass), mediana = median(mass))
+
+# Al realizar el cálculo los ignora
+starwars %>%
+  summarise(media = mean(mass, na.rm = TRUE),
+            mediana = median(mass, na.rm = TRUE))
+```
+
+La **media** es una medida de centralización basada en el valor que nos **minimiza el promedio de desviaciones al cuadrado (varianza)** y solo se puede calcular para **variables cuantitativas (discretas o continuas)**.
+
+```{r}
+# Media de todas las cuantitativas
+starwars_nueva %>%
+  summarise(media = across(where(is.numeric), mean, na.rm = TRUE))
+```
+
+La **mediana** se define como el **valor que ocupa el centro de los datos CUANDO LOS ORDENAMOS de menor a mayor**, un valor que nos deja por debajo al menos el 50% y por encima al menos el 50%.
+
+```{r}
+# Media y mediana de todas las cuantitativas
+starwars_nueva %>%
+  summarise(media = across(where(is.numeric), mean, na.rm = TRUE),
+            mediana = across(where(is.numeric), median, na.rm = TRUE))
+```
+
+La **mediana también se puede calcular para variables cualitativas ordinales (categorías que se puedan ordenar)**. Vamos a construir una variable que sea «muy bajo-bajo-medio-alto-muy alto» según la estatura, y calcular la mediana para dichas categorías.
+
+```{r}
+categorias <- c("muy bajo", "bajo", "medio", "alto", "muy alto")
+starwars_talla <- 
+  starwars %>%
+  mutate(talla =
+           cut(height, breaks = c(-Inf, 80, 120, 160, 190, Inf),
+               labels = categorias))
+
+# Mediana (hay que pasárselo como número)
+starwars_talla %>%
+  summarise(mediana =
+              categorias[median(as.numeric(talla), na.rm = TRUE)])
+```
+
+Para la **moda tenemos algún problema mayor** ya que no hay un función en los paquetes `{base}` para su cálculo, así que para ello **usaremos el paquete `{modeest}`**: la función `mfv()` nos calcula la **moda exacta** de una variable numérica discreta o cuantitativa (busca los valores más repetidos), la función `mlv()` nos calcula la **moda estimada** de una variable numérica continua.
+
+
+```{r, warning = FALSE}
+library(modeest)
+
+# Media y mediana y moda de mass y n_films
+resumen <- 
+  starwars_nueva %>%
+  summarise(media = across(c(mass, n_films), mean, na.rm = TRUE),
+            mediana = across(c(mass, n_films), median, na.rm = TRUE),
+            moda_n_films = mfv(n_films, na_rm = TRUE),
+            moda_mass = mlv(mass, na.rm = TRUE))
+resumen
+```
+
+Fíjate que el resumen ha agrupado todas las modas y medianas que hemos calculado a la vez: **la salida de nuestro resumen es una lista, con tablas a su vez dentro**.
+
+De la misma manera podemos pedirle que nos calcule <mark>**medidas de dispersión (varianza, desv. típica y cv)**</mark>, de cómo de dispersos están los datos respecto a un centro, normalmente la media, y <mark>**medidas de localización (percentiles)**</mark>.
+
+```{r, warning = FALSE}
+starwars %>%
+  summarise(media = mean(mass, na.rm = TRUE),
+            mediana = median(mass, na.rm = TRUE),
+            moda = mlv(mass, na.rm = TRUE),
+            var = var(mass, na.rm = TRUE),
+            sd = sd(mass, na.rm = TRUE),
+            cv = sd / abs(media),
+            p13 = quantile(mass, probs = c(0.13), na.rm = TRUE),
+            p87 = quantile(mass, probs = c(0.87), na.rm = TRUE))
+``` 
+
+Haciendo uso de cosas ya vistas podemos, por ejemplo, **calcular el coeficiente de variación (CV)** de todas las variables numéricas para poder decidir cual es más o menos dispersa.
+
+```{r, warning = FALSE}
+resumen <- 
+  starwars %>%
+  summarise(media = across(where(is.numeric), mean, na.rm = TRUE),
+            var = across(where(is.numeric), var, na.rm = TRUE),
+            cv = sqrt(var) / abs(media))
+resumen$media
+resumen$var
+resumen$cv # más homogénea la altura por tener menos CV.
+``` 
+
+### Agrupando datos: group_by
+
+Una de las funcionalidades más potentes es la opción de <mark>**añadir antes una agrupación**</mark> con `group_by()`. Esta función per se no cambia los datos sino que cambia la forma en la que se aplicarán las funciones posteriores, realizándose por **desagregadas grupos**.
+
+Imagina que queremos calcular la **media de altura y peso** de cada personaje PERO desagregada por cada una de las clases que tenemos en la variable `sex`.
+
+```{r}
+starwars %>% group_by(sex) %>%
+  summarise(media_altura = mean(height, na.rm = TRUE),
+            media_peso = mean(mass, na.rm = TRUE)) %>%
+  ungroup()
+```
+
+Lo que obtenemos no es la media de todos los personajes sino la **media desagregada por grupo**, grupo marcado por la variable `sex`. Las **agrupaciones pueden estar en función de varias variables** a la vez.
+
+```{r}
+starwars %>% group_by(sex, gender) %>%
+  summarise(media_altura = mean(height, na.rm = TRUE),
+            media_peso = mean(mass, na.rm = TRUE)) %>%
+  ungroup()
+```
+
+Dicha función también es muy útil cuando queremos **realizar un filtro de registros en base al número de cada clase**: por ejemplo, vamos a filtrar los registros que pertenezcan a una clase de `sex` que tenga al menos 10 individuos dentro de dicho grupo.
+
+```{r}
+starwars %>%
+  group_by(sex) %>%
+  count() %>%
+  ungroup()
+```
+
+Si te fijas solo deberíamos filtrar los registros que sean `female` y `male`. Vamos a hacerlo de forma automática en base a dicho **umbral**.
+
+```{r}
+# Podemos filtrar por grupos solo aquellos que superen un
+# un umbral mínimo
+starwars %>% 
+  group_by(sex) %>% 
+  filter(n() > 10) %>%
+  ungroup()
+```
+
+Para comprobar rápidamente que efectivamente solo ha filtrado aquellos grupos con más de 10 elementos en ellos podemos **añadir `count()`**.
+
+```{r}
+starwars %>% 
+  group_by(sex) %>% 
+  filter(n() > 10) %>%
+  count() %>%
+  ungroup()
+```
+
+Los resúmenes y las agrupaciones podemos **combinarlas de todas las formas que nos imaginemos**, por ejemplo, calculando la media desagregada por sexo y género pero solo de las variables numéricas.
+
+```{r}
+starwars %>% # doble agrupación
+  group_by(sex, gender) %>%
+  summarise(across(where(is.numeric), mean, na.rm = TRUE)) %>%
+  ungroup()
+```
+
+### Rowwise: operaciones por filas
+
+Por último veamos un ejemplo de una **opción muy útil usada antes de una operación que es** `rowwise()`: toda operación que venga después se aplicará <mark>**en cada fila por separado**</mark>. Para el ejemplo vamos a definir un fichero _dummy_ de notas en mates, lengua y dibujo de 50 alumnos. Para ello usamos la función `sample()`: le decimos que seleccione aleatoriamente `size = 50` notas de un conjunto de notas posibles (`0:10`), y que lo haga con reemplazamiento (`replace = TRUE`, es decir, que dos alumnos puedan tener la misma nota)
+
+```{r}
+notas <- tibble("mates" = sample(0:10, size = 50, replace = TRUE),
+                "lengua" = sample(0:10, size = 50, replace = TRUE),
+                "dibujo" = sample(0:10, size = 50, replace = TRUE))
+notas
+```
+
+Una vez que tenemos 3 notas aleatorias por cada uno de los 50 alumnos, **¿qué sucede si yo quiero calcular la nota media del curso?**
+
+```{r}
+notas %>% mutate(media_curso = mean(c(mates, lengua, dibujo)))
+```
+
+Como ves si aplicamos la media de las tres variables, en cada fila el valor de `media_curso` es idéntico ya que nos ha hecho la **media global**: ha tomado las 50 filas, las 3 columnas, y ha hecho la media de 150 datos. Cuando en realidad a nosotros nos gustaría **sacar una media por registro**, que para cada alumno tengamos la media de las asignaturas.
+
+```{r}
+# Aplicado por fila
+notas %>% rowwise() %>%
+  mutate(media_curso = mean(c(mates, lengua, dibujo)))
+```
+
+Solos nos falta poner la guinda a lo aprendido a esta introducción: vamos a ver como podemos <mark>**relacionar dos conjuntos de datos distintos entre sí**</mark>.
+
+## Relacionar datos (joins)
+
+Una de las **opciones más comunes para trabajar con datos** es tener a nuestra disposición diversas tablas, con alguno o varios de los campos en común, y nos interesa a veces <mark>**cruzar datos**</mark> de ambos para tener una información más completa con el conjunto de las tablas. Es lo que se conoce en ciencia de datos e informática como **hacer un _join_ de tablas**. Para ese cruce será **indispensable que haya uno o varios campos clave**, campos que sirvan para identificar unívocamente cada registro (por ejemplo, DNI).
+
+```{r joins, echo = FALSE, fig.cap = "Esquema con los principales tipos de join, extraído de <https://estradawebgroup.com/Post/-Que-es-y-para-que-sirve-SQL-Joins-/4278>"}
+knitr::include_graphics("./img/sql-joins.jpg")
+```
+
+Existen principalmente **cuatro tipos de cruces** si pensamos en cruzar un conjunto `A` con otro conjunto `B`:
+
+- **Inner join**: solo nos quedamos con las **filas que tengan correspondencia en ambas tablas** (personas cuyo DNI aparezca en ambas tablas, por ejemplo).
+
+- **Left (outer) join**: nos quedamos con **todas las filas de `A`**, buscando que registros de dicha tabla están también en `B`, completando los datos de esta tabla para esos registros.
+
+- **Right (outer) join**: nos quedamos con **todas las filas de `B`**, buscando que registros de dicha tabla están también en `A`, completando los datos de esta tabla para esos registros.
+
+- **Full join**: nos quedamos con **todas las filas de `A` y `B`**, tengan o no correspondencia en la otra tabla (si no está en una de ellas, las columnas correspondientes quedarán como campo ausente).
+
+
+Esos **campos clave (keys)** serán las columnas que usaremos para definir los cruces. Para los ejemplos usaremos las tablas del paquete `{nycflights13}`.
+
+```{r}
+library(nycflights13)
+```
+
+Dicho paquete cuenta con las siguientes **tablas**:
+
+* `airlines`:	nombre de la aerolínea (con su abreviatura).
+* `airports`: datos de aeropuertos (nombres, longitud, latitud, altitud, etc).
+* `flights`: datos de vuelos (con `tailnum` como marca de idenfiticación).
+* `planes`:	datos de los aviones.
+* `weather`: datos meteorológicos horarios de las estaciones LGA, JFK y  EWR.
+
+Veamos un ejemplo: imagina que queremos **completar en la tabla de vuelos los datos de cada una de las aerolíneas que operan dichos vuelos**. Vamos a seleccionar unas pocas columnas para que sea más fácil de visualizar.
+
+```{r}
+# Seleccionamos antes columnas para que sea más corto
+flights_filtrada <- flights %>%
+  select(year:day, arr_time, carrier:dest)
+flights_filtrada
+```
+
+Queremos **TODAS las filas de los vuelos**, todos sus registros, pero **añadiendo la información** que tenemos de la aerolínea que opere los vuelos, así que haremos un **LEFT JOIN** de `flights` vs `airlines`. El campo común que nos permite cruzarla, la **clave (key)** es el código abreviado de las aerolíneas (variable `carrier`).
+
+```{r}
+# Mismas filas pero con una nueva columna: siempre que sea
+# posible el cruce tendrá la info de la aerolínea
+l_join_flights_airlines <-
+  flights_filtrada %>% left_join(airlines, by = "carrier")
+l_join_flights_airlines
+```
+
+Si te fijas ahora tenemos en `l_join_flights_airlines` las mismas 336776 filas pero con una columna más: la tabla `airlines` tenía 2 columnas, una la común con `flights` y en otra la nueva que se ha incorporado a la tabla. **¿Y si en `flights` había algún vuelo operado por alguna aerolínea que no estuviese en `airlines`?**
+
+```{r}
+# Filtramos
+l_join_flights_airlines %>% filter(is.na(name))
+```
+
+En este caso todos los registros de la primera tabla tenían su correspondencia en la segunda tabla. Veamos un ejemplo donde suceda eso, quitándole algunas filas a `airlines`, quitando las aerolíneas con códigos `"B6"`.
+
+```{r}
+airlines_filtrada <- airlines %>% 
+  filter(!(carrier %in% c("B6")))
+l_join <- flights_filtrada %>% left_join(airlines_filtrada, by = "carrier")
+dim(l_join %>% filter(is.na(name)))
+```
+
+En el anterior ejemplo tenemos 54 635 filas que cuyo nombre está ausente, es decir, 54 635 filas de `flights` que no tienen correspondencia en la tabla filtrada `airlines_filtrada`. Ahora las **filas que no han encontrado su _match_ en la segunda tabla están como campo ausente**.
+
+```{r}
+l_join
+```
+
+```{r left-join, echo = FALSE, fig.cap = "Esquema del left join, extraído de <https://r4ds.had.co.nz/relational-data.html#mutating-joins>"}
+knitr::include_graphics("./img/left_join.jpg")
+```
+
+La misma lógica para los **RIGHT JOIN** y los **FULL JOIN**. En este último tendremos bastantes datos ausentes, ya que todos los registros que no estén en ambas tablas tendrán una parte de sus variables como `NA`
+
+
+```{r}
+tabla1 <- tibble("key_1" = 1:7, "valor_1" = paste0("x", 1:7))
+tabla2 <- tibble("key_2" = c(0, 1, 2, 5, 6, 9, 10),
+                 "valor_2" = paste0("x", c(0, 1, 2, 5, 6, 9, 10)))
+
+# Left
+tabla1 %>% left_join(tabla2, by = c("key_1" = "key_2"))
+
+# Right
+tabla1 %>% right_join(tabla2, by = c("key_1" = "key_2"))
+
+# Full
+tabla1 %>% full_join(tabla2, by = c("key_1" = "key_2"))
+```
+
+```{r right-join, echo = FALSE, fig.cap = "Esquema del right join, extraído de <https://r4ds.had.co.nz/relational-data.html#mutating-joins>"}
+knitr::include_graphics("./img/right_join.jpg")
+```
+
+```{r full-join, echo = FALSE, fig.cap = "Esquema del full join, extraído de <https://r4ds.had.co.nz/relational-data.html#mutating-joins>"}
+knitr::include_graphics("./img/full_join.jpg")
+```
+
+Un tipo de join especial son los **INNER JOIN**. Hasta ahora la tabla resultante tenía al menos tantas filas como tuviese la tabla más pequeña en el cruce. En el caso de los **INNER JOIN** vamos a **reducir el tamaño** ya que solo nos quedaremos con **aquellos registros que podamos encontrar en ambas**, de forma que **el cruce nunca generará datos ausentes**.
+
+```{r}
+# Inner
+tabla1 %>% inner_join(tabla2, by = c("key_1" = "key_2"))
+```
+
+
+
+```{r inner-join, echo = FALSE, fig.cap = "Esquema del inner join, extraído de <https://r4ds.had.co.nz/relational-data.html#mutating-joins>"}
+knitr::include_graphics("./img/inner_join.png")
+```
+
+## 📝 Ejercicios
+
+en breve
+

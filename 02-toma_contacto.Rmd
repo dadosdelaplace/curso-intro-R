@@ -22,7 +22,7 @@ colorize <- function(x, color) {
 
 ## Historia de R
 
-Veamos antes **un poco de historia** sobre nuestro deidad.
+Veamos antes un poco de la <mark>**historia**<mark> de nuestra deidad.
 
 Allá por 1975, los **laboratorios Bell** (los que inventaron la radio moderna tal y como la conocemos), necesitaban una alternativa a los lenguajes más «rudos» y antiguos como `C++` o `Fortran`, lenguajes rápidos en la ejecución pero complejos en su uso, con una gran curva de aprendizaje y con **muy poca capacidad en la visualización de datos** que se empezaba a necesitar.
 
@@ -34,7 +34,7 @@ Tras dicho lanzamiento, se creó un **equipo de expertos en estadística computa
 
 ## Excel no es tu amigo
 
-**`R` es un lenguaje de programación**, de alto nivel para el usuario y modular. Los lenguajes de alto nivel como `R`, `Python` (curso interactivo de Python en <https://checkio.org/>) o `Matlab`, facilitan la programación al usuario, teniendo que preocuparte solo de la tarea de programar. Son lenguajes con una **menor curva de aprendizaje** aunque suelen ser más lentos en su ejecución en comparación con lenguajes de bajo nivel (`C`, `C++` o `Fortran`), lenguajes muy rápidos en su ejecución pero cuya programación requiere un mayor tiempo y formación, teniendo que además estar pendiente del tipo de variables, espacio en memoria, etc.
+**`R` es un lenguaje de programación**, de alto nivel para el usuario y modular. Los lenguajes de alto nivel como `R`, `Python` (curso interactivo de Python en <https://checkio.org/>) o `Matlab`, facilitan la programación al usuario, teniendo que preocuparte solo de la tarea de programar. Son lenguajes con una <mark>**menor curva de aprendizaje**</mark> aunque suelen ser más lentos en su ejecución en comparación con lenguajes de bajo nivel (`C`, `C++` o `Fortran`), lenguajes muy rápidos en su ejecución pero cuya programación requiere un mayor tiempo y formación, teniendo que además estar pendiente del tipo de variables, espacio en memoria, etc.
 
 Por su arquitectura, `R` es un lenguaje que puede ser usado para un propósito general pero que está especialmente diseñado para el **análisis estadístico de datos**. Su **modularidad** nos da la ventaja de que podemos instalar las funcionalidades que vayamos necesitando de forma progresiva.
 
@@ -51,7 +51,7 @@ Por su arquitectura, `R` es un lenguaje que puede ser usado para un propósito g
 
 * **No es universal**: no solo es de pago sino que además, dependiendo de la versión que tengas de Excel, tendrá un formato distinto para datos como fechas, teniendo incluso extensiones distintas, de forma que un archivo `.xls` abierto por un Excel moderno puede provocar errores en la carga.
 
-* **¡ES SOLO UNA HOJA DE CÁLCULO!**: el propio Microsoft desaconseja el uso de Excel para el análisis de grandes volúmenes de datos. El Excel es una herramienta maravillosa para ser usada como una sencilla hoja de cálculo: llevar las cuentas de tu familia, de tu pequeño negocio, una declaración de la Renta sencilla, planificar viajes, etc. Pero el programa **NO ESTÁ DISEÑADO** para ser una base de datos ni para análisis detallado, y muchos menos pensado para generar un entorno flexible para el análisis estadístico y la visualización de datos.
+* <mark>**¡ES SOLO UNA HOJA DE CÁLCULO!**</mark>: el propio Microsoft desaconseja el uso de Excel para el análisis de grandes volúmenes de datos. El Excel es una herramienta maravillosa para ser usada como una sencilla hoja de cálculo: llevar las cuentas de tu familia, de tu pequeño negocio, una declaración de la Renta sencilla, planificar viajes, etc. Pero el programa **NO ESTÁ DISEÑADO** para ser una base de datos ni para análisis detallado, y muchos menos pensado para generar un entorno flexible para el análisis estadístico y la visualización de datos.
 
 &nbsp; 
 
@@ -83,7 +83,7 @@ knitr::include_graphics("./img/excel_edades.jpg")
 
 ## Primeros pasos: calculadora
 
-¿Te acuerdas de lo que era la **consola**? Vamos a trabajar de momento en esa ventana que tienes en la ventana inferior.
+¿Te acuerdas de lo que era la <mark>**consola**</mark>? Vamos a trabajar de momento en esa ventana que tienes en la ventana inferior.
 
 ```{r inicio-rstudio-2a, echo = FALSE, out.width = "75%", fig.align = "center", fig.cap = "Lanzando a consola nuestras primeras órdenes en RStudio."}
 knitr::include_graphics("./img/inicio_rstudio_2.jpg")
@@ -101,7 +101,7 @@ Lo que ya hemos descubierto en los pasos de la instalación (ver imagen \@ref(fi
 
 Imagina que dicha suma `r 1 + 2` la quisiéramos utilizar para un segundo cálculo: ¿y si en lugar de lanzarlo a la consola sin más lo **almacenamos en alguna variable**?
 
-Como hemos visto en la instalación de `RStudio`, para **asignar variables** lo haremos con la orden `x <- 1 + 2`: una variable de nombre `x` va a tener asignada `<-` lo que valga la suma `1 + 2`
+Como hemos visto en la instalación de `RStudio`, para <mark>**asignar variables**</mark> lo haremos con la orden `x <- 1 + 2`: una variable de nombre `x` va a tener asignada `<-` lo que valga la suma `1 + 2`
 
 ```{r}
 x <- 1 + 2
@@ -130,7 +130,7 @@ abs(y)
 
 ## ¿Y dónde programamos?
 
-**¿Estás emocionado/a? Vamos a abrir nuestro primer script** (script = documento en el que programamos, nuestro `.doc`, pero aquí será un archivo `.R`).
+**¿Estás emocionado/a? Vamos a abrir nuestro primer <mark>script</mark>** (script = documento en el que programamos, nuestro `.doc`, pero aquí será un archivo `.R`).
 
 Haz click en el menú superior en `File << New File << R Script` como se muestra en la imagen \@ref(fig:inicio-rstudio-5)
 
@@ -161,6 +161,7 @@ Ese código no se ejecuta salvo que se lo digamos. Tenemos **tres opciones para 
 ## Tipos de errores {#tipos_errores}
 
 Durante tu aprendizaje en `R` va a ser **muy habitual** que las cosas no salgan a la primera, **apareciendo en consola mensajes en un color rojo**. Un **miedo** muy habitual cuando se empieza a programar es pensar que si haces algo mal o aparece algún mensaje de error, el ordenador puede explotar en cualquier momento. **A programar se aprende programando**, así que haz las pruebas que quieres, lo peor que puede pasar es que necesites cerrar sesión en `R Studio` y abrirlo de nuevo.
+
 
 Dado que el 99.99999% de veces tu código tendrá errores que deberás ir solventando, no está de más conocer los tipos de mensajes que `R` puede sacarte por consola:
 
@@ -200,7 +201,7 @@ Los **`r colorize("mensajes de CONTROL", "#20935E")`** serán aquellos que apare
 
 **`r colorize("Panel de ayuda", "#20935E")`**
 
-Si escribes en la consola `? nombre_funcion` (por ejemplo, escribe en la consola `? sqrt`), en el panel inferior derecho te aparecerá una **documentación de ayuda** de la función para saber que argumentos necesita, como puedes usar la función, qué es lo que te devuelve, ejemplos de uso, etc.
+Si escribes en la consola `? nombre_funcion` (por ejemplo, escribe en la consola `? sqrt`), en el panel inferior derecho te aparecerá una <mark>**documentación de ayuda**</mark> de la función para saber que argumentos necesita, como puedes usar la función, qué es lo que te devuelve, ejemplos de uso, etc.
 
 ```{r}
 ? sqrt
@@ -213,11 +214,23 @@ knitr::include_graphics("./img/panel_ayuda.jpg")
 
 
 &nbsp;
+
 **`r colorize("¿Cómo comentar el código?", "#20935E")`**
 
-Probablemente lo más importante al programar es que **te acostumbres a comentar** lo máximo posible tu código. **¿Qué es un comentario?** Es un texto que escribes entre el código precedido de `#`: todo lo que venga detrás no será interpretado por `R` como código. Es **vital cuando programamos** que nos acostumbremos a comentar lo que hacemos, tanto para nosotros como para otras personas que puedan leer nuestro código.
+Probablemente lo más importante al programar es que <mark>**te acostumbres a comentar**</mark> lo máximo posible tu código. **¿Qué es un comentario?** Es un texto que escribes entre el código precedido de `#`: todo lo que venga detrás no será interpretado por `R` como código. Es **vital cuando programamos** que nos acostumbremos a comentar lo que hacemos, tanto para nosotros como para otras personas que puedan leer nuestro código.
 
 &nbsp;
+
+**`r colorize("Índice en el código", "#20935E")`**
+
+Puedes escribir comentarios en el código para que automáticamente se **organice tu código en epígrafes**, mostrándote un índice en el panel lateral (haz click en el icono de la esquina superior derecha del editor) y permitiendo minimizar partes del código. Para ello puedes comentar por ejemplo con `# ----- título -----`.
+
+```{r echo = FALSE, out.width = "70%", fig.align = "center", fig.cap = "Comentando el código para generar un índice."}
+knitr::include_graphics("./img/comentarios-indice.jpg")
+
+```
+&nbsp;
+
 
 ## 📝 Ejercicios
 
@@ -331,7 +344,7 @@ abs(y)
 
 **`r colorize("CONSEJO:", "#20935E")`**
 
-Las órdenes `sqrt(x)` y `abs(y)` se llaman **funciones**, y la variable que tienen entre paréntesis se llama **argumento de la función**: una variable que toma de entrada la función y con la que opera internamente.
+Las órdenes `sqrt(x)` y `abs(y)` se llaman <mark>**funciones**</mark>, y la variable que tienen entre paréntesis se llama **argumento de la función**: una variable que toma de entrada la función y con la que opera internamente.
 
 
 &nbsp;

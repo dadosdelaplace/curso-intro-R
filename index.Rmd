@@ -31,8 +31,8 @@ cover-image: img/logo_R.png
 
 ```{r settings, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, 
-                      dev = "ragg_png", res = 600, retina = 2,
-                      fig.width = 15, fig.height = 8.5)
+                      dev = "ragg_png", res = 300, retina = 2,
+                      fig.width = 8, fig.height = 5)
 Sys.setlocale("LC_TIME", "C")
 ```
 
@@ -107,17 +107,19 @@ Todo lo necesario para seguir este curso es de **descarga gratuita**: viva el so
 * \@ref(instalacionR) [Instalacion de R y RStudio](#instalacionR) 
 * \@ref(primeros-pasos) [Primeros pasos en R](#primeros-pasos) 
 * \@ref(vectores) [Tipos de datos I: vectores](#vectores) 
-* \@ref(proyecto) [Flujo de trabajo: primer proyecto](#proyecto)
+* \@ref(operacionesvectores) [Operaciones con vectores](#operacionesvectores) 
 * \@ref(control) [Estructuras de control](#control)
 * \@ref(datos) [Tipos de datos II: datos estructurados](#datos)
+* \@ref(proyecto) [Flujo de trabajo: primer proyecto](#proyecto)
 * \@ref(importar-exportar) [Importar/exportar datos](#importar-exportar)
-* \@ref(otros-datos) [Otros datos: listas y factores](#otros-datos)
+* \@ref(listas) [Listas](#listas)
+* \@ref(factores) [Factores](#factores)
 * \@ref(funciones) [Creación de funciones](#funciones)
-* \@ref(resumen-1) [Alto en el camino: ¿qué sabemos hacer?](#resumen-1) 
-* \@ref(tidydata) [Tidy data: ordenando datos](#tidydata)   
-* \@ref(tidyverse) [Explorando los datos: incursión a tidyverse](#tidyverse)
+* \@ref(tidydata) [Tidy data: ordenando datos](#tidydata)
+* \@ref(tidyverse) [Incursión a tidyverse](#tidyverse)
 * \@ref(resumenes) [Resumiendo y relacionado los datos](#resumenes)
-* \@ref(ggplot2) [Visualizando datos: incursión a ggplot2](#ggplot2)
+* \@ref(resumen-1) [¿Qué sabemos hacer?](#resumen-1)
+* \@ref(recursos) [Recursos extras](#recursos)
 * \@ref(contribuye) [Contribuye al proyecto](#contribuye)
 
 ## Código de colores {-} 
