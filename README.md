@@ -46,3 +46,4 @@ install.packages("bookdown")
 
 <img src="https://github.com/dadosdelaplace/cursoR_intro_2021_2022/blob/main/hex-rmarkdown.png" width="15%" />
 
+![image](https://user-images.githubusercontent.com/26646492/146846799-4636cc54-e1b8-45e4-be42-8b2e1f7f4cad.png)
