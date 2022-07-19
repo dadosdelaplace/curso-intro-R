@@ -1,0 +1,464 @@
+```{r echo = FALSE}
+library(knitr)
+
+# Color text
+colorize <- function(x, color) {
+  
+  if (knitr::is_latex_output()) {
+    
+    sprintf("\\textcolor{%s}{%s}", color, x)
+    
+  } else if (knitr::is_html_output()) {
+    
+    sprintf("<span style='color: %s;'>%s</span>", color, x)
+    
+  } else { x }
+}
+```
+
+
+# Estructuras de control: bucles {#bucles}
+
+:::: {.blackbox data-latex=""}
+
+Scripts usados:
+
+* [**script12.R**](https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script12.R). Ver en <https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script12.R>
+
+::::
+
+Aunque la mayoría de veces son sustituibles por otras expresiones más legibles y eficientes, es importante que conozcamos otra archiconocida **expresion de control**: <mark>**los bucles**</mark>. 
+
+* `for`: permite <mark>**repetir el mismo código un número fijo (y conocido a priori) de veces**</mark> (normalmente en función de un índice).
+* `while`: permite <mark>**repetir el mismo código un número indeterminado**</mark> de veces, hasta que una condición dada se deje de cumplir.
+
+## for
+
+Aunque la mayoría de las veces los <mark>**bucles pueden ser sustituidos**</mark> por expresiones mucho más eficientes (fíjate que ya hemos filtrado columnas, filas y aplicado operaciones por filas y columnas, sin necesitarlo), a veces no nos quedará más remedio que usarlos por lo que nunca viene mal conocer su estructura.
+
+Un <mark>**bucle `for{}`**</mark> es una estructura que nos permite <mark>**repetir un conjunto de órdenes un número finito y conocido de veces**</mark>: dado un conjunto de índices, el bucle irá <mark>**recorriendo cada uno de ellos**</mark>, y para cada uno ejecutará lo que tenga dentro de las llaves.
+
+Veamos un ejemplo muy sencillo. Vamos a definir un vector de números de longitud 4, por ejemplo `x <- c(0, -7, 1, 4)`. Si quisiéramos devolver el primer elemento al cuadrado escribiríamos `x[1]^2` (accedemos con `[1]` al primer elemento y lo elevamos al cuadrado). Si quisiéramos devolver el segundo elemento al cuadrado escribiríamos `x[2]^2`. Si lo quisiéramos hacer en general, para el elemento i-ésimo (el que ocupa la posición `i`), escribiríamos `x[i]^2`. Lo que haremos dentro del `for (...) {}` es indicarle que valores irá tomando `i`: creamos un vector de índices, en este caso `1:4`, para que `i` vaya tomando sus valores (primero `i=1`, luego `i=2`, etc)
+
+```{r}
+for (i in 1:4) {
+  
+  print(x[i]^2) # que lo imprima
+  
+}
+```
+
+Lo que tenemos **dentro de los paréntesis**, en la línea del `for`, no es más que la secuencia de números que hemos aprendido a construir.
+
+```{r}
+1:4
+```
+
+Si quisiéramos que haga lo mismo pero excluyendo por ejemplo el segundo elemento bastaría con definir los índices a recorrer como `c(1, 3, 4)` o `c(1, 3:4)`
+
+```{r}
+for (i in c(1, 3, 4)) {
+  
+  print(x[i]^2) # que lo imprima
+  
+}
+```
+
+Podemos definir también una variable `y <- rep(0, 4)` (un vector de la misma longitud pero, de momento, lleno de ceros), y hacer que elemento i-ésimo del vector `y` se defina como `x[i]^2`
+
+```{r}
+y <- rep(0, 4)
+for (i in 1:4) {
+  
+  y[i] <- x[i]^2
+  
+}
+
+y
+```
+
+Fíjate que, dado que las operaciones en `R` ya se hacen por defecto de forma vectorial, elemento a elemento, lo anterior es equivalente a esto
+
+```{r}
+y <- x^2
+y
+```
+
+No solo es equivalente sino que además, haciendo uso del paquete `{microbenchmark}` podemos comprobar como el bucle, amén de no ser necesario, es <mark>**menos eficiente**</mark> (de ahí que la mayoría de veces los intentemos evitar si existe otra alternativa)
+
+```{r}
+# install.packages("microbenchmark)
+library(microbenchmark)
+
+# Le pasamos dos conjuntos de códigos, y le indicamos con
+# times el número de simulaciones a realizar para luego obtener
+# un promedio de tiempos
+microbenchmark(x^2, for (i in 1:4) { y[i] <- x[i]^2 },
+               times = 1000)
+```
+
+&nbsp;
+
+Veamos otro ejemplo: vamos a **definir de nuevo un vector de edades y  nombres**, y vamos a recorrer cada uno imprimiento un mensaje por pantalla.
+
+```{r}
+nombres <- c("Javi", "Laura", "Carlos", "Lucía", "Mar")
+edades <- c(32, 51, 18, 43, 29)
+
+# Recorremos cada uno de los 5 elementos e imprimimos un
+# mensaje que depende de ese índice i
+for (i in 1:5) { 
+  
+  print(glue("{nombres[i]} tiene {edades[i]} años")) 
+  
+}
+```
+
+
+Fíjate que si <mark>**no nos queremos preocupar de si añadimos**</mark> otra persona, podemos hacer que el bucle empiece en `1` y termine en el último lugar (sea el que sea), usando `length()`
+
+```{r}
+for (i in 1:length(nombres)) { 
+  
+  print(glue("{nombres[i]} tiene {edades[i]} años")) 
+  
+}
+```
+
+Aunque normalmente el conjunto que recorre el bucle suelen ser índices numéricos, <mark>**podemos recorrer cualquier tipo de objeto**</mark>, por ejemplo días e la semana
+
+```{r}
+library(stringr)
+dias_semana <- c("lunes", "martes", "miércoles", "jueves",
+                 "viernes", "sábado", "domingo")
+
+for (dias in dias_semana) { # dias recorre los días de la semana
+  
+  print(str_to_upper(dias)) # Imprimimos en mayúsculas el día
+}
+```
+
+Como hemos visto, además de imprimir por pantalla podemos asignar valores a variables o cambiarlas. Por ejemplo, vamos a recorrer nuestro conjunto `swiss` de `{datasets}` y vamos a pasar a dato ausente todos los valores de fertilidad superiores a 80. Para ello **recorreremos cada fila para después ejecutar un `if`**.
+
+```{r}
+for (i in 1:nrow(swiss)) {
+  
+  # si cumple la condición dicha fila, ponemos ausente.
+  if (swiss$Fertility[i] > 80) { 
+    
+    swiss$Fertility[i] <- NA
+    
+  }
+}
+swiss
+```
+
+Esto sería exactamente equivalente al `ifelse` vectorizado que vimos en el tema anterior
+
+```{r}
+data("swiss") # lo cargamos de 0
+swiss$Fertility <- ifelse(swiss$Fertility > 80, NA, swiss$Fertility)
+swiss
+```
+
+&nbsp;
+
+¿Te acuerdas de las operaciones por filas y columnas que hicimos con los `apply()`? Podemos hacer lo mismo (aunque menos eficiente) con un bucle: vamos a sumar las filas del conjunto `swiss`. Para ello antes definiremos una variable llena de ceros que luego rellenaremos, de tamaño igual al número de filas, con `suma <- rep(0, nrow(swiss))`
+
+```{r}
+suma <- rep(0, nrow(swiss))
+for (i in 1:nrow(swiss)) {
+  
+  suma[i] <- sum(swiss[i, ])
+}
+suma
+```
+
+&nbsp;
+
+## while
+
+Otra manera de diseñar un bucle es con la <mark>**estructura `while{}`**</mark>, que ejecutará el **bucle un número de veces pero que a priori es desconocido**, lo hará hasta que la condición impuesta deje de ser `TRUE` (en el `for` sabemos de antemano el número de iteraciones). Por ejemplo, vamos a inicializar una variable `ciclos <- 1`, y en cada paso aumentaremos una unidad `ciclos`, y no saldremos del bucle hasta que `ciclos > 5`
+
+```{r}
+ciclos <- 1
+# Mientras el número de ciclos sea inferior 5, imprime
+while(ciclos <= 5) {
+  
+  print(paste("Todavía no, vamos por el ciclo ", ciclos)) # Pegamos la frase al número de ciclo por el que vayamos con paste
+  ciclos <- ciclos + 1
+  
+}
+``` 
+
+**¿Y qué sucede cuando la condición nunca llega a ser `FALSE`?** Compruébalo tú mismo/a.
+
+```{r eval = FALSE}
+while (1 > 0) { # Nunca va a dejar de ser cierto
+  
+  print("Presiona ESC para salir del bucle")
+  
+}
+```
+
+## break/next
+
+En `R` tenemos dos comandos reservados para poder <mark>**abortar un bucle**</mark> o <mark>**avanzar forzosamente un bucle**</mark>: dichas palabras son `break` y `next`. La primera nos habilita para **parar un bucle** aunque no haya llegado al final de su conjunto de índices a recorrer (o se siga cumpliendo la condición del `while{}`).
+
+Vamos a hacer un bucle de `1` a `10`: cuando el índice `i` es igual a 7, el bucle se para.
+
+```{r}
+for(i in 1:10) {
+  if (i == 7) {
+    
+    break # si i es 7, el bucle frena aquí (nunca llegará a imprimir el 7 ni los sucesivos)
+    
+  }
+  print(i)
+}
+```
+
+Mientras que la segunda, el `next` <mark>**obliga al bucle a avanzar a la siguiente interacción**</mark>, abortando la iteración actual en la que se encuentra. Vamos ahora a hacer un bucle de `1` a `10`: cuando el índice `i` es igual a 7, el bucle salta al `i = 8`.
+
+```{r}
+for(i in 1:10) {
+  if (i == 7) {
+    
+    next # si i es 7, la iteración frenará aquí y pasará a la siguiente por lo que imprimirá todos menos el 7
+    
+  }
+  print(i)
+}
+```
+
+## repeat
+
+Aunque es una opción muy poco usada, existe una estructura de control llamada `repeat{}` que nos **ejecuta un bucle de forma infinita** hasta que le ordenemos parar con un `break`.
+
+```{r}
+conteo <- 0
+repeat { 
+  
+  conteo <- conteo + 1
+  if (conteo >= 100) { break }
+  
+}
+conteo
+``` 
+
+
+
+&nbsp;
+
+**`r colorize("WARNING: cuidado con los bucles infinitos", "#ffc107")`**
+
+
+Las estucturas `while{}` y `repeat{}` son de las menos usadas por su peligrosidad, ya que si no incluimos un `break` o la condición nunca llega a ser `TRUE`, el bucle seguirá ejecutándose de forma infinita y solo podrá ser detenido abortando la ejecución con la tecla `ESC`.
+
+&nbsp;
+
+
+
+## Consejos
+
+
+**`r colorize("CONSEJOS", "#20935E")`**
+
+&nbsp;
+
+**`r colorize("Evita bucles (si puedes)", "#20935E")`**
+
+Recuerda: por lo general, di no a los bucles en `R` (intenta evitarlos, en la mayoría de casos hay una alternativa mejor).
+
+&nbsp;
+
+**`r colorize("Evita bucles (parte II)", "#20935E")`**
+
+Evita al máximo los bucles en `R`: suele existir una forma más eficiente de programarlo. Veamos un ejemplo muy sencillo: dado un vector de índices `idx`, queremos calcular su cuadrado y guardarlo. Vamos a comparar como sería con un sencillo bucle y de forma vectorial, repitiéndolo 1000 veces para sacar tiempos medios, haciendo uso del paquete `{microbenchmark}`.
+
+```{r}
+idx <- 1:10000
+x <- y <- rep(0, length(idx))
+microbenchmark::microbenchmark(x <- idx^2, 
+                               for (i in idx) {  y[i] <- idx[i]^2},
+                               times = 1e3)
+``` 
+
+Una tarea tan sencilla, **programada en un bucle (segunda fila), tarda 40 veces más que hacerlo de forma vectorial (primera fila)** (elevando cada elemento al cuadrado, iterando internamente, sin necesidad de implementar un bucle).
+
+
+## 📝 Ejercicios
+
+(haz click en las flechas para ver soluciones)
+
+<details>
+  <summary>📝<strong>Ejercicio 1</strong>: modifica el código interior para diseñar un bucle `for` de 5 iteraciones que recorra los 5 primeros impares y les sume uno.
+  
+```{r}
+for (i in 1:5) {
+  
+  print(i)
+}
+```
+
+</summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Una forma
+for (i in seq(1, 9, by = 2)) {
+  
+  print(i + 1)
+}
+
+# Otra
+for (i in c(1, 3, 5, 7, 9)) {
+  
+  print(i + 1)
+}
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 2</strong>: modifica el código interior para diseñar un bucle `while` que parta con una variable `conteo <- 1` y pare cuando llegue a 6.
+  
+```{r}
+conteo <- 1
+while (conteo == 2) {
+  
+  print(conteo)
+}
+```
+
+</summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+conteo <- 1
+while (conteo < 6) {
+  
+  print(conteo)
+  conteo <- conteo <- conteo + 1
+}
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+
+<details>
+  <summary>📝<strong>Ejercicio 3</strong>: construye un bucle que recorra las primeras 8 filas del conjunto de datos `datasets::airquality` y que imprima un mensaje con la temperatura
+
+</summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+for (i in 1:8) {
+  
+  print(glue("La temperatura es de {airquality$Temp[i]}ºF"))
+}
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+
+<details>
+  <summary>📝<strong>Ejercicio 4</strong>: diseña un bucle `for` de 200 iteraciones que, empezando en un valor inicial de 100 (euros), te sume 3€ si el número actual es par y te reste 5€ si es impar.
+
+Un número par o impar: un número par será todo aquel número que al dividir entre 2, la división es exacta, es decir, que su resto es nulo. Por ejemplo, al dividir 5 entre 2, el resto es 1, pero al dividir 12 entre 2 el resto es 0. Para calcula ese resto usaremos la función `%%`.
+
+```{r}
+5 %% 2
+12 %% 2
+23 %% 2
+46 %% 2
+```
+</summary>
+  
+<!-- toc -->
+- Solución:
+
+
+```{r}
+# dinero inicial
+dinero <- 100
+
+# Bucle for
+for (i in 1:200) {
+  
+  dinero <- ifelse(dinero %% 2 == 0, dinero + 3, dinero  - 5)
+  
+}
+dinero
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 5</strong>: diseña el anterior bucle pero guardando el dinero de cada iteración.</summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# vector de importes
+dinero <- rep(0, 201)
+dinero[1] <- 100 # dinero inicial
+
+# Bucle for
+for (i in 2:201) {
+  
+  # si dinero[i - 1] es par o  impar
+  dinero[i] <- ifelse(dinero[i - 1] %% 2 == 0, dinero[i - 1] + 3,
+                      dinero[i - 1]  - 5)
+  
+}
+dinero
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 6</strong>: diseña el bucle del ejercicio 4 parando cuando no nos quede dinero.</summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+dinero <- 100 # dinero inicial
+
+# Bucle while
+while (dinero > 0) {
+  
+  dinero <- ifelse(dinero %% 2 == 0, dinero + 3, dinero - 5)
+  
+}
+dinero
+```
+
+<!-- tocstop -->
+</details>
+
+
+

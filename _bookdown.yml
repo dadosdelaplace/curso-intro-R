@@ -1,4 +1,4 @@
-book_filename: "Intro_R_2021_2022"
+book_filename: "Intro_R"
 output_dir: docs
 clean: [packages.bib]
 toc-title: "Índice"

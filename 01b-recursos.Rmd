@@ -1,0 +1,266 @@
+```{r echo = FALSE}
+library(knitr)
+
+# Color text
+colorize <- function(x, color) {
+  
+  if (knitr::is_latex_output()) {
+    
+    sprintf("\\textcolor{%s}{%s}", color, x)
+    
+  } else if (knitr::is_html_output()) {
+    
+    sprintf("<span style='color: %s;'>%s</span>", color, x)
+    
+  } else { x }
+}
+```
+
+# 📚 Recursos de aprendizaje {-}
+
+Recopilación de <mark>**recursos de aprendizaje**</mark> para seguir profundizando.
+
+## Aprendizaje/docencia {-}
+
+* <mark>[**cursos de R gratuitos**](https://dadosdelaplace.github.io/cursos)</mark>. Recopilados y/o creados por Javier Álvarez Liébana.  <https://dadosdelaplace.github.io/cursos>
+
+* <mark>[**tutoriales de R gratuitos**](https://dadosdelaplace.github.io/blog-R/)</mark>. De Javier Álvarez Liébana.  <https://dadosdelaplace.github.io/blog-R/>
+
+* <mark>[**Lista de usuarios/as de Twitter especializados/as en dataviz**](https://twitter.com/i/lists/1324478481338683392?s=20)</mark>. <https://twitter.com/i/lists/1324478481338683392?s=20>
+
+* <mark>[**Hashtag #TidyTuesday: todos los martes un reto de dataviz**](https://twitter.com/search?q=%23tidytuesday&src=hashtag_click)</mark>. <https://twitter.com/search?q=%23tidytuesday&src=hashtag_click>. Repositorio oficial con los datos y retos: <https://github.com/rfordatascience/tidytuesday>
+
+* <mark>[**swirl: paquete para aprender R y crear cursos**](https://swirlstats.com/)</mark>.  <https://swirlstats.com/>
+
+* <mark>[**Estadística y probabilidad para científicos de datos**](https://analisisydecision.es/estadistica-data-scientist/index.html)</mark>. De Raúl Vaquerizo  <https://analisisydecision.es/estadistica-data-scientist/index.html>
+
+
+
+
+
+## Manejo de datos {-}
+
+* <mark>[**tibble: simplificando data.frames**](https://tibble.tidyverse.org/)</mark>. Entorno <mark>**tidyverse**</mark>. <https://tibble.tidyverse.org/>
+
+* <mark>[**tidyr: ordenando los datos**](https://tibble.tidyverse.org/)</mark>. Entorno <mark>**tidyverse**</mark>. <https://tibble.tidyverse.org/>
+
+* <mark>[**dplyr: procesando/manipulando los datos**](https://dplyr.tidyverse.org/)</mark>. Entorno <mark>**tidyverse**</mark>. <https://dplyr.tidyverse.org/>
+
+* <mark>[**purrr: programación funcional con listas**](https://purrr.tidyverse.org/)</mark>. Entorno <mark>**tidyverse**</mark>. <https://purrr.tidyverse.org/>
+
+* <mark>[**forcast: manejo de variables cualitativas**](https://forcats.tidyverse.org/)</mark>. Entorno <mark>**tidyverse**</mark>. <https://forcats.tidyverse.org/>
+
+
+* <mark>[**lubridate: manejo de fechas y tiempos**](https://lubridate.tidyverse.org/)</mark>. Entorno <mark>**tidyverse**</mark>. <https://lubridate.tidyverse.org/>
+
+* <mark>[**Tidy data tutor**](https://tidydatatutor.com/)</mark>. Visualizador del flujo de operaciones de las funciones del entorno <mark>**tidyverse**</mark>. <https://tidydatatutor.com/>
+
+* <mark>[**Tidyverse skill for data science**](https://jhudatascience.org/tidyversecourse/)</mark>. De Carrie Wright, Shannon E. Ellis, Stephanie C. Hicks y Roger D. Peng. <https://jhudatascience.org/tidyversecourse/>
+
+
+
+## Manejo de textos {-}
+
+* <mark>[**stringr: manipulación de textos**](https://stringr.tidyverse.org/)</mark>. Entorno <mark>**tidyverse**</mark>. <https://stringr.tidyverse.org/>
+
+* <mark>[**glue: pegado de cadenas de texto**](https://glue.tidyverse.org/)</mark>. Entorno <mark>**tidyverse**</mark>. <https://glue.tidyverse.org/>
+
+
+* <mark>[**Text mining**](tidytextmining.com)</mark>. De Julia Silge y David Robinson. <https://tidytextmining.com>
+
+* <mark>[**Descarga de textos libres**](https://github.com/ropensci/gutenbergr)</mark>. De David Robinson. <https://github.com/ropensci/gutenbergr>
+
+* <mark>[**Análisis de sentimientos en Twitter**](https://www.harsh17.in/twitter-sentiments/)</mark>. De Harshvardhan. <https://www.harsh17.in/twitter-sentiments/>
+
+
+
+
+
+## Datos. Importar/exportar{-}
+
+* <mark>[**readr: importación de ficheros (.csv, .tsv, .txt)**](https://readr.tidyverse.org/)</mark>. Entorno <mark>**tidyverse**</mark>. <https://readr.tidyverse.org/>
+
+* <mark>[**readxl: importación de ficheros formateados por Excel**](https://readxl.tidyverse.org/)</mark>. Entorno <mark>**tidyverse**</mark>. <https://readxl.tidyverse.org/>
+
+* <mark>[**haven: importación de ficheros de SPSS, Stata y SAS**](https://haven.tidyverse.org/)</mark>. Entorno <mark>**tidyverse**</mark>. <https://haven.tidyverse.org/>
+
+* <mark>[**rvest: scrapping de páginas web sencillas**](https://rvest.tidyverse.org/)</mark>. Entorno <mark>**tidyverse**</mark>. <https://rvest.tidyverse.org/>
+
+* <mark>[**RSelenium: scrapping web con navegación inteligente**](https://docs.ropensci.org/RSelenium/)</mark>. De John Harrison y Ju Yeong Kim. <https://docs.ropensci.org/RSelenium/>
+
+* <mark>[**Paquetes para acceder a datos abiertos**](https://ropensci.org/packages/data-access/)</mark>. <https://ropensci.org/packages/data-access/>
+
+
+* <mark>[**googledrive: interacción con ficheros de Google Drive**](https://googledrive.tidyverse.org/)</mark>. Entorno <mark>**tidyverse**</mark>. <https://googledrive.tidyverse.org/>
+
+* <mark>[**httr: comunicación webs http y API**](https://github.com/r-lib/httr)</mark>. De Hadley Wickham, Chief Scientist en RStudio. <https://github.com/r-lib/httr>
+
+* <mark>[**fitbitr: datos de pulseras fitbit**](https://mrkaye97.github.io/fitbitr/index.html)</mark>. De Matt Kaye <https://mrkaye97.github.io/fitbitr/index.html>
+
+* <mark>[**rtweet: datos de Twitter**](https://docs.ropensci.org/rtweet/)</mark>. De Michael W. Kearney <https://docs.ropensci.org/rtweet/>
+
+* <mark>[**owidR: datos de Our World in Data**](https://github.com/piersyork/owidR)</mark>. De [OWiD](https://ourworldindata.org/). <https://github.com/piersyork/owidR>
+
+* <mark>[**eurostat: datos de Eurostat**](https://ropengov.github.io/eurostat/articles/articles/eurostat_tutorial.html)</mark>. <https://ropengov.github.io/eurostat/articles/articles/eurostat_tutorial.html>
+
+* <mark>[**climaemet: datos del AEMET**](https://ropenspain.github.io/climaemet/)</mark>. <https://ropenspain.github.io/climaemet/>
+
+* <mark>[**infoelectoral: datos electorales de España**](https://ropenspain.github.io/infoelectoral/)</mark>. <https://ropenspain.github.io/infoelectoral/>
+
+
+* <mark>[**rfishbase: datos de fishbase.org**](https://github.com/ropensci/rfishbase)</mark>. <https://github.com/ropensci/rfishbase>
+
+
+
+## dataviz {-}
+
+* <mark>[**Gramática de las gráficas: pistas para mejorarlas representaciones de datos**](http://academica-e.unavarra.es/bitstream/handle/2454/15785/Gram%C3%A1tica.pdf)</mark>. Libro de Joaquín Sevilla</mark>. <http://academica-e.unavarra.es/bitstream/handle/2454/15785/Gram%C3%A1tica.pdf>
+
+
+* <mark>[**ggplot2: visualización de datos**](https://ggplot2.tidyverse.org/)</mark>. Entorno <mark>**tidyverse**</mark>. <https://ggplot2.tidyverse.org/>. Manual oficial: <https://ggplot2-book.org/index.html>
+
+* <mark>[**R Graph Gallery**: colección de dataviz en `R`](https://www.r-graph-gallery.com/) <https://www.r-graph-gallery.com/>
+
+* <mark>[**patchwork: agregar y componer gráficas**](https://patchwork.data-imaginist.com/)</mark>. De Thomas Lin Pedersen. <https://patchwork.data-imaginist.com/>.>
+
+
+* <mark>[**plotly: gráficas interactivas**](https://plotly.com/r/)</mark>. <https://plotly.com/r/>
+
+* <mark>[**ggplotly: convertir ggplot2 a plotly**](https://www.rdocumentation.org/packages/plotly/versions/4.10.0/topics/ggplotly)</mark>. <https://www.rdocumentation.org/packages/plotly/versions/4.10.0/topics/ggplotly>
+
+* <mark>[**datawRappr: conectar R con datawrapper**](https://munichrocker.github.io/DatawRappr/)</mark>. De Benedict Witzenberger. <https://munichrocker.github.io/DatawRappr/>
+
+* <mark>[**ggtheme: paletas de colores y temas**](https://yutannihilation.github.io/allYourFigureAreBelongToUs/ggthemes/)</mark>. De Edward Tufte. <https://yutannihilation.github.io/allYourFigureAreBelongToUs/ggthemes/>
+
+* <mark>[**geomtextpath: curvando el texto ajustándose a una gráfica**](https://allancameron.github.io/geomtextpath/)</mark>. De Allan Cameron y Teun van den Brand. <https://allancameron.github.io/geomtextpath/>
+
+
+* <mark>[**El arte del dato: aprender a construir un ggplot**](https://elartedeldato.com/)</mark>. De Paula Casado. <https://elartedeldato.com/>
+
+* <mark>[**circlize: visualización de datos circulares**](https://jokergoo.github.io/circlize_book/book/)</mark>. De Z. Gu. <https://jokergoo.github.io/circlize_book/book/>
+
+* <mark>[**ggstream: visualización de datos en flujo**](https://github.com/davidsjoberg/ggstream)</mark>. De Z. Gu. <https://github.com/davidsjoberg/ggstream>
+
+
+* <mark>[**Tutoriales de visualización de datos**](https://www.cedricscherer.com/)</mark>. De Cedric Scherer. <https://www.cedricscherer.com/>
+
+
+
+## Mapas y datos espaciales en R {-}
+
+* <mark>[**Visualización de datos geográficos**](https://dominicroye.github.io/en/)</mark>. De Dominic Royé. <https://dominicroye.github.io/en/>
+
+* <mark>[**mapSpain: visualización de datos en mapas de España en R**](https://dieghernan.github.io/rpubs/mapSpain_RMadrid/#1)</mark>. De Diego Hernangómez. <https://dieghernan.github.io/rpubs/mapSpain_RMadrid/#1>
+
+* <mark>[**rasterpic: visualización de mapas con imágenes rasterizados de fondo**](https://dieghernan.github.io/rasterpic/)</mark>. De Diego Hernangómez. <https://dieghernan.github.io/rasterpic/>
+
+* <mark>[**layer: paquete para crear capas de mapas**](https://github.com/marcosci/layer)</mark>. De Marco Sciaini y Cédric Scherer  <https://github.com/marcosci/layer>
+
+
+## Colores y temas en dataviz (generales) {-}
+
+* <mark>[**Uso de colores**](https://datawrapper.notion.site/Color-Book-Updates-54905c2bd0bb4c6bae15d99e31a9d5c4)</mark>. De Lisa Charlotte Muth, experta en dataviz en Datawrapper. <https://datawrapper.notion.site/Color-Book-Updates-54905c2bd0bb4c6bae15d99e31a9d5c4>
+
+* <mark>[**Paletas de colores inspiradas en el Metropolitan Museum**](https://github.com/BlakeRMills/MetBrewer/tree/main)</mark>. De 
+Blake Robert Mills. <https://github.com/BlakeRMills/MetBrewer/tree/main>
+
+* <mark>[**Paletas de colores inspiradas paisajes de los parques nacionales**](https://github.com/kevinsblake/NatParksPalettes)</mark>. De 
+Kevin Blake. <https://github.com/kevinsblake/NatParksPalettes>
+
+
+* <mark>[**Paletas de colores de álbumes de Taylor Swift**](https://github.com/asteves/tayloRswift)</mark>. De _asteves_ <https://github.com/asteves/tayloRswift>
+
+* <mark>[**Paletas de colores inspiradas en la fotografía de Harry Potter**](https://github.com/aljrico/harrypotter)</mark>. De 
+Alejandro Jiménez. <https://github.com/aljrico/harrypotter>
+
+* <mark>[**colorblindcheck: herramientas para detectar paletas de colores aptas daltónicos/as**](https://github.com/Nowosad/colorblindcheck)</mark>. De Jakub Nowosad. <https://github.com/Nowosad/colorblindcheck>
+
+## Análisis exploratorio {-}
+
+* <mark>[**skimr: generación de resúmenes estadísticos**](https://docs.ropensci.org/skimr/)</mark>. Paquete de <mark>**ropensci**</mark>. <https://docs.ropensci.org/skimr/>
+
+* <mark>[**corrr: análisis y visualización de correlaciones**](https://corrr.tidymodels.org/)</mark>. Entorno <mark>**tidymodels**</mark>. <https://corrr.tidymodels.org/>
+
+* <mark>[**DataExplorer: análisis exploratorio automatizado**](https://boxuancui.github.io/DataExplorer/)</mark>. Paquete <mark>**DataExplorer**</mark>. <https://boxuancui.github.io/DataExplorer/>
+
+
+
+## Modelización e inferencia {-}
+
+* <mark>[**Modelos lineales: regresión y GLM**](https://bookdown.org/roback/bookdown-BeyondMLR/)</mark>. De Paul Roback y Julie Legler. <https://bookdown.org/roback/bookdown-BeyondMLR/>
+
+* <mark>[**performance: diagnosis y evaluación de modelos**](https://easystats.github.io/performance/)</mark>.  <https://easystats.github.io/performance/>
+
+* <mark>[**Estadística espacial y geoestadística**](https://geocompr.robinlovelace.net/)</mark>. De Robin Lovelace. <https://geocompr.robinlovelace.net/>
+
+* <mark>[**entorno tidymodels: minería de datos y Machine Learning en R**](https://www.tidymodels.org/start/)</mark>. De RStudio <https://www.tidymodels.org/start/>
+
+* <mark>[**Machine Learning en R**](https://emilhvitfeldt.github.io/ISLR-tidymodels-labs/index.html)</mark>. <https://emilhvitfeldt.github.io/ISLR-tidymodels-labs/index.html>
+
+* <mark>[**vip: evaluar la importancia de las variables**](https://github.com/koalaverse/vip/)</mark>. <https://github.com/koalaverse/vip/>
+
+
+* <mark>[**infer: inferencia estadística**](https://infer.tidymodels.org/)</mark>. Entorno <mark>**tidymodels**</mark>. <https://infer.tidymodels.org/>
+
+* <mark>[**Inferencia estadística en ciencia de datos**](https://moderndive.com/)</mark>. De Chester Ismay y Albert Y. Kim. <https://moderndive.com/>
+
+* <mark>[**goffda: inferencia de datos funcionales (FDA)**](https://github.com/egarpor/goffda)</mark>. De Eduardo García Portugués y Javier Álvarez Liébana. <https://github.com/egarpor/goffda>
+
+
+
+## Estadística Bayesiana {-}
+
+* <mark>[**Inferencia Bayesiana (y espacial)**](https://becarioprecario.bitbucket.io/inla-gitbook/)</mark>. De Virgilio Gómez Rubio. <https://becarioprecario.bitbucket.io/inla-gitbook/>
+
+* <mark>[**tidybayes: estadística bayesiana y visualización**](http://mjskay.github.io/tidybayes/)</mark>. De Matthew Kay. <http://mjskay.github.io/tidybayes/>
+
+* <mark>[**tidyposterior: estadística bayesiana**](https://tidyposterior.tidymodels.org/index.html)</mark>. Paquete del entorno <mark>tidymodels</mark>. <https://tidyposterior.tidymodels.org/index.html>
+
+
+## Informes, tablas, webs, libros y diapositivas {-}
+
+* <mark>[**rmarkdown: creación de informes en R**](https://bookdown.org/yihui/rmarkdown/)</mark>. De Yihui Xie, J. J. Allaire y Garrett Grolemund <https://bookdown.org/yihui/rmarkdown/>
+
+* <mark>[**bookdown: creación de libros y manuales en R**](https://bookdown.org/yihui/bookdown/)</mark>. De Yihui Xie. <https://bookdown.org/yihui/bookdown/>
+
+
+* <mark>[**blogdown: creación de webs en R**](https://bookdown.org/yihui/blogdown/)</mark>. De Yihui Xie, Amber Thomas y Alison Presmanes Hill. <https://bookdown.org/yihui/blogdown/>
+
+* <mark>[**shiny: webs interactivas con R**](https://shiny.rstudio.com/tutorial/written-tutorial/lesson1/)</mark>. <https://shiny.rstudio.com/tutorial/written-tutorial/lesson1/>
+
+
+* <mark>[**gt: tablas en R**](https://gt.rstudio.com/)</mark>. De RStudio <https://gt.rstudio.com/>
+
+* <mark>[**gtExtras: visualización de datos en tablas**](https://jthomasmock.github.io/gtExtras/index.html)</mark>. De Thomas Mock. <https://jthomasmock.github.io/gtExtras/index.html>
+
+
+
+
+
+* <mark>[**tablas visualmente atractivas en R con gt y gtextras**](https://bjnnowak.netlify.app/2021/10/04/r-beautiful-tables-with-gt-and-gtextras/)</mark>. De Benjamin Nowak <https://bjnnowak.netlify.app/2021/10/04/r-beautiful-tables-with-gt-and-gtextras/>
+
+
+
+## Paquetes/recursos curiosos {-}
+
+* <mark>[**wordle**](https://coolbutuseless.github.io/2022/01/04/wordle-v0.1.5-a-package-for-playing-and-helping-solve-wordle-puzzles/)</mark>. De _coolbutuseless_ <https://coolbutuseless.github.io/2022/01/04/wordle-v0.1.5-a-package-for-playing-and-helping-solve-wordle-puzzles/>
+
+* <mark>[**Canciones de Taylor Swift**](https://taylor.wjakethompson.com/)</mark>. De W. Jake Thompson <https://taylor.wjakethompson.com/>
+
+* <mark>[**Datos de partidas de ajedrez**](https://github.com/JaseZiv/chessR)</mark>. De Jason Zivkovic <https://github.com/JaseZiv/chessR>
+
+* <mark>[**Visualizar el ciclo día/noche en el mundo**](https://dominicroye.github.io/en/2021/visualize-the-day-night-cycle-on-a-world-map/)</mark>. De Dominic Royé <https://dominicroye.github.io/en/2021/visualize-the-day-night-cycle-on-a-world-map/>
+
+* <mark>[**Visualización de la cuenca hídrica de Francia**](https://www.etiennebacher.com/posts/2021-12-27-mapping-french-rivers-network/)</mark>. De Etienne Bacher <https://www.etiennebacher.com/posts/2021-12-27-mapping-french-rivers-network/>
+
+* <mark>[**ggpattern: rellenos con patrones geométricos en ggplot2**](https://github.com/coolbutuseless/ggpattern)</mark>. De coolbutuseless y Trevor L. Davis. <https://github.com/coolbutuseless/ggpattern>
+
+* <mark>[**Recreando en R la famosa espiral del NYT**](https://bydata.github.io/nyt-corona-spiral-chart/)</mark>. De Ansgar Wolsing <https://bydata.github.io/nyt-corona-spiral-chart/>
+
+
+
+
+
+
+
+

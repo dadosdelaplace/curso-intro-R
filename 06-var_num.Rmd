@@ -1,0 +1,484 @@
+```{r echo = FALSE}
+library(knitr)
+
+# Color text
+colorize <- function(x, color) {
+  
+  if (knitr::is_latex_output()) {
+    
+    sprintf("\\textcolor{%s}{%s}", color, x)
+    
+  } else if (knitr::is_html_output()) {
+    
+    sprintf("<span style='color: %s;'>%s</span>", color, x)
+    
+  } else { x }
+}
+```
+
+# (PART) Tipos de datos {-}
+
+# Variables individuales: números y caracteres {#var-num}
+
+:::: {.blackbox data-latex=""}
+
+Scripts usados:
+
+* [**script05.R**](https://github.com/dadosdelaplace/courses-ECI-2022/blob/main/scripts/script05.R).  Ver en <https://github.com/dadosdelaplace/courses-ECI-2022/blob/main/scripts/script05.R>
+
+::::
+
+&nbsp;
+
+Tras los primeros ejercicios planteados deberíamos saber más o menos usar `R` como una calculadora, definiendo variables que nos guardan números, como `a <- 1`. Vamos a ir más allá: <mark>**¿existen variables más allá de los números?**</mark> En este capítulo vamos a empezar a familiarizarnos con los <mark>**tipos de datos**</mark> que podemos necesitar. Piensa por ejemplo en los datos guardados de una persona en cualquier registro:
+
+* La edad será un <mark>**número (sin decimales)**</mark>
+* Su peso o estatura será otro <mark>**número (ahora con decimales)**</mark>.
+* Su nombre será una <mark>**cadena de texto**</mark>.
+* Su fecha de nacimiento será precisamente eso, un  <mark>**dato de tipo fecha**</mark>.
+* A la pregunta «¿está usted soltero/a?» la respuesta será lo que llamamos una <mark>**variable binaria o lógica**</mark>: una variable que solo puede valer `TRUE` (si está soltero/a) y `FALSE` (en otro caso), guarada internamente como un `1` o `0`.
+
+Existen **más tipos de datos** (por ejemplo, números complejos, listas, etc) pero con estos nos valdrá de momento.
+
+
+## Variables numéricas (individuales) {#numericas}
+
+Probablemente el dato **más sencillo y obvio** de entender sean los datos numéricos, datos que ya hemos usado en nuestros primeros pasos como calculadora.
+
+```{r}
+a <- 1
+b <- 2
+a + b
+```
+
+En el código anterior, tanto `a` como `b`, como la suma `a + b`, son de <mark>**tipo numérico**</mark>, algo que podemos comprobar con la función `class()` (nos devuelve _numeric_).
+
+```{r}
+# Clase de las variables
+class(a)
+class(b)
+class(a + b)
+```
+
+También podemos comprobar su naturaleza con `typeof()`, que nos devuelve la naturaleza del dato tal cual es guardada en `R`.
+
+```{r}
+# Tipología interna
+typeof(a)
+typeof(b)
+typeof(a + b)
+```
+
+Aunque no es especialmente relevante profundizar en ello de momento, fíjate que ambas órdenes combinadas nos dicen que las variables son de tipo numérico pero concretamente de tipo <mark>**double**</mark>: dichas variables son entendidas internamente como números con decimales (aunque no los veamos), lo que en **matemáticas se llaman números reales** (por curiosidad: el término _double_ viene de lenguajes de programación antiguos como `C`, que significa «doble precisión», para indicarle que reserve 8 bytes - 64 bits - de memoria). Durante el curso no distinguiremos entre distintos tipos de números, para nosotros serán siempre de clase _numeric_ y de tipo _double_, pero podríamos definir números enteros o _integer_ (sin decimales, ahorrando huecos en memoria).
+
+```{r}
+# Dato numérico (entero)
+a <- 1L
+class(a)
+typeof(a)
+```
+
+Con los <mark>**datos numéricos**</mark> podemos realizar todas las <mark>**operaciones**</mark> que se nos ocurriría hacer en una **calculadora**, como sumar (`+`), restar (`-`), multiplicar (`*`), dividir (`/`), raíz cuadrada (`sqrt()`), valor absoluto (`abs()`), elevar al cuadrado  (`^2`), elevar al cubo (`^3`), etc.
+
+
+```{r}
+# Definimos dos variables numéricas
+a <- 1
+b <- -2
+
+# Suma y resta
+a + b
+a - b
+
+# Multiplicación y división
+a * b
+a / b
+
+# Raíz cuadrada
+sqrt(a)
+
+# Potencias
+a^2
+b^3
+```
+
+
+
+## Variables de tipo caracter (texto) {#caracter}
+
+Pero no solo de números viven los datos: imagina que además de la edad de una persona queremos guardar su nombre.
+
+```{r}
+edad <- 32
+nombre <- "Javier"
+
+class(nombre)
+typeof(nombre)
+```
+
+Fíjate que ahora tenemos guardado en la variable `nombre` una variable de tipo _character_, es decir, una <mark>**cadena de texto**</mark> (conocido en otros lenguajes como _string_ o _char_): <mark>**caracteres entre comillas**</mark>. 
+
+Es importante el concepto de las comillas, ya que todo lo que vaya entre comillas será un texto: `"1"` no representa un número, representa un texto (igual que `"hola"` o `"adios"`)
+
+## Nuestra primera función: paste
+
+
+Las <mark>**cadenas de texto**</mark> son un tipo especial de dato, con los que obviamente no podremos hacer operaciones aritméticas, pero si podemos hacer operaciones propias de cadenas de texto como puede ser la <mark>**función `paste()`**</mark>. Dicha función nos permite **pegar dos cadenas de caracteres**.
+
+
+```{r}
+nombre <- "Javier"
+apellido <- "Álvarez"
+paste(nombre)
+```
+
+Si queremos pegar cadenas de texto sin ningún tipo de caracter en medio (ahora tenemos un espacio), existe una forma más abreviada y limpia de ejecutar la orden, usando la <mark>**función `paste0()`**</mark>
+
+```{r}
+paste0(nombre, apellido) # todo junto sin espacio
+```
+
+Cuando hemos ejecutado `paste()` y `paste0()` estamos ejecutando lo que se conoce como una <mark>**función**</mark>: una palabra reservada que representa un **conjunto de órdenes encapsuladas**, y que se ejecuta a partir de unos <mark>**argumentos de entrada**</mark>. En este caso, solo hemos introducido como argumentos las cadenas de texto.
+
+<mark>**¿Qué sucededería si queremos pegar cadenas de texto usando el punto o la coma o cualquier otro caracter**</mark> En el caso de la función `paste()`, podremos hacer uso de lo que se conoce como **argumento opcional** llamado `sep`, que podemos darle un valor en concreto o dejarlo sin especificar. Lo que hará `R` será tomar su <mark>**valor por defecto**</mark> igual a `sep = " "` (por defecto, la función `paste()` pega cadenas de texto con un espacio entre ellas porque en realidad ejecuta por defecto `paste(..., sep = " ")`). 
+
+```{r}
+paste(nombre, apellido, sep = "") # todo junto
+paste(nombre, apellido, sep = " ") # separados por un espacio
+paste(nombre, apellido, sep = ".") # separados por un punto .
+paste(nombre, apellido, sep = ",,") # separados por dos comas.
+```
+
+Prueba a ejecutar `? paste` en consola para ver las opciones de la función en el **panel de ayuda**.
+
+## Nuestro primer paquete: glue
+
+
+Otra forma más **intuitiva de trabajar con textos y variables numéricas** es usar el paquete `{glue}`, que nos permite <mark>**pegar cadenas de texto a variables numéricas de forma simbólica**</mark>.
+
+```{r eval = FALSE}
+install.packages("glue") # solo la primera vez
+```
+
+```{r}
+library(glue)
+```
+
+Recuerda que `install.packages()` es solo necesario la primera que «compramos el libro»: nos bajamos una serie de archivos a nuestro ordenador. Una vez que hemos comprado el libro, cada vez que queramos usarlo bastará con indicarle que nos traiga ese libro concreto con `library()`.
+
+El paquete `{glue}` nos permite pegar de una forma mucho más legible cadenas de texto. Por ejemplo, supongamos que queremos construir la frase `"La edad es de X años"`, donde `X` será la edad guardada e una variable.
+
+```{r}
+edad <- 32
+paste("La edad es de", edad, "años")
+```
+
+Con `paste()` podemos mezclar texto y números pero de una forma un poco aparatosa ya que debemos de ir cerrando la frase con comillas. Para evitarlo, `glue()` nos proporciona una forma más cómoda, sin salirnos de la cadena de texto, encapsulando las variables en llaves.
+
+```{r}
+glue("La edad es de {edad} años")
+
+unidades <- "años"
+glue("La edad es de {edad} {unidades}")
+```
+
+También podemos hacer uso de dicha función sin tener los valores numéricos previamente guardados en variables.
+
+```{r}
+# Otra forma sin definir variables a priori
+glue("La edad es de {32} años")
+```
+
+
+
+## Manejando textos: paquete stringr
+
+
+```{r stringr, echo = FALSE, fig.align = 'center',  include = identical(knitr:::pandoc_to(), 'html'), fig.cap = 'Paquete stringr https://github.com/rstudio/cheatsheets/blob/main/strings.pdf', out.width = '70%'}
+knitr::include_graphics("img/stringr.png")
+```
+
+El paquete `{stringr}` nos proporciona un <mark>**abanico de funciones y utilidades para poder trabajar con variables de tipo texto**</mark>, permitiendo desde la búsqueda hasta la extracción de cadenas de texto dentro de la variable.
+
+```{r}
+# install.packages("stringr") # solo la primera vez
+library(stringr)
+```
+
+Aunque no es el objetivo de este manual introductorio adentrarnos en lo que se conoce como _text mining_ o minería de textos, he aquí una lista de funciones útiles que podemos encontrar en dicho paquete
+
+* La función `str_length()` nos proporciona la <mark>**longitud de una cadena**</mark> de caracteres (reminder: un espacio cuenta como caracter).
+
+```{r}
+str_length("hola")
+str_length("espejo")
+```
+
+* La función `str_sub()` nos permite <mark>**extraer subcadenas**</mark> de caracteres, indicándole no solo la cadena sino las posiciones iniciales y finales.
+
+```{r}
+x <- "ornitorrinco"
+str_sub(x, 3, 3) # tercer caracter
+str_sub(x, 3, 5) # del tercero al quinto (ambos inclusive)
+str_sub(x, 2, -3) # del segundo al antepenúltimo caracter
+```
+
+Dicha función se puede usar incluso para <mark>**modificar subcadenas**</mark>
+
+```{r}
+str_sub(x, 3, 6) <- "jeje" # del tercero al sexto colamos un "jeje"
+x
+```
+
+* La función `str_dup()` nos permite <mark>**duplicar cadenas**</mark> de caracteres
+
+```{r}
+str_sub("ja", 2) # duplicamos 2 veces "ja"
+str_sub("ja", 5) # duplicamos 5 veces "ja"
+```
+
+* La función `str_remove()` nos permite <mark>**eliminar subcadenas**</mark> de caracteres (reminder: el espacio porque cuenta como caracter)
+
+```{r}
+# eliminamos de la variable la subcadena o patrón "DNI:"
+str_remove("DNI: 41378292", "DNI:") # nos deja ese espacio
+```
+
+* La función `str_trim()` nos permite <mark>**eliminar espacios en blanco**</mark> que nos hayan quedado en el texto, algo bastante habitual cuando lees cadenas de caracteres de archivos o de internet.
+
+```{r}
+# eliminamos de la variable la subcadena o patrón "DNI:"
+x <- str_remove("DNI: 41378292", "DNI:") # nos deja ese espacio
+str_trim(x) # eliminamos ese espacio
+str_trim("  calle mayor ", side = "left") # solo los de la izquierda
+str_trim("  calle mayor ", side = "right") # solo los de la derecha
+str_trim("  calle mayor ", side = "both") # ambos (pro defecto)
+```
+
+* La función `str_pad()` nos permite <mark>**añadir espacios en blanco**</mark>
+
+```{r}
+x <- "mochila"
+# un espacio en la izquierda (cadena resultante de longitud dada)
+str_pad(x, 8) # longitud 8 ==> mochila tiene 7, así que añade un espacio
+str_pad(x, 15) # longitud 15 ==> mochila tiene 7, así que añade 8 espacios
+str_pad(x, 12, "right") # a la derecha
+str_pad(x, 13, "both") # a ambos lados
+```
+
+* La función `str_to_upper()` nos permite <mark>**convertir un texto a mayúscula**</mark> y `str_to_title()` pone en mayúscula solo la primera letra de cada palabra. La función `str_to_lower()` nos permite <mark>**convertir un texto a minúscula**</mark>
+
+```{r}
+x <- "Hola, me llamo Javi"
+str_to_upper(x)
+str_to_title(x)
+str_to_lower("¡PARA! No puedes pasar")
+```
+
+* La función `str_detect()` nos permite <mark>**detectar subcadenas**</mark> de caracteres
+
+```{r}
+subcadena <- "ministerio"
+x <- "En un documento del Ministerio del Interior..."
+str_detect(x, subcadena) # no lo detecta porque se sensitive a mayúsculas
+str_detect(str_to_lower(x), subcadena)
+```
+
+Haciendo además uso de expresiones regulares podemos afinar nuestra búsqueda
+
+```{r}
+telefono <- "([2-9][0-9]{2})[- .]([0-9]{3})[- .]([0-9]{4})"
+x <- "mi telefono es 219 733 8965"
+y <- "mi telefono es 329-293-8753"
+z <- "mi telefono es 32-293-87"
+str_detect(x, telefono)
+str_detect(y, telefono)
+str_detect(z, telefono)
+```
+
+* La función `str_locate()` nos permite <mark>**localizar inicio y final donde se sitúan cadenas**</mark> de caracteres
+
+```{r}
+str_locate("hola me llamo Javi", "Javi")
+```
+
+* La función `str_replace()` nos permite <mark>**reemplazar subcadenas en base a un patrón**</mark> pero solo lo hace con la primera que detecta. Con `str_replace_all()` podemos reemplazar todos
+
+```{r}
+str_replace("la vida del oso panda", "panda", "pardo") # reemplazamos panda por pardo
+str_replace("la vida del oso pardo y el oso polar", "oso", "delfín")
+str_replace_all("la vida del oso pardo y el oso polar", "oso", "delfín")
+```
+
+
+## Consejos
+
+
+**`r colorize("CONSEJOS", "#20935E")`**
+
+&nbsp;
+
+**`r colorize("Recuperar un comando y autocompletar", "#20935E")`**
+
+Si haces click con el ratón en la consola y pulsas la flecha «arriba» del teclado, te irá apareciendo todo el <mark>**historial de órdenes ejecutadas**</mark>. Es una manera de ahorrar tiempo para ejecutar órdenes similares a las ya ejecutadas. Si empiezas a escribir el nombre de una variable pero no te acuerdas exactamente de su nombre, pulsando **tabulador** te **autocompletará** solo.
+
+&nbsp;
+
+**`r colorize("Convertir tipos de datos",  "#20935E")`**
+
+A veces la lectura de variables numéricas de nuestros archivos puede hacer que un número, por ejemplo `1`, sea leído como la cadena de texto `"1"`, con la que no podemos operar como un número. Las funciones `as.numeric()`, o `as.character()` nos permiten convertir una variable en tipo numérico, caracter o lógico, respectivamente.
+
+```{r error = TRUE}
+"1" + 1
+as.numeric("1") + 1
+as.character(1)
+```
+
+&nbsp;
+
+## 📝 Ejercicios
+
+(haz click en las flechas para ver soluciones)
+
+<details>
+  <summary>📝<strong>Ejercicio 1</strong>: define una variable `edad` que guarde tu edad y otra `nombre` con tu nombre. </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+edad <- 32 # tipo numeric
+nombre <- "Javier" # tipo caracter
+
+edad
+nombre
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 2</strong>: define otra variable con tus apellidos y junta las variables `nombre` y `apellidos` en una sola cadena de texto que guardes en `nombre_completo`. </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Apellidos
+apellidos <- "Álvarez Liébana"
+
+# Pegamos
+nombre_completo <- glue("{nombre} {apellidos}")
+nombre_completo
+
+# Otra forma
+nombre_completo <- paste(nombre, apellidos)
+nombre_completo
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 3</strong>: define dos variables numéricas y realiza la suma de ambas. Obtén con `class()` la clase de dicha variable suma </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Definimos dos variables numéricas
+a <- 1
+b <- -2
+
+a + b
+class(a + b)
+```
+
+<!-- tocstop -->
+</details>
+
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 4</strong>: construye una frase que diga «Hola, me llamo ... y tengo ... años». </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+edad <- 32
+glue("Hola, me llamo {nombre_completo} y tengo {edad} años")
+```
+
+<!-- tocstop -->
+</details>
+
+
+&nbsp;
+
+
+<details>
+  <summary>📝<strong>Ejercicio 5</strong>: define una cadena de texto con `"mi código postal es 28045"`. Calcula la longitud de la cadena y extrae la subcadena del lugar 3 al 17 con `str_sub()` (guarda dicha subcadena en una variable `y`) </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+x <- "mi código postal es 28045"
+y <- str_sub(x, 3, 17)
+y
+```
+
+<!-- tocstop -->
+</details>
+
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 6</strong>: con la subcadena `y` del ejercicio anterior, elimina los espacios solo de la izquierda y convierte a mayúsculas </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Todo en una línea
+str_to_upper(str_trim(y, side = "left"))
+
+# Paso a paso
+z <- str_trim(y, side = "left")
+str_to_upper(z)
+```
+
+<!-- tocstop -->
+</details>
+
+
+&nbsp;
+
+
+<details>
+  <summary>📝<strong>Ejercicio 7</strong>: con la cadena `x` original, sustituye la subcadena "código postal" por "cp".</summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+str_sub(x, 4, 16) <- "cp"
+```
+
+<!-- tocstop -->
+</details>
+
+
+&nbsp;
+
+
+
+
+

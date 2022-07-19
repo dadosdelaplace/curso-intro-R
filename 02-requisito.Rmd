@@ -1,0 +1,32 @@
+```{r echo = FALSE}
+library(knitr)
+
+# Color text
+colorize <- function(x, color) {
+  
+  if (knitr::is_latex_output()) {
+    
+    sprintf("\\textcolor{%s}{%s}", color, x)
+    
+  } else if (knitr::is_html_output()) {
+    
+    sprintf("<span style='color: %s;'>%s</span>", color, x)
+    
+  } else { x }
+}
+```
+
+# (PART) Toma de contacto {-}
+
+
+# Requisitos {#requisitos}
+
+* <mark>**Conexión a internet**</mark> (para la descarga de algunos datos y paquetes).
+
+* <mark>**Instalar R**</mark> (ver \@ref(instalacionR)). **`R` será nuestro lenguaje**, nuestro diccionario, nuestro castellano, nuestra ortografía para poder «comunicarnos» con el ordenador. <https://cran.r-project.org/>
+
+* <mark>**Instalar `R Studio`**</mark> (ver \@ref(instalacionRStudio)). De la misma manera que podemos escribir el mismo texto en castellano en una tablet, en un ordenador, en un Word, en un papel o en un tuit, en programación podemos usar distintos **IDE (entornos de desarrollo integrados, nuestro Office)**, para que el trabajo sea más cómodo. Nosotros trabajaremos con `RStudio`.
+
+Todo lo necesario para seguir este curso es de <mark>**descarga gratuita**</mark>: viva el software libre.
+
+

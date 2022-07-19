@@ -1,0 +1,2076 @@
+```{r echo = FALSE}
+library(knitr)
+
+# Color text
+colorize <- function(x, color) {
+  
+  if (knitr::is_latex_output()) {
+    
+    sprintf("\\textcolor{%s}{%s}", color, x)
+    
+  } else if (knitr::is_html_output()) {
+    
+    sprintf("<span style='color: %s;'>%s</span>", color, x)
+    
+  } else { x }
+}
+```
+
+# (PART) Recursos {-}
+
+# 📝 Ejercicios recopilados {-}
+
+<mark>**Recopilación de los ejercicios planteados**</mark> a lo largo del manual. Vuelve por aquí si quieres cuando acabes las lecciones para repasar aquellos ejercicios que más te hayan costado.
+
+
+## Instalación {-}
+
+:::: {.blackbox data-latex=""}
+
+Scripts usados:
+
+* [**script02.R**](https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script02.R): instalación de R.  Ver en <https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script02.R>
+::::
+
+(haz click en las flechas para ver soluciones)
+
+<details>
+  <summary>📝<strong>Ejercicio 1</strong>: abre `R Studio` y en tu consola (parte inferior de tu pantalla) asigna los valores `2` y `5` a dos variables `a` y `b`. Tras asignarles valores, multiplica los números en consola (**haz click** en la flecha para la solución propuesta). </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Para poner comentarios en el código se usa #
+
+# Definición de variables
+a <- 2
+b <- 5
+
+# Multiplicación
+a * b
+```
+
+```{r echo = FALSE, out.width = "80%", fig.align = "center", fig.cap = "Multiplicación de a y b."}
+knitr::include_graphics("./img/consola_multiplicacion.jpg")
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 2</strong>: modifica el código inferior para definir dos variables `c` y `d`, con valores `3` y `-1`, y calcular la división `c/d` (**haz click** en la flecha para la solución propuesta).
+  
+```{r eval = FALSE}
+# Definición de variables
+c <- 
+d <-
+
+# Operación (división)
+c ? d
+```
+</summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Definición de variables
+c <- 3
+d <- -1
+
+# División
+c / d
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 3</strong>: repite el ejercicio 1 pero ahora guarda el resultado de la multiplicación final en una variable `c`. Para ver el resultado guardado en `c` escribe dicha variable en consola (**haz click** en la flecha para la solución propuesta). </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Variables
+a <- 2
+b <- 5
+
+# Resultado
+c <- a * b
+
+# Muestro en consola
+c
+```
+
+```{r echo = FALSE, out.width = "80%", fig.align = "center", fig.cap = "Multiplicación de a y b guardando el resultado."}
+knitr::include_graphics("./img/consola_multiplicacion_2.jpg")
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+**`r colorize("WARNING:", "#ffc107")`**
+
+No hace falta gastar una línea por cada orden que quieras ejecutar. Tampoco necesitas guardar cada paso intermedio que realices. **`r colorize("Cuidado con la memoria", "#ffc107")`**: cada asignación que hagas es una variable guardada que consume recursos en tu ordenador.
+
+
+
+
+
+
+## Primeros pasos {-}
+
+:::: {.blackbox data-latex=""}
+
+Scripts usados:
+
+* [**script04.R**](https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script04.R): primeros pasos.  Ver en <https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script04.R>
+::::
+
+(haz click en las flechas para ver soluciones)
+
+<details>
+  <summary>📝<strong>Ejercicio 1</strong>: asigna ahora los valores `1`, `-2`, `3` a tres variables `a`, `b` y `c` distintas, y calcula la raíz cuadrada de cada uno (**haz click** en la flecha para la solución propuesta). </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Variables
+a <- 1
+b <- -2
+c <- 3
+
+# Resultado
+sqrt(a)
+sqrt(b)
+sqrt(c)
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+
+<details>
+  <summary>📝<strong>Ejercicio 2</strong>: calcula en consola la suma de 3 más 4, y todo ello multiplicado por 10, y asígnalo a una variable `x` (**haz click** en la flecha para la solución propuesta). Imprime el valor por consola</summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Asignamos
+x <- (3 + 4) * 10
+
+# Imprimimos
+x
+```
+
+<!-- tocstop -->
+</details>
+
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 3</strong>: asigna un valor positivo a `x` y calcula  su raíz cuadrada; asigna otro negativo y calcula su valor absoluto con la función `abs()` (**haz click** en la flecha para la solución propuesta).</summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Raíz cuadrada
+x <- 73 # por ejemplo
+sqrt(x)
+
+# Valor absoluto
+y <- -19 # por ejemplo
+abs(y)
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+**`r colorize("CONSEJO:", "#20935E")`**
+
+Las órdenes `sqrt(x)` y `abs(y)` se llaman <mark>**funciones**</mark>, y la variable que tienen entre paréntesis se llama **argumento de la función**: una variable que toma de entrada la función y con la que opera internamente.
+
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 4</strong>: usando la variable `x` ya definida, completa/modifica el código inferior para guardar en una nueva variable `z` el resultado guardado en `x` menos 5 (**haz click** en la flecha para la solución propuesta).
+  
+```{r eval = FALSE}
+z <- ? - ?
+z
+```
+
+</summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+z <- x - 5
+z
+```
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 5</strong>: usando las variables `x` e `y` ya definidas, calcula el máximo de ambas (función `max()`), y guárdalo en una nueva variable `t`. (**haz click** en la flecha para la solución propuesta).</summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+t <- max(x, y)
+t
+```
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+**`r colorize("WARNING:", "#ffc107")`**
+
+No hace falta gastar una línea por cada orden que quieras ejecutar. Tampoco necesitas guardar cada paso intermedio que realices. **`r colorize("Cuidado con la memoria", "#ffc107")`**: cada asignación que hagas es una variable guardada que consume recursos en tu ordenador.
+
+## Variables numéricas y de texto
+
+:::: {.blackbox data-latex=""}
+
+Scripts usados:
+
+* [**script05.R**](https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script05.R): variables numéricas y caracteres.  Ver en <https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script05.R>
+::::
+
+(haz click en las flechas para ver soluciones)
+
+
+<details>
+  <summary>📝<strong>Ejercicio 1</strong>: define una variable `edad` que guarde tu edad y otra `nombre` con tu nombre. </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+edad <- 32 # tipo numeric
+nombre <- "Javier" # tipo caracter
+
+edad
+nombre
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 2</strong>: define otra variable con tus apellidos y junta las variables `nombre` y `apellidos` en una sola cadena de texto que guardes en `nombre_completo`. </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+library(glue)
+# Apellidos
+apellidos <- "Álvarez Liébana"
+
+# Pegamos
+nombre_completo <- glue("{nombre} {apellidos}")
+nombre_completo
+
+# Otra forma
+nombre_completo <- paste(nombre, apellidos)
+nombre_completo
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 3</strong>: define dos variables numéricas y realiza la suma de ambas. Obtén con `class()` la clase de dicha variable suma </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Definimos dos variables numéricas
+a <- 1
+b <- -2
+
+a + b
+class(a + b)
+```
+
+<!-- tocstop -->
+</details>
+
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 4</strong>: construye una frase que diga «Hola, me llamo ... y tengo ... años». </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+edad <- 32
+glue("Hola, me llamo {nombre_completo} y tengo {edad} años")
+```
+
+<!-- tocstop -->
+</details>
+
+
+&nbsp;
+
+
+<details>
+  <summary>📝<strong>Ejercicio 5</strong>: define una cadena de texto con `"mi código postal es 28045"`. Calcula la longitud de la cadena y extrae la subcadena del lugar 3 al 17 con `str_sub()` del paquete `{stringr}` (guarda dicha subcadena en una variable `y`) </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+library(stringr)
+x <- "mi código postal es 28045"
+y <- str_sub(x, 3, 17)
+y
+```
+
+<!-- tocstop -->
+</details>
+
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 6</strong>: con la subcadena `y` del ejercicio anterior, elimina los espacios solo de la izquierda y convierte a mayúsculas </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Todo en una línea
+str_to_upper(str_trim(y, side = "left"))
+
+# Paso a paso
+z <- str_trim(y, side = "left")
+str_to_upper(z)
+```
+
+<!-- tocstop -->
+</details>
+
+
+&nbsp;
+
+
+<details>
+  <summary>📝<strong>Ejercicio 7</strong>: con la cadena `x` original, sustituye la subcadena "código postal" por "cp".</summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+str_sub(x, 4, 16) <- "cp"
+```
+
+<!-- tocstop -->
+</details>
+
+
+&nbsp;
+
+
+
+
+
+
+
+## Vectores
+
+:::: {.blackbox data-latex=""}
+
+Scripts usados:
+
+* [**script06.R**](https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script06.R): vectores.  Ver en <https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script06.R>
+::::
+
+(haz click en las flechas para ver soluciones)
+
+
+<details>
+  <summary>📝<strong>Ejercicio 1</strong>: modifica el código inferior para crear un vector de nombre `vector_num` que contenga los números 1, 5 y -7.
+  
+```{r eval = FALSE}
+# Vector de números
+vector_num <- c(1)
+vector_num
+```
+</summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Vector de números
+vector_num <- c(1, 5, -7)
+vector_num
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 2</strong>: define un vector que contenga los números 1, 10, -1 y 2, y guárdalo en una variable llamada `vector_num`. </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Vector de números
+vector_num <- c(1, 10, -1, 2)
+vector_num
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 3</strong>: obtén la longitud del vector anterior `vector_num`. </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Longitud del vector
+length(vector_num)
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+
+<details>
+  <summary>📝<strong>Ejercicio 4</strong>: crea un vector con las palabras "Hola", "me", "llamo" (y tu nombre y apellidos), y pega luego sus elementos de forma que la frase esté correctamente escrita en castellano. Tras hacerlo, añade "y tengo 30 años". </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Definiendo el vector
+vector_char <- c("Hola", "me", "llamo", "Javier",
+                 "Álvarez", "Liébana")
+
+# Pegamos
+frase <- paste(vector_char, collapse = " ")
+frase
+
+# Añadimos frase
+glue("{frase} y tengo 30 años.")
+
+# Otra forma
+paste0(frase, " y tengo 30 años.")
+
+# Otra forma
+paste(frase, "y tengo 30 años.")
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+
+<details>
+  <summary>📝<strong>Ejercicio 5</strong>: el código inferior crea una secuencia de números, que empieza en `-1`, que acaba en `32`, y que va saltando de 2 en 2. Modíficalo para que haga el salto de 3 en 3 y guárdalo en una variable llamada `secuencia`
+  
+```{r eval = FALSE}
+seq(-1, 32, by = 2)
+```
+</summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+secuencia <- seq(-1, 32, by = 3)
+secuencia
+length(secuencia) # longitud de la secuencia
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+
+<details>
+  <summary>📝<strong>Ejercicio 6</strong>: crea una secuencia de números, que empiece en `-1`, que acabe en `32`, y que tenga longitud 12. </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+secuencia <- seq(-1, 32, l = 12)
+secuencia
+length(secuencia) # longitud de la secuencia
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+
+<details>
+  <summary>📝<strong>Ejercicio 7</strong>: crea una secuencia que empiece en 1 y recorra todos los naturales hasta el 10. Después crea otra secuencia de longitud 7 que todos los números sean `3`.  </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+1:10
+rep(3, 7) # secuencia repetida
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+
+<details>
+  <summary>📝<strong>Ejercicio 8</strong>: crea una secuencia que repita 5 veces el patrón `1, 2, 3`. Después crea otra que repita dicho patrón pero de forma intercalada, con 5 veces `1`, después 5 veces `2` y después 5 veces `3`.</summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+rep(c(1, 2, 3), 5) # repetimos patrón (1, 2, 3) 5 veces
+rep(c(1, 2, 3), each = 5) # repetimos patrón alternado
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+
+<details>
+  <summary>📝<strong>Ejercicio 9</strong>: crea una variable `x <- c("oso pardo", "oso polar", "ballena", "grillo", "oso panda", "perro")`. Haciendo uso de `str_length()` calcula la longitud de cada cadena de texto. Haciendo uso de `str_detect()` detecta los animales que son un oso.</summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+x <- c("oso pardo", "Oso polar", "ballena", "grillo", "OSO panda", "perro")
+str_length(x) # longitud
+
+# OJO! antes hay que pasar todo a mayúscula o minúscula, nos da igual que sea oso, OSO, Oso, etc
+str_detect(str_to_lower(x), "oso") 
+```
+
+<!-- tocstop -->
+</details>
+
+
+
+
+
+
+
+## Operaciones con vectores
+
+:::: {.blackbox data-latex=""}
+
+Scripts usados:
+
+* [**script07.R**](https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script07.R): operaciones con vectores.  Ver en <https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script07.R>
+::::
+
+(haz click en las flechas para ver soluciones)
+
+
+<details>
+  <summary>📝<strong>Ejercicio 1</strong>: define el vector `x` como la concatenación de los números 1, 10, -1 y 2, y calcula su suma.</summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Vector de números
+x <- c(1, 10, -1, 2)
+
+# Suma
+sum(x)
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 2</strong>: define otro vector `y` que contenga los números `5, -7, 8, -3`, y haz la suma de `x` e `y`. </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Vector de números
+y <- c(5, -7, 8, -3)
+
+# Suma
+x + y
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 3</strong>: calcula el número de elementos mayores que 0 del resultado de la suma de `x + y`. </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+sum((x + y) > 0)
+
+# Otra forma
+suma <- x + y
+sum(suma > 0)
+```
+
+<!-- tocstop -->
+</details>
+
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 4</strong>: calcula la versión ordenada del vector `x`. </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Ordenamos el vector (con sort)
+sort(x)
+
+# Ordenamos el vector  (con order)
+x[order(x)]
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+
+<details>
+  <summary>📝<strong>Ejercicio 5</strong>: encuentra del vector `x` original el lugar (el índice) que ocupa su mínimo y su máximo. </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+x<- c(1, 10, -1, 2)
+
+# Encontrando el lugar que ocupa el máximo y mínimo
+which.max(x)
+which.min(x)
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 6</strong>: encuentra del vector `x` los elementos mayores que 1 y menores que 7. Encuentra una forma de averiguar si todos los elementos son o no positivos. </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Vector lógico: mayores que 1 y menores que 7
+x > 1 & x < 7
+
+# ¿Son todos positivos? Mira también any()
+all(x > 0)
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 7</strong>: define el vector `c(-1, 0, 4, 5, -2)`, calcula la raíz cuadrada del vector y determina que lugares son ausente de tipo `NaN`. </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Vector
+z <- c(-1, 0, 4, 5, -2)
+
+# ¿Cuáles son ausentes tras aplicar la raíz cuadrada?
+is.nan(sqrt(z))
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 8</strong>: define el vector de los primeros números impares (hasta el 21) y extrae los elementos que ocupan los lugares 1, 4, 5, 8. Elimina del vector el segundo elemento</summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Vector de impares (de 1 a 21 saltando de dos en dos)
+x <- seq(1, 21, by = 2)
+
+# Seleccionamos elementos
+x[c(1, 4, 5, 8)]
+
+# Eliminamos elementos
+y <- x[-2]
+y
+```
+
+<!-- tocstop -->
+</details>
+
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 9</strong>: define una cadena de caracteres `texto <- c("oso polar", "oso pardo", "salamandra", "buho", "lechuza", "oso malayo")`. Usa `str_count()` para contabilizar el número de osos. Usa `str_starts()` para saber que elemento del vector es un oso o no. Obten la longitud de cada cadena. Sustituye en todas las cadenas la `o` por `*`</summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+texto <- c("oso polar", "oso pardo", "salamandra", "buho", "lechuza", "oso malayo")
+
+# Cuenta el número de cadenas que contienen la palabra "oso"
+str_count(texto, "oso")
+
+# Nos devuelve TRUE en las cadenas que empiecen por "oso"
+str_starts(texto, "oso")
+str_ends(texto, "oso") # devuelve todo FALSE
+
+# Longitud de cada cadena
+str_length(texto)
+
+# Sustituimos en todas las oes por *
+str_replace_all(texto, "o", "*")
+```
+
+<!-- tocstop -->
+</details>
+
+
+
+
+
+## Fechas
+
+:::: {.blackbox data-latex=""}
+
+Scripts usados:
+
+* [**script08.R**](https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script08.R): operaciones con vectores.  Ver en <https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script08.R>
+::::
+
+(haz click en las flechas para ver soluciones)
+
+<details>
+  <summary>📝<strong>Ejercicio 1</strong>: obten la fecha de hoy, define la fecha de tu cumpleaños, y calcula la diferencia de días. </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+library(lubridate)
+# Hoy
+hoy <- today()
+
+# Cumple (diferentes formatos de entrada)
+cumple <- as_date("1989-09-10") # por defecto
+cumple <- as_date("10-09-1989", format = "%d-%m-%Y")
+
+# Diferencia
+hoy - cumple
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 2</strong>: define la fecha de tu cumpleaños y determina si fue año bisiesto. Súmale 1-2-3-4-5 semanas. </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+cumple <- as_date("1989-09-10") # por defecto
+
+# Bisiesto
+leap_year(cumple)
+
+# Sumamos semanaes
+cumple + weeks(1:5)
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+
+<details>
+  <summary>📝<strong>Ejercicio 3</strong>: extrae el mes, año y día de la semana de tu cumpleaños </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Mes
+month(cumple)
+
+# Año 
+year(cumple)
+
+# wday
+wday(cumple, week_start = 1)
+wday(cumple, week_start = 1, label = TRUE)
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 4</strong>: calcula los días que han pasado desde la fecha de tu nacimiento </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+seconds(today() - cumple)
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+
+## Datos estructurados
+
+:::: {.blackbox data-latex=""}
+
+Scripts usados:
+
+* [**script09.R**](https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script09.R): datos estructurados.  Ver en <https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script09.R>
+::::
+
+(haz click en las flechas para ver soluciones)
+
+
+<details>
+  <summary><strong>Ejercicio 1</strong>: modifica el código para definir una matriz `x` de ceros de 3 filas y 7 columnas.
+  
+```{r eval = FALSE}
+# Matriz
+x <- matrix(0, nrow = 2, ncol = 3)
+x
+```
+
+</summary>
+
+- Solución:
+
+```{r}
+# Matriz
+x <- matrix(0, nrow = 3, ncol = 7)
+x
+```
+
+</details>
+
+&nbsp; 
+
+<details>
+  <summary><strong>Ejercicio 2</strong>: a la matriz anterior, suma un 1 a cada número de la matriz y divide el resultado entre 5.</summary>
+
+- Solución:
+
+```{r}
+(x + 1) / 5
+```
+
+</details>
+
+&nbsp; 
+
+
+<details>
+  <summary><strong>Ejercicio 3</strong>: tras definir la matriz `x` calcula su transpuesta y obtén sus dimensiones</summary>
+
+- Solución:
+
+```{r}
+# Transpuesta
+t(x)
+
+# Dimensiones transpuesta: pasa de ser 3x7 a 7x3
+dim(t(x))
+ncol(t(x)) # número de columnas de la transpuesta
+nrow(t(x)) # número de filas de la transpuesta
+```
+
+</details>
+
+&nbsp;
+
+<details>
+  <summary><strong>Ejercicio 4</strong>: el siguiente código define una matriz de dimensiones `4 x 3` y calcula la suma por columnas. Modifica el código para que realice la suma por filas.
+  
+```{r}
+# Matriz
+matriz <- matrix(1:12, nrow = 4)
+
+# Suma por columnas
+apply(matriz, MARGIN = 2, FUN = "sum")
+```
+
+</summary>
+
+
+- Solución:
+
+```{r}
+# Matriz
+matriz <- matrix(1:12, nrow = 4)
+
+# Suma por filas
+apply(matriz, MARGIN = 1, FUN = "sum")
+```
+</details>
+
+&nbsp; 
+
+<details>
+  <summary><strong>Ejercicio 5</strong>: con la matriz anterior definida como `matrix(1:12, nrow = 4)`, calcula la media de todos los elementos, la media de cada fila y la media de cada columna.</summary>
+
+- Solución:
+
+```{r}
+# Matriz
+matriz <- matrix(1:12, nrow = 4)
+
+#  media de todos
+mean(matriz)
+
+# Media por filas (MARGIN = 1 ya que es una operación por filas)
+apply(matriz, MARGIN = 1, FUN = "mean")
+
+# Media por filas (MARGIN = 2 ya que es una operación por filas)
+apply(matriz, MARGIN = 2, FUN = "mean")
+```
+</details>
+
+&nbsp; 
+
+<details>
+  <summary><strong>Ejercicio 6</strong>: el `data.frame` llamado `airquality`, del paquete `{datasets}`, contiene variables de la calidad del aire de la ciudad de Nueva York desde mayo hasta septiembre de 1973. Obtén el nombre de las variables.
+</summary>
+  
+- Solución:
+
+```{r}
+library(datasets)
+names(airquality)
+```
+
+</details>
+
+ &nbsp; 
+
+<details>
+  <summary><strong>Ejercicio 7</strong>: obtén las dimensiones del conjunto de datos. ¿Cuántas variables hay? ¿Cuántos días se han medido?
+  
+</summary>
+  
+- Solución:
+
+```{r}
+# Dimensiones
+dim(airquality)
+nrow(airquality)
+ncol(airquality)
+```
+
+</details>
+
+&nbsp; 
+
+<details>
+  <summary><strong>Ejercicio 8</strong>: modifica el código inferior para que nos filtre solo los datos del mes de julio.
+  
+```{r eval = FALSE}
+# Filtramos filas
+filtro_fila <- subset(., subset = Month < 6)
+filtro_fila
+```
+</summary>
+  
+- Solución:
+
+```{r}
+# Filtramos filas
+filtro_fila <- subset(airquality, subset = Month == 7)
+filtro_fila
+```
+
+</details>
+
+&nbsp; 
+
+<details>
+  <summary><strong>Ejercicio 9</strong>: del conjunto `airquality` selecciona aquellos datos que no sean ni de julio ni de agosto.</summary>
+  
+- Solución:
+
+```{r}
+# Filtramos filas
+filtro_fila <-
+  subset(airquality, subset = !(Month %in% c(7, 8)))
+filtro_fila
+```
+
+</details>
+
+&nbsp; 
+
+<details>
+  <summary><strong>Ejercicio 10</strong>: modifica el siguiente código para quedarte solo con las variable `Ozone` y `Temp`.
+  
+```{r eval = FALSE}
+filtro_col <- subset(.,  select = c("Ozone"))
+filtro_col
+```
+</summary>
+  
+- Solución:
+
+```{r}
+# Filtramos columnas
+filtro_col <- subset(airquality,  select = c("Ozone", "Temp"))
+filtro_col
+```
+
+</details>
+
+
+&nbsp; 
+
+<details>
+  <summary><strong>Ejercicio 11</strong>: del conjunto `airquality` selecciona los datos de temperatura y viento de agosto.</summary>
+  
+- Solución:
+
+```{r}
+# Todo de una vez
+filtro <- subset(airquality, subset = Month == 8,
+                 select = c("Temp", "Wind"))
+filtro
+```
+
+</details>
+
+
+&nbsp; 
+
+<details>
+  <summary><strong>Ejercicio 12</strong>: calcula el número de filas borradas del ejercicio anterior. Tras hacer todo ello, traduce a castellano el nombre de las columnas del `data.frame` filtrado.</summary>
+  
+- Solución:
+
+```{r}
+# Filas borradas
+nrow(airquality) - nrow(filtro)
+
+# Cambiamos nombres a castellano del conjunto filtrado
+names(filtro) <- c("temperatura", "viento")
+```
+
+</details>
+
+&nbsp; 
+
+<details>
+  <summary><strong>Ejercicio 13</strong>: añade a los datos originales una columna con la fecha completa (recuerda que es del año 1973 todas las observaciones.</summary>
+  
+- Solución:
+
+```{r}
+# Construimos las fechas (pegamos año-mes-día con "-")
+fechas <- 
+  as_date(paste("1973", airquality$Month, airquality$Day,
+                sep = "-"))
+
+# Añadimos
+data.frame(airquality, fechas)
+```
+
+</details>
+
+&nbsp; 
+
+
+
+
+
+
+## Listas
+
+:::: {.blackbox data-latex=""}
+
+Scripts usados:
+
+* [**script10.R**](https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script10.R): datos estructurados.  Ver en <https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script10.R>
+::::
+
+(haz click en las flechas para ver soluciones)
+
+
+
+<details>
+  <summary><strong>Ejercicio 1</strong>: define una lista de 4 elementos de tipos distintos y accede al segundo de ellos (yo incluiré uno que sea un `data.frame` para que veas que en una lista cabe de todo).</summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Ejemplo: lista con texto, numérico, lógico y un data.frame
+lista_ejemplo <- list("nombre" = "Javier", "cp" = 28019,
+                      "soltero" = TRUE,
+                      "notas" = data.frame("mates" = c(7.5, 8, 9),
+                                           "lengua" = c(10, 5, 6)))
+lista_ejemplo
+
+# Longitud
+length(lista_ejemplo)
+
+# Accedemos al elemento dos
+lista_ejemplo[[2]]
+```
+
+</details>
+
+&nbsp; 
+
+<details>
+  <summary><strong>Ejercicio 2</strong>: accede a los elementos que ocupan los lugares 1 y 4 de la lista definida anteriormente.</summary>
+  
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Accedemos al 1 y al 4
+lista_ejemplo[c(1, 4)]
+```
+
+Otra opción es acceder con los nombres
+
+```{r}
+# Accedemos al 1 y al 4
+lista_ejemplo$nombre
+lista_ejemplo$notas
+
+lista_ejemplo[c("nombre", "notas")]
+```
+
+</details>
+
+&nbsp; 
+
+
+<details>
+  <summary><strong>Ejercicio 3</strong>: define una lista de 4 elementos que contenga, en una sola variable, tu nombre, apellido, edad y si estás soltero/a.</summary>
+  
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Creamos lista: con lubridate calculamos la diferencia de años desde la fecha de nuestro nacimiento hasta hoy (sea cuando sea hoy)
+lista_personal <- list("nombre" = "Javier",
+                       "apellidos" = "Álvarez Liébana",
+                       "edad" = 32,
+                       "soltero" = TRUE)
+lista_personal
+```
+
+</details>
+
+
+
+
+
+
+## Estructuras if-else
+
+:::: {.blackbox data-latex=""}
+
+Scripts usados:
+
+* [**script11.R**](https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script11.R): if-else.  Ver en <https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script11.R>
+::::
+
+(haz click en las flechas para ver soluciones)
+
+<details>
+  <summary>📝<strong>Ejercicio 1</strong>: modifica el código inferior para imprimir un mensaje por pantalla si todos los datos del conjunto `airquality` son de meses que no sean enero.
+  
+```{r eval = FALSE}
+# install.packages("dataset") # solo la primera vez
+library(datasets) # paquete con los datos
+mes <- airquality$Month
+
+if (mes == 2) {
+  
+  print("Ningún dato es del mes de enero")
+  
+}
+  
+```
+</summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# install.packages("dataset") # solo la primera vez
+library(datasets) # paquete con los datos
+mes <- airquality$Month
+
+if (all(mes != 1)) { # todos con mes distinto de 1
+  
+  print("Ningún dato es del mes de enero")
+  
+}
+
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 2</strong>: modifica el código inferior para guardar en una variable `temperatura_alta` un valor `TRUE`  si alguno de los registros tiene una temperatura mayor a 90 (están en Farenheit) y un `FALSE` en caso contrario.
+  
+```{r eval = FALSE}
+temperatura <- airquality$Temp
+
+if (temperatura == 100) {
+  
+  print("Alguno de los registros tiene temperatura superior a 90 Farenheit")
+  
+}
+  
+```
+</summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+temperatura <- airquality$Temp
+temperatura_alta <- FALSE # por defecto FALSE
+if (any(temperatura > 90)) {
+  
+  temperatura_alta <- TRUE # si se cumple la condición, a TRUE
+  
+}
+
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 3</strong>: modifica el código inferior para imprimir un mensaje por pantalla si alguno de los días supera la temperatura de 100.
+  
+```{r eval = FALSE}
+temperatura <- airquality$Temp
+
+if (all(temperatura < 50)) {
+  
+  print("Alguno de los registros tiene temperatura superior a 100 Farenheit")
+  
+}
+  
+```
+
+</summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+temperatura <- airquality$Temp
+
+if (any(temperatura > 100)) { # nos basta con uno
+  
+  print("Alguno de los registros tiene temperatura superior a 100 Farenheit")
+  
+}
+
+```
+
+No debería imprimar nada porque ninguno cumple la condición.
+
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 4</strong>: del paquete `{lubridate}`, la función `hour()` nos devuelve la hora de una fecha dada, y la función `now()` nos devuelve fecha y hora del momento actual. Con ambas funciones, y usando `if`, imprime por pantalla  `"buenas noches"` solo a partir de las 21 horas. </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Cargamos librería
+library(lubridate)
+
+# Fecha-hora actual
+fecha_actual <- now()
+
+# Estructura if
+if (hour(fecha_actual) > 21) {
+  
+  cat("Buenas noches") # print/cat dos formas de imprimir por pantalla
+}
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+
+<details>
+  <summary>📝<strong>Ejercicio 5</strong>: con las funciones del ejercicio anterior, y usando una estructura `if-else`, imprime por pantalla `"buenos días"` (de 6 a 14 horas), `"buenas tardes"` (de 14 a 21 horas) o `"buenas noches"` (de las 21 a las 6 horas). </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Fecha actual
+fecha_actual <- now()
+
+# Estructura if-else
+if (hour(fecha_actual) > 6 & hour(fecha_actual) < 14) {
+  
+  cat("Buenos días")
+  
+} else if (hour(fecha_actual) > 14 & hour(fecha_actual) < 21) {
+  
+  cat("Buenas tardes")
+  
+} else {
+  
+  cat("Buenas noches")
+}
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+
+<details>
+  <summary>📝<strong>Ejercicio 6</strong>: realiza el ejercicio anterior pero sin estructura de llaves, de forma concisa con `ifelse()`. Mira la ayuda si la necesitases poniendo `? ifelse` en consola. </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Fecha actual
+fecha_actual <- now()
+
+# Estructura if-else
+cat(ifelse(hour(fecha_actual) > 6 & hour(fecha_actual) < 14,
+           "Buenos días",
+           ifelse(hour(fecha_actual) > 14 &
+                    hour(fecha_actual) < 21,
+                  "Buenas tardes", "Buenas noches")))
+  
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+
+
+
+## Estructuras for y while
+
+:::: {.blackbox data-latex=""}
+
+Scripts usados:
+
+* [**script12.R**](https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script12.R): bucles.  Ver en <https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script12.R>
+::::
+
+(haz click en las flechas para ver soluciones)
+
+
+<details>
+  <summary>📝<strong>Ejercicio 1</strong>: modifica el código interior para diseñar un bucle `for` de 5 iteraciones que recorra los 5 primeros impares y les sume uno.
+  
+```{r}
+for (i in 1:5) {
+  
+  print(i)
+}
+```
+
+</summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Una forma
+for (i in seq(1, 9, by = 2)) {
+  
+  print(i + 1)
+}
+
+# Otra
+for (i in c(1, 3, 5, 7, 9)) {
+  
+  print(i + 1)
+}
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 2</strong>: modifica el código interior para diseñar un bucle `while` que parta con una variable `conteo <- 1` y pare cuando llegue a 6.
+  
+```{r}
+conteo <- 1
+while (conteo == 2) {
+  
+  print(conteo)
+}
+```
+
+</summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+conteo <- 1
+while (conteo < 6) {
+  
+  print(conteo)
+  conteo <- conteo <- conteo + 1
+}
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+
+<details>
+  <summary>📝<strong>Ejercicio 3</strong>: construye un bucle que recorra las primeras 8 filas del conjunto de datos `datasets::airquality` y que imprima un mensaje con la temperatura
+
+</summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+for (i in 1:8) {
+  
+  print(glue("La temperatura es de {airquality$Temp[i]}ºF"))
+}
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+
+<details>
+  <summary>📝<strong>Ejercicio 4</strong>: diseña un bucle `for` de 200 iteraciones que, empezando en un valor inicial de 100 (euros), te sume 3€ si el número actual es par y te reste 5€ si es impar.
+
+Un número par o impar: un número par será todo aquel número que al dividir entre 2, la división es exacta, es decir, que su resto es nulo. Por ejemplo, al dividir 5 entre 2, el resto es 1, pero al dividir 12 entre 2 el resto es 0. Para calcula ese resto usaremos la función `%%`.
+
+```{r}
+5 %% 2
+12 %% 2
+23 %% 2
+46 %% 2
+```
+</summary>
+  
+<!-- toc -->
+- Solución:
+
+
+```{r}
+# dinero inicial
+dinero <- 100
+
+# Bucle for
+for (i in 1:200) {
+  
+  dinero <- ifelse(dinero %% 2 == 0, dinero + 3, dinero  - 5)
+  
+}
+dinero
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 5</strong>: diseña el anterior bucle pero guardando el dinero de cada iteración.</summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# vector de importes
+dinero <- rep(0, 201)
+dinero[1] <- 100 # dinero inicial
+
+# Bucle for
+for (i in 2:201) {
+  
+  # si dinero[i - 1] es par o  impar
+  dinero[i] <- ifelse(dinero[i - 1] %% 2 == 0, dinero[i - 1] + 3,
+                      dinero[i - 1]  - 5)
+  
+}
+dinero
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 6</strong>: diseña el bucle del ejercicio 4 parando cuando no nos quede dinero.</summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+dinero <- 100 # dinero inicial
+
+# Bucle while
+while (dinero > 0) {
+  
+  dinero <- ifelse(dinero %% 2 == 0, dinero + 3, dinero - 5)
+  
+}
+dinero
+```
+
+<!-- tocstop -->
+</details>
+
+
+
+
+
+## Funciones
+
+:::: {.blackbox data-latex=""}
+
+Scripts usados:
+
+* [**script13.R**](https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script13.R): funciones.  Ver en <https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script13.R>
+::::
+
+(haz click en las flechas para ver soluciones)
+
+
+<details>
+  <summary><strong>Ejercicio 1</strong>: modifica el código inferior para definir una función llamada `funcion_suma`, de forma que dados dos elementos, devuelve su suma.
+  
+```{r eval = FALSE}
+# Definimos función
+nombre <- function(x, y) {
+  
+  # Sumamos
+  suma <- # código a ejecutar
+  
+  # ¿Qué devolvemos?
+  return()
+}
+
+# Aplicamos la función
+suma(3, 7)
+```
+</summary>
+  
+- Solución:
+
+```{r}
+# Definimos función
+funcion_suma <- function(x, y) {
+  
+  # Sumamos
+  suma <- x + y
+  
+  # Devolvemos la salida
+  return(suma)
+}
+
+# Aplicamos la función
+funcion_suma(3, 7)
+```
+
+</details>
+
+&nsbp;
+
+<details>
+  <summary><strong>Ejercicio 2</strong>: modifica el código inferior para definir una función llamada `funcion_producto`, de forma que dados dos elementos, devuelve su producto.
+  
+```{r eval = FALSE}
+# Definimos función
+nombre <- function(x, y) {
+  
+  # Multiplicamos
+  producto <- # código de la multiplicación
+  
+  # ¿Qué devolvemos?
+  return()
+}
+
+# Aplicamos la función
+producto(3, -7)
+```
+</summary>
+  
+- Solución:
+
+```{r}
+# Definimos función
+funcion_producto <- function(x, y) {
+  
+  # Multiplicamos
+  producto <- x * y
+  
+  # Devolvemos la salida
+  return(producto)
+}
+
+# Aplicamos la función
+funcion_producto(3, -7)
+```
+
+</details>
+
+&nbsp;
+
+<details>
+  <summary><strong>Ejercicio 3</strong>: modifica el código inferior para definir una función llamada `funcion_producto`, de forma que dados dos elementos, devuelve su producto, pero que por defecto calcule el cuadrado (es decir, por defecto un solo argumento, y el resultado sea el número por sí mismo)
+  
+```{r eval = FALSE}
+# Definimos función
+nombre <- function(x, y) {
+  
+  # Multiplicamos
+  producto <- # código de la multiplicación
+  
+  # ¿Qué devolvemos?
+  return()
+}
+
+# Aplicamos la función solo con un argumento
+producto(3)
+
+# Aplicamos la función con dos argumentos
+producto(3, -7)
+```
+</summary>
+  
+- Solución:
+
+```{r}
+# Definimos función
+funcion_producto <- function(x, y = x) {
+  
+  # Multiplicamos
+  producto <- x * y
+  
+  # Devolvemos la salida
+  return(producto)
+}
+
+# Aplicamos la función
+funcion_producto(3) # por defecto x = 3, y = 3
+funcion_producto(3, -7)
+```
+
+</details>
+
+&nbsp;
+
+<details>
+  <summary><strong>Ejercicio 4</strong>: define una función llamada `igualdad_nombres` que, dados dos nombres `persona_1` e `persona_2`, nos diga si son iguales o no. Hazlo considerando importantes las mayúsculas, y sin que importen las mayúsculas. Recuerda que con `toupper()` podemos pasar todo un texto a mayúscula. </summary>
+  
+- Solución:
+
+```{r}
+# Distinguiendo mayúsculas
+igualdad_nombres <- function(persona_1, persona_2) {
+  
+  return(persona_1 == persona_2)
+}
+igualdad_nombres("Javi", "javi")
+igualdad_nombres("Javi", "Lucía")
+
+# Sin importar mayúsculas
+igualdad_nombres <- function(persona_1, persona_2) {
+  
+  return(toupper(persona_1) == toupper(persona_2))
+}
+igualdad_nombres("Javi", "javi")
+igualdad_nombres("Javi", "Lucía")
+```
+
+</details>
+
+&nbsp; 
+
+<details>
+  <summary><strong>Ejercicio 5</strong>: define una función llamada `pares` que, dados dos números `x` e `y`, nos diga si la suma de ambos es par o no.
+  
+Recuerda que con `%%` podemos obtener el resto de un número al dividir entre 2.
+
+```{r}
+2 %% 2 # par, resto 0
+3 %% 2 # impar, resto 1
+```
+</summary>
+  
+- Solución:
+
+```{r}
+# Definimos función
+pares <- function(x, y) {
+  
+  # Sumamos
+  suma <- x + y
+  
+  # Comprobamos si es par
+  par <- suma %% 2 == 0
+  
+  # Devolvemos la salida
+  return(par)
+}
+
+# Aplicamos la función
+pares(1, 3) # suma 4 (par)
+pares(2, 7) # suma 9 (impar)
+```
+
+</details>
+
+&nbsp; 
+
+<details>
+  <summary><strong>Ejercicio 6</strong>: define una función llamada `pasar_a_celsius` que, dada una temperatura $x$ en Fahrenheit, la convierta a grados Celsius ($ºC = (ºF - 32) * \frac{5}{9}$). Aplica la función a la columna `Temp` del conjunto `airquality`, e incorpórala al fichero en una nueva columna `Temp_Celsius`.
+</summary>
+  
+- Solución:
+
+```{r}
+# Definimos función
+pasar_a_celsius <- function(x) {
+  
+  # Temperatura en Celsius
+  x_celsius <- (x - 32) * (5 / 9)
+  
+  # Devolvemos la salida
+  return(x_celsius)
+}
+
+# Aplicamos la función
+pasar_a_celsius(0)
+pasar_a_celsius(80)
+
+# Aplicamos
+data.frame(airquality,
+           "Temp_Celsius" = pasar_a_celsius(airquality$Temp))
+```
+
+</details>
+
+&nbsp; 
+
+
+
+
+
+
+## Practica final
+
+:::: {.blackbox data-latex=""}
+
+Scripts usados:
+
+* [**script16.R**](https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script16.R): practica final. Ver en <https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script16.R>
+
+::::
+
+
+(haz click en las flechas para ver soluciones)
+
+
+<details>
+  <summary><strong>Ejercicio 1</strong>: carga el fichero `titanic.RData` que tienes en la carpeta `DATOS` <https://github.com/dadosdelaplace/courses-intro-r/tree/main/DATOS>.
+  
+</summary>
+  
+- Solución:
+
+```{r}
+load("./DATOS/titanic.RData")
+```
+
+</details>
+
+&nsbp;
+
+
+<details>
+  <summary><strong>Ejercicio 2</strong>: obtén el número de individuos y de variables de nuestro dataset
+  
+</summary>
+  
+- Solución:
+
+```{r}
+ncol(titanic) # variables
+nrow(titanic) # individuos
+```
+
+</details>
+
+&nsbp;
+
+
+<details>
+  <summary><strong>Ejercicio 3</strong>: ¿de qué tipo es la variable `Name`? ¿Y la variable `Pclass`? ¿Y la variable `Age`? ¿Y la variable `Survived`
+  
+</summary>
+  
+- Solución:
+
+```{r}
+class(titanic$Name) 
+class(titanic$Pclass)
+class(titanic$Age)
+class(titanic$Survived)
+```
+
+</details>
+
+
+&nsbp;
+
+
+<details>
+  <summary><strong>Ejercicio 4</strong>: internamente tenemos `0` y `1` pero la variable `Survived` en realidad debería ser variable lógica (`TRUE` si sobrevivió). Modifica la variable para ponter `TRUE` cuando vale `1` y `FALSE` en caso contrario
+  
+</summary>
+  
+- Solución:
+
+```{r}
+# Modo ifelse
+titanic$Survived <- ifelse(titanic$Survived == 1, TRUE, FALSE)
+
+# otra forma: modo bucle + if
+load("./DATOS/titanic.RData")
+nueva_variable <- rep(FALSE, length(titanic$Survived))
+for (i in 1:length(titanic$Survived)) {
+  
+  if (titanic$Survived[i] == 1) {
+    
+    nueva_variable[i] <- TRUE
+    
+  }
+}
+titanic$Survived <- nueva_variable
+```
+
+</details>
+
+
+
+&nsbp;
+
+
+<details>
+  <summary><strong>Ejercicio 5</strong>: en la variable `Name` tenemos guardado el nombre de los pasajeros, pero también su título (`Mr.`, `Mrs`, `Miss`, etc). Extrae los nombres de las personas con `Miss.`
+  
+</summary>
+  
+- Solución:
+
+```{r}
+library(stringr)
+# Con str_detect obtenemos un TRUE/FALSE
+titanic$Name[str_detect(titanic$Name, pattern = "Miss.")]
+```
+
+</details>
+
+
+&nsbp;
+
+
+<details>
+  <summary><strong>Ejercicio 6</strong>: calcula la media de edad de los pasajeros del Titanic (recuerda: si hay datos ausentes...). Haz lo mismo pero por sexos (male/female)
+  
+</summary>
+  
+- Solución:
+
+```{r}
+mean(titanic$Age, na.rm = TRUE)
+mean(titanic$Age[titanic$Sex == "male"], na.rm = TRUE)
+mean(titanic$Age[titanic$Sex == "female"], na.rm = TRUE)
+```
+
+</details>
+
+
+&nsbp;
+
+<details>
+  <summary><strong>Ejercicio 7</strong>: ordena la edad de los pasajeros del Titanic de menor a mayor, y de mayor a menor
+  
+</summary>
+  
+- Solución:
+
+```{r}
+sort(titanic$Age) # menor a mayor
+sort(titanic$Age, decreasing = TRUE) # mayor a menor
+```
+
+&nsbp;
+
+<details>
+  <summary><strong>Ejercicio 8</strong>: vamos a clasificar a los pasajeros según su edad en `"mayores de edad"` y `"menores de edad"`. Crea un función que, dada una edad, nos diga si es mayor o menor de edad. Aplícala después a nuestra variable `Age` y guarda el resultado en una variable `edad_recodificada ` que añadamos a los datos originales
+  
+</summary>
+  
+- Solución:
+
+```{r}
+# Definimos función
+menor_edad <- function(edad) {
+  
+  salida <- ifelse(edad < 18, "menores de edad", "mayores de edad")
+  return(salida)
+}
+
+# Creamos nueva variable
+titanic$edad_recodificada <- menor_edad(titanic$Age) # se aplica elemento a elemento
+titanic$edad_recodificada # habrá NA
+```
+
+&nsbp;
+
+<details>
+  <summary><strong>Ejercicio 9</strong>: el accidente del Titanic se produjo el 15 de abril de 1912. Tomando dicha fecha como referencia, usa la edad de los pasajeros para añadir una nueva variable que sea la fecha de nacimiento.
+  
+</summary>
+  
+- Solución:
+
+```{r}
+library(lubridate)
+# Fecha accidente
+accidente <- as_date("1912/04/15")
+
+# Creamos nueva variable: fecha del accidente - años
+# (saldrán todos nacidos el 15 de abril, ya que no sabemos
+# cuantos meses cumplían en el momento del accidente)
+titanic$fecha_nacimiento <- accidente - titanic$Age
+titanic$fecha_nacimiento 
+```

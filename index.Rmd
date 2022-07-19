@@ -1,5 +1,5 @@
 --- 
-title: "Aprendiendo R sin morir en el intento"
+title: "Introducción a R: aprendiendo R sin morir en el intento"
 author: "Javier Álvarez Liébana"
 date: 'Última actualización: `r format(as.Date(Sys.Date()), "%d-%m-%Y")`'
 documentclass: book
@@ -25,7 +25,7 @@ header-includes:
 - \usepackage{multicol}
 - \usepackage{threeparttable}
 - \usepackage{caption}
-description: "Introducción a R (desde cero). Curso elaborado por Javier Álvarez Liébana (@dadosdelaplace)"
+description: "Curso básico de introducción a R (desde cero). Curso elaborado por Javier Álvarez Liébana (dadosdelaplace)"
 cover-image: img/logo_R.png
 ---
 
@@ -56,9 +56,9 @@ colorize <- function(x, color) {
 
 # Prefacio {-}
 
-Este curso ha sido diseñado por [Javier Álvarez Liébana](https://dadosdelaplace.github.io) y pensado para introducir en el lenguaje `R` a todas aquellas personas que quieran **aprender `R` desde cero**. Dicho manual ha sido elaborado a su vez en `R` con [{bookdown}](https://github.com/rstudio/bookdown). Puedes ver un resumen de las funcionalidades de algunos paquetes documentados por el equipo de [R Studio](https://www.rstudio.com/) en sus [esquemas resumen](https://www.rstudio.com/resources/cheatsheets/). El **código** de dicho manual se encuentra en [GitHub](https://github.com/dadosdelaplace/intro-R).
+Este curso ha sido diseñado por [Javier Álvarez Liébana](https://dadosdelaplace.github.io) y pensado para introducir en el lenguaje `R` a todas aquellas personas que quieran **aprenderlo desde cero**, sin necesidad de ningún conocimiento previo de programación. Dicho manual ha sido elaborado a su vez en `R` con [{bookdown}](https://github.com/rstudio/bookdown). Puedes ver un resumen de las funcionalidades de algunos paquetes documentados por el equipo de [R Studio](https://www.rstudio.com/) en sus [esquemas resumen](https://www.rstudio.com/resources/cheatsheets/). El **código** de dicho manual se encuentra en [GitHub](https://github.com/dadosdelaplace/intro-R).
 
-```{r me-github, echo = FALSE, fig.align = 'center',  include = identical(knitr:::pandoc_to(), 'html'), fig.link = 'https://github.com/dadosdelaplace/cursoR_intro_2021_2022', out.width = '70%'}
+```{r me-github, echo = FALSE, fig.align = 'center',  include = identical(knitr:::pandoc_to(), 'html'), out.width = '65%'}
 knitr::include_graphics('img/me_github.jpg')
 ```
 
@@ -77,50 +77,34 @@ install.packages("bookdown")
 knitr::include_graphics('img/hex-rmarkdown.png')
 ```
 
+## Sobre el autor {-}
+
+Esto de presentarse a sí mismo es siempre un poco raro pero vamos a intentarlo. Mi nombre es <mark>**Javier Álvarez Liébana**</mark>, soy **matemático**, nacido en 1989 en **Carabanchel (Madrid)**, pasando por Bologna (Italia). Tras terminar licenciatura y Máster en Ingeniería Matemática, recibí en julio de 2018 el título de **Doctor en Estadística** (por la Universidad de Granada, con dos estancias en Université Pierre et Marie Curie)
+
+Además de <mark>**investigador**</mark> (con acreditación de Contratado Doctor por la ANECA, y  plaza de Ayudante Doctor en la Facultad de Estudios Estadísticos de la Universidad Complutense de Madrid), soy [**docente** en dicha facultad](#docencia-impartida) y ando intentando eso de la <mark>**divulgación en estadística y dataviz**</mark> (visualización de datos) en redes sociales
+
+🎲 [Web](https://dadosdelaplace.github.io)  
+💌 [Newsletter](https://cartasdelaplace.substack.com)  
+🐦 [Twitter](https://twitter.com/dadosdelaplace)  
+📸 [Instagram](https://instagram.com/javieralvarezliebana)  
 
 
 ## Propósito {-}
 
-El **objetivo** de este tutorial es introducir a la programación y análisis estadístico en `R` a toda aquella persona que nunca se haya iniciado en él, **sin necesitar conocimientos previos** de programación (aunque siempre ayuda, obviamente). Con este manual no se pretende que adquieras un vasto y experto conocimiento de `R`, pero si lo suficiente como para lograr **5 objetivos**:
+El <mark>**objetivo**</mark> de este tutorial es introducir a la programación y análisis estadístico en `R` a toda aquella persona que nunca se haya iniciado en él, **sin necesitar conocimientos previos** de programación (aunque siempre ayuda, obviamente). Con este manual no se pretende que adquieras un vasto y experto conocimiento de `R`, pero si lo suficiente como para lograr
 
-* **No tener miedo** a programar
-* Entender los **conceptos básicos de `R`**.
-* Dotarte de una **autonomía** muy básica para pdoer trabajar con datos.
-* Introducirte en el **análisis estadístico**.
-* Algunos **trucos sencillos** para que el trabajo sea más rápido, tanto en tiempo de escritura como de ejecución.
-
-
-## Requisitos {-}
-
-* **Conexión a internet** (para la descarga de algunos datos y paquetes).
-
-* **Instalar R** (ver \@ref(instalacionR)). **`R` será nuestro lenguaje**, nuestro diccionario, nuestro castellano, nuestra ortografía para poder «comunicarnos» con el ordenador. <https://cran.r-project.org/>
-
-* **Instalar `R Studio`** (ver \@ref(instalacionRStudio)). De la misma manera que podemos escribir el mismo texto en castellano en una tablet, en un ordenador, en un Word, en un papel o en un tuit, en programación podemos usar distintos **IDE (entornos de desarrollo integrados, nuestro Office)**, para que el trabajo sea más cómodo. Nosotros trabajaremos con `RStudio`.
-
-Todo lo necesario para seguir este curso es de **descarga gratuita**: viva el software libre.
-
+* <mark>**No tener miedo**</mark> a programar: los errores son solo eso, errores.
+* Entender los <mark>**conceptos básicos de `R`**</mark>.
+* Dotarte de una <mark>**autonomía**</mark> muy básica para poder empezar a trabajar con datos.
+* Algunos <mark>**trucos sencillos**</mark> para que el trabajo sea más rápido, tanto en tiempo de escritura como de ejecución.
 
 
 ## Contenidos {-}
 
+* \@ref(requisitos) [Requisitos](#requisitos) 
 * \@ref(instalacionR) [Instalacion de R y RStudio](#instalacionR) 
-* \@ref(primeros-pasos) [Primeros pasos en R](#primeros-pasos) 
-* \@ref(vectores) [Tipos de datos I: vectores](#vectores) 
-* \@ref(operacionesvectores) [Operaciones con vectores](#operacionesvectores) 
-* \@ref(control) [Estructuras de control](#control)
-* \@ref(datos) [Tipos de datos II: datos estructurados](#datos)
-* \@ref(proyecto) [Flujo de trabajo: primer proyecto](#proyecto)
-* \@ref(importar-exportar) [Importar/exportar datos](#importar-exportar)
-* \@ref(listas) [Listas](#listas)
-* \@ref(factores) [Factores](#factores)
-* \@ref(funciones) [Creación de funciones](#funciones)
-* \@ref(tidydata) [Tidy data: ordenando datos](#tidydata)
-* \@ref(tidyverse) [Incursión a tidyverse](#tidyverse)
-* \@ref(resumenes) [Resumiendo y relacionado los datos](#resumenes)
-* \@ref(resumen-1) [¿Qué sabemos hacer?](#resumen-1)
-* \@ref(recursos) [Recursos extras](#recursos)
-* \@ref(contribuye) [Contribuye al proyecto](#contribuye)
+* \@ref(que-es-R) [¿Qué es R?](#que-es-R) 
+* \@ref(primeros-pasos) [Primeros pasos en R](#primeros-pasos)
 
 ## Código de colores {-} 
 
@@ -129,7 +113,6 @@ Puedes buscar los siguientes términos en el **buscador del documento**
 **`r colorize("ERROR:", "#dc3545")`**
 
 En **`r colorize("color rojo", "#dc3545")`** encontrarás **`r colorize("errores comunes", "#dc3545")`** o prácticas a evitar.
-
 
 &nbsp;
 
@@ -153,38 +136,7 @@ En **`r colorize("color azul", "#4197D2")`** encontrarás un 📚 **`r colorize(
 
 
  
-## Sobre el autor {-}
 
-Esto de presentarse a sí mismo es siempre un poco raro pero vamos a intentarlo. Mi nombre es **Javier Álvarez Liébana**, soy **matemático**, nacido en 1989 en **Carabanchel (Madrid)**, pasando por Bologna (Italia). Tras terminar licenciatura y Máster en Ingeniería Matemática, recibí en julio de 2018 el título de **Doctor en Estadística** (por la Universidad de Granada, con dos estancias en Université Pierre et Marie Curie)
-
-Además de **investigador** (con plaza y acreditación de Ayudante Doctor en la Facultad de Estudios Estadísticos de la Universidad Complutense de Madrid), soy [**docente** en dicha facultad](#docencia-impartida) y ando intentando eso de la **divulgación en estadística y dataviz** (visualización de datos) en redes sociales
-
-🎲 [Web](https://dadosdelaplace.github.io)  
-💌 [Newsletter](https://cartasdelaplace.substack.com)  
-🐦 [Twitter](https://twitter.com/dadosdelaplace)  
-📸 [Instagram](https://instagram.com/javieralvarezliebana)  
-
-## Docencia impartida {-}
-
-* **2021-2022 (UCM)**:
-  - estadística descriptiva y exploración de datos (Grado en Estadística Aplicada)
-  - minería de datos (Máster en Minería de Datos e Inteligencia de Negocio)
-* **2020-2021 (UNIOVI)**:
-  - estadística (Grado en Informática, Grado en Ingeniería Química)
-* **2019-2020 (UNIOVI)**:
-  - estadística (Grado en Informática, Grado en Ingeniería Química)
-  - modelos lineales generalizados (Máster en Análisis de Datos para la Inteligencia de Negocios)
-* **2018-2019 (UNIOVI)**:
-  - estadística (Grado en Informática, Grado en Ingeniería Química).
-  - bioestadística y epidemiología (Grado en Fisioterapia)
-  - programación matemática (Grado en Matemáticas y Doble Grado en Matemátias y Física)
-* **2016-2017 (UGR)**:
-  - estadística (Grado en Ciencias Ambientales)
-  - matemáticas III (Grado en Ingeniería Civil)
-* **2015-2016 (UGR)**:
-  - probabilidad (Grado en Matemáticas)
-  - estadística (Grado en Ciencias Ambientales y Grado en Informática)
-  - matemáticas III (Grado en Ingeniería Civil)
 
 ## Licencia {-}
 

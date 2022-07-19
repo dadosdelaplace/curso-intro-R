@@ -4,29 +4,25 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Capítulo 1 Instalación | Aprendiendo R sin morir en el intento</title>
+<title>Capítulo 2 Instalación | Introducción a R: aprendiendo R sin morir en el intento</title>
 <meta name="author" content="Javier Álvarez Liébana">
-<meta name="description" content="1.1 Instalación de R Vamos a necesitar solo 3 pasos (y conexión a internet).  1.1.1 Paso 1 Entra en la web https://cran.r-project.org/ y en la pantalla de inicio selecciona la instalación acorde a...">
+<meta name="description" content="Scripts usados (códigos con los ejercicios): script02.R. Ver en https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script02.R  En breve daremos nuestros primeros pasos pero antes...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
-<meta property="og:title" content="Capítulo 1 Instalación | Aprendiendo R sin morir en el intento">
+<meta property="og:title" content="Capítulo 2 Instalación | Introducción a R: aprendiendo R sin morir en el intento">
 <meta property="og:type" content="book">
 <meta property="og:image" content="/img/logo_R.png">
-<meta property="og:description" content="1.1 Instalación de R Vamos a necesitar solo 3 pasos (y conexión a internet).  1.1.1 Paso 1 Entra en la web https://cran.r-project.org/ y en la pantalla de inicio selecciona la instalación acorde a...">
+<meta property="og:description" content="Scripts usados (códigos con los ejercicios): script02.R. Ver en https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script02.R  En breve daremos nuestros primeros pasos pero antes...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Capítulo 1 Instalación | Aprendiendo R sin morir en el intento">
-<meta name="twitter:description" content="1.1 Instalación de R Vamos a necesitar solo 3 pasos (y conexión a internet).  1.1.1 Paso 1 Entra en la web https://cran.r-project.org/ y en la pantalla de inicio selecciona la instalación acorde a...">
+<meta name="twitter:title" content="Capítulo 2 Instalación | Introducción a R: aprendiendo R sin morir en el intento">
+<meta name="twitter:description" content="Scripts usados (códigos con los ejercicios): script02.R. Ver en https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script02.R  En breve daremos nuestros primeros pasos pero antes...">
 <meta name="twitter:image" content="/img/logo_R.png">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/_Sen-0.4.0/font.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/_Sen-0.4.1/font.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=DM%20Mono&amp;display=swap" rel="stylesheet">
-<link href="libs/_Bitter-0.4.0/font.css" rel="stylesheet">
-<script src="libs/bs3compat-0.3.0/transition.js"></script><script src="libs/bs3compat-0.3.0/tabs.js"></script><script src="libs/bs3compat-0.3.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
-<script src="libs/datatables-binding-0.18/datatables.js"></script><link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
-<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet">
-<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script><link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet">
-<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS -->
+<link href="libs/_Bitter-0.4.1/font.css" rel="stylesheet">
+<script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="css/style.css">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -36,7 +32,7 @@
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
-        <a href="index.html" title="">Aprendiendo R sin morir en el intento</a>
+        <a href="index.html" title="">Introducción a R: aprendiendo R sin morir en el intento</a>
       </h1>
       <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
@@ -49,29 +45,29 @@
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Prefacio</a></li>
+<li class="book-part">Recursos</li>
+<li><a class="" href="ejercicios-recopilados.html">📝 Ejercicios recopilados</a></li>
+<li><a class="" href="recursos-de-aprendizaje.html">📚 Recursos de aprendizaje</a></li>
 <li class="book-part">Toma de contacto</li>
-<li><a class="active" href="instalacionR.html"><span class="header-section-number">1</span> Instalación</a></li>
-<li><a class="" href="primeros-pasos.html"><span class="header-section-number">2</span> Primeros pasos</a></li>
-<li class="book-part">Conceptos básicos</li>
-<li><a class="" href="vectores.html"><span class="header-section-number">3</span> Tipos de datos I: vectores</a></li>
-<li><a class="" href="operacionesvectores.html"><span class="header-section-number">4</span> Operaciones con vectores</a></li>
-<li><a class="" href="control.html"><span class="header-section-number">5</span> Estructuras de control</a></li>
-<li><a class="" href="datos.html"><span class="header-section-number">6</span> Tipos de datos II: datos estructurados</a></li>
-<li><a class="" href="proyecto.html"><span class="header-section-number">7</span> Flujo de trabajo: primer proyecto</a></li>
-<li><a class="" href="importar-exportar.html"><span class="header-section-number">8</span> Importando/exportando</a></li>
-<li class="book-part">Un pasito más</li>
-<li><a class="" href="listas.html"><span class="header-section-number">9</span> Listas</a></li>
-<li><a class="" href="factores.html"><span class="header-section-number">10</span> Factores</a></li>
-<li><a class="" href="funciones.html"><span class="header-section-number">11</span> Creación de funciones</a></li>
-<li class="book-part">EXPLORANDO: introducción al análisis exploratorio de datos</li>
-<li><a class="" href="tidydata.html"><span class="header-section-number">12</span> Tidy data: ordenando datos</a></li>
-<li><a class="" href="tidyverse.html"><span class="header-section-number">13</span> Incursión a tidyverse</a></li>
-<li><a class="" href="resumenes.html"><span class="header-section-number">14</span> Resumiendo y relacionado los datos</a></li>
-<li class="book-part">Final del camino</li>
-<li><a class="" href="resumen-1.html"><span class="header-section-number">15</span> ¿Qué sabemos hacer?</a></li>
-<li><a class="" href="recursos.html"><span class="header-section-number">16</span> Recursos extras</a></li>
-<li class="book-part">Epílogo</li>
-<li><a class="" href="contribuye.html"><span class="header-section-number">17</span> Contribuye al proyecto</a></li>
+<li><a class="" href="requisitos.html"><span class="header-section-number">1</span> Requisitos</a></li>
+<li><a class="active" href="instalacionR.html"><span class="header-section-number">2</span> Instalación</a></li>
+<li><a class="" href="que-es-R.html"><span class="header-section-number">3</span> ¿Qué es R?</a></li>
+<li><a class="" href="primeros-pasos.html"><span class="header-section-number">4</span> Primeros pasos</a></li>
+<li class="book-part">Tipos de datos</li>
+<li><a class="" href="var-num.html"><span class="header-section-number">5</span> Variables individuales: números y caracteres</a></li>
+<li><a class="" href="vectores.html"><span class="header-section-number">6</span> Vectores</a></li>
+<li><a class="" href="operacionesvectores.html"><span class="header-section-number">7</span> Operaciones con vectores</a></li>
+<li><a class="" href="fechas.html"><span class="header-section-number">8</span> Fechas</a></li>
+<li><a class="" href="datos.html"><span class="header-section-number">9</span> Datos estructurados</a></li>
+<li><a class="" href="listas.html"><span class="header-section-number">10</span> Listas</a></li>
+<li class="book-part">Haciendo el trabajo más fácil</li>
+<li><a class="" href="if-else.html"><span class="header-section-number">11</span> Estructuras de control: if-else</a></li>
+<li><a class="" href="bucles.html"><span class="header-section-number">12</span> Estructuras de control: bucles</a></li>
+<li><a class="" href="funciones.html"><span class="header-section-number">13</span> Funciones</a></li>
+<li><a class="" href="proyecto.html"><span class="header-section-number">14</span> Proyecto de trabajo</a></li>
+<li class="book-part">Colofón</li>
+<li><a class="" href="importar-exportar.html"><span class="header-section-number">15</span> Importar/exportar datos</a></li>
+<li><a class="" href="practica-final.html"><span class="header-section-number">16</span> 📝 Práctica final</a></li>
 <li><a class="" href="bibliograf%C3%ADa.html">Bibliografía</a></li>
 </ul>
 
@@ -82,63 +78,84 @@
 </div>
   </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="instalacionR" class="section level1">
 <h1>
-<span class="header-section-number">Capítulo 1</span> Instalación<a class="anchor" aria-label="anchor" href="#instalacionR"><i class="fas fa-link"></i></a>
+<span class="header-section-number">Capítulo 2</span> Instalación<a class="anchor" aria-label="anchor" href="#instalacionR"><i class="fas fa-link"></i></a>
 </h1>
+<div class="blackbox">
+<p>Scripts usados (códigos con los ejercicios):</p>
+<ul>
+<li>
+<a href="https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script02.R"><strong>script02.R</strong></a>. Ver en <a href="https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script02.R" class="uri">https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script02.R</a>
+</li>
+</ul>
+</div>
+<p>En breve daremos nuestros primeros pasos pero antes necesitamos instalar algunas cosas. No serán tantas. Para entender lo que instalamos pensaremos que vamos a escribir un libro. <mark><strong>¿Qué necesitamos?</strong></mark></p>
+<ul>
+<li>
+<mark><strong>Gramática/ortografía</strong></mark>: en nuestro caso será <code>R</code>, el lenguaje de programación que usaremos.</li>
+<li>
+<mark><strong>Word</strong></mark>: al igual que podemos escribir en castellano de distintas maneras (en un Word, un post-it, un cuaderno, etc), cuando programamos podemos trabajar en distintos <strong>entornos de desarrollo (IDE)</strong>. En nuestro caso escribiremos y programaremos en <code>RStudio</code>, nuestro <strong>Word</strong> para escribir en lenguaje <code>R</code>.</li>
+</ul>
 <div id="instalación-de-r" class="section level2">
 <h2>
-<span class="header-section-number">1.1</span> Instalación de R<a class="anchor" aria-label="anchor" href="#instalaci%C3%B3n-de-r"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.1</span> Instalación de R<a class="anchor" aria-label="anchor" href="#instalaci%C3%B3n-de-r"><i class="fas fa-link"></i></a>
 </h2>
-<p>Vamos a necesitar <mark><strong>solo 3 pasos (y conexión a internet)</strong></mark>.</p>
+<p>Al contrario que otros lenguajes de programación, la instalación será bastante sencilla gracias a su modularidad, ya que solo vamos a necesitar <mark><strong>3 pasos (y conexión a internet)</strong></mark>.</p>
 <div id="paso-1" class="section level3">
 <h3>
-<span class="header-section-number">1.1.1</span> Paso 1<a class="anchor" aria-label="anchor" href="#paso-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.1.1</span> Paso 1<a class="anchor" aria-label="anchor" href="#paso-1"><i class="fas fa-link"></i></a>
 </h3>
-<p>Entra en la web <a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a> y en la pantalla de inicio <strong>selecciona la instalación acorde a tu sistema operativo</strong> (ver imagen <a href="instalacionR.html#fig:pantalla-cran">1.1</a>)</p>
+<p>Entra en la web <a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a> y en la pantalla de inicio <strong>selecciona la instalación acorde a tu sistema operativo</strong> (ver imagen <a href="instalacionR.html#fig:pantalla-cran">2.1</a>)</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:pantalla-cran"></span>
-<img src="img/pantalla1_cran.jpg" alt="Pantalla inicial de la plataforma CRAN de R." width="80%"><p class="caption">
-Imagen/gráfica 1.1: Pantalla inicial de la plataforma CRAN de R.
+<img src="img/pantalla1_cran.jpg" alt="Pantalla inicial de la plataforma CRAN de R." width="90%"><p class="caption">
+Imagen/gráfica 2.1: Pantalla inicial de la plataforma CRAN de R.
 </p>
 </div>
 </div>
 <div id="paso-2" class="section level3">
 <h3>
-<span class="header-section-number">1.1.2</span> Paso 2<a class="anchor" aria-label="anchor" href="#paso-2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.1.2</span> Paso 2<a class="anchor" aria-label="anchor" href="#paso-2"><i class="fas fa-link"></i></a>
 </h3>
-<p>Para sistemas operativos <strong>Mac</strong> basta con que hacer click en el archivo <code>.pkg</code>, y abrirlo una vez descargado (ver imagen <a href="instalacionR.html#fig:pantalla-mac">1.2</a>)</p>
+<p>Para sistemas operativos <strong>Mac</strong> basta con que hacer click en el archivo <code>.pkg</code>, y abrirlo una vez descargado (ver imagen <a href="instalacionR.html#fig:pantalla-mac">2.2</a>)</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:pantalla-mac"></span>
-<img src="img/pantall_mac_cran.jpg" alt="Pantalla de instalación de R en Mac OS." width="90%"><p class="caption">
-Imagen/gráfica 1.2: Pantalla de instalación de R en Mac OS.
+<img src="img/pantall_mac_cran.jpg" alt="Pantalla de instalación de R en Mac OS." width="100%"><p class="caption">
+Imagen/gráfica 2.2: Pantalla de instalación de R en Mac OS.
 </p>
 </div>
-<p>Para sistemas operativos <strong>Windows</strong>, debemos clickar en <code>install R for the first time</code> (ver imagen <a href="instalacionR.html#fig:pantalla-windows-1">1.3</a>) y en la siguiente pantalla hacer click en <code>Download R for Windows</code> (ver imagen <a href="instalacionR.html#fig:pantalla-windows-2">1.4</a>). Una vez descargado, abrirlo como cualquier archivo.</p>
+<p>Para sistemas operativos <strong>Windows</strong>, debemos clickar en <code>install R for the first time</code> (ver imagen <a href="instalacionR.html#fig:pantalla-windows-1">2.3</a>) y en la siguiente pantalla hacer click en <code>Download R for Windows</code> (ver imagen <a href="instalacionR.html#fig:pantalla-windows-2">2.4</a>). Una vez descargado, abrirlo como cualquier archivo.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:pantalla-windows-1"></span>
-<img src="img/pantalla_windows_1.jpg" alt="Pantalla previa de instalación de R en Windows." width="80%"><p class="caption">
-Imagen/gráfica 1.3: Pantalla previa de instalación de R en Windows.
+<img src="img/pantalla_windows_1.jpg" alt="Pantalla previa de instalación de R en Windows." width="90%"><p class="caption">
+Imagen/gráfica 2.3: Pantalla previa de instalación de R en Windows.
 </p>
 </div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:pantalla-windows-2"></span>
-<img src="img/pantalla_windows_2.jpg" alt="Pantalla final de instalación de R en Windows." width="90%"><p class="caption">
-Imagen/gráfica 1.4: Pantalla final de instalación de R en Windows.
+<img src="img/pantalla_windows_2.jpg" alt="Pantalla final de instalación de R en Windows." width="100%"><p class="caption">
+Imagen/gráfica 2.4: Pantalla final de instalación de R en Windows.
 </p>
 </div>
 </div>
 <div id="paso-3" class="section level3">
 <h3>
-<span class="header-section-number">1.1.3</span> Paso 3<a class="anchor" aria-label="anchor" href="#paso-3"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.1.3</span> Paso 3<a class="anchor" aria-label="anchor" href="#paso-3"><i class="fas fa-link"></i></a>
 </h3>
-<p>Tras su instalación tendrás en tu escritorio (Windows) o en tu Launchpad (Mac Os) un <mark><strong>ejecutable de <code>R</code> para abrir</strong></mark>. En Windows puede que tengas dos ejecutables <code>i386</code> y <code>x64</code> (como todo programa en Windows está la versión de 32 y de 64 bits, haz click preferiblemente - si lo tienes - en el de <code>x64</code>). Te saldrá algo parecido a lo que observas en la imagen <a href="instalacionR.html#fig:cranR">1.5</a>.</p>
+<p>Tras su instalación tendrás en tu escritorio (Windows) o en tu Launchpad (Mac Os) un <mark><strong>ejecutable de <code>R</code> para abrir</strong></mark>. En Windows puede que tengas dos ejecutables <code>i386</code> y <code>x64</code> (como todo programa en Windows está la versión de 32 y de 64 bits, haz click preferiblemente - si lo tienes - en el de <code>x64</code>). Te saldrá algo parecido a lo que observas en la imagen <a href="instalacionR.html#fig:cranR">2.5</a>, lo que se conoce como <mark><strong>CONSOLA</strong></mark></p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:cranR"></span>
-<img src="img/cranR.jpg" alt="Primera pantalla al abrir el ejecutable de R." width="75%"><p class="caption">
-Imagen/gráfica 1.5: Primera pantalla al abrir el ejecutable de R.
+<img src="img/cranR.jpg" alt="Primera pantalla al abrir el ejecutable de R." width="90%"><p class="caption">
+Imagen/gráfica 2.5: Primera pantalla al abrir el ejecutable de R.
 </p>
 </div>
-<p>Para comprobar que está correctamente instalado, <mark><strong>prueba a escribir</strong></mark> en la consola inferior el siguiente código (<mark><strong>recuerda</strong></mark>: los códigos puedes <strong>copiarlos</strong> directamente de la cajita haciendo click en el botón de la esquina superior derecha)</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+</div>
+</div>
+<div id="primera-operación-en-consola-sumar-dos-números" class="section level2">
+<h2>
+<span class="header-section-number">2.2</span> Primera operación en consola: sumar dos números<a class="anchor" aria-label="anchor" href="#primera-operaci%C3%B3n-en-consola-sumar-dos-n%C3%BAmeros"><i class="fas fa-link"></i></a>
+</h2>
+<p>Para comprobar que <code>R</code> está correctamente instalado, abre <code>R</code> y <mark><strong>prueba a escribir</strong></mark> en la pantalla blanca inferior las siguientes órdenes (<mark><strong>recuerda</strong></mark>: los códigos/órdenes de este manual puedes <strong>copiarlos</strong> directamente de la cajita <mark><strong>haciendo click en el botón de la esquina superior derecha</strong></mark> de la misma)</p>
+<div class="sourceCode" id="cb297"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">a</span> <span class="op">&lt;-</span> <span class="fl">1</span>
 <span class="va">b</span> <span class="op">&lt;-</span> <span class="fl">2</span>
 <span class="va">a</span> <span class="op">+</span> <span class="va">b</span></code></pre></div>
@@ -146,45 +163,48 @@ Imagen/gráfica 1.5: Primera pantalla al abrir el ejecutable de R.
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:primera-suma"></span>
 <img src="img/primera_suma.jpg" alt="Primera suma en la consola de R." width="90%"><p class="caption">
-Imagen/gráfica 1.6: Primera suma en la consola de R.
+Imagen/gráfica 2.6: Primera suma en la consola de R.
 </p>
 </div>
 <p><strong>¡Enhorabuena!</strong></p>
-<p>Si te ha devuelto el resultado (en la consola debe aparecer <code>[1] 3</code>), ya has hecho más de lo que parece: has definido dos variables <code>a</code> y <code>b</code>, has <mark><strong>asignado un valor numérico a cada una de ellas</strong></mark> y las hemos usado en una operación aritmética. <strong>Ya sabemos usar <code>R</code> como <mark>calculadora</mark></strong>.</p>
-<p>El valor <code>[1]</code> antes del resultado de la operación en realidad nos numera las líneas de la consola usadas.</p>
+<ul>
+<li><p><mark><strong>¿Dónde hemos escrito ese código?</strong></mark> Esa pantalla blanca donde hemos escrito el código se llama <mark><strong>CONSOLA</strong></mark>, y será donde ejecutaremos las órdenes.</p></li>
+<li><p><mark><strong>¿Qué hemos hecho?</strong></mark> Hemos hecho más de lo que parece. Primero, hemos definido dos variables <code>a</code> y <code>b</code> <mark><strong>asignándole un valor numérico a cada una de ellas</strong></mark>. Imagina que el símbolo <code><a href="https://rdrr.io/r/base/assignOps.html">&lt;-</a></code> es visto en nuestra cabeza como una flecha: a una variable que llamamos <code>a</code> le asignamos el valor <code>1</code> (y se queda guardada en nuestro ordenador), y a una variable que llamamos <code>b</code> le asignamos el valor <code>2</code>. Podemos verlo como <span class="math inline">\(a = 1,~b = 2\)</span>. Y tras definir ambas variables, las hemos usado en una <mark><strong>operación aritmética</strong></mark><code>a + b</code>. Ya sabemos usar <code>R</code> como <mark><strong>calculadora</strong></mark>.</p></li>
+<li><p><mark><strong>¿Cómo nos devuelve <code>R</code> el resultado de la operación?</strong></mark> Si te ha devuelto el resultado correcta, en la consola debe aparecer <code>[1] 3</code>. El valor <code>[1]</code> aparecerá siempre ya que simplemente nos <strong>numera las líneas</strong> de la consola usadas; lo que viene detrás es realmente el resultado, es decir, <span class="math inline">\(a + b = 3\)</span>.</p></li>
+<li><p><mark><strong>¿Por qué hemos escrito <code>a + b</code> al final?</strong></mark> Un mantra de <code>R</code>, que veremos a lo largo de todo el curso, es que <mark><strong><code>R</code> intenta molestarte lo menos posible</strong></mark> (eso es bueno cuando ya sabes usarlo, no tan bueno cuando empezamos a aprenderlo). Cuando asignamos los valores <code>a &lt;- 1</code> y <code>b &lt;- 2</code>, <code>R</code> no nos muestra nada: si guardamos un resultado en una variable, no nos muestra nada por consola, simplemente lo guarda. Para obtener el resultado en la consola necesitamos escribir el nombre de las variables (u operaciones entre ellas, como <code>a + b</code>).</p></li>
+</ul>
 <p> </p>
 <p><strong><span style="color: #ffc107;">WARNING: </span></strong></p>
 <p>Como habrás advertido, en <code>R</code> usaremos <code><a href="https://rdrr.io/r/base/assignOps.html">&lt;-</a></code> para <strong>asignar valores</strong> en lugar de <code><a href="https://rdrr.io/r/base/assignOps.html">=</a></code>, como una flecha. Usaremos <code><a href="https://rdrr.io/r/base/assignOps.html">=</a></code> para <strong><span style="color: #ffc107;">indicarle el valor a los argumentos que usemos en funciones</span></strong> y <code><a href="https://rdrr.io/r/base/Comparison.html">==</a></code> como <strong><span style="color: #ffc107;">operador de comparación</span></strong>: si escribimos <code>2 == 3</code>, le estamos preguntando si 2 es igual a 3.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb299"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fl">2</span> <span class="op">==</span> <span class="fl">3</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <p> </p>
 <p>Bonita esta interfaz no es, así que la cerraremos y no la abriremos más. Tenemos nuestro lenguaje instalado, vamos a <strong>instalar nuestro Word</strong> para poder programar de forma cómoda.</p>
 </div>
-</div>
 <div id="instalacionRStudio" class="section level2">
 <h2>
-<span class="header-section-number">1.2</span> Instalación de RStudio<a class="anchor" aria-label="anchor" href="#instalacionRStudio"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.3</span> Instalación de RStudio<a class="anchor" aria-label="anchor" href="#instalacionRStudio"><i class="fas fa-link"></i></a>
 </h2>
-<p>Para instalar <code>RStudio</code> deberemos ir a la web <a href="https://www.rstudio.com/products/rstudio/download/#download" class="uri">https://www.rstudio.com/products/rstudio/download/#download</a> y seleccionar el ejecutable que te aperezca acorde a tu sistema operativo (ver imagen <a href="instalacionR.html#fig:pantalla-rstudio">1.7</a>). Tras descargar el ejecutable, hay que abrirlo como otro cualquier otro ejecutable y dejar que termine la instalación.</p>
+<p>Para instalar <code>RStudio</code> deberemos ir a la web <a href="https://www.rstudio.com/products/rstudio/download/#download" class="uri">https://www.rstudio.com/products/rstudio/download/#download</a> y seleccionar el ejecutable que te aperezca acorde a tu sistema operativo (ver imagen <a href="instalacionR.html#fig:pantalla-rstudio">2.7</a>). Tras descargar el ejecutable, hay que abrirlo como otro cualquier otro ejecutable y dejar que termine la instalación.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:pantalla-rstudio"></span>
 <img src="img/pantalla_rstudio.jpg" alt="Descargar el ejecutable de RStudio para su posterior instalación." width="70%"><p class="caption">
-Imagen/gráfica 1.7: Descargar el ejecutable de RStudio para su posterior instalación.
+Imagen/gráfica 2.7: Descargar el ejecutable de RStudio para su posterior instalación.
 </p>
 </div>
 <p>Tras instalar tendremos en el escritorio o Launchpad un ejecutable de <code>RStudio</code> que abriremos. Se nos aparecerá una pantalla similar a esta:</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:inicio-rstudio-1"></span>
 <img src="img/inicio_rstudio_1.jpg" alt="Primer recibimiento de nuestro mejor amigo RStudio." width="85%"><p class="caption">
-Imagen/gráfica 1.8: Primer recibimiento de nuestro mejor amigo RStudio.
+Imagen/gráfica 2.8: Primer recibimiento de nuestro mejor amigo RStudio.
 </p>
 </div>
 <p>Listo, tienes instalado (casi) todo correctamente.</p>
 </div>
 <div id="instalacionpaquetes" class="section level2">
 <h2>
-<span class="header-section-number">1.3</span> Instalación de paquetes<a class="anchor" aria-label="anchor" href="#instalacionpaquetes"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.4</span> Instalación de paquetes<a class="anchor" aria-label="anchor" href="#instalacionpaquetes"><i class="fas fa-link"></i></a>
 </h2>
 <p>El lenguaje <code>R</code> tiene 3 ventajas principales:</p>
 <ul>
@@ -193,41 +213,31 @@ Imagen/gráfica 1.8: Primer recibimiento de nuestro mejor amigo RStudio.
 <li><p>Es un <mark><strong>lenguaje modular</strong></mark>: en la instalación no se instalan todas las funcionalidades salvo un mínimo para poder funcionar, de forma que se ahorra espacio en disco y en memoria. Al ser software libre, existen trozos de código hechos por otras personas llamados <mark><strong>paquetes</strong></mark>, que podemos ir instalando a nuestro gusto según los vayamos necesitando. Esto es una ventaja enorme ya que <code>R</code> tiene una comunidad de usuarios gigante, con <strong>más de 17 000 paquetes</strong>: ¡hay más de 17 000 trozos de código validados por la comunidad y la plataforma, de forma gratuita!</p></li>
 </ul>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:paquetes-R"></span>
+<span style="display:block;" id="fig:unnamed-chunk-108"></span>
 <img src="img/paquetes_R.jpg" alt="Paquetes disponibles en R." width="70%"><p class="caption">
-Imagen/gráfica 1.9: Paquetes disponibles en R.
+Imagen/gráfica 2.9: Paquetes disponibles en R.
 </p>
 </div>
-<p>Esto nos ahorra muchísimo tiempo ya que <strong>casi todo lo que querramos hacer ya lo habrá querido hacer otra persona</strong> para no empezar de cero. Vamos a instalar, por ejemplo, un paquete gráfico (<a href="https://ggplot2.tidyverse.org">ggplot2</a>) que necesitaremos. Para ello, escribe en tu consola el siguiente código y pulsa enter.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"ggplot2"</span><span class="op">)</span></code></pre></div>
-<p>Dicha orden (puede tardar un poco la primera vez, depende de tu conexión a internet) lo que hará será <strong>acceder a la web de R</strong>, <strong>bajarse a tu ordenador los trozos de código</strong> incluidos en el paquete llamado <a href="https://ggplot2.tidyverse.org">ggplot2</a>, y dejarlos para siempre en él.</p>
-<p> </p>
-<p><strong><span style="color: #ffc107;">WARNING:</span></strong></p>
-<p>La <strong>instalación de paquetes SOLO ES NECESARIA la primera vez</strong> que se usa dicho paquete en la vida del ordenador, no hace falta hacerlo cada vez que lo usas.</p>
-<p> </p>
-<p>Una vez que tenemos los trozos de código (el paquete) en nuestro ordenador, en cada sesión de <code>R</code> que abramos (cada vez que cierres y abras <code>RStudio</code>) deberemos (si queremos) llamar a ese paquete que tenemos instalado, escribiendo el siguiente comando en consola</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></code></pre></div>
-<p><strong>Welcome to <mark>software libre</mark></strong></p>
+<p>Dichos paquetes son trozos de código realizadas por otros usuarios de la comunidad (y validados por el equipo de CRAN si la descarga es mediante <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code>), listos para ser usados. Una vez instalados (descargados) los trozos de código, basta con «acudir» a ellos con <code><a href="https://rdrr.io/r/base/library.html">library()</a></code>.</p>
+<p>Haciendo una metáfora con la colección de libros que tengas en casa: con la <strong>instalación hemos comprado el libro</strong> (por ejemplo, <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages("ggplot2")</a></code>) y lo tenemos en nuestra estantería (para siempre), con la llamada al paquete, por ejemplo <code><a href="https://ggplot2.tidyverse.org">library(ggplot2)</a></code>, lo que hacemos es decidir, de entre todos los libros de la estantería, cuales queremos llevarnos de viaje (en cada maleta que hagamos).</p>
 </div>
 <div id="glosario" class="section level2">
 <h2>
-<span class="header-section-number">1.4</span> Glosario<a class="anchor" aria-label="anchor" href="#glosario"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.5</span> Glosario<a class="anchor" aria-label="anchor" href="#glosario"><i class="fas fa-link"></i></a>
 </h2>
 <p><strong><span style="color: #4197D2;">GLOSARIO</span></strong></p>
 <ul>
 <li>
 <strong><span style="color: #4197D2;">Consola</span></strong>: es el nombre para llamar a esa ventana grande que te ocupa buena parte de tu pantalla. Prueba a escribir el mismo código que antes en ella (es el equivalente a la consola de R que hemos abierto al principio).</li>
 </ul>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb301"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">a</span> <span class="op">&lt;-</span> <span class="fl">1</span>
 <span class="va">b</span> <span class="op">&lt;-</span> <span class="fl">2</span>
 <span class="va">a</span> <span class="op">+</span> <span class="va">b</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:inicio-rstudio-2"></span>
 <img src="img/inicio_rstudio_2.jpg" alt="Lanzando a consola nuestras primeras órdenes en RStudio." width="60%"><p class="caption">
-Imagen/gráfica 1.10: Lanzando a consola nuestras primeras órdenes en RStudio.
+Imagen/gráfica 2.10: Lanzando a consola nuestras primeras órdenes en RStudio.
 </p>
 </div>
 <p><strong><span style="color: #4197D2;">La consola será donde ejecutaremos órdenes y mostraremos resultados</span></strong></p>
@@ -238,7 +248,7 @@ Imagen/gráfica 1.10: Lanzando a consola nuestras primeras órdenes en RStudio.
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:inicio-rstudio-3"></span>
 <img src="img/inicio_rstudio_3.jpg" alt="Environment de variables." width="65%"><p class="caption">
-Imagen/gráfica 1.11: Environment de variables.
+Imagen/gráfica 2.11: Environment de variables.
 </p>
 </div>
 <ul>
@@ -248,71 +258,146 @@ Imagen/gráfica 1.11: Environment de variables.
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:inicio-rstudio-4"></span>
 <img src="img/inicio_rstudio_4.jpg" alt="Panel multiusos." width="65%"><p class="caption">
-Imagen/gráfica 1.12: Panel multiusos.
+Imagen/gráfica 2.12: Panel multiusos.
 </p>
 </div>
-<ul>
-<li>
-<strong><span style="color: #4197D2;">Paquete</span></strong>: trozos de código realizadas por otros usuarios de la comunidad (y validades por el equipo de CRAN si la descarga es mediante <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code>) para ser usados. Una vez instalados (descargados) los trozos de código a nuestro ordenador, basta con «acudir» a ellos con <code><a href="https://rdrr.io/r/base/library.html">library()</a></code>.</li>
-</ul>
-<p>Haciendo una metáfora con la colección de libros que tengas en casa: con la <strong>instalación hemos comprado el libro</strong> y lo tenemos en nuestra estantería (para siempre), con la llamada al paquete, por ejemplo <code><a href="https://ggplot2.tidyverse.org">library(ggplot2)</a></code>, lo que hacemos es decidir, de entre todos los libros de la estantería, cuales queremos llevarnos de viaje (en cada maleta que hagamos).</p>
 <p>Los <strong>paquetes usados</strong> los verás denotados como <code>{nombre_paquete}</code> a lo largo del manual.</p>
 </div>
 <div id="consejos" class="section level2">
 <h2>
-<span class="header-section-number">1.5</span> Consejos<a class="anchor" aria-label="anchor" href="#consejos"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.6</span> Consejos<a class="anchor" aria-label="anchor" href="#consejos"><i class="fas fa-link"></i></a>
 </h2>
 <p><strong><span style="color: #20935E;">CONSEJOS</span></strong></p>
 <p><strong><span style="color: #20935E;">¿Cómo saber cuando la orden lanzada en consola ha terminado?</span></strong></p>
-<p>A veces <code>R</code> y <code>RStudio</code> son tan silenciosos que no sabemos si ha acabado la orden que acabamos de lanzar en la consola o no. Siempre que veas el símbolo <code><a href="https://rdrr.io/r/base/Comparison.html">&gt;</a></code> como última línea en la consola significa que está listo para que le escribamos otra orden (es la forma cariñosa de decirte que ya ha acabado, ver imagen <a href="instalacionR.html#fig:tip-consola-lista">1.13</a>)</p>
+<p>A veces <code>R</code> y <code>RStudio</code> son tan silenciosos que no sabemos si ha acabado la orden que acabamos de lanzar en la consola o no. Siempre que veas el símbolo <code><a href="https://rdrr.io/r/base/Comparison.html">&gt;</a></code> como última línea en la consola significa que está listo para que le escribamos otra orden (es la forma cariñosa de decirte que ya ha acabado, ver imagen <a href="instalacionR.html#fig:tip-consola-lista">2.13</a>)</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:tip-consola-lista"></span>
 <img src="img/tip_consola_lista.jpg" alt="Ejemplo de que la orden lanzada ha acabado." width="70%"><p class="caption">
-Imagen/gráfica 1.13: Ejemplo de que la orden lanzada ha acabado.
+Imagen/gráfica 2.13: Ejemplo de que la orden lanzada ha acabado.
 </p>
 </div>
 <p> </p>
 <p><strong><span style="color: #20935E;">¿Cómo prevenir la fatiga programando?</span></strong></p>
-<p>Estando delante de una pantalla de ordenador, con la vista muy fija mientras se programa, puede que acabes teniendo cierta fatiga visual en el trabajo. Te aconsejo que cambies en tu <code>RStudio</code> la tonalidad del fondo de tu programa, en tonos oscuros y no blancos (¿te has fijado que mis capturas tienen un azul cobalto oscuro de fondo mientras el tuyo es un <strong>blanco nuclear</strong>? Echa un vistazo a las imágenes <a href="instalacionR.html#fig:menu-1">1.14</a> y <a href="instalacionR.html#fig:menu-2">1.15</a>)</p>
+<p>Estando delante de una pantalla de ordenador, con la vista muy fija mientras se programa, puede que acabes teniendo cierta fatiga visual en el trabajo. Te aconsejo que cambies en tu <code>RStudio</code> la tonalidad del fondo de tu programa, en tonos oscuros y no blancos (¿te has fijado que mis capturas tienen un azul cobalto oscuro de fondo mientras el tuyo es un <strong>blanco nuclear</strong>? Echa un vistazo a las imágenes <a href="instalacionR.html#fig:menu-1">2.14</a> y <a href="instalacionR.html#fig:menu-2">2.15</a>)</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:menu-1"></span>
 <img src="img/menu_1.jpg" alt="Menú de opciones de nuestro editor" width="50%" height="50%"><p class="caption">
-Imagen/gráfica 1.14: Menú de opciones de nuestro editor
+Imagen/gráfica 2.14: Menú de opciones de nuestro editor
 </p>
 </div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:menu-2"></span>
 <img src="img/menu_2.jpg" alt="Personalizar el color de fondo de nuestro editor, la letra y el tamaño de fuente" width="50%" height="50%"><p class="caption">
-Imagen/gráfica 1.15: Personalizar el color de fondo de nuestro editor, la letra y el tamaño de fuente
+Imagen/gráfica 2.15: Personalizar el color de fondo de nuestro editor, la letra y el tamaño de fuente
 </p>
 </div>
+</div>
+<div id="ejercicios" class="section level2">
+<h2>
+<span class="header-section-number">2.7</span> 📝 Ejercicios<a class="anchor" aria-label="anchor" href="#ejercicios"><i class="fas fa-link"></i></a>
+</h2>
+<p>(haz click en las flechas para ver soluciones)</p>
+<details><p><summary>📝<strong>Ejercicio 1</strong>: abre <code>R Studio</code> y en tu consola (parte inferior de tu pantalla) asigna los valores <code>2</code> y <code>5</code> a dos variables <code>a</code> y <code>b</code>. Tras asignarles valores, multiplica los números en consola (<strong>haz click</strong> en la flecha para la solución propuesta). </summary></p>
+<!-- toc -->
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb302"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Para poner comentarios en el código se usa #</span>
+
+<span class="co"># Definición de variables</span>
+<span class="va">a</span> <span class="op">&lt;-</span> <span class="fl">2</span>
+<span class="va">b</span> <span class="op">&lt;-</span> <span class="fl">5</span>
+
+<span class="co"># Multiplicación</span>
+<span class="va">a</span> <span class="op">*</span> <span class="va">b</span></code></pre></div>
+<pre><code>## [1] 10</code></pre>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:consola-multi"></span>
+<img src="img/consola_multiplicacion.jpg" alt="Multiplicación de a y b." width="80%"><p class="caption">
+Imagen/gráfica 2.16: Multiplicación de a y b.
+</p>
+</div>
+<!-- tocstop -->
+</details><p> </p>
+<details><p><summary>📝<strong>Ejercicio 2</strong>: modifica el código inferior para definir dos variables <code>c</code> y <code>d</code>, con valores <code>3</code> y <code>-1</code>, y calcular la división <code>c/d</code> (<strong>haz click</strong> en la flecha para la solución propuesta).</summary></p>
+<div class="sourceCode" id="cb304"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Definición de variables</span>
+<span class="va">c</span> <span class="op">&lt;-</span> 
+<span class="va">d</span> <span class="op">&lt;-</span>
+
+<span class="co"># Operación (división)</span>
+<span class="va">c</span> <span class="op">?</span> <span class="va">d</span></code></pre></div>
+<p></p>
+<!-- toc -->
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb305"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Definición de variables</span>
+<span class="va">c</span> <span class="op">&lt;-</span> <span class="fl">3</span>
+<span class="va">d</span> <span class="op">&lt;-</span> <span class="op">-</span><span class="fl">1</span>
+
+<span class="co"># División</span>
+<span class="va">c</span> <span class="op">/</span> <span class="va">d</span></code></pre></div>
+<pre><code>## [1] -3</code></pre>
+<!-- tocstop -->
+</details><p> </p>
+<details><p><summary>📝<strong>Ejercicio 3</strong>: repite el ejercicio 1 pero ahora guarda el resultado de la multiplicación final en una variable <code>c</code>. Para ver el resultado guardado en <code>c</code> escribe dicha variable en consola (<strong>haz click</strong> en la flecha para la solución propuesta). </summary></p>
+<!-- toc -->
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb307"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Variables</span>
+<span class="va">a</span> <span class="op">&lt;-</span> <span class="fl">2</span>
+<span class="va">b</span> <span class="op">&lt;-</span> <span class="fl">5</span>
+
+<span class="co"># Resultado</span>
+<span class="va">c</span> <span class="op">&lt;-</span> <span class="va">a</span> <span class="op">*</span> <span class="va">b</span>
+
+<span class="co"># Muestro en consola</span>
+<span class="va">c</span></code></pre></div>
+<pre><code>## [1] 10</code></pre>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:consola-multi-2"></span>
+<img src="img/consola_multiplicacion_2.jpg" alt="Multiplicación de a y b guardando el resultado." width="80%"><p class="caption">
+Imagen/gráfica 2.17: Multiplicación de a y b guardando el resultado.
+</p>
+</div>
+<!-- tocstop -->
+</details><p> </p>
+<p><strong><span style="color: #ffc107;">WARNING:</span></strong></p>
+<p>No hace falta gastar una línea por cada orden que quieras ejecutar. Tampoco necesitas guardar cada paso intermedio que realices. <strong><span style="color: #ffc107;">Cuidado con la memoria</span></strong>: cada asignación que hagas es una variable guardada que consume recursos en tu ordenador.</p>
 
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="index.html">Prefacio</a></div>
-<div class="next"><a href="primeros-pasos.html"><span class="header-section-number">2</span> Primeros pasos</a></div>
+<div class="prev"><a href="requisitos.html"><span class="header-section-number">1</span> Requisitos</a></div>
+<div class="next"><a href="que-es-R.html"><span class="header-section-number">3</span> ¿Qué es R?</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#instalacionR"><span class="header-section-number">1</span> Instalación</a></li>
+<li><a class="nav-link" href="#instalacionR"><span class="header-section-number">2</span> Instalación</a></li>
 <li>
-<a class="nav-link" href="#instalaci%C3%B3n-de-r"><span class="header-section-number">1.1</span> Instalación de R</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#paso-1"><span class="header-section-number">1.1.1</span> Paso 1</a></li>
-<li><a class="nav-link" href="#paso-2"><span class="header-section-number">1.1.2</span> Paso 2</a></li>
-<li><a class="nav-link" href="#paso-3"><span class="header-section-number">1.1.3</span> Paso 3</a></li>
+<a class="nav-link" href="#instalaci%C3%B3n-de-r"><span class="header-section-number">2.1</span> Instalación de R</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#paso-1"><span class="header-section-number">2.1.1</span> Paso 1</a></li>
+<li><a class="nav-link" href="#paso-2"><span class="header-section-number">2.1.2</span> Paso 2</a></li>
+<li><a class="nav-link" href="#paso-3"><span class="header-section-number">2.1.3</span> Paso 3</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#instalacionRStudio"><span class="header-section-number">1.2</span> Instalación de RStudio</a></li>
-<li><a class="nav-link" href="#instalacionpaquetes"><span class="header-section-number">1.3</span> Instalación de paquetes</a></li>
-<li><a class="nav-link" href="#glosario"><span class="header-section-number">1.4</span> Glosario</a></li>
-<li><a class="nav-link" href="#consejos"><span class="header-section-number">1.5</span> Consejos</a></li>
+<li><a class="nav-link" href="#primera-operaci%C3%B3n-en-consola-sumar-dos-n%C3%BAmeros"><span class="header-section-number">2.2</span> Primera operación en consola: sumar dos números</a></li>
+<li><a class="nav-link" href="#instalacionRStudio"><span class="header-section-number">2.3</span> Instalación de RStudio</a></li>
+<li><a class="nav-link" href="#instalacionpaquetes"><span class="header-section-number">2.4</span> Instalación de paquetes</a></li>
+<li><a class="nav-link" href="#glosario"><span class="header-section-number">2.5</span> Glosario</a></li>
+<li><a class="nav-link" href="#consejos"><span class="header-section-number">2.6</span> Consejos</a></li>
+<li><a class="nav-link" href="#ejercicios"><span class="header-section-number">2.7</span> 📝 Ejercicios</a></li>
 </ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/dadosdelaplace/intro-R/blob/master/01-instalacion.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/dadosdelaplace/intro-R/edit/master/01-instalacion.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/dadosdelaplace/intro-R/blob/master/03-instalacion.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/dadosdelaplace/intro-R/edit/master/03-instalacion.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>
@@ -324,7 +409,7 @@ Imagen/gráfica 1.15: Personalizar el color de fondo de nuestro editor, la letra
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 23-12-2021.</p>
+    <p>"<strong>Introducción a R: aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 19-07-2022.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

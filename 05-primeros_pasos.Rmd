@@ -1,0 +1,313 @@
+```{r echo = FALSE}
+library(knitr)
+
+# Color text
+colorize <- function(x, color) {
+  
+  if (knitr::is_latex_output()) {
+    
+    sprintf("\\textcolor{%s}{%s}", color, x)
+    
+  } else if (knitr::is_html_output()) {
+    
+    sprintf("<span style='color: %s;'>%s</span>", color, x)
+    
+  } else { x }
+}
+```
+
+# Primeros pasos {#primeros-pasos}
+
+:::: {.blackbox data-latex=""}
+
+Scripts usados:
+
+* [**script04.R**](https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script04.R). Ver en <https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script04.R>
+
+::::
+
+&nbsp;
+
+Ya hemos instalado lo necesario así que vamos a empezar por lo sencillo y recordando parte de lo que ya hemos realizado: <mark>**¿cómo usar `R` como una calculadora?**</mark>
+
+## Primeros pasos en R: calculadora
+
+¿Te acuerdas de lo que era la <mark>**CONSOLA**</mark>? En el caso de `RStudio`, la consola será esa pequeña pantalla que tenemos en la parte inferior (la pestaña _Console_). Vamos a trabajar de momento solo en esa ventana inferior.
+
+```{r inicio-rstudio-2a, echo = FALSE, out.width = "80%", fig.align = "center", fig.cap = "Lanzando a consola nuestras primeras órdenes en RStudio."}
+knitr::include_graphics("./img/inicio_rstudio_2.jpg")
+```
+
+Lo que ya hemos descubierto en los pasos de la instalación (ver imagen \@ref(fig:inicio-rstudio-2a)) es que la <mark>**consola**</mark> de `R` tiene una función muy básica y evidente: nos sirve de <mark>**calculadora**</mark>. Un ejemplo muy simple: si escribimos `r 1 + 2` en la consola y pulsamos _ENTER_, la consola nos mostrará el resultado de la suma
+
+```{r}
+1 + 2
+```
+
+&nbsp;
+
+Pero entonces...<mark>**¿cuál es la diferencia entre una calculadora y un lenguaje de programación?**</mark> Imagina que dicha suma `r 1 + 2` la quisiéramos utilizar para un segundo cálculo: ¿y si en lugar de lanzarlo a la consola sin más lo **almacenamos en alguna variable**?
+
+Como hemos visto en la instalación de `RStudio`, para <mark>**asignar valores a variables**</mark> lo haremos con `<-`, por ejemplo con la orden `x <- 1 + 2`: una variable de nombre `x` va a tener asignada/guardada lo que valga la operación `1 + 2`
+
+```{r}
+x <- 1 + 2
+```
+
+Como puedes comprobar, en tu parte superior derecha (nuestro <mark>**entorno de variables**</mark>), podrás ver como una nueva variable `x` es ahora visualizada, con su valor asignado (**no se mostrará en consola** salvo que escribas `r x` en ella: `R` asume que no querías visualizarla en consola sino solo guardarla).
+
+```{r echo = FALSE, out.width = "85%", fig.align = "center", fig.cap = "Environment."}
+knitr::include_graphics("./img/environment_1.jpg")
+```
+
+```{r}
+y <- x - 3
+x
+y
+x * y
+```
+
+Dicha variable `x` además podemos <mark>**reciclarla**</mark> para definir, por ejemplo, una nueva variable `y`, restándole una constante. De la misma manera que hemos hecho restas, sumas y multiplicaciones, `R` tiene todas las <mark>**operaciones clásicas que podrías tener en una calculadora**</mark>. Prueba a ejecutar en la consola las órdenes `x^2`, `sqrt(x)` o `abs(y)`: `R` calculará las operaciones _elevar al cuadrado_, _raíz cuadrada_ y _valor absoluto_ (respectivaemnte) de la variable que tengan entre paréntesis.
+
+```{r}
+x^2
+sqrt(x)
+y <- x - 5
+abs(y)
+```
+
+&nbsp;
+
+**`r colorize("CONSEJO:", "#20935E")`**
+
+Las órdenes `sqrt()` y `abs()` se llaman <mark>**funciones**</mark>, y la variable que tienen entre paréntesis se llama **argumento de la función**: una variable que toma de entrada la función y con la que opera internamente.
+
+&nbsp;
+
+## ¿Y dónde programamos?
+
+**¿Estás emocionado/a? Vamos a abrir nuestro primer <mark>script</mark>**. Un **script** será el documento en el que programamos, nuestro `.doc`, pero aquí será un archivo con extensión `.R`, donde escribiremos las órdenes, que nos evitará estar lanzando todo a consola. <mark>**¿Por qué no abusar de la consola?**</mark> Una máxima para no olvidar: TODO lo que no escribas en un script, cuando cierres `RStudio`, lo habrás perdido (cómo si en lugar de escribir en un `Word` y guardarlo, nunca guardases el documento).
+
+Para abrir nuestro primero script, haz click en el menú superior en `File << New File << R Script` como se muestra en la imagen \@ref(fig:inicio-rstudio-5)
+
+```{r inicio-rstudio-5, echo = FALSE, out.width = "80%", fig.align = "center", fig.cap = "Abriendo nuestro primer script de R."}
+knitr::include_graphics("./img/inicio_rstudio_5.jpg")
+
+```
+
+Tras abrirlo tendremos una cuarta ventana: esta será la ventana de nuestros códigos, la ventana más importante ya que es donde **escribiremos lo que queremos ejecutar**. Escribe el **código de la suma de arriba** en ese script y guarda el archivo haciendo click en el botón `Save current document`
+
+```{r}
+a <- 1
+b <-2
+a + b
+```
+
+```{r inicio-rstudio-6, echo = FALSE, out.width = "85%", fig.align = "center", fig.cap = "Escribiendo y guardando nuestro primer script."}
+knitr::include_graphics("./img/inicio_rstudio_6.jpg")
+```
+
+Ese código no se ejecuta salvo que se lo digamos. Tenemos <mark>**tres opciones para ejecutar código**</mark>:
+
+* **`r colorize("Copiar y pegar el trozo de código en la consola", "#20935E")`** (como hemos hecho al principio).
+
+* **`r colorize("Seleccionar líneas de código y clickar en Run", "#20935E")`** (o con su atajo de teclado), lo que hará que se ejecute solo las líneas seleccionadas.
+
+* **`r colorize("Activar el cuadrado Source on save a la derecha del botón de guardar", "#20935E")`** y volvemos a hacer click en el botón de guardar: siempre que esa opción esté activada, al guardar no solo es nos guarda el archivo `.R` sino que además **se ejecuta** el código completo que tengas en el script.
+
+
+## Tipos de errores {#tipos_errores}
+
+Durante tu aprendizaje en `R` va a ser **muy habitual** que las cosas no salgan a la primera, **apareciendo en consola mensajes en un color rojo**.  Un **miedo** muy habitual cuando se empieza a programar es pensar que si haces algo mal o aparece algún mensaje de error, el ordenador puede explotar en cualquier momento. **A programar se aprende programando**, así que haz las pruebas que quieras, lo peor que puede pasar es que necesites cerrar sesión en `R Studio` y abrirlo de nuevo, o en el peor de los casos, desintalarlo y volverlo a iinstalar.
+
+Dado que el $99.9\%$ de las veces tu código tendrá errores que deberás ir solventando, no está de más conocer los tipos de mensajes que `R` puede sacarte por consola.
+
+Los **`r colorize("mensajes de ERROR", "#dc3545")`** irán precedidos de la frase **`r colorize("«Error in...»", "#dc3545")`**, dándote a veces incluso el tipo de error y la línea de código en la que se ha producido. Veamos un ejemplo intentando sumar un número a una cadena de texto.
+
+```{r error = TRUE}
+"a" + 1
+```
+
+Los **errores son aquellos fallos que seguramente impidan la ejecución** del código. Un **error muy habitual** es intentar acceder a alguna función de algún paquete que, o bien no tenemos instalado, o bien no hemos llamado haciendo uso del `library()`: estás intentando leerte un libro de tu biblioteca pero ni siquiera has ido a la tienda a «comprarlo».
+
+&nbsp;
+
+Los **`r colorize("mensajes de WARNING", "#ffc107")`** irán precedidos de la frase **`r colorize("«Warning in...»", "#ffc107")`**, y son los fallos más delicados ya que son **posibles errores o incoherencias** que `R` detecta en tu código pero que **no van a hacer que tu código deje de ejecutarse**, aunque probablemente no lo haga como a ti te gustaría. Un ejemplo es cuando tratamos de hacer la raiz cuadrada de un número negativo.
+
+
+```{r warning = TRUE}
+sqrt(-1)
+``` 
+
+¿Ha ejecutado la orden? Sí, pero te **advierte de que el resultado de la operación es un `NaN`**, un valor que no existe (al menos dentro de los números reales), un _Not A Number_ (ver Sección \@ref(ausentes)).
+
+&nbsp;
+
+Los **`r colorize("mensajes de CONTROL", "#20935E")`** serán aquellos que aparecerán por consola sin empezar por «Error in...» ni «Warning:...». Dichos mensajes, que puedes incluir tú mismo en tu código con funciones como `cat()` para monitorizar la ejecución de códigos largos, no son errores ni problemas, son simplemente información que `R` considera útil aportarte.
+
+&nbsp;
+
+
+
+## Glosario
+
+**`r colorize("GLOSARIO", "#4197D2")`**
+
+* **`r colorize("Paquete", "#4197D2")`**: trozos de código realizadas por otros usuarios de la comunidad (y validades por el equipo de CRAN si la descarga es mediante `install.packages()`) para ser usados. Una vez instalados (descargados) los trozos de código a nuestro ordenador, basta con «acudir» a ellos con `library()`.
+
+Haciendo una metáfora con la colección de libros que tengas en casa: con la **instalación hemos comprado el libro** y lo tenemos en nuestra estantería (para siempre), con la llamada al paquete, por ejemplo `library(ggplot2)`, lo que hacemos es decidir, de entre todos los libros de la estantería, cuales queremos llevarnos de viaje (en cada maleta que hagamos).
+
+Los **paquetes usados** los verás denotados como `{nombre_paquete}` a lo largo del manual.
+
+## Consejos
+
+
+**`r colorize("CONSEJOS", "#20935E")`**
+
+&nbsp;
+
+**`r colorize("Panel de ayuda", "#20935E")`**
+
+Si escribes en la consola `? nombre_funcion` (por ejemplo, escribe en la consola `? sqrt`), en el panel inferior derecho te aparecerá una <mark>**documentación de ayuda**</mark> de la función para saber que argumentos necesita, como puedes usar la función, qué es lo que te devuelve, ejemplos de uso, etc.
+
+```{r}
+? sqrt
+```
+
+```{r echo = FALSE, out.width = "50%", fig.align = "center", fig.cap = "Panel de ayuda."}
+knitr::include_graphics("./img/panel_ayuda.jpg")
+
+```
+
+
+&nbsp;
+
+**`r colorize("¿Cómo comentar el código?", "#20935E")`**
+
+Probablemente lo más importante al programar es que <mark>**te acostumbres a comentar**</mark> lo máximo posible tu código. **¿Qué es un comentario?** Es un texto que escribes entre el código precedido de `#`: todo lo que venga detrás no será interpretado por `R` como código. Es **vital cuando programamos** que nos acostumbremos a comentar lo que hacemos, tanto para nosotros como para otras personas que puedan leer nuestro código.
+
+&nbsp;
+
+**`r colorize("Índice en el código", "#20935E")`**
+
+Puedes escribir comentarios en el código para que automáticamente se **organice tu código en epígrafes**, mostrándote un índice en el panel lateral (haz click en el icono de la esquina superior derecha del editor) y permitiendo minimizar partes del código. Para ello puedes comentar por ejemplo con `# ----- título -----`.
+
+```{r echo = FALSE, out.width = "70%", fig.align = "center", fig.cap = "Comentando el código para generar un índice."}
+knitr::include_graphics("./img/comentarios-indice.jpg")
+
+```
+&nbsp;
+
+
+## 📝 Ejercicios
+
+(haz click en las flechas para ver soluciones)
+
+<details>
+  <summary>📝<strong>Ejercicio 1</strong>: asigna ahora los valores `1`, `-2`, `3` a tres variables `a`, `b` y `c` distintas, y calcula la raíz cuadrada de cada uno (**haz click** en la flecha para la solución propuesta). </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Variables
+a <- 1
+b <- -2
+c <- 3
+
+# Resultado
+sqrt(a)
+sqrt(b)
+sqrt(c)
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+
+<details>
+  <summary>📝<strong>Ejercicio 2</strong>: calcula en consola la suma de 3 más 4, y todo ello multiplicado por 10, y asígnalo a una variable `x` (**haz click** en la flecha para la solución propuesta). Imprime el valor por consola</summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Asignamos
+x <- (3 + 4) * 10
+
+# Imprimimos
+x
+```
+
+<!-- tocstop -->
+</details>
+
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 3</strong>: asigna un valor positivo a `x` y calcula  su raíz cuadrada; asigna otro negativo y calcula su valor absoluto con la función `abs()` (**haz click** en la flecha para la solución propuesta).</summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Raíz cuadrada
+x <- 73 # por ejemplo
+sqrt(x)
+
+# Valor absoluto
+y <- -19 # por ejemplo
+abs(y)
+```
+
+<!-- tocstop -->
+</details>
+
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 4</strong>: usando la variable `x` ya definida, completa/modifica el código inferior para guardar en una nueva variable `z` el resultado guardado en `x` menos 5 (**haz click** en la flecha para la solución propuesta).
+  
+```{r eval = FALSE}
+z <- ? - ?
+z
+```
+
+</summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+z <- x - 5
+z
+```
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 5</strong>: usando las variables `x` e `y` ya definidas, calcula el máximo de ambas (función `max()`), y guárdalo en una nueva variable `t`. (**haz click** en la flecha para la solución propuesta).</summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+t <- max(x, y)
+t
+```
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+**`r colorize("WARNING:", "#ffc107")`**
+
+No hace falta gastar una línea por cada orden que quieras ejecutar. Tampoco necesitas guardar cada paso intermedio que realices. **`r colorize("Cuidado con la memoria", "#ffc107")`**: cada asignación que hagas es una variable guardada que consume recursos en tu ordenador.
+
+

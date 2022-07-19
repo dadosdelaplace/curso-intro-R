@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Capítulo 8 Fechas | Introducción a R: aprendiendo R sin morir en el intento</title>
+<meta name="author" content="Javier Álvarez Liébana">
+<meta name="description" content="Scripts usados: script08.R. Ver en https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script08.R  [X] Variables numéricas (individuales) [X] Variables de caracteres [X] Variables...">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="Capítulo 8 Fechas | Introducción a R: aprendiendo R sin morir en el intento">
+<meta property="og:type" content="book">
+<meta property="og:image" content="/img/logo_R.png">
+<meta property="og:description" content="Scripts usados: script08.R. Ver en https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script08.R  [X] Variables numéricas (individuales) [X] Variables de caracteres [X] Variables...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Capítulo 8 Fechas | Introducción a R: aprendiendo R sin morir en el intento">
+<meta name="twitter:description" content="Scripts usados: script08.R. Ver en https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script08.R  [X] Variables numéricas (individuales) [X] Variables de caracteres [X] Variables...">
+<meta name="twitter:image" content="/img/logo_R.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/_Sen-0.4.1/font.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM%20Mono&amp;display=swap" rel="stylesheet">
+<link href="libs/_Bitter-0.4.1/font.css" rel="stylesheet">
+<script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="css/style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Introducción a R: aprendiendo R sin morir en el intento</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Prefacio</a></li>
+<li class="book-part">Recursos</li>
+<li><a class="" href="ejercicios-recopilados.html">📝 Ejercicios recopilados</a></li>
+<li><a class="" href="recursos-de-aprendizaje.html">📚 Recursos de aprendizaje</a></li>
+<li class="book-part">Toma de contacto</li>
+<li><a class="" href="requisitos.html"><span class="header-section-number">1</span> Requisitos</a></li>
+<li><a class="" href="instalacionR.html"><span class="header-section-number">2</span> Instalación</a></li>
+<li><a class="" href="que-es-R.html"><span class="header-section-number">3</span> ¿Qué es R?</a></li>
+<li><a class="" href="primeros-pasos.html"><span class="header-section-number">4</span> Primeros pasos</a></li>
+<li class="book-part">Tipos de datos</li>
+<li><a class="" href="var-num.html"><span class="header-section-number">5</span> Variables individuales: números y caracteres</a></li>
+<li><a class="" href="vectores.html"><span class="header-section-number">6</span> Vectores</a></li>
+<li><a class="" href="operacionesvectores.html"><span class="header-section-number">7</span> Operaciones con vectores</a></li>
+<li><a class="active" href="fechas.html"><span class="header-section-number">8</span> Fechas</a></li>
+<li><a class="" href="datos.html"><span class="header-section-number">9</span> Datos estructurados</a></li>
+<li><a class="" href="listas.html"><span class="header-section-number">10</span> Listas</a></li>
+<li class="book-part">Haciendo el trabajo más fácil</li>
+<li><a class="" href="if-else.html"><span class="header-section-number">11</span> Estructuras de control: if-else</a></li>
+<li><a class="" href="bucles.html"><span class="header-section-number">12</span> Estructuras de control: bucles</a></li>
+<li><a class="" href="funciones.html"><span class="header-section-number">13</span> Funciones</a></li>
+<li><a class="" href="proyecto.html"><span class="header-section-number">14</span> Proyecto de trabajo</a></li>
+<li class="book-part">Colofón</li>
+<li><a class="" href="importar-exportar.html"><span class="header-section-number">15</span> Importar/exportar datos</a></li>
+<li><a class="" href="practica-final.html"><span class="header-section-number">16</span> 📝 Práctica final</a></li>
+<li><a class="" href="bibliograf%C3%ADa.html">Bibliografía</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/dadosdelaplace/intro-R">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="fechas" class="section level1">
+<h1>
+<span class="header-section-number">Capítulo 8</span> Fechas<a class="anchor" aria-label="anchor" href="#fechas"><i class="fas fa-link"></i></a>
+</h1>
+<div class="blackbox">
+<p>Scripts usados:</p>
+<ul>
+<li>
+<a href="https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script08.R"><strong>script08.R</strong></a>. Ver en <a href="https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script08.R" class="uri">https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script08.R</a>
+</li>
+</ul>
+</div>
+<ul>
+<li>[X] Variables numéricas (individuales)</li>
+<li>[X] Variables de caracteres</li>
+<li>[X] Variables lógicas</li>
+<li>[X] Variables de tipo fecha</li>
+</ul>
+<p>Dado que el objetivo final es trabajar con datos, vamos a ver un tipo de datos muy especial: los <mark><strong>datos de tipo fecha</strong></mark>. Una fecha podríamos que no tiene nada de especial ya que una simple cadena de texto <code>"2021-04-21"</code>. Sin embargo, representa un instante en el tiempo, que deberíamos poder operar como tal. ¿Qué sucedería si sumamos un <code>1</code> (un día) a una fecha definida como una cadena de texto?</p>
+<div class="sourceCode" id="cb756"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Cadena de texto</span>
+<span class="va">fecha_char</span> <span class="op">&lt;-</span> <span class="st">"2021-04-21"</span>
+<span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">fecha_char</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "character"</code></pre>
+<div class="sourceCode" id="cb758"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">fecha_char</span> <span class="op">+</span> <span class="fl">1</span></code></pre></div>
+<pre><code>## Error in fecha_char + 1: argumento no-numérico para operador binario</code></pre>
+<p>Como ves, da error, ya que a un texto no le podemos sumar un número (no distingue entre dicha cadena de texto y, por ejemplo, <code>"oso panda"</code>). Por suerte contamos con el paquete <a href="https://lubridate.tidyverse.org">lubridate</a>, con diferentes funcionalidades para trabajar con fechas. Empecemos con la función <code><a href="https://rdrr.io/pkg/lubridate/man/as_date.html">as_date()</a></code>, que nos <mark><strong>convierte una cadena de texto en un dato de tipo fecha</strong></mark>.</p>
+<p><a href="https://lubridate.tidyverse.org/" target="_blank"><img src="img/lubridate.png" width="100%" style="display: block; margin: auto;"></a></p>
+<div class="sourceCode" id="cb760"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># install.packages("lubridate")</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://lubridate.tidyverse.org">lubridate</a></span><span class="op">)</span></code></pre></div>
+<p>Fíjate en la diferencia.</p>
+<div class="sourceCode" id="cb761"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Fecha, mostrada como un texto pero guardada internamente como un número</span>
+<span class="va">fecha_date</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/as_date.html">as_date</a></span><span class="op">(</span><span class="va">fecha_char</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">fecha_date</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "Date"</code></pre>
+<div class="sourceCode" id="cb763"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">fecha_date</span> <span class="op">+</span> <span class="fl">1</span> <span class="co"># día siguiente</span></code></pre></div>
+<pre><code>## [1] "2021-04-22"</code></pre>
+<div class="sourceCode" id="cb765"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">fecha_date</span> <span class="op">-</span> <span class="fl">3</span> <span class="co"># 3 días antes</span></code></pre></div>
+<pre><code>## [1] "2021-04-18"</code></pre>
+<p>En el momento en que <mark><strong>convertimos la cadena de texto a fecha</strong></mark>, aunque se visualice como un texto, internamente es un número, por lo que podemos restar fechas (días entre ambas), <strong>podemos sumar números a fechas</strong> (fecha días después), etc. Como ya hemos dicho, <strong>las fechas y momentos temporales no serán meras cadenas de caracteres</strong> sino que tienen clases especiales asociadas. Las fechas serán guardadas internamente como el <strong>número de días transcurridos desde el 1 de enero de 1970</strong>, y las horas como <strong>número de segundos desde el 1 de enero de 1970</strong> (para la clase <code>POSIXct</code>) o una lista de segundos, minutos y horas (para la clase <code>POSIXlt</code>).</p>
+<p> </p>
+<p>La función <code><a href="https://rdrr.io/pkg/lubridate/man/as_date.html">as_date()</a></code> tiene un argumento opcional, el formato en la que le estamos la fecha, que por defecto será <code>"yyyy-mm-dd"</code> (año en 4 cifras, guión, mes en dos cifras, guión, día en dos cifras. Si <mark><strong>introducimos otro tipo de formato de fecha</strong></mark>, debemos especificárselo en un segundo argumento <code>format = ...</code>, para <code>R</code> sepa el formato de fecha que le estamos pasando</p>
+<div class="sourceCode" id="cb767"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/as_date.html">as_date</a></span><span class="op">(</span><span class="st">"10-03-2020"</span>, format <span class="op">=</span> <span class="st">"%d-%m-%Y"</span><span class="op">)</span> <span class="co"># con día-mes-año (4 cifras)</span></code></pre></div>
+<pre><code>## [1] "2020-03-10"</code></pre>
+<div class="sourceCode" id="cb769"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/as_date.html">as_date</a></span><span class="op">(</span><span class="st">"10-03-20"</span>, format <span class="op">=</span> <span class="st">"%d-%m-%y"</span><span class="op">)</span>  <span class="co"># con día-mes-año (2 cifras)</span></code></pre></div>
+<pre><code>## [1] "2020-03-10"</code></pre>
+<div class="sourceCode" id="cb771"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/as_date.html">as_date</a></span><span class="op">(</span><span class="st">"03-10-2020"</span>, format <span class="op">=</span> <span class="st">"%m-%d-%Y"</span><span class="op">)</span> <span class="co"># con mes-día-año (4 cifras)</span></code></pre></div>
+<pre><code>## [1] "2020-03-10"</code></pre>
+<div class="sourceCode" id="cb773"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/as_date.html">as_date</a></span><span class="op">(</span><span class="st">"Octubre 21, 1995 21:24"</span>, format <span class="op">=</span> <span class="st">"%B %d, %Y %H:%M"</span><span class="op">)</span> <span class="co"># fecha escrita</span></code></pre></div>
+<pre><code>## [1] NA</code></pre>
+<p> </p>
+<p><strong><span style="color: #dc3545;">ERROR: sin pasar a fecha no se puede operar</span></strong></p>
+<p>Si tenemos una fecha como caracter, nunca podremos hacer operaciones (por ejemplo, restarle una unidad temporal, en este caso un día).</p>
+<div class="sourceCode" id="cb775"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="st">"2021-03-10"</span> <span class="op">-</span> <span class="fl">1</span> <span class="co"># error</span></code></pre></div>
+<pre><code>## Error in "2021-03-10" - 1: argumento no-numérico para operador binario</code></pre>
+<p>Fíjate la diferencia cuando lo convertimos en fecha</p>
+<div class="sourceCode" id="cb777"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">fecha</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/as_date.html">as_date</a></span><span class="op">(</span><span class="st">"2021-03-10"</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span> <span class="co"># día previo</span>
+<span class="va">fecha</span></code></pre></div>
+<pre><code>## [1] "2021-03-09"</code></pre>
+<p> </p>
+<div id="funciones-de-lubridate" class="section level2">
+<h2>
+<span class="header-section-number">8.1</span> Funciones de lubridate<a class="anchor" aria-label="anchor" href="#funciones-de-lubridate"><i class="fas fa-link"></i></a>
+</h2>
+<p>No solo podemos convertir la fecha con <code><a href="https://rdrr.io/pkg/lubridate/man/as_date.html">as_date()</a></code>, indicándole el formato. Para <mark><strong>facilitar conversiones de formatos habituales</strong></mark>, el paquete <a href="https://lubridate.tidyverse.org">lubridate</a> tiene a nuestra disposición diferentes funciones preparadas para directamente convertir fechas en distintos formatos, como la función <code><a href="https://rdrr.io/pkg/lubridate/man/ymd_hms.html">ymd_hms()</a></code> o <code><a href="https://rdrr.io/pkg/lubridate/man/ymd_hms.html">ydm_hms()</a></code></p>
+<div class="sourceCode" id="cb779"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/ymd_hms.html">ymd_hms</a></span><span class="op">(</span><span class="st">"2017-11-28 14:02:00"</span><span class="op">)</span> <span class="co"># convertir a fecha una cadena año-mes-día + hora</span></code></pre></div>
+<pre><code>## [1] "2017-11-28 14:02:00 UTC"</code></pre>
+<div class="sourceCode" id="cb781"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/ymd_hms.html">ydm_hms</a></span><span class="op">(</span><span class="st">"2017-22-12 10:00:00"</span><span class="op">)</span> <span class="co"># convertir a fecha una cadena año-día-mes + hora</span></code></pre></div>
+<pre><code>## [1] "2017-12-22 10:00:00 UTC"</code></pre>
+<p>De la misma manera tenemos la función <code><a href="https://rdrr.io/pkg/lubridate/man/ymd_hms.html">dmy_hms()</a></code></p>
+<div class="sourceCode" id="cb783"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/ymd_hms.html">dmy_hms</a></span><span class="op">(</span><span class="st">"1 Jan 2017 23:59:59"</span><span class="op">)</span> <span class="co"># convertir a fecha una cadena textual de fecha + hora</span></code></pre></div>
+<pre><code>## [1] "2017-01-01 23:59:59 UTC"</code></pre>
+<p>También podemos hacerlo de forma muy simplifica con <code><a href="https://rdrr.io/pkg/lubridate/man/ymd.html">mdy()</a></code> y <code><a href="https://rdrr.io/pkg/lubridate/man/ymd.html">ymd()</a></code></p>
+<div class="sourceCode" id="cb785"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/ymd.html">mdy</a></span><span class="op">(</span><span class="st">"July 4th, 2000"</span><span class="op">)</span> <span class="co"># convertir a fecha una cadena textual de fecha</span></code></pre></div>
+<pre><code>## [1] "2000-07-04"</code></pre>
+<div class="sourceCode" id="cb787"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/ymd.html">ymd</a></span><span class="op">(</span><span class="fl">20170131</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "2017-01-31"</code></pre>
+<p> </p>
+<p>Otra de las funcionalidades que nos proporciona dicho paquetees <mark><strong>obtener automáticamente la fecha de hoy</strong></mark>, haciendo uso de la función <code><a href="https://rdrr.io/pkg/lubridate/man/now.html">today()</a></code></p>
+<div class="sourceCode" id="cb789"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">hoy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/now.html">today</a></span><span class="op">(</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">hoy</span><span class="op">)</span> <span class="co"># de clase fecha</span></code></pre></div>
+<pre><code>## [1] "Date"</code></pre>
+<div class="sourceCode" id="cb791"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">hoy</span> <span class="op">+</span> <span class="fl">7</span> <span class="co"># dentro de una semana</span></code></pre></div>
+<pre><code>## [1] "2022-07-26"</code></pre>
+<p>También podemos <mark><strong>obtener el «hoy y ahora»</strong></mark> con la función <code><a href="https://rdrr.io/pkg/lubridate/man/now.html">now()</a></code>, obteniendo no solo la fecha sino la hora.</p>
+<div class="sourceCode" id="cb793"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/now.html">now</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "2022-07-19 17:31:45 CEST"</code></pre>
+<p> </p>
+<p>También tenemos disponibles en dicho paquete funciones para extraer facilmente algunas variables temporales como el <mark><strong>día de la semana, el mes o el cuatrimestre</strong></mark>, con las funciones <code><a href="https://rdrr.io/pkg/lubridate/man/year.html">year()</a></code>, <code><a href="https://rdrr.io/r/base/weekday.POSIXt.html">months()</a></code>, <code><a href="https://rdrr.io/pkg/lubridate/man/day.html">day()</a></code>, <code><a href="https://rdrr.io/pkg/lubridate/man/hour.html">hour()</a></code>, <code><a href="https://rdrr.io/pkg/lubridate/man/week.html">week()</a></code>, etc.</p>
+<div class="sourceCode" id="cb795"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">fecha</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/now.html">now</a></span><span class="op">(</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/year.html">year</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 2022</code></pre>
+<div class="sourceCode" id="cb797"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/month.html">month</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 7</code></pre>
+<div class="sourceCode" id="cb799"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/day.html">day</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 19</code></pre>
+<div class="sourceCode" id="cb801"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/hour.html">hour</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 17</code></pre>
+<div class="sourceCode" id="cb803"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/minute.html">minute</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 31</code></pre>
+<div class="sourceCode" id="cb805"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/second.html">second</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 45.25187</code></pre>
+<div class="sourceCode" id="cb807"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/week.html">week</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span> <span class="co"># Número de semana (del año)</span></code></pre></div>
+<pre><code>## [1] 29</code></pre>
+<p>También disponemos de la función <code><a href="https://rdrr.io/pkg/lubridate/man/day.html">wday()</a></code>, que nos devuelve el <mark><strong>día de la semana</strong></mark> en el que estamos (por defecto, la semana empieza el domingo, pero podemos cambiarlo con el argumento opcional <code>week_start = ...</code>)</p>
+<div class="sourceCode" id="cb809"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/day.html">wday</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<div class="sourceCode" id="cb811"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/day.html">wday</a></span><span class="op">(</span><span class="va">fecha</span>, week_start <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="co"># Día de la semana (empezando por el lunes)</span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<p>Además si usamos otro argumento opcional <code>label = TRUE</code> (por defecto está en <code>FALSE</code>), nos convertirá dichos días de la semana en los nombres (en lugar de números)</p>
+<div class="sourceCode" id="cb813"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/day.html">wday</a></span><span class="op">(</span><span class="va">fecha</span>, week_start <span class="op">=</span> <span class="fl">1</span>, label <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] Tue
+## Levels: Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat &lt; Sun</code></pre>
+<p> </p>
+<p>Las funciones de <code><a href="https://rdrr.io/pkg/lubridate/man/month.html">month()</a></code>, <code><a href="https://rdrr.io/pkg/lubridate/man/year.html">year()</a></code>, <code><a href="https://rdrr.io/pkg/lubridate/man/day.html">day()</a></code>, etc, pueden ser usadas tanto para extraer el valor como para cambiarlo, asignándole uno distinto</p>
+<div class="sourceCode" id="cb815"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Mantenemos la misma fecha que la actual pero solo cambiando el año</span>
+<span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/year.html">year</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fl">1891</span></code></pre></div>
+<p> </p>
+<p>Al igual que podemos realizar operaciones aritméticas sencillas con las fechas, también podemos <mark><strong>realizar comparaciones</strong></mark>, por ejemplo, si el día actual es menor o mayor que otra fecha dada.</p>
+<div class="sourceCode" id="cb816"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">fecha_actual</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/now.html">now</a></span><span class="op">(</span><span class="op">)</span>
+<span class="va">fecha_actual</span> <span class="op">&gt;</span> <span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/ymd.html">ymd</a></span><span class="op">(</span><span class="fl">20170131</span><span class="op">)</span> <span class="co"># Actual vs 2017-01-31</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb818"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">fecha_actual</span> <span class="op">&gt;</span> <span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/ymd.html">ymd</a></span><span class="op">(</span><span class="fl">21000131</span><span class="op">)</span> <span class="co"># Actual vs 2100-01-31</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<p> </p>
+<p>Con la función <code><a href="https://rdrr.io/pkg/lubridate/man/leap_year.html">leap_year()</a></code> podremos saber si la fecha corresponde a un año bisiesto</p>
+<div class="sourceCode" id="cb820"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/leap_year.html">leap_year</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/as_date.html">as_date</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/ymd.html">ymd</a></span><span class="op">(</span><span class="fl">20190131</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb822"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/leap_year.html">leap_year</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/as_date.html">as_date</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/ymd.html">ymd</a></span><span class="op">(</span><span class="fl">20160131</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>También podemos hacer uso de diferentes funciones para añadir intervalos de tiempo a una fecha dada (que no sean solo días).</p>
+<div class="sourceCode" id="cb824"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">fecha</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/now.html">now</a></span><span class="op">(</span><span class="op">)</span>
+<span class="va">fecha</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/period.html">weeks</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "2022-07-19 17:31:45 CEST" "2022-07-26 17:31:45 CEST"
+## [3] "2022-08-02 17:31:45 CEST" "2022-08-09 17:31:45 CEST"</code></pre>
+<div class="sourceCode" id="cb826"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">fecha</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/period.html">seconds</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "2022-07-19 17:31:45 CEST" "2022-07-19 17:31:46 CEST"
+## [3] "2022-07-19 17:31:47 CEST" "2022-07-19 17:31:48 CEST"</code></pre>
+</div>
+<div id="consejos-5" class="section level2">
+<h2>
+<span class="header-section-number">8.2</span> Consejos<a class="anchor" aria-label="anchor" href="#consejos-5"><i class="fas fa-link"></i></a>
+</h2>
+<p><strong><span style="color: #20935E;">CONSEJOS</span></strong></p>
+<p> </p>
+<p><strong><span style="color: #20935E;">Recuperar un comando y autocompletar</span></strong></p>
+<p>Si haces click con el ratón en la consola y pulsas la flecha «arriba» del teclado, te irá apareciendo todo el <mark><strong>historial de órdenes ejecutadas</strong></mark>. Es una manera de ahorrar tiempo para ejecutar órdenes similares a las ya ejecutadas. Si empiezas a escribir el nombre de una variable pero no te acuerdas exactamente de su nombre, pulsando <strong>tabulador</strong> te <strong>autocompletará</strong> solo.</p>
+<p> </p>
+<p><strong><span style="color: #20935E;">Convertir tipos de datos</span></strong></p>
+<p>A veces la lectura de variables numéricas de nuestros archivos puede hacer que un número, por ejemplo <code>1</code>, sea leído como la cadena de texto <code>"1"</code>, con la que no podemos operar como un número. Las funciones <code><a href="https://rdrr.io/r/base/numeric.html">as.numeric()</a></code>, <code><a href="https://rdrr.io/r/base/character.html">as.character()</a></code> y <code><a href="https://rdrr.io/r/base/logical.html">as.logical()</a></code> nos permiten convertir una variable en tipo numérico, caracter o lógico, respectivamente.</p>
+<div class="sourceCode" id="cb828"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="st">"1"</span> <span class="op">+</span> <span class="fl">1</span></code></pre></div>
+<pre><code>## Error in "1" + 1: argumento no-numérico para operador binario</code></pre>
+<div class="sourceCode" id="cb830"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="st">"1"</span><span class="op">)</span> <span class="op">+</span> <span class="fl">1</span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<div class="sourceCode" id="cb832"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "1"</code></pre>
+<div class="sourceCode" id="cb834"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/logical.html">as.logical</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] FALSE  TRUE</code></pre>
+<p> </p>
+</div>
+<div id="ejercicios-5" class="section level2">
+<h2>
+<span class="header-section-number">8.3</span> 📝 Ejercicios<a class="anchor" aria-label="anchor" href="#ejercicios-5"><i class="fas fa-link"></i></a>
+</h2>
+<p>(haz click en las flechas para ver soluciones)</p>
+<details><p><summary>📝<strong>Ejercicio 1</strong>: obten la fecha de hoy, define la fecha de tu cumpleaños, y calcula la diferencia de días. </summary></p>
+<!-- toc -->
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb836"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Hoy</span>
+<span class="va">hoy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/now.html">today</a></span><span class="op">(</span><span class="op">)</span>
+
+<span class="co"># Cumple (diferentes formatos de entrada)</span>
+<span class="va">cumple</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/as_date.html">as_date</a></span><span class="op">(</span><span class="st">"1989-09-10"</span><span class="op">)</span> <span class="co"># por defecto</span>
+<span class="va">cumple</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/as_date.html">as_date</a></span><span class="op">(</span><span class="st">"10-09-1989"</span>, format <span class="op">=</span> <span class="st">"%d-%m-%Y"</span><span class="op">)</span>
+
+<span class="co"># Diferencia</span>
+<span class="va">hoy</span> <span class="op">-</span> <span class="va">cumple</span></code></pre></div>
+<pre><code>## Time difference of 12000 days</code></pre>
+<!-- tocstop -->
+</details><p> </p>
+<details><p><summary>📝<strong>Ejercicio 2</strong>: define la fecha de tu cumpleaños y determina si fue año bisiesto. Súmale 1-2-3-4-5 semanas. </summary></p>
+<!-- toc -->
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb838"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">cumple</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/as_date.html">as_date</a></span><span class="op">(</span><span class="st">"1989-09-10"</span><span class="op">)</span> <span class="co"># por defecto</span>
+
+<span class="co"># Bisiesto</span>
+<span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/leap_year.html">leap_year</a></span><span class="op">(</span><span class="va">cumple</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb840"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Sumamos semanaes</span>
+<span class="va">cumple</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/period.html">weeks</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "1989-09-17" "1989-09-24" "1989-10-01" "1989-10-08" "1989-10-15"</code></pre>
+<!-- tocstop -->
+</details><p> </p>
+<details><p><summary>📝<strong>Ejercicio 3</strong>: extrae el mes, año y día de la semana de tu cumpleaños </summary></p>
+<!-- toc -->
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb842"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Mes</span>
+<span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/month.html">month</a></span><span class="op">(</span><span class="va">cumple</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 9</code></pre>
+<div class="sourceCode" id="cb844"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Año </span>
+<span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/year.html">year</a></span><span class="op">(</span><span class="va">cumple</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 1989</code></pre>
+<div class="sourceCode" id="cb846"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># wday</span>
+<span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/day.html">wday</a></span><span class="op">(</span><span class="va">cumple</span>, week_start <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 7</code></pre>
+<div class="sourceCode" id="cb848"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/day.html">wday</a></span><span class="op">(</span><span class="va">cumple</span>, week_start <span class="op">=</span> <span class="fl">1</span>, label <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] Sun
+## Levels: Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat &lt; Sun</code></pre>
+<!-- tocstop -->
+</details><p> </p>
+<details><p><summary>📝<strong>Ejercicio 4</strong>: calcula los días que han pasado desde la fecha de tu nacimiento </summary></p>
+<!-- toc -->
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb850"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/period.html">seconds</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/now.html">today</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="va">cumple</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "12000S"</code></pre>
+<!-- tocstop -->
+</details><p> </p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="operacionesvectores.html"><span class="header-section-number">7</span> Operaciones con vectores</a></div>
+<div class="next"><a href="datos.html"><span class="header-section-number">9</span> Datos estructurados</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#fechas"><span class="header-section-number">8</span> Fechas</a></li>
+<li><a class="nav-link" href="#funciones-de-lubridate"><span class="header-section-number">8.1</span> Funciones de lubridate</a></li>
+<li><a class="nav-link" href="#consejos-5"><span class="header-section-number">8.2</span> Consejos</a></li>
+<li><a class="nav-link" href="#ejercicios-5"><span class="header-section-number">8.3</span> 📝 Ejercicios</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/dadosdelaplace/intro-R/blob/master/09-fechas.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/dadosdelaplace/intro-R/edit/master/09-fechas.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Introducción a R: aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 19-07-2022.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

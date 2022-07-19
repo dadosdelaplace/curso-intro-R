@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Capítulo 5 Variables individuales: números y caracteres | Introducción a R: aprendiendo R sin morir en el intento</title>
+<meta name="author" content="Javier Álvarez Liébana">
+<meta name="description" content="Scripts usados: script05.R. Ver en https://github.com/dadosdelaplace/courses-ECI-2022/blob/main/scripts/script05.R    Tras los primeros ejercicios planteados deberíamos saber más o menos usar R...">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="Capítulo 5 Variables individuales: números y caracteres | Introducción a R: aprendiendo R sin morir en el intento">
+<meta property="og:type" content="book">
+<meta property="og:image" content="/img/logo_R.png">
+<meta property="og:description" content="Scripts usados: script05.R. Ver en https://github.com/dadosdelaplace/courses-ECI-2022/blob/main/scripts/script05.R    Tras los primeros ejercicios planteados deberíamos saber más o menos usar R...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Capítulo 5 Variables individuales: números y caracteres | Introducción a R: aprendiendo R sin morir en el intento">
+<meta name="twitter:description" content="Scripts usados: script05.R. Ver en https://github.com/dadosdelaplace/courses-ECI-2022/blob/main/scripts/script05.R    Tras los primeros ejercicios planteados deberíamos saber más o menos usar R...">
+<meta name="twitter:image" content="/img/logo_R.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/_Sen-0.4.1/font.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM%20Mono&amp;display=swap" rel="stylesheet">
+<link href="libs/_Bitter-0.4.1/font.css" rel="stylesheet">
+<script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="css/style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Introducción a R: aprendiendo R sin morir en el intento</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Prefacio</a></li>
+<li class="book-part">Recursos</li>
+<li><a class="" href="ejercicios-recopilados.html">📝 Ejercicios recopilados</a></li>
+<li><a class="" href="recursos-de-aprendizaje.html">📚 Recursos de aprendizaje</a></li>
+<li class="book-part">Toma de contacto</li>
+<li><a class="" href="requisitos.html"><span class="header-section-number">1</span> Requisitos</a></li>
+<li><a class="" href="instalacionR.html"><span class="header-section-number">2</span> Instalación</a></li>
+<li><a class="" href="que-es-R.html"><span class="header-section-number">3</span> ¿Qué es R?</a></li>
+<li><a class="" href="primeros-pasos.html"><span class="header-section-number">4</span> Primeros pasos</a></li>
+<li class="book-part">Tipos de datos</li>
+<li><a class="active" href="var-num.html"><span class="header-section-number">5</span> Variables individuales: números y caracteres</a></li>
+<li><a class="" href="vectores.html"><span class="header-section-number">6</span> Vectores</a></li>
+<li><a class="" href="operacionesvectores.html"><span class="header-section-number">7</span> Operaciones con vectores</a></li>
+<li><a class="" href="fechas.html"><span class="header-section-number">8</span> Fechas</a></li>
+<li><a class="" href="datos.html"><span class="header-section-number">9</span> Datos estructurados</a></li>
+<li><a class="" href="listas.html"><span class="header-section-number">10</span> Listas</a></li>
+<li class="book-part">Haciendo el trabajo más fácil</li>
+<li><a class="" href="if-else.html"><span class="header-section-number">11</span> Estructuras de control: if-else</a></li>
+<li><a class="" href="bucles.html"><span class="header-section-number">12</span> Estructuras de control: bucles</a></li>
+<li><a class="" href="funciones.html"><span class="header-section-number">13</span> Funciones</a></li>
+<li><a class="" href="proyecto.html"><span class="header-section-number">14</span> Proyecto de trabajo</a></li>
+<li class="book-part">Colofón</li>
+<li><a class="" href="importar-exportar.html"><span class="header-section-number">15</span> Importar/exportar datos</a></li>
+<li><a class="" href="practica-final.html"><span class="header-section-number">16</span> 📝 Práctica final</a></li>
+<li><a class="" href="bibliograf%C3%ADa.html">Bibliografía</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/dadosdelaplace/intro-R">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="var-num" class="section level1">
+<h1>
+<span class="header-section-number">Capítulo 5</span> Variables individuales: números y caracteres<a class="anchor" aria-label="anchor" href="#var-num"><i class="fas fa-link"></i></a>
+</h1>
+<div class="blackbox">
+<p>Scripts usados:</p>
+<ul>
+<li>
+<a href="https://github.com/dadosdelaplace/courses-ECI-2022/blob/main/scripts/script05.R"><strong>script05.R</strong></a>. Ver en <a href="https://github.com/dadosdelaplace/courses-ECI-2022/blob/main/scripts/script05.R" class="uri">https://github.com/dadosdelaplace/courses-ECI-2022/blob/main/scripts/script05.R</a>
+</li>
+</ul>
+</div>
+<p> </p>
+<p>Tras los primeros ejercicios planteados deberíamos saber más o menos usar <code>R</code> como una calculadora, definiendo variables que nos guardan números, como <code>a &lt;- 1</code>. Vamos a ir más allá: <mark><strong>¿existen variables más allá de los números?</strong></mark> En este capítulo vamos a empezar a familiarizarnos con los <mark><strong>tipos de datos</strong></mark> que podemos necesitar. Piensa por ejemplo en los datos guardados de una persona en cualquier registro:</p>
+<ul>
+<li>La edad será un <mark><strong>número (sin decimales)</strong></mark>
+</li>
+<li>Su peso o estatura será otro <mark><strong>número (ahora con decimales)</strong></mark>.</li>
+<li>Su nombre será una <mark><strong>cadena de texto</strong></mark>.</li>
+<li>Su fecha de nacimiento será precisamente eso, un <mark><strong>dato de tipo fecha</strong></mark>.</li>
+<li>A la pregunta «¿está usted soltero/a?» la respuesta será lo que llamamos una <mark><strong>variable binaria o lógica</strong></mark>: una variable que solo puede valer <code>TRUE</code> (si está soltero/a) y <code>FALSE</code> (en otro caso), guarada internamente como un <code>1</code> o <code>0</code>.</li>
+</ul>
+<p>Existen <strong>más tipos de datos</strong> (por ejemplo, números complejos, listas, etc) pero con estos nos valdrá de momento.</p>
+<div id="numericas" class="section level2">
+<h2>
+<span class="header-section-number">5.1</span> Variables numéricas (individuales)<a class="anchor" aria-label="anchor" href="#numericas"><i class="fas fa-link"></i></a>
+</h2>
+<p>Probablemente el dato <strong>más sencillo y obvio</strong> de entender sean los datos numéricos, datos que ya hemos usado en nuestros primeros pasos como calculadora.</p>
+<div class="sourceCode" id="cb351"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">a</span> <span class="op">&lt;-</span> <span class="fl">1</span>
+<span class="va">b</span> <span class="op">&lt;-</span> <span class="fl">2</span>
+<span class="va">a</span> <span class="op">+</span> <span class="va">b</span></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<p>En el código anterior, tanto <code>a</code> como <code>b</code>, como la suma <code>a + b</code>, son de <mark><strong>tipo numérico</strong></mark>, algo que podemos comprobar con la función <code><a href="https://rdrr.io/r/base/class.html">class()</a></code> (nos devuelve <em>numeric</em>).</p>
+<div class="sourceCode" id="cb353"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Clase de las variables</span>
+<span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">a</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "numeric"</code></pre>
+<div class="sourceCode" id="cb355"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">b</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "numeric"</code></pre>
+<div class="sourceCode" id="cb357"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">a</span> <span class="op">+</span> <span class="va">b</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "numeric"</code></pre>
+<p>También podemos comprobar su naturaleza con <code><a href="https://rdrr.io/r/base/typeof.html">typeof()</a></code>, que nos devuelve la naturaleza del dato tal cual es guardada en <code>R</code>.</p>
+<div class="sourceCode" id="cb359"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Tipología interna</span>
+<span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">a</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "double"</code></pre>
+<div class="sourceCode" id="cb361"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">b</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "double"</code></pre>
+<div class="sourceCode" id="cb363"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">a</span> <span class="op">+</span> <span class="va">b</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "double"</code></pre>
+<p>Aunque no es especialmente relevante profundizar en ello de momento, fíjate que ambas órdenes combinadas nos dicen que las variables son de tipo numérico pero concretamente de tipo <mark><strong>double</strong></mark>: dichas variables son entendidas internamente como números con decimales (aunque no los veamos), lo que en <strong>matemáticas se llaman números reales</strong> (por curiosidad: el término <em>double</em> viene de lenguajes de programación antiguos como <code>C</code>, que significa «doble precisión», para indicarle que reserve 8 bytes - 64 bits - de memoria). Durante el curso no distinguiremos entre distintos tipos de números, para nosotros serán siempre de clase <em>numeric</em> y de tipo <em>double</em>, pero podríamos definir números enteros o <em>integer</em> (sin decimales, ahorrando huecos en memoria).</p>
+<div class="sourceCode" id="cb365"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Dato numérico (entero)</span>
+<span class="va">a</span> <span class="op">&lt;-</span> <span class="fl">1L</span>
+<span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">a</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "integer"</code></pre>
+<div class="sourceCode" id="cb367"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">a</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "integer"</code></pre>
+<p>Con los <mark><strong>datos numéricos</strong></mark> podemos realizar todas las <mark><strong>operaciones</strong></mark> que se nos ocurriría hacer en una <strong>calculadora</strong>, como sumar (<code><a href="https://rdrr.io/r/base/Arithmetic.html">+</a></code>), restar (<code><a href="https://rdrr.io/r/base/Arithmetic.html">-</a></code>), multiplicar (<code><a href="https://rdrr.io/r/base/Arithmetic.html">*</a></code>), dividir (<code><a href="https://rdrr.io/r/base/Arithmetic.html">/</a></code>), raíz cuadrada (<code><a href="https://rdrr.io/r/base/MathFun.html">sqrt()</a></code>), valor absoluto (<code><a href="https://rdrr.io/r/base/MathFun.html">abs()</a></code>), elevar al cuadrado (<code>^2</code>), elevar al cubo (<code>^3</code>), etc.</p>
+<div class="sourceCode" id="cb369"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Definimos dos variables numéricas</span>
+<span class="va">a</span> <span class="op">&lt;-</span> <span class="fl">1</span>
+<span class="va">b</span> <span class="op">&lt;-</span> <span class="op">-</span><span class="fl">2</span>
+
+<span class="co"># Suma y resta</span>
+<span class="va">a</span> <span class="op">+</span> <span class="va">b</span></code></pre></div>
+<pre><code>## [1] -1</code></pre>
+<div class="sourceCode" id="cb371"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">a</span> <span class="op">-</span> <span class="va">b</span></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<div class="sourceCode" id="cb373"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Multiplicación y división</span>
+<span class="va">a</span> <span class="op">*</span> <span class="va">b</span></code></pre></div>
+<pre><code>## [1] -2</code></pre>
+<div class="sourceCode" id="cb375"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">a</span> <span class="op">/</span> <span class="va">b</span></code></pre></div>
+<pre><code>## [1] -0.5</code></pre>
+<div class="sourceCode" id="cb377"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Raíz cuadrada</span>
+<span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">a</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode" id="cb379"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Potencias</span>
+<span class="va">a</span><span class="op">^</span><span class="fl">2</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode" id="cb381"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">b</span><span class="op">^</span><span class="fl">3</span></code></pre></div>
+<pre><code>## [1] -8</code></pre>
+</div>
+<div id="caracter" class="section level2">
+<h2>
+<span class="header-section-number">5.2</span> Variables de tipo caracter (texto)<a class="anchor" aria-label="anchor" href="#caracter"><i class="fas fa-link"></i></a>
+</h2>
+<p>Pero no solo de números viven los datos: imagina que además de la edad de una persona queremos guardar su nombre.</p>
+<div class="sourceCode" id="cb383"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">edad</span> <span class="op">&lt;-</span> <span class="fl">32</span>
+<span class="va">nombre</span> <span class="op">&lt;-</span> <span class="st">"Javier"</span>
+
+<span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">nombre</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "character"</code></pre>
+<div class="sourceCode" id="cb385"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">nombre</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "character"</code></pre>
+<p>Fíjate que ahora tenemos guardado en la variable <code>nombre</code> una variable de tipo <em>character</em>, es decir, una <mark><strong>cadena de texto</strong></mark> (conocido en otros lenguajes como <em>string</em> o <em>char</em>): <mark><strong>caracteres entre comillas</strong></mark>.</p>
+<p>Es importante el concepto de las comillas, ya que todo lo que vaya entre comillas será un texto: <code>"1"</code> no representa un número, representa un texto (igual que <code>"hola"</code> o <code>"adios"</code>)</p>
+</div>
+<div id="nuestra-primera-función-paste" class="section level2">
+<h2>
+<span class="header-section-number">5.3</span> Nuestra primera función: paste<a class="anchor" aria-label="anchor" href="#nuestra-primera-funci%C3%B3n-paste"><i class="fas fa-link"></i></a>
+</h2>
+<p>Las <mark><strong>cadenas de texto</strong></mark> son un tipo especial de dato, con los que obviamente no podremos hacer operaciones aritméticas, pero si podemos hacer operaciones propias de cadenas de texto como puede ser la <mark><strong>función <code><a href="https://rdrr.io/r/base/paste.html">paste()</a></code></strong></mark>. Dicha función nos permite <strong>pegar dos cadenas de caracteres</strong>.</p>
+<div class="sourceCode" id="cb387"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">nombre</span> <span class="op">&lt;-</span> <span class="st">"Javier"</span>
+<span class="va">apellido</span> <span class="op">&lt;-</span> <span class="st">"Álvarez"</span>
+<span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">nombre</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "Javier"</code></pre>
+<p>Si queremos pegar cadenas de texto sin ningún tipo de caracter en medio (ahora tenemos un espacio), existe una forma más abreviada y limpia de ejecutar la orden, usando la <mark><strong>función <code><a href="https://rdrr.io/r/base/paste.html">paste0()</a></code></strong></mark></p>
+<div class="sourceCode" id="cb389"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">nombre</span>, <span class="va">apellido</span><span class="op">)</span> <span class="co"># todo junto sin espacio</span></code></pre></div>
+<pre><code>## [1] "JavierÁlvarez"</code></pre>
+<p>Cuando hemos ejecutado <code><a href="https://rdrr.io/r/base/paste.html">paste()</a></code> y <code><a href="https://rdrr.io/r/base/paste.html">paste0()</a></code> estamos ejecutando lo que se conoce como una <mark><strong>función</strong></mark>: una palabra reservada que representa un <strong>conjunto de órdenes encapsuladas</strong>, y que se ejecuta a partir de unos <mark><strong>argumentos de entrada</strong></mark>. En este caso, solo hemos introducido como argumentos las cadenas de texto.</p>
+<p><mark><strong>¿Qué sucededería si queremos pegar cadenas de texto usando el punto o la coma o cualquier otro caracter</strong></mark> En el caso de la función <code><a href="https://rdrr.io/r/base/paste.html">paste()</a></code>, podremos hacer uso de lo que se conoce como <strong>argumento opcional</strong> llamado <code>sep</code>, que podemos darle un valor en concreto o dejarlo sin especificar. Lo que hará <code>R</code> será tomar su <mark><strong>valor por defecto</strong></mark> igual a <code>sep = " "</code> (por defecto, la función <code><a href="https://rdrr.io/r/base/paste.html">paste()</a></code> pega cadenas de texto con un espacio entre ellas porque en realidad ejecuta por defecto <code><a href="https://rdrr.io/r/base/paste.html">paste(..., sep = " ")</a></code>).</p>
+<div class="sourceCode" id="cb391"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">nombre</span>, <span class="va">apellido</span>, sep <span class="op">=</span> <span class="st">""</span><span class="op">)</span> <span class="co"># todo junto</span></code></pre></div>
+<pre><code>## [1] "JavierÁlvarez"</code></pre>
+<div class="sourceCode" id="cb393"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">nombre</span>, <span class="va">apellido</span>, sep <span class="op">=</span> <span class="st">" "</span><span class="op">)</span> <span class="co"># separados por un espacio</span></code></pre></div>
+<pre><code>## [1] "Javier Álvarez"</code></pre>
+<div class="sourceCode" id="cb395"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">nombre</span>, <span class="va">apellido</span>, sep <span class="op">=</span> <span class="st">"."</span><span class="op">)</span> <span class="co"># separados por un punto .</span></code></pre></div>
+<pre><code>## [1] "Javier.Álvarez"</code></pre>
+<div class="sourceCode" id="cb397"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">nombre</span>, <span class="va">apellido</span>, sep <span class="op">=</span> <span class="st">",,"</span><span class="op">)</span> <span class="co"># separados por dos comas.</span></code></pre></div>
+<pre><code>## [1] "Javier,,Álvarez"</code></pre>
+<p>Prueba a ejecutar <code><a href="https://rdrr.io/r/base/paste.html">? paste</a></code> en consola para ver las opciones de la función en el <strong>panel de ayuda</strong>.</p>
+</div>
+<div id="nuestro-primer-paquete-glue" class="section level2">
+<h2>
+<span class="header-section-number">5.4</span> Nuestro primer paquete: glue<a class="anchor" aria-label="anchor" href="#nuestro-primer-paquete-glue"><i class="fas fa-link"></i></a>
+</h2>
+<p>Otra forma más <strong>intuitiva de trabajar con textos y variables numéricas</strong> es usar el paquete <a href="https://github.com/tidyverse/glue">glue</a>, que nos permite <mark><strong>pegar cadenas de texto a variables numéricas de forma simbólica</strong></mark>.</p>
+<div class="sourceCode" id="cb399"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"glue"</span><span class="op">)</span> <span class="co"># solo la primera vez</span></code></pre></div>
+<div class="sourceCode" id="cb400"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tidyverse/glue">glue</a></span><span class="op">)</span></code></pre></div>
+<p>Recuerda que <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> es solo necesario la primera que «compramos el libro»: nos bajamos una serie de archivos a nuestro ordenador. Una vez que hemos comprado el libro, cada vez que queramos usarlo bastará con indicarle que nos traiga ese libro concreto con <code><a href="https://rdrr.io/r/base/library.html">library()</a></code>.</p>
+<p>El paquete <a href="https://github.com/tidyverse/glue">glue</a> nos permite pegar de una forma mucho más legible cadenas de texto. Por ejemplo, supongamos que queremos construir la frase <code>"La edad es de X años"</code>, donde <code>X</code> será la edad guardada e una variable.</p>
+<div class="sourceCode" id="cb401"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">edad</span> <span class="op">&lt;-</span> <span class="fl">32</span>
+<span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"La edad es de"</span>, <span class="va">edad</span>, <span class="st">"años"</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "La edad es de 32 años"</code></pre>
+<p>Con <code><a href="https://rdrr.io/r/base/paste.html">paste()</a></code> podemos mezclar texto y números pero de una forma un poco aparatosa ya que debemos de ir cerrando la frase con comillas. Para evitarlo, <code><a href="https://rdrr.io/pkg/glue/man/glue.html">glue()</a></code> nos proporciona una forma más cómoda, sin salirnos de la cadena de texto, encapsulando las variables en llaves.</p>
+<div class="sourceCode" id="cb403"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/glue/man/glue.html">glue</a></span><span class="op">(</span><span class="st">"La edad es de {edad} años"</span><span class="op">)</span></code></pre></div>
+<pre><code>## La edad es de 32 años</code></pre>
+<div class="sourceCode" id="cb405"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">unidades</span> <span class="op">&lt;-</span> <span class="st">"años"</span>
+<span class="fu"><a href="https://rdrr.io/pkg/glue/man/glue.html">glue</a></span><span class="op">(</span><span class="st">"La edad es de {edad} {unidades}"</span><span class="op">)</span></code></pre></div>
+<pre><code>## La edad es de 32 años</code></pre>
+<p>También podemos hacer uso de dicha función sin tener los valores numéricos previamente guardados en variables.</p>
+<div class="sourceCode" id="cb407"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Otra forma sin definir variables a priori</span>
+<span class="fu"><a href="https://rdrr.io/pkg/glue/man/glue.html">glue</a></span><span class="op">(</span><span class="st">"La edad es de {32} años"</span><span class="op">)</span></code></pre></div>
+<pre><code>## La edad es de 32 años</code></pre>
+</div>
+<div id="manejando-textos-paquete-stringr" class="section level2">
+<h2>
+<span class="header-section-number">5.5</span> Manejando textos: paquete stringr<a class="anchor" aria-label="anchor" href="#manejando-textos-paquete-stringr"><i class="fas fa-link"></i></a>
+</h2>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:stringr"></span>
+<img src="img/stringr.png" alt="Paquete stringr https://github.com/rstudio/cheatsheets/blob/main/strings.pdf" width="70%"><p class="caption">
+Imagen/gráfica 5.1: Paquete stringr <a href="https://github.com/rstudio/cheatsheets/blob/main/strings.pdf" class="uri">https://github.com/rstudio/cheatsheets/blob/main/strings.pdf</a>
+</p>
+</div>
+<p>El paquete <a href="http://stringr.tidyverse.org">stringr</a> nos proporciona un <mark><strong>abanico de funciones y utilidades para poder trabajar con variables de tipo texto</strong></mark>, permitiendo desde la búsqueda hasta la extracción de cadenas de texto dentro de la variable.</p>
+<div class="sourceCode" id="cb409"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># install.packages("stringr") # solo la primera vez</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://stringr.tidyverse.org">stringr</a></span><span class="op">)</span></code></pre></div>
+<p>Aunque no es el objetivo de este manual introductorio adentrarnos en lo que se conoce como <em>text mining</em> o minería de textos, he aquí una lista de funciones útiles que podemos encontrar en dicho paquete</p>
+<ul>
+<li>La función <code><a href="https://rdrr.io/pkg/stringr/man/str_length.html">str_length()</a></code> nos proporciona la <mark><strong>longitud de una cadena</strong></mark> de caracteres (reminder: un espacio cuenta como caracter).</li>
+</ul>
+<div class="sourceCode" id="cb410"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/stringr/man/str_length.html">str_length</a></span><span class="op">(</span><span class="st">"hola"</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<div class="sourceCode" id="cb412"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/stringr/man/str_length.html">str_length</a></span><span class="op">(</span><span class="st">"espejo"</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 6</code></pre>
+<ul>
+<li>La función <code><a href="https://rdrr.io/pkg/stringr/man/str_sub.html">str_sub()</a></code> nos permite <mark><strong>extraer subcadenas</strong></mark> de caracteres, indicándole no solo la cadena sino las posiciones iniciales y finales.</li>
+</ul>
+<div class="sourceCode" id="cb414"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="st">"ornitorrinco"</span>
+<span class="fu"><a href="https://rdrr.io/pkg/stringr/man/str_sub.html">str_sub</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">3</span>, <span class="fl">3</span><span class="op">)</span> <span class="co"># tercer caracter</span></code></pre></div>
+<pre><code>## [1] "n"</code></pre>
+<div class="sourceCode" id="cb416"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/stringr/man/str_sub.html">str_sub</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">3</span>, <span class="fl">5</span><span class="op">)</span> <span class="co"># del tercero al quinto (ambos inclusive)</span></code></pre></div>
+<pre><code>## [1] "nit"</code></pre>
+<div class="sourceCode" id="cb418"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/stringr/man/str_sub.html">str_sub</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">2</span>, <span class="op">-</span><span class="fl">3</span><span class="op">)</span> <span class="co"># del segundo al antepenúltimo caracter</span></code></pre></div>
+<pre><code>## [1] "rnitorrin"</code></pre>
+<p>Dicha función se puede usar incluso para <mark><strong>modificar subcadenas</strong></mark></p>
+<div class="sourceCode" id="cb420"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/stringr/man/str_sub.html">str_sub</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">3</span>, <span class="fl">6</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"jeje"</span> <span class="co"># del tercero al sexto colamos un "jeje"</span>
+<span class="va">x</span></code></pre></div>
+<pre><code>## [1] "orjejerrinco"</code></pre>
+<ul>
+<li>La función <code><a href="https://rdrr.io/pkg/stringr/man/str_dup.html">str_dup()</a></code> nos permite <mark><strong>duplicar cadenas</strong></mark> de caracteres</li>
+</ul>
+<div class="sourceCode" id="cb422"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/stringr/man/str_sub.html">str_sub</a></span><span class="op">(</span><span class="st">"ja"</span>, <span class="fl">2</span><span class="op">)</span> <span class="co"># duplicamos 2 veces "ja"</span></code></pre></div>
+<pre><code>## [1] "a"</code></pre>
+<div class="sourceCode" id="cb424"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/stringr/man/str_sub.html">str_sub</a></span><span class="op">(</span><span class="st">"ja"</span>, <span class="fl">5</span><span class="op">)</span> <span class="co"># duplicamos 5 veces "ja"</span></code></pre></div>
+<pre><code>## [1] ""</code></pre>
+<ul>
+<li>La función <code><a href="https://rdrr.io/pkg/stringr/man/str_remove.html">str_remove()</a></code> nos permite <mark><strong>eliminar subcadenas</strong></mark> de caracteres (reminder: el espacio porque cuenta como caracter)</li>
+</ul>
+<div class="sourceCode" id="cb426"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># eliminamos de la variable la subcadena o patrón "DNI:"</span>
+<span class="fu"><a href="https://rdrr.io/pkg/stringr/man/str_remove.html">str_remove</a></span><span class="op">(</span><span class="st">"DNI: 41378292"</span>, <span class="st">"DNI:"</span><span class="op">)</span> <span class="co"># nos deja ese espacio</span></code></pre></div>
+<pre><code>## [1] " 41378292"</code></pre>
+<ul>
+<li>La función <code><a href="https://rdrr.io/pkg/stringr/man/str_trim.html">str_trim()</a></code> nos permite <mark><strong>eliminar espacios en blanco</strong></mark> que nos hayan quedado en el texto, algo bastante habitual cuando lees cadenas de caracteres de archivos o de internet.</li>
+</ul>
+<div class="sourceCode" id="cb428"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># eliminamos de la variable la subcadena o patrón "DNI:"</span>
+<span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/stringr/man/str_remove.html">str_remove</a></span><span class="op">(</span><span class="st">"DNI: 41378292"</span>, <span class="st">"DNI:"</span><span class="op">)</span> <span class="co"># nos deja ese espacio</span>
+<span class="fu"><a href="https://rdrr.io/pkg/stringr/man/str_trim.html">str_trim</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="co"># eliminamos ese espacio</span></code></pre></div>
+<pre><code>## [1] "41378292"</code></pre>
+<div class="sourceCode" id="cb430"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/stringr/man/str_trim.html">str_trim</a></span><span class="op">(</span><span class="st">"  calle mayor "</span>, side <span class="op">=</span> <span class="st">"left"</span><span class="op">)</span> <span class="co"># solo los de la izquierda</span></code></pre></div>
+<pre><code>## [1] "calle mayor "</code></pre>
+<div class="sourceCode" id="cb432"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/stringr/man/str_trim.html">str_trim</a></span><span class="op">(</span><span class="st">"  calle mayor "</span>, side <span class="op">=</span> <span class="st">"right"</span><span class="op">)</span> <span class="co"># solo los de la derecha</span></code></pre></div>
+<pre><code>## [1] "  calle mayor"</code></pre>
+<div class="sourceCode" id="cb434"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/stringr/man/str_trim.html">str_trim</a></span><span class="op">(</span><span class="st">"  calle mayor "</span>, side <span class="op">=</span> <span class="st">"both"</span><span class="op">)</span> <span class="co"># ambos (pro defecto)</span></code></pre></div>
+<pre><code>## [1] "calle mayor"</code></pre>
+<ul>
+<li>La función <code><a href="https://rdrr.io/pkg/stringr/man/str_pad.html">str_pad()</a></code> nos permite <mark><strong>añadir espacios en blanco</strong></mark>
+</li>
+</ul>
+<div class="sourceCode" id="cb436"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="st">"mochila"</span>
+<span class="co"># un espacio en la izquierda (cadena resultante de longitud dada)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/stringr/man/str_pad.html">str_pad</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">8</span><span class="op">)</span> <span class="co"># longitud 8 ==&gt; mochila tiene 7, así que añade un espacio</span></code></pre></div>
+<pre><code>## [1] " mochila"</code></pre>
+<div class="sourceCode" id="cb438"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/stringr/man/str_pad.html">str_pad</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">15</span><span class="op">)</span> <span class="co"># longitud 15 ==&gt; mochila tiene 7, así que añade 8 espacios</span></code></pre></div>
+<pre><code>## [1] "        mochila"</code></pre>
+<div class="sourceCode" id="cb440"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/stringr/man/str_pad.html">str_pad</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">12</span>, <span class="st">"right"</span><span class="op">)</span> <span class="co"># a la derecha</span></code></pre></div>
+<pre><code>## [1] "mochila     "</code></pre>
+<div class="sourceCode" id="cb442"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/stringr/man/str_pad.html">str_pad</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">13</span>, <span class="st">"both"</span><span class="op">)</span> <span class="co"># a ambos lados</span></code></pre></div>
+<pre><code>## [1] "   mochila   "</code></pre>
+<ul>
+<li>La función <code><a href="https://rdrr.io/pkg/stringr/man/case.html">str_to_upper()</a></code> nos permite <mark><strong>convertir un texto a mayúscula</strong></mark> y <code><a href="https://rdrr.io/pkg/stringr/man/case.html">str_to_title()</a></code> pone en mayúscula solo la primera letra de cada palabra. La función <code><a href="https://rdrr.io/pkg/stringr/man/case.html">str_to_lower()</a></code> nos permite <mark><strong>convertir un texto a minúscula</strong></mark>
+</li>
+</ul>
+<div class="sourceCode" id="cb444"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="st">"Hola, me llamo Javi"</span>
+<span class="fu"><a href="https://rdrr.io/pkg/stringr/man/case.html">str_to_upper</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "HOLA, ME LLAMO JAVI"</code></pre>
+<div class="sourceCode" id="cb446"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/stringr/man/case.html">str_to_title</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "Hola, Me Llamo Javi"</code></pre>
+<div class="sourceCode" id="cb448"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/stringr/man/case.html">str_to_lower</a></span><span class="op">(</span><span class="st">"¡PARA! No puedes pasar"</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "¡para! no puedes pasar"</code></pre>
+<ul>
+<li>La función <code><a href="https://rdrr.io/pkg/stringr/man/str_detect.html">str_detect()</a></code> nos permite <mark><strong>detectar subcadenas</strong></mark> de caracteres</li>
+</ul>
+<div class="sourceCode" id="cb450"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">subcadena</span> <span class="op">&lt;-</span> <span class="st">"ministerio"</span>
+<span class="va">x</span> <span class="op">&lt;-</span> <span class="st">"En un documento del Ministerio del Interior..."</span>
+<span class="fu"><a href="https://rdrr.io/pkg/stringr/man/str_detect.html">str_detect</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">subcadena</span><span class="op">)</span> <span class="co"># no lo detecta porque se sensitive a mayúsculas</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb452"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/stringr/man/str_detect.html">str_detect</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/stringr/man/case.html">str_to_lower</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="va">subcadena</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>Haciendo además uso de expresiones regulares podemos afinar nuestra búsqueda</p>
+<div class="sourceCode" id="cb454"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">telefono</span> <span class="op">&lt;-</span> <span class="st">"([2-9][0-9]{2})[- .]([0-9]{3})[- .]([0-9]{4})"</span>
+<span class="va">x</span> <span class="op">&lt;-</span> <span class="st">"mi telefono es 219 733 8965"</span>
+<span class="va">y</span> <span class="op">&lt;-</span> <span class="st">"mi telefono es 329-293-8753"</span>
+<span class="va">z</span> <span class="op">&lt;-</span> <span class="st">"mi telefono es 32-293-87"</span>
+<span class="fu"><a href="https://rdrr.io/pkg/stringr/man/str_detect.html">str_detect</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">telefono</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb456"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/stringr/man/str_detect.html">str_detect</a></span><span class="op">(</span><span class="va">y</span>, <span class="va">telefono</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb458"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/stringr/man/str_detect.html">str_detect</a></span><span class="op">(</span><span class="va">z</span>, <span class="va">telefono</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<ul>
+<li>La función <code><a href="https://rdrr.io/pkg/stringr/man/str_locate.html">str_locate()</a></code> nos permite <mark><strong>localizar inicio y final donde se sitúan cadenas</strong></mark> de caracteres</li>
+</ul>
+<div class="sourceCode" id="cb460"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/stringr/man/str_locate.html">str_locate</a></span><span class="op">(</span><span class="st">"hola me llamo Javi"</span>, <span class="st">"Javi"</span><span class="op">)</span></code></pre></div>
+<pre><code>##      start end
+## [1,]    15  18</code></pre>
+<ul>
+<li>La función <code><a href="https://rdrr.io/pkg/stringr/man/str_replace.html">str_replace()</a></code> nos permite <mark><strong>reemplazar subcadenas en base a un patrón</strong></mark> pero solo lo hace con la primera que detecta. Con <code><a href="https://rdrr.io/pkg/stringr/man/str_replace.html">str_replace_all()</a></code> podemos reemplazar todos</li>
+</ul>
+<div class="sourceCode" id="cb462"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/stringr/man/str_replace.html">str_replace</a></span><span class="op">(</span><span class="st">"la vida del oso panda"</span>, <span class="st">"panda"</span>, <span class="st">"pardo"</span><span class="op">)</span> <span class="co"># reemplazamos panda por pardo</span></code></pre></div>
+<pre><code>## [1] "la vida del oso pardo"</code></pre>
+<div class="sourceCode" id="cb464"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/stringr/man/str_replace.html">str_replace</a></span><span class="op">(</span><span class="st">"la vida del oso pardo y el oso polar"</span>, <span class="st">"oso"</span>, <span class="st">"delfín"</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "la vida del delfín pardo y el oso polar"</code></pre>
+<div class="sourceCode" id="cb466"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/stringr/man/str_replace.html">str_replace_all</a></span><span class="op">(</span><span class="st">"la vida del oso pardo y el oso polar"</span>, <span class="st">"oso"</span>, <span class="st">"delfín"</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "la vida del delfín pardo y el delfín polar"</code></pre>
+</div>
+<div id="consejos-2" class="section level2">
+<h2>
+<span class="header-section-number">5.6</span> Consejos<a class="anchor" aria-label="anchor" href="#consejos-2"><i class="fas fa-link"></i></a>
+</h2>
+<p><strong><span style="color: #20935E;">CONSEJOS</span></strong></p>
+<p> </p>
+<p><strong><span style="color: #20935E;">Recuperar un comando y autocompletar</span></strong></p>
+<p>Si haces click con el ratón en la consola y pulsas la flecha «arriba» del teclado, te irá apareciendo todo el <mark><strong>historial de órdenes ejecutadas</strong></mark>. Es una manera de ahorrar tiempo para ejecutar órdenes similares a las ya ejecutadas. Si empiezas a escribir el nombre de una variable pero no te acuerdas exactamente de su nombre, pulsando <strong>tabulador</strong> te <strong>autocompletará</strong> solo.</p>
+<p> </p>
+<p><strong><span style="color: #20935E;">Convertir tipos de datos</span></strong></p>
+<p>A veces la lectura de variables numéricas de nuestros archivos puede hacer que un número, por ejemplo <code>1</code>, sea leído como la cadena de texto <code>"1"</code>, con la que no podemos operar como un número. Las funciones <code><a href="https://rdrr.io/r/base/numeric.html">as.numeric()</a></code>, o <code><a href="https://rdrr.io/r/base/character.html">as.character()</a></code> nos permiten convertir una variable en tipo numérico, caracter o lógico, respectivamente.</p>
+<div class="sourceCode" id="cb468"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="st">"1"</span> <span class="op">+</span> <span class="fl">1</span></code></pre></div>
+<pre><code>## Error in "1" + 1: argumento no-numérico para operador binario</code></pre>
+<div class="sourceCode" id="cb470"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="st">"1"</span><span class="op">)</span> <span class="op">+</span> <span class="fl">1</span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<div class="sourceCode" id="cb472"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "1"</code></pre>
+<p> </p>
+</div>
+<div id="ejercicios-2" class="section level2">
+<h2>
+<span class="header-section-number">5.7</span> 📝 Ejercicios<a class="anchor" aria-label="anchor" href="#ejercicios-2"><i class="fas fa-link"></i></a>
+</h2>
+<p>(haz click en las flechas para ver soluciones)</p>
+<details><p><summary>📝<strong>Ejercicio 1</strong>: define una variable <code>edad</code> que guarde tu edad y otra <code>nombre</code> con tu nombre. </summary></p>
+<!-- toc -->
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb474"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">edad</span> <span class="op">&lt;-</span> <span class="fl">32</span> <span class="co"># tipo numeric</span>
+<span class="va">nombre</span> <span class="op">&lt;-</span> <span class="st">"Javier"</span> <span class="co"># tipo caracter</span>
+
+<span class="va">edad</span></code></pre></div>
+<pre><code>## [1] 32</code></pre>
+<div class="sourceCode" id="cb476"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">nombre</span></code></pre></div>
+<pre><code>## [1] "Javier"</code></pre>
+<!-- tocstop -->
+</details><p> </p>
+<details><p><summary>📝<strong>Ejercicio 2</strong>: define otra variable con tus apellidos y junta las variables <code>nombre</code> y <code>apellidos</code> en una sola cadena de texto que guardes en <code>nombre_completo</code>. </summary></p>
+<!-- toc -->
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb478"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Apellidos</span>
+<span class="va">apellidos</span> <span class="op">&lt;-</span> <span class="st">"Álvarez Liébana"</span>
+
+<span class="co"># Pegamos</span>
+<span class="va">nombre_completo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/glue/man/glue.html">glue</a></span><span class="op">(</span><span class="st">"{nombre} {apellidos}"</span><span class="op">)</span>
+<span class="va">nombre_completo</span></code></pre></div>
+<pre><code>## Javier Álvarez Liébana</code></pre>
+<div class="sourceCode" id="cb480"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Otra forma</span>
+<span class="va">nombre_completo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">nombre</span>, <span class="va">apellidos</span><span class="op">)</span>
+<span class="va">nombre_completo</span></code></pre></div>
+<pre><code>## [1] "Javier Álvarez Liébana"</code></pre>
+<!-- tocstop -->
+</details><p> </p>
+<details><p><summary>📝<strong>Ejercicio 3</strong>: define dos variables numéricas y realiza la suma de ambas. Obtén con <code><a href="https://rdrr.io/r/base/class.html">class()</a></code> la clase de dicha variable suma </summary></p>
+<!-- toc -->
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb482"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Definimos dos variables numéricas</span>
+<span class="va">a</span> <span class="op">&lt;-</span> <span class="fl">1</span>
+<span class="va">b</span> <span class="op">&lt;-</span> <span class="op">-</span><span class="fl">2</span>
+
+<span class="va">a</span> <span class="op">+</span> <span class="va">b</span></code></pre></div>
+<pre><code>## [1] -1</code></pre>
+<div class="sourceCode" id="cb484"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">a</span> <span class="op">+</span> <span class="va">b</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "numeric"</code></pre>
+<!-- tocstop -->
+</details><p> </p>
+<details><p><summary>📝<strong>Ejercicio 4</strong>: construye una frase que diga «Hola, me llamo … y tengo … años». </summary></p>
+<!-- toc -->
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb486"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">edad</span> <span class="op">&lt;-</span> <span class="fl">32</span>
+<span class="fu"><a href="https://rdrr.io/pkg/glue/man/glue.html">glue</a></span><span class="op">(</span><span class="st">"Hola, me llamo {nombre_completo} y tengo {edad} años"</span><span class="op">)</span></code></pre></div>
+<pre><code>## Hola, me llamo Javier Álvarez Liébana y tengo 32 años</code></pre>
+<!-- tocstop -->
+</details><p> </p>
+<details><p><summary>📝<strong>Ejercicio 5</strong>: define una cadena de texto con <code>"mi código postal es 28045"</code>. Calcula la longitud de la cadena y extrae la subcadena del lugar 3 al 17 con <code><a href="https://rdrr.io/pkg/stringr/man/str_sub.html">str_sub()</a></code> (guarda dicha subcadena en una variable <code>y</code>) </summary></p>
+<!-- toc -->
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb488"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="st">"mi código postal es 28045"</span>
+<span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/stringr/man/str_sub.html">str_sub</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">3</span>, <span class="fl">17</span><span class="op">)</span>
+<span class="va">y</span></code></pre></div>
+<pre><code>## [1] " código postal "</code></pre>
+<!-- tocstop -->
+</details><p> </p>
+<details><p><summary>📝<strong>Ejercicio 6</strong>: con la subcadena <code>y</code> del ejercicio anterior, elimina los espacios solo de la izquierda y convierte a mayúsculas </summary></p>
+<!-- toc -->
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb490"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Todo en una línea</span>
+<span class="fu"><a href="https://rdrr.io/pkg/stringr/man/case.html">str_to_upper</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/stringr/man/str_trim.html">str_trim</a></span><span class="op">(</span><span class="va">y</span>, side <span class="op">=</span> <span class="st">"left"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "CÓDIGO POSTAL "</code></pre>
+<div class="sourceCode" id="cb492"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Paso a paso</span>
+<span class="va">z</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/stringr/man/str_trim.html">str_trim</a></span><span class="op">(</span><span class="va">y</span>, side <span class="op">=</span> <span class="st">"left"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/stringr/man/case.html">str_to_upper</a></span><span class="op">(</span><span class="va">z</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "CÓDIGO POSTAL "</code></pre>
+<!-- tocstop -->
+</details><p> </p>
+<details><p><summary>📝<strong>Ejercicio 7</strong>: con la cadena <code>x</code> original, sustituye la subcadena “código postal” por “cp”.</summary></p>
+<!-- toc -->
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb494"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/stringr/man/str_sub.html">str_sub</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">4</span>, <span class="fl">16</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"cp"</span></code></pre></div>
+<!-- tocstop -->
+</details><p> </p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="primeros-pasos.html"><span class="header-section-number">4</span> Primeros pasos</a></div>
+<div class="next"><a href="vectores.html"><span class="header-section-number">6</span> Vectores</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#var-num"><span class="header-section-number">5</span> Variables individuales: números y caracteres</a></li>
+<li><a class="nav-link" href="#numericas"><span class="header-section-number">5.1</span> Variables numéricas (individuales)</a></li>
+<li><a class="nav-link" href="#caracter"><span class="header-section-number">5.2</span> Variables de tipo caracter (texto)</a></li>
+<li><a class="nav-link" href="#nuestra-primera-funci%C3%B3n-paste"><span class="header-section-number">5.3</span> Nuestra primera función: paste</a></li>
+<li><a class="nav-link" href="#nuestro-primer-paquete-glue"><span class="header-section-number">5.4</span> Nuestro primer paquete: glue</a></li>
+<li><a class="nav-link" href="#manejando-textos-paquete-stringr"><span class="header-section-number">5.5</span> Manejando textos: paquete stringr</a></li>
+<li><a class="nav-link" href="#consejos-2"><span class="header-section-number">5.6</span> Consejos</a></li>
+<li><a class="nav-link" href="#ejercicios-2"><span class="header-section-number">5.7</span> 📝 Ejercicios</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/dadosdelaplace/intro-R/blob/master/06-var_num.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/dadosdelaplace/intro-R/edit/master/06-var_num.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Introducción a R: aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 19-07-2022.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

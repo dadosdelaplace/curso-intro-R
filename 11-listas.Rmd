@@ -1,0 +1,252 @@
+```{r echo = FALSE}
+library(knitr)
+
+# Color text
+colorize <- function(x, color) {
+  
+  if (knitr::is_latex_output()) {
+    
+    sprintf("\\textcolor{%s}{%s}", color, x)
+    
+  } else if (knitr::is_html_output()) {
+    
+    sprintf("<span style='color: %s;'>%s</span>", color, x)
+    
+  } else { x }
+}
+```
+
+# Listas {#listas}
+
+:::: {.blackbox data-latex=""}
+
+Scripts usados:
+
+* [**script10.R**](https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script10.R). Ver en <https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script10.R>
+
+::::
+
+
+Veamos un pequeño <mark>**resumen de los datos**</mark> que conocemos:
+
+* <mark>**vectores**</mark>: colección de elementos de <mark>**igual tipo**</mark>. Pueden ser **números**, **caracteres** o **valores lógicos**, entre otros.
+
+* <mark>**matrices**</mark>: colección <mark> **BIDIMENSIONAL**</mark> de elementos de <mark>**igual tipo**</mark> e <mark>**igual longitud**</mark>.
+
+* <mark>**data.frame**</mark>: colección <mark> **BIDIMENSIONAL**</mark> de elementos de <mark>**igual longitud**</mark> pero <mark>**de cualquier tipo**</mark>, lo más parecido a lo que conocemos como una tabla en Excel.
+
+
+Con todos estos ingredientes estamos preparados/as para ver el que probablemente sea el tipo de dato más importante en `R`: las <mark>**listas**</mark>.
+
+Las <mark>**listas**</mark> son **colecciones** de variables de <mark>**diferente tipo**</mark> (ya lo teníamos con `data.frame`) pero además <mark>**también de diferente longitud**</mark>, con estructuras totalmente **heterógeneas**, todo guardado en la misma variable (incluso **una lista puede tener dentro a su vez otra lista**).
+
+Vamos a <mark>**crear nuestra primera lista**</mark> con tres elementos: el nombre de nuestros padres/madres, nuestro lugar de nacimiento y edades de nuestros hermanos.
+
+```{r}
+variable_1 <- c("Paloma", "Gregorio")
+variable_2 <- "Madrid"
+variable_3 <- c(25, 30, 26)
+
+lista <- list("progenitores" = variable_1,
+              "lugar_nacimiento" = variable_2,
+              "edades_hermanos" = variable_3)
+lista
+length(lista)
+```
+
+Si observas el objeto que hemos definido como `lista`, su <mark>**longitud**</mark> del es de 3 ya que tenemos guardados **tres elementos**
+
+* un vector de caracteres (de longitud 2)
+* un caracter (vector de longitud 1)
+* un vector de números (de longitud 3)
+
+Tenemos guardados elementos de distinto tipo (algo que ya podíamos con los `data.frame` pero, además, de longitudes dispares).
+
+```{r}
+dim(lista) # devolverá NULL al no tener dos dimensiones
+length(lista)
+class(lista) # de tipo lista
+```
+
+Si los juntásemos con un `data.frame`, al tener distinta longitud, obtendríamos un error: `arguments imply differing number of rows`.
+
+```{r, error = TRUE}
+data.frame("progenitores" = variable_1,
+           "lugar_nacimiento" = variable_2,
+           "edades_hermanos" = variable_3)
+```
+
+Para <mark>**acceder a un elemento de la lista**</mark> tenemos dos opciones:
+
+- **Acceder por índice**: con el operador `[[i]]` accedemos al elemento i-ésimo de la lista.
+
+- **Acceder por nombre**: con el operador `$nombre_elemento` accedemos al elemento por su nombre
+
+```{r}
+# Accedemos por índice
+lista[[1]]
+
+# Accedemos por nombre
+lista$progenitores
+```
+
+Dada su heterogeneidad y flexibilidad, para acceder a un elemento particular, las listas tienen una forma peculiar de acceder (con el corchete doble, en contraposición con el corchete simple que nos permite <mark>**acceder a varios elementos a la vez**</mark>)
+
+```{r seleccionar-varios}
+# Varios elementos
+lista[1:2]
+```
+
+Las listas nos dan tanta flexibilidad que es el formato de dato natural para <mark>**guardar datos que no están estructurados**</mark>, como pueden ser los datos almacenados en el registro de una persona.
+
+Vamos a definir, por ejemplo, los **datos que tendría un instituto de un alumno**.
+
+* `nacimiento`: una fecha.
+* `notas_insti`: un `data.frame`.
+* `teléfonos`: vector de números.
+* `nombre_padres`: vector de texto.
+
+```{r}
+# Fecha de nacimiento
+fecha_nacimiento <- as_date("1989-09-10")
+
+# Notas de asignaturas en primer y segundo parcial
+notas <- data.frame("biología" = c(5, 7), "física" = c(4, 5),
+                    "matemáticas" = c(8, 9.5))
+row.names(notas) <- # Nombre a las filas
+  c("primer_parcial", "segundo_parcial")
+
+# Números de teléfono
+tlf <- c("914719567", "617920765", "716505013")
+
+# Nombres
+padres <- c("Juan", "Julia")
+
+# Guardamos TODO en una lista (con nombres de cada elemento)
+datos <- list("nacimiento" = fecha_nacimiento,
+              "notas_insti" = notas, "teléfonos" = tlf,
+              "nombre_padres" = padres)
+datos
+``` 
+
+Hemos creado una **lista algo más compleja de 4 elementos**, a los cuales podemos acceder por índice o por nombre.
+
+
+```{r}
+datos[[1]]
+datos$nacimiento
+
+datos[[2]]
+datos$notas_insti
+```
+
+Como hemos comentado, también podemos hacer <mark>**listas con otras listas dentro**</mark>, de forma que para acceder a cada nivel deberemos usar el operador `[[]]`.
+
+```{r}
+lista_de_listas <- list("lista_1" = datos[3:4], "lista_2" = datos[1:2])
+names(lista_de_listas) # Nombres de los elementos del primer nivel
+names(lista_de_listas[[1]]) # Nombres de los elementos guardados en el primer elemento, que es a su vez una lista
+lista_de_listas[[1]][[1]] # Elemento 1 de la lista guardada como elemento 1 de la lista superior
+```
+
+<mark>**¡Nos permiten guardar «datos n-dimensionales»!**</mark>.
+
+Es un formato muy habitual para devolver argumentos en funciones. Imagina que la función `igualdad_nombres` que hemos definido en el Ejercicio 4 
+
+&nbsp;
+
+**`r colorize("WARNING: operaciones aritméticas con listas", "#dc3545")`**
+
+Una **lista no se puede vectorizar de forma inmediata**, por lo cualquier operación aritmética aplicada a una lista dará error (para ello está disponible la función `lapply()`, o con las funciones del paquete `{purrr}`, pero eso lo veremos en futuros manuales más avanzados).
+
+```{r error = TRUE}
+datos <- list("a" = 1:5, "b" = 10:20)
+datos / 2
+``` 
+
+```{r lapply}
+lapply(datos, FUN = function(x) { x / 2})
+``` 
+
+
+
+
+&nbsp;
+
+## 📝 Ejercicios
+
+
+
+<details>
+  <summary><strong>Ejercicio 1</strong>: define una lista de 4 elementos de tipos distintos y accede al segundo de ellos (yo incluiré uno que sea un `data.frame` para que veas que en una lista cabe de todo).</summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Ejemplo: lista con texto, numérico, lógico y un data.frame
+lista_ejemplo <- list("nombre" = "Javier", "cp" = 28019,
+                      "soltero" = TRUE,
+                      "notas" = data.frame("mates" = c(7.5, 8, 9),
+                                           "lengua" = c(10, 5, 6)))
+lista_ejemplo
+
+# Longitud
+length(lista_ejemplo)
+
+# Accedemos al elemento dos
+lista_ejemplo[[2]]
+```
+
+</details>
+
+&nbsp; 
+
+<details>
+  <summary><strong>Ejercicio 2</strong>: accede a los elementos que ocupan los lugares 1 y 4 de la lista definida anteriormente.</summary>
+  
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Accedemos al 1 y al 4
+lista_ejemplo[c(1, 4)]
+```
+
+Otra opción es acceder con los nombres
+
+```{r}
+# Accedemos al 1 y al 4
+lista_ejemplo$nombre
+lista_ejemplo$notas
+
+lista_ejemplo[c("nombre", "notas")]
+```
+
+</details>
+
+&nbsp; 
+
+
+<details>
+  <summary><strong>Ejercicio 3</strong>: define una lista de 4 elementos que contenga, en una sola variable, tu nombre, apellido, edad y si estás soltero/a.</summary>
+  
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Creamos lista: con lubridate calculamos la diferencia de años desde la fecha de nuestro nacimiento hasta hoy (sea cuando sea hoy)
+lista_personal <- list("nombre" = "Javier",
+                       "apellidos" = "Álvarez Liébana",
+                       "edad" = 32,
+                       "soltero" = TRUE)
+lista_personal
+```
+
+</details>
+
+
+
+

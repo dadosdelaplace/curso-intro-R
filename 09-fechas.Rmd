@@ -1,0 +1,316 @@
+```{r echo = FALSE}
+library(knitr)
+
+# Color text
+colorize <- function(x, color) {
+  
+  if (knitr::is_latex_output()) {
+    
+    sprintf("\\textcolor{%s}{%s}", color, x)
+    
+  } else if (knitr::is_html_output()) {
+    
+    sprintf("<span style='color: %s;'>%s</span>", color, x)
+    
+  } else { x }
+}
+```
+
+# Fechas {#fechas}
+
+:::: {.blackbox data-latex=""}
+
+Scripts usados:
+
+* [**script08.R**](https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script08.R). Ver en <https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script08.R>
+
+::::
+
+
+- [X] Variables numéricas (individuales)
+- [X] Variables de caracteres
+- [X] Variables lógicas
+- [X] Variables de tipo fecha
+
+Dado que el objetivo final es trabajar con datos, vamos a ver un tipo de datos muy especial: los <mark>**datos de tipo fecha**</mark>. Una fecha podríamos que no tiene nada de especial ya que una simple cadena de texto `"2021-04-21"`. Sin embargo, representa un instante en el tiempo, que deberíamos poder operar como tal. ¿Qué sucedería si sumamos un `1` (un día) a una fecha definida como una cadena de texto?
+
+```{r error = TRUE}
+# Cadena de texto
+fecha_char <- "2021-04-21"
+class(fecha_char)
+fecha_char + 1
+```
+
+Como ves, da error, ya que a un texto no le podemos sumar un número (no distingue entre dicha cadena de texto y, por ejemplo, `"oso panda"`). Por suerte contamos con el paquete `{lubridate}`, con diferentes funcionalidades para trabajar con fechas. Empecemos con la función `as_date()`, que nos <mark>**convierte una cadena de texto en un dato de tipo fecha**</mark>.
+
+
+
+```{r lubridate-package, echo = FALSE, fig.align = 'center',  include = identical(knitr:::pandoc_to(), 'html'), fig.link = 'https://lubridate.tidyverse.org/', out.width = '100%'}
+knitr::include_graphics('img/lubridate.png')
+```
+
+```{r}
+# install.packages("lubridate")
+library(lubridate)
+```
+
+Fíjate en la diferencia.
+
+```{r}
+# Fecha, mostrada como un texto pero guardada internamente como un número
+fecha_date <- as_date(fecha_char)
+class(fecha_date)
+fecha_date + 1 # día siguiente
+fecha_date - 3 # 3 días antes
+```
+
+En el momento en que <mark>**convertimos la cadena de texto a fecha**</mark>, aunque se visualice como un texto, internamente es un número, por lo que podemos restar fechas (días entre ambas), **podemos sumar números a fechas** (fecha días después), etc. Como ya hemos dicho, **las fechas y momentos temporales no serán meras cadenas de caracteres** sino que tienen clases especiales asociadas. Las fechas serán guardadas internamente como el **número de días transcurridos desde el 1 de enero de 1970**, y las horas como **número de segundos desde el 1 de enero de 1970** (para la clase `POSIXct`) o una lista de segundos, minutos y horas (para la clase `POSIXlt`).
+
+&nbsp;
+
+La función `as_date()` tiene un argumento opcional, el formato en la que le estamos la fecha, que por defecto será `"yyyy-mm-dd"` (año en 4 cifras, guión, mes en dos cifras, guión, día en dos cifras. Si <mark>**introducimos otro tipo de formato de fecha**</mark>, debemos especificárselo en un segundo argumento `format = ...`, para `R` sepa el formato de fecha que le estamos pasando
+
+```{r}
+as_date("10-03-2020", format = "%d-%m-%Y") # con día-mes-año (4 cifras)
+as_date("10-03-20", format = "%d-%m-%y")  # con día-mes-año (2 cifras)
+as_date("03-10-2020", format = "%m-%d-%Y") # con mes-día-año (4 cifras)
+as_date("Octubre 21, 1995 21:24", format = "%B %d, %Y %H:%M") # fecha escrita
+``` 
+
+&nbsp;
+
+**`r colorize("ERROR: sin pasar a fecha no se puede operar", "#dc3545")`**
+
+Si tenemos una fecha como caracter, nunca podremos hacer operaciones (por ejemplo, restarle una unidad temporal, en este caso un día).
+
+```{r error = TRUE}
+"2021-03-10" - 1 # error
+```
+
+Fíjate la diferencia cuando lo convertimos en fecha
+
+```{r error = TRUE}
+fecha <- as_date("2021-03-10") - 1 # día previo
+fecha
+``` 
+
+
+&nbsp;
+
+## Funciones de lubridate
+
+No solo podemos convertir la fecha con `as_date()`, indicándole el formato. Para <mark>**facilitar conversiones de formatos habituales**</mark>, el paquete `{lubridate}` tiene a nuestra disposición diferentes funciones preparadas para directamente convertir fechas en distintos formatos, como la función `ymd_hms()` o `ydm_hms()`
+
+```{r}
+ymd_hms("2017-11-28 14:02:00") # convertir a fecha una cadena año-mes-día + hora
+ydm_hms("2017-22-12 10:00:00") # convertir a fecha una cadena año-día-mes + hora
+```
+
+De la misma manera tenemos la función `dmy_hms()`
+```{r}
+dmy_hms("1 Jan 2017 23:59:59") # convertir a fecha una cadena textual de fecha + hora
+```
+
+También podemos hacerlo de forma muy simplifica con `mdy()` y `ymd()`
+
+```{r}
+mdy("July 4th, 2000") # convertir a fecha una cadena textual de fecha
+ymd(20170131)
+```
+
+&nbsp; 
+
+Otra de las funcionalidades que nos proporciona dicho paquetees <mark>**obtener automáticamente la fecha de hoy**</mark>, haciendo uso de la función `today()`
+
+```{r}
+hoy <- today()
+class(hoy) # de clase fecha
+hoy + 7 # dentro de una semana
+``` 
+
+También podemos <mark>**obtener el «hoy y ahora»**</mark> con la función `now()`, obteniendo no solo la fecha sino la hora.
+
+
+```{r}
+now()
+```
+
+
+&nbsp;
+
+También tenemos disponibles en dicho paquete funciones para extraer facilmente algunas variables temporales como el <mark>**día de la semana, el mes o el cuatrimestre**</mark>, con las funciones `year()`, `months()`, `day()`, `hour()`, `week()`, etc.
+
+```{r}
+fecha <- now()
+year(fecha)
+month(fecha)
+day(fecha)
+hour(fecha)
+minute(fecha)
+second(fecha)
+week(fecha) # Número de semana (del año)
+``` 
+
+También disponemos de la función `wday()`, que nos devuelve el <mark>**día de la semana**</mark> en el que estamos (por defecto, la semana empieza el domingo, pero podemos cambiarlo con el argumento opcional `week_start = ...`)
+
+```{r}
+wday(fecha)
+wday(fecha, week_start = 1) # Día de la semana (empezando por el lunes)
+```
+
+Además si usamos otro argumento opcional `label = TRUE` (por defecto está en `FALSE`), nos convertirá dichos días de la semana en los nombres (en lugar de números)
+
+```{r}
+wday(fecha, week_start = 1, label = TRUE)
+```
+
+&nbsp;
+
+Las funciones de `month()`, `year()`, `day()`, etc, pueden ser usadas tanto para extraer el valor como para cambiarlo, asignándole uno distinto
+
+
+```{r}
+# Mantenemos la misma fecha que la actual pero solo cambiando el año
+year(fecha) <- 1891
+```
+
+&nbsp;
+
+Al igual que podemos realizar operaciones aritméticas sencillas con las fechas, también podemos <mark>**realizar comparaciones**</mark>, por ejemplo, si el día actual es menor o mayor que otra fecha dada. 
+
+```{r}
+fecha_actual <- now()
+fecha_actual > ymd(20170131) # Actual vs 2017-01-31
+fecha_actual > ymd(21000131) # Actual vs 2100-01-31
+``` 
+
+&nbsp;
+
+Con la función `leap_year()` podremos saber si la fecha corresponde a un año bisiesto
+
+```{r}
+leap_year(as_date(ymd(20190131)))
+leap_year(as_date(ymd(20160131)))
+```
+
+También podemos hacer uso de diferentes funciones para añadir intervalos de tiempo a una fecha dada (que no sean solo días).
+
+```{r}
+fecha <- now()
+fecha + weeks(0:3)
+fecha + seconds(0:3)
+```
+
+
+## Consejos
+
+
+**`r colorize("CONSEJOS", "#20935E")`**
+
+&nbsp;
+
+**`r colorize("Recuperar un comando y autocompletar", "#20935E")`**
+
+Si haces click con el ratón en la consola y pulsas la flecha «arriba» del teclado, te irá apareciendo todo el <mark>**historial de órdenes ejecutadas**</mark>. Es una manera de ahorrar tiempo para ejecutar órdenes similares a las ya ejecutadas. Si empiezas a escribir el nombre de una variable pero no te acuerdas exactamente de su nombre, pulsando **tabulador** te **autocompletará** solo.
+
+&nbsp;
+
+**`r colorize("Convertir tipos de datos",  "#20935E")`**
+
+A veces la lectura de variables numéricas de nuestros archivos puede hacer que un número, por ejemplo `1`, sea leído como la cadena de texto `"1"`, con la que no podemos operar como un número. Las funciones `as.numeric()`, `as.character()` y `as.logical()` nos permiten convertir una variable en tipo numérico, caracter o lógico, respectivamente.
+
+```{r error = TRUE}
+"1" + 1
+as.numeric("1") + 1
+as.character(1)
+as.logical(c(0, 1))
+```
+
+&nbsp;
+
+## 📝 Ejercicios
+
+(haz click en las flechas para ver soluciones)
+
+<details>
+  <summary>📝<strong>Ejercicio 1</strong>: obten la fecha de hoy, define la fecha de tu cumpleaños, y calcula la diferencia de días. </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Hoy
+hoy <- today()
+
+# Cumple (diferentes formatos de entrada)
+cumple <- as_date("1989-09-10") # por defecto
+cumple <- as_date("10-09-1989", format = "%d-%m-%Y")
+
+# Diferencia
+hoy - cumple
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 2</strong>: define la fecha de tu cumpleaños y determina si fue año bisiesto. Súmale 1-2-3-4-5 semanas. </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+cumple <- as_date("1989-09-10") # por defecto
+
+# Bisiesto
+leap_year(cumple)
+
+# Sumamos semanaes
+cumple + weeks(1:5)
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+
+<details>
+  <summary>📝<strong>Ejercicio 3</strong>: extrae el mes, año y día de la semana de tu cumpleaños </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Mes
+month(cumple)
+
+# Año 
+year(cumple)
+
+# wday
+wday(cumple, week_start = 1)
+wday(cumple, week_start = 1, label = TRUE)
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 4</strong>: calcula los días que han pasado desde la fecha de tu nacimiento </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+seconds(today() - cumple)
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;

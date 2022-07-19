@@ -1,0 +1,200 @@
+```{r echo = FALSE}
+library(knitr)
+
+# Color text
+colorize <- function(x, color) {
+  
+  if (knitr::is_latex_output()) {
+    
+    sprintf("\\textcolor{%s}{%s}", color, x)
+    
+  } else if (knitr::is_html_output()) {
+    
+    sprintf("<span style='color: %s;'>%s</span>", color, x)
+    
+  } else { x }
+}
+```
+
+# 📝 Práctica final {#practica-final}
+
+:(haz click en las flechas para ver soluciones)
+
+
+<details>
+  <summary><strong>Ejercicio 1</strong>: carga el fichero `titanic.RData` que tienes en la carpeta `DATOS` <https://github.com/dadosdelaplace/courses-intro-r/tree/main/DATOS>.
+  
+</summary>
+  
+- Solución:
+
+```{r}
+load("./DATOS/titanic.RData")
+```
+
+</details>
+
+&nbsp;
+
+
+<details>
+  <summary><strong>Ejercicio 2</strong>: obtén el número de individuos y de variables de nuestro dataset
+  
+</summary>
+  
+- Solución:
+
+```{r}
+ncol(titanic) # variables
+nrow(titanic) # individuos
+```
+
+</details>
+
+&nbsp;
+
+
+<details>
+  <summary><strong>Ejercicio 3</strong>: ¿de qué tipo es la variable `Name`? ¿Y la variable `Pclass`? ¿Y la variable `Age`? ¿Y la variable `Survived`
+  
+</summary>
+  
+- Solución:
+
+```{r}
+class(titanic$Name) 
+class(titanic$Pclass)
+class(titanic$Age)
+class(titanic$Survived)
+```
+
+</details>
+
+
+&nbsp;
+
+
+<details>
+  <summary><strong>Ejercicio 4</strong>: internamente tenemos `0` y `1` pero la variable `Survived` en realidad debería ser variable lógica (`TRUE` si sobrevivió). Modifica la variable para ponter `TRUE` cuando vale `1` y `FALSE` en caso contrario
+  
+</summary>
+  
+- Solución:
+
+```{r}
+# Modo ifelse
+titanic$Survived <- ifelse(titanic$Survived == 1, TRUE, FALSE)
+
+# otra forma: modo bucle + if
+load("./DATOS/titanic.RData")
+nueva_variable <- rep(FALSE, length(titanic$Survived))
+for (i in 1:length(titanic$Survived)) {
+  
+  if (titanic$Survived[i] == 1) {
+    
+    nueva_variable[i] <- TRUE
+    
+  }
+}
+titanic$Survived <- nueva_variable
+```
+
+</details>
+
+
+
+&nbsp;
+
+
+<details>
+  <summary><strong>Ejercicio 5</strong>: en la variable `Name` tenemos guardado el nombre de los pasajeros, pero también su título (`Mr.`, `Mrs`, `Miss`, etc). Extrae los nombres de las personas con `Miss.`
+  
+</summary>
+  
+- Solución:
+
+```{r}
+library(stringr)
+# Con str_detect obtenemos un TRUE/FALSE
+titanic$Name[str_detect(titanic$Name, pattern = "Miss.")]
+```
+
+</details>
+
+
+&nbsp;
+
+
+<details>
+  <summary><strong>Ejercicio 6</strong>: calcula la media de edad de los pasajeros del Titanic (recuerda: si hay datos ausentes...). Haz lo mismo pero por sexos (male/female)
+  
+</summary>
+  
+- Solución:
+
+```{r}
+mean(titanic$Age, na.rm = TRUE)
+mean(titanic$Age[titanic$Sex == "male"], na.rm = TRUE)
+mean(titanic$Age[titanic$Sex == "female"], na.rm = TRUE)
+```
+
+</details>
+
+
+&nbsp;
+
+<details>
+  <summary><strong>Ejercicio 7</strong>: ordena la edad de los pasajeros del Titanic de menor a mayor, y de mayor a menor
+  
+</summary>
+  
+- Solución:
+
+```{r}
+sort(titanic$Age) # menor a mayor
+sort(titanic$Age, decreasing = TRUE) # mayor a menor
+```
+
+&nbsp;
+
+<details>
+  <summary><strong>Ejercicio 8</strong>: vamos a clasificar a los pasajeros según su edad en `"mayores de edad"` y `"menores de edad"`. Crea un función que, dada una edad, nos diga si es mayor o menor de edad. Aplícala después a nuestra variable `Age` y guarda el resultado en una variable `edad_recodificada ` que añadamos a los datos originales
+  
+</summary>
+  
+- Solución:
+
+```{r}
+# Definimos función
+menor_edad <- function(edad) {
+  
+  salida <- ifelse(edad < 18, "menores de edad", "mayores de edad")
+  return(salida)
+}
+
+# Creamos nueva variable
+titanic$edad_recodificada <- menor_edad(titanic$Age) # se aplica elemento a elemento
+titanic$edad_recodificada # habrá NA
+```
+
+&nbsp;
+
+<details>
+  <summary><strong>Ejercicio 9</strong>: el accidente del Titanic se produjo el 15 de abril de 1912. Tomando dicha fecha como referencia, usa la edad de los pasajeros para añadir una nueva variable que sea la fecha de nacimiento.
+  
+</summary>
+  
+- Solución:
+
+```{r}
+library(lubridate)
+# Fecha accidente
+accidente <- as_date("1912/04/15")
+
+# Creamos nueva variable: fecha del accidente - años
+# (saldrán todos nacidos el 15 de abril, ya que no sabemos
+# cuantos meses cumplían en el momento del accidente)
+titanic$fecha_nacimiento <- accidente - titanic$Age
+titanic$fecha_nacimiento 
+```
+

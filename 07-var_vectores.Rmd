@@ -1,0 +1,450 @@
+```{r echo = FALSE}
+library(knitr)
+
+# Color text
+colorize <- function(x, color) {
+  
+  if (knitr::is_latex_output()) {
+    
+    sprintf("\\textcolor{%s}{%s}", color, x)
+    
+  } else if (knitr::is_html_output()) {
+    
+    sprintf("<span style='color: %s;'>%s</span>", color, x)
+    
+  } else { x }
+}
+```
+
+# Vectores {#vectores}
+
+:::: {.blackbox data-latex=""}
+
+Scripts usados:
+
+* [**script06.R**](https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script06.R). Ver en <https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script06.R>
+
+::::
+
+Hemos visto ya como poder almacenar elementos individuales como la edad de una persona (`edad <- 32`) o su nombre (`nombre <- "Javi"`). ¿Y si en lugar de querer almacenar un solo elemento, por ejemplo , tenemos una <mark>**colección de elementos**</mark> (las edades de toda nuestra familia, por ejemplo)?
+
+En este capítulo vamos a ver un clásico de cualquier lenguaje de programación: los <mark>**vectores o arrays**</mark>, que no son más que una <mark>**concatenación de elementos del mismo tipo**</mark>. De hecho un número individual (por ejemplo, `x <- 1`) es en realidad un vector de longitud uno (un solo elemento). Es el <mark>**tipo de dato que más vas a usar**</mark> ya que las columnas de cualquier tabla funcionarán como una concatenación de valores.
+
+Un vector es lo que solemos representar como $\overrightarrow{x} = \left[1, 2, 3 \right]$ en matemáticas, pero no te preocupes si nunca has visto esta forma de representarlos. Vamos a empezar de cero.
+
+
+## Vectores numéricos
+
+La forma más sencilla de **crear un vector** en `R` es con el comando `c()` (para acordarte: letra `c` de **Concatenar**), y basta con introducir sus elementos entre paréntesis, y separados por comas. Por ejemplo, supongamos que queremos <mark>**guardar la edad de 4 personas**</mark> (como si tuvieramos una columna `edad` en una tabla de 4 filas).
+
+```{r}
+edades <- c(32, 27, 60, 61)
+edades
+```
+
+Como ves ahora en el <mark>**environment**</mark> (el entorno, **arriba a la derecha**) tenemos una colección de elementos guardada, con cuatro elementos en concreto, almacenados en una misma variable `edades`.
+
+```{r vectores-environment, echo = FALSE, fig.align = 'center',  include = identical(knitr:::pandoc_to(), 'html'), fig.cap = 'Vector en el enviroment', out.width = '75%'}
+knitr::include_graphics("img/vectores_enviroment.jpg")
+```
+
+La <mark>**longitud de un vector**</mark> se puede calcular con el comando `length()` (nos devolverá el número de elementos de la variable que le pasemos como argumento).
+
+```{r}
+length(edades)
+```
+
+Además podemos <mark>**concatenar a su vez vectores**</mark> (uno tras otro): vamos a concatenar el vector `edades` consigo mismo, y añadiéndole al final un 8.
+
+```{r}
+c(edades, edades, 8)
+```
+
+Esta última concatenación lo que nos ha dado son, primero, los cuatro elementos que ya teníamos en `edades`, después de nuevo los cuatro elementos, y por último un 8.
+
+
+## Secuencias numéricas con un patrón
+
+En muchas ocasiones querremos <mark>**crear vectores numéricos de una forma mucho más rápida**</mark>. Supongamos que queremos un vector que nos almacene el número del mes, desde el 1 hasta el 31. Si construyéramos el vector como antes, tendríamos que ejecutar el comando `c(1, 2, 3, 4, 5, ...)` hasta llegar al número 31. ¿Un poco largo, no?
+
+Hay un atajo: el comando `seq()` nos permite crear una <mark>**secuencia desde un elemento inicial hasta un elemento final**</mark>, avanzando de uno en uno.
+
+```{r}
+seq(1, 31) # secuencia desde 1 hasta 31 de uno en uno
+```
+
+Es importante que no perdamos el foco: <mark>**programar es similar a escribir en un idioma**</mark>, por lo que si hay algo que se puede decir de una forma más limpia y que se entienda mejor, ¿por qué no usarlo? Siempre que queramos definir secuencias entre dos números naturales (por ejemplo, entre `1` y un valor `n`), cuya distancia entre elementos consecutivos sea uno, el comando `1:n` nos devuelve lo mismo que la orden `seq(1, n)`. Además, si el elemento inicial es mayor que el final, `R` entenderá solo que la secuencia la queremos **decreciente**.
+
+```{r}
+n <- 31
+1:n # secuencia desde 1 hasta n (31) de uno en uno
+n:1 # secuencia decreciente
+```
+
+&nbsp;
+
+También podemos definir <mark>**otro tipo de distancia**</mark> entre dos elementos consecutivos (distancia conocida como <mark>**paso de discretización**</mark>), por ejemplo de 0.5 en 0.5, o de 1.7 en 1.7
+
+```{r}
+seq(1, 10, by = 0.5) # secuencia desde 1 a 10 de 0.5 en 0.5
+seq(1, 21, by = 1.7) # secuencia desde 1 a 21 de 1.7 en 1.7
+```
+
+Otras veces nos interesará definir una secuencia entre un valor inicial y un valor final, pero nos dará igual la distancia entre cada elemento: solo nos importa que tenga un <mark>**número concreto de elementos**</mark> (y que sea `R` el que decida la distancia entre elementos consecutivos para conseguirlo).
+
+```{r}
+seq(1, 50, l = 11) # secuencia desde 1 a 50 de longitud 11
+seq(1, 50, l = 8) # secuencia desde 1 a 50 de longitud 8
+```
+
+&nbsp;
+
+Otro atajo que podemos usar para definir secuencias de números con un patrón es definir <mark>**vectores de elementos repetidos**</mark>, por ejemplo un vector lleno de ceros. La función `rep()` nos permite repetir un elemento un número fijado de veces.
+
+```{r}
+rep(0, 7) # vector de 7 ceros
+```
+
+No solo podemos repetir un número sino que podemos **repetir vectores enteros**.
+
+```{r}
+rep(c(0, 1, 2), 4) # repetimos el vector c(0, 1, 2) 4 veces
+```
+
+Esa repetición además podemos definirla también de forma **intercalada**: en lugar de repetir `c(0, 1, 2)` cuatro veces seguidas, queremos cuatro 0, después cuatro 1, y después cuatro 2.
+
+```{r}
+rep(c(0, 1, 2), each = 4) # cuatro 0, luego cuatro 1, luego cuatro 2
+```
+
+
+## Vectores de caracteres (texto)
+
+Un error común es asociar el concepto de vectores solo a números: un <mark>**vector es una colección o concatenación de elementos del mismo tipo**</mark>, pero no tienen porque ser necesariamente números. Vamos a crear una frase de ejemplo, un vector de 4 elementos de tipo texto (en `R` se llaman `char`): `"Mi"`, `"nombre"`, `"es"` `"Javier"`.
+
+Como antes, las variables de tipo `char` o `character` van entre comillas dobles, ya que es un <mark>**cadena de texto**</mark>.
+
+```{r}
+mi_nombre <- c("Mi", "nombre", "es", "Javier")
+mi_nombre
+```
+
+Fíjate la diferencia entre tenerlo guardado en un vector o tenerlo como una cadena unida
+
+```{r}
+variable <- "Mi nombre es Javier"
+class(variable)
+str_length(variable)
+
+vector <- c("Mi", "nombre", "es", "Javier")
+class(vector)
+str_length(vector)
+```
+
+Cuando aplicamos la función `str_length()` a un vector de caracteres, del paquete `{stringr}` que hemos visto en el tema anterior, la función se aplica <mark>**A CADA ELEMENTO**</mark> del vector (dándonos un vector de longitudes, de cada cadena que tenemos concatenada en el vector). Lo veremos con más detalle en el próximo tema.
+
+```{r}
+str_to_lower(vector)
+str_detect(vector, "i") # TRUE --> si tiene letra i
+```
+
+&nbsp;
+
+Ya tenemos nuestro primer vector de texto de longitud 4, y en cada elemento tenemos un texto. Cuando usamos la función `paste()` con variables diferentes, usábamos `sep = ...` para decidir el caracter con el que pegamos dichas cadenas texto. Cuando la función `paste()` la aplicamos a un vector de caracteres, decidiremos que **caracter queremos que vaya entre palabra con el argumento `collapse =`**.
+
+
+```{r}
+paste(mi_nombre, collapse = "") # todo junto
+paste(mi_nombre, collapse = " ") # separados por un espacio
+paste(mi_nombre, collapse = ".") # separados por un punto .
+paste0(mi_nombre) # todo junto sin nada separando
+```
+
+Ahora que sabemos lo que es un vector de números, por ejemplo el vector `1:7` (el conjunto de naturales desde el 1 hasta el 7), podemos definir cadenas de texto que compartan por ejemplo un prefijo (`persona_1`, `persona_2`, ...)
+
+```{r}
+paste0("persona", 1:7) # a la palabra «persona» le pegamos los números del 1 al 7
+paste("persona", 1:7, sep = "_") # separado por una barra baja
+```
+
+De igual manera podemos hacer uso del ya conocido paquete `{glue}`, combinando cadenas de texto y vectores numéricos, obteniendo vectores de frases.
+
+```{r}
+library(glue)
+edad <- 10:13 # edades
+glue("La edad es de {edad} años")
+
+# Otra forma sin definir variables a priori
+glue("La edad es de {10:13} años")
+```
+
+
+## Vectores lógicos (TRUE/FALSE)
+
+[X] Variables numéricas (individuales)
+[X] Vectores de números
+[X] Vectores de caracteres
+[ ] Vectores lógicos
+
+Veamos un último tipo de vectores muy importante en todo lenguaje de programación: los <mark>**vectores de valores lógicos**</mark>. Un <mark>**valor lógico**</mark> puede tomar tres valores:
+
+* `TRUE` (guardado internamente como un 1).
+* `FALSE` (guardado internamente como un 0).
+* `NA` (<mark>**dato ausente**</mark>, son las siglas de _not available_, cuando pretendemos aplicar una comparación a un dato ya de por si ausente).
+
+Los valores lógicos suelen ser <mark>**resultado de evaluar condiciones lógicas**</mark>, de hacerle preguntas a los datos. Por ejemplo, imaginemos que definimos un vector de temperaturas `x <- c(15, 20, 23, 31, 27, 7, 29, 10)`. <mark>**¿Qué días hizo menos de 22 grados?**</mark> Basta con que ejecutemos la orden `x < 22`, que nos devolverá `TRUE` o `FALSE` en cada hueco, en función de si cumple (`TRUE`) o no (`FALSE`) la condición pedida.
+
+```{r}
+x <- c(15, 20, 23, 31, 27, 7, 29, 10)
+x < 22
+```
+
+El primer, segundo, sexto y octavo día, la temperatura fue inferior (estrictamente) a 22, de ahí que en el primer, segundo, sexto y octavo día elemento aparezca un `TRUE` y en el resto un `FALSE`. Es importante recordar que al evaluar una condición lógica sobre un vector, la salida sigue siendo un vector de la misma longitud pero con valores lógicos.
+
+Dicha condición lógica puede hacerse con otros operadores como `<=` (menor o igual), `>` (mayor) o `>=` (mayor igual).
+
+```{r}
+x <= 22
+x > 30
+x >= 15
+```
+
+También podemos comparar si es <mark>**igual a otro elemento**</mark>, para lo que usaremos el operador `==`, pudiendo usar también su opuesto `!=` («distinto de»).
+
+```{r}
+x == 15
+x != 15
+```
+
+Si tuviéramos un dato ausente (por error del aparato ese día), la condición evaluada también sería ausente
+
+```{r}
+y <- c(15, 20, NA, 31, 27, 7, 29, 10)
+y < 22
+```
+
+Las <mark>**condiciones pueden ser combinadas**</mark>, principalmente de dos maneras:
+
+* <mark>**Intersección**</mark>: todas las condiciones concatenadas se deben cumplir (conjunción y, operador `&`) para devolver un `TRUE`.
+
+* <mark>**Unión**</mark>: basta con que una de las condiciones concatenadas se cumpla (conjunción o, operador `|`) para devolver un `TRUE`.
+
+Por ejemplo, vamos a calcular qué elementos del vector de temperaturas sean menores que 30 pero (y) mayores que 15
+
+```{r}
+x < 30 & x > 15
+```
+
+Fíjate lo que sucede si no lo pedimos como intersección (ambas deben cumplirse) sino como unión (basta con que alguna se cumple)
+
+```{r}
+x < 30 | x > 15
+```
+
+
+## Consejos
+
+
+**`r colorize("CONSEJOS", "#20935E")`**
+
+&nbsp;
+
+**`r colorize("Expresiones regulares", "#20935E")`**
+
+Dentro del entorno de paquetes `{tidyverse}`, el paquete `{stringr}` permite un manejo más complejo de cadenas de texo (como el uso de expresiones regulares).
+
+```{r stringr2, echo = FALSE, fig.cap = "Paquete stringr para manejar cadenas de texto más complejas"}
+knitr::include_graphics("./img/stringr.png")
+```
+
+&nbsp;
+
+
+## 📝 Ejercicios
+
+(haz click en las flechas para ver soluciones)
+
+<details>
+  <summary>📝<strong>Ejercicio 1</strong>: modifica el código inferior para crear un vector de nombre `vector_num` que contenga los números 1, 5 y -7.
+  
+```{r eval = FALSE}
+# Vector de números
+vector_num <- c(1)
+vector_num
+```
+</summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Vector de números
+vector_num <- c(1, 5, -7)
+vector_num
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 2</strong>: define un vector que contenga los números 1, 10, -1 y 2, y guárdalo en una variable llamada `vector_num`. </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Vector de números
+vector_num <- c(1, 10, -1, 2)
+vector_num
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 3</strong>: obtén la longitud del vector anterior `vector_num`. </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Longitud del vector
+length(vector_num)
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+
+<details>
+  <summary>📝<strong>Ejercicio 4</strong>: crea un vector con las palabras "Hola", "me", "llamo" (y tu nombre y apellidos), y pega luego sus elementos de forma que la frase esté correctamente escrita en castellano. Tras hacerlo, añade "y tengo 30 años". </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+# Definiendo el vector
+vector_char <- c("Hola", "me", "llamo", "Javier",
+                 "Álvarez", "Liébana")
+
+# Pegamos
+frase <- paste(vector_char, collapse = " ")
+frase
+
+# Añadimos frase
+glue("{frase} y tengo 30 años.")
+
+# Otra forma
+paste0(frase, " y tengo 30 años.")
+
+# Otra forma
+paste(frase, "y tengo 30 años.")
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+
+<details>
+  <summary>📝<strong>Ejercicio 5</strong>: el código inferior crea una secuencia de números, que empieza en `-1`, que acaba en `32`, y que va saltando de 2 en 2. Modíficalo para que haga el salto de 3 en 3 y guárdalo en una variable llamada `secuencia`
+  
+```{r eval = FALSE}
+seq(-1, 32, by = 2)
+```
+</summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+secuencia <- seq(-1, 32, by = 3)
+secuencia
+length(secuencia) # longitud de la secuencia
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+
+<details>
+  <summary>📝<strong>Ejercicio 6</strong>: crea una secuencia de números, que empiece en `-1`, que acabe en `32`, y que tenga longitud 12. </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+secuencia <- seq(-1, 32, l = 12)
+secuencia
+length(secuencia) # longitud de la secuencia
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+
+<details>
+  <summary>📝<strong>Ejercicio 7</strong>: crea una secuencia que empiece en 1 y recorra todos los naturales hasta el 10. Después crea otra secuencia de longitud 7 que todos los números sean `3`.  </summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+1:10
+rep(3, 7) # secuencia repetida
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+
+<details>
+  <summary>📝<strong>Ejercicio 8</strong>: crea una secuencia que repita 5 veces el patrón `1, 2, 3`. Después crea otra que repita dicho patrón pero de forma intercalada, con 5 veces `1`, después 5 veces `2` y después 5 veces `3`.</summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+rep(c(1, 2, 3), 5) # repetimos patrón (1, 2, 3) 5 veces
+rep(c(1, 2, 3), each = 5) # repetimos patrón alternado
+```
+
+<!-- tocstop -->
+</details>
+
+&nbsp;
+
+
+<details>
+  <summary>📝<strong>Ejercicio 9</strong>: crea una variable `x <- c("oso pardo", "oso polar", "ballena", "grillo", "oso panda", "perro")`. Haciendo uso de `str_length()` calcula la longitud de cada cadena de texto. Haciendo uso de `str_detect()` detecta los animales que son un oso.</summary>
+  
+<!-- toc -->
+- Solución:
+
+```{r}
+x <- c("oso pardo", "Oso polar", "ballena", "grillo", "OSO panda", "perro")
+str_length(x) # longitud
+
+# OJO! antes hay que pasar todo a mayúscula o minúscula, nos da igual que sea oso, OSO, Oso, etc
+str_detect(str_to_lower(x), "oso") 
+```
+
+<!-- tocstop -->
+</details>
+
+
+
+

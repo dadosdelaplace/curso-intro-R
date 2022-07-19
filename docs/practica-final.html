@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Capítulo 16 📝 Práctica final | Introducción a R: aprendiendo R sin morir en el intento</title>
+<meta name="author" content="Javier Álvarez Liébana">
+<meta name="description" content=":(haz click en las flechas para ver soluciones) Ejercicio 1: carga el fichero titanic.RData que tienes en la carpeta DATOS https://github.com/dadosdelaplace/courses-intro-r/tree/main/DATOS....">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="Capítulo 16 📝 Práctica final | Introducción a R: aprendiendo R sin morir en el intento">
+<meta property="og:type" content="book">
+<meta property="og:image" content="/img/logo_R.png">
+<meta property="og:description" content=":(haz click en las flechas para ver soluciones) Ejercicio 1: carga el fichero titanic.RData que tienes en la carpeta DATOS https://github.com/dadosdelaplace/courses-intro-r/tree/main/DATOS....">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Capítulo 16 📝 Práctica final | Introducción a R: aprendiendo R sin morir en el intento">
+<meta name="twitter:description" content=":(haz click en las flechas para ver soluciones) Ejercicio 1: carga el fichero titanic.RData que tienes en la carpeta DATOS https://github.com/dadosdelaplace/courses-intro-r/tree/main/DATOS....">
+<meta name="twitter:image" content="/img/logo_R.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/_Sen-0.4.1/font.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM%20Mono&amp;display=swap" rel="stylesheet">
+<link href="libs/_Bitter-0.4.1/font.css" rel="stylesheet">
+<script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="css/style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Introducción a R: aprendiendo R sin morir en el intento</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Prefacio</a></li>
+<li class="book-part">Recursos</li>
+<li><a class="" href="ejercicios-recopilados.html">📝 Ejercicios recopilados</a></li>
+<li><a class="" href="recursos-de-aprendizaje.html">📚 Recursos de aprendizaje</a></li>
+<li class="book-part">Toma de contacto</li>
+<li><a class="" href="requisitos.html"><span class="header-section-number">1</span> Requisitos</a></li>
+<li><a class="" href="instalacionR.html"><span class="header-section-number">2</span> Instalación</a></li>
+<li><a class="" href="que-es-R.html"><span class="header-section-number">3</span> ¿Qué es R?</a></li>
+<li><a class="" href="primeros-pasos.html"><span class="header-section-number">4</span> Primeros pasos</a></li>
+<li class="book-part">Tipos de datos</li>
+<li><a class="" href="var-num.html"><span class="header-section-number">5</span> Variables individuales: números y caracteres</a></li>
+<li><a class="" href="vectores.html"><span class="header-section-number">6</span> Vectores</a></li>
+<li><a class="" href="operacionesvectores.html"><span class="header-section-number">7</span> Operaciones con vectores</a></li>
+<li><a class="" href="fechas.html"><span class="header-section-number">8</span> Fechas</a></li>
+<li><a class="" href="datos.html"><span class="header-section-number">9</span> Datos estructurados</a></li>
+<li><a class="" href="listas.html"><span class="header-section-number">10</span> Listas</a></li>
+<li class="book-part">Haciendo el trabajo más fácil</li>
+<li><a class="" href="if-else.html"><span class="header-section-number">11</span> Estructuras de control: if-else</a></li>
+<li><a class="" href="bucles.html"><span class="header-section-number">12</span> Estructuras de control: bucles</a></li>
+<li><a class="" href="funciones.html"><span class="header-section-number">13</span> Funciones</a></li>
+<li><a class="" href="proyecto.html"><span class="header-section-number">14</span> Proyecto de trabajo</a></li>
+<li class="book-part">Colofón</li>
+<li><a class="" href="importar-exportar.html"><span class="header-section-number">15</span> Importar/exportar datos</a></li>
+<li><a class="active" href="practica-final.html"><span class="header-section-number">16</span> 📝 Práctica final</a></li>
+<li><a class="" href="bibliograf%C3%ADa.html">Bibliografía</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/dadosdelaplace/intro-R">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="practica-final" class="section level1">
+<h1>
+<span class="header-section-number">Capítulo 16</span> 📝 Práctica final<a class="anchor" aria-label="anchor" href="#practica-final"><i class="fas fa-link"></i></a>
+</h1>
+<p>:(haz click en las flechas para ver soluciones)</p>
+<details><p><summary><strong>Ejercicio 1</strong>: carga el fichero <code>titanic.RData</code> que tienes en la carpeta <code>DATOS</code> <a href="https://github.com/dadosdelaplace/courses-intro-r/tree/main/DATOS" class="uri">https://github.com/dadosdelaplace/courses-intro-r/tree/main/DATOS</a>.</summary></p>
+<p></p>
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb1262"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="st">"./DATOS/titanic.RData"</span><span class="op">)</span></code></pre></div>
+</details><p> </p>
+<details><p><summary><strong>Ejercicio 2</strong>: obtén el número de individuos y de variables de nuestro dataset</summary></p>
+<p></p>
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb1263"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">titanic</span><span class="op">)</span> <span class="co"># variables</span></code></pre></div>
+<pre><code>## [1] 12</code></pre>
+<div class="sourceCode" id="cb1265"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">titanic</span><span class="op">)</span> <span class="co"># individuos</span></code></pre></div>
+<pre><code>## [1] 891</code></pre>
+</details><p> </p>
+<details><p><summary><strong>Ejercicio 3</strong>: ¿de qué tipo es la variable <code>Name</code>? ¿Y la variable <code>Pclass</code>? ¿Y la variable <code>Age</code>? ¿Y la variable <code>Survived</code></summary></p>
+<p></p>
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb1267"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">titanic</span><span class="op">$</span><span class="va">Name</span><span class="op">)</span> </code></pre></div>
+<pre><code>## [1] "character"</code></pre>
+<div class="sourceCode" id="cb1269"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">titanic</span><span class="op">$</span><span class="va">Pclass</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "integer"</code></pre>
+<div class="sourceCode" id="cb1271"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">titanic</span><span class="op">$</span><span class="va">Age</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "numeric"</code></pre>
+<div class="sourceCode" id="cb1273"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">titanic</span><span class="op">$</span><span class="va">Survived</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "integer"</code></pre>
+</details><p> </p>
+<details><p><summary><strong>Ejercicio 4</strong>: internamente tenemos <code>0</code> y <code>1</code> pero la variable <code>Survived</code> en realidad debería ser variable lógica (<code>TRUE</code> si sobrevivió). Modifica la variable para ponter <code>TRUE</code> cuando vale <code>1</code> y <code>FALSE</code> en caso contrario</summary></p>
+<p></p>
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb1275"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Modo ifelse</span>
+<span class="va">titanic</span><span class="op">$</span><span class="va">Survived</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">titanic</span><span class="op">$</span><span class="va">Survived</span> <span class="op">==</span> <span class="fl">1</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span><span class="op">)</span>
+
+<span class="co"># otra forma: modo bucle + if</span>
+<span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="st">"./DATOS/titanic.RData"</span><span class="op">)</span>
+<span class="va">nueva_variable</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="cn">FALSE</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">titanic</span><span class="op">$</span><span class="va">Survived</span><span class="op">)</span><span class="op">)</span>
+<span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">titanic</span><span class="op">$</span><span class="va">Survived</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+  
+  <span class="kw">if</span> <span class="op">(</span><span class="va">titanic</span><span class="op">$</span><span class="va">Survived</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span> <span class="op">{</span>
+    
+    <span class="va">nueva_variable</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">TRUE</span>
+    
+  <span class="op">}</span>
+<span class="op">}</span>
+<span class="va">titanic</span><span class="op">$</span><span class="va">Survived</span> <span class="op">&lt;-</span> <span class="va">nueva_variable</span></code></pre></div>
+</details><p> </p>
+<details><p><summary><strong>Ejercicio 5</strong>: en la variable <code>Name</code> tenemos guardado el nombre de los pasajeros, pero también su título (<code>Mr.</code>, <code>Mrs</code>, <code>Miss</code>, etc). Extrae los nombres de las personas con <code>Miss.</code></summary></p>
+<p></p>
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb1276"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://stringr.tidyverse.org">stringr</a></span><span class="op">)</span>
+<span class="co"># Con str_detect obtenemos un TRUE/FALSE</span>
+<span class="va">titanic</span><span class="op">$</span><span class="va">Name</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/pkg/stringr/man/str_detect.html">str_detect</a></span><span class="op">(</span><span class="va">titanic</span><span class="op">$</span><span class="va">Name</span>, pattern <span class="op">=</span> <span class="st">"Miss."</span><span class="op">)</span><span class="op">]</span></code></pre></div>
+<pre><code>##   [1] "Heikkinen, Miss. Laina"                                               
+##   [2] "Sandstrom, Miss. Marguerite Rut"                                      
+##   [3] "Bonnell, Miss. Elizabeth"                                             
+##   [4] "Vestrom, Miss. Hulda Amanda Adolfina"                                 
+##   [5] "McGowan, Miss. Anna \"Annie\""                                        
+##   [6] "Palsson, Miss. Torborg Danira"                                        
+##   [7] "O'Dwyer, Miss. Ellen \"Nellie\""                                      
+##   [8] "Glynn, Miss. Mary Agatha"                                             
+##   [9] "Vander Planke, Miss. Augusta Maria"                                   
+##  [10] "Nicola-Yarred, Miss. Jamila"                                          
+##  [11] "Laroche, Miss. Simonne Marie Anne Andree"                             
+##  [12] "Devaney, Miss. Margaret Delia"                                        
+##  [13] "O'Driscoll, Miss. Bridget"                                            
+##  [14] "Rugg, Miss. Emily"                                                    
+##  [15] "West, Miss. Constance Mirium"                                         
+##  [16] "Icard, Miss. Amelie"                                                  
+##  [17] "Andersson, Miss. Erna Alexandra"                                      
+##  [18] "Goodwin, Miss. Lillian Amy"                                           
+##  [19] "Dowdell, Miss. Elizabeth"                                             
+##  [20] "McDermott, Miss. Brigdet Delia"                                       
+##  [21] "Ilett, Miss. Bertha"                                                  
+##  [22] "Fortune, Miss. Mabel Helen"                                           
+##  [23] "Petranec, Miss. Matilda"                                              
+##  [24] "Salkjelsvik, Miss. Anna Kristine"                                     
+##  [25] "Moran, Miss. Bertha"                                                  
+##  [26] "Zabour, Miss. Hileni"                                                 
+##  [27] "Jussila, Miss. Katriina"                                              
+##  [28] "Attalah, Miss. Malake"                                                
+##  [29] "Andersson, Miss. Ellis Anna Maria"                                    
+##  [30] "Webber, Miss. Susan"                                                  
+##  [31] "Peter, Miss. Anna"                                                    
+##  [32] "Newsom, Miss. Helen Monypeny"                                         
+##  [33] "Nysten, Miss. Anna Sofia"                                             
+##  [34] "Ford, Miss. Robina Maggie \"Ruby\""                                   
+##  [35] "Gilnagh, Miss. Katherine \"Katie\""                                   
+##  [36] "Johnson, Miss. Eleanor Ileen"                                         
+##  [37] "Isham, Miss. Ann Elizabeth"                                           
+##  [38] "Sage, Miss. Constance Gladys"                                         
+##  [39] "Kink-Heilmann, Miss. Luise Gretchen"                                  
+##  [40] "Andersen-Jensen, Miss. Carla Christine Nielsine"                      
+##  [41] "Lurette, Miss. Elise"                                                 
+##  [42] "Madigan, Miss. Margaret \"Maggie\""                                   
+##  [43] "Yrois, Miss. Henriette (\"Mrs Harbeck\")"                             
+##  [44] "Strom, Miss. Telma Matilda"                                           
+##  [45] "Carr, Miss. Helen \"Ellen\""                                          
+##  [46] "Cameron, Miss. Clear Annie"                                           
+##  [47] "Newell, Miss. Madeleine"                                              
+##  [48] "Honkanen, Miss. Eliina"                                               
+##  [49] "Bazzani, Miss. Albina"                                                
+##  [50] "Lefebre, Miss. Mathilde"                                              
+##  [51] "Asplund, Miss. Lillian Gertrud"                                       
+##  [52] "Harknett, Miss. Alice Phoebe"                                         
+##  [53] "Collyer, Miss. Marjorie \"Lottie\""                                   
+##  [54] "Zabour, Miss. Thamine"                                                
+##  [55] "Murphy, Miss. Katherine \"Kate\""                                     
+##  [56] "Lindahl, Miss. Agda Thorilda Viktoria"                                
+##  [57] "Cherry, Miss. Gladys"                                                 
+##  [58] "Ward, Miss. Anna"                                                     
+##  [59] "Henry, Miss. Delia"                                                   
+##  [60] "Bissette, Miss. Amelia"                                               
+##  [61] "Healy, Miss. Hanora \"Nora\""                                         
+##  [62] "Andrews, Miss. Kornelia Theodosia"                                    
+##  [63] "Lindblom, Miss. Augusta Charlotta"                                    
+##  [64] "Connolly, Miss. Kate"                                                 
+##  [65] "Barber, Miss. Ellen \"Nellie\""                                       
+##  [66] "Haas, Miss. Aloisia"                                                  
+##  [67] "Allison, Miss. Helen Loraine"                                         
+##  [68] "Kelly, Miss. Anna Katherine \"Annie Kate\""                           
+##  [69] "Keane, Miss. Nora A"                                                  
+##  [70] "Fleming, Miss. Margaret"                                              
+##  [71] "Francatelli, Miss. Laura Mabel"                                       
+##  [72] "Hays, Miss. Margaret Bechstein"                                       
+##  [73] "Ryerson, Miss. Emily Borie"                                           
+##  [74] "Nilsson, Miss. Helmina Josefina"                                      
+##  [75] "Wick, Miss. Mary Natalie"                                             
+##  [76] "Slayter, Miss. Hilda Mary"                                            
+##  [77] "Young, Miss. Marie Grice"                                             
+##  [78] "Hippach, Miss. Jean Gertrude"                                         
+##  [79] "McCoy, Miss. Agnes"                                                   
+##  [80] "Burns, Miss. Elizabeth Margaret"                                      
+##  [81] "Fortune, Miss. Alice Elizabeth"                                       
+##  [82] "Brown, Miss. Amelia \"Mildred\""                                      
+##  [83] "Smith, Miss. Marion Elsie"                                            
+##  [84] "Bowerman, Miss. Elsie Edith"                                          
+##  [85] "Funk, Miss. Annie Clemmer"                                            
+##  [86] "McGovern, Miss. Mary"                                                 
+##  [87] "Mockler, Miss. Helen Mary \"Ellie\""                                  
+##  [88] "Jermyn, Miss. Annie"                                                  
+##  [89] "Palsson, Miss. Stina Viola"                                           
+##  [90] "Landergren, Miss. Aurora Adelia"                                      
+##  [91] "Bidois, Miss. Rosalie"                                                
+##  [92] "Nakid, Miss. Maria (\"Mary\")"                                        
+##  [93] "Buss, Miss. Kate"                                                     
+##  [94] "Lehmann, Miss. Bertha"                                                
+##  [95] "Newell, Miss. Marjorie"                                               
+##  [96] "Olsson, Miss. Elina"                                                  
+##  [97] "Jussila, Miss. Mari Aina"                                             
+##  [98] "Oreskovic, Miss. Marija"                                              
+##  [99] "Lefebre, Miss. Ida"                                                   
+## [100] "Minahan, Miss. Daisy E"                                               
+## [101] "Silven, Miss. Lyyli Karoliina"                                        
+## [102] "Van Impe, Miss. Catharina"                                            
+## [103] "Phillips, Miss. Kate Florence (\"Mrs Kate Louise Phillips Marshall\")"
+## [104] "Carter, Miss. Lucile Polk"                                            
+## [105] "Ford, Miss. Doolina Margaret \"Daisy\""                               
+## [106] "Mellinger, Miss. Madeleine Violet"                                    
+## [107] "Baclini, Miss. Marie Catherine"                                       
+## [108] "Toomey, Miss. Ellen"                                                  
+## [109] "Baclini, Miss. Helene Barbara"                                        
+## [110] "Strandberg, Miss. Ida Sofia"                                          
+## [111] "Hirvonen, Miss. Hildur E"                                             
+## [112] "Lefebre, Miss. Jeannie"                                               
+## [113] "Eustis, Miss. Elizabeth Mussey"                                       
+## [114] "Canavan, Miss. Mary"                                                  
+## [115] "O'Sullivan, Miss. Bridget Mary"                                       
+## [116] "Laitinen, Miss. Kristina Sofia"                                       
+## [117] "Maioni, Miss. Roberta"                                                
+## [118] "Perreault, Miss. Anne"                                                
+## [119] "Ridsdale, Miss. Lucy"                                                 
+## [120] "Quick, Miss. Phyllis May"                                             
+## [121] "Cacic, Miss. Marija"                                                  
+## [122] "Hart, Miss. Eva Miriam"                                               
+## [123] "LeRoy, Miss. Bertha"                                                  
+## [124] "Frolicher, Miss. Hedwig Margaritha"                                   
+## [125] "Crosby, Miss. Harriet R"                                              
+## [126] "Andersson, Miss. Ingeborg Constanzia"                                 
+## [127] "Andersson, Miss. Sigrid Elisabeth"                                    
+## [128] "Ohman, Miss. Velin"                                                   
+## [129] "Meanwell, Miss. (Marion Ogden)"                                       
+## [130] "Kelly, Miss. Mary"                                                    
+## [131] "Garside, Miss. Ethel"                                                 
+## [132] "Christy, Miss. Julie Rachel"                                          
+## [133] "Taussig, Miss. Ruth"                                                  
+## [134] "Bourke, Miss. Mary"                                                   
+## [135] "Leitch, Miss. Jessie Wills"                                           
+## [136] "Shutes, Miss. Elizabeth W"                                            
+## [137] "Murphy, Miss. Margaret Jane"                                          
+## [138] "Herman, Miss. Alice"                                                  
+## [139] "Becker, Miss. Marion Louise"                                          
+## [140] "Longley, Miss. Gretchen Fiske"                                        
+## [141] "Skoog, Miss. Mabel"                                                   
+## [142] "Davis, Miss. Mary"                                                    
+## [143] "Skoog, Miss. Margit Elizabeth"                                        
+## [144] "Baclini, Miss. Eugenie"                                               
+## [145] "Stanley, Miss. Amy Zillah Elsie"                                      
+## [146] "Doling, Miss. Elsie"                                                  
+## [147] "O'Leary, Miss. Hanora \"Norah\""                                      
+## [148] "Hegarty, Miss. Hanora \"Nora\""                                       
+## [149] "Turja, Miss. Anna Sofia"                                              
+## [150] "Peters, Miss. Katie"                                                  
+## [151] "Madill, Miss. Georgette Alexandra"                                    
+## [152] "Karun, Miss. Manca"                                                   
+## [153] "Mullens, Miss. Katherine \"Katie\""                                   
+## [154] "Barbara, Miss. Saiide"                                                
+## [155] "Cleaver, Miss. Alice"                                                 
+## [156] "Endres, Miss. Caroline Louise"                                        
+## [157] "Troutt, Miss. Edwina Celia \"Winnie\""                                
+## [158] "Harper, Miss. Annie Jessie \"Nina\""                                  
+## [159] "Mannion, Miss. Margareth"                                             
+## [160] "Ilmakangas, Miss. Pieta Sofia"                                        
+## [161] "Allen, Miss. Elisabeth Walton"                                        
+## [162] "Ryerson, Miss. Susan Parker \"Suzette\""                              
+## [163] "Sinkkonen, Miss. Anna"                                                
+## [164] "Wells, Miss. Joan"                                                    
+## [165] "Mangan, Miss. Mary"                                                   
+## [166] "Emanuel, Miss. Virginia Ethel"                                        
+## [167] "Ayoub, Miss. Banoura"                                                 
+## [168] "Sjoblom, Miss. Anna Sofia"                                            
+## [169] "Sage, Miss. Stella Anna"                                              
+## [170] "Pettersson, Miss. Ellen Natalia"                                      
+## [171] "Andersson, Miss. Ebba Iris Alfrida"                                   
+## [172] "Heininen, Miss. Wendla Maria"                                         
+## [173] "Compton, Miss. Sara Rebecca"                                          
+## [174] "Serepeca, Miss. Augusta"                                              
+## [175] "Boulos, Miss. Nourelain"                                              
+## [176] "Lines, Miss. Mary Conover"                                            
+## [177] "Sage, Miss. Dorothy Edith \"Dolly\""                                  
+## [178] "Duran y More, Miss. Asuncion"                                         
+## [179] "Najib, Miss. Adele Kiamie \"Jane\""                                   
+## [180] "Dahlberg, Miss. Gerda Ulrika"                                         
+## [181] "Graham, Miss. Margaret Edith"                                         
+## [182] "Johnston, Miss. Catherine Helen \"Carrie\""</code></pre>
+</details><p> </p>
+<details><p><summary><strong>Ejercicio 6</strong>: calcula la media de edad de los pasajeros del Titanic (recuerda: si hay datos ausentes…). Haz lo mismo pero por sexos (male/female)</summary></p>
+<p></p>
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb1278"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">titanic</span><span class="op">$</span><span class="va">Age</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 29.69912</code></pre>
+<div class="sourceCode" id="cb1280"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">titanic</span><span class="op">$</span><span class="va">Age</span><span class="op">[</span><span class="va">titanic</span><span class="op">$</span><span class="va">Sex</span> <span class="op">==</span> <span class="st">"male"</span><span class="op">]</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 30.72664</code></pre>
+<div class="sourceCode" id="cb1282"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">titanic</span><span class="op">$</span><span class="va">Age</span><span class="op">[</span><span class="va">titanic</span><span class="op">$</span><span class="va">Sex</span> <span class="op">==</span> <span class="st">"female"</span><span class="op">]</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 27.91571</code></pre>
+</details><p> </p>
+<details><p><summary><strong>Ejercicio 7</strong>: ordena la edad de los pasajeros del Titanic de menor a mayor, y de mayor a menor</summary></p>
+<p></p>
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb1284"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="va">titanic</span><span class="op">$</span><span class="va">Age</span><span class="op">)</span> <span class="co"># menor a mayor</span></code></pre></div>
+<pre><code>##   [1]  0.42  0.67  0.75  0.75  0.83  0.83  0.92  1.00  1.00  1.00  1.00  1.00
+##  [13]  1.00  1.00  2.00  2.00  2.00  2.00  2.00  2.00  2.00  2.00  2.00  2.00
+##  [25]  3.00  3.00  3.00  3.00  3.00  3.00  4.00  4.00  4.00  4.00  4.00  4.00
+##  [37]  4.00  4.00  4.00  4.00  5.00  5.00  5.00  5.00  6.00  6.00  6.00  7.00
+##  [49]  7.00  7.00  8.00  8.00  8.00  8.00  9.00  9.00  9.00  9.00  9.00  9.00
+##  [61]  9.00  9.00 10.00 10.00 11.00 11.00 11.00 11.00 12.00 13.00 13.00 14.00
+##  [73] 14.00 14.00 14.00 14.00 14.00 14.50 15.00 15.00 15.00 15.00 15.00 16.00
+##  [85] 16.00 16.00 16.00 16.00 16.00 16.00 16.00 16.00 16.00 16.00 16.00 16.00
+##  [97] 16.00 16.00 16.00 16.00 17.00 17.00 17.00 17.00 17.00 17.00 17.00 17.00
+## [109] 17.00 17.00 17.00 17.00 17.00 18.00 18.00 18.00 18.00 18.00 18.00 18.00
+## [121] 18.00 18.00 18.00 18.00 18.00 18.00 18.00 18.00 18.00 18.00 18.00 18.00
+## [133] 18.00 18.00 18.00 18.00 18.00 18.00 18.00 19.00 19.00 19.00 19.00 19.00
+## [145] 19.00 19.00 19.00 19.00 19.00 19.00 19.00 19.00 19.00 19.00 19.00 19.00
+## [157] 19.00 19.00 19.00 19.00 19.00 19.00 19.00 19.00 20.00 20.00 20.00 20.00
+## [169] 20.00 20.00 20.00 20.00 20.00 20.00 20.00 20.00 20.00 20.00 20.00 20.50
+## [181] 21.00 21.00 21.00 21.00 21.00 21.00 21.00 21.00 21.00 21.00 21.00 21.00
+## [193] 21.00 21.00 21.00 21.00 21.00 21.00 21.00 21.00 21.00 21.00 21.00 21.00
+## [205] 22.00 22.00 22.00 22.00 22.00 22.00 22.00 22.00 22.00 22.00 22.00 22.00
+## [217] 22.00 22.00 22.00 22.00 22.00 22.00 22.00 22.00 22.00 22.00 22.00 22.00
+## [229] 22.00 22.00 22.00 23.00 23.00 23.00 23.00 23.00 23.00 23.00 23.00 23.00
+## [241] 23.00 23.00 23.00 23.00 23.00 23.00 23.50 24.00 24.00 24.00 24.00 24.00
+## [253] 24.00 24.00 24.00 24.00 24.00 24.00 24.00 24.00 24.00 24.00 24.00 24.00
+## [265] 24.00 24.00 24.00 24.00 24.00 24.00 24.00 24.00 24.00 24.00 24.00 24.00
+## [277] 24.00 24.50 25.00 25.00 25.00 25.00 25.00 25.00 25.00 25.00 25.00 25.00
+## [289] 25.00 25.00 25.00 25.00 25.00 25.00 25.00 25.00 25.00 25.00 25.00 25.00
+## [301] 25.00 26.00 26.00 26.00 26.00 26.00 26.00 26.00 26.00 26.00 26.00 26.00
+## [313] 26.00 26.00 26.00 26.00 26.00 26.00 26.00 27.00 27.00 27.00 27.00 27.00
+## [325] 27.00 27.00 27.00 27.00 27.00 27.00 27.00 27.00 27.00 27.00 27.00 27.00
+## [337] 27.00 28.00 28.00 28.00 28.00 28.00 28.00 28.00 28.00 28.00 28.00 28.00
+## [349] 28.00 28.00 28.00 28.00 28.00 28.00 28.00 28.00 28.00 28.00 28.00 28.00
+## [361] 28.00 28.00 28.50 28.50 29.00 29.00 29.00 29.00 29.00 29.00 29.00 29.00
+## [373] 29.00 29.00 29.00 29.00 29.00 29.00 29.00 29.00 29.00 29.00 29.00 29.00
+## [385] 30.00 30.00 30.00 30.00 30.00 30.00 30.00 30.00 30.00 30.00 30.00 30.00
+## [397] 30.00 30.00 30.00 30.00 30.00 30.00 30.00 30.00 30.00 30.00 30.00 30.00
+## [409] 30.00 30.50 30.50 31.00 31.00 31.00 31.00 31.00 31.00 31.00 31.00 31.00
+## [421] 31.00 31.00 31.00 31.00 31.00 31.00 31.00 31.00 32.00 32.00 32.00 32.00
+## [433] 32.00 32.00 32.00 32.00 32.00 32.00 32.00 32.00 32.00 32.00 32.00 32.00
+## [445] 32.00 32.00 32.50 32.50 33.00 33.00 33.00 33.00 33.00 33.00 33.00 33.00
+## [457] 33.00 33.00 33.00 33.00 33.00 33.00 33.00 34.00 34.00 34.00 34.00 34.00
+## [469] 34.00 34.00 34.00 34.00 34.00 34.00 34.00 34.00 34.00 34.00 34.50 35.00
+## [481] 35.00 35.00 35.00 35.00 35.00 35.00 35.00 35.00 35.00 35.00 35.00 35.00
+## [493] 35.00 35.00 35.00 35.00 35.00 36.00 36.00 36.00 36.00 36.00 36.00 36.00
+## [505] 36.00 36.00 36.00 36.00 36.00 36.00 36.00 36.00 36.00 36.00 36.00 36.00
+## [517] 36.00 36.00 36.00 36.50 37.00 37.00 37.00 37.00 37.00 37.00 38.00 38.00
+## [529] 38.00 38.00 38.00 38.00 38.00 38.00 38.00 38.00 38.00 39.00 39.00 39.00
+## [541] 39.00 39.00 39.00 39.00 39.00 39.00 39.00 39.00 39.00 39.00 39.00 40.00
+## [553] 40.00 40.00 40.00 40.00 40.00 40.00 40.00 40.00 40.00 40.00 40.00 40.00
+## [565] 40.50 40.50 41.00 41.00 41.00 41.00 41.00 41.00 42.00 42.00 42.00 42.00
+## [577] 42.00 42.00 42.00 42.00 42.00 42.00 42.00 42.00 42.00 43.00 43.00 43.00
+## [589] 43.00 43.00 44.00 44.00 44.00 44.00 44.00 44.00 44.00 44.00 44.00 45.00
+## [601] 45.00 45.00 45.00 45.00 45.00 45.00 45.00 45.00 45.00 45.00 45.00 45.50
+## [613] 45.50 46.00 46.00 46.00 47.00 47.00 47.00 47.00 47.00 47.00 47.00 47.00
+## [625] 47.00 48.00 48.00 48.00 48.00 48.00 48.00 48.00 48.00 48.00 49.00 49.00
+## [637] 49.00 49.00 49.00 49.00 50.00 50.00 50.00 50.00 50.00 50.00 50.00 50.00
+## [649] 50.00 50.00 51.00 51.00 51.00 51.00 51.00 51.00 51.00 52.00 52.00 52.00
+## [661] 52.00 52.00 52.00 53.00 54.00 54.00 54.00 54.00 54.00 54.00 54.00 54.00
+## [673] 55.00 55.00 55.50 56.00 56.00 56.00 56.00 57.00 57.00 58.00 58.00 58.00
+## [685] 58.00 58.00 59.00 59.00 60.00 60.00 60.00 60.00 61.00 61.00 61.00 62.00
+## [697] 62.00 62.00 62.00 63.00 63.00 64.00 64.00 65.00 65.00 65.00 66.00 70.00
+## [709] 70.00 70.50 71.00 71.00 74.00 80.00</code></pre>
+<div class="sourceCode" id="cb1286"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="va">titanic</span><span class="op">$</span><span class="va">Age</span>, decreasing <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="co"># mayor a menor</span></code></pre></div>
+<pre><code>##   [1] 80.00 74.00 71.00 71.00 70.50 70.00 70.00 66.00 65.00 65.00 65.00 64.00
+##  [13] 64.00 63.00 63.00 62.00 62.00 62.00 62.00 61.00 61.00 61.00 60.00 60.00
+##  [25] 60.00 60.00 59.00 59.00 58.00 58.00 58.00 58.00 58.00 57.00 57.00 56.00
+##  [37] 56.00 56.00 56.00 55.50 55.00 55.00 54.00 54.00 54.00 54.00 54.00 54.00
+##  [49] 54.00 54.00 53.00 52.00 52.00 52.00 52.00 52.00 52.00 51.00 51.00 51.00
+##  [61] 51.00 51.00 51.00 51.00 50.00 50.00 50.00 50.00 50.00 50.00 50.00 50.00
+##  [73] 50.00 50.00 49.00 49.00 49.00 49.00 49.00 49.00 48.00 48.00 48.00 48.00
+##  [85] 48.00 48.00 48.00 48.00 48.00 47.00 47.00 47.00 47.00 47.00 47.00 47.00
+##  [97] 47.00 47.00 46.00 46.00 46.00 45.50 45.50 45.00 45.00 45.00 45.00 45.00
+## [109] 45.00 45.00 45.00 45.00 45.00 45.00 45.00 44.00 44.00 44.00 44.00 44.00
+## [121] 44.00 44.00 44.00 44.00 43.00 43.00 43.00 43.00 43.00 42.00 42.00 42.00
+## [133] 42.00 42.00 42.00 42.00 42.00 42.00 42.00 42.00 42.00 42.00 41.00 41.00
+## [145] 41.00 41.00 41.00 41.00 40.50 40.50 40.00 40.00 40.00 40.00 40.00 40.00
+## [157] 40.00 40.00 40.00 40.00 40.00 40.00 40.00 39.00 39.00 39.00 39.00 39.00
+## [169] 39.00 39.00 39.00 39.00 39.00 39.00 39.00 39.00 39.00 38.00 38.00 38.00
+## [181] 38.00 38.00 38.00 38.00 38.00 38.00 38.00 38.00 37.00 37.00 37.00 37.00
+## [193] 37.00 37.00 36.50 36.00 36.00 36.00 36.00 36.00 36.00 36.00 36.00 36.00
+## [205] 36.00 36.00 36.00 36.00 36.00 36.00 36.00 36.00 36.00 36.00 36.00 36.00
+## [217] 36.00 35.00 35.00 35.00 35.00 35.00 35.00 35.00 35.00 35.00 35.00 35.00
+## [229] 35.00 35.00 35.00 35.00 35.00 35.00 35.00 34.50 34.00 34.00 34.00 34.00
+## [241] 34.00 34.00 34.00 34.00 34.00 34.00 34.00 34.00 34.00 34.00 34.00 33.00
+## [253] 33.00 33.00 33.00 33.00 33.00 33.00 33.00 33.00 33.00 33.00 33.00 33.00
+## [265] 33.00 33.00 32.50 32.50 32.00 32.00 32.00 32.00 32.00 32.00 32.00 32.00
+## [277] 32.00 32.00 32.00 32.00 32.00 32.00 32.00 32.00 32.00 32.00 31.00 31.00
+## [289] 31.00 31.00 31.00 31.00 31.00 31.00 31.00 31.00 31.00 31.00 31.00 31.00
+## [301] 31.00 31.00 31.00 30.50 30.50 30.00 30.00 30.00 30.00 30.00 30.00 30.00
+## [313] 30.00 30.00 30.00 30.00 30.00 30.00 30.00 30.00 30.00 30.00 30.00 30.00
+## [325] 30.00 30.00 30.00 30.00 30.00 30.00 29.00 29.00 29.00 29.00 29.00 29.00
+## [337] 29.00 29.00 29.00 29.00 29.00 29.00 29.00 29.00 29.00 29.00 29.00 29.00
+## [349] 29.00 29.00 28.50 28.50 28.00 28.00 28.00 28.00 28.00 28.00 28.00 28.00
+## [361] 28.00 28.00 28.00 28.00 28.00 28.00 28.00 28.00 28.00 28.00 28.00 28.00
+## [373] 28.00 28.00 28.00 28.00 28.00 27.00 27.00 27.00 27.00 27.00 27.00 27.00
+## [385] 27.00 27.00 27.00 27.00 27.00 27.00 27.00 27.00 27.00 27.00 27.00 26.00
+## [397] 26.00 26.00 26.00 26.00 26.00 26.00 26.00 26.00 26.00 26.00 26.00 26.00
+## [409] 26.00 26.00 26.00 26.00 26.00 25.00 25.00 25.00 25.00 25.00 25.00 25.00
+## [421] 25.00 25.00 25.00 25.00 25.00 25.00 25.00 25.00 25.00 25.00 25.00 25.00
+## [433] 25.00 25.00 25.00 25.00 24.50 24.00 24.00 24.00 24.00 24.00 24.00 24.00
+## [445] 24.00 24.00 24.00 24.00 24.00 24.00 24.00 24.00 24.00 24.00 24.00 24.00
+## [457] 24.00 24.00 24.00 24.00 24.00 24.00 24.00 24.00 24.00 24.00 24.00 23.50
+## [469] 23.00 23.00 23.00 23.00 23.00 23.00 23.00 23.00 23.00 23.00 23.00 23.00
+## [481] 23.00 23.00 23.00 22.00 22.00 22.00 22.00 22.00 22.00 22.00 22.00 22.00
+## [493] 22.00 22.00 22.00 22.00 22.00 22.00 22.00 22.00 22.00 22.00 22.00 22.00
+## [505] 22.00 22.00 22.00 22.00 22.00 22.00 21.00 21.00 21.00 21.00 21.00 21.00
+## [517] 21.00 21.00 21.00 21.00 21.00 21.00 21.00 21.00 21.00 21.00 21.00 21.00
+## [529] 21.00 21.00 21.00 21.00 21.00 21.00 20.50 20.00 20.00 20.00 20.00 20.00
+## [541] 20.00 20.00 20.00 20.00 20.00 20.00 20.00 20.00 20.00 20.00 19.00 19.00
+## [553] 19.00 19.00 19.00 19.00 19.00 19.00 19.00 19.00 19.00 19.00 19.00 19.00
+## [565] 19.00 19.00 19.00 19.00 19.00 19.00 19.00 19.00 19.00 19.00 19.00 18.00
+## [577] 18.00 18.00 18.00 18.00 18.00 18.00 18.00 18.00 18.00 18.00 18.00 18.00
+## [589] 18.00 18.00 18.00 18.00 18.00 18.00 18.00 18.00 18.00 18.00 18.00 18.00
+## [601] 18.00 17.00 17.00 17.00 17.00 17.00 17.00 17.00 17.00 17.00 17.00 17.00
+## [613] 17.00 17.00 16.00 16.00 16.00 16.00 16.00 16.00 16.00 16.00 16.00 16.00
+## [625] 16.00 16.00 16.00 16.00 16.00 16.00 16.00 15.00 15.00 15.00 15.00 15.00
+## [637] 14.50 14.00 14.00 14.00 14.00 14.00 14.00 13.00 13.00 12.00 11.00 11.00
+## [649] 11.00 11.00 10.00 10.00  9.00  9.00  9.00  9.00  9.00  9.00  9.00  9.00
+## [661]  8.00  8.00  8.00  8.00  7.00  7.00  7.00  6.00  6.00  6.00  5.00  5.00
+## [673]  5.00  5.00  4.00  4.00  4.00  4.00  4.00  4.00  4.00  4.00  4.00  4.00
+## [685]  3.00  3.00  3.00  3.00  3.00  3.00  2.00  2.00  2.00  2.00  2.00  2.00
+## [697]  2.00  2.00  2.00  2.00  1.00  1.00  1.00  1.00  1.00  1.00  1.00  0.92
+## [709]  0.83  0.83  0.75  0.75  0.67  0.42</code></pre>
+<p> </p>
+<details><p><summary><strong>Ejercicio 8</strong>: vamos a clasificar a los pasajeros según su edad en <code>"mayores de edad"</code> y <code>"menores de edad"</code>. Crea un función que, dada una edad, nos diga si es mayor o menor de edad. Aplícala después a nuestra variable <code>Age</code> y guarda el resultado en una variable <code>edad_recodificada</code> que añadamos a los datos originales</summary></p>
+<p></p>
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb1288"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Definimos función</span>
+<span class="va">menor_edad</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">edad</span><span class="op">)</span> <span class="op">{</span>
+  
+  <span class="va">salida</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">edad</span> <span class="op">&lt;</span> <span class="fl">18</span>, <span class="st">"menores de edad"</span>, <span class="st">"mayores de edad"</span><span class="op">)</span>
+  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">salida</span><span class="op">)</span>
+<span class="op">}</span>
+
+<span class="co"># Creamos nueva variable</span>
+<span class="va">titanic</span><span class="op">$</span><span class="va">edad_recodificada</span> <span class="op">&lt;-</span> <span class="fu">menor_edad</span><span class="op">(</span><span class="va">titanic</span><span class="op">$</span><span class="va">Age</span><span class="op">)</span> <span class="co"># se aplica elemento a elemento</span>
+<span class="va">titanic</span><span class="op">$</span><span class="va">edad_recodificada</span> <span class="co"># habrá NA</span></code></pre></div>
+<pre><code>##   [1] "mayores de edad" "mayores de edad" "mayores de edad" "mayores de edad"
+##   [5] "mayores de edad" NA                "mayores de edad" "menores de edad"
+##   [9] "mayores de edad" "menores de edad" "menores de edad" "mayores de edad"
+##  [13] "mayores de edad" "mayores de edad" "menores de edad" "mayores de edad"
+##  [17] "menores de edad" NA                "mayores de edad" NA               
+##  [21] "mayores de edad" "mayores de edad" "menores de edad" "mayores de edad"
+##  [25] "menores de edad" "mayores de edad" NA                "mayores de edad"
+##  [29] NA                NA                "mayores de edad" NA               
+##  [33] NA                "mayores de edad" "mayores de edad" "mayores de edad"
+##  [37] NA                "mayores de edad" "mayores de edad" "menores de edad"
+##  [41] "mayores de edad" "mayores de edad" NA                "menores de edad"
+##  [45] "mayores de edad" NA                NA                NA               
+##  [49] NA                "mayores de edad" "menores de edad" "mayores de edad"
+##  [53] "mayores de edad" "mayores de edad" "mayores de edad" NA               
+##  [57] "mayores de edad" "mayores de edad" "menores de edad" "menores de edad"
+##  [61] "mayores de edad" "mayores de edad" "mayores de edad" "menores de edad"
+##  [65] NA                NA                "mayores de edad" "mayores de edad"
+##  [69] "menores de edad" "mayores de edad" "mayores de edad" "menores de edad"
+##  [73] "mayores de edad" "mayores de edad" "mayores de edad" "mayores de edad"
+##  [77] NA                NA                "menores de edad" "mayores de edad"
+##  [81] "mayores de edad" "mayores de edad" NA                "mayores de edad"
+##  [85] "menores de edad" "mayores de edad" "menores de edad" NA               
+##  [89] "mayores de edad" "mayores de edad" "mayores de edad" "mayores de edad"
+##  [93] "mayores de edad" "mayores de edad" "mayores de edad" NA               
+##  [97] "mayores de edad" "mayores de edad" "mayores de edad" "mayores de edad"
+## [101] "mayores de edad" NA                "mayores de edad" "mayores de edad"
+## [105] "mayores de edad" "mayores de edad" "mayores de edad" NA               
+## [109] "mayores de edad" NA                "mayores de edad" "menores de edad"
+## [113] "mayores de edad" "mayores de edad" "menores de edad" "mayores de edad"
+## [117] "mayores de edad" "mayores de edad" "mayores de edad" "menores de edad"
+## [121] "mayores de edad" NA                "mayores de edad" "mayores de edad"
+## [125] "mayores de edad" "menores de edad" NA                "mayores de edad"
+## [129] NA                "mayores de edad" "mayores de edad" "mayores de edad"
+## [133] "mayores de edad" "mayores de edad" "mayores de edad" "mayores de edad"
+## [137] "mayores de edad" "mayores de edad" "menores de edad" "mayores de edad"
+## [141] NA                "mayores de edad" "mayores de edad" "mayores de edad"
+## [145] "mayores de edad" "mayores de edad" "mayores de edad" "menores de edad"
+## [149] "mayores de edad" "mayores de edad" "mayores de edad" "mayores de edad"
+## [153] "mayores de edad" "mayores de edad" NA                "mayores de edad"
+## [157] "menores de edad" "mayores de edad" NA                NA               
+## [161] "mayores de edad" "mayores de edad" "mayores de edad" "menores de edad"
+## [165] "menores de edad" "menores de edad" NA                "mayores de edad"
+## [169] NA                "mayores de edad" "mayores de edad" "menores de edad"
+## [173] "menores de edad" "mayores de edad" "mayores de edad" "mayores de edad"
+## [177] NA                "mayores de edad" "mayores de edad" "mayores de edad"
+## [181] NA                NA                "menores de edad" "menores de edad"
+## [185] "menores de edad" NA                NA                "mayores de edad"
+## [189] "mayores de edad" "mayores de edad" "mayores de edad" "mayores de edad"
+## [193] "mayores de edad" "menores de edad" "mayores de edad" "mayores de edad"
+## [197] NA                "mayores de edad" NA                "mayores de edad"
+## [201] "mayores de edad" NA                "mayores de edad" "mayores de edad"
+## [205] "mayores de edad" "menores de edad" "mayores de edad" "mayores de edad"
+## [209] "menores de edad" "mayores de edad" "mayores de edad" "mayores de edad"
+## [213] "mayores de edad" "mayores de edad" NA                "mayores de edad"
+## [217] "mayores de edad" "mayores de edad" "mayores de edad" "mayores de edad"
+## [221] "menores de edad" "mayores de edad" "mayores de edad" NA               
+## [225] "mayores de edad" "mayores de edad" "mayores de edad" "mayores de edad"
+## [229] "mayores de edad" NA                "mayores de edad" "mayores de edad"
+## [233] "mayores de edad" "menores de edad" "mayores de edad" NA               
+## [237] "mayores de edad" "menores de edad" "mayores de edad" "mayores de edad"
+## [241] NA                NA                "mayores de edad" "mayores de edad"
+## [245] "mayores de edad" "mayores de edad" "mayores de edad" "mayores de edad"
+## [249] "mayores de edad" "mayores de edad" NA                "mayores de edad"
+## [253] "mayores de edad" "mayores de edad" "mayores de edad" "mayores de edad"
+## [257] NA                "mayores de edad" "mayores de edad" "mayores de edad"
+## [261] NA                "menores de edad" "mayores de edad" "mayores de edad"
+## [265] NA                "mayores de edad" "menores de edad" "mayores de edad"
+## [269] "mayores de edad" "mayores de edad" NA                "mayores de edad"
+## [273] "mayores de edad" "mayores de edad" NA                "mayores de edad"
+## [277] "mayores de edad" NA                "menores de edad" "mayores de edad"
+## [281] "mayores de edad" "mayores de edad" "menores de edad" "mayores de edad"
+## [285] NA                "mayores de edad" "mayores de edad" "mayores de edad"
+## [289] "mayores de edad" "mayores de edad" "mayores de edad" "mayores de edad"
+## [293] "mayores de edad" "mayores de edad" "mayores de edad" NA               
+## [297] "mayores de edad" "menores de edad" NA                "mayores de edad"
+## [301] NA                NA                "mayores de edad" NA               
+## [305] NA                "menores de edad" NA                "menores de edad"
+## [309] "mayores de edad" "mayores de edad" "mayores de edad" "mayores de edad"
+## [313] "mayores de edad" "mayores de edad" "mayores de edad" "mayores de edad"
+## [317] "mayores de edad" "mayores de edad" "mayores de edad" "mayores de edad"
+## [321] "mayores de edad" "mayores de edad" "mayores de edad" "mayores de edad"
+## [325] NA                "mayores de edad" "mayores de edad" "mayores de edad"
+## [329] "mayores de edad" "menores de edad" NA                "mayores de edad"
+## [333] "mayores de edad" "menores de edad" NA                NA               
+## [337] "mayores de edad" "mayores de edad" "mayores de edad" "mayores de edad"
+## [341] "menores de edad" "mayores de edad" "mayores de edad" "mayores de edad"
+## [345] "mayores de edad" "mayores de edad" "mayores de edad" NA               
+## [349] "menores de edad" "mayores de edad" "mayores de edad" NA               
+## [353] "menores de edad" "mayores de edad" NA                "mayores de edad"
+## [357] "mayores de edad" "mayores de edad" NA                NA               
+## [361] "mayores de edad" "mayores de edad" "mayores de edad" "mayores de edad"
+## [365] NA                "mayores de edad" "mayores de edad" NA               
+## [369] NA                "mayores de edad" "mayores de edad" "mayores de edad"
+## [373] "mayores de edad" "mayores de edad" "menores de edad" NA               
+## [377] "mayores de edad" "mayores de edad" "mayores de edad" "mayores de edad"
+## [381] "mayores de edad" "menores de edad" "mayores de edad" "mayores de edad"
+## [385] NA                "mayores de edad" "menores de edad" "mayores de edad"
+## [389] NA                "menores de edad" "mayores de edad" "mayores de edad"
+## [393] "mayores de edad" "mayores de edad" "mayores de edad" "mayores de edad"
+## [397] "mayores de edad" "mayores de edad" "mayores de edad" "mayores de edad"
+## [401] "mayores de edad" "mayores de edad" "mayores de edad" "mayores de edad"
+## [405] "mayores de edad" "mayores de edad" "mayores de edad" "menores de edad"
+## [409] "mayores de edad" NA                NA                NA               
+## [413] "mayores de edad" NA                "mayores de edad" NA               
+## [417] "mayores de edad" "mayores de edad" "mayores de edad" "menores de edad"
+## [421] NA                "mayores de edad" "mayores de edad" "mayores de edad"
+## [425] "mayores de edad" NA                "mayores de edad" "mayores de edad"
+## [429] NA                "mayores de edad" "mayores de edad" NA               
+## [433] "mayores de edad" "menores de edad" "mayores de edad" "menores de edad"
+## [437] "mayores de edad" "mayores de edad" "mayores de edad" "mayores de edad"
+## [441] "mayores de edad" "mayores de edad" "mayores de edad" "mayores de edad"
+## [445] NA                "menores de edad" "menores de edad" "mayores de edad"
+## [449] "menores de edad" "mayores de edad" "mayores de edad" NA               
+## [453] "mayores de edad" "mayores de edad" NA                "mayores de edad"
+## [457] "mayores de edad" NA                "mayores de edad" NA               
+## [461] "mayores de edad" "mayores de edad" "mayores de edad" "mayores de edad"
+## [465] NA                "mayores de edad" NA                "mayores de edad"
+## [469] NA                "menores de edad" NA                "mayores de edad"
+## [473] "mayores de edad" "mayores de edad" "mayores de edad" NA               
+## [477] "mayores de edad" "mayores de edad" "mayores de edad" "menores de edad"
+## [481] "menores de edad" NA                "mayores de edad" "mayores de edad"
+## [485] "mayores de edad" NA                "mayores de edad" "mayores de edad"
+## [489] "mayores de edad" "menores de edad" NA                "mayores de edad"
+## [493] "mayores de edad" "mayores de edad" "mayores de edad" NA               
+## [497] "mayores de edad" NA                "mayores de edad" "mayores de edad"
+## [501] "menores de edad" "mayores de edad" NA                "mayores de edad"
+## [505] "menores de edad" "mayores de edad" "mayores de edad" NA               
+## [509] "mayores de edad" "mayores de edad" "mayores de edad" NA               
+## [513] "mayores de edad" "mayores de edad" "mayores de edad" "mayores de edad"
+## [517] "mayores de edad" NA                "mayores de edad" "mayores de edad"
+## [521] "mayores de edad" "mayores de edad" NA                "mayores de edad"
+## [525] NA                "mayores de edad" "mayores de edad" NA               
+## [529] "mayores de edad" "mayores de edad" "menores de edad" NA               
+## [533] "menores de edad" NA                "mayores de edad" "menores de edad"
+## [537] "mayores de edad" "mayores de edad" NA                "mayores de edad"
+## [541] "mayores de edad" "menores de edad" "menores de edad" "mayores de edad"
+## [545] "mayores de edad" "mayores de edad" "mayores de edad" NA               
+## [549] "mayores de edad" "menores de edad" "menores de edad" "mayores de edad"
+## [553] NA                "mayores de edad" "mayores de edad" "mayores de edad"
+## [557] "mayores de edad" NA                "mayores de edad" "mayores de edad"
+## [561] NA                "mayores de edad" "mayores de edad" NA               
+## [565] NA                "mayores de edad" "mayores de edad" "mayores de edad"
+## [569] NA                "mayores de edad" "mayores de edad" "mayores de edad"
+## [573] "mayores de edad" NA                "menores de edad" "mayores de edad"
+## [577] "mayores de edad" "mayores de edad" NA                "mayores de edad"
+## [581] "mayores de edad" "mayores de edad" "mayores de edad" "mayores de edad"
+## [585] NA                "mayores de edad" "mayores de edad" "mayores de edad"
+## [589] "mayores de edad" NA                "mayores de edad" "mayores de edad"
+## [593] "mayores de edad" NA                "mayores de edad" "mayores de edad"
+## [597] NA                "mayores de edad" NA                "mayores de edad"
+## [601] "mayores de edad" NA                NA                "mayores de edad"
+## [605] "mayores de edad" "mayores de edad" "mayores de edad" "mayores de edad"
+## [609] "mayores de edad" "mayores de edad" "mayores de edad" NA               
+## [613] NA                NA                "mayores de edad" "mayores de edad"
+## [617] "mayores de edad" "mayores de edad" "menores de edad" "mayores de edad"
+## [621] "mayores de edad" "mayores de edad" "mayores de edad" "mayores de edad"
+## [625] "mayores de edad" "mayores de edad" "mayores de edad" "mayores de edad"
+## [629] "mayores de edad" NA                "mayores de edad" "mayores de edad"
+## [633] "mayores de edad" NA                "menores de edad" "mayores de edad"
+## [637] "mayores de edad" "mayores de edad" "mayores de edad" NA               
+## [641] "mayores de edad" "mayores de edad" "menores de edad" NA               
+## [645] "menores de edad" "mayores de edad" "mayores de edad" "mayores de edad"
+## [649] NA                "mayores de edad" NA                "mayores de edad"
+## [653] "mayores de edad" NA                "mayores de edad" "mayores de edad"
+## [657] NA                "mayores de edad" "mayores de edad" "mayores de edad"
+## [661] "mayores de edad" "mayores de edad" "mayores de edad" "mayores de edad"
+## [665] "mayores de edad" "mayores de edad" "mayores de edad" NA               
+## [669] "mayores de edad" NA                "mayores de edad" "mayores de edad"
+## [673] "mayores de edad" "mayores de edad" NA                "mayores de edad"
+## [677] "mayores de edad" "mayores de edad" "mayores de edad" "mayores de edad"
+## [681] NA                "mayores de edad" "mayores de edad" "menores de edad"
+## [685] "mayores de edad" "mayores de edad" "menores de edad" "mayores de edad"
+## [689] "mayores de edad" "menores de edad" "mayores de edad" "menores de edad"
+## [693] NA                "mayores de edad" "mayores de edad" "mayores de edad"
+## [697] "mayores de edad" NA                "mayores de edad" "mayores de edad"
+## [701] "mayores de edad" "mayores de edad" "mayores de edad" "mayores de edad"
+## [705] "mayores de edad" "mayores de edad" "mayores de edad" "mayores de edad"
+## [709] "mayores de edad" NA                "mayores de edad" NA               
+## [713] "mayores de edad" "mayores de edad" "mayores de edad" "mayores de edad"
+## [717] "mayores de edad" "mayores de edad" NA                "mayores de edad"
+## [721] "menores de edad" "menores de edad" "mayores de edad" "mayores de edad"
+## [725] "mayores de edad" "mayores de edad" "mayores de edad" NA               
+## [729] "mayores de edad" "mayores de edad" "mayores de edad" "menores de edad"
+## [733] NA                "mayores de edad" "mayores de edad" "mayores de edad"
+## [737] "mayores de edad" "mayores de edad" NA                NA               
+## [741] NA                "mayores de edad" "mayores de edad" "mayores de edad"
+## [745] "mayores de edad" "mayores de edad" "menores de edad" "mayores de edad"
+## [749] "mayores de edad" "mayores de edad" "menores de edad" "menores de edad"
+## [753] "mayores de edad" "mayores de edad" "mayores de edad" "menores de edad"
+## [757] "mayores de edad" "mayores de edad" "mayores de edad" "mayores de edad"
+## [761] NA                "mayores de edad" "mayores de edad" "mayores de edad"
+## [765] "menores de edad" "mayores de edad" NA                "mayores de edad"
+## [769] NA                "mayores de edad" "mayores de edad" "mayores de edad"
+## [773] "mayores de edad" NA                "mayores de edad" "mayores de edad"
+## [777] NA                "menores de edad" NA                "mayores de edad"
+## [781] "menores de edad" "menores de edad" "mayores de edad" NA               
+## [785] "mayores de edad" "mayores de edad" "mayores de edad" "menores de edad"
+## [789] "menores de edad" "mayores de edad" NA                "menores de edad"
+## [793] NA                NA                "mayores de edad" "mayores de edad"
+## [797] "mayores de edad" "mayores de edad" "mayores de edad" "mayores de edad"
+## [801] "mayores de edad" "mayores de edad" "menores de edad" "menores de edad"
+## [805] "mayores de edad" "mayores de edad" "mayores de edad" "mayores de edad"
+## [809] "mayores de edad" "mayores de edad" "mayores de edad" "mayores de edad"
+## [813] "mayores de edad" "menores de edad" "mayores de edad" NA               
+## [817] "mayores de edad" "mayores de edad" "mayores de edad" "menores de edad"
+## [821] "mayores de edad" "mayores de edad" "mayores de edad" "mayores de edad"
+## [825] "menores de edad" NA                NA                "menores de edad"
+## [829] NA                "mayores de edad" "menores de edad" "menores de edad"
+## [833] NA                "mayores de edad" "mayores de edad" "mayores de edad"
+## [837] "mayores de edad" NA                "mayores de edad" NA               
+## [841] "mayores de edad" "menores de edad" "mayores de edad" "mayores de edad"
+## [845] "menores de edad" "mayores de edad" NA                "mayores de edad"
+## [849] "mayores de edad" NA                "menores de edad" "mayores de edad"
+## [853] "menores de edad" "menores de edad" "mayores de edad" "mayores de edad"
+## [857] "mayores de edad" "mayores de edad" "mayores de edad" NA               
+## [861] "mayores de edad" "mayores de edad" "mayores de edad" NA               
+## [865] "mayores de edad" "mayores de edad" "mayores de edad" "mayores de edad"
+## [869] NA                "menores de edad" "mayores de edad" "mayores de edad"
+## [873] "mayores de edad" "mayores de edad" "mayores de edad" "menores de edad"
+## [877] "mayores de edad" "mayores de edad" NA                "mayores de edad"
+## [881] "mayores de edad" "mayores de edad" "mayores de edad" "mayores de edad"
+## [885] "mayores de edad" "mayores de edad" "mayores de edad" "mayores de edad"
+## [889] NA                "mayores de edad" "mayores de edad"</code></pre>
+<p> </p>
+<details><p><summary><strong>Ejercicio 9</strong>: el accidente del Titanic se produjo el 15 de abril de 1912. Tomando dicha fecha como referencia, usa la edad de los pasajeros para añadir una nueva variable que sea la fecha de nacimiento.</summary></p>
+<p></p>
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb1290"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://lubridate.tidyverse.org">lubridate</a></span><span class="op">)</span>
+<span class="co"># Fecha accidente</span>
+<span class="va">accidente</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/as_date.html">as_date</a></span><span class="op">(</span><span class="st">"1912/04/15"</span><span class="op">)</span>
+
+<span class="co"># Creamos nueva variable: fecha del accidente - años</span>
+<span class="co"># (saldrán todos nacidos el 15 de abril, ya que no sabemos</span>
+<span class="co"># cuantos meses cumplían en el momento del accidente)</span>
+<span class="va">titanic</span><span class="op">$</span><span class="va">fecha_nacimiento</span> <span class="op">&lt;-</span> <span class="va">accidente</span> <span class="op">-</span> <span class="va">titanic</span><span class="op">$</span><span class="va">Age</span>
+<span class="va">titanic</span><span class="op">$</span><span class="va">fecha_nacimiento</span> </code></pre></div>
+<pre><code>##   [1] "1912-03-24" "1912-03-08" "1912-03-20" "1912-03-11" "1912-03-11"
+##   [6] NA           "1912-02-21" "1912-04-13" "1912-03-19" "1912-04-01"
+##  [11] "1912-04-11" "1912-02-17" "1912-03-26" "1912-03-07" "1912-04-01"
+##  [16] "1912-02-20" "1912-04-13" NA           "1912-03-15" NA          
+##  [21] "1912-03-11" "1912-03-12" "1912-03-31" "1912-03-18" "1912-04-07"
+##  [26] "1912-03-08" NA           "1912-03-27" NA           NA          
+##  [31] "1912-03-06" NA           NA           "1912-02-09" "1912-03-18"
+##  [36] "1912-03-04" NA           "1912-03-25" "1912-03-28" "1912-04-01"
+##  [41] "1912-03-06" "1912-03-19" NA           "1912-04-12" "1912-03-27"
+##  [46] NA           NA           NA           NA           "1912-03-28"
+##  [51] "1912-04-08" "1912-03-25" "1912-02-26" "1912-03-17" "1912-02-10"
+##  [56] NA           "1912-03-25" "1912-03-17" "1912-04-10" "1912-04-04"
+##  [61] "1912-03-24" "1912-03-08" "1912-03-01" "1912-04-11" NA          
+##  [66] NA           "1912-03-17" "1912-03-27" "1912-03-29" "1912-03-20"
+##  [71] "1912-03-14" "1912-03-30" "1912-03-25" "1912-03-20" "1912-03-14"
+##  [76] "1912-03-21" NA           NA           "1912-04-14" "1912-03-16"
+##  [81] "1912-03-24" "1912-03-17" NA           "1912-03-18" "1912-03-29"
+##  [86] "1912-03-13" "1912-03-30" NA           "1912-03-23" "1912-03-22"
+##  [91] "1912-03-17" "1912-03-26" "1912-02-29" "1912-03-20" "1912-02-16"
+##  [96] NA           "1912-02-04" "1912-03-23" "1912-03-12" "1912-03-12"
+## [101] "1912-03-18" NA           "1912-03-25" "1912-03-13" "1912-03-09"
+## [106] "1912-03-18" "1912-03-25" NA           "1912-03-08" NA          
+## [111] "1912-02-28" "1912-03-31" "1912-03-24" "1912-03-26" "1912-03-29"
+## [116] "1912-03-25" "1912-02-04" "1912-03-17" "1912-03-22" "1912-04-13"
+## [121] "1912-03-25" NA           "1912-03-13" "1912-03-13" "1912-02-21"
+## [126] "1912-04-03" NA           "1912-03-22" NA           "1912-03-01"
+## [131] "1912-03-13" "1912-03-26" "1912-02-28" "1912-03-17" "1912-03-21"
+## [136] "1912-03-23" "1912-03-27" "1912-03-09" "1912-03-30" "1912-03-22"
+## [141] NA           "1912-03-24" "1912-03-22" "1912-03-27" "1912-03-28"
+## [146] "1912-03-27" "1912-03-19" "1912-04-06" "1912-03-09" "1912-03-04"
+## [151] "1912-02-24" "1912-03-24" "1912-02-19" "1912-03-05" NA          
+## [156] "1912-02-24" "1912-03-30" "1912-03-16" NA           NA          
+## [161] "1912-03-02" "1912-03-06" "1912-03-20" "1912-03-29" "1912-04-14"
+## [166] "1912-04-06" NA           "1912-03-01" NA           "1912-03-18"
+## [171] "1912-02-14" "1912-04-11" "1912-04-14" "1912-03-25" "1912-02-19"
+## [176] "1912-03-28" NA           "1912-02-25" "1912-03-16" "1912-03-10"
+## [181] NA           NA           "1912-04-06" "1912-04-14" "1912-04-11"
+## [186] NA           NA           "1912-03-01" "1912-03-06" "1912-03-10"
+## [191] "1912-03-14" "1912-03-27" "1912-03-27" "1912-04-12" "1912-03-02"
+## [196] "1912-02-17" NA           "1912-03-04" NA           "1912-03-22"
+## [201] "1912-03-18" NA           "1912-03-12" "1912-02-29" "1912-03-28"
+## [206] "1912-04-13" "1912-03-14" "1912-03-20" "1912-03-30" "1912-03-06"
+## [211] "1912-03-22" "1912-03-11" "1912-03-24" "1912-03-16" NA          
+## [216] "1912-03-15" "1912-03-19" "1912-03-04" "1912-03-14" "1912-03-16"
+## [221] "1912-03-30" "1912-03-19" "1912-02-24" NA           "1912-03-08"
+## [226] "1912-03-24" "1912-03-27" "1912-03-25" "1912-03-28" NA          
+## [231] "1912-03-11" "1912-03-17" "1912-02-16" "1912-04-10" "1912-03-22"
+## [236] NA           "1912-03-02" "1912-04-07" "1912-03-27" "1912-03-13"
+## [241] NA           NA           "1912-03-17" "1912-03-24" "1912-03-16"
+## [246] "1912-03-02" "1912-03-21" "1912-03-22" "1912-03-09" "1912-02-21"
+## [251] NA           "1912-03-17" "1912-02-13" "1912-03-16" "1912-03-05"
+## [256] "1912-03-17" NA           "1912-03-16" "1912-03-11" "1912-02-25"
+## [261] NA           "1912-04-12" "1912-02-23" "1912-03-06" NA          
+## [266] "1912-03-10" "1912-03-30" "1912-03-21" "1912-02-17" "1912-03-11"
+## [271] NA           "1912-03-21" "1912-03-05" "1912-03-09" NA          
+## [276] "1912-02-12" "1912-03-01" NA           "1912-04-08" "1912-03-11"
+## [281] "1912-02-10" "1912-03-18" "1912-03-30" "1912-03-27" NA          
+## [286] "1912-03-13" "1912-03-16" "1912-03-24" "1912-03-04" "1912-03-24"
+## [291] "1912-03-20" "1912-03-27" "1912-03-10" "1912-03-22" "1912-03-22"
+## [296] NA           "1912-03-22" "1912-04-13" NA           "1912-02-25"
+## [301] NA           NA           "1912-03-27" NA           NA          
+## [306] "1912-04-14" NA           "1912-03-29" "1912-03-16" "1912-03-16"
+## [311] "1912-03-22" "1912-03-28" "1912-03-20" "1912-03-18" "1912-03-03"
+## [316] "1912-03-20" "1912-03-22" "1912-02-21" "1912-03-15" "1912-03-06"
+## [321] "1912-03-24" "1912-03-19" "1912-03-16" "1912-03-24" NA          
+## [326] "1912-03-10" "1912-02-14" "1912-03-10" "1912-03-15" "1912-03-30"
+## [331] NA           "1912-02-29" "1912-03-08" "1912-03-30" NA          
+## [336] NA           "1912-03-17" "1912-03-05" "1912-03-01" "1912-03-01"
+## [341] "1912-04-13" "1912-03-22" "1912-03-18" "1912-03-21" "1912-03-10"
+## [346] "1912-03-22" "1912-03-06" NA           "1912-04-12" "1912-03-04"
+## [351] "1912-03-23" NA           "1912-03-31" "1912-03-21" NA          
+## [356] "1912-03-18" "1912-03-24" "1912-03-08" NA           NA          
+## [361] "1912-03-06" "1912-03-17" "1912-03-01" "1912-03-11" NA          
+## [366] "1912-03-16" "1912-02-15" NA           NA           "1912-03-22"
+## [371] "1912-03-21" "1912-03-28" "1912-03-27" "1912-03-24" "1912-04-12"
+## [376] NA           "1912-03-24" "1912-03-19" "1912-03-26" "1912-03-27"
+## [381] "1912-03-04" "1912-04-14" "1912-03-14" "1912-03-11" NA          
+## [386] "1912-03-28" "1912-04-14" "1912-03-10" NA           "1912-03-29"
+## [391] "1912-03-10" "1912-03-25" "1912-03-18" "1912-03-23" "1912-03-22"
+## [396] "1912-03-24" "1912-03-15" "1912-02-29" "1912-03-23" "1912-03-18"
+## [401] "1912-03-07" "1912-03-20" "1912-03-25" "1912-03-18" "1912-03-26"
+## [406] "1912-03-12" "1912-02-24" "1912-04-12" "1912-03-25" NA          
+## [411] NA           NA           "1912-03-13" NA           "1912-03-02"
+## [416] NA           "1912-03-12" "1912-03-28" "1912-03-16" "1912-04-05"
+## [421] NA           "1912-03-25" "1912-03-17" "1912-03-18" "1912-03-28"
+## [426] NA           "1912-03-18" "1912-03-27" NA           "1912-03-14"
+## [431] "1912-03-18" NA           "1912-03-04" "1912-03-29" "1912-02-25"
+## [436] "1912-04-01" "1912-03-25" "1912-03-22" "1912-02-11" "1912-03-15"
+## [441] "1912-03-01" "1912-03-26" "1912-03-21" "1912-03-18" NA          
+## [446] "1912-04-11" "1912-04-02" "1912-03-12" "1912-04-10" "1912-02-23"
+## [451] "1912-03-10" NA           "1912-03-16" "1912-02-26" NA          
+## [456] "1912-03-17" "1912-02-10" NA           "1912-02-25" NA          
+## [461] "1912-02-27" "1912-03-12" "1912-02-28" "1912-02-27" NA          
+## [466] "1912-03-08" NA           "1912-02-19" NA           "1912-04-14"
+## [471] NA           "1912-03-08" "1912-03-13" "1912-03-23" "1912-03-24"
+## [476] NA           "1912-03-12" "1912-03-17" "1912-03-24" "1912-04-13"
+## [481] "1912-04-06" NA           "1912-02-25" "1912-02-12" "1912-03-21"
+## [486] NA           "1912-03-11" "1912-02-17" "1912-03-16" "1912-04-06"
+## [491] NA           "1912-03-25" "1912-02-20" "1912-02-04" "1912-03-25"
+## [496] NA           "1912-02-21" NA           "1912-03-21" "1912-03-22"
+## [501] "1912-03-29" "1912-03-25" NA           "1912-03-09" "1912-03-30"
+## [506] "1912-03-28" "1912-03-13" NA           "1912-03-18" "1912-03-20"
+## [511] "1912-03-17" NA           "1912-03-10" "1912-02-21" "1912-03-22"
+## [516] "1912-02-28" "1912-03-12" NA           "1912-03-10" "1912-03-14"
+## [521] "1912-03-16" "1912-03-24" NA           "1912-03-02" NA          
+## [526] "1912-03-05" "1912-02-25" NA           "1912-03-07" "1912-03-23"
+## [531] "1912-04-13" NA           "1912-03-29" NA           "1912-03-16"
+## [536] "1912-04-08" "1912-03-01" "1912-03-16" NA           "1912-03-24"
+## [541] "1912-03-10" "1912-04-06" "1912-04-04" "1912-03-14" "1912-02-25"
+## [546] "1912-02-11" "1912-03-27" NA           "1912-03-13" "1912-04-07"
+## [551] "1912-03-29" "1912-03-19" NA           "1912-03-24" "1912-03-24"
+## [556] "1912-02-13" "1912-02-27" NA           "1912-03-07" "1912-03-10"
+## [561] NA           "1912-03-06" "1912-03-18" NA           NA          
+## [566] "1912-03-22" "1912-03-27" "1912-03-17" NA           "1912-03-14"
+## [571] "1912-02-13" "1912-02-22" "1912-03-10" NA           "1912-03-30"
+## [576] "1912-03-27" "1912-03-12" "1912-03-07" NA           "1912-03-14"
+## [581] "1912-03-21" "1912-03-07" "1912-02-21" "1912-03-10" NA          
+## [586] "1912-03-28" "1912-02-28" "1912-02-15" "1912-03-24" NA          
+## [591] "1912-03-11" "1912-02-23" "1912-02-28" NA           "1912-03-09"
+## [596] "1912-03-10" NA           "1912-02-26" NA           "1912-02-26"
+## [601] "1912-03-22" NA           NA           "1912-03-02" "1912-03-11"
+## [606] "1912-03-10" "1912-03-16" "1912-03-19" "1912-03-24" "1912-03-06"
+## [611] "1912-03-07" NA           NA           NA           "1912-03-11"
+## [616] "1912-03-22" "1912-03-12" "1912-03-20" "1912-04-11" "1912-03-20"
+## [621] "1912-03-19" "1912-03-04" "1912-03-26" "1912-03-25" "1912-03-25"
+## [626] "1912-02-14" "1912-02-18" "1912-03-25" "1912-03-20" NA          
+## [631] "1912-01-26" "1912-02-24" "1912-03-14" NA           "1912-04-06"
+## [636] "1912-03-18" "1912-03-14" "1912-03-15" "1912-03-05" NA          
+## [641] "1912-03-26" "1912-03-22" "1912-04-13" NA           "1912-04-14"
+## [646] "1912-02-27" "1912-03-27" "1912-02-19" NA           "1912-03-23"
+## [651] NA           "1912-03-28" "1912-03-25" NA           "1912-03-28"
+## [656] "1912-03-22" NA           "1912-03-14" "1912-03-23" "1912-02-17"
+## [661] "1912-02-25" "1912-03-06" "1912-02-28" "1912-03-10" "1912-03-26"
+## [666] "1912-03-14" "1912-03-21" NA           "1912-03-03" NA          
+## [671] "1912-03-06" "1912-03-15" "1912-02-05" "1912-03-15" NA          
+## [676] "1912-03-28" "1912-03-21" "1912-03-28" "1912-03-03" "1912-03-10"
+## [681] NA           "1912-03-19" "1912-03-26" "1912-04-01" "1912-02-15"
+## [686] "1912-03-21" "1912-04-01" "1912-03-27" "1912-03-28" "1912-03-31"
+## [691] "1912-03-15" "1912-04-11" NA           "1912-03-21" "1912-02-15"
+## [696] "1912-02-23" "1912-03-02" NA           "1912-02-26" "1912-03-04"
+## [701] "1912-03-28" "1912-03-11" "1912-03-28" "1912-03-21" "1912-03-20"
+## [706] "1912-03-07" "1912-03-01" "1912-03-04" "1912-03-24" NA          
+## [711] "1912-03-22" NA           "1912-02-27" "1912-03-17" "1912-02-23"
+## [716] "1912-03-27" "1912-03-08" "1912-03-19" NA           "1912-03-13"
+## [721] "1912-04-09" "1912-03-29" "1912-03-12" "1912-02-25" "1912-03-19"
+## [726] "1912-03-26" "1912-03-16" NA           "1912-03-21" "1912-03-21"
+## [731] "1912-03-17" "1912-04-04" NA           "1912-03-23" "1912-03-23"
+## [736] "1912-03-17" "1912-02-27" "1912-03-11" NA           NA          
+## [741] NA           "1912-03-10" "1912-03-25" "1912-03-22" "1912-03-15"
+## [746] "1912-02-05" "1912-03-30" "1912-03-16" "1912-03-27" "1912-03-15"
+## [751] "1912-04-11" "1912-04-09" "1912-03-13" "1912-03-23" "1912-02-27"
+## [756] "1912-04-14" "1912-03-18" "1912-03-28" "1912-03-12" "1912-03-13"
+## [761] NA           "1912-03-05" "1912-03-26" "1912-03-10" "1912-03-30"
+## [766] "1912-02-24" NA           "1912-03-15" NA           "1912-03-14"
+## [771] "1912-03-22" "1912-02-27" "1912-02-18" NA           "1912-02-21"
+## [776] "1912-03-28" NA           "1912-04-10" NA           "1912-03-03"
+## [781] "1912-04-02" "1912-03-29" "1912-03-17" NA           "1912-03-21"
+## [786] "1912-03-21" "1912-03-28" "1912-04-07" "1912-04-14" "1912-02-29"
+## [791] NA           "1912-03-30" NA           NA           "1912-03-21"
+## [796] "1912-03-07" "1912-02-26" "1912-03-15" "1912-03-16" "1912-03-16"
+## [801] "1912-03-12" "1912-03-15" "1912-04-04" "1912-04-14" "1912-03-19"
+## [806] "1912-03-15" "1912-03-07" "1912-03-28" "1912-03-07" "1912-03-13"
+## [811] "1912-03-20" "1912-03-07" "1912-03-11" "1912-04-09" "1912-03-15"
+## [816] NA           "1912-03-23" "1912-03-15" "1912-03-03" "1912-04-05"
+## [821] "1912-02-23" "1912-03-19" "1912-03-08" "1912-03-19" "1912-04-13"
+## [826] NA           NA           "1912-04-14" NA           "1912-02-13"
+## [831] "1912-03-31" "1912-04-14" NA           "1912-03-23" "1912-03-28"
+## [836] "1912-03-07" "1912-03-25" NA           "1912-03-14" NA          
+## [841] "1912-03-26" "1912-03-30" "1912-03-16" "1912-03-11" "1912-03-29"
+## [846] "1912-03-04" NA           "1912-03-11" "1912-03-18" NA          
+## [851] "1912-04-11" "1912-02-01" "1912-04-06" "1912-03-30" "1912-03-02"
+## [856] "1912-03-28" "1912-03-01" "1912-02-24" "1912-03-22" NA          
+## [861] "1912-03-05" "1912-03-25" "1912-02-27" NA           "1912-03-22"
+## [866] "1912-03-04" "1912-03-19" "1912-03-15" NA           "1912-04-11"
+## [871] "1912-03-20" "1912-02-28" "1912-03-13" "1912-02-28" "1912-03-18"
+## [876] "1912-03-31" "1912-03-26" "1912-03-27" NA           "1912-02-19"
+## [881] "1912-03-21" "1912-03-13" "1912-03-24" "1912-03-18" "1912-03-21"
+## [886] "1912-03-07" "1912-03-19" "1912-03-27" NA           "1912-03-20"
+## [891] "1912-03-14"</code></pre>
+
+</details></details></details>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="importar-exportar.html"><span class="header-section-number">15</span> Importar/exportar datos</a></div>
+<div class="next"><a href="bibliograf%C3%ADa.html">Bibliografía</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav"><li><a class="nav-link" href="#practica-final"><span class="header-section-number">16</span> 📝 Práctica final</a></li></ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/dadosdelaplace/intro-R/blob/master/17-practica_final.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/dadosdelaplace/intro-R/edit/master/17-practica_final.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Introducción a R: aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 19-07-2022.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

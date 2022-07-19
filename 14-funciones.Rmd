@@ -1,0 +1,433 @@
+```{r echo = FALSE}
+library(knitr)
+
+# Color text
+colorize <- function(x, color) {
+  
+  if (knitr::is_latex_output()) {
+    
+    sprintf("\\textcolor{%s}{%s}", color, x)
+    
+  } else if (knitr::is_html_output()) {
+    
+    sprintf("<span style='color: %s;'>%s</span>", color, x)
+    
+  } else { x }
+}
+```
+
+
+# Funciones {#funciones}
+
+:::: {.blackbox data-latex=""}
+
+Scripts usados:
+
+* [**script13.R**](https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script13.R). Ver en <https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script13.R>
+
+::::
+
+En `R` no solo podemos usar las funciones predeterminadas que vienen ya cargadas, o las de los paquetes que instalamos, como `sum()`  o `mean()`. Además podemos <mark>**crear nuestras propias funciones**</mark> para automatizar tareas que vayamos a repetir a lo largo de nuestro código.
+
+<mark>**¿Cómo crear nuestra propia función?**</mark> Veamos su esquema básico. Para crear una función necesitamos
+
+* Un <mark>**nombre**</mark>, por ejemplo `nombre_funcion` (sin espacios ni caracteres extraños)
+* A dicho nombre le asignamos `<-` la palabra reservada `function()`.
+* Dentro de `function()` definimos los <mark>**argumentos de entrada**</mark> que usará la función.
+* Dentro de `{}` incluiremos la órdenes.
+* Finalizaremos la función con `return()` indicando los <mark>**argumentos de salida**</mark>
+
+```{r}
+# No ejecutar --> esquema conceptual
+nombre_funcion <- function(argumento_1, argumento_2, ... ) {
+  
+  # Código que queramos ejecutar en la función
+  código
+  
+  # Salida
+  return(variable_salida)
+}
+``` 
+
+En el esquema anterior
+
+- <mark>**argumento_1, argumento_2, ...**</mark>: serán los <mark>**argumentos de entrada**</mark>, los argumentos que toma la función para ejecutar el código que tiene dentro
+- <mark>**código**</mark>: líneas de código que queramos que ejecute la función. **IMPORTANTE**: todas las variables que definamos dentro de la función son variables locales, solo existirán dentro de la función salvo que especifiquemos lo contrario.
+- <mark>**`return(variable_salida)`**</mark>: dentro del comando `return()` se introducirán los <mark>**argumentos de salida**</mark>, que puede ser un número, un ` data.frame`, un caracter, una gráfica, una matriz...
+
+
+## Primera función
+
+Veamos un **ejemplo muy simple de función** para <mark>**calcular el área de un rectángulo**</mark>.
+
+<mark>**¿Qué se necesita para calcular el área?**</mark> Dado que el área de un rectángulo se calcula como el producto de sus lados, necesitaremos precisamente eso, sus lados: esos serán los argumentos de entrada (`lado_1` y  `lado_2`).  el valor a devolver será justo su área, calculada como `lado_1 * lado_2`.
+
+1. Nombre --> `calcular_area`
+2. Argumentos --> `lado_1, lado_2`
+3. Código --> `area <- lado_1 * lado_2`
+4. Salida --> `return(area)`
+
+```{r}
+# Definición del nombre de función y argumentos de entrada
+calcular_area <- function(lado_1, lado_2) {
+  
+  # Cuerpo de la función (lo que hace)
+  area <- lado_1 * lado_2
+  
+  # Resultado (lo que devuelve)
+  return(area)
+  
+}
+```
+
+También podemos hacer una definición directa, sin almacenar variables por el camino
+
+```{r}
+# Definición del nombre de función y argumentos de entrada
+calcular_area <- function(lado_1, lado_2) {
+
+  # Resultado que devolvemos
+  return(lado_1 * lado_2)
+  
+}
+```
+
+<mark>**¿Cómo aplicar la función?**</mark> Haciendo uso del nombre y los valores de los argumentos, usamos `calcular_area()` y le pasamos los dos argumentos de entrada.
+
+```{r}
+# Aplicación de la función con los parámetros por defecto
+calcular_area(5, 3) # área de un rectángulo 5 x 3 
+calcular_area(1, 5) # área de un rectángulo 1 x 5
+calcular_area(3, 3) # área de un rectángulo 3 x 3 
+```
+
+Imagina ahora que nos damos cuenta que el 90% de las veces usamos dicha función para calcular el área de un cuadrado (es decir, solo necesitamos un argumento, un lado, ya que en un cuadrado `lado_1 = lado_2`). Para ello, `R` nos permite definir <mark>**argumentos por defecto en la función**</mark> (tomarán dicho valor salvo que le asignemos otro, como nos ha pasado con el argumento `na.rm` para operar con datos ausentes). ¿**Por qué no asignar `lado_2 = lado_1` por defecto**, para ahorrar líneas de código y tiempo? 
+
+```{r}
+# Definición del nombre de función y argumentos de entrada
+# por defecto lado_2 = lado_1
+calcular_area <- function(lado_1, lado_2 = lado_1) {
+  
+  # Cuerpo de la función
+  area <- lado_1 * lado_2
+  
+  # Resultado que devolvemos
+  return(area)
+  
+}
+```
+
+Ahora, si no indicamos nada, por defecto el segundo lado será igual al primero (un cuadrado), y si se lo añadimos usará ambos.
+
+```{r}
+calcular_area(lado_1 = 5) # cuadrado: si no indicamos nada, lado_2 = lado_1
+calcular_area(lado_1 = 5, lado_2 = 7) # rectángulo
+``` 
+
+&nbsp;
+
+Compliquemos un poco la función y añadamos en la salida los valores de cada lado, etiquetados como `lado_1` y `lado_2`, <mark>**empaquetando la salida en una lista**</mark>.
+
+```{r}
+# Definición del nombre de función y argumentos de entrada
+calcular_area <- function(lado_1, lado_2 = lado_1) {
+  
+  # Cuerpo de la función
+  area <- lado_1 * lado_2
+  
+  # Resultado
+  return(list("area" = area, "lado_1" = lado_1, "lado_2" = lado_2))
+  
+}
+```
+
+Veamos que nos devuelve ahora
+
+```{r}
+salida <- calcular_area(5, 3)
+salida
+salida["area"]
+salida["lado_1"]
+salida["lado_2"]
+```
+
+Antes nos daba igual el orden de los argumentos pero ahora no, ya que en la salida incluimos `lado_1` y `lado_2`. Es **altamente recomendable** hacer la llamada a la función indicando explícitamente los argumentos `argumento_1 = valor_1` para **mejorar la legibilidad e interpretabilidad de nuestro código** (recuerda: programa como escribirías en castellano).
+
+```{r}
+# Equivalente a calcular_area(5, 3)
+calcular_area(lado_1 = 5, lado_2 = 3)
+```
+
+Parece una tontería lo que hemos hecho pero hemos cruzado una frontera importante: hemos pasado de <mark>**consumir conocimiento**</mark> (código de otros paquetes, elaborado por otros/as), a <mark>**generar conocimiento**</mark>, creando nuestras propias funciones. En este caso no ganaremos el Nobel por nuestro aporte, pero en un futuro... Si la Unión Europea lo ganó, hay opciones :)
+
+## Variables locales/globales
+
+Un <mark>**aspecto importante sobre el que reflexionar**</mark> con las funciones: ¿qué sucede si nombramos a una variable dentro de una función que se nos ha olvidado asignar un valor dentro de la misma? Debemos ser cautos al usar funciones en `R`, ya que debido a la <mark>**«regla lexicográfica»**</mark>, si una variable no se define dentro de la función, `R` buscará dicha variable en el entorno de variables. 
+
+Construyamos una función de ejemplo que no toma ningún argumento de entrada: solo imprime el valor de `x`. Como dentro de la función `x` no está definida, usará el valor definido fuera de la función.
+
+```{r}
+x <- 1
+funcion_ejemplo <- function() {
+    
+  print(x) # No devuelve nada per se, solo realiza la acción de imprimir en consola
+}
+funcion_ejemplo()
+```
+
+Si una **variable ya está definida fuera de la función (entorno global)**, y además es usada dentro de la misma cambiando su valor, el valor de dicha variable solo cambia dentro de la función pero no en el entorno global.
+
+```{r}
+x <- 1
+funcion_ejemplo <- function() {
+    
+  x <- 2
+  print(x) # lo que vale dentro
+}
+funcion_ejemplo() # lo que vale dentro
+print(x) # lo que vale fuera
+```
+
+Si queremos que **además de cambiar localmente lo haga globalmente** deberemos usar la **doble asignación** (`<<-`).
+
+```{r}
+x <- 1
+y <- 2
+funcion_ejemplo <- function() {
+  
+  x <- 3 # no cambia globalmente, solo localmente
+  y <<- 0 # cambia globalmente
+  print(x)
+  print(y)
+}
+
+funcion_ejemplo() # lo que vale dentro
+x # lo que vale fuera
+y # lo que vale fuera
+```
+
+
+## 📝 Ejercicios
+
+(haz click en las flechas para ver soluciones)
+
+
+<details>
+  <summary><strong>Ejercicio 1</strong>: modifica el código inferior para definir una función llamada `funcion_suma`, de forma que dados dos elementos, devuelve su suma.
+  
+```{r eval = FALSE}
+# Definimos función
+nombre <- function(x, y) {
+  
+  # Sumamos
+  suma <- # código a ejecutar
+  
+  # ¿Qué devolvemos?
+  return()
+}
+
+# Aplicamos la función
+suma(3, 7)
+```
+</summary>
+  
+- Solución:
+
+```{r}
+# Definimos función
+funcion_suma <- function(x, y) {
+  
+  # Sumamos
+  suma <- x + y
+  
+  # Devolvemos la salida
+  return(suma)
+}
+
+# Aplicamos la función
+funcion_suma(3, 7)
+```
+
+</details>
+
+&nbsp;
+
+<details>
+  <summary><strong>Ejercicio 2</strong>: modifica el código inferior para definir una función llamada `funcion_producto`, de forma que dados dos elementos, devuelve su producto.
+  
+```{r eval = FALSE}
+# Definimos función
+nombre <- function(x, y) {
+  
+  # Multiplicamos
+  producto <- # código de la multiplicación
+  
+  # ¿Qué devolvemos?
+  return()
+}
+
+# Aplicamos la función
+producto(3, -7)
+```
+</summary>
+  
+- Solución:
+
+```{r}
+# Definimos función
+funcion_producto <- function(x, y) {
+  
+  # Multiplicamos
+  producto <- x * y
+  
+  # Devolvemos la salida
+  return(producto)
+}
+
+# Aplicamos la función
+funcion_producto(3, -7)
+```
+
+</details>
+
+&nbsp;
+
+<details>
+  <summary><strong>Ejercicio 3</strong>: modifica el código inferior para definir una función llamada `funcion_producto`, de forma que dados dos elementos, devuelve su producto, pero que por defecto calcule el cuadrado (es decir, por defecto un solo argumento, y el resultado sea el número por sí mismo)
+  
+```{r eval = FALSE}
+# Definimos función
+nombre <- function(x, y) {
+  
+  # Multiplicamos
+  producto <- # código de la multiplicación
+  
+  # ¿Qué devolvemos?
+  return()
+}
+
+# Aplicamos la función solo con un argumento
+producto(3)
+
+# Aplicamos la función con dos argumentos
+producto(3, -7)
+```
+</summary>
+  
+- Solución:
+
+```{r}
+# Definimos función
+funcion_producto <- function(x, y = x) {
+  
+  # Multiplicamos
+  producto <- x * y
+  
+  # Devolvemos la salida
+  return(producto)
+}
+
+# Aplicamos la función
+funcion_producto(3) # por defecto x = 3, y = 3
+funcion_producto(3, -7)
+```
+
+</details>
+
+&nbsp;
+
+<details>
+  <summary><strong>Ejercicio 4</strong>: define una función llamada `igualdad_nombres` que, dados dos nombres `persona_1` e `persona_2`, nos diga si son iguales o no. Hazlo considerando importantes las mayúsculas, y sin que importen las mayúsculas. Recuerda que con `toupper()` podemos pasar todo un texto a mayúscula. </summary>
+  
+- Solución:
+
+```{r}
+# Distinguiendo mayúsculas
+igualdad_nombres <- function(persona_1, persona_2) {
+  
+  return(persona_1 == persona_2)
+}
+igualdad_nombres("Javi", "javi")
+igualdad_nombres("Javi", "Lucía")
+
+# Sin importar mayúsculas
+igualdad_nombres <- function(persona_1, persona_2) {
+  
+  return(toupper(persona_1) == toupper(persona_2))
+}
+igualdad_nombres("Javi", "javi")
+igualdad_nombres("Javi", "Lucía")
+```
+
+</details>
+
+&nbsp; 
+
+<details>
+  <summary><strong>Ejercicio 5</strong>: define una función llamada `pares` que, dados dos números `x` e `y`, nos diga si la suma de ambos es par o no.
+  
+Recuerda que con `%%` podemos obtener el resto de un número al dividir entre 2.
+
+```{r}
+2 %% 2 # par, resto 0
+3 %% 2 # impar, resto 1
+```
+</summary>
+  
+- Solución:
+
+```{r}
+# Definimos función
+pares <- function(x, y) {
+  
+  # Sumamos
+  suma <- x + y
+  
+  # Comprobamos si es par
+  par <- suma %% 2 == 0
+  
+  # Devolvemos la salida
+  return(par)
+}
+
+# Aplicamos la función
+pares(1, 3) # suma 4 (par)
+pares(2, 7) # suma 9 (impar)
+```
+
+</details>
+
+&nbsp; 
+
+<details>
+  <summary><strong>Ejercicio 6</strong>: define una función llamada `pasar_a_celsius` que, dada una temperatura $x$ en Fahrenheit, la convierta a grados Celsius ($ºC = (ºF - 32) * \frac{5}{9}$). Aplica la función a la columna `Temp` del conjunto `airquality`, e incorpórala al fichero en una nueva columna `Temp_Celsius`.
+</summary>
+  
+- Solución:
+
+```{r}
+# Definimos función
+pasar_a_celsius <- function(x) {
+  
+  # Temperatura en Celsius
+  x_celsius <- (x - 32) * (5 / 9)
+  
+  # Devolvemos la salida
+  return(x_celsius)
+}
+
+# Aplicamos la función
+pasar_a_celsius(0)
+pasar_a_celsius(80)
+
+# Aplicamos
+data.frame(airquality,
+           "Temp_Celsius" = pasar_a_celsius(airquality$Temp))
+```
+
+</details>
+
+&nbsp; 
+
+
+
