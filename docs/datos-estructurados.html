@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>0.5 Datos estructurados | Introducción a R: aprendiendo R sin morir en el intento</title>
+  <meta name="description" content="Curso básico de introducción a R (desde cero). Curso elaborado por Javier Álvarez Liébana (dadosdelaplace)" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="0.5 Datos estructurados | Introducción a R: aprendiendo R sin morir en el intento" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:image" content="/img/logo_R.png" />
+  <meta property="og:description" content="Curso básico de introducción a R (desde cero). Curso elaborado por Javier Álvarez Liébana (dadosdelaplace)" />
+  <meta name="github-repo" content="dadosdelaplace/intro-R" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="0.5 Datos estructurados | Introducción a R: aprendiendo R sin morir en el intento" />
+  
+  <meta name="twitter:description" content="Curso básico de introducción a R (desde cero). Curso elaborado por Javier Álvarez Liébana (dadosdelaplace)" />
+  <meta name="twitter:image" content="/img/logo_R.png" />
+
+<meta name="author" content="Javier Álvarez Liébana" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="fechas.html"/>
+<link rel="next" href="listas.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Introducción a R: aprendiendo R sin morir en el intento</a></li>
+
+<li class="divider"></li>
+<li><a href="index.html#prefacio">Prefacio<span></span></a><ul>
+<li><a href="sobre-el-autor.html#sobre-el-autor">Sobre el autor<span></span></a></li>
+<li><a href="propósito.html#propósito">Propósito<span></span></a></li>
+<li><a href="contenidos.html#contenidos">Contenidos<span></span></a></li>
+<li><a href="código-de-colores.html#código-de-colores">Código de colores<span></span></a></li>
+<li><a href="licencia.html#licencia">Licencia<span></span></a></li>
+</ul></li>
+<li class="part"><span><b>I Recursos<span></span></b></span></li>
+<li><a href="ejercicios-recopilados.html#ejercicios-recopilados">📝 Ejercicios recopilados<span></span></a><ul>
+<li><a href="instalación.html#instalación">Instalación<span></span></a></li>
+<li><a href="primeros-pasos.html#primeros-pasos">Primeros pasos<span></span></a></li>
+<li class="chapter" data-level="0.1" data-path="variables-numéricas-y-de-texto.html"><a href="variables-numéricas-y-de-texto.html"><i class="fa fa-check"></i><b>0.1</b> Variables numéricas y de texto<span></span></a></li>
+<li class="chapter" data-level="0.2" data-path="vectores.html"><a href="vectores.html"><i class="fa fa-check"></i><b>0.2</b> Vectores<span></span></a></li>
+<li class="chapter" data-level="0.3" data-path="operaciones-con-vectores.html"><a href="operaciones-con-vectores.html"><i class="fa fa-check"></i><b>0.3</b> Operaciones con vectores<span></span></a></li>
+<li class="chapter" data-level="0.4" data-path="fechas.html"><a href="fechas.html"><i class="fa fa-check"></i><b>0.4</b> Fechas<span></span></a></li>
+<li class="chapter" data-level="0.5" data-path="datos-estructurados.html"><a href="datos-estructurados.html"><i class="fa fa-check"></i><b>0.5</b> Datos estructurados<span></span></a></li>
+<li class="chapter" data-level="0.6" data-path="listas.html"><a href="listas.html"><i class="fa fa-check"></i><b>0.6</b> Listas<span></span></a></li>
+<li class="chapter" data-level="0.7" data-path="estructuras-if-else.html"><a href="estructuras-if-else.html"><i class="fa fa-check"></i><b>0.7</b> Estructuras if-else<span></span></a></li>
+<li class="chapter" data-level="0.8" data-path="estructuras-for-y-while.html"><a href="estructuras-for-y-while.html"><i class="fa fa-check"></i><b>0.8</b> Estructuras for y while<span></span></a></li>
+<li class="chapter" data-level="0.9" data-path="funciones.html"><a href="funciones.html"><i class="fa fa-check"></i><b>0.9</b> Funciones<span></span></a></li>
+<li class="chapter" data-level="0.10" data-path="practica-final.html"><a href="practica-final.html"><i class="fa fa-check"></i><b>0.10</b> Practica final<span></span></a></li>
+</ul></li>
+<li><a href="recursos-de-aprendizaje.html#recursos-de-aprendizaje">📚 Recursos de aprendizaje<span></span></a><ul>
+<li><a href="aprendizajedocencia.html#aprendizajedocencia">Aprendizaje/docencia<span></span></a></li>
+<li><a href="manejo-de-datos.html#manejo-de-datos">Manejo de datos<span></span></a></li>
+<li><a href="manejo-de-textos.html#manejo-de-textos">Manejo de textos<span></span></a></li>
+<li><a href="datos.-importarexportar.html#datos.-importarexportar">Datos. Importar/exportar<span></span></a></li>
+<li><a href="dataviz.html#dataviz">dataviz<span></span></a></li>
+<li><a href="mapas-y-datos-espaciales-en-r.html#mapas-y-datos-espaciales-en-r">Mapas y datos espaciales en R<span></span></a></li>
+<li><a href="colores-y-temas-en-dataviz-generales.html#colores-y-temas-en-dataviz-generales">Colores y temas en dataviz (generales)<span></span></a></li>
+<li><a href="análisis-exploratorio.html#análisis-exploratorio">Análisis exploratorio<span></span></a></li>
+<li><a href="modelización-e-inferencia.html#modelización-e-inferencia">Modelización e inferencia<span></span></a></li>
+<li><a href="estadística-bayesiana.html#estadística-bayesiana">Estadística Bayesiana<span></span></a></li>
+<li><a href="informes-tablas-webs-libros-y-diapositivas.html#informes-tablas-webs-libros-y-diapositivas">Informes, tablas, webs, libros y diapositivas<span></span></a></li>
+<li><a href="paquetesrecursos-curiosos.html#paquetesrecursos-curiosos">Paquetes/recursos curiosos<span></span></a></li>
+</ul></li>
+<li class="part"><span><b>II Toma de contacto<span></span></b></span></li>
+<li class="chapter" data-level="1" data-path="requisitos.html"><a href="requisitos.html"><i class="fa fa-check"></i><b>1</b> Requisitos<span></span></a></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org/yihui/rmarkdown/" target="blank">Elaborado con bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introducción a R: aprendiendo R sin morir en el intento</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="datos-estructurados" class="section level2 hasAnchor">
+<h2><span class="header-section-number">0.5</span> Datos estructurados<a href="datos-estructurados.html#datos-estructurados" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="blackbox">
+<p>Scripts usados:</p>
+<ul>
+<li><a href="https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script09.R"><strong>script09.R</strong></a>: datos estructurados. Ver en <a href="https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script09.R" class="uri">https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script09.R</a></li>
+</ul>
+</div>
+<p>(haz click en las flechas para ver soluciones)</p>
+<details>
+<p><summary><strong>Ejercicio 1</strong>: modifica el código para definir una matriz <code>x</code> de ceros de 3 filas y 7 columnas.</p>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb135-1" data-line-number="1"><span class="co"># Matriz</span></a>
+<a class="sourceLine" id="cb135-2" data-line-number="2">x &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>, <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb135-3" data-line-number="3">x</a></code></pre></div>
+<p></summary></p>
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb136-1" data-line-number="1"><span class="co"># Matriz</span></a>
+<a class="sourceLine" id="cb136-2" data-line-number="2">x &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>, <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">7</span>)</a>
+<a class="sourceLine" id="cb136-3" data-line-number="3">x</a></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6] [,7]
+## [1,]    0    0    0    0    0    0    0
+## [2,]    0    0    0    0    0    0    0
+## [3,]    0    0    0    0    0    0    0</code></pre>
+</details>
+<p> </p>
+<details>
+<p><summary><strong>Ejercicio 2</strong>: a la matriz anterior, suma un 1 a cada número de la matriz y divide el resultado entre 5.</summary></p>
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb138-1" data-line-number="1">(x <span class="op">+</span><span class="st"> </span><span class="dv">1</span>) <span class="op">/</span><span class="st"> </span><span class="dv">5</span></a></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6] [,7]
+## [1,]  0.2  0.2  0.2  0.2  0.2  0.2  0.2
+## [2,]  0.2  0.2  0.2  0.2  0.2  0.2  0.2
+## [3,]  0.2  0.2  0.2  0.2  0.2  0.2  0.2</code></pre>
+</details>
+<p> </p>
+<details>
+<p><summary><strong>Ejercicio 3</strong>: tras definir la matriz <code>x</code> calcula su transpuesta y obtén sus dimensiones</summary></p>
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" data-line-number="1"><span class="co"># Transpuesta</span></a>
+<a class="sourceLine" id="cb140-2" data-line-number="2"><span class="kw">t</span>(x)</a></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    0    0    0
+## [2,]    0    0    0
+## [3,]    0    0    0
+## [4,]    0    0    0
+## [5,]    0    0    0
+## [6,]    0    0    0
+## [7,]    0    0    0</code></pre>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb142-1" data-line-number="1"><span class="co"># Dimensiones transpuesta: pasa de ser 3x7 a 7x3</span></a>
+<a class="sourceLine" id="cb142-2" data-line-number="2"><span class="kw">dim</span>(<span class="kw">t</span>(x))</a></code></pre></div>
+<pre><code>## [1] 7 3</code></pre>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb144-1" data-line-number="1"><span class="kw">ncol</span>(<span class="kw">t</span>(x)) <span class="co"># número de columnas de la transpuesta</span></a></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb146-1" data-line-number="1"><span class="kw">nrow</span>(<span class="kw">t</span>(x)) <span class="co"># número de filas de la transpuesta</span></a></code></pre></div>
+<pre><code>## [1] 7</code></pre>
+</details>
+<p> </p>
+<details>
+<p><summary><strong>Ejercicio 4</strong>: el siguiente código define una matriz de dimensiones <code>4 x 3</code> y calcula la suma por columnas. Modifica el código para que realice la suma por filas.</p>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb148-1" data-line-number="1"><span class="co"># Matriz</span></a>
+<a class="sourceLine" id="cb148-2" data-line-number="2">matriz &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>, <span class="dt">nrow =</span> <span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb148-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb148-4" data-line-number="4"><span class="co"># Suma por columnas</span></a>
+<a class="sourceLine" id="cb148-5" data-line-number="5"><span class="kw">apply</span>(matriz, <span class="dt">MARGIN =</span> <span class="dv">2</span>, <span class="dt">FUN =</span> <span class="st">&quot;sum&quot;</span>)</a></code></pre></div>
+<pre><code>## [1] 10 26 42</code></pre>
+<p></summary></p>
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb150-1" data-line-number="1"><span class="co"># Matriz</span></a>
+<a class="sourceLine" id="cb150-2" data-line-number="2">matriz &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>, <span class="dt">nrow =</span> <span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb150-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb150-4" data-line-number="4"><span class="co"># Suma por filas</span></a>
+<a class="sourceLine" id="cb150-5" data-line-number="5"><span class="kw">apply</span>(matriz, <span class="dt">MARGIN =</span> <span class="dv">1</span>, <span class="dt">FUN =</span> <span class="st">&quot;sum&quot;</span>)</a></code></pre></div>
+<pre><code>## [1] 15 18 21 24</code></pre>
+</details>
+<p> </p>
+<details>
+<p><summary><strong>Ejercicio 5</strong>: con la matriz anterior definida como <code>matrix(1:12, nrow = 4)</code>, calcula la media de todos los elementos, la media de cada fila y la media de cada columna.</summary></p>
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb152-1" data-line-number="1"><span class="co"># Matriz</span></a>
+<a class="sourceLine" id="cb152-2" data-line-number="2">matriz &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>, <span class="dt">nrow =</span> <span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb152-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb152-4" data-line-number="4"><span class="co">#  media de todos</span></a>
+<a class="sourceLine" id="cb152-5" data-line-number="5"><span class="kw">mean</span>(matriz)</a></code></pre></div>
+<pre><code>## [1] 6.5</code></pre>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb154-1" data-line-number="1"><span class="co"># Media por filas (MARGIN = 1 ya que es una operación por filas)</span></a>
+<a class="sourceLine" id="cb154-2" data-line-number="2"><span class="kw">apply</span>(matriz, <span class="dt">MARGIN =</span> <span class="dv">1</span>, <span class="dt">FUN =</span> <span class="st">&quot;mean&quot;</span>)</a></code></pre></div>
+<pre><code>## [1] 5 6 7 8</code></pre>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb156-1" data-line-number="1"><span class="co"># Media por filas (MARGIN = 2 ya que es una operación por filas)</span></a>
+<a class="sourceLine" id="cb156-2" data-line-number="2"><span class="kw">apply</span>(matriz, <span class="dt">MARGIN =</span> <span class="dv">2</span>, <span class="dt">FUN =</span> <span class="st">&quot;mean&quot;</span>)</a></code></pre></div>
+<pre><code>## [1]  2.5  6.5 10.5</code></pre>
+</details>
+<p> </p>
+<details>
+<p><summary><strong>Ejercicio 6</strong>: el <code>data.frame</code> llamado <code>airquality</code>, del paquete <code>{datasets}</code>, contiene variables de la calidad del aire de la ciudad de Nueva York desde mayo hasta septiembre de 1973. Obtén el nombre de las variables.
+</summary></p>
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb158-1" data-line-number="1"><span class="kw">library</span>(datasets)</a>
+<a class="sourceLine" id="cb158-2" data-line-number="2"><span class="kw">names</span>(airquality)</a></code></pre></div>
+<pre><code>## [1] &quot;Ozone&quot;   &quot;Solar.R&quot; &quot;Wind&quot;    &quot;Temp&quot;    &quot;Month&quot;   &quot;Day&quot;</code></pre>
+</details>
+<p> </p>
+<details>
+<p><summary><strong>Ejercicio 7</strong>: obtén las dimensiones del conjunto de datos. ¿Cuántas variables hay? ¿Cuántos días se han medido?</p>
+<p></summary></p>
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb160-1" data-line-number="1"><span class="co"># Dimensiones</span></a>
+<a class="sourceLine" id="cb160-2" data-line-number="2"><span class="kw">dim</span>(airquality)</a></code></pre></div>
+<pre><code>## [1] 153   6</code></pre>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb162-1" data-line-number="1"><span class="kw">nrow</span>(airquality)</a></code></pre></div>
+<pre><code>## [1] 153</code></pre>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb164-1" data-line-number="1"><span class="kw">ncol</span>(airquality)</a></code></pre></div>
+<pre><code>## [1] 6</code></pre>
+</details>
+<p> </p>
+<details>
+<p><summary><strong>Ejercicio 8</strong>: modifica el código inferior para que nos filtre solo los datos del mes de julio.</p>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb166-1" data-line-number="1"><span class="co"># Filtramos filas</span></a>
+<a class="sourceLine" id="cb166-2" data-line-number="2">filtro_fila &lt;-<span class="st"> </span><span class="kw">subset</span>(., <span class="dt">subset =</span> Month <span class="op">&lt;</span><span class="st"> </span><span class="dv">6</span>)</a>
+<a class="sourceLine" id="cb166-3" data-line-number="3">filtro_fila</a></code></pre></div>
+<p></summary></p>
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb167-1" data-line-number="1"><span class="co"># Filtramos filas</span></a>
+<a class="sourceLine" id="cb167-2" data-line-number="2">filtro_fila &lt;-<span class="st"> </span><span class="kw">subset</span>(airquality, <span class="dt">subset =</span> Month <span class="op">==</span><span class="st"> </span><span class="dv">7</span>)</a>
+<a class="sourceLine" id="cb167-3" data-line-number="3">filtro_fila</a></code></pre></div>
+<pre><code>##    Ozone Solar.R Wind Temp Month Day
+## 62   135     269  4.1   84     7   1
+## 63    49     248  9.2   85     7   2
+## 64    32     236  9.2   81     7   3
+## 65    NA     101 10.9   84     7   4
+## 66    64     175  4.6   83     7   5
+## 67    40     314 10.9   83     7   6
+## 68    77     276  5.1   88     7   7
+## 69    97     267  6.3   92     7   8
+## 70    97     272  5.7   92     7   9
+## 71    85     175  7.4   89     7  10
+## 72    NA     139  8.6   82     7  11
+## 73    10     264 14.3   73     7  12
+## 74    27     175 14.9   81     7  13
+## 75    NA     291 14.9   91     7  14
+## 76     7      48 14.3   80     7  15
+## 77    48     260  6.9   81     7  16
+## 78    35     274 10.3   82     7  17
+## 79    61     285  6.3   84     7  18
+## 80    79     187  5.1   87     7  19
+## 81    63     220 11.5   85     7  20
+## 82    16       7  6.9   74     7  21
+## 83    NA     258  9.7   81     7  22
+## 84    NA     295 11.5   82     7  23
+## 85    80     294  8.6   86     7  24
+## 86   108     223  8.0   85     7  25
+## 87    20      81  8.6   82     7  26
+## 88    52      82 12.0   86     7  27
+## 89    82     213  7.4   88     7  28
+## 90    50     275  7.4   86     7  29
+## 91    64     253  7.4   83     7  30
+## 92    59     254  9.2   81     7  31</code></pre>
+</details>
+<p> </p>
+<details>
+<p><summary><strong>Ejercicio 9</strong>: del conjunto <code>airquality</code> selecciona aquellos datos que no sean ni de julio ni de agosto.</summary></p>
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb169-1" data-line-number="1"><span class="co"># Filtramos filas</span></a>
+<a class="sourceLine" id="cb169-2" data-line-number="2">filtro_fila &lt;-</a>
+<a class="sourceLine" id="cb169-3" data-line-number="3"><span class="st">  </span><span class="kw">subset</span>(airquality, <span class="dt">subset =</span> <span class="op">!</span>(Month <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">7</span>, <span class="dv">8</span>)))</a>
+<a class="sourceLine" id="cb169-4" data-line-number="4">filtro_fila</a></code></pre></div>
+<pre><code>##     Ozone Solar.R Wind Temp Month Day
+## 1      41     190  7.4   67     5   1
+## 2      36     118  8.0   72     5   2
+## 3      12     149 12.6   74     5   3
+## 4      18     313 11.5   62     5   4
+## 5      NA      NA 14.3   56     5   5
+## 6      28      NA 14.9   66     5   6
+## 7      23     299  8.6   65     5   7
+## 8      19      99 13.8   59     5   8
+## 9       8      19 20.1   61     5   9
+## 10     NA     194  8.6   69     5  10
+## 11      7      NA  6.9   74     5  11
+## 12     16     256  9.7   69     5  12
+## 13     11     290  9.2   66     5  13
+## 14     14     274 10.9   68     5  14
+## 15     18      65 13.2   58     5  15
+## 16     14     334 11.5   64     5  16
+## 17     34     307 12.0   66     5  17
+## 18      6      78 18.4   57     5  18
+## 19     30     322 11.5   68     5  19
+## 20     11      44  9.7   62     5  20
+## 21      1       8  9.7   59     5  21
+## 22     11     320 16.6   73     5  22
+## 23      4      25  9.7   61     5  23
+## 24     32      92 12.0   61     5  24
+## 25     NA      66 16.6   57     5  25
+## 26     NA     266 14.9   58     5  26
+## 27     NA      NA  8.0   57     5  27
+## 28     23      13 12.0   67     5  28
+## 29     45     252 14.9   81     5  29
+## 30    115     223  5.7   79     5  30
+## 31     37     279  7.4   76     5  31
+## 32     NA     286  8.6   78     6   1
+## 33     NA     287  9.7   74     6   2
+## 34     NA     242 16.1   67     6   3
+## 35     NA     186  9.2   84     6   4
+## 36     NA     220  8.6   85     6   5
+## 37     NA     264 14.3   79     6   6
+## 38     29     127  9.7   82     6   7
+## 39     NA     273  6.9   87     6   8
+## 40     71     291 13.8   90     6   9
+## 41     39     323 11.5   87     6  10
+## 42     NA     259 10.9   93     6  11
+## 43     NA     250  9.2   92     6  12
+## 44     23     148  8.0   82     6  13
+## 45     NA     332 13.8   80     6  14
+## 46     NA     322 11.5   79     6  15
+## 47     21     191 14.9   77     6  16
+## 48     37     284 20.7   72     6  17
+## 49     20      37  9.2   65     6  18
+## 50     12     120 11.5   73     6  19
+## 51     13     137 10.3   76     6  20
+## 52     NA     150  6.3   77     6  21
+## 53     NA      59  1.7   76     6  22
+## 54     NA      91  4.6   76     6  23
+## 55     NA     250  6.3   76     6  24
+## 56     NA     135  8.0   75     6  25
+## 57     NA     127  8.0   78     6  26
+## 58     NA      47 10.3   73     6  27
+## 59     NA      98 11.5   80     6  28
+## 60     NA      31 14.9   77     6  29
+## 61     NA     138  8.0   83     6  30
+## 124    96     167  6.9   91     9   1
+## 125    78     197  5.1   92     9   2
+## 126    73     183  2.8   93     9   3
+## 127    91     189  4.6   93     9   4
+## 128    47      95  7.4   87     9   5
+## 129    32      92 15.5   84     9   6
+## 130    20     252 10.9   80     9   7
+## 131    23     220 10.3   78     9   8
+## 132    21     230 10.9   75     9   9
+## 133    24     259  9.7   73     9  10
+## 134    44     236 14.9   81     9  11
+## 135    21     259 15.5   76     9  12
+## 136    28     238  6.3   77     9  13
+## 137     9      24 10.9   71     9  14
+## 138    13     112 11.5   71     9  15
+## 139    46     237  6.9   78     9  16
+## 140    18     224 13.8   67     9  17
+## 141    13      27 10.3   76     9  18
+## 142    24     238 10.3   68     9  19
+## 143    16     201  8.0   82     9  20
+## 144    13     238 12.6   64     9  21
+## 145    23      14  9.2   71     9  22
+## 146    36     139 10.3   81     9  23
+## 147     7      49 10.3   69     9  24
+## 148    14      20 16.6   63     9  25
+## 149    30     193  6.9   70     9  26
+## 150    NA     145 13.2   77     9  27
+## 151    14     191 14.3   75     9  28
+## 152    18     131  8.0   76     9  29
+## 153    20     223 11.5   68     9  30</code></pre>
+</details>
+<p> </p>
+<details>
+<p><summary><strong>Ejercicio 10</strong>: modifica el siguiente código para quedarte solo con las variable <code>Ozone</code> y <code>Temp</code>.</p>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb171-1" data-line-number="1">filtro_col &lt;-<span class="st"> </span><span class="kw">subset</span>(.,  <span class="dt">select =</span> <span class="kw">c</span>(<span class="st">&quot;Ozone&quot;</span>))</a>
+<a class="sourceLine" id="cb171-2" data-line-number="2">filtro_col</a></code></pre></div>
+<p></summary></p>
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb172-1" data-line-number="1"><span class="co"># Filtramos columnas</span></a>
+<a class="sourceLine" id="cb172-2" data-line-number="2">filtro_col &lt;-<span class="st"> </span><span class="kw">subset</span>(airquality,  <span class="dt">select =</span> <span class="kw">c</span>(<span class="st">&quot;Ozone&quot;</span>, <span class="st">&quot;Temp&quot;</span>))</a>
+<a class="sourceLine" id="cb172-3" data-line-number="3">filtro_col</a></code></pre></div>
+<pre><code>##     Ozone Temp
+## 1      41   67
+## 2      36   72
+## 3      12   74
+## 4      18   62
+## 5      NA   56
+## 6      28   66
+## 7      23   65
+## 8      19   59
+## 9       8   61
+## 10     NA   69
+## 11      7   74
+## 12     16   69
+## 13     11   66
+## 14     14   68
+## 15     18   58
+## 16     14   64
+## 17     34   66
+## 18      6   57
+## 19     30   68
+## 20     11   62
+## 21      1   59
+## 22     11   73
+## 23      4   61
+## 24     32   61
+## 25     NA   57
+## 26     NA   58
+## 27     NA   57
+## 28     23   67
+## 29     45   81
+## 30    115   79
+## 31     37   76
+## 32     NA   78
+## 33     NA   74
+## 34     NA   67
+## 35     NA   84
+## 36     NA   85
+## 37     NA   79
+## 38     29   82
+## 39     NA   87
+## 40     71   90
+## 41     39   87
+## 42     NA   93
+## 43     NA   92
+## 44     23   82
+## 45     NA   80
+## 46     NA   79
+## 47     21   77
+## 48     37   72
+## 49     20   65
+## 50     12   73
+## 51     13   76
+## 52     NA   77
+## 53     NA   76
+## 54     NA   76
+## 55     NA   76
+## 56     NA   75
+## 57     NA   78
+## 58     NA   73
+## 59     NA   80
+## 60     NA   77
+## 61     NA   83
+## 62    135   84
+## 63     49   85
+## 64     32   81
+## 65     NA   84
+## 66     64   83
+## 67     40   83
+## 68     77   88
+## 69     97   92
+## 70     97   92
+## 71     85   89
+## 72     NA   82
+## 73     10   73
+## 74     27   81
+## 75     NA   91
+## 76      7   80
+## 77     48   81
+## 78     35   82
+## 79     61   84
+## 80     79   87
+## 81     63   85
+## 82     16   74
+## 83     NA   81
+## 84     NA   82
+## 85     80   86
+## 86    108   85
+## 87     20   82
+## 88     52   86
+## 89     82   88
+## 90     50   86
+## 91     64   83
+## 92     59   81
+## 93     39   81
+## 94      9   81
+## 95     16   82
+## 96     78   86
+## 97     35   85
+## 98     66   87
+## 99    122   89
+## 100    89   90
+## 101   110   90
+## 102    NA   92
+## 103    NA   86
+## 104    44   86
+## 105    28   82
+## 106    65   80
+## 107    NA   79
+## 108    22   77
+## 109    59   79
+## 110    23   76
+## 111    31   78
+## 112    44   78
+## 113    21   77
+## 114     9   72
+## 115    NA   75
+## 116    45   79
+## 117   168   81
+## 118    73   86
+## 119    NA   88
+## 120    76   97
+## 121   118   94
+## 122    84   96
+## 123    85   94
+## 124    96   91
+## 125    78   92
+## 126    73   93
+## 127    91   93
+## 128    47   87
+## 129    32   84
+## 130    20   80
+## 131    23   78
+## 132    21   75
+## 133    24   73
+## 134    44   81
+## 135    21   76
+## 136    28   77
+## 137     9   71
+## 138    13   71
+## 139    46   78
+## 140    18   67
+## 141    13   76
+## 142    24   68
+## 143    16   82
+## 144    13   64
+## 145    23   71
+## 146    36   81
+## 147     7   69
+## 148    14   63
+## 149    30   70
+## 150    NA   77
+## 151    14   75
+## 152    18   76
+## 153    20   68</code></pre>
+</details>
+<p> </p>
+<details>
+<p><summary><strong>Ejercicio 11</strong>: del conjunto <code>airquality</code> selecciona los datos de temperatura y viento de agosto.</summary></p>
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb174-1" data-line-number="1"><span class="co"># Todo de una vez</span></a>
+<a class="sourceLine" id="cb174-2" data-line-number="2">filtro &lt;-<span class="st"> </span><span class="kw">subset</span>(airquality, <span class="dt">subset =</span> Month <span class="op">==</span><span class="st"> </span><span class="dv">8</span>,</a>
+<a class="sourceLine" id="cb174-3" data-line-number="3">                 <span class="dt">select =</span> <span class="kw">c</span>(<span class="st">&quot;Temp&quot;</span>, <span class="st">&quot;Wind&quot;</span>))</a>
+<a class="sourceLine" id="cb174-4" data-line-number="4">filtro</a></code></pre></div>
+<pre><code>##     Temp Wind
+## 93    81  6.9
+## 94    81 13.8
+## 95    82  7.4
+## 96    86  6.9
+## 97    85  7.4
+## 98    87  4.6
+## 99    89  4.0
+## 100   90 10.3
+## 101   90  8.0
+## 102   92  8.6
+## 103   86 11.5
+## 104   86 11.5
+## 105   82 11.5
+## 106   80  9.7
+## 107   79 11.5
+## 108   77 10.3
+## 109   79  6.3
+## 110   76  7.4
+## 111   78 10.9
+## 112   78 10.3
+## 113   77 15.5
+## 114   72 14.3
+## 115   75 12.6
+## 116   79  9.7
+## 117   81  3.4
+## 118   86  8.0
+## 119   88  5.7
+## 120   97  9.7
+## 121   94  2.3
+## 122   96  6.3
+## 123   94  6.3</code></pre>
+</details>
+<p> </p>
+<details>
+<p><summary><strong>Ejercicio 12</strong>: calcula el número de filas borradas del ejercicio anterior. Tras hacer todo ello, traduce a castellano el nombre de las columnas del <code>data.frame</code> filtrado.</summary></p>
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb176-1" data-line-number="1"><span class="co"># Filas borradas</span></a>
+<a class="sourceLine" id="cb176-2" data-line-number="2"><span class="kw">nrow</span>(airquality) <span class="op">-</span><span class="st"> </span><span class="kw">nrow</span>(filtro)</a></code></pre></div>
+<pre><code>## [1] 122</code></pre>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb178-1" data-line-number="1"><span class="co"># Cambiamos nombres a castellano del conjunto filtrado</span></a>
+<a class="sourceLine" id="cb178-2" data-line-number="2"><span class="kw">names</span>(filtro) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;temperatura&quot;</span>, <span class="st">&quot;viento&quot;</span>)</a></code></pre></div>
+</details>
+<p> </p>
+<details>
+<p><summary><strong>Ejercicio 13</strong>: añade a los datos originales una columna con la fecha completa (recuerda que es del año 1973 todas las observaciones.</summary></p>
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb179-1" data-line-number="1"><span class="co"># Construimos las fechas (pegamos año-mes-día con &quot;-&quot;)</span></a>
+<a class="sourceLine" id="cb179-2" data-line-number="2">fechas &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb179-3" data-line-number="3"><span class="st">  </span><span class="kw">as_date</span>(<span class="kw">paste</span>(<span class="st">&quot;1973&quot;</span>, airquality<span class="op">$</span>Month, airquality<span class="op">$</span>Day,</a>
+<a class="sourceLine" id="cb179-4" data-line-number="4">                <span class="dt">sep =</span> <span class="st">&quot;-&quot;</span>))</a>
+<a class="sourceLine" id="cb179-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb179-6" data-line-number="6"><span class="co"># Añadimos</span></a>
+<a class="sourceLine" id="cb179-7" data-line-number="7"><span class="kw">data.frame</span>(airquality, fechas)</a></code></pre></div>
+<pre><code>##     Ozone Solar.R Wind Temp Month Day     fechas
+## 1      41     190  7.4   67     5   1 1973-05-01
+## 2      36     118  8.0   72     5   2 1973-05-02
+## 3      12     149 12.6   74     5   3 1973-05-03
+## 4      18     313 11.5   62     5   4 1973-05-04
+## 5      NA      NA 14.3   56     5   5 1973-05-05
+## 6      28      NA 14.9   66     5   6 1973-05-06
+## 7      23     299  8.6   65     5   7 1973-05-07
+## 8      19      99 13.8   59     5   8 1973-05-08
+## 9       8      19 20.1   61     5   9 1973-05-09
+## 10     NA     194  8.6   69     5  10 1973-05-10
+## 11      7      NA  6.9   74     5  11 1973-05-11
+## 12     16     256  9.7   69     5  12 1973-05-12
+## 13     11     290  9.2   66     5  13 1973-05-13
+## 14     14     274 10.9   68     5  14 1973-05-14
+## 15     18      65 13.2   58     5  15 1973-05-15
+## 16     14     334 11.5   64     5  16 1973-05-16
+## 17     34     307 12.0   66     5  17 1973-05-17
+## 18      6      78 18.4   57     5  18 1973-05-18
+## 19     30     322 11.5   68     5  19 1973-05-19
+## 20     11      44  9.7   62     5  20 1973-05-20
+## 21      1       8  9.7   59     5  21 1973-05-21
+## 22     11     320 16.6   73     5  22 1973-05-22
+## 23      4      25  9.7   61     5  23 1973-05-23
+## 24     32      92 12.0   61     5  24 1973-05-24
+## 25     NA      66 16.6   57     5  25 1973-05-25
+## 26     NA     266 14.9   58     5  26 1973-05-26
+## 27     NA      NA  8.0   57     5  27 1973-05-27
+## 28     23      13 12.0   67     5  28 1973-05-28
+## 29     45     252 14.9   81     5  29 1973-05-29
+## 30    115     223  5.7   79     5  30 1973-05-30
+## 31     37     279  7.4   76     5  31 1973-05-31
+## 32     NA     286  8.6   78     6   1 1973-06-01
+## 33     NA     287  9.7   74     6   2 1973-06-02
+## 34     NA     242 16.1   67     6   3 1973-06-03
+## 35     NA     186  9.2   84     6   4 1973-06-04
+## 36     NA     220  8.6   85     6   5 1973-06-05
+## 37     NA     264 14.3   79     6   6 1973-06-06
+## 38     29     127  9.7   82     6   7 1973-06-07
+## 39     NA     273  6.9   87     6   8 1973-06-08
+## 40     71     291 13.8   90     6   9 1973-06-09
+## 41     39     323 11.5   87     6  10 1973-06-10
+## 42     NA     259 10.9   93     6  11 1973-06-11
+## 43     NA     250  9.2   92     6  12 1973-06-12
+## 44     23     148  8.0   82     6  13 1973-06-13
+## 45     NA     332 13.8   80     6  14 1973-06-14
+## 46     NA     322 11.5   79     6  15 1973-06-15
+## 47     21     191 14.9   77     6  16 1973-06-16
+## 48     37     284 20.7   72     6  17 1973-06-17
+## 49     20      37  9.2   65     6  18 1973-06-18
+## 50     12     120 11.5   73     6  19 1973-06-19
+## 51     13     137 10.3   76     6  20 1973-06-20
+## 52     NA     150  6.3   77     6  21 1973-06-21
+## 53     NA      59  1.7   76     6  22 1973-06-22
+## 54     NA      91  4.6   76     6  23 1973-06-23
+## 55     NA     250  6.3   76     6  24 1973-06-24
+## 56     NA     135  8.0   75     6  25 1973-06-25
+## 57     NA     127  8.0   78     6  26 1973-06-26
+## 58     NA      47 10.3   73     6  27 1973-06-27
+## 59     NA      98 11.5   80     6  28 1973-06-28
+## 60     NA      31 14.9   77     6  29 1973-06-29
+## 61     NA     138  8.0   83     6  30 1973-06-30
+## 62    135     269  4.1   84     7   1 1973-07-01
+## 63     49     248  9.2   85     7   2 1973-07-02
+## 64     32     236  9.2   81     7   3 1973-07-03
+## 65     NA     101 10.9   84     7   4 1973-07-04
+## 66     64     175  4.6   83     7   5 1973-07-05
+## 67     40     314 10.9   83     7   6 1973-07-06
+## 68     77     276  5.1   88     7   7 1973-07-07
+## 69     97     267  6.3   92     7   8 1973-07-08
+## 70     97     272  5.7   92     7   9 1973-07-09
+## 71     85     175  7.4   89     7  10 1973-07-10
+## 72     NA     139  8.6   82     7  11 1973-07-11
+## 73     10     264 14.3   73     7  12 1973-07-12
+## 74     27     175 14.9   81     7  13 1973-07-13
+## 75     NA     291 14.9   91     7  14 1973-07-14
+## 76      7      48 14.3   80     7  15 1973-07-15
+## 77     48     260  6.9   81     7  16 1973-07-16
+## 78     35     274 10.3   82     7  17 1973-07-17
+## 79     61     285  6.3   84     7  18 1973-07-18
+## 80     79     187  5.1   87     7  19 1973-07-19
+## 81     63     220 11.5   85     7  20 1973-07-20
+## 82     16       7  6.9   74     7  21 1973-07-21
+## 83     NA     258  9.7   81     7  22 1973-07-22
+## 84     NA     295 11.5   82     7  23 1973-07-23
+## 85     80     294  8.6   86     7  24 1973-07-24
+## 86    108     223  8.0   85     7  25 1973-07-25
+## 87     20      81  8.6   82     7  26 1973-07-26
+## 88     52      82 12.0   86     7  27 1973-07-27
+## 89     82     213  7.4   88     7  28 1973-07-28
+## 90     50     275  7.4   86     7  29 1973-07-29
+## 91     64     253  7.4   83     7  30 1973-07-30
+## 92     59     254  9.2   81     7  31 1973-07-31
+## 93     39      83  6.9   81     8   1 1973-08-01
+## 94      9      24 13.8   81     8   2 1973-08-02
+## 95     16      77  7.4   82     8   3 1973-08-03
+## 96     78      NA  6.9   86     8   4 1973-08-04
+## 97     35      NA  7.4   85     8   5 1973-08-05
+## 98     66      NA  4.6   87     8   6 1973-08-06
+## 99    122     255  4.0   89     8   7 1973-08-07
+## 100    89     229 10.3   90     8   8 1973-08-08
+## 101   110     207  8.0   90     8   9 1973-08-09
+## 102    NA     222  8.6   92     8  10 1973-08-10
+## 103    NA     137 11.5   86     8  11 1973-08-11
+## 104    44     192 11.5   86     8  12 1973-08-12
+## 105    28     273 11.5   82     8  13 1973-08-13
+## 106    65     157  9.7   80     8  14 1973-08-14
+## 107    NA      64 11.5   79     8  15 1973-08-15
+## 108    22      71 10.3   77     8  16 1973-08-16
+## 109    59      51  6.3   79     8  17 1973-08-17
+## 110    23     115  7.4   76     8  18 1973-08-18
+## 111    31     244 10.9   78     8  19 1973-08-19
+## 112    44     190 10.3   78     8  20 1973-08-20
+## 113    21     259 15.5   77     8  21 1973-08-21
+## 114     9      36 14.3   72     8  22 1973-08-22
+## 115    NA     255 12.6   75     8  23 1973-08-23
+## 116    45     212  9.7   79     8  24 1973-08-24
+## 117   168     238  3.4   81     8  25 1973-08-25
+## 118    73     215  8.0   86     8  26 1973-08-26
+## 119    NA     153  5.7   88     8  27 1973-08-27
+## 120    76     203  9.7   97     8  28 1973-08-28
+## 121   118     225  2.3   94     8  29 1973-08-29
+## 122    84     237  6.3   96     8  30 1973-08-30
+## 123    85     188  6.3   94     8  31 1973-08-31
+## 124    96     167  6.9   91     9   1 1973-09-01
+## 125    78     197  5.1   92     9   2 1973-09-02
+## 126    73     183  2.8   93     9   3 1973-09-03
+## 127    91     189  4.6   93     9   4 1973-09-04
+## 128    47      95  7.4   87     9   5 1973-09-05
+## 129    32      92 15.5   84     9   6 1973-09-06
+## 130    20     252 10.9   80     9   7 1973-09-07
+## 131    23     220 10.3   78     9   8 1973-09-08
+## 132    21     230 10.9   75     9   9 1973-09-09
+## 133    24     259  9.7   73     9  10 1973-09-10
+## 134    44     236 14.9   81     9  11 1973-09-11
+## 135    21     259 15.5   76     9  12 1973-09-12
+## 136    28     238  6.3   77     9  13 1973-09-13
+## 137     9      24 10.9   71     9  14 1973-09-14
+## 138    13     112 11.5   71     9  15 1973-09-15
+## 139    46     237  6.9   78     9  16 1973-09-16
+## 140    18     224 13.8   67     9  17 1973-09-17
+## 141    13      27 10.3   76     9  18 1973-09-18
+## 142    24     238 10.3   68     9  19 1973-09-19
+## 143    16     201  8.0   82     9  20 1973-09-20
+## 144    13     238 12.6   64     9  21 1973-09-21
+## 145    23      14  9.2   71     9  22 1973-09-22
+## 146    36     139 10.3   81     9  23 1973-09-23
+## 147     7      49 10.3   69     9  24 1973-09-24
+## 148    14      20 16.6   63     9  25 1973-09-25
+## 149    30     193  6.9   70     9  26 1973-09-26
+## 150    NA     145 13.2   77     9  27 1973-09-27
+## 151    14     191 14.3   75     9  28 1973-09-28
+## 152    18     131  8.0   76     9  29 1973-09-29
+## 153    20     223 11.5   68     9  30 1973-09-30</code></pre>
+</details>
+<p> </p>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="fechas.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="listas.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": "curso_R.pdf",
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>0.8 Estructuras for y while | Introducción a R: aprendiendo R sin morir en el intento</title>
+  <meta name="description" content="Curso básico de introducción a R (desde cero). Curso elaborado por Javier Álvarez Liébana (dadosdelaplace)" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="0.8 Estructuras for y while | Introducción a R: aprendiendo R sin morir en el intento" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:image" content="/img/logo_R.png" />
+  <meta property="og:description" content="Curso básico de introducción a R (desde cero). Curso elaborado por Javier Álvarez Liébana (dadosdelaplace)" />
+  <meta name="github-repo" content="dadosdelaplace/intro-R" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="0.8 Estructuras for y while | Introducción a R: aprendiendo R sin morir en el intento" />
+  
+  <meta name="twitter:description" content="Curso básico de introducción a R (desde cero). Curso elaborado por Javier Álvarez Liébana (dadosdelaplace)" />
+  <meta name="twitter:image" content="/img/logo_R.png" />
+
+<meta name="author" content="Javier Álvarez Liébana" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="estructuras-if-else.html"/>
+<link rel="next" href="funciones.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Introducción a R: aprendiendo R sin morir en el intento</a></li>
+
+<li class="divider"></li>
+<li><a href="index.html#prefacio">Prefacio<span></span></a><ul>
+<li><a href="sobre-el-autor.html#sobre-el-autor">Sobre el autor<span></span></a></li>
+<li><a href="propósito.html#propósito">Propósito<span></span></a></li>
+<li><a href="contenidos.html#contenidos">Contenidos<span></span></a></li>
+<li><a href="código-de-colores.html#código-de-colores">Código de colores<span></span></a></li>
+<li><a href="licencia.html#licencia">Licencia<span></span></a></li>
+</ul></li>
+<li class="part"><span><b>I Recursos<span></span></b></span></li>
+<li><a href="ejercicios-recopilados.html#ejercicios-recopilados">📝 Ejercicios recopilados<span></span></a><ul>
+<li><a href="instalación.html#instalación">Instalación<span></span></a></li>
+<li><a href="primeros-pasos.html#primeros-pasos">Primeros pasos<span></span></a></li>
+<li class="chapter" data-level="0.1" data-path="variables-numéricas-y-de-texto.html"><a href="variables-numéricas-y-de-texto.html"><i class="fa fa-check"></i><b>0.1</b> Variables numéricas y de texto<span></span></a></li>
+<li class="chapter" data-level="0.2" data-path="vectores.html"><a href="vectores.html"><i class="fa fa-check"></i><b>0.2</b> Vectores<span></span></a></li>
+<li class="chapter" data-level="0.3" data-path="operaciones-con-vectores.html"><a href="operaciones-con-vectores.html"><i class="fa fa-check"></i><b>0.3</b> Operaciones con vectores<span></span></a></li>
+<li class="chapter" data-level="0.4" data-path="fechas.html"><a href="fechas.html"><i class="fa fa-check"></i><b>0.4</b> Fechas<span></span></a></li>
+<li class="chapter" data-level="0.5" data-path="datos-estructurados.html"><a href="datos-estructurados.html"><i class="fa fa-check"></i><b>0.5</b> Datos estructurados<span></span></a></li>
+<li class="chapter" data-level="0.6" data-path="listas.html"><a href="listas.html"><i class="fa fa-check"></i><b>0.6</b> Listas<span></span></a></li>
+<li class="chapter" data-level="0.7" data-path="estructuras-if-else.html"><a href="estructuras-if-else.html"><i class="fa fa-check"></i><b>0.7</b> Estructuras if-else<span></span></a></li>
+<li class="chapter" data-level="0.8" data-path="estructuras-for-y-while.html"><a href="estructuras-for-y-while.html"><i class="fa fa-check"></i><b>0.8</b> Estructuras for y while<span></span></a></li>
+<li class="chapter" data-level="0.9" data-path="funciones.html"><a href="funciones.html"><i class="fa fa-check"></i><b>0.9</b> Funciones<span></span></a></li>
+<li class="chapter" data-level="0.10" data-path="practica-final.html"><a href="practica-final.html"><i class="fa fa-check"></i><b>0.10</b> Practica final<span></span></a></li>
+</ul></li>
+<li><a href="recursos-de-aprendizaje.html#recursos-de-aprendizaje">📚 Recursos de aprendizaje<span></span></a><ul>
+<li><a href="aprendizajedocencia.html#aprendizajedocencia">Aprendizaje/docencia<span></span></a></li>
+<li><a href="manejo-de-datos.html#manejo-de-datos">Manejo de datos<span></span></a></li>
+<li><a href="manejo-de-textos.html#manejo-de-textos">Manejo de textos<span></span></a></li>
+<li><a href="datos.-importarexportar.html#datos.-importarexportar">Datos. Importar/exportar<span></span></a></li>
+<li><a href="dataviz.html#dataviz">dataviz<span></span></a></li>
+<li><a href="mapas-y-datos-espaciales-en-r.html#mapas-y-datos-espaciales-en-r">Mapas y datos espaciales en R<span></span></a></li>
+<li><a href="colores-y-temas-en-dataviz-generales.html#colores-y-temas-en-dataviz-generales">Colores y temas en dataviz (generales)<span></span></a></li>
+<li><a href="análisis-exploratorio.html#análisis-exploratorio">Análisis exploratorio<span></span></a></li>
+<li><a href="modelización-e-inferencia.html#modelización-e-inferencia">Modelización e inferencia<span></span></a></li>
+<li><a href="estadística-bayesiana.html#estadística-bayesiana">Estadística Bayesiana<span></span></a></li>
+<li><a href="informes-tablas-webs-libros-y-diapositivas.html#informes-tablas-webs-libros-y-diapositivas">Informes, tablas, webs, libros y diapositivas<span></span></a></li>
+<li><a href="paquetesrecursos-curiosos.html#paquetesrecursos-curiosos">Paquetes/recursos curiosos<span></span></a></li>
+</ul></li>
+<li class="part"><span><b>II Toma de contacto<span></span></b></span></li>
+<li class="chapter" data-level="1" data-path="requisitos.html"><a href="requisitos.html"><i class="fa fa-check"></i><b>1</b> Requisitos<span></span></a></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org/yihui/rmarkdown/" target="blank">Elaborado con bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introducción a R: aprendiendo R sin morir en el intento</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="estructuras-for-y-while" class="section level2 hasAnchor">
+<h2><span class="header-section-number">0.8</span> Estructuras for y while<a href="estructuras-for-y-while.html#estructuras-for-y-while" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="blackbox">
+<p>Scripts usados:</p>
+<ul>
+<li><a href="https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script12.R"><strong>script12.R</strong></a>: bucles. Ver en <a href="https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script12.R" class="uri">https://github.com/dadosdelaplace/courses-intro-R/blob/main/scripts/script12.R</a></li>
+</ul>
+</div>
+<p>(haz click en las flechas para ver soluciones)</p>
+<details>
+<p><summary>📝<strong>Ejercicio 1</strong>: modifica el código interior para diseñar un bucle <code>for</code> de 5 iteraciones que recorra los 5 primeros impares y les sume uno.</p>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb209-1" data-line-number="1"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>) {</a>
+<a class="sourceLine" id="cb209-2" data-line-number="2">  </a>
+<a class="sourceLine" id="cb209-3" data-line-number="3">  <span class="kw">print</span>(i)</a>
+<a class="sourceLine" id="cb209-4" data-line-number="4">}</a></code></pre></div>
+<pre><code>## [1] 1
+## [1] 2
+## [1] 3
+## [1] 4
+## [1] 5</code></pre>
+<p></summary></p>
+<!-- toc -->
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb211-1" data-line-number="1"><span class="co"># Una forma</span></a>
+<a class="sourceLine" id="cb211-2" data-line-number="2"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq</span>(<span class="dv">1</span>, <span class="dv">9</span>, <span class="dt">by =</span> <span class="dv">2</span>)) {</a>
+<a class="sourceLine" id="cb211-3" data-line-number="3">  </a>
+<a class="sourceLine" id="cb211-4" data-line-number="4">  <span class="kw">print</span>(i <span class="op">+</span><span class="st"> </span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb211-5" data-line-number="5">}</a></code></pre></div>
+<pre><code>## [1] 2
+## [1] 4
+## [1] 6
+## [1] 8
+## [1] 10</code></pre>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb213-1" data-line-number="1"><span class="co"># Otra</span></a>
+<a class="sourceLine" id="cb213-2" data-line-number="2"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">9</span>)) {</a>
+<a class="sourceLine" id="cb213-3" data-line-number="3">  </a>
+<a class="sourceLine" id="cb213-4" data-line-number="4">  <span class="kw">print</span>(i <span class="op">+</span><span class="st"> </span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb213-5" data-line-number="5">}</a></code></pre></div>
+<pre><code>## [1] 2
+## [1] 4
+## [1] 6
+## [1] 8
+## [1] 10</code></pre>
+<!-- tocstop -->
+</details>
+<p> </p>
+<details>
+<p><summary>📝<strong>Ejercicio 2</strong>: modifica el código interior para diseñar un bucle <code>while</code> que parta con una variable <code>conteo &lt;- 1</code> y pare cuando llegue a 6.</p>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb215-1" data-line-number="1">conteo &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb215-2" data-line-number="2"><span class="cf">while</span> (conteo <span class="op">==</span><span class="st"> </span><span class="dv">2</span>) {</a>
+<a class="sourceLine" id="cb215-3" data-line-number="3">  </a>
+<a class="sourceLine" id="cb215-4" data-line-number="4">  <span class="kw">print</span>(conteo)</a>
+<a class="sourceLine" id="cb215-5" data-line-number="5">}</a></code></pre></div>
+<p></summary></p>
+<!-- toc -->
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb216-1" data-line-number="1">conteo &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb216-2" data-line-number="2"><span class="cf">while</span> (conteo <span class="op">&lt;</span><span class="st"> </span><span class="dv">6</span>) {</a>
+<a class="sourceLine" id="cb216-3" data-line-number="3">  </a>
+<a class="sourceLine" id="cb216-4" data-line-number="4">  <span class="kw">print</span>(conteo)</a>
+<a class="sourceLine" id="cb216-5" data-line-number="5">  conteo &lt;-<span class="st"> </span>conteo &lt;-<span class="st"> </span>conteo <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb216-6" data-line-number="6">}</a></code></pre></div>
+<pre><code>## [1] 1
+## [1] 2
+## [1] 3
+## [1] 4
+## [1] 5</code></pre>
+<!-- tocstop -->
+</details>
+<p> </p>
+<details>
+<p><summary>📝<strong>Ejercicio 3</strong>: construye un bucle que recorra las primeras 8 filas del conjunto de datos <code>datasets::airquality</code> y que imprima un mensaje con la temperatura</p>
+<p></summary></p>
+<!-- toc -->
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb218-1" data-line-number="1"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">8</span>) {</a>
+<a class="sourceLine" id="cb218-2" data-line-number="2">  </a>
+<a class="sourceLine" id="cb218-3" data-line-number="3">  <span class="kw">print</span>(<span class="kw">glue</span>(<span class="st">&quot;La temperatura es de {airquality$Temp[i]}ºF&quot;</span>))</a>
+<a class="sourceLine" id="cb218-4" data-line-number="4">}</a></code></pre></div>
+<pre><code>## La temperatura es de 67ºF
+## La temperatura es de 72ºF
+## La temperatura es de 74ºF
+## La temperatura es de 62ºF
+## La temperatura es de 56ºF
+## La temperatura es de 66ºF
+## La temperatura es de 65ºF
+## La temperatura es de 59ºF</code></pre>
+<!-- tocstop -->
+</details>
+<p> </p>
+<details>
+<p><summary>📝<strong>Ejercicio 4</strong>: diseña un bucle <code>for</code> de 200 iteraciones que, empezando en un valor inicial de 100 (euros), te sume 3€ si el número actual es par y te reste 5€ si es impar.</p>
+<p>Un número par o impar: un número par será todo aquel número que al dividir entre 2, la división es exacta, es decir, que su resto es nulo. Por ejemplo, al dividir 5 entre 2, el resto es 1, pero al dividir 12 entre 2 el resto es 0. Para calcula ese resto usaremos la función <code>%%</code>.</p>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb220-1" data-line-number="1"><span class="dv">5</span> <span class="op">%%</span><span class="st"> </span><span class="dv">2</span></a></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb222-1" data-line-number="1"><span class="dv">12</span> <span class="op">%%</span><span class="st"> </span><span class="dv">2</span></a></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb224-1" data-line-number="1"><span class="dv">23</span> <span class="op">%%</span><span class="st"> </span><span class="dv">2</span></a></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb226-1" data-line-number="1"><span class="dv">46</span> <span class="op">%%</span><span class="st"> </span><span class="dv">2</span></a></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<p></summary></p>
+<!-- toc -->
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb228-1" data-line-number="1"><span class="co"># dinero inicial</span></a>
+<a class="sourceLine" id="cb228-2" data-line-number="2">dinero &lt;-<span class="st"> </span><span class="dv">100</span></a>
+<a class="sourceLine" id="cb228-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb228-4" data-line-number="4"><span class="co"># Bucle for</span></a>
+<a class="sourceLine" id="cb228-5" data-line-number="5"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">200</span>) {</a>
+<a class="sourceLine" id="cb228-6" data-line-number="6">  </a>
+<a class="sourceLine" id="cb228-7" data-line-number="7">  dinero &lt;-<span class="st"> </span><span class="kw">ifelse</span>(dinero <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>, dinero <span class="op">+</span><span class="st"> </span><span class="dv">3</span>, dinero  <span class="op">-</span><span class="st"> </span><span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb228-8" data-line-number="8">  </a>
+<a class="sourceLine" id="cb228-9" data-line-number="9">}</a>
+<a class="sourceLine" id="cb228-10" data-line-number="10">dinero</a></code></pre></div>
+<pre><code>## [1] -100</code></pre>
+<!-- tocstop -->
+</details>
+<p> </p>
+<details>
+<p><summary>📝<strong>Ejercicio 5</strong>: diseña el anterior bucle pero guardando el dinero de cada iteración.</summary></p>
+<!-- toc -->
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb230-1" data-line-number="1"><span class="co"># vector de importes</span></a>
+<a class="sourceLine" id="cb230-2" data-line-number="2">dinero &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span>, <span class="dv">201</span>)</a>
+<a class="sourceLine" id="cb230-3" data-line-number="3">dinero[<span class="dv">1</span>] &lt;-<span class="st"> </span><span class="dv">100</span> <span class="co"># dinero inicial</span></a>
+<a class="sourceLine" id="cb230-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb230-5" data-line-number="5"><span class="co"># Bucle for</span></a>
+<a class="sourceLine" id="cb230-6" data-line-number="6"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span><span class="dv">201</span>) {</a>
+<a class="sourceLine" id="cb230-7" data-line-number="7">  </a>
+<a class="sourceLine" id="cb230-8" data-line-number="8">  <span class="co"># si dinero[i - 1] es par o  impar</span></a>
+<a class="sourceLine" id="cb230-9" data-line-number="9">  dinero[i] &lt;-<span class="st"> </span><span class="kw">ifelse</span>(dinero[i <span class="op">-</span><span class="st"> </span><span class="dv">1</span>] <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>, dinero[i <span class="op">-</span><span class="st"> </span><span class="dv">1</span>] <span class="op">+</span><span class="st"> </span><span class="dv">3</span>,</a>
+<a class="sourceLine" id="cb230-10" data-line-number="10">                      dinero[i <span class="op">-</span><span class="st"> </span><span class="dv">1</span>]  <span class="op">-</span><span class="st"> </span><span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb230-11" data-line-number="11">  </a>
+<a class="sourceLine" id="cb230-12" data-line-number="12">}</a>
+<a class="sourceLine" id="cb230-13" data-line-number="13">dinero</a></code></pre></div>
+<pre><code>##   [1]  100  103   98  101   96   99   94   97   92   95   90   93   88   91   86
+##  [16]   89   84   87   82   85   80   83   78   81   76   79   74   77   72   75
+##  [31]   70   73   68   71   66   69   64   67   62   65   60   63   58   61   56
+##  [46]   59   54   57   52   55   50   53   48   51   46   49   44   47   42   45
+##  [61]   40   43   38   41   36   39   34   37   32   35   30   33   28   31   26
+##  [76]   29   24   27   22   25   20   23   18   21   16   19   14   17   12   15
+##  [91]   10   13    8   11    6    9    4    7    2    5    0    3   -2    1   -4
+## [106]   -1   -6   -3   -8   -5  -10   -7  -12   -9  -14  -11  -16  -13  -18  -15
+## [121]  -20  -17  -22  -19  -24  -21  -26  -23  -28  -25  -30  -27  -32  -29  -34
+## [136]  -31  -36  -33  -38  -35  -40  -37  -42  -39  -44  -41  -46  -43  -48  -45
+## [151]  -50  -47  -52  -49  -54  -51  -56  -53  -58  -55  -60  -57  -62  -59  -64
+## [166]  -61  -66  -63  -68  -65  -70  -67  -72  -69  -74  -71  -76  -73  -78  -75
+## [181]  -80  -77  -82  -79  -84  -81  -86  -83  -88  -85  -90  -87  -92  -89  -94
+## [196]  -91  -96  -93  -98  -95 -100</code></pre>
+<!-- tocstop -->
+</details>
+<p> </p>
+<details>
+<p><summary>📝<strong>Ejercicio 6</strong>: diseña el bucle del ejercicio 4 parando cuando no nos quede dinero.</summary></p>
+<!-- toc -->
+<ul>
+<li>Solución:</li>
+</ul>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb232-1" data-line-number="1">dinero &lt;-<span class="st"> </span><span class="dv">100</span> <span class="co"># dinero inicial</span></a>
+<a class="sourceLine" id="cb232-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb232-3" data-line-number="3"><span class="co"># Bucle while</span></a>
+<a class="sourceLine" id="cb232-4" data-line-number="4"><span class="cf">while</span> (dinero <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) {</a>
+<a class="sourceLine" id="cb232-5" data-line-number="5">  </a>
+<a class="sourceLine" id="cb232-6" data-line-number="6">  dinero &lt;-<span class="st"> </span><span class="kw">ifelse</span>(dinero <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>, dinero <span class="op">+</span><span class="st"> </span><span class="dv">3</span>, dinero <span class="op">-</span><span class="st"> </span><span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb232-7" data-line-number="7">  </a>
+<a class="sourceLine" id="cb232-8" data-line-number="8">}</a>
+<a class="sourceLine" id="cb232-9" data-line-number="9">dinero</a></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<!-- tocstop -->
+</details>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="estructuras-if-else.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="funciones.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": "curso_R.pdf",
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

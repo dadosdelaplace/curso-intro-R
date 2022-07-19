@@ -58,8 +58,11 @@ colorize <- function(x, color) {
 
 Este curso ha sido diseñado por [Javier Álvarez Liébana](https://dadosdelaplace.github.io) y pensado para introducir en el lenguaje `R` a todas aquellas personas que quieran **aprenderlo desde cero**, sin necesidad de ningún conocimiento previo de programación. Dicho manual ha sido elaborado a su vez en `R` con [{bookdown}](https://github.com/rstudio/bookdown). Puedes ver un resumen de las funcionalidades de algunos paquetes documentados por el equipo de [R Studio](https://www.rstudio.com/) en sus [esquemas resumen](https://www.rstudio.com/resources/cheatsheets/). El **código** de dicho manual se encuentra en [GitHub](https://github.com/dadosdelaplace/intro-R).
 
-```{r me-github, echo = FALSE, fig.align = 'center',  include = identical(knitr:::pandoc_to(), 'html'), out.width = '65%'}
-knitr::include_graphics('img/me_github.jpg')
+
+Si el material te resulta de ayuda puedes dejar tu <mark>**aportación**</mark> en <https://www.buymeacoffee.com/dadosdelaplace>, como si me invitarás a algunos cafés.
+
+```{r me-coffee, echo = FALSE, fig.align = 'center',  include = identical(knitr:::pandoc_to(), 'html'), out.width = '70%'}
+knitr::include_graphics('img/me_coffee.jpeg')
 ```
 
 &nbsp;  
@@ -145,4 +148,11 @@ En **`r colorize("color azul", "#4197D2")`** encontrarás un 📚 **`r colorize(
 Este documento es publicado bajo **licencia pública general GNU**,
 una licencia libre de copyleft que garantiza a los usuarios finales (personas, organizaciones, compañías) la **libertad de usar, estudiar, compartir (copiar) y modificar el software, citando adecuadamente al autor del mismo**. 
 
+## Contribuye (si quieres) {-}
 
+Si el material te resulta de ayuda puedes dejar tu <mark>**aportación**</mark> en <https://www.buymeacoffee.com/dadosdelaplace>, como si me invitarás a algunos cafés.
+
+```{r me-coffee-2, echo = FALSE, fig.align = 'center',  include = identical(knitr:::pandoc_to(), 'html'), out.width = '70%'}
+knitr::include_graphics('img/me_coffee.jpeg')
+
+```

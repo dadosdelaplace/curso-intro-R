@@ -418,9 +418,9 @@
                <span class="va">x</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/order.html">order</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">]</span>, <span class="co"># segunda forma</span>
                times <span class="op">=</span> <span class="fl">1e3</span><span class="op">)</span> <span class="co"># se repetirá 1000 veces</span></code></pre></div>
 <pre><code>## Unit: microseconds
-##         expr    min     lq     mean  median      uq     max neval cld
-##      sort(x) 42.728 51.243 60.70197 56.8795 61.8135 299.026  1000   b
-##  x[order(x)] 30.195 37.243 43.76413 39.7965 43.9700 376.923  1000  a</code></pre>
+##         expr    min      lq     mean  median      uq     max neval cld
+##      sort(x) 43.475 50.0375 57.22020 54.8535 58.5370 202.602  1000   b
+##  x[order(x)] 30.853 36.5295 40.48346 38.8625 42.0205 114.302  1000  a</code></pre>
 <p>Aunque a priori parezca contraintuitivo, es más corto obtener los índices ordenados de un vector, y luego reordenarlo en base a esos índices, que la ordenación directa a través del comando <code><a href="https://rdrr.io/r/base/sort.html">sort()</a></code> (ya que usan algoritmos de ordenación distintos).</p>
 </div>
 <div id="ejercicios-4" class="section level2">
