@@ -193,18 +193,6 @@ Puedes colapsar las estructuras de control pulsando en la flecha que aparece a l
 <details>
   <summary>📝<strong>Ejercicio 1</strong>: modifica el código inferior para imprimir un mensaje por pantalla si todos los datos del conjunto `airquality` son de meses que no sean enero.
   
-```{r eval = FALSE}
-# install.packages("dataset") # solo la primera vez
-library(datasets) # paquete con los datos
-mes <- airquality$Month
-
-if (mes == 2) {
-  
-  print("Ningún dato es del mes de enero")
-  
-}
-  
-```
 </summary>
   
 <!-- toc -->
@@ -226,21 +214,23 @@ if (all(mes != 1)) { # todos con mes distinto de 1
 <!-- tocstop -->
 </details>
 
-&nbsp;
-
-<details>
-  <summary>📝<strong>Ejercicio 2</strong>: modifica el código inferior para guardar en una variable `temperatura_alta` un valor `TRUE`  si alguno de los registros tiene una temperatura mayor a 90 (están en Farenheit) y un `FALSE` en caso contrario.
-  
 ```{r eval = FALSE}
-temperatura <- airquality$Temp
+# install.packages("dataset") # solo la primera vez
+library(datasets) # paquete con los datos
+mes <- airquality$Month
 
-if (temperatura == 100) {
+if (mes == 2) {
   
-  print("Alguno de los registros tiene temperatura superior a 90 Farenheit")
+  print("Ningún dato es del mes de enero")
   
 }
   
 ```
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 2</strong>: modifica el código inferior para guardar en una variable `temperatura_alta` un valor `TRUE`  si alguno de los registros tiene una temperatura mayor a 90 (están en Farenheit) y un `FALSE` en caso contrario.
 </summary>
   
 <!-- toc -->
@@ -260,21 +250,21 @@ if (any(temperatura > 90)) {
 <!-- tocstop -->
 </details>
 
-&nbsp;
-
-<details>
-  <summary>📝<strong>Ejercicio 3</strong>: modifica el código inferior para imprimir un mensaje por pantalla si alguno de los días supera la temperatura de 100.
-  
 ```{r eval = FALSE}
 temperatura <- airquality$Temp
 
-if (all(temperatura < 50)) {
+if (temperatura == 100) {
   
-  print("Alguno de los registros tiene temperatura superior a 100 Farenheit")
+  print("Alguno de los registros tiene temperatura superior a 90 Farenheit")
   
 }
   
 ```
+
+&nbsp;
+
+<details>
+  <summary>📝<strong>Ejercicio 3</strong>: modifica el código inferior para imprimir un mensaje por pantalla si alguno de los días supera la temperatura de 100.
 
 </summary>
   
@@ -297,6 +287,17 @@ No debería imprimar nada porque ninguno cumple la condición.
 
 <!-- tocstop -->
 </details>
+
+```{r eval = FALSE}
+temperatura <- airquality$Temp
+
+if (all(temperatura < 50)) {
+  
+  print("Alguno de los registros tiene temperatura superior a 100 Farenheit")
+  
+}
+  
+```
 
 &nbsp;
 

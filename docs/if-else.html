@@ -233,22 +233,12 @@ Imagen/gráfica 11.1: Activando Rainbow Parentheses.
 </h2>
 <p>(haz click en las flechas para ver soluciones)</p>
 <details><p><summary>📝<strong>Ejercicio 1</strong>: modifica el código inferior para imprimir un mensaje por pantalla si todos los datos del conjunto <code>airquality</code> son de meses que no sean enero.</summary></p>
-<div class="sourceCode" id="cb1104"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># install.packages("dataset") # solo la primera vez</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">datasets</span><span class="op">)</span> <span class="co"># paquete con los datos</span>
-<span class="va">mes</span> <span class="op">&lt;-</span> <span class="va">airquality</span><span class="op">$</span><span class="va">Month</span>
-
-<span class="kw">if</span> <span class="op">(</span><span class="va">mes</span> <span class="op">==</span> <span class="fl">2</span><span class="op">)</span> <span class="op">{</span>
-  
-  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Ningún dato es del mes de enero"</span><span class="op">)</span>
-  
-<span class="op">}</span></code></pre></div>
 <p></p>
 <!-- toc -->
 <ul>
 <li>Solución:</li>
 </ul>
-<div class="sourceCode" id="cb1105"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1104"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install.packages("dataset") # solo la primera vez</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">datasets</span><span class="op">)</span> <span class="co"># paquete con los datos</span>
 <span class="va">mes</span> <span class="op">&lt;-</span> <span class="va">airquality</span><span class="op">$</span><span class="va">Month</span>
@@ -260,22 +250,24 @@ Imagen/gráfica 11.1: Activando Rainbow Parentheses.
 <span class="op">}</span></code></pre></div>
 <pre><code>## [1] "Ningún dato es del mes de enero"</code></pre>
 <!-- tocstop -->
-</details><p> </p>
-<details><p><summary>📝<strong>Ejercicio 2</strong>: modifica el código inferior para guardar en una variable <code>temperatura_alta</code> un valor <code>TRUE</code> si alguno de los registros tiene una temperatura mayor a 90 (están en Farenheit) y un <code>FALSE</code> en caso contrario.</summary></p>
-<div class="sourceCode" id="cb1107"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">temperatura</span> <span class="op">&lt;-</span> <span class="va">airquality</span><span class="op">$</span><span class="va">Temp</span>
+</details><div class="sourceCode" id="cb1106"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># install.packages("dataset") # solo la primera vez</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">datasets</span><span class="op">)</span> <span class="co"># paquete con los datos</span>
+<span class="va">mes</span> <span class="op">&lt;-</span> <span class="va">airquality</span><span class="op">$</span><span class="va">Month</span>
 
-<span class="kw">if</span> <span class="op">(</span><span class="va">temperatura</span> <span class="op">==</span> <span class="fl">100</span><span class="op">)</span> <span class="op">{</span>
+<span class="kw">if</span> <span class="op">(</span><span class="va">mes</span> <span class="op">==</span> <span class="fl">2</span><span class="op">)</span> <span class="op">{</span>
   
-  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Alguno de los registros tiene temperatura superior a 90 Farenheit"</span><span class="op">)</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Ningún dato es del mes de enero"</span><span class="op">)</span>
   
 <span class="op">}</span></code></pre></div>
-<p></p>
+<p> </p>
+<details><p><summary>📝<strong>Ejercicio 2</strong>: modifica el código inferior para guardar en una variable <code>temperatura_alta</code> un valor <code>TRUE</code> si alguno de los registros tiene una temperatura mayor a 90 (están en Farenheit) y un <code>FALSE</code> en caso contrario.
+</summary></p>
 <!-- toc -->
 <ul>
 <li>Solución:</li>
 </ul>
-<div class="sourceCode" id="cb1108"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1107"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">temperatura</span> <span class="op">&lt;-</span> <span class="va">airquality</span><span class="op">$</span><span class="va">Temp</span>
 <span class="va">temperatura_alta</span> <span class="op">&lt;-</span> <span class="cn">FALSE</span> <span class="co"># por defecto FALSE</span>
 <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/any.html">any</a></span><span class="op">(</span><span class="va">temperatura</span> <span class="op">&gt;</span> <span class="fl">90</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
@@ -284,22 +276,22 @@ Imagen/gráfica 11.1: Activando Rainbow Parentheses.
   
 <span class="op">}</span></code></pre></div>
 <!-- tocstop -->
-</details><p> </p>
-<details><p><summary>📝<strong>Ejercicio 3</strong>: modifica el código inferior para imprimir un mensaje por pantalla si alguno de los días supera la temperatura de 100.</summary></p>
-<div class="sourceCode" id="cb1109"><pre class="downlit sourceCode r">
+</details><div class="sourceCode" id="cb1108"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">temperatura</span> <span class="op">&lt;-</span> <span class="va">airquality</span><span class="op">$</span><span class="va">Temp</span>
 
-<span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/all.html">all</a></span><span class="op">(</span><span class="va">temperatura</span> <span class="op">&lt;</span> <span class="fl">50</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+<span class="kw">if</span> <span class="op">(</span><span class="va">temperatura</span> <span class="op">==</span> <span class="fl">100</span><span class="op">)</span> <span class="op">{</span>
   
-  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Alguno de los registros tiene temperatura superior a 100 Farenheit"</span><span class="op">)</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Alguno de los registros tiene temperatura superior a 90 Farenheit"</span><span class="op">)</span>
   
 <span class="op">}</span></code></pre></div>
+<p> </p>
+<details><p><summary>📝<strong>Ejercicio 3</strong>: modifica el código inferior para imprimir un mensaje por pantalla si alguno de los días supera la temperatura de 100.</summary></p>
 <p></p>
 <!-- toc -->
 <ul>
 <li>Solución:</li>
 </ul>
-<div class="sourceCode" id="cb1110"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1109"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">temperatura</span> <span class="op">&lt;-</span> <span class="va">airquality</span><span class="op">$</span><span class="va">Temp</span>
 
 <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/any.html">any</a></span><span class="op">(</span><span class="va">temperatura</span> <span class="op">&gt;</span> <span class="fl">100</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span> <span class="co"># nos basta con uno</span>
@@ -309,7 +301,15 @@ Imagen/gráfica 11.1: Activando Rainbow Parentheses.
 <span class="op">}</span></code></pre></div>
 <p>No debería imprimar nada porque ninguno cumple la condición.</p>
 <!-- tocstop -->
-</details><p> </p>
+</details><div class="sourceCode" id="cb1110"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">temperatura</span> <span class="op">&lt;-</span> <span class="va">airquality</span><span class="op">$</span><span class="va">Temp</span>
+
+<span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/all.html">all</a></span><span class="op">(</span><span class="va">temperatura</span> <span class="op">&lt;</span> <span class="fl">50</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+  
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Alguno de los registros tiene temperatura superior a 100 Farenheit"</span><span class="op">)</span>
+  
+<span class="op">}</span></code></pre></div>
+<p> </p>
 <details><p><summary>📝<strong>Ejercicio 4</strong>: del paquete <a href="https://lubridate.tidyverse.org">lubridate</a>, la función <code><a href="https://rdrr.io/pkg/lubridate/man/hour.html">hour()</a></code> nos devuelve la hora de una fecha dada, y la función <code><a href="https://rdrr.io/pkg/lubridate/man/now.html">now()</a></code> nos devuelve fecha y hora del momento actual. Con ambas funciones, y usando <code>if</code>, imprime por pantalla <code>"buenas noches"</code> solo a partir de las 21 horas. </summary></p>
 <!-- toc -->
 <ul>
@@ -351,7 +351,7 @@ Imagen/gráfica 11.1: Activando Rainbow Parentheses.
   
   <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Buenas noches"</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
-<pre><code>## Buenas tardes</code></pre>
+<pre><code>## Buenos días</code></pre>
 <!-- tocstop -->
 </details><p> </p>
 <details><p><summary>📝<strong>Ejercicio 6</strong>: realiza el ejercicio anterior pero sin estructura de llaves, de forma concisa con <code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code>. Mira la ayuda si la necesitases poniendo <code><a href="https://rdrr.io/r/base/ifelse.html">? ifelse</a></code> en consola. </summary></p>
@@ -369,7 +369,7 @@ Imagen/gráfica 11.1: Activando Rainbow Parentheses.
            <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/hour.html">hour</a></span><span class="op">(</span><span class="va">fecha_actual</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">14</span> <span class="op">&amp;</span>
                     <span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/hour.html">hour</a></span><span class="op">(</span><span class="va">fecha_actual</span><span class="op">)</span> <span class="op">&lt;</span> <span class="fl">21</span>,
                   <span class="st">"Buenas tardes"</span>, <span class="st">"Buenas noches"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>## Buenas tardes</code></pre>
+<pre><code>## Buenos días</code></pre>
 <!-- tocstop -->
 </details><p> </p>
 
@@ -405,7 +405,7 @@ Imagen/gráfica 11.1: Activando Rainbow Parentheses.
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introducción a R: aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 19-07-2022.</p>
+    <p>"<strong>Introducción a R: aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 12-09-2022.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

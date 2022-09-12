@@ -514,11 +514,7 @@ A veces puede que no queramos cargar todo un paquete sino solo una función del 
 <details>
   <summary><strong>Ejercicio 1</strong>: modifica el código para definir una matriz `x` de ceros de 3 filas y 7 columnas.
   
-```{r eval = FALSE}
-# Matriz
-x <- matrix(0, nrow = 2, ncol = 3)
-x
-```
+
 
 </summary>
 
@@ -531,6 +527,12 @@ x
 ```
 
 </details>
+
+```{r eval = FALSE}
+# Matriz
+x <- matrix(0, nrow = 2, ncol = 3)
+x
+```
 
 &nbsp; 
 
@@ -570,14 +572,6 @@ nrow(t(x)) # número de filas de la transpuesta
 <details>
   <summary><strong>Ejercicio 4</strong>: el siguiente código define una matriz de dimensiones `4 x 3` y calcula la suma por columnas. Modifica el código para que realice la suma por filas.
   
-```{r}
-# Matriz
-matriz <- matrix(1:12, nrow = 4)
-
-# Suma por columnas
-apply(matriz, MARGIN = 2, FUN = "sum")
-```
-
 </summary>
 
 
@@ -591,6 +585,15 @@ matriz <- matrix(1:12, nrow = 4)
 apply(matriz, MARGIN = 1, FUN = "sum")
 ```
 </details>
+
+```{r}
+# Matriz
+matriz <- matrix(1:12, nrow = 4)
+
+# Suma por columnas
+apply(matriz, MARGIN = 2, FUN = "sum")
+```
+
 
 &nbsp; 
 
@@ -652,11 +655,6 @@ ncol(airquality)
 <details>
   <summary><strong>Ejercicio 8</strong>: modifica el código inferior para que nos filtre solo los datos del mes de julio.
   
-```{r eval = FALSE}
-# Filtramos filas
-filtro_fila <- subset(., subset = Month < 6)
-filtro_fila
-```
 </summary>
   
 - Solución:
@@ -668,6 +666,12 @@ filtro_fila
 ```
 
 </details>
+
+```{r eval = FALSE}
+# Filtramos filas
+filtro_fila <- subset(., subset = Month < 6)
+filtro_fila
+```
 
 &nbsp; 
 
@@ -690,10 +694,6 @@ filtro_fila
 <details>
   <summary><strong>Ejercicio 10</strong>: modifica el siguiente código para quedarte solo con las variable `Ozone` y `Temp`.
   
-```{r eval = FALSE}
-filtro_col <- subset(.,  select = c("Ozone"))
-filtro_col
-```
 </summary>
   
 - Solución:
@@ -706,6 +706,10 @@ filtro_col
 
 </details>
 
+```{r eval = FALSE}
+filtro_col <- subset(.,  select = c("Ozone"))
+filtro_col
+```
 
 &nbsp; 
 

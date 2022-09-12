@@ -43,33 +43,7 @@
 </form>
 
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
-        <ul class="book-toc list-unstyled">
-<li><a class="active" href="index.html">Prefacio</a></li>
-<li class="book-part">Recursos</li>
-<li><a class="" href="ejercicios-recopilados.html">📝 Ejercicios recopilados</a></li>
-<li><a class="" href="recursos-de-aprendizaje.html">📚 Recursos de aprendizaje</a></li>
-<li class="book-part">Toma de contacto</li>
-<li><a class="" href="requisitos.html"><span class="header-section-number">1</span> Requisitos</a></li>
-<li><a class="" href="instalacionR.html"><span class="header-section-number">2</span> Instalación</a></li>
-<li><a class="" href="que-es-R.html"><span class="header-section-number">3</span> ¿Qué es R?</a></li>
-<li><a class="" href="primeros-pasos.html"><span class="header-section-number">4</span> Primeros pasos</a></li>
-<li class="book-part">Tipos de datos</li>
-<li><a class="" href="var-num.html"><span class="header-section-number">5</span> Variables individuales: números y caracteres</a></li>
-<li><a class="" href="vectores.html"><span class="header-section-number">6</span> Vectores</a></li>
-<li><a class="" href="operacionesvectores.html"><span class="header-section-number">7</span> Operaciones con vectores</a></li>
-<li><a class="" href="fechas.html"><span class="header-section-number">8</span> Fechas</a></li>
-<li><a class="" href="datos.html"><span class="header-section-number">9</span> Datos estructurados</a></li>
-<li><a class="" href="listas.html"><span class="header-section-number">10</span> Listas</a></li>
-<li class="book-part">Haciendo el trabajo más fácil</li>
-<li><a class="" href="if-else.html"><span class="header-section-number">11</span> Estructuras de control: if-else</a></li>
-<li><a class="" href="bucles.html"><span class="header-section-number">12</span> Estructuras de control: bucles</a></li>
-<li><a class="" href="funciones.html"><span class="header-section-number">13</span> Funciones</a></li>
-<li><a class="" href="proyecto.html"><span class="header-section-number">14</span> Proyecto de trabajo</a></li>
-<li class="book-part">Colofón</li>
-<li><a class="" href="importar-exportar.html"><span class="header-section-number">15</span> Importar/exportar datos</a></li>
-<li><a class="" href="practica-final.html"><span class="header-section-number">16</span> 📝 Práctica final</a></li>
-<li><a class="" href="bibliograf%C3%ADa.html">Bibliografía</a></li>
-</ul>
+        <ul class="book-toc list-unstyled"><li><a class="active" href="index.html">Prefacio</a></li></ul>
 
         <div class="book-extra">
           <p><a id="book-repo" href="https://github.com/dadosdelaplace/intro-R">View book source <i class="fab fa-github"></i></a></p>
@@ -166,7 +140,7 @@ una licencia libre de copyleft que garantiza a los usuarios finales (personas, o
 
   <div class="chapter-nav">
 <div class="empty"></div>
-<div class="next"><a href="ejercicios-recopilados.html">📝 Ejercicios recopilados</a></div>
+<div class="empty"></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
@@ -181,8 +155,7 @@ una licencia libre de copyleft que garantiza a los usuarios finales (personas, o
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/dadosdelaplace/intro-R/blob/master/index.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/dadosdelaplace/intro-R/edit/master/index.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+          
         </ul>
 </div>
     </nav>
@@ -194,7 +167,7 @@ una licencia libre de copyleft que garantiza a los usuarios finales (personas, o
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introducción a R: aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 19-07-2022.</p>
+    <p>"<strong>Introducción a R: aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 12-09-2022.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -202,34 +175,6 @@ una licencia libre de copyleft que garantiza a los usuarios finales (personas, o
   </div>
 
 </div></div>
-</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
-for (let popover of popovers) {
-  const div = document.createElement('div');
-  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
-  div.innerHTML = popover.getAttribute('data-content');
-
-  var has_math = div.querySelector("span.math");
-  if (has_math) {
-    document.body.appendChild(div);
-    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
-    MathJax.Hub.Queue(function() {
-      popover.setAttribute('data-content', div.innerHTML);
-      document.body.removeChild(div);
-    })
-  }
-}
-</script>
+</footer>
 </body>
 </html>

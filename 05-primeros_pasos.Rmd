@@ -272,10 +272,7 @@ abs(y)
 <details>
   <summary>📝<strong>Ejercicio 4</strong>: usando la variable `x` ya definida, completa/modifica el código inferior para guardar en una nueva variable `z` el resultado guardado en `x` menos 5 (**haz click** en la flecha para la solución propuesta).
   
-```{r eval = FALSE}
-z <- ? - ?
-z
-```
+
 
 </summary>
   
@@ -288,6 +285,11 @@ z
 ```
 <!-- tocstop -->
 </details>
+
+```{r eval = FALSE}
+z <- ? - ?
+z
+```
 
 &nbsp;
 

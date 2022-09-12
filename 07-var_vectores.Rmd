@@ -267,11 +267,7 @@ knitr::include_graphics("./img/stringr.png")
 <details>
   <summary>📝<strong>Ejercicio 1</strong>: modifica el código inferior para crear un vector de nombre `vector_num` que contenga los números 1, 5 y -7.
   
-```{r eval = FALSE}
-# Vector de números
-vector_num <- c(1)
-vector_num
-```
+
 </summary>
   
 <!-- toc -->
@@ -285,6 +281,12 @@ vector_num
 
 <!-- tocstop -->
 </details>
+
+```{r eval = FALSE}
+# Vector de números
+vector_num <- c(1)
+vector_num
+```
 
 &nbsp;
 
@@ -356,9 +358,7 @@ paste(frase, "y tengo 30 años.")
 <details>
   <summary>📝<strong>Ejercicio 5</strong>: el código inferior crea una secuencia de números, que empieza en `-1`, que acaba en `32`, y que va saltando de 2 en 2. Modíficalo para que haga el salto de 3 en 3 y guárdalo en una variable llamada `secuencia`
   
-```{r eval = FALSE}
-seq(-1, 32, by = 2)
-```
+
 </summary>
   
 <!-- toc -->
@@ -372,6 +372,10 @@ length(secuencia) # longitud de la secuencia
 
 <!-- tocstop -->
 </details>
+
+```{r eval = FALSE}
+seq(-1, 32, by = 2)
+```
 
 &nbsp;
 
