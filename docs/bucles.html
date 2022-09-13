@@ -155,11 +155,11 @@
                times <span class="op">=</span> <span class="fl">1000</span><span class="op">)</span></code></pre></div>
 <pre><code>## Unit: nanoseconds
 ##                                   expr     min      lq        mean  median
-##                                    x^2      97     137     580.184     677
-##  for (i in 1:4) {     y[i] &lt;- x[i]^2 } 1317380 1385709 1700777.849 1434302
-##       uq       max neval cld
-##      790     19068  1000  a 
-##  1552243 148172448  1000   b</code></pre>
+##                                    x^2     102     129     608.233     311
+##  for (i in 1:4) {     y[i] &lt;- x[i]^2 } 1308502 1388793 1670448.865 1435709
+##         uq       max neval cld
+##      836.5     27355  1000  a 
+##  1520945.5 137100801  1000   b</code></pre>
 <p> </p>
 <p>Veamos otro ejemplo: vamos a <strong>definir de nuevo un vector de edades y nombres</strong>, y vamos a recorrer cada uno imprimiento un mensaje por pantalla.</p>
 <div class="sourceCode" id="cb1128"><pre class="downlit sourceCode r">
@@ -540,12 +540,12 @@
                                <span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="va">idx</span><span class="op">)</span> <span class="op">{</span>  <span class="va">y</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">idx</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">^</span><span class="fl">2</span><span class="op">}</span>,
                                times <span class="op">=</span> <span class="fl">1e3</span><span class="op">)</span></code></pre></div>
 <pre><code>## Unit: microseconds
-##                                     expr      min        lq       mean
-##                               x &lt;- idx^2   18.065   39.3445   50.76173
-##  for (i in idx) {     y[i] &lt;- idx[i]^2 } 1818.577 1915.4780 2164.70863
-##     median        uq      max neval cld
-##    52.3345   59.7525  193.108  1000  a 
-##  1994.0095 2161.6925 8585.266  1000   b</code></pre>
+##                                     expr      min        lq      mean   median
+##                               x &lt;- idx^2   18.568   27.9895   49.9555   52.628
+##  for (i in idx) {     y[i] &lt;- idx[i]^2 } 1832.177 1918.3580 2087.3687 1975.436
+##         uq      max neval cld
+##    59.0775  142.844  1000  a 
+##  2048.1465 9316.304  1000   b</code></pre>
 <p>Una tarea tan sencilla, <strong>programada en un bucle (segunda fila), tarda 40 veces más que hacerlo de forma vectorial (primera fila)</strong> (elevando cada elemento al cuadrado, iterando internamente, sin necesidad de implementar un bucle).</p>
 </div>
 <div id="ejercicios-9" class="section level2">

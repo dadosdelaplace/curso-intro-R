@@ -27,6 +27,7 @@ Scripts usados:
 
 ::::
 
+
 En `R` no solo podemos usar las funciones predeterminadas que vienen ya cargadas, o las de los paquetes que instalamos, como `sum()`  o `mean()`. Además podemos <mark>**crear nuestras propias funciones**</mark> para automatizar tareas que vayamos a repetir a lo largo de nuestro código.
 
 <mark>**¿Cómo crear nuestra propia función?**</mark> Veamos su esquema básico. Para crear una función necesitamos
@@ -427,7 +428,6 @@ data.frame(airquality,
 
 </details>
 
-&nbsp; 
 
 
 
