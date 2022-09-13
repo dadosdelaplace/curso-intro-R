@@ -18,7 +18,7 @@ colorize <- function(x, color) {
 
 # 📝 Práctica final {#practica-final}
 
-:(haz click en las flechas para ver soluciones)
+(haz click en las flechas para ver soluciones)
 
 
 <details>

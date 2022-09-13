@@ -216,20 +216,7 @@ y # lo que vale fuera
 <details>
   <summary><strong>Ejercicio 1</strong>: modifica el código inferior para definir una función llamada `funcion_suma`, de forma que dados dos elementos, devuelve su suma.
   
-```{r eval = FALSE}
-# Definimos función
-nombre <- function(x, y) {
-  
-  # Sumamos
-  suma <- # código a ejecutar
-  
-  # ¿Qué devolvemos?
-  return()
-}
 
-# Aplicamos la función
-suma(3, 7)
-```
 </summary>
   
 - Solución:
@@ -251,25 +238,27 @@ funcion_suma(3, 7)
 
 </details>
 
-&nbsp;
-
-<details>
-  <summary><strong>Ejercicio 2</strong>: modifica el código inferior para definir una función llamada `funcion_producto`, de forma que dados dos elementos, devuelve su producto.
-  
 ```{r eval = FALSE}
 # Definimos función
 nombre <- function(x, y) {
   
-  # Multiplicamos
-  producto <- # código de la multiplicación
+  # Sumamos
+  suma <- # código a ejecutar
   
   # ¿Qué devolvemos?
   return()
 }
 
 # Aplicamos la función
-producto(3, -7)
+suma(3, 7)
 ```
+
+&nbsp;
+
+<details>
+  <summary><strong>Ejercicio 2</strong>: modifica el código inferior para definir una función llamada `funcion_producto`, de forma que dados dos elementos, devuelve su producto.
+  
+
 </summary>
   
 - Solución:
@@ -291,11 +280,6 @@ funcion_producto(3, -7)
 
 </details>
 
-&nbsp;
-
-<details>
-  <summary><strong>Ejercicio 3</strong>: modifica el código inferior para definir una función llamada `funcion_producto`, de forma que dados dos elementos, devuelve su producto, pero que por defecto calcule el cuadrado (es decir, por defecto un solo argumento, y el resultado sea el número por sí mismo)
-  
 ```{r eval = FALSE}
 # Definimos función
 nombre <- function(x, y) {
@@ -307,12 +291,16 @@ nombre <- function(x, y) {
   return()
 }
 
-# Aplicamos la función solo con un argumento
-producto(3)
-
-# Aplicamos la función con dos argumentos
+# Aplicamos la función
 producto(3, -7)
 ```
+
+&nbsp;
+
+<details>
+  <summary><strong>Ejercicio 3</strong>: modifica el código inferior para definir una función llamada `funcion_producto`, de forma que dados dos elementos, devuelve su producto, pero que por defecto calcule el cuadrado (es decir, por defecto un solo argumento, y el resultado sea el número por sí mismo)
+  
+
 </summary>
   
 - Solución:
@@ -334,6 +322,24 @@ funcion_producto(3, -7)
 ```
 
 </details>
+
+```{r eval = FALSE}
+# Definimos función
+nombre <- function(x, y) {
+  
+  # Multiplicamos
+  producto <- # código de la multiplicación
+  
+  # ¿Qué devolvemos?
+  return()
+}
+
+# Aplicamos la función solo con un argumento
+producto(3)
+
+# Aplicamos la función con dos argumentos
+producto(3, -7)
+```
 
 &nbsp;
 
