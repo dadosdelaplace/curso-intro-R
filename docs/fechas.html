@@ -181,7 +181,7 @@
 <p>También podemos <mark><strong>obtener el «hoy y ahora»</strong></mark> con la función <code><a href="https://rdrr.io/pkg/lubridate/man/now.html">now()</a></code>, obteniendo no solo la fecha sino la hora.</p>
 <div class="sourceCode" id="cb793"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/now.html">now</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "2022-09-13 12:28:51 CEST"</code></pre>
+<pre><code>## [1] "2022-09-13 13:56:19 CEST"</code></pre>
 <p> </p>
 <p>También tenemos disponibles en dicho paquete funciones para extraer facilmente algunas variables temporales como el <mark><strong>día de la semana, el mes o el cuatrimestre</strong></mark>, con las funciones <code><a href="https://rdrr.io/pkg/lubridate/man/year.html">year()</a></code>, <code><a href="https://rdrr.io/r/base/weekday.POSIXt.html">months()</a></code>, <code><a href="https://rdrr.io/pkg/lubridate/man/day.html">day()</a></code>, <code><a href="https://rdrr.io/pkg/lubridate/man/hour.html">hour()</a></code>, <code><a href="https://rdrr.io/pkg/lubridate/man/week.html">week()</a></code>, etc.</p>
 <div class="sourceCode" id="cb795"><pre class="downlit sourceCode r">
@@ -196,13 +196,13 @@
 <pre><code>## [1] 13</code></pre>
 <div class="sourceCode" id="cb801"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/hour.html">hour</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 12</code></pre>
+<pre><code>## [1] 13</code></pre>
 <div class="sourceCode" id="cb803"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/minute.html">minute</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 28</code></pre>
+<pre><code>## [1] 56</code></pre>
 <div class="sourceCode" id="cb805"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/second.html">second</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 51.5379</code></pre>
+<pre><code>## [1] 19.93729</code></pre>
 <div class="sourceCode" id="cb807"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/week.html">week</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span> <span class="co"># Número de semana (del año)</span></code></pre></div>
 <pre><code>## [1] 37</code></pre>
@@ -244,12 +244,12 @@
 <div class="sourceCode" id="cb824"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fecha</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/now.html">now</a></span><span class="op">(</span><span class="op">)</span>
 <span class="va">fecha</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/period.html">weeks</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "2022-09-13 12:28:52 CEST" "2022-09-20 12:28:52 CEST"
-## [3] "2022-09-27 12:28:52 CEST" "2022-10-04 12:28:52 CEST"</code></pre>
+<pre><code>## [1] "2022-09-13 13:56:20 CEST" "2022-09-20 13:56:20 CEST"
+## [3] "2022-09-27 13:56:20 CEST" "2022-10-04 13:56:20 CEST"</code></pre>
 <div class="sourceCode" id="cb826"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fecha</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/period.html">seconds</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "2022-09-13 12:28:52 CEST" "2022-09-13 12:28:53 CEST"
-## [3] "2022-09-13 12:28:54 CEST" "2022-09-13 12:28:55 CEST"</code></pre>
+<pre><code>## [1] "2022-09-13 13:56:20 CEST" "2022-09-13 13:56:21 CEST"
+## [3] "2022-09-13 13:56:22 CEST" "2022-09-13 13:56:23 CEST"</code></pre>
 </div>
 <div id="consejos-5" class="section level2">
 <h2>
