@@ -139,6 +139,7 @@ breaknext
 repeat
 consejos-8
 ejercicios-9
+funs
 primera-función
 variables-localesglobales
 ejercicios-10

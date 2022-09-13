@@ -63,7 +63,7 @@
 <li class="book-part">Haciendo el trabajo más fácil</li>
 <li><a class="" href="if-else.html"><span class="header-section-number">11</span> Estructuras de control: if-else</a></li>
 <li><a class="active" href="bucles.html"><span class="header-section-number">12</span> Estructuras de control: bucles</a></li>
-<li><a class="" href="funciones.html"><span class="header-section-number">13</span> Funciones</a></li>
+<li><a class="" href="funs.html"><span class="header-section-number">13</span> Funciones</a></li>
 <li><a class="" href="proyecto.html"><span class="header-section-number">14</span> Proyecto de trabajo</a></li>
 <li class="book-part">Colofón</li>
 <li><a class="" href="importar-exportar.html"><span class="header-section-number">15</span> Importar/exportar datos</a></li>
@@ -154,12 +154,12 @@
 <span class="fu"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html">microbenchmark</a></span><span class="op">(</span><span class="va">x</span><span class="op">^</span><span class="fl">2</span>, <span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span> <span class="op">{</span> <span class="va">y</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">x</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">^</span><span class="fl">2</span> <span class="op">}</span>,
                times <span class="op">=</span> <span class="fl">1000</span><span class="op">)</span></code></pre></div>
 <pre><code>## Unit: nanoseconds
-##                                   expr     min      lq        mean  median
-##                                    x^2     102     129     608.233     311
-##  for (i in 1:4) {     y[i] &lt;- x[i]^2 } 1308502 1388793 1670448.865 1435709
+##                                   expr     min        lq        mean  median
+##                                    x^2     103     146.5     661.503     458
+##  for (i in 1:4) {     y[i] &lt;- x[i]^2 } 1351952 1435926.0 1793204.797 1524287
 ##         uq       max neval cld
-##      836.5     27355  1000  a 
-##  1520945.5 137100801  1000   b</code></pre>
+##     1117.5      4040  1000  a 
+##  1724795.5 131190620  1000   b</code></pre>
 <p> </p>
 <p>Veamos otro ejemplo: vamos a <strong>definir de nuevo un vector de edades y nombres</strong>, y vamos a recorrer cada uno imprimiento un mensaje por pantalla.</p>
 <div class="sourceCode" id="cb1128"><pre class="downlit sourceCode r">
@@ -540,12 +540,12 @@
                                <span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="va">idx</span><span class="op">)</span> <span class="op">{</span>  <span class="va">y</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">idx</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">^</span><span class="fl">2</span><span class="op">}</span>,
                                times <span class="op">=</span> <span class="fl">1e3</span><span class="op">)</span></code></pre></div>
 <pre><code>## Unit: microseconds
-##                                     expr      min        lq      mean   median
-##                               x &lt;- idx^2   18.568   27.9895   49.9555   52.628
-##  for (i in idx) {     y[i] &lt;- idx[i]^2 } 1832.177 1918.3580 2087.3687 1975.436
-##         uq      max neval cld
-##    59.0775  142.844  1000  a 
-##  2048.1465 9316.304  1000   b</code></pre>
+##                                     expr      min       lq       mean   median
+##                               x &lt;- idx^2   18.362   46.742   53.33957   54.674
+##  for (i in idx) {     y[i] &lt;- idx[i]^2 } 1848.538 1999.319 2426.89172 2126.827
+##         uq       max neval cld
+##    62.3555   243.905  1000  a 
+##  2452.7425 37073.132  1000   b</code></pre>
 <p>Una tarea tan sencilla, <strong>programada en un bucle (segunda fila), tarda 40 veces más que hacerlo de forma vectorial (primera fila)</strong> (elevando cada elemento al cuadrado, iterando internamente, sin necesidad de implementar un bucle).</p>
 </div>
 <div id="ejercicios-9" class="section level2">
@@ -730,7 +730,7 @@
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="if-else.html"><span class="header-section-number">11</span> Estructuras de control: if-else</a></div>
-<div class="next"><a href="funciones.html"><span class="header-section-number">13</span> Funciones</a></div>
+<div class="next"><a href="funs.html"><span class="header-section-number">13</span> Funciones</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">

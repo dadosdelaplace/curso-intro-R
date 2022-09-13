@@ -17,7 +17,7 @@ colorize <- function(x, color) {
 ```
 
 
-# Funciones {#funciones}
+# Funciones {#funs}
 
 :::: {.blackbox data-latex=""}
 
