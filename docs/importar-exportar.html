@@ -93,10 +93,10 @@
 <p><mark><strong>¿Qué edad, sexo o cabina ocupabana los pasajeros que sobrevivieron y los que no sobrevivieron?</strong></mark> Dicho conjunto de datos nos va a servir para ilustrar la forma <strong>más sencilla</strong> de guardar datos y variables en <code>R</code>, y que además ocupa menos espacio en nuestro disco duro: los archivos propios que tiene <code>R</code> con <mark><strong>extensiones <code>.rda</code> o <code>.RData</code></strong></mark>. De nuestra carpeta <code>DATOS</code> cargaremos el archivo <code>titanic.RData</code>, un archivo con extensión <code>.RData</code>, conteniendo los datos de los pasajeros del Titanic (nombre, título, cabina, si sobrevivió o no, edad, etc)</p>
 <p><mark><strong>¿Cómo cargar archivos <code>.RData</code>?</strong></mark></p>
 <p>Muy sencillo: como son ficheros nativos de <code>R</code>, basta con usar la <mark><strong>función de carga <code><a href="https://rdrr.io/r/base/load.html">load()</a></code></strong></mark>, y dentro de los paréntesis la ruta del archivo que queramos cargar.</p>
-<div class="sourceCode" id="cb1255"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1278"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="st">"./DATOS/titanic.RData"</span><span class="op">)</span></code></pre></div>
 <p>Fíjate que, al <strong>fijar nuestro directorio de trabajo</strong>, no necesitamos toda la ruta, solo <code>./</code> (que nos arranca la ruta en la carpeta de nuestro proyecto) más la ruta dentro de la carpeta del proyecto. Ahora en el panel de <strong>entorno de la parte superior derecha</strong> tendremos un <code>data.frame</code> que antes no teníamos. Ya hemos visto que una función muy útil es <code><a href="https://rdrr.io/r/utils/head.html">head()</a></code>, con argumento el nombre de un <code>data.frame</code>, que nos permite visualizar las primeras filas.</p>
-<div class="sourceCode" id="cb1256"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1279"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">titanic</span><span class="op">)</span></code></pre></div>
 <pre><code>##   PassengerId Survived Pclass
 ## 1           1        0      3
@@ -128,7 +128,7 @@
 <p>Fuente original de los datos: <a href="https://doi.org/10.1016/0095-0696(78)90006-2" class="uri">https://doi.org/10.1016/0095-0696(78)90006-2</a></p>
 </blockquote>
 <p>Muchas veces no tendremos un <code>.Rdata</code> sino un archivo <code>.rda</code>. El procedimiento para leerlo será el mismo</p>
-<div class="sourceCode" id="cb1258"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1281"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="st">"./DATOS/boston.rda"</span><span class="op">)</span></code></pre></div>
 <p>El dataset <code>Boston</code> está basado en el estudio que realizaron <a href="https://doi.org/10.1016/0095-0696(78)90006-2">Harrison and Rubinfeld, 1978</a> en el que se pretende determinar la <strong>disposición de los compradores para pagar más por una vivienda en un entorno con mayor calidad del aire</strong>. El conjunto de datos contiene datos del <strong>área metropolitana de Boston</strong>, con datos de 560 vecindarios, midiendo 14 variables en cada uno.</p>
 <p>Las variables están totalmente descritas en <a href="https://doi.org/10.1016/0095-0696(78)90006-2">Harrison and Rubinfeld, 1978</a> pero podemos resumirlas de la siguiente forma:</p>
@@ -153,7 +153,7 @@
 <p>Fuente original de los datos: Our World in Data</p>
 </blockquote>
 <p>Una opción muy común es <mark><strong>cargar datos desde paquetes que ya los tienen incorporadas</strong></mark> (o los consiguen a través de una API). Uno de los ejemplos más útiles seguramente sea uno de los protagonistas de los últimos años debido a la pandemia ha sido la web <mark><a href="https://ourworldindata.org/"><strong>Our World in Data</strong></a></mark>, y en concreto los datos que han recopilado de covid y vacunación de todos los países del mundo. Y sí, podemos acceder a ellos directamente desde <code>R</code> a través del paquete <code>{owidR}</code>.</p>
-<div class="sourceCode" id="cb1259"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1282"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install.packages("owidR")</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">owidR</span><span class="op">)</span></code></pre></div>
 <p>Con la función <code><a href="https://rdrr.io/pkg/owidR/man/owid_search.html">owid_search()</a></code> podemos introducir una palabra clave, para <mark><strong>obtener el listado de datasets</strong></mark> y su palabra clave.</p>
@@ -169,14 +169,14 @@
 </ul>
 <p>La exportación en fichero <code>.RData</code> es la opción <strong>más recomendable si tú o tu equipo solo trabajáis con <code>R</code></strong>, es la opción nativa de fichero, para que su importación sea tan sencilla como una función <code><a href="https://rdrr.io/r/base/load.html">load()</a></code>. Para exportar en <code>R.Data</code> basta con uses la función <code><a href="https://rdrr.io/r/base/save.html">save()</a></code>, indícandole lo que quieres guardar y la ruta donde quieres guardarlo.</p>
 <p>Es <strong>importante</strong> entender que la principal ventaja de exportar un fichero <code>.RData</code> es que no se está portando una tabla, o un fichero tabulado con un formato de filas y columnas: estás exportando <strong>cualquier cosa</strong>, cualquier variable de <code>R</code>, con la naturaleza de esa variable intacta, sin necesidad de pasarlo otro formato.</p>
-<div class="sourceCode" id="cb1260"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1283"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">nombres</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"javier"</span>, <span class="st">"carla"</span><span class="op">)</span>
 <span class="co"># Exportamos en .RData la variable nombres </span>
 <span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">nombres</span>, file <span class="op">=</span> <span class="st">"./EXPORTAR/nombres.RData"</span><span class="op">)</span></code></pre></div>
 <p>Para tenerlo organizado, la orden anterior está hecha habiendo creado en nuestra carpeta del proyecto una carpeta <code>EXPORTAR</code> para guardar lo que vayamos exportando. Ese fichero solo podrá ser abierto por <code>R</code>, pero cuando lo cargemos, tendremos la variable <code>nombres</code> tal cual la hemos guardado.</p>
 <p> </p>
 <p>No siempre trabajamos en <code>R</code> y a veces necesitamos una exportación de un <code>data.frame</code> o una tabla que podamos abrir en nuestra ordenador, ya sea para explicársela a alguien o para enviársela a otra persona. Para ello exportaremos en <code>.csv</code>, un fichero sin formato, y que es capaz de ser abierto por todo tipo de hojas de cálculo: basta que usemos la función <code><a href="https://rdrr.io/pkg/readr/man/write_delim.html">write_csv()</a></code> del paquete <a href="https://readr.tidyverse.org">readr</a></p>
-<div class="sourceCode" id="cb1261"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1284"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install.packages("readr") # solo la primera vez</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span>
 
@@ -237,7 +237,7 @@ Imagen/gráfica 15.2: Margen derecho.
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introducción a R: aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 13-09-2022.</p>
+    <p>"<strong>Introducción a R: aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 15-09-2022.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

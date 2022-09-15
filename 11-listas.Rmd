@@ -157,7 +157,7 @@ Es un formato muy habitual para devolver argumentos en funciones. Imagina que la
 
 **`r colorize("WARNING: operaciones aritméticas con listas", "#dc3545")`**
 
-Una **lista no se puede vectorizar de forma inmediata**, por lo cualquier operación aritmética aplicada a una lista dará error (para ello está disponible la función `lapply()`, o con las funciones del paquete `{purrr}`, pero eso lo veremos en futuros manuales más avanzados).
+Una **lista no se puede vectorizar de forma inmediata**, por lo cualquier operación aritmética aplicada a una lista dará error (para ello está disponible la función `lapply()`, o con las funciones del paquete `{purrr}`, cuyo uso avanzado corresponderá a otro manual pero que veremos a continuación una pequeña introducción).
 
 ```{r error = TRUE}
 datos <- list("a" = 1:5, "b" = 10:20)
@@ -169,9 +169,114 @@ lapply(datos, FUN = function(x) { x / 2})
 ``` 
 
 
+&nbsp;
 
+## Introducción a purrr
+
+Dada su heterogeneidad, una <mark>**lista no se puede vectorizar**</mark> de forma inmediata, por lo cualquier operación aritmética aplicada a una lista dará **error**, como vemos a continuación con un ejemplo sencillo.
+
+```{r error = TRUE}
+datos <- list("a" = 1:5, "b" = 10:20)
+datos / 2
+```
+
+Para operar con listas, una de las opciones más habituales es hacer uso de la familia `lapply()`, con un funcionamiento similar a la familia `apply()` que ya hemos visto con matrices. Dicha función `lapply()` necesita como primer argumento la lista a la que aplicar la operación, y como segundo argumento `FUN = ...` la <mark>**función que querramos aplicar a cada elemento**</mark> de la lista.
+
+```{r}
+lapply(datos, FUN = function(x) { x / 2})
+```
+
+Fíjate que la salida de `lapply()`, por defecto, siempre será <mark>**otra lista de igual longitud**</mark> (cada elemento será la función aplicada a cada elemento original de la lista).
 
 &nbsp;
+
+Una opción más flexible y versatil de aparición «reciente» es hacer uso del paquete `{purrr}` del entorno `{tidyverse}`.
+
+```{r}
+# install.packages("purrr")
+library(purrr)
+```
+
+Dicho paquete contiene diversa funciones que pretenden <mark>**imitar la programación funcional**</mark> de otros lenguajes como Scala o la **estrategia map-reduce de Hadoop** (de Google).
+
+
+```{r echo = FALSE,  out.width = "80%", fig.align = "left"}
+knitr::include_graphics("./img/purrr.png")
+``` 
+
+
+La función más simple del paquete `{purrr}` es la función `map()`, que nos <mark>**aplica una función vectorizada**</mark> a cada uno de los elementos de una lista. 
+
+```{r}
+library(microbenchmark)
+x <- 1:1000
+y <- sqrt(x) # vectorizado
+
+# bucle
+for (i in 1:1000) { y[i] <- sqrt(x[i]) }
+
+microbenchmark(sqrt(x), for (i in 1:1000) { y[i] <- sqrt(x[i]) }, times = 1e3)
+```
+
+
+En vectores disponemos de una vectorización por defecto porque `R` realiza operaciones elemento a elemento. Con `map()` podemos <mark>**«mapear» cada lista**</mark> y aplicar la función **elemento a elemento** (si fuese el caso).
+
+```{r}
+library(purrr)
+x <- rep(list(1:2), 3)
+x
+
+# purrr
+map(x, sqrt) 
+
+# otro ejemplo
+x <- list(rnorm(n = 1e3, mean = 0, sd = 1),
+          rnorm(n = 1e3, mean = 2, sd = 1))
+map(x, mean)
+```
+
+```{r}
+x <- rep(list(rnorm(n = 1e3, mean = 0, sd = 1)), 1000)
+
+# Medimos tiempos entre map y lapply
+microbenchmark(map(x, .f = function(x) { mean(x^2) }),
+               lapply(x, FUN = function(x) { mean(x^2) }),
+               times = 1e3)
+```
+
+&nbsp;
+
+Además de ser <mark>**más legible y eficiente**</mark>, el la vectorización de las listas con el paquete `{purrr}` nos permitirá <mark>**decidir el formato de salida**</mark> tras la operación (por ejemplo, en formato de vector con `map_dbl()` para números - en general - y  `map_int()` para enteros), sin necesidad de hacer uso de `unlist()` (deshace el formato de lista original).
+
+```{r}
+# lista de 1000 valores de dos normales
+x <- list(rnorm(n = 1e3, mean = 0, sd = 1),
+          rnorm(n = 1e3, mean = 2, sd = 1))
+
+# media de cada una, devuelto en formato vector
+map_dbl(x, mean)
+```
+
+Una de las opciones más habituales, y una de las principales ventajas, es pasar como argumento un <mark>**número**</mark> en lugar de una función, lo cual nos devolverá el **elemento i-ésimo de cada lista** de forma inmediata.
+
+```{r}
+c(x[[1]][3], x[[2]][3])
+map_dbl(x, 3) # equivalente a lo anterior 
+```
+
+&nbsp;
+
+Aunque no es el objetivo de este manual introductorio profundizar en dicho paquete (te lo recomiendo), mencionar que además nos permite la opción de pasar más de un argumento, realizando <mark>**operaciones binarias**</mark>, con la función `map2()`
+
+```{r}
+x <- list("a" = 1:3, "b" = 4:7)
+y <- list("c" = c(-1, 4, 0), "b" = c(5, -4, -1, 2))
+
+# dos listas como argumentos
+map2(x, y, .f = function(x, y) { x^2 + y^2})
+```
+
+
 
 ## 📝 Ejercicios
 

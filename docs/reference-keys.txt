@@ -32,7 +32,7 @@ fig:vectores-environment
 fig:stringr2
 fig:unnamed-chunk-274
 fig:tabla-dolar
-fig:unnamed-chunk-359
+fig:unnamed-chunk-369
 fig:crear-proyecto1
 fig:crear-proyecto2
 fig:crear-proyecto3
@@ -124,6 +124,7 @@ selección-de-columnas-y-filas
 primer-análisis-de-datos-arrestos-en-ee.-uu.
 consejos-6
 ejercicios-6
+introducción-a-purrr
 ejercicios-7
 if-else
 if

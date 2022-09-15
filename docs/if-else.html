@@ -101,21 +101,21 @@
 <code>if (x == 1) { código A }</code>: si <code>condición</code> (por ejemplo, <code>x == 1</code>) es cierta, se ejecuta <code>código A</code>; en caso contrario, no hace nada.</li>
 </ul>
 <p>Definamos por ejemplo una variable sencilla, las edades de 8 personas.</p>
-<div class="sourceCode" id="cb1084"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1107"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">edades</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">14</span>, <span class="fl">17</span>, <span class="fl">24</span>, <span class="fl">56</span>, <span class="fl">31</span>, <span class="fl">20</span>, <span class="fl">87</span>, <span class="fl">73</span><span class="op">)</span></code></pre></div>
 <p>Para comprobar cuales son menores de edades podemos aplicar lo aprendido en temas anteriores, realizando una <strong>comparación lógica</strong>: si es menor de edad, devuelve un <code>TRUE</code>; en caso contrario, devuelve un <code>FALSE</code>.</p>
-<div class="sourceCode" id="cb1085"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1108"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">edades</span> <span class="op">&lt;</span> <span class="fl">18</span></code></pre></div>
 <pre><code>## [1]  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
 <p>Con las funciones <code><a href="https://rdrr.io/r/base/any.html">any()</a></code> y <code><a href="https://rdrr.io/r/base/all.html">all()</a></code> podemos saber si <mark><strong>todos o alguno de los elementos</strong></mark> de un vector <mark><strong>cumplen una condición</strong></mark>.</p>
-<div class="sourceCode" id="cb1087"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1110"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/all.html">all</a></span><span class="op">(</span><span class="va">edades</span> <span class="op">&gt;=</span> <span class="fl">18</span><span class="op">)</span> <span class="co"># todos mayores de edad</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb1089"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1112"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/any.html">any</a></span><span class="op">(</span><span class="va">edades</span> <span class="op">&lt;</span> <span class="fl">18</span><span class="op">)</span> <span class="co"># existe algun menor de edad</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>Con dichos elementos vamos a construir nuestra <strong>primera estructura condicional</strong>: queremos que, SI existe algún menor de edad, nos imprima un mensaje.</p>
-<div class="sourceCode" id="cb1091"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1114"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/any.html">any</a></span><span class="op">(</span><span class="va">edades</span> <span class="op">&lt;</span> <span class="fl">18</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span> <span class="co"># TRUE si al menos una persona mayor de edad</span>
   
   <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"existe alguna persona mayor de edad"</span><span class="op">)</span>
@@ -123,7 +123,7 @@
 <span class="op">}</span></code></pre></div>
 <pre><code>## [1] "existe alguna persona mayor de edad"</code></pre>
 <p>En caso de que no se cumplan las condiciones dentro del <code>if()</code> (condiciones que devuelvan un <code>FALSE</code>), no sucederá nada. Podemos hacer lo mismo cambiando la condición: SI todos son mayores de edad, imprime el mensaje.</p>
-<div class="sourceCode" id="cb1093"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1116"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/all.html">all</a></span><span class="op">(</span><span class="va">edades</span> <span class="op">&gt;=</span> <span class="fl">18</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span> <span class="co"># TRUE si TODOS son mayores de edad</span>
   
   <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"todas las personas son mayores de edad"</span><span class="op">)</span>
@@ -141,7 +141,7 @@
 <code>if (x == 1) { código A } else { código B }</code>: si <code>condición</code> (por ejemplo, <code>x == 1</code>) es cierta, se ejecuta <code>código A</code>; si es falsa, se ejecuta <code>código B</code>.</li>
 </ul>
 <p>Siguiendo con el ejemplo de las edades, queremos nos imprima un mensaje SI todos son mayores de edad, y un mensaje diferente en caso de que dicha condición no se cumpla.</p>
-<div class="sourceCode" id="cb1094"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1117"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/all.html">all</a></span><span class="op">(</span><span class="va">edades</span> <span class="op">&gt;=</span> <span class="fl">18</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span> <span class="co"># TRUE si TODOS son mayores de edad</span>
   
   <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"todas las personas son mayores de edad"</span><span class="op">)</span>
@@ -152,7 +152,7 @@
 <span class="op">}</span></code></pre></div>
 <pre><code>## [1] "existe alguna persona menor de edad"</code></pre>
 <p>Podemos ya complicar un poco el código con lo que hemos aprendido de temas anteriores. Por ejemplo, en caso de que no se cumpla (es decir, que haya alguno menor de edad), queremos extraer la edad por pantalla de esos menores (con <code>edades[edades &lt; 18]</code> extraeremos las edades que cumplen la condición de ser menor de edad).</p>
-<div class="sourceCode" id="cb1096"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1119"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/all.html">all</a></span><span class="op">(</span><span class="va">edades</span> <span class="op">&gt;=</span> <span class="fl">18</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span> <span class="co"># TRUE si TODOS son mayores de edad</span>
   
   <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"todas las personas son mayores de edad"</span><span class="op">)</span>
@@ -168,7 +168,7 @@
 <span class="header-section-number">11.3</span> if - else anidados<a class="anchor" aria-label="anchor" href="#if---else-anidados"><i class="fas fa-link"></i></a>
 </h2>
 <p>Dicha estructura <code>if - else</code> puede <mark><strong>anidarse</strong></mark>, de forma que vayamos <mark><strong>concatenando</strong></mark> dichas estructuras, como en el ejemplo que tenemos debajo. Imagina que queremos realizar una acción si todos fuesen mayores de edad; en caso contrario, pero si todos los menores de edad tienen 16 años o más, realizar otra acción; en caso contrario, otra acción</p>
-<div class="sourceCode" id="cb1098"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1121"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/all.html">all</a></span><span class="op">(</span><span class="va">edades</span> <span class="op">&gt;=</span> <span class="fl">18</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span> <span class="co"># TRUE si TODOS son mayores de edad</span>
   
   <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"todas las personas son mayores de edad"</span><span class="op">)</span>
@@ -189,12 +189,12 @@
 <span class="header-section-number">11.4</span> ifelse () vectorizado<a class="anchor" aria-label="anchor" href="#ifelse-vectorizado"><i class="fas fa-link"></i></a>
 </h2>
 <p>Esta <mark><strong>estructura condicional puede ser vectorizada</strong></mark>, de forma que podamos reunir en una <strong>sola fila un número elevado de estructuras de comparación</strong> la función <code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code>, cuyos argumentos de entrada serán la condición a evaluar, lo que sucede cuando se cumple y lo que no, que aplicará a cada elemento del vector de entrada. Con el ejemplo de las edades, vamos a <strong>dejar el dato ausente si son menores de edad</strong>, y si son mayores de edad se queda como está (recuerda: primero la condición, después lo que devuelve cuando es <code>TRUE</code>, y por último lo que devuelve cuando es <code>FALSE</code>)</p>
-<div class="sourceCode" id="cb1100"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1123"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># NA si no cumple la condición, la edad si se cumple.</span>
 <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">edades</span> <span class="op">&gt;=</span> <span class="fl">18</span>, <span class="va">edades</span>, <span class="cn">NA</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] NA NA 24 56 31 20 87 73</code></pre>
 <p>Todas estas estructuras no solo sirven para datos numéricos. Vamos a definir un vector de nombres con algunos ausentes (<code>NA</code>), y vamos a sustituir los ausentes por el texto <code>"nombre_desconocido"</code> (los que no sean ausentes, es decir los que <code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code> devuelva <code>FALSE</code>, se quedan como están).</p>
-<div class="sourceCode" id="cb1102"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1125"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">nombres</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Juan"</span>, <span class="st">"María"</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="st">"Lucía"</span>, <span class="st">"Carmen"</span>, <span class="st">"Javier"</span>,
              <span class="cn">NA</span>, <span class="st">"Carlos"</span>, <span class="cn">NA</span>, <span class="st">"Gregorio"</span>, <span class="st">"Paloma"</span><span class="op">)</span>
 
@@ -217,7 +217,7 @@
 <p><strong><span style="color: #20935E;">Rainbow parentheses</span></strong></p>
 <p>Uno de los <strong>errores más habituales</strong>, y que seguirás cometiendo aunque lleves años programando, es <mark><strong>no cerrar un paréntesis que has abierto</strong></mark>, por lo que el programa no sabe si has acabado de llamar a una orden o no. Para ello en las nuevas versiones de <code>RStudio</code>, en el menú <code>Tools &lt; Global Options &lt; Code &lt; Display</code> podemos habilitar la opción <code>Rainbow Parentheses</code> que nos escribe cada par de <code>()</code> de un color distinto</p>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-359"></span>
+<span style="display:block;" id="fig:unnamed-chunk-369"></span>
 <img src="img/rainbow-parentheses.jpg" alt="Activando Rainbow Parentheses." width="80%"><p class="caption">
 Imagen/gráfica 11.1: Activando Rainbow Parentheses.
 </p>
@@ -238,7 +238,7 @@ Imagen/gráfica 11.1: Activando Rainbow Parentheses.
 <ul>
 <li>Solución:</li>
 </ul>
-<div class="sourceCode" id="cb1104"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1127"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install.packages("dataset") # solo la primera vez</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">datasets</span><span class="op">)</span> <span class="co"># paquete con los datos</span>
 <span class="va">mes</span> <span class="op">&lt;-</span> <span class="va">airquality</span><span class="op">$</span><span class="va">Month</span>
@@ -250,7 +250,7 @@ Imagen/gráfica 11.1: Activando Rainbow Parentheses.
 <span class="op">}</span></code></pre></div>
 <pre><code>## [1] "Ningún dato es del mes de enero"</code></pre>
 <!-- tocstop -->
-</details><div class="sourceCode" id="cb1106"><pre class="downlit sourceCode r">
+</details><div class="sourceCode" id="cb1129"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install.packages("dataset") # solo la primera vez</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">datasets</span><span class="op">)</span> <span class="co"># paquete con los datos</span>
 <span class="va">mes</span> <span class="op">&lt;-</span> <span class="va">airquality</span><span class="op">$</span><span class="va">Month</span>
@@ -267,7 +267,7 @@ Imagen/gráfica 11.1: Activando Rainbow Parentheses.
 <ul>
 <li>Solución:</li>
 </ul>
-<div class="sourceCode" id="cb1107"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1130"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">temperatura</span> <span class="op">&lt;-</span> <span class="va">airquality</span><span class="op">$</span><span class="va">Temp</span>
 <span class="va">temperatura_alta</span> <span class="op">&lt;-</span> <span class="cn">FALSE</span> <span class="co"># por defecto FALSE</span>
 <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/any.html">any</a></span><span class="op">(</span><span class="va">temperatura</span> <span class="op">&gt;</span> <span class="fl">90</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
@@ -276,7 +276,7 @@ Imagen/gráfica 11.1: Activando Rainbow Parentheses.
   
 <span class="op">}</span></code></pre></div>
 <!-- tocstop -->
-</details><div class="sourceCode" id="cb1108"><pre class="downlit sourceCode r">
+</details><div class="sourceCode" id="cb1131"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">temperatura</span> <span class="op">&lt;-</span> <span class="va">airquality</span><span class="op">$</span><span class="va">Temp</span>
 
 <span class="kw">if</span> <span class="op">(</span><span class="va">temperatura</span> <span class="op">==</span> <span class="fl">100</span><span class="op">)</span> <span class="op">{</span>
@@ -291,7 +291,7 @@ Imagen/gráfica 11.1: Activando Rainbow Parentheses.
 <ul>
 <li>Solución:</li>
 </ul>
-<div class="sourceCode" id="cb1109"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1132"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">temperatura</span> <span class="op">&lt;-</span> <span class="va">airquality</span><span class="op">$</span><span class="va">Temp</span>
 
 <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/any.html">any</a></span><span class="op">(</span><span class="va">temperatura</span> <span class="op">&gt;</span> <span class="fl">100</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span> <span class="co"># nos basta con uno</span>
@@ -301,7 +301,7 @@ Imagen/gráfica 11.1: Activando Rainbow Parentheses.
 <span class="op">}</span></code></pre></div>
 <p>No debería imprimar nada porque ninguno cumple la condición.</p>
 <!-- tocstop -->
-</details><div class="sourceCode" id="cb1110"><pre class="downlit sourceCode r">
+</details><div class="sourceCode" id="cb1133"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">temperatura</span> <span class="op">&lt;-</span> <span class="va">airquality</span><span class="op">$</span><span class="va">Temp</span>
 
 <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/all.html">all</a></span><span class="op">(</span><span class="va">temperatura</span> <span class="op">&lt;</span> <span class="fl">50</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
@@ -315,7 +315,7 @@ Imagen/gráfica 11.1: Activando Rainbow Parentheses.
 <ul>
 <li>Solución:</li>
 </ul>
-<div class="sourceCode" id="cb1111"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1134"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Cargamos librería</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://lubridate.tidyverse.org">lubridate</a></span><span class="op">)</span>
 
@@ -334,7 +334,7 @@ Imagen/gráfica 11.1: Activando Rainbow Parentheses.
 <ul>
 <li>Solución:</li>
 </ul>
-<div class="sourceCode" id="cb1112"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1135"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Fecha actual</span>
 <span class="va">fecha_actual</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/now.html">now</a></span><span class="op">(</span><span class="op">)</span>
 
@@ -359,7 +359,7 @@ Imagen/gráfica 11.1: Activando Rainbow Parentheses.
 <ul>
 <li>Solución:</li>
 </ul>
-<div class="sourceCode" id="cb1114"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1137"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Fecha actual</span>
 <span class="va">fecha_actual</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/now.html">now</a></span><span class="op">(</span><span class="op">)</span>
 
@@ -405,7 +405,7 @@ Imagen/gráfica 11.1: Activando Rainbow Parentheses.
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introducción a R: aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 13-09-2022.</p>
+    <p>"<strong>Introducción a R: aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 15-09-2022.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

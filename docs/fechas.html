@@ -177,11 +177,11 @@
 <pre><code>## [1] "Date"</code></pre>
 <div class="sourceCode" id="cb791"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">hoy</span> <span class="op">+</span> <span class="fl">7</span> <span class="co"># dentro de una semana</span></code></pre></div>
-<pre><code>## [1] "2022-09-20"</code></pre>
+<pre><code>## [1] "2022-09-22"</code></pre>
 <p>También podemos <mark><strong>obtener el «hoy y ahora»</strong></mark> con la función <code><a href="https://rdrr.io/pkg/lubridate/man/now.html">now()</a></code>, obteniendo no solo la fecha sino la hora.</p>
 <div class="sourceCode" id="cb793"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/now.html">now</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "2022-09-13 19:35:52 CEST"</code></pre>
+<pre><code>## [1] "2022-09-15 17:49:02 CEST"</code></pre>
 <p> </p>
 <p>También tenemos disponibles en dicho paquete funciones para extraer facilmente algunas variables temporales como el <mark><strong>día de la semana, el mes o el cuatrimestre</strong></mark>, con las funciones <code><a href="https://rdrr.io/pkg/lubridate/man/year.html">year()</a></code>, <code><a href="https://rdrr.io/r/base/weekday.POSIXt.html">months()</a></code>, <code><a href="https://rdrr.io/pkg/lubridate/man/day.html">day()</a></code>, <code><a href="https://rdrr.io/pkg/lubridate/man/hour.html">hour()</a></code>, <code><a href="https://rdrr.io/pkg/lubridate/man/week.html">week()</a></code>, etc.</p>
 <div class="sourceCode" id="cb795"><pre class="downlit sourceCode r">
@@ -193,30 +193,30 @@
 <pre><code>## [1] 9</code></pre>
 <div class="sourceCode" id="cb799"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/day.html">day</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 13</code></pre>
+<pre><code>## [1] 15</code></pre>
 <div class="sourceCode" id="cb801"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/hour.html">hour</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 19</code></pre>
+<pre><code>## [1] 17</code></pre>
 <div class="sourceCode" id="cb803"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/minute.html">minute</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 35</code></pre>
+<pre><code>## [1] 49</code></pre>
 <div class="sourceCode" id="cb805"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/second.html">second</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 52.79423</code></pre>
+<pre><code>## [1] 2.252185</code></pre>
 <div class="sourceCode" id="cb807"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/week.html">week</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span> <span class="co"># Número de semana (del año)</span></code></pre></div>
 <pre><code>## [1] 37</code></pre>
 <p>También disponemos de la función <code><a href="https://rdrr.io/pkg/lubridate/man/day.html">wday()</a></code>, que nos devuelve el <mark><strong>día de la semana</strong></mark> en el que estamos (por defecto, la semana empieza el domingo, pero podemos cambiarlo con el argumento opcional <code>week_start = ...</code>)</p>
 <div class="sourceCode" id="cb809"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/day.html">wday</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 3</code></pre>
+<pre><code>## [1] 5</code></pre>
 <div class="sourceCode" id="cb811"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/day.html">wday</a></span><span class="op">(</span><span class="va">fecha</span>, week_start <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="co"># Día de la semana (empezando por el lunes)</span></code></pre></div>
-<pre><code>## [1] 2</code></pre>
+<pre><code>## [1] 4</code></pre>
 <p>Además si usamos otro argumento opcional <code>label = TRUE</code> (por defecto está en <code>FALSE</code>), nos convertirá dichos días de la semana en los nombres (en lugar de números)</p>
 <div class="sourceCode" id="cb813"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/day.html">wday</a></span><span class="op">(</span><span class="va">fecha</span>, week_start <span class="op">=</span> <span class="fl">1</span>, label <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] Tue
+<pre><code>## [1] Thu
 ## Levels: Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat &lt; Sun</code></pre>
 <p> </p>
 <p>Las funciones de <code><a href="https://rdrr.io/pkg/lubridate/man/month.html">month()</a></code>, <code><a href="https://rdrr.io/pkg/lubridate/man/year.html">year()</a></code>, <code><a href="https://rdrr.io/pkg/lubridate/man/day.html">day()</a></code>, etc, pueden ser usadas tanto para extraer el valor como para cambiarlo, asignándole uno distinto</p>
@@ -244,12 +244,12 @@
 <div class="sourceCode" id="cb824"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fecha</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/now.html">now</a></span><span class="op">(</span><span class="op">)</span>
 <span class="va">fecha</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/period.html">weeks</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "2022-09-13 19:35:53 CEST" "2022-09-20 19:35:53 CEST"
-## [3] "2022-09-27 19:35:53 CEST" "2022-10-04 19:35:53 CEST"</code></pre>
+<pre><code>## [1] "2022-09-15 17:49:02 CEST" "2022-09-22 17:49:02 CEST"
+## [3] "2022-09-29 17:49:02 CEST" "2022-10-06 17:49:02 CEST"</code></pre>
 <div class="sourceCode" id="cb826"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fecha</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/period.html">seconds</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "2022-09-13 19:35:53 CEST" "2022-09-13 19:35:54 CEST"
-## [3] "2022-09-13 19:35:55 CEST" "2022-09-13 19:35:56 CEST"</code></pre>
+<pre><code>## [1] "2022-09-15 17:49:02 CEST" "2022-09-15 17:49:03 CEST"
+## [3] "2022-09-15 17:49:04 CEST" "2022-09-15 17:49:05 CEST"</code></pre>
 </div>
 <div id="consejos-5" class="section level2">
 <h2>
@@ -296,7 +296,7 @@
 
 <span class="co"># Diferencia</span>
 <span class="va">hoy</span> <span class="op">-</span> <span class="va">cumple</span></code></pre></div>
-<pre><code>## Time difference of 12056 days</code></pre>
+<pre><code>## Time difference of 12058 days</code></pre>
 <!-- tocstop -->
 </details><p> </p>
 <details><p><summary>📝<strong>Ejercicio 2</strong>: define la fecha de tu cumpleaños y determina si fue año bisiesto. Súmale 1-2-3-4-5 semanas. </summary></p>
@@ -346,7 +346,7 @@
 </ul>
 <div class="sourceCode" id="cb850"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/period.html">seconds</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/now.html">today</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="va">cumple</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "12056S"</code></pre>
+<pre><code>## [1] "12058S"</code></pre>
 <!-- tocstop -->
 </details><p> </p>
 
@@ -379,7 +379,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introducción a R: aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 13-09-2022.</p>
+    <p>"<strong>Introducción a R: aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 15-09-2022.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

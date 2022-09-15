@@ -239,7 +239,7 @@
 <p>Es un formato muy habitual para devolver argumentos en funciones. Imagina que la función <code>igualdad_nombres</code> que hemos definido en el Ejercicio 4</p>
 <p> </p>
 <p><strong><span style="color: #dc3545;">WARNING: operaciones aritméticas con listas</span></strong></p>
-<p>Una <strong>lista no se puede vectorizar de forma inmediata</strong>, por lo cualquier operación aritmética aplicada a una lista dará error (para ello está disponible la función <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code>, o con las funciones del paquete <a href="http://purrr.tidyverse.org">purrr</a>, pero eso lo veremos en futuros manuales más avanzados).</p>
+<p>Una <strong>lista no se puede vectorizar de forma inmediata</strong>, por lo cualquier operación aritmética aplicada a una lista dará error (para ello está disponible la función <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code>, o con las funciones del paquete <a href="http://purrr.tidyverse.org">purrr</a>, cuyo uso avanzado corresponderá a otro manual pero que veremos a continuación una pequeña introducción).</p>
 <div class="sourceCode" id="cb1064"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">datos</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"a"</span> <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="st">"b"</span> <span class="op">=</span> <span class="fl">10</span><span class="op">:</span><span class="fl">20</span><span class="op">)</span>
 <span class="va">datos</span> <span class="op">/</span> <span class="fl">2</span></code></pre></div>
@@ -252,16 +252,137 @@
 ## $b
 ##  [1]  5.0  5.5  6.0  6.5  7.0  7.5  8.0  8.5  9.0  9.5 10.0</code></pre>
 <p> </p>
+<div id="introducción-a-purrr" class="section level2">
+<h2>
+<span class="header-section-number">10.1</span> Introducción a purrr<a class="anchor" aria-label="anchor" href="#introducci%C3%B3n-a-purrr"><i class="fas fa-link"></i></a>
+</h2>
+<p>Dada su heterogeneidad, una <mark><strong>lista no se puede vectorizar</strong></mark> de forma inmediata, por lo cualquier operación aritmética aplicada a una lista dará <strong>error</strong>, como vemos a continuación con un ejemplo sencillo.</p>
+<div class="sourceCode" id="cb1068"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">datos</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"a"</span> <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="st">"b"</span> <span class="op">=</span> <span class="fl">10</span><span class="op">:</span><span class="fl">20</span><span class="op">)</span>
+<span class="va">datos</span> <span class="op">/</span> <span class="fl">2</span></code></pre></div>
+<pre><code>## Error in datos/2: argumento no-numérico para operador binario</code></pre>
+<p>Para operar con listas, una de las opciones más habituales es hacer uso de la familia <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code>, con un funcionamiento similar a la familia <code><a href="https://rdrr.io/r/base/apply.html">apply()</a></code> que ya hemos visto con matrices. Dicha función <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code> necesita como primer argumento la lista a la que aplicar la operación, y como segundo argumento <code>FUN = ...</code> la <mark><strong>función que querramos aplicar a cada elemento</strong></mark> de la lista.</p>
+<div class="sourceCode" id="cb1070"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">datos</span>, FUN <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span> <span class="va">x</span> <span class="op">/</span> <span class="fl">2</span><span class="op">}</span><span class="op">)</span></code></pre></div>
+<pre><code>## $a
+## [1] 0.5 1.0 1.5 2.0 2.5
+## 
+## $b
+##  [1]  5.0  5.5  6.0  6.5  7.0  7.5  8.0  8.5  9.0  9.5 10.0</code></pre>
+<p>Fíjate que la salida de <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code>, por defecto, siempre será <mark><strong>otra lista de igual longitud</strong></mark> (cada elemento será la función aplicada a cada elemento original de la lista).</p>
+<p> </p>
+<p>Una opción más flexible y versatil de aparición «reciente» es hacer uso del paquete <a href="http://purrr.tidyverse.org">purrr</a> del entorno <a href="https://tidyverse.tidyverse.org">tidyverse</a>.</p>
+<div class="sourceCode" id="cb1072"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># install.packages("purrr")</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://purrr.tidyverse.org">purrr</a></span><span class="op">)</span></code></pre></div>
+<p>Dicho paquete contiene diversa funciones que pretenden <mark><strong>imitar la programación funcional</strong></mark> de otros lenguajes como Scala o la <strong>estrategia map-reduce de Hadoop</strong> (de Google).</p>
+<div class="inline-figure"><img src="img/purrr.png" width="80%" style="display: block; margin: auto auto auto 0;"></div>
+<p>La función más simple del paquete <a href="http://purrr.tidyverse.org">purrr</a> es la función <code><a href="https://rdrr.io/pkg/purrr/man/map.html">map()</a></code>, que nos <mark><strong>aplica una función vectorizada</strong></mark> a cada uno de los elementos de una lista.</p>
+<div class="sourceCode" id="cb1073"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/joshuaulrich/microbenchmark/">microbenchmark</a></span><span class="op">)</span>
+<span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">1000</span>
+<span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="co"># vectorizado</span>
+
+<span class="co"># bucle</span>
+<span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">1000</span><span class="op">)</span> <span class="op">{</span> <span class="va">y</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">x</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span> <span class="op">}</span>
+
+<span class="fu"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html">microbenchmark</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">1000</span><span class="op">)</span> <span class="op">{</span> <span class="va">y</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">x</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span> <span class="op">}</span>, times <span class="op">=</span> <span class="fl">1e3</span><span class="op">)</span></code></pre></div>
+<pre><code>## Unit: microseconds
+##                                          expr      min        lq        mean
+##                                       sqrt(x)    2.209    2.6315    3.541066
+##  for (i in 1:1000) {     y[i] &lt;- sqrt(x[i]) } 1462.342 1558.2770 1876.473790
+##     median        uq        max neval cld
+##     3.0585    3.5125     33.828  1000  a 
+##  1616.7650 1784.7465 116439.979  1000   b</code></pre>
+<p>En vectores disponemos de una vectorización por defecto porque <code>R</code> realiza operaciones elemento a elemento. Con <code><a href="https://rdrr.io/pkg/purrr/man/map.html">map()</a></code> podemos <mark><strong>«mapear» cada lista</strong></mark> y aplicar la función <strong>elemento a elemento</strong> (si fuese el caso).</p>
+<div class="sourceCode" id="cb1075"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://purrr.tidyverse.org">purrr</a></span><span class="op">)</span>
+<span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span>, <span class="fl">3</span><span class="op">)</span>
+<span class="va">x</span></code></pre></div>
+<pre><code>## [[1]]
+## [1] 1 2
+## 
+## [[2]]
+## [1] 1 2
+## 
+## [[3]]
+## [1] 1 2</code></pre>
+<div class="sourceCode" id="cb1077"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># purrr</span>
+<span class="fu"><a href="https://rdrr.io/pkg/purrr/man/map.html">map</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">sqrt</span><span class="op">)</span> </code></pre></div>
+<pre><code>## [[1]]
+## [1] 1.000000 1.414214
+## 
+## [[2]]
+## [1] 1.000000 1.414214
+## 
+## [[3]]
+## [1] 1.000000 1.414214</code></pre>
+<div class="sourceCode" id="cb1079"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># otro ejemplo</span>
+<span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">1e3</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,
+          <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">1e3</span>, mean <span class="op">=</span> <span class="fl">2</span>, sd <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/purrr/man/map.html">map</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">mean</span><span class="op">)</span></code></pre></div>
+<pre><code>## [[1]]
+## [1] -0.007485607
+## 
+## [[2]]
+## [1] 2.012836</code></pre>
+<div class="sourceCode" id="cb1081"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">1e3</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span>, <span class="fl">1000</span><span class="op">)</span>
+
+<span class="co"># Medimos tiempos entre map y lapply</span>
+<span class="fu"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html">microbenchmark</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/purrr/man/map.html">map</a></span><span class="op">(</span><span class="va">x</span>, .f <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="op">}</span><span class="op">)</span>,
+               <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">x</span>, FUN <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="op">}</span><span class="op">)</span>,
+               times <span class="op">=</span> <span class="fl">1e3</span><span class="op">)</span></code></pre></div>
+<pre><code>## Unit: milliseconds
+##                                            expr      min       lq     mean
+##      map(x, .f = function(x) {     mean(x^2) }) 5.205882 6.333234 7.973593
+##  lapply(x, FUN = function(x) {     mean(x^2) }) 4.999136 6.231217 7.868020
+##    median       uq      max neval cld
+##  7.098439 8.021562 124.1761  1000   a
+##  6.963646 8.122574 120.8657  1000   a</code></pre>
+<p> </p>
+<p>Además de ser <mark><strong>más legible y eficiente</strong></mark>, el la vectorización de las listas con el paquete <a href="http://purrr.tidyverse.org">purrr</a> nos permitirá <mark><strong>decidir el formato de salida</strong></mark> tras la operación (por ejemplo, en formato de vector con <code><a href="https://rdrr.io/pkg/purrr/man/map.html">map_dbl()</a></code> para números - en general - y <code><a href="https://rdrr.io/pkg/purrr/man/map.html">map_int()</a></code> para enteros), sin necesidad de hacer uso de <code><a href="https://rdrr.io/r/base/unlist.html">unlist()</a></code> (deshace el formato de lista original).</p>
+<div class="sourceCode" id="cb1083"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># lista de 1000 valores de dos normales</span>
+<span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">1e3</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,
+          <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">1e3</span>, mean <span class="op">=</span> <span class="fl">2</span>, sd <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span>
+
+<span class="co"># media de cada una, devuelto en formato vector</span>
+<span class="fu"><a href="https://rdrr.io/pkg/purrr/man/map.html">map_dbl</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">mean</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] -0.02453606  1.96544088</code></pre>
+<p>Una de las opciones más habituales, y una de las principales ventajas, es pasar como argumento un <mark><strong>número</strong></mark> en lugar de una función, lo cual nos devolverá el <strong>elemento i-ésimo de cada lista</strong> de forma inmediata.</p>
+<div class="sourceCode" id="cb1085"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">x</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span>, <span class="va">x</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] -1.1511723  0.8225336</code></pre>
+<div class="sourceCode" id="cb1087"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/purrr/man/map.html">map_dbl</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">3</span><span class="op">)</span> <span class="co"># equivalente a lo anterior </span></code></pre></div>
+<pre><code>## [1] -1.1511723  0.8225336</code></pre>
+<p> </p>
+<p>Aunque no es el objetivo de este manual introductorio profundizar en dicho paquete (te lo recomiendo), mencionar que además nos permite la opción de pasar más de un argumento, realizando <mark><strong>operaciones binarias</strong></mark>, con la función <code><a href="https://rdrr.io/pkg/purrr/man/map2.html">map2()</a></code></p>
+<div class="sourceCode" id="cb1089"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"a"</span> <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="st">"b"</span> <span class="op">=</span> <span class="fl">4</span><span class="op">:</span><span class="fl">7</span><span class="op">)</span>
+<span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"c"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span>, <span class="fl">4</span>, <span class="fl">0</span><span class="op">)</span>, <span class="st">"b"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="op">-</span><span class="fl">4</span>, <span class="op">-</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span>
+
+<span class="co"># dos listas como argumentos</span>
+<span class="fu"><a href="https://rdrr.io/pkg/purrr/man/map2.html">map2</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, .f <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span> <span class="op">{</span> <span class="va">x</span><span class="op">^</span><span class="fl">2</span> <span class="op">+</span> <span class="va">y</span><span class="op">^</span><span class="fl">2</span><span class="op">}</span><span class="op">)</span></code></pre></div>
+<pre><code>## $a
+## [1]  2 20  9
+## 
+## $b
+## [1] 41 41 37 53</code></pre>
+</div>
 <div id="ejercicios-7" class="section level2">
 <h2>
-<span class="header-section-number">10.1</span> 📝 Ejercicios<a class="anchor" aria-label="anchor" href="#ejercicios-7"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.2</span> 📝 Ejercicios<a class="anchor" aria-label="anchor" href="#ejercicios-7"><i class="fas fa-link"></i></a>
 </h2>
 <details><p><summary><strong>Ejercicio 1</strong>: define una lista de 4 elementos de tipos distintos y accede al segundo de ellos (yo incluiré uno que sea un <code>data.frame</code> para que veas que en una lista cabe de todo).</summary></p>
 <!-- toc -->
 <ul>
 <li>Solución:</li>
 </ul>
-<div class="sourceCode" id="cb1068"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1091"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Ejemplo: lista con texto, numérico, lógico y un data.frame</span>
 <span class="va">lista_ejemplo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"nombre"</span> <span class="op">=</span> <span class="st">"Javier"</span>, <span class="st">"cp"</span> <span class="op">=</span> <span class="fl">28019</span>,
                       <span class="st">"soltero"</span> <span class="op">=</span> <span class="cn">TRUE</span>,
@@ -282,11 +403,11 @@
 ## 1   7.5     10
 ## 2   8.0      5
 ## 3   9.0      6</code></pre>
-<div class="sourceCode" id="cb1070"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1093"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Longitud</span>
 <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">lista_ejemplo</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 4</code></pre>
-<div class="sourceCode" id="cb1072"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1095"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Accedemos al elemento dos</span>
 <span class="va">lista_ejemplo</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span></code></pre></div>
 <pre><code>## [1] 28019</code></pre>
@@ -296,7 +417,7 @@
 <ul>
 <li>Solución:</li>
 </ul>
-<div class="sourceCode" id="cb1074"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1097"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Accedemos al 1 y al 4</span>
 <span class="va">lista_ejemplo</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">4</span><span class="op">)</span><span class="op">]</span></code></pre></div>
 <pre><code>## $nombre
@@ -308,17 +429,17 @@
 ## 2   8.0      5
 ## 3   9.0      6</code></pre>
 <p>Otra opción es acceder con los nombres</p>
-<div class="sourceCode" id="cb1076"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1099"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Accedemos al 1 y al 4</span>
 <span class="va">lista_ejemplo</span><span class="op">$</span><span class="va">nombre</span></code></pre></div>
 <pre><code>## [1] "Javier"</code></pre>
-<div class="sourceCode" id="cb1078"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1101"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">lista_ejemplo</span><span class="op">$</span><span class="va">notas</span></code></pre></div>
 <pre><code>##   mates lengua
 ## 1   7.5     10
 ## 2   8.0      5
 ## 3   9.0      6</code></pre>
-<div class="sourceCode" id="cb1080"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1103"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">lista_ejemplo</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"nombre"</span>, <span class="st">"notas"</span><span class="op">)</span><span class="op">]</span></code></pre></div>
 <pre><code>## $nombre
 ## [1] "Javier"
@@ -334,7 +455,7 @@
 <ul>
 <li>Solución:</li>
 </ul>
-<div class="sourceCode" id="cb1082"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1105"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Creamos lista: con lubridate calculamos la diferencia de años desde la fecha de nuestro nacimiento hasta hoy (sea cuando sea hoy)</span>
 <span class="va">lista_personal</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"nombre"</span> <span class="op">=</span> <span class="st">"Javier"</span>,
                        <span class="st">"apellidos"</span> <span class="op">=</span> <span class="st">"Álvarez Liébana"</span>,
@@ -365,7 +486,8 @@
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#listas"><span class="header-section-number">10</span> Listas</a></li>
-<li><a class="nav-link" href="#ejercicios-7"><span class="header-section-number">10.1</span> 📝 Ejercicios</a></li>
+<li><a class="nav-link" href="#introducci%C3%B3n-a-purrr"><span class="header-section-number">10.1</span> Introducción a purrr</a></li>
+<li><a class="nav-link" href="#ejercicios-7"><span class="header-section-number">10.2</span> 📝 Ejercicios</a></li>
 </ul>
 
       <div class="book-extra">
@@ -383,7 +505,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introducción a R: aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 13-09-2022.</p>
+    <p>"<strong>Introducción a R: aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 15-09-2022.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

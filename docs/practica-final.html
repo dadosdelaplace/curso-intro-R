@@ -86,7 +86,7 @@
 <ul>
 <li>Solución:</li>
 </ul>
-<div class="sourceCode" id="cb1262"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1285"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="st">"./DATOS/titanic.RData"</span><span class="op">)</span></code></pre></div>
 </details><p> </p>
 <details><p><summary><strong>Ejercicio 2</strong>: obtén el número de individuos y de variables de nuestro dataset</summary></p>
@@ -94,10 +94,10 @@
 <ul>
 <li>Solución:</li>
 </ul>
-<div class="sourceCode" id="cb1263"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1286"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">titanic</span><span class="op">)</span> <span class="co"># variables</span></code></pre></div>
 <pre><code>## [1] 12</code></pre>
-<div class="sourceCode" id="cb1265"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1288"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">titanic</span><span class="op">)</span> <span class="co"># individuos</span></code></pre></div>
 <pre><code>## [1] 891</code></pre>
 </details><p> </p>
@@ -106,16 +106,16 @@
 <ul>
 <li>Solución:</li>
 </ul>
-<div class="sourceCode" id="cb1267"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1290"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">titanic</span><span class="op">$</span><span class="va">Name</span><span class="op">)</span> </code></pre></div>
 <pre><code>## [1] "character"</code></pre>
-<div class="sourceCode" id="cb1269"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1292"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">titanic</span><span class="op">$</span><span class="va">Pclass</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "integer"</code></pre>
-<div class="sourceCode" id="cb1271"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1294"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">titanic</span><span class="op">$</span><span class="va">Age</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "numeric"</code></pre>
-<div class="sourceCode" id="cb1273"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1296"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">titanic</span><span class="op">$</span><span class="va">Survived</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "integer"</code></pre>
 </details><p> </p>
@@ -124,7 +124,7 @@
 <ul>
 <li>Solución:</li>
 </ul>
-<div class="sourceCode" id="cb1275"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1298"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Modo ifelse</span>
 <span class="va">titanic</span><span class="op">$</span><span class="va">Survived</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">titanic</span><span class="op">$</span><span class="va">Survived</span> <span class="op">==</span> <span class="fl">1</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span><span class="op">)</span>
 
@@ -146,7 +146,7 @@
 <ul>
 <li>Solución:</li>
 </ul>
-<div class="sourceCode" id="cb1276"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1299"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://stringr.tidyverse.org">stringr</a></span><span class="op">)</span>
 <span class="co"># Con str_detect obtenemos un TRUE/FALSE</span>
 <span class="va">titanic</span><span class="op">$</span><span class="va">Name</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/pkg/stringr/man/str_detect.html">str_detect</a></span><span class="op">(</span><span class="va">titanic</span><span class="op">$</span><span class="va">Name</span>, pattern <span class="op">=</span> <span class="st">"Miss."</span><span class="op">)</span><span class="op">]</span></code></pre></div>
@@ -338,13 +338,13 @@
 <ul>
 <li>Solución:</li>
 </ul>
-<div class="sourceCode" id="cb1278"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1301"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">titanic</span><span class="op">$</span><span class="va">Age</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 29.69912</code></pre>
-<div class="sourceCode" id="cb1280"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1303"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">titanic</span><span class="op">$</span><span class="va">Age</span><span class="op">[</span><span class="va">titanic</span><span class="op">$</span><span class="va">Sex</span> <span class="op">==</span> <span class="st">"male"</span><span class="op">]</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 30.72664</code></pre>
-<div class="sourceCode" id="cb1282"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1305"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">titanic</span><span class="op">$</span><span class="va">Age</span><span class="op">[</span><span class="va">titanic</span><span class="op">$</span><span class="va">Sex</span> <span class="op">==</span> <span class="st">"female"</span><span class="op">]</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 27.91571</code></pre>
 </details><p> </p>
@@ -353,7 +353,7 @@
 <ul>
 <li>Solución:</li>
 </ul>
-<div class="sourceCode" id="cb1284"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1307"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="va">titanic</span><span class="op">$</span><span class="va">Age</span><span class="op">)</span> <span class="co"># menor a mayor</span></code></pre></div>
 <pre><code>##   [1]  0.42  0.67  0.75  0.75  0.83  0.83  0.92  1.00  1.00  1.00  1.00  1.00
 ##  [13]  1.00  1.00  2.00  2.00  2.00  2.00  2.00  2.00  2.00  2.00  2.00  2.00
@@ -415,7 +415,7 @@
 ## [685] 58.00 58.00 59.00 59.00 60.00 60.00 60.00 60.00 61.00 61.00 61.00 62.00
 ## [697] 62.00 62.00 62.00 63.00 63.00 64.00 64.00 65.00 65.00 65.00 66.00 70.00
 ## [709] 70.00 70.50 71.00 71.00 74.00 80.00</code></pre>
-<div class="sourceCode" id="cb1286"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1309"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="va">titanic</span><span class="op">$</span><span class="va">Age</span>, decreasing <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="co"># mayor a menor</span></code></pre></div>
 <pre><code>##   [1] 80.00 74.00 71.00 71.00 70.50 70.00 70.00 66.00 65.00 65.00 65.00 64.00
 ##  [13] 64.00 63.00 63.00 62.00 62.00 62.00 62.00 61.00 61.00 61.00 60.00 60.00
@@ -483,7 +483,7 @@
 <ul>
 <li>Solución:</li>
 </ul>
-<div class="sourceCode" id="cb1288"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1311"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Definimos función</span>
 <span class="va">menor_edad</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">edad</span><span class="op">)</span> <span class="op">{</span>
   
@@ -723,7 +723,7 @@
 <ul>
 <li>Solución:</li>
 </ul>
-<div class="sourceCode" id="cb1290"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1313"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://lubridate.tidyverse.org">lubridate</a></span><span class="op">)</span>
 <span class="co"># Fecha accidente</span>
 <span class="va">accidente</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/as_date.html">as_date</a></span><span class="op">(</span><span class="st">"1912/04/15"</span><span class="op">)</span>
@@ -937,7 +937,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introducción a R: aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 13-09-2022.</p>
+    <p>"<strong>Introducción a R: aprendiendo R sin morir en el intento</strong>" was written by Javier Álvarez Liébana. It was last built on Última actualización: 15-09-2022.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
